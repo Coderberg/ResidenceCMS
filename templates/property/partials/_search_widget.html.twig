@@ -1,0 +1,52 @@
+<div class="card mb-3">
+    <h5 class="card-header">{{ 'widget.search' | trans }}</h5>
+    <div class="card-body">
+        <form action="{{ path('property_search') }}" method="get">
+            <div class="form-group">
+                <label>{{ 'locality'|trans }}</label>
+                <select name="locality" class="form-control form-control-lg">
+
+                    <option value="0">{{ 'widget.all_localities'|trans }}</option>
+
+                    {% for locality in localities %}
+
+                        <option value="{{ locality.id }}">{{ locality.name }}</option>
+
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>{{ 'operation'|trans }}</label>
+                <select name="operation" class="form-control form-control-lg">
+                    <option value="0">{{ 'widget.all_operations'|trans }}</option>
+
+                    {% for operation in operations %}
+
+                        <option value="{{ operation.id }}">{{ operation.name }}</option>
+
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>{{ 'category'|trans }}</label>
+                <select name="category" class="form-control form-control-lg">
+                    <option value="0">{{ 'widget.all_categories'|trans }}</option>
+
+                    {% for category in categories %}
+
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-block btn-lg btn-primary">
+                    <i class="fas fa-search"></i> {{ 'action.search'|trans }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

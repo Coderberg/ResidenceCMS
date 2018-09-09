@@ -1,0 +1,69 @@
+<div class="overview">
+    <table>
+        <tbody>
+        <tr>
+            <th>{{ 'property.locality' | trans }}:</th>
+            <td>{{ property.locality.name }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'property.operation' | trans }}:</th>
+            <td>{{ property.operation.name }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'property.category' | trans }}:</th>
+            <td>{{ property.category.name }}</td>
+        </tr>
+
+        {% if property.bathroomsNumber != '' %}
+
+            <tr>
+                <th>{{ 'property.bathrooms' | trans }}:</th>
+                <td>{{ property.bathroomsNumber }}</td>
+            </tr>
+
+        {% endif %}
+
+        {% if property.bedroomsNumber != '' %}
+
+            <tr>
+                <th>{{ 'property.bedrooms' | trans }}:</th>
+                <td>{{ property.bedroomsNumber }}</td>
+            </tr>
+
+        {% endif %}
+
+        {% if property.maxOccupancy != '' %}
+
+            <tr>
+                <th>{{ 'property.max_occupancy' | trans }}:</th>
+                <td>{{ property.maxOccupancy }}</td>
+            </tr>
+
+        {% endif %}
+
+        {% if property.availableNow == '1' %}
+
+            <tr>
+                <th>{{ 'property.available_now' | trans }}:</th>
+                <td>{{ 'yes' | trans }}</td>
+            </tr>
+
+        {% endif %}
+
+        {% if property.price != '' %}
+
+            <tr>
+                <th>{{ 'property.price' | trans }}:</th>
+                <td>${{ property.price }}
+
+                    {% if property.priceType != '' %}
+                        / {{ property.priceType }}
+                    {% endif %}
+                </td>
+            </tr>
+
+        {% endif %}
+
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,101 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ 'title.add_property' | trans }}{% endblock %}
+
+{% block body %}
+
+    <div class="card mb-3">
+        <div class="card-header"><i class="fas fa-home"></i> {{ 'title.add_property' | trans }}</div>
+        <div class="card-body">
+
+            {{ form_start(form) }}
+
+            <div class="row">
+
+                <div class="col-md-6 col-lg-4 mb-3">
+                    {{ form_row(form.locality) }}
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-3">
+                    {{ form_row(form.operation) }}
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-3">
+                    {{ form_row(form.category) }}
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <div class="col-md-6 col-lg-4 mb-3">
+                    {{ form_row(form.bathrooms_number) }}
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-3">
+                    {{ form_row(form.bedrooms_number) }}
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-3">
+                    {{ form_row(form.max_occupancy) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_row(form.title) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(form.description) }}
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6 col-lg-8 mb-3">
+                    {{ form_row(form.address) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-3">
+                    {{ form_row(form.latitude) }}
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-3">
+                    {{ form_row(form.longitude) }}
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                {{ form_row(form.show_map) }}
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-3">
+                    {{ form_row(form.price) }}
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-3">
+                    {{ form_row(form.price_type) }}
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                {{ form_row(form.available_now) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(form.content) }}
+            </div>
+
+            <div class="form-group">
+
+                <button type="submit" class="btn btn-primary">
+                    {{ 'label.create_property' | trans }}
+                </button>
+
+            </div>
+
+            {{ form_end(form) }}
+
+        </div>
+    </div><br>
+
+{% endblock %}

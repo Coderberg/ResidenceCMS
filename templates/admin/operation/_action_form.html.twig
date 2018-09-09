@@ -1,0 +1,11 @@
+<form action="{{ url('admin_operation_delete', {id: operation.id}) }}" method="post" data-confirmation="true">
+
+    <a href="{{ url('admin_operation_edit', {id: operation.id}) }}"
+       class="btn btn-outline-primary">{{ 'action.edit' | trans }}</a> &nbsp;&nbsp;&nbsp;
+
+    <input type="hidden" name="token" value="{{ csrf_token('delete') }}"/>
+    <button type="submit" class="btn btn-danger"
+            onclick="if(confirm('{{ 'confirmation.delete_item' | trans }}')){ return true }else{ return false }">
+        {{ 'action.delete' | trans }}
+    </button>
+</form>

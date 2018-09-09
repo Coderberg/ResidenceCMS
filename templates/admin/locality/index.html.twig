@@ -1,0 +1,42 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ 'localities'|trans }}{% endblock %}
+
+{% block body %}
+
+    <div class="card mb-3">
+        <div class="card-header"><i class="fas fa-map-marker-alt"></i> {{ 'localities'|trans }}</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table" style="background-color: #FFFFFF">
+                    <thead class="thead">
+                    <tr>
+                        <th>{{ 'table.locality_name' | trans }}</th>
+                        <th>{{ 'table.slug' | trans }}</th>
+                        <th>{{ 'table.action' | trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for locality in localities %}
+                        <tr>
+                            <td>{{ locality.name }}</td>
+                            <td>{{ locality.slug }}</td>
+                            <td>
+                                {{ include('admin/locality/_action_form.html.twig', {locality: locality}, with_context = false) }}
+                            </td>
+                        </tr>
+
+                    {% else %}
+                        <tr>
+                            <td>{{ 'no_items_found' | trans }}</td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

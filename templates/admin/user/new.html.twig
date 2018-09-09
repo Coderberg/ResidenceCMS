@@ -1,0 +1,48 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ 'title.add_user' | trans }}{% endblock %}
+
+{% block body %}
+
+    <div class="card mb-3">
+        <div class="card-header"><i class="fas fa-plus"></i> {{ 'title.add_user' | trans }}</div>
+        <div class="card-body">
+
+            {{ form_start(form) }}
+
+            <div class="form-group">
+                {{ form_row(form.full_name) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(form.username) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(form.phone) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(form.email) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(form.password) }}
+            </div>
+
+            <div class="form-group">
+
+                <button type="submit" class="btn btn-primary">
+                    {{ 'label.create_user' | trans }}
+                </button>
+
+                {{ form_widget(form.saveAndCreateNew, {label: 'label.save_and_create_new', attr: {class: 'btn btn-primary'}}) }}
+
+            </div>
+
+            {{ form_end(form) }}
+
+        </div>
+    </div><br>
+
+{% endblock %}

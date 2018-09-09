@@ -1,0 +1,40 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ 'users'|trans }}{% endblock %}
+
+{% block body %}
+
+    <div class="card mb-3">
+        <div class="card-header"><i class="fas fa-users-cog"></i> {{ 'users'|trans }}</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table" style="background-color: #FFFFFF">
+                    <thead class="thead">
+                    <tr>
+                        <th>{{ 'table.username' | trans }}</th>
+                        <th>{{ 'table.email' | trans }}</th>
+                        <th>{{ 'table.action' | trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>
+                                {{ include('admin/user/_action_form.html.twig', {user: user}, with_context = false) }}
+                            </td>
+                        </tr>
+
+                    {% else %}
+                        <div class="well">Nothing</div>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

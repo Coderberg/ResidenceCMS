@@ -1,0 +1,421 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="menu.homepage">
+                <source>menu.homepage</source>
+                <target>Homepage</target>
+            </trans-unit>
+            <trans-unit id="menu.catalog">
+                <source>menu.catalog</source>
+                <target>Catalog</target>
+            </trans-unit>
+            <trans-unit id="menu.add_new">
+                <source>menu.add_new</source>
+                <target>Add new</target>
+            </trans-unit>
+            <trans-unit id="menu.admin">
+                <source>menu.admin</source>
+                <target>Admin</target>
+            </trans-unit>
+            <trans-unit id="menu.login">
+                <source>menu.login</source>
+                <target>Login</target>
+            </trans-unit>
+            <trans-unit id="menu.logout">
+                <source>menu.logout</source>
+                <target>Logout</target>
+            </trans-unit>
+            
+            <trans-unit id="yes">
+                <source>yes</source>
+                <target>Yes</target>
+            </trans-unit>
+            <trans-unit id="no_items_found">
+                <source>no_items_found</source>
+                <target>No items found.</target>
+            </trans-unit>
+            
+            <trans-unit id="properties">
+                <source>properties</source>
+                <target>Properties</target>
+            </trans-unit>
+            <trans-unit id="localities">
+                <source>localities</source>
+                <target>Localities</target>
+            </trans-unit>
+            <trans-unit id="operations">
+                <source>operations</source>
+                <target>Operations</target>
+            </trans-unit>
+            <trans-unit id="categories">
+                <source>categories</source>
+                <target>Categories</target>
+            </trans-unit>
+            <trans-unit id="users">
+                <source>users</source>
+                <target>Users</target>
+            </trans-unit>
+            <trans-unit id="property">
+                <source>property</source>
+                <target>Property</target>
+            </trans-unit>
+            <trans-unit id="locality">
+                <source>locality</source>
+                <target>Locality</target>
+            </trans-unit>
+            <trans-unit id="operation">
+                <source>operation</source>
+                <target>Operation</target>
+            </trans-unit>
+            <trans-unit id="category">
+                <source>category</source>
+                <target>Category</target>
+            </trans-unit>
+            <trans-unit id="user">
+                <source>user</source>
+                <target>User</target>
+            </trans-unit>
+            <trans-unit id="photo">
+                <source>photo</source>
+                <target>Photo</target>
+            </trans-unit>
+            
+            <trans-unit id="message.created">
+                <source>message.created</source>
+                <target>Created successfully</target>
+            </trans-unit>
+            <trans-unit id="message.updated">
+                <source>message.updated</source>
+                <target>Updated successfully</target>
+            </trans-unit>
+            <trans-unit id="message.deleted">
+                <source>message.deleted</source>
+                <target>Deleted successfully</target>
+            </trans-unit>
+            <trans-unit id="message.uploaded">
+                <source>message.uploaded</source>
+                <target>Photo uploaded successfully</target>
+            </trans-unit>
+            
+            <trans-unit id="widget.contact_information">
+                <source>widget.contact_information</source>
+                <target>Contact Information</target>
+            </trans-unit>
+            <trans-unit id="widget.agent">
+                <source>widget.agent</source>
+                <target>Agent</target>
+            </trans-unit>
+            <trans-unit id="widget.phone">
+                <source>widget.phone</source>
+                <target>Phone</target>
+            </trans-unit>
+            <trans-unit id="widget.email">
+                <source>widget.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="widget.search">
+                <source>widget.search</source>
+                <target>Search</target>
+            </trans-unit>
+            <trans-unit id="widget.all_localities">
+                <source>widget.all_localities</source>
+                <target>All localities</target>
+            </trans-unit>
+            <trans-unit id="widget.all_operations">
+                <source>widget.all_operations</source>
+                <target>All operations</target>
+            </trans-unit>
+            <trans-unit id="widget.all_categories">
+                <source>widget.all_categories</source>
+                <target>All categories</target>
+            </trans-unit>
+
+            <trans-unit id="action.search">
+                <source>action.search</source>
+                <target>Search</target>
+            </trans-unit>
+            <trans-unit id="action.upload_photo">
+                <source>action.upload_photo</source>
+                <target>Upload photo</target>
+            </trans-unit>
+            <trans-unit id="action.save">
+                <source>action.save</source>
+                <target>Save changes</target>
+            </trans-unit>
+            <trans-unit id="action.edit">
+                <source>action.edit</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="action.edit_photos">
+                <source>action.edit_photos</source>
+                <target>Edit photos</target>
+            </trans-unit>
+            <trans-unit id="action.delete">
+                <source>action.delete</source>
+                <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="action.sign_in">
+                <source>action.sign_in</source>
+                <target>Sign in</target>
+            </trans-unit>
+            
+            <trans-unit id="table.locality_name">
+                <source>table.locality_name</source>
+                <target>Locality name</target>
+            </trans-unit>
+            <trans-unit id="table.operation_name">
+                <source>table.operation_name</source>
+                <target>Operation name</target>
+            </trans-unit>
+            <trans-unit id="table.category_name">
+                <source>table.category_name</source>
+                <target>Category name</target>
+            </trans-unit>
+            <trans-unit id="table.username">
+                <source>table.username</source>
+                <target>Username</target>
+            </trans-unit>
+            <trans-unit id="table.email">
+                <source>table.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="table.slug">
+                <source>table.slug</source>
+                <target>Slug</target>
+            </trans-unit>
+            <trans-unit id="table.action">
+                <source>table.action</source>
+                <target>Action</target>
+            </trans-unit>
+            
+            <trans-unit id="confirmation.delete_item">
+                <source>confirmation.delete_item</source>
+                <target>Are you sure you want to delete this item?</target>
+            </trans-unit>
+            <trans-unit id="confirmation.delete_photo">
+                <source>confirmation.delete_photo</source>
+                <target>Are you sure you want to delete this photo?</target>
+            </trans-unit>
+            <trans-unit id="confirmation.delete_user">
+                <source>confirmation.delete_user</source>
+                <target>Are you sure you want to delete this user?</target>
+            </trans-unit>
+            
+            <trans-unit id="title.login">
+                <source>title.login</source>
+                <target>Secure Sign in</target>
+            </trans-unit>
+            <trans-unit id="title.latest_properties">
+                <source>title.latest_properties</source>
+                <target>Latest properties</target>
+            </trans-unit>
+            <trans-unit id="title.search_results">
+                <source>title.search_results</source>
+                <target>Search Results</target>
+            </trans-unit>
+            <trans-unit id="title.add_property">
+                <source>title.add_property</source>
+                <target>Add property</target>
+            </trans-unit>
+            <trans-unit id="title.edit_property">
+                <source>title.edit_property</source>
+                <target>Edit property</target>
+            </trans-unit>
+            <trans-unit id="title.add_locality">
+                <source>title.add_locality</source>
+                <target>Add locality</target>
+            </trans-unit>
+            <trans-unit id="title.edit_locality">
+                <source>title.edit_locality</source>
+                <target>Edit locality</target>
+            </trans-unit>
+            <trans-unit id="title.add_operation">
+                <source>title.add_operation</source>
+                <target>Add operation</target>
+            </trans-unit>
+            <trans-unit id="title.edit_operation">
+                <source>title.edit_operation</source>
+                <target>Edit operation</target>
+            </trans-unit>
+            <trans-unit id="title.add_category">
+                <source>title.add_category</source>
+                <target>Add category</target>
+            </trans-unit>
+            <trans-unit id="title.edit_category">
+                <source>title.edit_category</source>
+                <target>Edit category</target>
+            </trans-unit>
+            <trans-unit id="title.add_user">
+                <source>title.add_user</source>
+                <target>Add user</target>
+            </trans-unit>
+            <trans-unit id="title.edit_user">
+                <source>title.edit_user</source>
+                <target>Edit user</target>
+            </trans-unit>
+            <trans-unit id="title.upload_photos">
+                <source>title.upload_photos</source>
+                <target>Upload photos</target>
+            </trans-unit>
+            
+            <trans-unit id="label.full_name">
+                <source>label.full_name</source>
+                <target>Full name</target>
+            </trans-unit>
+            <trans-unit id="label.username">
+                <source>label.username</source>
+                <target>Username</target>
+            </trans-unit>
+            <trans-unit id="label.phone">
+                <source>label.phone</source>
+                <target>Phone</target>
+            </trans-unit>
+            <trans-unit id="label.email">
+                <source>label.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="label.password">
+                <source>label.password</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="label.name">
+                <source>label.name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="label.slug">
+                <source>label.slug</source>
+                <target>Slug</target>
+            </trans-unit>
+            <trans-unit id="label.photo">
+                <source>label.photo</source>
+                <target>Photo</target>
+            </trans-unit>
+            <trans-unit id="label.priority">
+                <source>label.priority</source>
+                <target>Priority</target>
+            </trans-unit>
+            <trans-unit id="label.locality">
+                <source>label.locality</source>
+                <target>Locality</target>
+            </trans-unit>
+            <trans-unit id="label.operation">
+                <source>label.operation</source>
+                <target>Operation</target>
+            </trans-unit>
+            <trans-unit id="label.category">
+                <source>label.category</source>
+                <target>Category</target>
+            </trans-unit>
+            <trans-unit id="label.bathrooms_number">
+                <source>label.bathrooms_number</source>
+                <target>Number of Bathrooms</target>
+            </trans-unit>
+            <trans-unit id="label.bedrooms_number">
+                <source>label.bedrooms_number</source>
+                <target>Number of Bedrooms</target>
+            </trans-unit>
+            <trans-unit id="label.max_occupancy">
+                <source>label.max_occupancy</source>
+                <target>Maximum Occupancy</target>
+            </trans-unit>
+            <trans-unit id="label.title">
+                <source>label.title</source>
+                <target>Title</target>
+            </trans-unit>
+            <trans-unit id="label.description">
+                <source>label.description</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="label.address">
+                <source>label.address</source>
+                <target>Address</target>
+            </trans-unit>
+            <trans-unit id="label.latitude">
+                <source>label.latitude</source>
+                <target>Latitude</target>
+            </trans-unit>
+            <trans-unit id="label.longitude">
+                <source>label.longitude</source>
+                <target>Longitude</target>
+            </trans-unit>
+            <trans-unit id="label.show_map">
+                <source>label.show_map</source>
+                <target>Show map</target>
+            </trans-unit>
+            <trans-unit id="label.price">
+                <source>label.price</source>
+                <target>Price</target>
+            </trans-unit>
+            <trans-unit id="label.price_type">
+                <source>label.price_type</source>
+                <target>Price type</target>
+            </trans-unit>
+            <trans-unit id="label.available_now">
+                <source>label.available_now</source>
+                <target>Available now</target>
+            </trans-unit>
+            <trans-unit id="label.content">
+                <source>label.content</source>
+                <target>Content</target>
+            </trans-unit>
+            <trans-unit id="label.create_category">
+                <source>label.create_category</source>
+                <target>Create category</target>
+            </trans-unit>
+            <trans-unit id="label.create_operation">
+                <source>label.create_operation</source>
+                <target>Create operation</target>
+            </trans-unit>
+            <trans-unit id="label.create_locality">
+                <source>label.create_locality</source>
+                <target>Create locality</target>
+            </trans-unit>
+            <trans-unit id="label.create_property">
+                <source>label.create_property</source>
+                <target>Create property</target>
+            </trans-unit>
+            <trans-unit id="label.create_user">
+                <source>label.create_user</source>
+                <target>Create user</target>
+            </trans-unit>
+            <trans-unit id="label.save_and_create_new">
+                <source>label.save_and_create_new</source>
+                <target>Save and create new</target>
+            </trans-unit>
+            
+            <trans-unit id="property.locality">
+                <source>property.locality</source>
+                <target>Locality</target>
+            </trans-unit>
+            <trans-unit id="property.operation">
+                <source>property.operation</source>
+                <target>Operation</target>
+            </trans-unit>
+            <trans-unit id="property.category">
+                <source>property.category</source>
+                <target>Category</target>
+            </trans-unit>
+            <trans-unit id="property.bathrooms">
+                <source>property.bathrooms</source>
+                <target>Bathrooms</target>
+            </trans-unit>
+            <trans-unit id="property.bedrooms">
+                <source>property.bedrooms</source>
+                <target>Bedrooms</target>
+            </trans-unit>
+            <trans-unit id="property.max_occupancy">
+                <source>property.max_occupancy</source>
+                <target>Max Occupancy</target>
+            </trans-unit>
+            <trans-unit id="property.available_now">
+                <source>property.available_now</source>
+                <target>Available now</target>
+            </trans-unit>
+            <trans-unit id="property.price">
+                <source>property.price</source>
+                <target>Price</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

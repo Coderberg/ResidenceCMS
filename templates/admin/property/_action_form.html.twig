@@ -1,0 +1,17 @@
+<form action="{{ url('admin_property_delete', {id: property.id}) }}" method="post" data-confirmation="true">
+    <input type="hidden" name="token" value="{{ csrf_token('delete') }}"/>
+    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+
+        <a href="{{ url('admin_property_edit', {id: property.id}) }}"
+           class="btn btn-light">{{ 'action.edit' | trans }}</a>
+
+        <a href="{{ url('admin_photo_edit', {id: property.id}) }}"
+           class="btn btn-light">{{ 'action.edit_photos' | trans }}</a>
+
+        <button type="submit" class="btn btn-danger"
+                onclick="if(confirm('{{ 'confirmation.delete_item' | trans }}')){ return true }else{ return false }">
+            {{ 'action.delete' | trans }}
+        </button>
+
+    </div>
+</form>

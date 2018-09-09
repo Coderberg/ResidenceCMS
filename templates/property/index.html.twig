@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'title.latest_properties' | trans }}{% endblock %}
+
+{% block header %}
+    {{ include('property/partials/_search_form.html.twig') }}
+{% endblock %}
+
+{% block body %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+
+        <a href="{{ url('admin_property_new') }}" class="btn btn-primary float">
+            <i class="fas fa-plus float-icon"></i>
+        </a>
+
+    {% endif %}
+
+    <h3>{{ 'title.latest_properties' | trans }}</h3>
+
+    <br>
+    <div class="row">
+
+        {% for property in properties %}
+
+            <!-- Item -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card">
+
+                    <div class="property-box-img">
+
+                        <a href="{{ path('property_show', { 'id':  property.id }) }}">
+
+                            {% for photo in property.photos | slice(0, 1) %}
+
+                                <img class="card-img-top lazyload" src="/images/transparent.png"
+                                     data-src="/uploads/images/small/{{ photo.photo }}"
+                                     alt="{{ property.address }}"
+                                     title="{{ property.address }}"/>
+
+                            {% else %}
+
+                                <img class="card-img-top border-bottom" src="/images/no-photo.png"
+                                     alt="{{ property.address }}"
+                                     title="{{ property.address }}"/>
+
+                            {% endfor %}
+
+                            {% if property.price != '' %}
+                                <span class="price">${{ property.price }}
+
+                                    {% if property.priceType != '' %}
+                                        / {{ property.priceType }}
+                                    {% endif %}
+                                </span>
+                            {% endif %}
+                        </a>
+                    </div>
+
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="{{ path('property_show', { 'id':  property.id }) }}">{{ property.title }}</a>
+                        </h4>
+                        <p class="small">
+                            <i class="fas fa-map-marker-alt" style="color: #28a745"></i> {{ property.address }}
+                        </p>
+                        <code>{{ property.operation.name }}</code>
+                        <code>{{ property.category.name }}</code>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <!-- / Item -->
+
+        {% else %}
+            <div class="col-sm-12">
+                {{ 'no_items_found' | trans }}
+            </div>
+        {% endfor %}
+
+    </div>
+
+    {% if properties.haveToPaginate %}
+
+        <div class="navigation text-center">
+            {{ pagerfanta(properties, 'twitter_bootstrap4_translated', {routeName: 'property_paginated', routeParams: app.request.query.all}) }}
+        </div>
+
+    {% endif %}
+
+{% endblock %}

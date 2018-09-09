@@ -1,0 +1,49 @@
+<div class="card mb-3">
+    <h5 class="card-header">{{ 'widget.contact_information' | trans }}</h5>
+
+    <div class="contact-box">
+        <div class="row">
+            <div class="col-auto">
+                <div class="icon-box">
+                    <i class="fas fa-user-tie float-icon"></i>
+                </div>
+            </div>
+            <div class="col-auto">
+                <h4>{{ 'widget.agent' | trans }}</h4>
+
+                <p>{{ property.author.fullName }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-box">
+        <div class="row">
+            <div class="col-auto">
+                <div class="icon-box">
+                    <i class="fas fa-phone-square float-icon"></i>
+                </div>
+            </div>
+            <div class="col-auto">
+                <h4>{{ 'widget.phone' | trans }}</h4>
+
+                <p><a href="tel:{{ property.author.phone }}">{{ property.author.phone }}</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-box">
+        <div class="row">
+            <div class="col-auto">
+                <div class="icon-box">
+                    <i class="fas fa-envelope float-icon"></i>
+                </div>
+            </div>
+            <div class="col-auto">
+                <h4>{{ 'widget.email' | trans }}</h4>
+
+                <p><a href="mailto:{{ property.author.email }}">{{ property.author.email }}</a></p>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ property.title }}{% endblock %}
+{% block description %}{{ property.description }}{% endblock %}
+
+{% block stylesheets %}
+
+    <link href="{{ asset('css/ekko-lightbox.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block body %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+
+        <a href="{{ url('admin_property_edit', {id: property.id}) }}" class="btn btn-primary float">
+            <i class="fas fa-pen float-icon"></i>
+        </a>
+
+    {% endif %}
+
+    <br>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+
+                {% if number_of_photos == 1 %}
+
+                    {% for photo in property.photos %}
+
+                        <a href="/uploads/images/large/{{ photo.photo }}" data-toggle="lightbox"
+                           data-gallery="main-gallery">
+
+                            <img class="card-img-top lazyload" src="/images/transparent.png"
+                                 data-src="/uploads/images/medium/{{ photo.photo }}"
+                                 alt="{{ property.address }}"
+                                 title="{{ property.address }}"/>
+                        </a>
+
+                    {% endfor %}
+
+                {% elseif number_of_photos > 1 %}
+
+                    <!-- Bootstrap Slider -->
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+                        <!-- Carousel indicators -->
+                        <ol class="carousel-indicators">
+                            {% for i in 0..number_of_photos-1 %}
+                                <li data-target="#carouselExampleIndicators" data-slide-to="{{ i }}" class=""></li>
+                            {% endfor %}
+                        </ol>
+
+                        <div class="carousel-inner">
+
+                            {% for photo in property.photos %}
+
+                                <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+
+                                    <a href="/uploads/images/large/{{ photo.photo }}" data-toggle="lightbox"
+                                       data-gallery="main-gallery">
+
+                                        <img class="card-img-top lazyload" src="/images/transparent.png"
+                                             data-src="/uploads/images/medium/{{ photo.photo }}"
+                                             alt="{{ property.address }}"
+                                             title="{{ property.address }}"/>
+                                    </a>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                           data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                           data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+
+                    </div>
+                {% endif %}
+
+                <div class="card-body">
+
+                    <h4 class="card-title">{{ property.title }}</h4>
+
+                    <p class="address">{{ property.address }}</p>
+
+                    {{ include('property/partials/_overview.html.twig') }}
+
+                    {{ property.content | raw }}
+
+                    <div class="clearfix"></div>
+                    <div id="map"></div>
+
+                </div>
+            </div>
+            <br>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-md-4">
+
+            {{ include('property/partials/_contact_widget.html.twig') }}
+            {{ include('property/partials/_search_widget.html.twig') }}
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset('js/ekko-lightbox.min.js') }}"></script>
+    <script>
+        $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
+    </script>
+
+    {% if property.showMap == true and property.latitude != '' and property.longitude != '' %}
+
+        <script>
+
+            let latitude = '{{ property.latitude }}';
+            let longitude = '{{ property.longitude }}';
+            let hintContent = '{{ property.category.name }}';
+            let balloonContent = '{{ property.title }}';
+
+        </script>
+        <script src="https://api-maps.yandex.ru/2.1/?lang=en_US" defer></script>
+        <script src="{{ asset('js/map.js') }}" defer></script>
+
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{% block title %}Welcome!{% endblock %}</title>
+
+    <meta name="description" content=""/>
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Real Estate">
+    <link rel="icon" sizes="192x192" href="/images/icons/chrome-touch-icon-192x192.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Real Estate">
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#0069d9">
+
+    <!-- Color the status bar on mobile devices -->
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+
+    {% block stylesheets %}{% endblock %}
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white static-top">
+
+    <a class="navbar-brand mr-1" href="{{ path('property') }}">Site Logo</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('property') }}">{{ 'menu.homepage'|trans }}</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    {{ 'menu.catalog'|trans }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('admin_property') }}">{{ 'properties'|trans }}</a>
+                    <a class="dropdown-item" href="{{ path('admin_locality') }}">{{ 'localities'|trans }}</a>
+                    <a class="dropdown-item" href="{{ path('admin_operation') }}">{{ 'operations'|trans }}</a>
+                    <a class="dropdown-item" href="{{ path('admin_category') }}">{{ 'categories'|trans }}</a>
+                    <a class="dropdown-item" href="{{ path('admin_user') }}">{{ 'users'|trans }}</a>
+                </div>
+            </li>
+
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-plus-square"></i> {{ 'menu.add_new'|trans }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                    <a class="dropdown-item" href="{{ path('admin_property_new') }}">{{ 'property'|trans }}</a>
+                    <a class="dropdown-item" href="{{ path('admin_locality_new') }}">{{ 'locality'|trans }}</a>
+                    <a class="dropdown-item" href="{{ path('admin_operation_new') }}">{{ 'operation'|trans }}</a>
+                    <a class="dropdown-item" href="{{ path('admin_category_new') }}">{{ 'category'|trans }}</a>
+                    <a class="dropdown-item" href="{{ path('admin_user_new') }}">{{ 'user'|trans }}</a>
+
+                </div>
+            </li>
+
+            <li class="nav-item"><a class="nav-link" href="{{ path('security_logout') }}">{{ 'menu.logout'|trans }}</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+<!-- end #menu -->
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_property') }}">
+                <i class="fas fa-home"></i>
+                <span>{{ 'properties'|trans }}</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_locality') }}">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>{{ 'localities'|trans }}</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_operation') }}">
+                <i class="fas fa-gavel"></i>
+                <span>{{ 'operations'|trans }}</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_category') }}">
+                <i class="far fa-building"></i>
+                <span>{{ 'categories'|trans }}</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_user') }}">
+                <i class="fas fa-users-cog"></i>
+                <span>{{ 'users'|trans }}</span>
+            </a>
+        </li>
+    </ul>
+
+    <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+            {{ include('default/_flash_messages.html.twig') }}
+
+            {% block body %}{% endblock %}
+
+        </div>
+        <!-- /.container-fluid -->
+
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright (c) 2018 Sitename.com</span>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
+
+{% block javascripts %}{% endblock %}
+
+</body>
+</html>

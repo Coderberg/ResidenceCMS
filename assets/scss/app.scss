@@ -1,0 +1,157 @@
+// Variables
+@import "variables";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Fortawesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.invalid-feedback {
+  display: block;
+}
+
+code {
+  margin: 0px 2px;
+  padding: 0px 5px;
+}
+
+// Lazyload
+.lazyload,
+.lazyloading {
+  opacity: 0;
+}
+.lazyloaded {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+
+// Homepage header
+.header {
+  position: relative;
+  background-color: #555;
+  background-position: center;
+  background-size: cover;
+  margin: 0 0 35px;
+}
+
+.header-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .32)
+}
+
+.search_form {
+  position: relative;
+  padding: 48px 0;
+}
+
+.search_form .form-control-lg,
+.search_form .btn {
+  height: 3.5rem;
+}
+
+// Contact widget
+.contact-box {
+  margin: 10px 30px;
+}
+
+.icon-box {
+  background-color: #f9f9f9;
+  border-radius: 50%;
+  height: 50px;
+  text-align: center;
+  transition: all linear .15s;
+  width: 50px;
+  float: left;
+}
+
+.contact-box h4 {
+  font-weight: 400;
+  padding-top: 2px;
+}
+
+.contact-box p {
+  color: #959595;
+  line-height: 1.8;
+}
+.contact-box .icon-box i {
+  color: #f1572f;
+}
+
+.contact-box p a {
+  color: #959595;
+}
+
+.contact-box p a:hover {
+  color: #f1572f;
+  text-decoration: none;
+}
+
+// Img container
+.property-box-img {
+  position: relative;
+  overflow: hidden;
+  width: auto;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+// Price
+.price {
+  background-color: #fff;
+  color: #464646;
+  font-size: 14px;
+  padding: 5px 16px;
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+  border-radius: 2px;
+}
+
+// Overview
+.overview {
+  border: 1px solid #b5b5b5;
+  margin: 0px 30px 10px 0px;
+  padding: 20px;
+}
+
+.overview table th {
+  text-align: left;
+  padding-right: 15px;
+  font-weight: normal;
+}
+
+@media (min-width:992px){
+  .overview {
+    float: left;
+  }
+}
+
+// Floating button
+.float{
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  border-radius:50px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 1;
+}
+
+.float-icon{
+  margin-top:15px;
+}

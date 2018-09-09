@@ -1,0 +1,101 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ 'title.upload_photos' | trans }}{% endblock %}
+
+{% block stylesheets %}
+
+    <style>
+        .single-img {
+            position: relative;
+            max-width: 220px;
+            margin-right: 18px;
+            margin-bottom: 18px;
+            float: left;
+            opacity: 0.8;
+            transition: all .3s linear;
+        }
+
+        button.remove {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            opacity: 0;
+            transition: all .3s linear;
+        }
+
+        .single-img:hover {
+            opacity: 1;
+        }
+
+        .single-img:hover button.remove {
+            opacity: 0.9;
+        }
+    </style>
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="card mb-3">
+        <div class="card-header"><i class="fas fa-cloud-upload-alt"></i> {{ 'title.upload_photos' | trans }}</div>
+        <div class="card-body">
+
+            {{ form_start(form) }}
+
+            <div class="form-group">
+
+                {{ form_row(form.photo) }}
+
+            </div>
+
+            <div class="form-group">
+
+            </div>
+
+            <div class="form-group">
+                {{ form_row(form.priority) }}
+            </div>
+
+            <div class="form-group">
+
+                <button type="submit" class="btn btn-primary" id="upload">
+                    {{ 'action.upload_photo' | trans }}
+                </button>
+
+            </div>
+
+            {{ form_end(form) }}
+
+            <br>
+
+            {% for photo in photos %}
+
+                <div class="single-img">
+
+                    <img class="card-img-top"
+                         src="/uploads/images/small/{{ photo.photo }}"
+                         alt="{{ 'photo' | trans }} #{{ photo.id }}"/>
+
+                    {{ include('admin/photo/_delete_form.html.twig', {photo: photo, property_id: property_id}, with_context = false) }}
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+    </div><br>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        $('#upload').on('click', function () {
+            let file = $('#photo_photo').val();
+            if (file) {
+                $('#upload').html('<i class="fas fa-spinner fa-spin"></i> Uploading').addClass('disabled');
+            }
+        });
+    </script>
+
+{% endblock %}
