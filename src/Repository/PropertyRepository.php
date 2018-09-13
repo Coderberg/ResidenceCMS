@@ -17,6 +17,8 @@ use Pagerfanta\Pagerfanta;
  */
 class PropertyRepository extends ServiceEntityRepository
 {
+    const NUM_ITEMS = 6;
+
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Property::class);
@@ -33,46 +35,44 @@ class PropertyRepository extends ServiceEntityRepository
 
     }
 
-    private function createPaginator(Query $query, int $page): Pagerfanta
-    {
-        $paginator = new Pagerfanta(new DoctrineORMAdapter($query));
-        $paginator->setMaxPerPage(6);
-        $paginator->setCurrentPage($page);
-        return $paginator;
-    }
-
     /**
-     * @return Property[]
-     *
+     * @param int $locality
+     * @param int $operation
+     * @param int $category
+     * @param int $page
+     * @return Pagerfanta
      */
-    public function findByFilter(int $locality, int $operation, int $category): array
+    public function findByFilter(int $locality, int $operation, int $category, int $page = 1): Pagerfanta
     {
-        $queryBuilder = $this->createQueryBuilder('p');
+        $qb = $this->createQueryBuilder('p');
 
-        $queryBuilder->Where('p.published = 1');
+        $qb->Where('p.published = 1');
 
         // Locality
         if ($locality > 0) {
-            $queryBuilder
-                ->andWhere('p.locality = ' . (int)$locality);
+            $qb->andWhere('p.locality = ' . (int)$locality);
         }
 
         // Operation
         if ($operation > 0) {
-            $queryBuilder
-                ->andWhere('p.operation = ' . (int)$operation);
+            $qb->andWhere('p.operation = ' . (int)$operation);
         }
 
         // Category
         if ($category > 0) {
-            $queryBuilder
-                ->andWhere('p.category = ' . (int)$category);
+            $qb->andWhere('p.category = ' . (int)$category);
         }
 
-        return $queryBuilder
-            ->orderBy('p.id', 'DESC')
-            ->setMaxResults(24)
-            ->getQuery()
-            ->getResult();
+        $qb->orderBy('p.id', 'DESC');
+
+        return $this->createPaginator($qb->getQuery(), $page);
+    }
+
+    private function createPaginator(Query $query, int $page): Pagerfanta
+    {
+        $paginator = new Pagerfanta(new DoctrineORMAdapter($query));
+        $paginator->setMaxPerPage(self::NUM_ITEMS);
+        $paginator->setCurrentPage($page);
+        return $paginator;
     }
 }

@@ -73,4 +73,12 @@
 
     </div>
 
+    {% if properties.haveToPaginate %}
+
+        <div class="navigation text-center">
+            {{ pagerfanta(properties, 'twitter_bootstrap4_translated', {routeName: 'property_search_paginated', routeParams: app.request.query.all}) }}
+        </div>
+
+    {% endif %}
+
 {% endblock %}

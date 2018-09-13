@@ -73,16 +73,17 @@ class PropertyController extends AbstractController
     }
 
     /**
-     * @Route("/search", methods={"GET"}, name="property_search")
+     * @Route("/search", defaults={"page": "1"}, methods={"GET"}, name="property_search")
+     * @Route("/search/page/{page<[1-9]\d*>}", methods={"GET"}, name="property_search_paginated")
      */
-    public function search(Request $request, PropertyRepository $properties): Response
+    public function search(Request $request, PropertyRepository $properties, ?int $page): Response
     {
         $locality_id = $request->query->get('locality', 0);
         $operation_id = $request->query->get('operation', 0);
         $category_id = $request->query->get('category', 0);
 
         // Query
-        $foundProperties = $properties->findByFilter($locality_id, $operation_id, $category_id);
+        $foundProperties = $properties->findByFilter($locality_id, $operation_id, $category_id, $page);
 
         return $this->render('property/search.html.twig', [
             'properties' => $foundProperties
