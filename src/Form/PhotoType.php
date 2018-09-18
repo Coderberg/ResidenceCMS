@@ -14,7 +14,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use App\Entity\Photo;
 
-class PhotoType extends AbstractType
+final class PhotoType extends AbstractType
 {
     /**
      * {@inheritdoc}

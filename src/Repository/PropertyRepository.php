@@ -15,7 +15,7 @@ use Pagerfanta\Pagerfanta;
  * @method Property[]    findAll()
  * @method Property[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PropertyRepository extends ServiceEntityRepository
+final class PropertyRepository extends ServiceEntityRepository
 {
     const NUM_ITEMS = 6;
 

@@ -13,7 +13,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\Category;
 
-class CategoryType extends AbstractType
+final class CategoryType extends AbstractType
 {
     /**
      * {@inheritdoc}

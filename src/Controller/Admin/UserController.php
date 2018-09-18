@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\User;
 use App\Form\UserType;
 
-class UserController extends AbstractController
+final class UserController extends AbstractController
 {
     private $passwordEncoder;
 

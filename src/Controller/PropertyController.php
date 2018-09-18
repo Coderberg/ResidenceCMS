@@ -12,7 +12,7 @@ use App\Entity\Locality;
 use App\Entity\Operation;
 use App\Entity\Category;
 
-class PropertyController extends AbstractController
+final class PropertyController extends AbstractController
 {
     /**
      * @Route("/", defaults={"page": "1"}, methods={"GET"}, name="property")

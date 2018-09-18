@@ -12,7 +12,7 @@ use App\Entity\Property;
 use App\Form\PhotoType;
 use App\Service\FileUploader;
 
-class PhotoController extends AbstractController
+final class PhotoController extends AbstractController
 {
     /**
      * @Route("/admin/photo", name="admin_photo")

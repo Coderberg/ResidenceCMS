@@ -13,7 +13,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\Locality;
 
-class LocalityType extends AbstractType
+final class LocalityType extends AbstractType
 {
     /**
      * {@inheritdoc}

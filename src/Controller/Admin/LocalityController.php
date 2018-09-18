@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use App\Entity\Locality;
 use App\Form\LocalityType;
 
-class LocalityController extends AbstractController
+final class LocalityController extends AbstractController
 {
     /**
      * @Route("/admin/locality", name="admin_locality")

@@ -14,7 +14,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use App\Entity\User;
 
-class UserType extends AbstractType
+final class UserType extends AbstractType
 {
     /**
      * {@inheritdoc}

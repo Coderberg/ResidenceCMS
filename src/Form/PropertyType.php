@@ -18,7 +18,7 @@ use App\Entity\Operation;
 use App\Entity\Category;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-class PropertyType extends AbstractType
+final class PropertyType extends AbstractType
 {
     /**
      * {@inheritdoc}

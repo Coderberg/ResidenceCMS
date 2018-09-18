@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Filesystem\Filesystem;
 use \Gumlet\ImageResize;
 
-class FileUploader
+final class FileUploader
 {
     private $targetDirectory;
 

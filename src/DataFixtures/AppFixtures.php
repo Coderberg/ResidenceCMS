@@ -19,7 +19,7 @@ use App\Entity\Property;
 use App\Entity\Photo;
 use App\Utils\Slugger;
 
-class AppFixtures extends Fixture
+final class AppFixtures extends Fixture
 {
 
     private $encoder;

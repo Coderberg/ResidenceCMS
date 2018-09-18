@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method Locality[]    findAll()
  * @method Locality[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class LocalityRepository extends ServiceEntityRepository
+final class LocalityRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {

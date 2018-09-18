@@ -11,7 +11,7 @@ use App\Entity\Property;
 use App\Form\PropertyType;
 use App\Utils\Slugger;
 
-class PropertyController extends AbstractController
+final class PropertyController extends AbstractController
 {
     /**
      * @Route("/admin", defaults={"page": "1"}, methods={"GET"}, name="admin_property")

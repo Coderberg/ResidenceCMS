@@ -13,7 +13,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\Operation;
 
-class OperationType extends AbstractType
+final class OperationType extends AbstractType
 {
     /**
      * {@inheritdoc}

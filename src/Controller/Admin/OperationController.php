@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use App\Entity\Operation;
 use App\Form\OperationType;
 
-class OperationController extends AbstractController
+final class OperationController extends AbstractController
 {
     /**
      * @Route("/admin/operation", name="admin_operation")

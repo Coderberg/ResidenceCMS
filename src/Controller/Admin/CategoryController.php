@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use App\Entity\Category;
 use App\Form\CategoryType;
 
-class CategoryController extends AbstractController
+final class CategoryController extends AbstractController
 {
     /**
      * @Route("/admin/category", name="admin_category")

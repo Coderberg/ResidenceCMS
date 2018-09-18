@@ -8,7 +8,7 @@
 
 namespace App\Utils;
 
-class Slugger
+final class Slugger
 {
     public static function slugify(string $string): string
     {
