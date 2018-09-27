@@ -1,4 +1,5 @@
-<form action="{{ url('admin_operation_delete', {id: operation.id}) }}" method="post" data-confirmation="true">
+<form action="{{ url('admin_operation_delete', {id: operation.id}) }}" method="post" data-confirmation="true"
+      id="delete-form-{{ operation.id }}">
 
     <a href="{{ url('admin_operation_edit', {id: operation.id}) }}"
        class="btn btn-outline-primary">{{ 'action.edit' | trans }}</a> &nbsp;&nbsp;&nbsp;

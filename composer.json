@@ -11,10 +11,9 @@
         "symfony/console": "^4.1",
         "symfony/expression-language": "^4.1",
         "symfony/filesystem": "^4.1",
-        "symfony/flex": "^1.0.86",
+        "symfony/flex": "^1.1",
         "symfony/form": "^4.1",
         "symfony/framework-bundle": "^4.1",
-        "symfony/lts": "^4@dev",
         "symfony/monolog-bundle": "^3.1",
         "symfony/orm-pack": "*",
         "symfony/process": "^4.1",
@@ -30,9 +29,11 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.0",
+        "symfony/browser-kit": "^4.1",
+        "symfony/css-selector": "^4.1",
         "symfony/debug-pack": "*",
         "symfony/dotenv": "^4.1",
-        "symfony/maker-bundle": "^1.0",
+        "symfony/maker-bundle": "^1.7",
         "symfony/phpunit-bridge": "^4.1",
         "symfony/profiler-pack": "*",
         "symfony/test-pack": "^1.0",
@@ -77,7 +78,8 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": false
+            "allow-contrib": true,
+            "require": "4.1.*"
         }
     }
 }

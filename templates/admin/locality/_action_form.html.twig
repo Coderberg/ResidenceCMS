@@ -1,4 +1,5 @@
-<form action="{{ url('admin_locality_delete', {id: locality.id}) }}" method="post" data-confirmation="true">
+<form action="{{ url('admin_locality_delete', {id: locality.id}) }}" method="post" data-confirmation="true"
+      id="delete-form-{{ locality.id }}">
 
     <a href="{{ url('admin_locality_edit', {id: locality.id}) }}"
        class="btn btn-outline-primary">{{ 'action.edit' | trans }}</a> &nbsp;&nbsp;&nbsp;
