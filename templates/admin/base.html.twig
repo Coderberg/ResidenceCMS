@@ -133,6 +133,17 @@
                 <span>{{ 'users'|trans }}</span>
             </a>
         </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">
+                <i class="fas fa-cog"></i>
+                <span>{{ 'menu.settings'|trans }}</span>
+            </a>
+            <div class="dropdown-menu"
+                 style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(5px, 63px, 0px);">
+                <a class="dropdown-item" href="{{ path('admin_homepage_setting') }}">{{ 'menu.homepage'|trans }}</a>
+            </div>
+        </li>
     </ul>
 
     <div id="content-wrapper">

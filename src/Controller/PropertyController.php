@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Repository\PropertyRepository;
+use App\Entity\Setting;
 use App\Entity\Property;
 use App\Entity\Locality;
 use App\Entity\Operation;
@@ -20,6 +21,10 @@ final class PropertyController extends AbstractController
      */
     public function index(?int $page)
     {
+        // Get settings
+        $repository = $this->getDoctrine()->getRepository(Setting::class);
+        $settings = $repository->findSettings();
+
         // Get localities
         $repository = $this->getDoctrine()->getRepository(Locality::class);
         $localities = $repository->findAll();
@@ -37,6 +42,7 @@ final class PropertyController extends AbstractController
         $properties = $repository->findLatest($page);
 
         return $this->render('property/index.html.twig', [
+            'settings' => $settings,
             'localities' => $localities,
             'operations' => $operations,
             'categories' => $categories,

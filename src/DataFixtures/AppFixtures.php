@@ -11,6 +11,7 @@ namespace App\DataFixtures;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use App\Entity\Setting;
 use App\Entity\Locality;
 use App\Entity\Category;
 use App\Entity\Operation;
@@ -31,12 +32,22 @@ final class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
+        $this->loadSettings($manager);
         $this->loadLocalities($manager);
         $this->loadCategories($manager);
         $this->loadOperations($manager);
         $this->loadUsers($manager);
         $this->loadProperties($manager);
         $this->loadPhotos($manager);
+    }
+
+    private function loadSettings(ObjectManager $manager)
+    {
+        $setting = new Setting();
+        $setting->setHomepageTitle('Homepage title');
+        $setting->setHomepageDescription('Homepage description');
+        $manager->persist($setting);
+        $manager->flush();
     }
 
     private function loadLocalities(ObjectManager $manager)

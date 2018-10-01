@@ -14,6 +14,10 @@
                 <source>menu.add_new</source>
                 <target>Add new</target>
             </trans-unit>
+            <trans-unit id="menu.settings">
+                <source>menu.settings</source>
+                <target>Settings</target>
+            </trans-unit>
             <trans-unit id="menu.admin">
                 <source>menu.admin</source>
                 <target>Admin</target>
@@ -258,7 +262,23 @@
                 <source>title.upload_photos</source>
                 <target>Upload photos</target>
             </trans-unit>
+            <trans-unit id="title.homepage_settings">
+                <source>title.homepage_settings</source>
+                <target>Homepage settings</target>
+            </trans-unit>
             
+            <trans-unit id="label.homepage_title">
+                <source>label.homepage_title</source>
+                <target>Homepage title</target>
+            </trans-unit>
+            <trans-unit id="label.homepage_description">
+                <source>label.homepage_description</source>
+                <target>Homepage description</target>
+            </trans-unit>
+            <trans-unit id="label.homepage_meta_tags">
+                <source>label.homepage_meta_tags</source>
+                <target>Google Site Verification Meta Tag</target>
+            </trans-unit>
             <trans-unit id="label.full_name">
                 <source>label.full_name</source>
                 <target>Full name</target>
