@@ -7,13 +7,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Repository\PropertyRepository;
-use App\Entity\Setting;
 use App\Entity\Property;
-use App\Entity\Locality;
-use App\Entity\Operation;
-use App\Entity\Category;
 
-final class PropertyController extends AbstractController
+final class PropertyController extends BaseController
 {
     /**
      * @Route("/", defaults={"page": "1"}, methods={"GET"}, name="property")
@@ -21,58 +17,27 @@ final class PropertyController extends AbstractController
      */
     public function index(?int $page)
     {
-        // Get settings
-        $repository = $this->getDoctrine()->getRepository(Setting::class);
-        $settings = $repository->findSettings();
+        $properties = $this->getDoctrine()
+            ->getRepository(Property::class)->findLatest($page);
 
-        // Get localities
-        $repository = $this->getDoctrine()->getRepository(Locality::class);
-        $localities = $repository->findAll();
-
-        // Get categories
-        $repository = $this->getDoctrine()->getRepository(Category::class);
-        $categories = $repository->findAll();
-
-        // Get operations
-        $repository = $this->getDoctrine()->getRepository(Operation::class);
-        $operations = $repository->findAll();
-
-        // Get properties
-        $repository = $this->getDoctrine()->getRepository(Property::class);
-        $properties = $repository->findLatest($page);
-
-        return $this->render('property/index.html.twig', [
-            'settings' => $settings,
-            'localities' => $localities,
-            'operations' => $operations,
-            'categories' => $categories,
-            'properties' => $properties
-        ]);
+        return $this->render('property/index.html.twig',
+            [
+                'properties' => $properties,
+                'settings' => $this->settings(),
+                'search_fields' => $this->searchFields()
+            ]
+        );
     }
 
     /**
      * @Route("/property/{id<\d+>}", methods={"GET"}, name="property_show")
-     *
      */
     public function propertyShow(Property $property): Response
     {
-        // Get localities
-        $repository = $this->getDoctrine()->getRepository(Locality::class);
-        $localities = $repository->findAll();
-
-        // Get categories
-        $repository = $this->getDoctrine()->getRepository(Category::class);
-        $categories = $repository->findAll();
-
-        // Get operations
-        $repository = $this->getDoctrine()->getRepository(Operation::class);
-        $operations = $repository->findAll();
-
-        return $this->render('property/show.html.twig', [
-                'localities' => $localities,
-                'operations' => $operations,
-                'categories' => $categories,
+        return $this->render('property/show.html.twig',
+            [
                 'property' => $property,
+                'search_fields' => $this->searchFields(),
                 'number_of_photos' => count($property->getPhotos())
             ]
         );
@@ -88,11 +53,10 @@ final class PropertyController extends AbstractController
         $operation_id = $request->query->get('operation', 0);
         $category_id = $request->query->get('category', 0);
 
-        // Query
-        $foundProperties = $properties->findByFilter($locality_id, $operation_id, $category_id, $page);
-
-        return $this->render('property/search.html.twig', [
-            'properties' => $foundProperties
-        ]);
+        return $this->render('property/search.html.twig',
+            [
+                'properties' => $properties->findByFilter($locality_id, $operation_id, $category_id, $page)
+            ]
+        );
     }
 }
