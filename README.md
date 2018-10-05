@@ -42,8 +42,6 @@ The user interface is built with [Bootstrap 4][2].
     ```
     $ php bin/console doctrine:migrations:migrate
     $ php bin/console doctrine:fixtures:load
-    $ php bin/console ckeditor:install
-    $ php bin/console assets:install public
     ```
 
 8. Go to http://mywebsite.loc/admin and log in.
