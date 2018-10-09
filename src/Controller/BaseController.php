@@ -13,7 +13,7 @@ class BaseController extends AbstractController
     public function settings()
     {
         return $this->getDoctrine()->getRepository(Setting::class)
-            ->findSettings();
+            ->findAll()[0];
     }
 
     public function searchFields()

@@ -20,7 +20,7 @@ final class SettingController extends AbstractController
     {
         $repository = $this->getDoctrine()->getRepository(Setting::class);
 
-        $settings = $repository->findSettings();
+        $settings = $repository->findAll()[0];
 
         $form = $this->createForm(SettingType::class, $settings);
         $form->handleRequest($request);

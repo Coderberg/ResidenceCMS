@@ -19,7 +19,7 @@ final class SettingControllerTest extends WebTestCase
         ]);
 
         $setting = $client->getContainer()
-            ->get('doctrine')->getRepository(Setting::class)->findSettings();
+            ->get('doctrine')->getRepository(Setting::class)->findAll()[0];
 
         $crawler = $client->request('GET', '/admin/homepage_setting');
 
@@ -31,7 +31,7 @@ final class SettingControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
         $editedSetting = $client->getContainer()->get('doctrine')
-            ->getRepository(Setting::class)->findSettings();
+            ->getRepository(Setting::class)->findAll()[0];
 
         $this->assertContains('Test', $editedSetting->getHomepageTitle());
     }
@@ -44,7 +44,7 @@ final class SettingControllerTest extends WebTestCase
         ]);
 
         $setting = $client->getContainer()
-            ->get('doctrine')->getRepository(Setting::class)->findSettings();
+            ->get('doctrine')->getRepository(Setting::class)->findAll()[0];
 
         $crawler = $client->request('GET', '/admin/homepage_setting');
 
@@ -55,7 +55,7 @@ final class SettingControllerTest extends WebTestCase
         $client->submit($form);
 
         $editedSetting = $client->getContainer()->get('doctrine')
-            ->getRepository(Setting::class)->findSettings();
+            ->getRepository(Setting::class)->findAll()[0];
 
         $this->assertNotContains('Test', $editedSetting->getHomepageTitle());
     }

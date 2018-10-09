@@ -18,15 +18,4 @@ final class SettingRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Setting::class);
     }
-
-    public function findSettings()
-    {
-        $settings = $this->createQueryBuilder('s')
-            ->andWhere('s.id > 0')
-            ->setMaxResults(1)
-            ->getQuery()
-            ->getResult();
-
-        return $settings[0];
-    }
 }
