@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\Property;
 use App\Form\PropertyType;
 use App\Utils\Slugger;
@@ -92,7 +92,7 @@ final class PropertyController extends AbstractController
      * Deletes a Property entity.
      *
      * @Route("/property/{id<\d+>}/delete", methods={"POST"}, name="admin_property_delete")
-     * @Security("has_role('ROLE_ADMIN')")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Property $property): Response
     {

@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\Locality;
 use App\Form\LocalityType;
 
@@ -82,7 +82,7 @@ final class LocalityController extends AbstractController
      * Deletes a Locality entity.
      *
      * @Route("/locality/{id<\d+>}/delete", methods={"POST"}, name="admin_locality_delete")
-     * @Security("has_role('ROLE_ADMIN')")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Locality $locality): Response
     {

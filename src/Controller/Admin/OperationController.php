@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\Operation;
 use App\Form\OperationType;
 
@@ -80,7 +80,7 @@ final class OperationController extends AbstractController
      * Deletes an Operation entity.
      *
      * @Route("/operation/{id<\d+>}/delete", methods={"POST"}, name="admin_operation_delete")
-     * @Security("has_role('ROLE_ADMIN')")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Operation $operation): Response
     {

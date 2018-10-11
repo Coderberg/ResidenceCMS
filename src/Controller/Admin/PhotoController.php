@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\Photo;
 use App\Entity\Property;
 use App\Form\PhotoType;
@@ -69,7 +69,7 @@ final class PhotoController extends AbstractController
      * Deletes a Photo entity.
      *
      * @Route("/property/{property_id<\d+>}/photo/{id<\d+>}/delete", methods={"POST"}, name="admin_photo_delete")
-     * @Security("has_role('ROLE_ADMIN')")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Photo $photo, FileUploader $fileUploader): Response
     {
