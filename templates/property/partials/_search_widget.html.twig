@@ -8,7 +8,7 @@
 
                     <option value="0">{{ 'widget.all_localities'|trans }}</option>
 
-                    {% for locality in search_fields.localities %}
+                    {% for locality in base.localities %}
 
                         <option value="{{ locality.id }}">{{ locality.name }}</option>
 
@@ -21,7 +21,7 @@
                 <select name="operation" class="form-control form-control-lg">
                     <option value="0">{{ 'widget.all_operations'|trans }}</option>
 
-                    {% for operation in search_fields.operations %}
+                    {% for operation in base.operations %}
 
                         <option value="{{ operation.id }}">{{ operation.name }}</option>
 
@@ -34,7 +34,7 @@
                 <select name="category" class="form-control form-control-lg">
                     <option value="0">{{ 'widget.all_categories'|trans }}</option>
 
-                    {% for category in search_fields.categories %}
+                    {% for category in base.categories %}
 
                         <option value="{{ category.id }}">{{ category.name }}</option>
 

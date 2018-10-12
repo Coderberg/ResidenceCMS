@@ -21,9 +21,8 @@ final class PropertyController extends BaseController
 
         return $this->render('property/index.html.twig',
             [
-                'properties' => $properties,
-                'settings' => $this->settings(),
-                'search_fields' => $this->searchFields()
+                'base' => $this->base(),
+                'properties' => $properties
             ]
         );
     }
@@ -35,8 +34,8 @@ final class PropertyController extends BaseController
     {
         return $this->render('property/show.html.twig',
             [
+                'base' => $this->base(),
                 'property' => $property,
-                'search_fields' => $this->searchFields(),
                 'number_of_photos' => count($property->getPhotos())
             ]
         );
