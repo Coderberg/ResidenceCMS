@@ -17,57 +17,74 @@ class Setting
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=128)
      */
-    private $homepage_title;
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $homepage_description;
+    private $title;
 
     /**
-     * @ORM\Column(type="text", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $homepage_meta_tags;
+    private $description;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $custom_code;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getHomepageTitle(): ?string
+    public function getName(): ?string
     {
-        return $this->homepage_title;
+        return $this->name;
     }
 
-    public function setHomepageTitle(string $homepage_title): self
+    public function setName(string $name): self
     {
-        $this->homepage_title = $homepage_title;
+        $this->name = $name;
 
         return $this;
     }
 
-    public function getHomepageDescription(): ?string
+    public function getTitle(): ?string
     {
-        return $this->homepage_description;
+        return $this->title;
     }
 
-    public function setHomepageDescription(string $homepage_description): self
+    public function setTitle(string $title): self
     {
-        $this->homepage_description = $homepage_description;
+        $this->title = $title;
 
         return $this;
     }
 
-    public function getHomepageMetaTags(): ?string
+    public function getDescription(): ?string
     {
-        return $this->homepage_meta_tags;
+        return $this->description;
     }
 
-    public function setHomepageMetaTags(?string $homepage_meta_tags): self
+    public function setDescription(string $description): self
     {
-        $this->homepage_meta_tags = $homepage_meta_tags;
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getCustomCode(): ?string
+    {
+        return $this->custom_code;
+    }
+
+    public function setCustomCode(?string $custom_code): self
+    {
+        $this->custom_code = $custom_code;
 
         return $this;
     }

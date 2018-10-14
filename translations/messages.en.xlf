@@ -262,22 +262,26 @@
                 <source>title.upload_photos</source>
                 <target>Upload photos</target>
             </trans-unit>
-            <trans-unit id="title.homepage_settings">
-                <source>title.homepage_settings</source>
-                <target>Homepage settings</target>
+            <trans-unit id="title.settings">
+                <source>title.settings</source>
+                <target>Settings</target>
             </trans-unit>
             
-            <trans-unit id="label.homepage_title">
-                <source>label.homepage_title</source>
-                <target>Homepage title</target>
+            <trans-unit id="label.settings.name">
+                <source>label.settings.name</source>
+                <target>Site Name</target>
             </trans-unit>
-            <trans-unit id="label.homepage_description">
-                <source>label.homepage_description</source>
-                <target>Homepage description</target>
+            <trans-unit id="label.settings.title">
+                <source>label.settings.title</source>
+                <target>Site Title</target>
             </trans-unit>
-            <trans-unit id="label.homepage_meta_tags">
-                <source>label.homepage_meta_tags</source>
-                <target>Google Site Verification Meta Tag</target>
+            <trans-unit id="label.settings.description">
+                <source>label.settings.description</source>
+                <target>Site Description</target>
+            </trans-unit>
+            <trans-unit id="label.settings.code">
+                <source>label.settings.code</source>
+                <target>Custom code in header (Google Analytics etc.)</target>
             </trans-unit>
             <trans-unit id="label.full_name">
                 <source>label.full_name</source>

@@ -43,7 +43,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white static-top">
 
-    <a class="navbar-brand mr-1" href="{{ path('property') }}">Site Logo</a>
+    <a class="navbar-brand mr-1" href="{{ path('admin_property') }}">Dashboard</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -133,16 +133,11 @@
                 <span>{{ 'users'|trans }}</span>
             </a>
         </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
-               aria-expanded="false">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_setting') }}">
                 <i class="fas fa-cog"></i>
                 <span>{{ 'menu.settings'|trans }}</span>
             </a>
-            <div class="dropdown-menu"
-                 style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(5px, 63px, 0px);">
-                <a class="dropdown-item" href="{{ path('admin_homepage_setting') }}">{{ 'menu.homepage'|trans }}</a>
-            </div>
         </li>
     </ul>
 
@@ -161,7 +156,7 @@
         <footer class="sticky-footer">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright (c) 2018 Sitename.com</span>
+                    <span>{# Copyright #}</span>
                 </div>
             </div>
         </footer>

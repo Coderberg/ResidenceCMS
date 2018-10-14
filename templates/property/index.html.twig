@@ -1,10 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ base.homepageTitle }}{% endblock %}
+{% block title %}{{ base.title }}{% endblock %}
 
-{% block description %}{{ base.homepageDescription }}{% endblock %}
-
-{% block metatags %}{{ base.homepageMetaTags | raw }}{% endblock %}
+{% block description %}{{ base.description }}{% endblock %}
 
 {% block header %}
     {{ include('property/partials/_search_form.html.twig') }}

@@ -44,8 +44,9 @@ final class AppFixtures extends Fixture
     private function loadSettings(ObjectManager $manager)
     {
         $setting = new Setting();
-        $setting->setHomepageTitle('Homepage title');
-        $setting->setHomepageDescription('Homepage description');
+        $setting->setName('Site name');
+        $setting->setTitle('Site Title');
+        $setting->setDescription('Site Description');
         $manager->persist($setting);
         $manager->flush();
     }

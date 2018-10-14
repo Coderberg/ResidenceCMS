@@ -21,10 +21,10 @@ final class SettingControllerTest extends WebTestCase
         $setting = $client->getContainer()
             ->get('doctrine')->getRepository(Setting::class)->findAll()[0];
 
-        $crawler = $client->request('GET', '/admin/homepage_setting');
+        $crawler = $client->request('GET', '/admin/setting');
 
         $form = $crawler->selectButton('Save changes')->form([
-            'setting[homepage_title]' => $setting->getHomepageTitle() . ' - Test',
+            'setting[title]' => $setting->getTitle() . ' - Test',
         ]);
 
         $client->submit($form);
@@ -33,7 +33,7 @@ final class SettingControllerTest extends WebTestCase
         $editedSetting = $client->getContainer()->get('doctrine')
             ->getRepository(Setting::class)->findAll()[0];
 
-        $this->assertContains('Test', $editedSetting->getHomepageTitle());
+        $this->assertContains('Test', $editedSetting->getTitle());
     }
 
     public function testAdminReturnSettings()
@@ -46,10 +46,10 @@ final class SettingControllerTest extends WebTestCase
         $setting = $client->getContainer()
             ->get('doctrine')->getRepository(Setting::class)->findAll()[0];
 
-        $crawler = $client->request('GET', '/admin/homepage_setting');
+        $crawler = $client->request('GET', '/admin/setting');
 
         $form = $crawler->selectButton('Save changes')->form([
-            'setting[homepage_title]' => mb_substr($setting->getHomepageTitle(), 0, -7),
+            'setting[title]' => mb_substr($setting->getTitle(), 0, -7),
         ]);
 
         $client->submit($form);
@@ -57,7 +57,7 @@ final class SettingControllerTest extends WebTestCase
         $editedSetting = $client->getContainer()->get('doctrine')
             ->getRepository(Setting::class)->findAll()[0];
 
-        $this->assertNotContains('Test', $editedSetting->getHomepageTitle());
+        $this->assertNotContains('Test', $editedSetting->getTitle());
     }
 
 }

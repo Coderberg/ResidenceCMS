@@ -22,25 +22,31 @@ final class SettingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('homepage_title', null, [
+            ->add('name', null, [
                 'attr' => [
                     'autofocus' => true,
                     'class' => 'form-control'
                 ],
-                'label' => 'label.homepage_title',
+                'label' => 'label.settings.name',
             ])
-            ->add('homepage_description', TextareaType::class, [
+            ->add('title', null, [
                 'attr' => [
                     'class' => 'form-control'
                 ],
-                'label' => 'label.homepage_description',
+                'label' => 'label.settings.title',
             ])
-            ->add('homepage_meta_tags', TextareaType::class, [
+            ->add('description', TextareaType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ],
+                'label' => 'label.settings.description',
+            ])
+            ->add('custom_code', TextareaType::class, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
                 'required' => false,
-                'label' => 'label.homepage_meta_tags',
+                'label' => 'label.settings.code',
             ]);
     }
 

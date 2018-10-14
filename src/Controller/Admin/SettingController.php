@@ -13,7 +13,7 @@ use App\Form\SettingType;
 final class SettingController extends AbstractController
 {
     /**
-     * @Route("/admin/homepage_setting", name="admin_homepage_setting")
+     * @Route("/admin/setting", name="admin_setting")
      * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request): Response
@@ -27,7 +27,7 @@ final class SettingController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'message.updated');
-            return $this->redirectToRoute('admin_homepage_setting');
+            return $this->redirectToRoute('admin_setting');
         }
         return $this->render('admin/setting/index.html.twig', [
             'form' => $form->createView(),
