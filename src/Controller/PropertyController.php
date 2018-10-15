@@ -21,7 +21,7 @@ final class PropertyController extends BaseController
 
         return $this->render('property/index.html.twig',
             [
-                'base' => $this->base(),
+                'site' => $this->site(),
                 'properties' => $properties
             ]
         );
@@ -34,7 +34,7 @@ final class PropertyController extends BaseController
     {
         return $this->render('property/show.html.twig',
             [
-                'base' => $this->base(),
+                'site' => $this->site(),
                 'property' => $property,
                 'number_of_photos' => count($property->getPhotos())
             ]
@@ -53,7 +53,7 @@ final class PropertyController extends BaseController
 
         return $this->render('property/search.html.twig',
             [
-                'base' => $this->base(),
+                'site' => $this->site(),
                 'properties' => $properties->findByFilter($locality_id, $operation_id, $category_id, $page)
             ]
         );

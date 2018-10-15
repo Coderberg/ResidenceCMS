@@ -8,7 +8,7 @@
 
     <meta name="description" content="{% block description %}Welcome!{% endblock %}"/>
 
-    {{ base.customCode | raw }}
+    {{ site.customCode | raw }}
 
     <!-- Disable tap highlight on IE -->
     <meta name="msapplication-tap-highlight" content="no">
@@ -41,7 +41,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
 
-    <a class="navbar-brand" href="{{ path('property') }}">{{ base.name }}</a>
+    <a class="navbar-brand" href="{{ path('property') }}">{{ site.name }}</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -83,7 +83,7 @@
 </div>
 
 <div class="container">
-    <p>Copyright {{ "now" | date("Y") }} {{ base.name }}. All Rights Reserved.</p>
+    <p>Copyright {{ "now" | date("Y") }} {{ site.name }}. All Rights Reserved.</p>
 </div>
 
 <!-- Scripts -->

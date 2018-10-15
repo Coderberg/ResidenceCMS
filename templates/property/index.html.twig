@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ base.title }}{% endblock %}
+{% block title %}{{ site.title }}{% endblock %}
 
-{% block description %}{{ base.description }}{% endblock %}
+{% block description %}{{ site.description }}{% endblock %}
 
 {% block header %}
     {{ include('property/partials/_search_form.html.twig') }}

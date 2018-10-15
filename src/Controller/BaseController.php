@@ -41,7 +41,7 @@ class BaseController extends AbstractController
     /**
      * @return array
      */
-    public function base(): array
+    public function site(): array
     {
         $normalizer = new GetSetMethodNormalizer();
 
