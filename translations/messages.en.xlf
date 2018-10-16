@@ -267,6 +267,10 @@
                 <target>Settings</target>
             </trans-unit>
             
+            <trans-unit id="label.remember_me">
+                <source>label.remember_me</source>
+                <target>Keep me logged in</target>
+            </trans-unit>
             <trans-unit id="label.settings.name">
                 <source>label.settings.name</source>
                 <target>Site Name</target>
