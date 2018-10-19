@@ -5,33 +5,31 @@ The user interface is built with [Bootstrap 4][2].
 
 ## Requirements
 
-- PHP >= 7.1.3 or higher;
+- PHP >= 7.1.3;
 - PDO PHP Extension;
+- MySQL >= 5.7;
 - And the [usual Symfony application requirements][3].
 
 ## Installation
 
-1. Clone project
+1. Install Composer (see http://getcomposer.org/download)
+
+2. Create new project via [Composer][4]
 
    ```
-   $ git clone https://github.com/Coderberg/ResidenceCMS.git mywebsite
+   $ composer create-project coderberg/residence-cms mywebsite.loc
    ```
 2. Enter the newly created folder
 
    ```
-   $ cd mywebsite
-   ```
-3. Install dependencies with [Composer][4]
-
-   ```
-   $ composer install
+   $ cd mywebsite.loc
    ```
 
-4. After installing Symfony, you should configure your web server's document / web root to be the ```public``` directory.
+4. After installing you should configure your web server's document / web root to be the ```public``` directory.
 
 5. Create an empty MySQL database
 
-6. Create ```.env``` from ```.env.dist``` file and fill in your database credentials
+6. Modify your DATABASE_URL config in ```.env```
 
     ```
     DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
@@ -50,8 +48,23 @@ The user interface is built with [Bootstrap 4][2].
    login: admin
    password: admin
    ```
+   
+   
+## Tests
+
+1. Modify your DATABASE_URL config in ```.phpunit.xml.dist```
+   
+       ```
+       DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
+       ```
+
+2. Execute this command to run tests:
+
+       ```
+       php bin/phpunit
+       ```
 
 [1]: https://symfony.com/
-[2]: http://getbootstrap.com
+[2]: https://getbootstrap.com
 [3]: https://symfony.com/doc/current/reference/requirements.html
-[4]: https://getcomposer.org/doc/00-intro.md
+[4]: https://getcomposer.org/doc/03-cli.md#create-project
