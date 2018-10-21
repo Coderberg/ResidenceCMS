@@ -1,3 +1,5 @@
+![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
+
 ResidenceCMS is an Open Source Property Management System built with [Symfony 4][1].
 
 The user interface is built with [Bootstrap 4][2].
@@ -54,15 +56,15 @@ The user interface is built with [Bootstrap 4][2].
 
 1. Modify your DATABASE_URL config in ```.phpunit.xml.dist```
    
-       ```
-       DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
-       ```
+   ```
+   DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
+   ```
 
 2. Execute this command to run tests:
 
-       ```
-       php bin/phpunit
-       ```
+   ```
+   php bin/phpunit
+   ```
 
 [1]: https://symfony.com/
 [2]: https://getbootstrap.com

@@ -444,6 +444,10 @@
                 <source>property.price</source>
                 <target>Price</target>
             </trans-unit>
+            <trans-unit id="all_rights_reserved">
+                <source>all_rights_reserved</source>
+                <target>All Rights Reserved</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
