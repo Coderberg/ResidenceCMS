@@ -7,8 +7,9 @@ The user interface is built with [Bootstrap 4][2].
 
 ## Requirements
 
-- PHP >= 7.1.3;
+- PHP >= 7.2.0;
 - PDO PHP Extension;
+- GD PHP extension
 - MySQL >= 5.7;
 - And the [usual Symfony application requirements][3].
 
