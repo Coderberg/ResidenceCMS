@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
-use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Property;
+use App\Repository\PropertyRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Repository\PropertyRepository;
-use App\Entity\Property;
+use Symfony\Component\Routing\Annotation\Route;
 
 final class PropertyController extends BaseController
 {
@@ -22,7 +22,7 @@ final class PropertyController extends BaseController
         return $this->render('property/index.html.twig',
             [
                 'site' => $this->site(),
-                'properties' => $properties
+                'properties' => $properties,
             ]
         );
     }
@@ -36,7 +36,7 @@ final class PropertyController extends BaseController
             [
                 'site' => $this->site(),
                 'property' => $property,
-                'number_of_photos' => count($property->getPhotos())
+                'number_of_photos' => \count($property->getPhotos()),
             ]
         );
     }
@@ -54,7 +54,7 @@ final class PropertyController extends BaseController
         return $this->render('property/search.html.twig',
             [
                 'site' => $this->site(),
-                'properties' => $properties->findByFilter($locality_id, $operation_id, $category_id, $page)
+                'properties' => $properties->findByFilter($locality_id, $operation_id, $category_id, $page),
             ]
         );
     }

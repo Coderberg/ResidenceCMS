@@ -16,13 +16,13 @@ final class LocalityControllerTest extends WebTestCase
     private const EDITED_NAME = 'Edited';
 
     /**
-     * This test changes the database contents by creating a new locality
+     * This test changes the database contents by creating a new locality.
      */
     public function testAdminNewLocality()
     {
         $client = static::createClient([], [
             'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW
+            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
         ]);
 
         $crawler = $client->request('GET', '/admin/locality/new');
@@ -51,7 +51,7 @@ final class LocalityControllerTest extends WebTestCase
     {
         $client = static::createClient([], [
             'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW
+            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
         ]);
 
         $locality = $client->getContainer()
@@ -60,7 +60,7 @@ final class LocalityControllerTest extends WebTestCase
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/locality/' . $locality . '/edit');
+        $crawler = $client->request('GET', '/admin/locality/'.$locality.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'locality[name]' => self::EDITED_NAME,
@@ -71,7 +71,7 @@ final class LocalityControllerTest extends WebTestCase
 
         $editedLocality = $client->getContainer()->get('doctrine')
             ->getRepository(Locality::class)->findOneBy([
-                'id' => $locality
+                'id' => $locality,
             ]);
 
         $this->assertSame(self::EDITED_NAME, $editedLocality->getName());
@@ -84,7 +84,7 @@ final class LocalityControllerTest extends WebTestCase
     {
         $client = static::createClient([], [
             'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW
+            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
         ]);
 
         $locality = $client->getContainer()->get('doctrine')
@@ -93,7 +93,7 @@ final class LocalityControllerTest extends WebTestCase
             ])->getId();
 
         $crawler = $client->request('GET', '/admin/locality');
-        $client->submit($crawler->filter('#delete-form-' . $locality)->form());
+        $client->submit($crawler->filter('#delete-form-'.$locality)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
         $this->assertNull($client->getContainer()->get('doctrine')

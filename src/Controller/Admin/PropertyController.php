@@ -2,14 +2,14 @@
 
 namespace App\Controller\Admin;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\Property;
 use App\Form\PropertyType;
 use App\Utils\Slugger;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 final class PropertyController extends AbstractController
 {
@@ -25,7 +25,7 @@ final class PropertyController extends AbstractController
         $properties = $repository->findLatest($page);
 
         return $this->render('admin/property/index.html.twig', [
-            'properties' => $properties
+            'properties' => $properties,
         ]);
     }
 
@@ -44,7 +44,6 @@ final class PropertyController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             // Make slug
             $slug = $slugger->slugify($property->getTitle());
             $property->setSlug($slug);
@@ -57,6 +56,7 @@ final class PropertyController extends AbstractController
 
             return $this->redirectToRoute('admin_photo_edit', ['id' => $property->getId()]);
         }
+
         return $this->render('admin/property/new.html.twig', [
             'property' => $property,
             'form' => $form->createView(),
@@ -74,15 +74,16 @@ final class PropertyController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             // Update slug
             $slug = $slugger->slugify($property->getTitle());
             $property->setSlug($slug);
 
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'message.updated');
+
             return $this->redirectToRoute('admin_property');
         }
+
         return $this->render('admin/property/edit.html.twig', [
             'form' => $form->createView(),
         ]);
@@ -108,7 +109,6 @@ final class PropertyController extends AbstractController
         if ($photos) {
             // Remove photos
             foreach ($photos as $photo) {
-
                 $property->removePhoto($photo);
             }
         }
@@ -116,6 +116,7 @@ final class PropertyController extends AbstractController
         $em->remove($property);
         $em->flush();
         $this->addFlash('success', 'message.deleted');
+
         return $this->redirectToRoute('admin_property');
     }
 }

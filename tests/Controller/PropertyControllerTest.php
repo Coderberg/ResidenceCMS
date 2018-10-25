@@ -27,7 +27,7 @@ class PropertyControllerTest extends WebTestCase
             ->get('doctrine')
             ->getRepository(Property::class)
             ->findOneBy([
-                'published' => 1
+                'published' => 1,
             ]);
 
         $client->request('GET', sprintf('/property/%s', $property->getId()));

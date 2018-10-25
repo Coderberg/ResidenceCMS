@@ -3,15 +3,15 @@
  * Created by PhpStorm.
  * User: Valery Maslov
  * Date: 12.08.2018
- * Time: 10:45
+ * Time: 10:45.
  */
 
 namespace App\Form;
 
+use App\Entity\Operation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use App\Entity\Operation;
 
 final class OperationType extends AbstractType
 {
@@ -24,13 +24,13 @@ final class OperationType extends AbstractType
             ->add('name', null, [
                 'attr' => [
                     'autofocus' => true,
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 ],
                 'label' => 'label.name',
             ])
             ->add('slug', null, [
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 ],
                 'label' => 'label.slug',
             ]);

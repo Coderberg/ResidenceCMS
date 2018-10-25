@@ -16,13 +16,13 @@ final class CategoryControllerTest extends WebTestCase
     private const EDITED_NAME = 'Edited';
 
     /**
-     * This test changes the database contents by creating a new Category
+     * This test changes the database contents by creating a new Category.
      */
     public function testAdminNewCategory()
     {
         $client = static::createClient([], [
             'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW
+            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
         ]);
         $crawler = $client->request('GET', '/admin/category/new');
 
@@ -50,7 +50,7 @@ final class CategoryControllerTest extends WebTestCase
     {
         $client = static::createClient([], [
             'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW
+            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
         ]);
 
         $category = $client->getContainer()->get('doctrine')
@@ -59,7 +59,7 @@ final class CategoryControllerTest extends WebTestCase
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/category/' . $category . '/edit');
+        $crawler = $client->request('GET', '/admin/category/'.$category.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'category[name]' => self::EDITED_NAME,
@@ -70,7 +70,7 @@ final class CategoryControllerTest extends WebTestCase
 
         $editedCategory = $client->getContainer()->get('doctrine')
             ->getRepository(Category::class)->findOneBy([
-                'id' => $category
+                'id' => $category,
             ]);
 
         $this->assertSame(self::EDITED_NAME, $editedCategory->getName());
@@ -83,7 +83,7 @@ final class CategoryControllerTest extends WebTestCase
     {
         $client = static::createClient([], [
             'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW
+            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
         ]);
 
         $category = $client->getContainer()->get('doctrine')
@@ -92,7 +92,7 @@ final class CategoryControllerTest extends WebTestCase
             ])->getId();
 
         $crawler = $client->request('GET', '/admin/category');
-        $client->submit($crawler->filter('#delete-form-' . $category)->form());
+        $client->submit($crawler->filter('#delete-form-'.$category)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
         $this->assertNull($client->getContainer()->get('doctrine')

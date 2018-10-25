@@ -15,7 +15,7 @@ final class SettingControllerTest extends WebTestCase
     {
         $client = static::createClient([], [
             'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW
+            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
         ]);
 
         $setting = $client->getContainer()
@@ -24,7 +24,7 @@ final class SettingControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/admin/setting');
 
         $form = $crawler->selectButton('Save changes')->form([
-            'setting[title]' => $setting->getTitle() . ' - Test',
+            'setting[title]' => $setting->getTitle().' - Test',
         ]);
 
         $client->submit($form);
@@ -40,7 +40,7 @@ final class SettingControllerTest extends WebTestCase
     {
         $client = static::createClient([], [
             'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW
+            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
         ]);
 
         $setting = $client->getContainer()
@@ -59,5 +59,4 @@ final class SettingControllerTest extends WebTestCase
 
         $this->assertNotContains('Test', $editedSetting->getTitle());
     }
-
 }

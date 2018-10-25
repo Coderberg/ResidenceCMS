@@ -139,6 +139,7 @@ class User implements UserInterface, \Serializable
         if (empty($roles)) {
             $roles[] = 'ROLE_USER';
         }
+
         return array_unique($roles);
     }
 

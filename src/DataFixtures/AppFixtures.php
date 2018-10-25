@@ -3,26 +3,25 @@
  * Created by PhpStorm.
  * User: Valery Maslov
  * Date: 10.08.2018
- * Time: 14:40
+ * Time: 14:40.
  */
 
 namespace App\DataFixtures;
 
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Entity\Category;
+use App\Entity\Locality;
+use App\Entity\Operation;
+use App\Entity\Photo;
+use App\Entity\Property;
+use App\Entity\Setting;
+use App\Entity\User;
+use App\Utils\Slugger;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-use App\Entity\Setting;
-use App\Entity\Locality;
-use App\Entity\Category;
-use App\Entity\Operation;
-use App\Entity\User;
-use App\Entity\Property;
-use App\Entity\Photo;
-use App\Utils\Slugger;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 final class AppFixtures extends Fixture
 {
-
     private $encoder;
 
     public function __construct(UserPasswordEncoderInterface $encoder)
@@ -104,7 +103,7 @@ final class AppFixtures extends Fixture
     private function loadProperties(ObjectManager $manager)
     {
         foreach ($this->getPropertyData() as [$operation_id, $category_id, $locality_id, $title,
-                 $address, $latitude, $longitude, $price, $price_type]) {
+                 $address, $latitude, $longitude, $price, $price_type, ]) {
             $property = new Property();
             $property->setAuthor($this->getReference('admin'));
             $property->setOperation($operation_id);
@@ -147,7 +146,7 @@ final class AppFixtures extends Fixture
             ['apartment', 'Apartment'],
             ['duplex', 'Duplex'],
             ['penthouse', 'Penthouse'],
-            ['villa', 'Villa']
+            ['villa', 'Villa'],
         ];
     }
 
@@ -156,7 +155,7 @@ final class AppFixtures extends Fixture
         return [
             // $operationData = [$slug, $name];
             ['rent', 'Rent'],
-            ['sale', 'Sale']
+            ['sale', 'Sale'],
         ];
     }
 
@@ -166,7 +165,7 @@ final class AppFixtures extends Fixture
             // $localityData = [$slug, $name];
             ['miami', 'Miami'],
             ['palm-beach', 'Palm Beach'],
-            ['tampa', 'Tampa']
+            ['tampa', 'Tampa'],
         ];
     }
 
@@ -189,7 +188,7 @@ final class AppFixtures extends Fixture
             [$this->getReference('furnished-renovated-2-bedroom-2-bathroom-flat'), 1, 'demo/6.jpeg'],
             [$this->getReference('interesting-two-bedroom-apartment-for-sale'), 3, 'demo/11.jpeg'],
             [$this->getReference('interesting-two-bedroom-apartment-for-sale'), 2, 'demo/12.jpeg'],
-            [$this->getReference('interesting-two-bedroom-apartment-for-sale'), 1, 'demo/13.jpeg']
+            [$this->getReference('interesting-two-bedroom-apartment-for-sale'), 1, 'demo/13.jpeg'],
         ];
     }
 
@@ -207,7 +206,7 @@ final class AppFixtures extends Fixture
                 $this->getReference('Miami'),
                 'Modern one-bedroom apartment in Miami',
                 '1451 Ocean Dr, Miami Beach, FL 33139',
-                '25.785107', '-80.129460', 250, 'day'
+                '25.785107', '-80.129460', 250, 'day',
             ],
             [
                 $this->getReference('Rent'),
@@ -215,7 +214,7 @@ final class AppFixtures extends Fixture
                 $this->getReference('Miami'),
                 'Bright and Cheerful alcove studio',
                 '1451 Ocean Dr, Miami Beach, FL 33139',
-                '25.785107', '-80.129460', 200, 'day'
+                '25.785107', '-80.129460', 200, 'day',
             ],
             [
                 $this->getReference('Rent'),
@@ -223,7 +222,7 @@ final class AppFixtures extends Fixture
                 $this->getReference('Palm Beach'),
                 'Stylish two-level penthouse in Palm Beach',
                 '101 Worth Ave, Palm Beach, FL 33480',
-                '26.701320', '-80.033688', 2000, 'mo'
+                '26.701320', '-80.033688', 2000, 'mo',
             ],
             [
                 $this->getReference('Rent'),
@@ -231,7 +230,7 @@ final class AppFixtures extends Fixture
                 $this->getReference('Palm Beach'),
                 'Bright fully furnished 1-bedroom flat on the 2nd floor',
                 '300 S Ocean Blvd, Palm Beach, FL',
-                '26.705007', '-80.033574', 180, 'day'
+                '26.705007', '-80.033574', 180, 'day',
             ],
             [
                 $this->getReference('Sale'),
@@ -239,7 +238,7 @@ final class AppFixtures extends Fixture
                 $this->getReference('Tampa'),
                 'Beautiful villa for sale in Tampa',
                 '4935 New Providence Ave, Tampa, FL',
-                '27.932255', '-82.533187', 1600, 'sq. foot'
+                '27.932255', '-82.533187', 1600, 'sq. foot',
             ],
             [
                 $this->getReference('Rent'),
@@ -247,7 +246,7 @@ final class AppFixtures extends Fixture
                 $this->getReference('Tampa'),
                 'Furnished renovated 2-bedroom 2-bathroom flat',
                 '5411 Bayshore Blvd, Tampa, FL 33611',
-                '27.885095', '-82.486153', 2200, 'mo'
+                '27.885095', '-82.486153', 2200, 'mo',
             ],
             [
                 $this->getReference('Sale'),
@@ -255,9 +254,8 @@ final class AppFixtures extends Fixture
                 $this->getReference('Miami'),
                 'Interesting two-bedroom apartment for sale',
                 '111 NE 2nd Ave, Miami, FL 33132',
-                '25.775565', '-80.190125', 190000, ''
+                '25.775565', '-80.190125', 190000, '',
             ],
-
         ];
     }
 
@@ -284,5 +282,4 @@ final class AppFixtures extends Fixture
                 quis nostrum exercitationem ullam corporis suscipit laboriosam, 
                 nisi ut aliquid ex ea commodi consequatur.</p>';
     }
-
 }

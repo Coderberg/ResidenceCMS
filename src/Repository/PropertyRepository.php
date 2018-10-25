@@ -4,10 +4,10 @@ namespace App\Repository;
 
 use App\Entity\Property;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
 use Doctrine\ORM\Query;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
+use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
  * @method Property|null find($id, $lockMode = null, $lockVersion = null)
@@ -32,14 +32,9 @@ final class PropertyRepository extends ServiceEntityRepository
             ->orderBy('p.id', 'DESC');
 
         return $this->createPaginator($qb->getQuery(), $page);
-
     }
 
     /**
-     * @param int $locality
-     * @param int $operation
-     * @param int $category
-     * @param int $page
      * @return Pagerfanta
      */
     public function findByFilter(int $locality, int $operation, int $category, int $page = 1): Pagerfanta
@@ -50,17 +45,17 @@ final class PropertyRepository extends ServiceEntityRepository
 
         // Locality
         if ($locality > 0) {
-            $qb->andWhere('p.locality = ' . (int)$locality);
+            $qb->andWhere('p.locality = '.(int) $locality);
         }
 
         // Operation
         if ($operation > 0) {
-            $qb->andWhere('p.operation = ' . (int)$operation);
+            $qb->andWhere('p.operation = '.(int) $operation);
         }
 
         // Category
         if ($category > 0) {
-            $qb->andWhere('p.category = ' . (int)$category);
+            $qb->andWhere('p.category = '.(int) $category);
         }
 
         $qb->orderBy('p.id', 'DESC');
@@ -73,6 +68,7 @@ final class PropertyRepository extends ServiceEntityRepository
         $paginator = new Pagerfanta(new DoctrineORMAdapter($query));
         $paginator->setMaxPerPage(self::NUM_ITEMS);
         $paginator->setCurrentPage($page);
+
         return $paginator;
     }
 }

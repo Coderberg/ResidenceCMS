@@ -2,14 +2,14 @@
 
 namespace App\Controller\Admin;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\Operation;
 use App\Form\OperationType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 final class OperationController extends AbstractController
 {
@@ -23,7 +23,7 @@ final class OperationController extends AbstractController
         $operations = $repository->findAll();
 
         return $this->render('admin/operation/index.html.twig', [
-            'operations' => $operations
+            'operations' => $operations,
         ]);
     }
 
@@ -48,8 +48,10 @@ final class OperationController extends AbstractController
             if ($form->get('saveAndCreateNew')->isClicked()) {
                 return $this->redirectToRoute('admin_operation_new');
             }
+
             return $this->redirectToRoute('admin_operation');
         }
+
         return $this->render('admin/operation/new.html.twig', [
             'operation' => $operation,
             'form' => $form->createView(),
@@ -66,11 +68,12 @@ final class OperationController extends AbstractController
         $form = $this->createForm(OperationType::class, $operation);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'message.updated');
+
             return $this->redirectToRoute('admin_operation');
         }
+
         return $this->render('admin/operation/edit.html.twig', [
             'form' => $form->createView(),
         ]);
@@ -92,6 +95,7 @@ final class OperationController extends AbstractController
         $em->remove($operation);
         $em->flush();
         $this->addFlash('success', 'message.deleted');
+
         return $this->redirectToRoute('admin_operation');
     }
 }

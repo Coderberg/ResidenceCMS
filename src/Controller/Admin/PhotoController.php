@@ -2,15 +2,15 @@
 
 namespace App\Controller\Admin;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\Photo;
 use App\Entity\Property;
 use App\Form\PhotoType;
 use App\Service\FileUploader;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 final class PhotoController extends AbstractController
 {
@@ -44,7 +44,6 @@ final class PhotoController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $file = $photo->getPhoto();
             $fileName = $fileUploader->upload($file);
 
@@ -58,6 +57,7 @@ final class PhotoController extends AbstractController
 
             return $this->redirectToRoute('admin_photo_edit', ['id' => $property->getId()]);
         }
+
         return $this->render('admin/photo/edit.html.twig', [
             'photos' => $photos,
             'property_id' => $property->getId(),
@@ -95,5 +95,4 @@ final class PhotoController extends AbstractController
             ['id' => $request->attributes->get('property_id')]
         );
     }
-
 }

@@ -2,14 +2,14 @@
 
 namespace App\Controller\Admin;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\Locality;
 use App\Form\LocalityType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 final class LocalityController extends AbstractController
 {
@@ -23,7 +23,7 @@ final class LocalityController extends AbstractController
         $localities = $repository->findAll();
 
         return $this->render('admin/locality/index.html.twig', [
-            'localities' => $localities
+            'localities' => $localities,
         ]);
     }
 
@@ -39,7 +39,6 @@ final class LocalityController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $locality->getName();
             $em = $this->getDoctrine()->getManager();
             $em->persist($locality);
@@ -49,8 +48,10 @@ final class LocalityController extends AbstractController
             if ($form->get('saveAndCreateNew')->isClicked()) {
                 return $this->redirectToRoute('admin_locality_new');
             }
+
             return $this->redirectToRoute('admin_locality');
         }
+
         return $this->render('admin/locality/new.html.twig', [
             'locality' => $locality,
             'form' => $form->createView(),
@@ -68,11 +69,12 @@ final class LocalityController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'message.updated');
+
             return $this->redirectToRoute('admin_locality');
         }
+
         return $this->render('admin/locality/edit.html.twig', [
             'form' => $form->createView(),
         ]);
@@ -94,6 +96,7 @@ final class LocalityController extends AbstractController
         $em->remove($locality);
         $em->flush();
         $this->addFlash('success', 'message.deleted');
+
         return $this->redirectToRoute('admin_locality');
     }
 }

@@ -2,12 +2,12 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
-use App\Entity\Setting;
+use App\Entity\Category;
 use App\Entity\Locality;
 use App\Entity\Operation;
-use App\Entity\Category;
+use App\Entity\Setting;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 
 class BaseController extends AbstractController
 {
@@ -34,7 +34,7 @@ class BaseController extends AbstractController
         return [
             'localities' => $localities,
             'categories' => $categories,
-            'operations' => $operations
+            'operations' => $operations,
         ];
     }
 

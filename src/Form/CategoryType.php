@@ -3,15 +3,15 @@
  * Created by PhpStorm.
  * User: Valery Maslov
  * Date: 11.08.2018
- * Time: 19:07
+ * Time: 19:07.
  */
 
 namespace App\Form;
 
+use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use App\Entity\Category;
 
 final class CategoryType extends AbstractType
 {
@@ -24,13 +24,13 @@ final class CategoryType extends AbstractType
             ->add('name', null, [
                 'attr' => [
                     'autofocus' => true,
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 ],
                 'label' => 'label.name',
             ])
             ->add('slug', null, [
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control',
                 ],
                 'label' => 'label.slug',
             ]);
