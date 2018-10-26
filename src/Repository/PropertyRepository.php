@@ -34,9 +34,6 @@ final class PropertyRepository extends ServiceEntityRepository
         return $this->createPaginator($qb->getQuery(), $page);
     }
 
-    /**
-     * @return Pagerfanta
-     */
     public function findByFilter(int $locality, int $operation, int $category, int $page = 1): Pagerfanta
     {
         $qb = $this->createQueryBuilder('p');
