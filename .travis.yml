@@ -1,0 +1,47 @@
+language: php
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+    - ./bin/.phpunit
+
+env:
+  global:
+    - SYMFONY_PHPUNIT_DIR=./bin/.phpunit
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.2
+    - php: nightly
+  allow_failures:
+    - php: nightly
+
+before_install:
+  - cp ./.travis/.env .env
+  - cp ./.travis/phpunit.xml phpunit.xml
+  - '[[ "$TRAVIS_PHP_VERSION" == "nightly" ]] || phpenv config-rm xdebug.ini'
+  - composer self-update
+
+addons:
+  mariadb: '10.3'
+
+install:
+  - composer install
+
+script:
+  #- php bin/console doctrine:database:create --no-interaction
+  - php bin/console doctrine:migrations:migrate --no-interaction
+  - php bin/console doctrine:fixtures:load --no-interaction
+  - php bin/phpunit
+  # this checks that the source code follows the Symfony Code Syntax rules
+  - '[[ "$TRAVIS_PHP_VERSION" == "nightly" ]] || ./vendor/bin/php-cs-fixer fix --diff --dry-run -v'
+  # this checks that the YAML config files contain no syntax errors
+  - php bin/console lint:yaml config
+  # this checks that the Twig template files contain no syntax errors
+  - php bin/console lint:twig templates
+  # this checks that the XLIFF translations contain no syntax errors
+  - php bin/console lint:xliff translations
+  # this checks that the application doesn't use dependencies with known security vulnerabilities
+  - php bin/console security:check
