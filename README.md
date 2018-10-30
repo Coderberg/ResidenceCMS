@@ -1,4 +1,4 @@
-![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
+![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg) [![Build Status](https://travis-ci.org/Coderberg/ResidenceCMS.svg?branch=master)](https://travis-ci.org/Coderberg/ResidenceCMS)
 
 ResidenceCMS is an Open Source Property Management System built with [Symfony 4][1].
 
