@@ -1,0 +1,16 @@
+<form action="{{ url('admin_page_delete', {id: page.id}) }}" method="post" data-confirmation="true"
+      id="delete-form-{{ page.id }}">
+
+    <input type="hidden" name="token" value="{{ csrf_token('delete') }}"/>
+    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+
+        <a href="{{ url('admin_page_edit', {id: page.id}) }}"
+           class="btn btn-light">{{ 'action.edit' | trans }}</a>
+
+        <button type="submit" class="btn btn-danger"
+                onclick="if(confirm('{{ 'confirmation.delete_item' | trans }}')){ return true }else{ return false }">
+            {{ 'action.delete' | trans }}
+        </button>
+
+    </div>
+</form>

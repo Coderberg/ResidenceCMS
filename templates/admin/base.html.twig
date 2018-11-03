@@ -66,6 +66,7 @@
                     <a class="dropdown-item" href="{{ path('admin_locality') }}">{{ 'localities'|trans }}</a>
                     <a class="dropdown-item" href="{{ path('admin_operation') }}">{{ 'operations'|trans }}</a>
                     <a class="dropdown-item" href="{{ path('admin_category') }}">{{ 'categories'|trans }}</a>
+                    <a class="dropdown-item" href="{{ path('admin_page') }}">{{ 'pages'|trans }}</a>
                     <a class="dropdown-item" href="{{ path('admin_user') }}">{{ 'users'|trans }}</a>
                 </div>
             </li>
@@ -85,6 +86,7 @@
                     <a class="dropdown-item" href="{{ path('admin_locality_new') }}">{{ 'locality'|trans }}</a>
                     <a class="dropdown-item" href="{{ path('admin_operation_new') }}">{{ 'operation'|trans }}</a>
                     <a class="dropdown-item" href="{{ path('admin_category_new') }}">{{ 'category'|trans }}</a>
+                    <a class="dropdown-item" href="{{ path('admin_page_new') }}">{{ 'page'|trans }}</a>
                     <a class="dropdown-item" href="{{ path('admin_user_new') }}">{{ 'user'|trans }}</a>
 
                 </div>
@@ -125,6 +127,12 @@
             <a class="nav-link" href="{{ path('admin_category') }}">
                 <i class="far fa-building"></i>
                 <span>{{ 'categories'|trans }}</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_page') }}">
+                <i class="far fa-file-alt"></i>
+                <span>{{ 'pages'|trans }}</span>
             </a>
         </li>
         <li class="nav-item">

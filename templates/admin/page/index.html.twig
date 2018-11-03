@@ -1,0 +1,47 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ 'title.pages' | trans }}{% endblock %}
+
+{% block body %}
+
+    <h3>{{ 'title.pages' | trans }}</h3>
+
+    <br>
+    <div class="row">
+
+        {% for page in pages %}
+
+            <!-- Item -->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"><a
+                                    href="{{ path('page', { 'slug':  page.slug }) }}">{{ page.title }}</a>
+                        </h4>
+                        <p class="card-text">{{ page.description }}</p>
+
+                        {{ include('admin/page/_action_form.html.twig', {page: page}, with_context = false) }}
+
+                    </div>
+                </div>
+                <br>
+            </div>
+            <!-- / Item -->
+
+        {% else %}
+            <div class="col-sm-12">
+                {{ 'no_items_found' | trans }}
+            </div>
+        {% endfor %}
+
+    </div>
+
+    {% if pages.haveToPaginate %}
+
+        <div class="navigation text-center">
+            {{ pagerfanta(pages, 'twitter_bootstrap4_translated', {routeName: 'admin_page_paginated', routeParams: app.request.query.all}) }}
+        </div>
+
+    {% endif %}
+
+{% endblock %}

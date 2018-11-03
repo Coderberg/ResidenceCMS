@@ -11,6 +11,7 @@ namespace App\DataFixtures;
 use App\Entity\Category;
 use App\Entity\Locality;
 use App\Entity\Operation;
+use App\Entity\Page;
 use App\Entity\Photo;
 use App\Entity\Property;
 use App\Entity\Setting;
@@ -32,6 +33,7 @@ final class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $this->loadSettings($manager);
+        $this->loadPages($manager);
         $this->loadLocalities($manager);
         $this->loadCategories($manager);
         $this->loadOperations($manager);
@@ -47,6 +49,18 @@ final class AppFixtures extends Fixture
         $setting->setTitle('Site Title');
         $setting->setDescription('Site Description');
         $manager->persist($setting);
+        $manager->flush();
+    }
+
+    private function loadPages(ObjectManager $manager)
+    {
+        $page = new Page();
+        $page->setTitle('About Us');
+        $page->setDescription('About Us Page');
+        $page->setSlug(Slugger::slugify('About Us'));
+        $page->setContent($this->getContent());
+        $page->setShowInMenu(1);
+        $manager->persist($page);
         $manager->flush();
     }
 
@@ -257,6 +271,28 @@ final class AppFixtures extends Fixture
                 '25.775565', '-80.190125', 190000, '',
             ],
         ];
+    }
+
+    private function getContent(): string
+    {
+        return '<h3>Why Choose Us</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <h3>Our Properties</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <h3>legal notice</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>';
     }
 
     private function getPropertyContent(): string

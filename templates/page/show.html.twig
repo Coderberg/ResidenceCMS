@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block description %}{{ page.description }}{% endblock %}
+
+{% block header %}
+    <div class="header" style="background-image: url('/images/bg.jpg');">
+        <div class="header-overlay"></div>
+        <div class="container">
+            <div class="search_form text-center">
+                <h1 style="color:#fff">{{ page.title }}</h1>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+
+        <a href="{{ url('admin_page_edit', {id: page.id}) }}" class="btn btn-primary float">
+            <i class="fas fa-pen float-icon"></i>
+        </a>
+
+    {% endif %}
+
+    <br>
+    <div class="row">
+        <div class="col-md-8">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    {{ page.content | raw }}
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <br>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-md-4">
+
+            {{ include('property/partials/_search_widget.html.twig') }}
+
+        </div>
+    </div>
+
+{% endblock %}

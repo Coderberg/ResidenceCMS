@@ -5,7 +5,7 @@ namespace App\Tests\Controller;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-class DefaultControllerTest extends WebTestCase
+final class DefaultControllerTest extends WebTestCase
 {
     /**
      * @dataProvider getPublicUrls
@@ -53,8 +53,9 @@ class DefaultControllerTest extends WebTestCase
 
     public function getSecureUrls()
     {
-        yield ['/admin'];
+        yield ['/admin/property'];
         yield ['/admin/property/new'];
         yield ['/admin/property/1/edit'];
+        yield ['/admin/setting'];
     }
 }

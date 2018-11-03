@@ -56,6 +56,10 @@
                 <source>categories</source>
                 <target>Categories</target>
             </trans-unit>
+            <trans-unit id="pages">
+                <source>pages</source>
+                <target>Pages</target>
+            </trans-unit>
             <trans-unit id="users">
                 <source>users</source>
                 <target>Users</target>
@@ -75,6 +79,10 @@
             <trans-unit id="category">
                 <source>category</source>
                 <target>Category</target>
+            </trans-unit>
+            <trans-unit id="page">
+                <source>page</source>
+                <target>Page</target>
             </trans-unit>
             <trans-unit id="user">
                 <source>user</source>
@@ -210,6 +218,10 @@
                 <source>title.login</source>
                 <target>Secure Sign in</target>
             </trans-unit>
+            <trans-unit id="title.pages">
+                <source>title.pages</source>
+                <target>Pages</target>
+            </trans-unit>
             <trans-unit id="title.latest_properties">
                 <source>title.latest_properties</source>
                 <target>Latest properties</target>
@@ -217,6 +229,14 @@
             <trans-unit id="title.search_results">
                 <source>title.search_results</source>
                 <target>Search Results</target>
+            </trans-unit>
+            <trans-unit id="title.add_page">
+                <source>title.add_page</source>
+                <target>Add page</target>
+            </trans-unit>
+            <trans-unit id="title.edit_page">
+                <source>title.edit_page</source>
+                <target>Edit page</target>
             </trans-unit>
             <trans-unit id="title.add_property">
                 <source>title.add_property</source>
@@ -387,6 +407,10 @@
                 <source>label.content</source>
                 <target>Content</target>
             </trans-unit>
+            <trans-unit id="label.show_in_menu">
+                <source>label.show_in_menu</source>
+                <target>Show in menu</target>
+            </trans-unit>
             <trans-unit id="label.create_category">
                 <source>label.create_category</source>
                 <target>Create category</target>
@@ -398,6 +422,10 @@
             <trans-unit id="label.create_locality">
                 <source>label.create_locality</source>
                 <target>Create locality</target>
+            </trans-unit>
+            <trans-unit id="label.create_page">
+                <source>label.create_page</source>
+                <target>Create page</target>
             </trans-unit>
             <trans-unit id="label.create_property">
                 <source>label.create_property</source>

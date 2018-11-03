@@ -52,9 +52,17 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('property') }}">{{ 'menu.homepage'|trans }}</a>
-
             </li>
 
+            {% for page in site.pages %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('page', { 'slug':  page.slug }) }}">
+                        {{ page.title }}
+                    </a>
+                </li>
+
+            {% endfor %}
         </ul>
 
         <ul class="navbar-nav ml-auto">
@@ -77,6 +85,8 @@
 {% block header %}{% endblock %}
 
 <div class="container">
+
+    {{ include('default/_flash_messages.html.twig') }}
 
     {% block body %}{% endblock %}
 

@@ -14,7 +14,7 @@ final class SecurityController extends BaseController
     public function login(AuthenticationUtils $helper): Response
     {
         return $this->render('security/login.html.twig', [
-            'site' => $this->settings(),
+            'site' => $this->site(),
             // last username entered by the user (if any)
             'last_username' => $helper->getLastUsername(),
             // last authentication error (if any)
