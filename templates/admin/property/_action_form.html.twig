@@ -1,4 +1,5 @@
-<form action="{{ url('admin_property_delete', {id: property.id}) }}" method="post" data-confirmation="true">
+<form action="{{ url('admin_property_delete', {id: property.id}) }}" method="post" data-confirmation="true"
+      id="delete-form-{{ property.id }}">
     <input type="hidden" name="token" value="{{ csrf_token('delete') }}"/>
     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
 
