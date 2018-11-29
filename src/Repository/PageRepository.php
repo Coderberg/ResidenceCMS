@@ -24,6 +24,14 @@ final class PageRepository extends ServiceEntityRepository
         parent::__construct($registry, Page::class);
     }
 
+    public function countAll()
+    {
+        return $this->createQueryBuilder('p')
+            ->select('count(p.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     public function findMenuItems()
     {
         return $this->createQueryBuilder('p')

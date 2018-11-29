@@ -53,6 +53,7 @@ final class DefaultControllerTest extends WebTestCase
 
     public function getSecureUrls()
     {
+        yield ['/admin'];
         yield ['/admin/property'];
         yield ['/admin/property/new'];
         yield ['/admin/property/1/edit'];

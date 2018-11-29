@@ -18,4 +18,12 @@ final class OperationRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Operation::class);
     }
+
+    public function countAll()
+    {
+        return $this->createQueryBuilder('o')
+            ->select('count(o.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

@@ -69,7 +69,7 @@
 
             {% if is_granted('ROLE_ADMIN') %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('admin_property') }}">{{ 'menu.admin'|trans }}</a>
+                    <a class="nav-link" href="{{ path('admin_dashboard') }}">{{ 'menu.admin'|trans }}</a>
                 </li>
             {% else %}
                 <li class="nav-item">

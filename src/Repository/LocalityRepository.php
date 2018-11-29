@@ -18,4 +18,12 @@ final class LocalityRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Locality::class);
     }
+
+    public function countAll()
+    {
+        return $this->createQueryBuilder('l')
+            ->select('count(l.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

@@ -40,6 +40,10 @@
                 <target>No items found.</target>
             </trans-unit>
             
+            <trans-unit id="dashboard">
+                <source>dashboard</source>
+                <target>Dashboard</target>
+            </trans-unit>
             <trans-unit id="properties">
                 <source>properties</source>
                 <target>Properties</target>

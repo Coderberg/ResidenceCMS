@@ -24,6 +24,14 @@ final class PropertyRepository extends ServiceEntityRepository
         parent::__construct($registry, Property::class);
     }
 
+    public function countAll()
+    {
+        return $this->createQueryBuilder('p')
+            ->select('count(p.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     public function findLatest(int $page = 1): Pagerfanta
     {
         $qb = $this->createQueryBuilder('p')
