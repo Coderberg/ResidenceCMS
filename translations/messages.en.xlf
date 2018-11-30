@@ -39,6 +39,10 @@
                 <source>no_items_found</source>
                 <target>No items found.</target>
             </trans-unit>
+            <trans-unit id="view_details">
+                <source>view_details</source>
+                <target>View Details</target>
+            </trans-unit>
             
             <trans-unit id="dashboard">
                 <source>dashboard</source>
