@@ -225,7 +225,7 @@
         }
     },
     "symfony/debug-pack": {
-        "version": "v1.0.6"
+        "version": "v1.0.7"
     },
     "symfony/dependency-injection": {
         "version": "v4.2.1"
@@ -339,7 +339,7 @@
         "version": "v4.2.1"
     },
     "symfony/profiler-pack": {
-        "version": "v1.0.3"
+        "version": "v1.0.4"
     },
     "symfony/property-access": {
         "version": "v4.2.1"
@@ -381,7 +381,7 @@
         "version": "v4.2.1"
     },
     "symfony/serializer-pack": {
-        "version": "v1.0.1"
+        "version": "v1.0.2"
     },
     "symfony/stopwatch": {
         "version": "v4.2.1"
@@ -396,7 +396,7 @@
         }
     },
     "symfony/test-pack": {
-        "version": "v1.0.4"
+        "version": "v1.0.5"
     },
     "symfony/translation": {
         "version": "3.3",
