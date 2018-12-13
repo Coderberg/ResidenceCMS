@@ -114,7 +114,13 @@
         }
     },
     "friendsofsymfony/ckeditor-bundle": {
-        "version": "1.1.0"
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "8eb1cd0962ded6a6d6e1e5a9b6d3e888f9f94ff6"
+        }
     },
     "gumlet/php-image-resize": {
         "version": "1.9.1"
