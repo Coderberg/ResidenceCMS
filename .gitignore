@@ -2,7 +2,8 @@
 /nbproject/
 /.idea/
 ###> symfony/framework-bundle ###
-/.env
+/.env.local
+/.env.*.local
 /public/bundles/
 /var/
 /vendor/
