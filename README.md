@@ -55,7 +55,7 @@ The user interface is built with [Bootstrap 4][2].
    
 ## Tests
 
-1. Modify your DATABASE_URL config in ```.phpunit.xml.dist```
+1. Modify your DATABASE_URL config in ```.env.test```
    
    ```
    DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
