@@ -5,7 +5,7 @@
 
 {% block stylesheets %}
 
-    <link href="{{ asset('css/ekko-lightbox.css') }}" rel="stylesheet">
+    {{ encore_entry_link_tags('css/ekko-lightbox') }}
 
 {% endblock %}
 
@@ -118,7 +118,7 @@
 
 {% block javascripts %}
 
-    <script src="{{ asset('js/ekko-lightbox.min.js') }}"></script>
+    {{ encore_entry_script_tags('js/ekko-lightbox') }}
     <script>
         $(document).on('click', '[data-toggle="lightbox"]', function (event) {
             event.preventDefault();
@@ -136,8 +136,10 @@
             let balloonContent = '{{ property.title }}';
 
         </script>
-        <script src="https://api-maps.yandex.ru/2.1/?lang=en_US" defer></script>
-        <script src="{{ asset('js/map.js') }}" defer></script>
+
+        {# TODO: Defer loading #}
+        <script src="https://api-maps.yandex.ru/2.1/?lang=en_US"></script>
+        {{ encore_entry_script_tags('js/map') }}
 
     {% endif %}
 

@@ -30,7 +30,7 @@
         "version": "v1.3.1"
     },
     "doctrine/dbal": {
-        "version": "v2.9.0"
+        "version": "v2.9.1"
     },
     "doctrine/doctrine-bundle": {
         "version": "1.6",
@@ -461,11 +461,20 @@
             "ref": "dae9b39fd6717970be7601101ce5aa960bf53d9a"
         }
     },
+    "symfony/webpack-encore-bundle": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "9aea6366d216792824dc4985fc56617fabdaf82b"
+        }
+    },
     "symfony/yaml": {
         "version": "v4.2.1"
     },
     "twig/twig": {
-        "version": "v2.5.0"
+        "version": "v2.6.0"
     },
     "webmozart/assert": {
         "version": "1.3.0"

@@ -28,6 +28,7 @@
         "symfony/twig-bundle": "4.2.*",
         "symfony/validator": "4.2.*",
         "symfony/web-link": "4.2.*",
+        "symfony/webpack-encore-bundle": "^1.0",
         "symfony/yaml": "4.2.*",
         "white-october/pagerfanta-bundle": "^1.2"
     },

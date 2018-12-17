@@ -33,8 +33,8 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    {{ encore_entry_link_tags('css/app') }}
+    {{ encore_entry_link_tags('css/admin') }}
 
     {% block stylesheets %}{% endblock %}
 </head>
@@ -181,7 +181,7 @@
 
 
 <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
+{{ encore_entry_script_tags('js/app') }}
 
 {% block javascripts %}{% endblock %}
 

@@ -1,0 +1,52 @@
+{
+  "entrypoints": {
+    "js/app": {
+      "js": [
+        "/build/runtime.6cf710cd.js",
+        "/build/js/app.1d4771d6.js"
+      ]
+    },
+    "js/ekko-lightbox": {
+      "js": [
+        "/build/runtime.6cf710cd.js",
+        "/build/js/ekko-lightbox.25b1e870.js"
+      ]
+    },
+    "js/slugger": {
+      "js": [
+        "/build/runtime.6cf710cd.js",
+        "/build/js/slugger.162931c2.js"
+      ]
+    },
+    "js/map": {
+      "js": [
+        "/build/runtime.6cf710cd.js",
+        "/build/js/map.c28ff283.js"
+      ]
+    },
+    "css/app": {
+      "js": [
+        "/build/runtime.6cf710cd.js"
+      ],
+      "css": [
+        "/build/css/app.fa80a9ed.css"
+      ]
+    },
+    "css/admin": {
+      "js": [
+        "/build/runtime.6cf710cd.js"
+      ],
+      "css": [
+        "/build/css/admin.3b48290f.css"
+      ]
+    },
+    "css/ekko-lightbox": {
+      "js": [
+        "/build/runtime.6cf710cd.js"
+      ],
+      "css": [
+        "/build/css/ekko-lightbox.d656d29c.css"
+      ]
+    }
+  }
+}

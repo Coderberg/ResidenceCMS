@@ -35,7 +35,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{ encore_entry_link_tags('css/app') }}
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
@@ -97,7 +97,7 @@
 </div>
 
 <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
+{{ encore_entry_script_tags('js/app') }}
 
 {% block javascripts %}{% endblock %}
 
