@@ -12,6 +12,7 @@
         "sensio/framework-extra-bundle": "^5.2",
         "sensiolabs/security-checker": "^5.0",
         "symfony/asset": "4.2.*",
+        "symfony/cache": "4.2.*",
         "symfony/console": "4.2.*",
         "symfony/expression-language": "4.2.*",
         "symfony/filesystem": "4.2.*",

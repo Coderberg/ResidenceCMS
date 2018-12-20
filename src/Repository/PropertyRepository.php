@@ -8,6 +8,7 @@ use Doctrine\ORM\Query;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Symfony\Component\Cache\Simple\FilesystemCache;
 
 /**
  * @method Property|null find($id, $lockMode = null, $lockVersion = null)
@@ -26,10 +27,18 @@ final class PropertyRepository extends ServiceEntityRepository
 
     public function countAll()
     {
-        return $this->createQueryBuilder('p')
-            ->select('count(p.id)')
-            ->getQuery()
-            ->getSingleScalarResult();
+        $cache = new FilesystemCache();
+
+        if (!$cache->has('properties_count')) {
+            $count = $this->createQueryBuilder('p')
+                ->select('count(p.id)')
+                ->getQuery()
+                ->getSingleScalarResult();
+
+            $cache->set('properties_count', $count, 3600);
+        }
+
+        return $cache->get('properties_count');
     }
 
     public function findLatest(int $page = 1): Pagerfanta

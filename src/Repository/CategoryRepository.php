@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Symfony\Component\Cache\Simple\FilesystemCache;
 
 /**
  * @method Category|null find($id, $lockMode = null, $lockVersion = null)
@@ -21,9 +22,17 @@ final class CategoryRepository extends ServiceEntityRepository
 
     public function countAll()
     {
-        return $this->createQueryBuilder('c')
-            ->select('count(c.id)')
-            ->getQuery()
-            ->getSingleScalarResult();
+        $cache = new FilesystemCache();
+
+        if (!$cache->has('categories_count')) {
+            $count = $this->createQueryBuilder('c')
+                ->select('count(c.id)')
+                ->getQuery()
+                ->getSingleScalarResult();
+
+            $cache->set('categories_count', $count, 3600);
+        }
+
+        return $cache->get('categories_count');
     }
 }

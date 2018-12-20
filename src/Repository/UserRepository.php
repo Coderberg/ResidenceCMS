@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Symfony\Component\Cache\Simple\FilesystemCache;
 
 final class UserRepository extends ServiceEntityRepository
 {
@@ -15,9 +16,17 @@ final class UserRepository extends ServiceEntityRepository
 
     public function countAll()
     {
-        return $this->createQueryBuilder('u')
-            ->select('count(u.id)')
-            ->getQuery()
-            ->getSingleScalarResult();
+        $cache = new FilesystemCache();
+
+        if (!$cache->has('users_count')) {
+            $count = $this->createQueryBuilder('u')
+                ->select('count(u.id)')
+                ->getQuery()
+                ->getSingleScalarResult();
+
+            $cache->set('users_count', $count, 3600);
+        }
+
+        return $cache->get('users_count');
     }
 }

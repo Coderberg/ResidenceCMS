@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Locality;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Symfony\Component\Cache\Simple\FilesystemCache;
 
 /**
  * @method Locality|null find($id, $lockMode = null, $lockVersion = null)
@@ -21,9 +22,17 @@ final class LocalityRepository extends ServiceEntityRepository
 
     public function countAll()
     {
-        return $this->createQueryBuilder('l')
+        $cache = new FilesystemCache();
+
+        if (!$cache->has('localities_count')) {
+            $count = $this->createQueryBuilder('l')
             ->select('count(l.id)')
             ->getQuery()
             ->getSingleScalarResult();
+
+            $cache->set('localities_count', $count, 3600);
+        }
+
+        return $cache->get('localities_count');
     }
 }
