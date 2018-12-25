@@ -11,7 +11,7 @@ use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class DashboardController extends AbstractController
+final class DashboardController extends AbstractController
 {
     /**
      * @Route("/admin", name="admin_dashboard")
@@ -20,27 +20,27 @@ class DashboardController extends AbstractController
     {
         // Counting the number of properties
         $properties = $this->getDoctrine()
-            ->getRepository(Property::class)->countAll();
+            ->getRepository(Property::class)->findCount();
 
         // Counting the number of localities
         $localities = $this->getDoctrine()
-            ->getRepository(Locality::class)->countAll();
+            ->getRepository(Locality::class)->findCount();
 
         // Counting the number of operations
         $operations = $this->getDoctrine()
-            ->getRepository(Operation::class)->countAll();
+            ->getRepository(Operation::class)->findCount();
 
         // Counting the number of categories
         $categories = $this->getDoctrine()
-            ->getRepository(Category::class)->countAll();
+            ->getRepository(Category::class)->findCount();
 
         // Counting the number of pages
         $pages = $this->getDoctrine()
-            ->getRepository(Page::class)->countAll();
+            ->getRepository(Page::class)->findCount();
 
         // Counting the number of users
         $users = $this->getDoctrine()
-            ->getRepository(User::class)->countAll();
+            ->getRepository(User::class)->findCount();
 
         return $this->render('admin/dashboard/index.html.twig', [
             'number_of_properties' => $properties,

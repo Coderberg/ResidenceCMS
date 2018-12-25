@@ -27,14 +27,18 @@ final class PageRepository extends ServiceEntityRepository
 
     public function countAll()
     {
+        return $this->createQueryBuilder('p')
+            ->select('count(p.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function findCount()
+    {
         $cache = new FilesystemCache();
 
         if (!$cache->has('pages_count')) {
-            $count = $this->createQueryBuilder('p')
-                ->select('count(p.id)')
-                ->getQuery()
-                ->getSingleScalarResult();
-            $cache->set('pages_count', $count, 3600);
+            $cache->set('pages_count', $this->countAll(), 3600);
         }
 
         return $cache->get('pages_count');

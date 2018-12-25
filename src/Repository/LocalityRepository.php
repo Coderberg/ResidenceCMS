@@ -22,15 +22,18 @@ final class LocalityRepository extends ServiceEntityRepository
 
     public function countAll()
     {
-        $cache = new FilesystemCache();
-
-        if (!$cache->has('localities_count')) {
-            $count = $this->createQueryBuilder('l')
+        return $this->createQueryBuilder('l')
             ->select('count(l.id)')
             ->getQuery()
             ->getSingleScalarResult();
+    }
 
-            $cache->set('localities_count', $count, 3600);
+    public function findCount()
+    {
+        $cache = new FilesystemCache();
+
+        if (!$cache->has('localities_count')) {
+            $cache->set('localities_count', $this->countAll(), 3600);
         }
 
         return $cache->get('localities_count');

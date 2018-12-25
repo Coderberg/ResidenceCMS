@@ -22,15 +22,18 @@ final class CategoryRepository extends ServiceEntityRepository
 
     public function countAll()
     {
+        return $this->createQueryBuilder('c')
+            ->select('count(c.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function findCount()
+    {
         $cache = new FilesystemCache();
 
         if (!$cache->has('categories_count')) {
-            $count = $this->createQueryBuilder('c')
-                ->select('count(c.id)')
-                ->getQuery()
-                ->getSingleScalarResult();
-
-            $cache->set('categories_count', $count, 3600);
+            $cache->set('categories_count', $this->countAll(), 3600);
         }
 
         return $cache->get('categories_count');

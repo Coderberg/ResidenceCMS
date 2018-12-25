@@ -16,15 +16,18 @@ final class UserRepository extends ServiceEntityRepository
 
     public function countAll()
     {
+        return $this->createQueryBuilder('u')
+            ->select('count(u.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function findCount()
+    {
         $cache = new FilesystemCache();
 
         if (!$cache->has('users_count')) {
-            $count = $this->createQueryBuilder('u')
-                ->select('count(u.id)')
-                ->getQuery()
-                ->getSingleScalarResult();
-
-            $cache->set('users_count', $count, 3600);
+            $cache->set('users_count', $this->countAll(), 3600);
         }
 
         return $cache->get('users_count');

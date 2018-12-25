@@ -22,15 +22,18 @@ final class OperationRepository extends ServiceEntityRepository
 
     public function countAll()
     {
+        return $this->createQueryBuilder('o')
+            ->select('count(o.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function findCount()
+    {
         $cache = new FilesystemCache();
 
         if (!$cache->has('operations_count')) {
-            $count = $this->createQueryBuilder('o')
-                ->select('count(o.id)')
-                ->getQuery()
-                ->getSingleScalarResult();
-
-            $cache->set('operations_count', $count, 3600);
+            $cache->set('operations_count', $this->countAll(), 3600);
         }
 
         return $cache->get('operations_count');

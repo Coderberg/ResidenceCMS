@@ -27,15 +27,18 @@ final class PropertyRepository extends ServiceEntityRepository
 
     public function countAll()
     {
+        return $this->createQueryBuilder('p')
+            ->select('count(p.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function findCount()
+    {
         $cache = new FilesystemCache();
 
         if (!$cache->has('properties_count')) {
-            $count = $this->createQueryBuilder('p')
-                ->select('count(p.id)')
-                ->getQuery()
-                ->getSingleScalarResult();
-
-            $cache->set('properties_count', $count, 3600);
+            $cache->set('properties_count', $this->countAll(), 3600);
         }
 
         return $cache->get('properties_count');
