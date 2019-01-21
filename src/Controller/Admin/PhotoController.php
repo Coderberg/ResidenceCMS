@@ -17,7 +17,7 @@ final class PhotoController extends AbstractController
     /**
      * @Route("/admin/photo", name="admin_photo")
      */
-    public function index()
+    public function index(): Response
     {
         return $this->render('admin/photo/index.html.twig', [
             'controller_name' => 'PhotoController',
@@ -27,7 +27,7 @@ final class PhotoController extends AbstractController
     /**
      * @Route("/admin/photo/{id<\d+>}/edit", name="admin_photo_edit")
      */
-    public function edit(Request $request, FileUploader $fileUploader)
+    public function edit(Request $request, FileUploader $fileUploader): Response
     {
         $photo = new Photo();
 

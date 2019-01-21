@@ -21,7 +21,7 @@ final class FileUploader
         $this->targetDirectory = $targetDirectory;
     }
 
-    public function upload(UploadedFile $file)
+    public function upload(UploadedFile $file): string
     {
         $fileSystem = new Filesystem();
 
@@ -50,7 +50,7 @@ final class FileUploader
         return $fileName;
     }
 
-    public function remove(string $fileName)
+    public function remove(string $fileName): void
     {
         $fileSystem = new Filesystem();
 
@@ -66,7 +66,7 @@ final class FileUploader
         }
     }
 
-    public function getTargetDirectory()
+    public function getTargetDirectory(): string
     {
         return $this->targetDirectory;
     }

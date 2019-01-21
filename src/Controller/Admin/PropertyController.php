@@ -17,7 +17,7 @@ final class PropertyController extends AbstractController
      * @Route("/admin/property", defaults={"page": "1"}, methods={"GET"}, name="admin_property")
      * @Route("/admin/property/page/{page<[1-9]\d*>}", methods={"GET"}, name="admin_property_paginated")
      */
-    public function index(?int $page)
+    public function index(?int $page): Response
     {
         // Get properties
         $repository = $this->getDoctrine()->getRepository(Property::class);
@@ -32,7 +32,7 @@ final class PropertyController extends AbstractController
     /**
      * @Route("/admin/property/new", name="admin_property_new")
      */
-    public function new(Request $request, Slugger $slugger)
+    public function new(Request $request, Slugger $slugger): Response
     {
         $property = new Property();
         $property->setAuthor($this->getUser());

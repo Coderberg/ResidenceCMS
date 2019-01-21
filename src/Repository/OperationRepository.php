@@ -20,7 +20,7 @@ final class OperationRepository extends ServiceEntityRepository
         parent::__construct($registry, Operation::class);
     }
 
-    public function countAll()
+    public function countAll(): int
     {
         return $this->createQueryBuilder('o')
             ->select('count(o.id)')
@@ -28,7 +28,7 @@ final class OperationRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
-    public function findCount()
+    public function findCount(): int
     {
         $cache = new FilesystemCache();
 

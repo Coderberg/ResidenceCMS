@@ -20,7 +20,7 @@ final class LocalityRepository extends ServiceEntityRepository
         parent::__construct($registry, Locality::class);
     }
 
-    public function countAll()
+    public function countAll(): int
     {
         return $this->createQueryBuilder('l')
             ->select('count(l.id)')
@@ -28,7 +28,7 @@ final class LocalityRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
-    public function findCount()
+    public function findCount(): int
     {
         $cache = new FilesystemCache();
 

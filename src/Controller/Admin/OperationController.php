@@ -16,7 +16,7 @@ final class OperationController extends AbstractController
     /**
      * @Route("/admin/operation", name="admin_operation")
      */
-    public function index()
+    public function index(): Response
     {
         $repository = $this->getDoctrine()->getRepository(Operation::class);
 
@@ -30,7 +30,7 @@ final class OperationController extends AbstractController
     /**
      * @Route("/admin/operation/new", name="admin_operation_new")
      */
-    public function new(Request $request)
+    public function new(Request $request): Response
     {
         $operation = new Operation();
 

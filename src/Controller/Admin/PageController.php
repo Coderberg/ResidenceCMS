@@ -16,7 +16,7 @@ final class PageController extends AbstractController
      * @Route("/admin/page", defaults={"page": "1"}, methods={"GET"}, name="admin_page")
      * @Route("/admin/page/{page<[1-9]\d*>}", methods={"GET"}, name="admin_page_paginated")
      */
-    public function index(?int $page)
+    public function index(?int $page): Response
     {
         // Get pages
         $repository = $this->getDoctrine()->getRepository(Page::class);
@@ -31,7 +31,7 @@ final class PageController extends AbstractController
     /**
      * @Route("/admin/page/new", name="admin_page_new")
      */
-    public function new(Request $request)
+    public function new(Request $request): Response
     {
         $page = new Page();
 

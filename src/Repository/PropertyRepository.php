@@ -25,7 +25,7 @@ final class PropertyRepository extends ServiceEntityRepository
         parent::__construct($registry, Property::class);
     }
 
-    public function countAll()
+    public function countAll(): int
     {
         return $this->createQueryBuilder('p')
             ->select('count(p.id)')
@@ -33,7 +33,7 @@ final class PropertyRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
-    public function findCount()
+    public function findCount(): int
     {
         $cache = new FilesystemCache();
 

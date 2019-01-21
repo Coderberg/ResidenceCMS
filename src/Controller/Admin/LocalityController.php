@@ -16,7 +16,7 @@ final class LocalityController extends AbstractController
     /**
      * @Route("/admin/locality", name="admin_locality")
      */
-    public function index()
+    public function index(): Response
     {
         $repository = $this->getDoctrine()->getRepository(Locality::class);
 
@@ -30,7 +30,7 @@ final class LocalityController extends AbstractController
     /**
      * @Route("/admin/locality/new", name="admin_locality_new")
      */
-    public function new(Request $request)
+    public function new(Request $request): Response
     {
         $locality = new Locality();
 

@@ -14,7 +14,7 @@ final class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-    public function countAll()
+    public function countAll(): int
     {
         return $this->createQueryBuilder('u')
             ->select('count(u.id)')
@@ -22,7 +22,7 @@ final class UserRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
-    public function findCount()
+    public function findCount(): int
     {
         $cache = new FilesystemCache();
 

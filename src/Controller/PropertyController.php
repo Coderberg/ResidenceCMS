@@ -14,7 +14,7 @@ final class PropertyController extends BaseController
      * @Route("/", defaults={"page": "1"}, methods={"GET"}, name="property")
      * @Route("/page/{page<[1-9]\d*>}", methods={"GET"}, name="property_paginated")
      */
-    public function index(?int $page)
+    public function index(?int $page): Response
     {
         $properties = $this->getDoctrine()
             ->getRepository(Property::class)->findLatest($page);

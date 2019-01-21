@@ -30,7 +30,7 @@ final class AppFixtures extends Fixture
         $this->encoder = $encoder;
     }
 
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $this->loadSettings($manager);
         $this->loadPages($manager);
@@ -42,7 +42,7 @@ final class AppFixtures extends Fixture
         $this->loadPhotos($manager);
     }
 
-    private function loadSettings(ObjectManager $manager)
+    private function loadSettings(ObjectManager $manager): void
     {
         $setting = new Setting();
         $setting->setName('Site name');
@@ -52,19 +52,19 @@ final class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function loadPages(ObjectManager $manager)
+    private function loadPages(ObjectManager $manager): void
     {
         $page = new Page();
         $page->setTitle('About Us');
         $page->setDescription('About Us Page');
         $page->setSlug(Slugger::slugify('About Us'));
         $page->setContent($this->getContent());
-        $page->setShowInMenu(1);
+        $page->setShowInMenu(true);
         $manager->persist($page);
         $manager->flush();
     }
 
-    private function loadLocalities(ObjectManager $manager)
+    private function loadLocalities(ObjectManager $manager): void
     {
         foreach ($this->getLocalityData() as [$slug, $name]) {
             $locality = new Locality();
@@ -76,7 +76,7 @@ final class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function loadCategories(ObjectManager $manager)
+    private function loadCategories(ObjectManager $manager): void
     {
         foreach ($this->getCategoryData() as [$slug, $name]) {
             $category = new Category();
@@ -88,7 +88,7 @@ final class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function loadOperations(ObjectManager $manager)
+    private function loadOperations(ObjectManager $manager): void
     {
         foreach ($this->getOperationData() as [$slug, $name]) {
             $operation = new Operation();
@@ -100,7 +100,7 @@ final class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function loadUsers(ObjectManager $manager)
+    private function loadUsers(ObjectManager $manager): void
     {
         $user = new User();
         $user->setFullName('John Smith');
@@ -114,7 +114,7 @@ final class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function loadProperties(ObjectManager $manager)
+    private function loadProperties(ObjectManager $manager): void
     {
         foreach ($this->getPropertyData() as [$operation_id, $category_id, $locality_id, $title,
                  $address, $latitude, $longitude, $price, $price_type, ]) {
@@ -130,10 +130,10 @@ final class AppFixtures extends Fixture
             $property->setAddress($address);
             $property->setLatitude($latitude);
             $property->setLongitude($longitude);
-            $property->setShowMap(1);
+            $property->setShowMap(true);
             $property->setPrice($price);
             $property->setPriceType($price_type);
-            $property->setPublished(1);
+            $property->setPublished(true);
             $property->setPublishedAt(new \DateTime('now'));
             $manager->persist($property);
             $this->addReference(Slugger::slugify($title), $property);
@@ -141,7 +141,7 @@ final class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function loadPhotos(ObjectManager $manager)
+    private function loadPhotos(ObjectManager $manager): void
     {
         foreach ($this->getPhotoData() as [$property, $priority, $file]) {
             $photo = new Photo();

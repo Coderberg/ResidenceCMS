@@ -18,7 +18,7 @@ class BaseController extends AbstractController
             ->findAll()[0];
     }
 
-    public function pages()
+    public function pages(): array
     {
         return [
             'pages' => $this->getDoctrine()->getRepository(Page::class)
@@ -26,7 +26,7 @@ class BaseController extends AbstractController
         ];
     }
 
-    public function searchFields()
+    public function searchFields(): array
     {
         // Get localities
         $localities = $this->getDoctrine()

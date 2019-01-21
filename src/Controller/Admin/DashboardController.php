@@ -9,6 +9,7 @@ use App\Entity\Page;
 use App\Entity\Property;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 final class DashboardController extends AbstractController
@@ -16,7 +17,7 @@ final class DashboardController extends AbstractController
     /**
      * @Route("/admin", name="admin_dashboard")
      */
-    public function index()
+    public function index(): Response
     {
         // Counting the number of properties
         $properties = $this->getDoctrine()

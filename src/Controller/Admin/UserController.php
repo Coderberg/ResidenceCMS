@@ -24,7 +24,7 @@ final class UserController extends AbstractController
     /**
      * @Route("/admin/user", name="admin_user")
      */
-    public function index()
+    public function index(): Response
     {
         $repository = $this->getDoctrine()->getRepository(User::class);
 
@@ -38,7 +38,7 @@ final class UserController extends AbstractController
     /**
      * @Route("/admin/user/new", name="admin_user_new")
      */
-    public function new(Request $request)
+    public function new(Request $request): Response
     {
         $user = new User();
 

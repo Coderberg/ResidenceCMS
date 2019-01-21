@@ -16,7 +16,7 @@ final class CategoryController extends AbstractController
     /**
      * @Route("/admin/category", name="admin_category")
      */
-    public function index()
+    public function index(): Response
     {
         $repository = $this->getDoctrine()->getRepository(Category::class);
 
@@ -30,7 +30,7 @@ final class CategoryController extends AbstractController
     /**
      * @Route("/admin/category/new", name="admin_category_new")
      */
-    public function new(Request $request)
+    public function new(Request $request): Response
     {
         $category = new Category();
 
