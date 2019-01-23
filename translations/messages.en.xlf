@@ -30,7 +30,7 @@
                 <source>menu.logout</source>
                 <target>Logout</target>
             </trans-unit>
-            
+
             <trans-unit id="yes">
                 <source>yes</source>
                 <target>Yes</target>
@@ -43,7 +43,7 @@
                 <source>view_details</source>
                 <target>View Details</target>
             </trans-unit>
-            
+
             <trans-unit id="dashboard">
                 <source>dashboard</source>
                 <target>Dashboard</target>
@@ -100,7 +100,7 @@
                 <source>photo</source>
                 <target>Photo</target>
             </trans-unit>
-            
+
             <trans-unit id="message.created">
                 <source>message.created</source>
                 <target>Created successfully</target>
@@ -117,7 +117,7 @@
                 <source>message.uploaded</source>
                 <target>Photo uploaded successfully</target>
             </trans-unit>
-            
+
             <trans-unit id="widget.contact_information">
                 <source>widget.contact_information</source>
                 <target>Contact Information</target>
@@ -179,7 +179,7 @@
                 <source>action.sign_in</source>
                 <target>Sign in</target>
             </trans-unit>
-            
+
             <trans-unit id="table.locality_name">
                 <source>table.locality_name</source>
                 <target>Locality name</target>
@@ -208,7 +208,7 @@
                 <source>table.action</source>
                 <target>Action</target>
             </trans-unit>
-            
+
             <trans-unit id="confirmation.delete_item">
                 <source>confirmation.delete_item</source>
                 <target>Are you sure you want to delete this item?</target>
@@ -221,7 +221,7 @@
                 <source>confirmation.delete_user</source>
                 <target>Are you sure you want to delete this user?</target>
             </trans-unit>
-            
+
             <trans-unit id="title.login">
                 <source>title.login</source>
                 <target>Secure Sign in</target>
@@ -294,7 +294,7 @@
                 <source>title.settings</source>
                 <target>Settings</target>
             </trans-unit>
-            
+
             <trans-unit id="label.remember_me">
                 <source>label.remember_me</source>
                 <target>Keep me logged in</target>
@@ -314,6 +314,10 @@
             <trans-unit id="label.settings.code">
                 <source>label.settings.code</source>
                 <target>Custom code in header (Google Analytics etc.)</target>
+            </trans-unit>
+            <trans-unit id="label.settings.ymaps_key">
+                <source>label.settings.ymaps_key</source>
+                <target>Yandex.Maps JavaScript API key</target>
             </trans-unit>
             <trans-unit id="label.full_name">
                 <source>label.full_name</source>
@@ -447,7 +451,7 @@
                 <source>label.save_and_create_new</source>
                 <target>Save and create new</target>
             </trans-unit>
-            
+
             <trans-unit id="property.locality">
                 <source>property.locality</source>
                 <target>Locality</target>

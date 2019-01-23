@@ -47,6 +47,13 @@ final class SettingType extends AbstractType
                 ],
                 'required' => false,
                 'label' => 'label.settings.code',
+            ])
+            ->add('ymaps_key', null, [
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'required' => false,
+                'label' => 'label.settings.ymaps_key',
             ]);
     }
 

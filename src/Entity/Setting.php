@@ -36,6 +36,11 @@ class Setting
      */
     private $custom_code;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $ymaps_key;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +90,18 @@ class Setting
     public function setCustomCode(?string $custom_code): self
     {
         $this->custom_code = $custom_code;
+
+        return $this;
+    }
+
+    public function getYmapsKey(): ?string
+    {
+        return $this->ymaps_key;
+    }
+
+    public function setYmapsKey(?string $ymaps_key): self
+    {
+        $this->ymaps_key = $ymaps_key;
 
         return $this;
     }

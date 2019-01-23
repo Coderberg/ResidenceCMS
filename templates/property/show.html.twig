@@ -137,8 +137,16 @@
 
         </script>
 
-        {# TODO: Defer loading #}
-        <script src="https://api-maps.yandex.ru/2.1/?lang=en_US"></script>
+        {% if site.ymapsKey != '' %}
+
+            <script src="https://api-maps.yandex.ru/2.1/?apikey={{ site.ymapsKey }}&lang=en_US"></script>
+
+        {% else %}
+
+            <script src="https://api-maps.yandex.ru/2.1/?lang=en_US"></script>
+
+        {% endif %}
+
         {{ encore_entry_script_tags('js/map') }}
 
     {% endif %}
