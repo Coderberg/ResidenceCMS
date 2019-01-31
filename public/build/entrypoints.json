@@ -3,13 +3,13 @@
     "js/app": {
       "js": [
         "/build/runtime.6cf710cd.js",
-        "/build/js/app.1d4771d6.js"
+        "/build/js/app.ac87ed6f.js"
       ]
     },
     "js/ekko-lightbox": {
       "js": [
         "/build/runtime.6cf710cd.js",
-        "/build/js/ekko-lightbox.25b1e870.js"
+        "/build/js/ekko-lightbox.43d477ca.js"
       ]
     },
     "js/slugger": {
@@ -29,7 +29,7 @@
         "/build/runtime.6cf710cd.js"
       ],
       "css": [
-        "/build/css/app.fa80a9ed.css"
+        "/build/css/app.12b026b6.css"
       ]
     },
     "css/admin": {
@@ -37,7 +37,7 @@
         "/build/runtime.6cf710cd.js"
       ],
       "css": [
-        "/build/css/admin.3b48290f.css"
+        "/build/css/admin.668ae512.css"
       ]
     },
     "css/ekko-lightbox": {

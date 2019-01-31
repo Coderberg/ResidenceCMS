@@ -100,9 +100,12 @@ final class PropertyType extends AbstractType
             ])
             ->add('show_map', null, [
                 'attr' => [
-                    'class' => 'ml-2',
+                    'class' => 'custom-control-input',
                 ],
                 'label' => 'label.show_map',
+                'label_attr' => [
+                    'class' => 'custom-control-label',
+                ],
             ])
             ->add('price', null, [
                 'attr' => [
@@ -119,9 +122,12 @@ final class PropertyType extends AbstractType
             ->add('available_now', null, [
                     'data' => true,
                     'attr' => [
-                        'class' => 'ml-2',
+                        'class' => 'custom-control-input',
                     ],
                     'label' => 'label.available_now',
+                    'label_attr' => [
+                        'class' => 'custom-control-label',
+                    ],
                 ]
             )
             ->add('content', CKEditorType::class, [

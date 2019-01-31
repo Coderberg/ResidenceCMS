@@ -63,8 +63,9 @@
                 </div>
             </div>
 
-            <div class="form-group mb-3">
-                {{ form_row(form.show_map) }}
+            <div class="form-group mb-3 custom-control custom-switch">
+                {{ form_widget(form.show_map) }}
+                {{ form_label(form.show_map) }}
             </div>
 
             <div class="row">
@@ -77,8 +78,9 @@
                 </div>
             </div>
 
-            <div class="form-group mb-3">
-                {{ form_row(form.available_now) }}
+            <div class="form-group mb-3 custom-control custom-switch">
+                {{ form_widget(form.available_now) }}
+                {{ form_label(form.available_now) }}
             </div>
 
             <div class="form-group">
