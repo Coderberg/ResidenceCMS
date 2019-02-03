@@ -19,8 +19,8 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 }
 
 code {
-  margin: 0px 2px;
-  padding: 0px 5px;
+  margin: 0 2px;
+  padding: 0 5px;
 }
 
 // Lazyload
@@ -54,18 +54,17 @@ code {
 .search_form {
   position: relative;
   padding: 48px 0;
-}
 
-.search_form .form-control-lg,
-.search_form .btn {
-  height: 3.5rem;
+  .form-control-lg {
+    height: 3.5rem;
+  }
+
+  .btn {
+    height: 3.5rem;
+  }
 }
 
 // Contact widget
-.contact-box {
-  margin: 10px 30px;
-}
-
 .icon-box {
   background-color: #f9f9f9;
   border-radius: 50%;
@@ -74,6 +73,10 @@ code {
   transition: all linear .15s;
   width: 50px;
   float: left;
+}
+
+.contact-box {
+  margin: 10px 30px;
 }
 
 .contact-box h4 {
@@ -118,14 +121,14 @@ code {
   position: absolute;
   right: 15px;
   bottom: 15px;
-  box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border-radius: 2px;
 }
 
 // Overview
 .overview {
   border: 1px solid #b5b5b5;
-  margin: 0px 30px 10px 0px;
+  margin: 0 30px 10px 0;
   padding: 20px;
 }
 
