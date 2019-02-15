@@ -18,8 +18,6 @@ use Symfony\Component\Cache\Simple\FilesystemCache;
  */
 final class PropertyRepository extends ServiceEntityRepository
 {
-    const NUM_ITEMS = 6;
-
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Property::class);
@@ -80,10 +78,19 @@ final class PropertyRepository extends ServiceEntityRepository
         return $this->createPaginator($qb->getQuery(), $page);
     }
 
+    private function findLimit(): int
+    {
+        $em = $this->getEntityManager();
+
+        $query = $em->createQuery("SELECT s.items_per_page FROM App\Entity\Setting s");
+
+        return $query->getSingleScalarResult();
+    }
+
     private function createPaginator(Query $query, int $page): Pagerfanta
     {
         $paginator = new Pagerfanta(new DoctrineORMAdapter($query));
-        $paginator->setMaxPerPage(self::NUM_ITEMS);
+        $paginator->setMaxPerPage($this->findLimit());
         $paginator->setCurrentPage($page);
 
         return $paginator;

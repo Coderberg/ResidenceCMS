@@ -48,6 +48,7 @@ final class AppFixtures extends Fixture
         $setting->setName('Site name');
         $setting->setTitle('Site Title');
         $setting->setDescription('Site Description');
+        $setting->setItemsPerPage(6);
         $manager->persist($setting);
         $manager->flush();
     }

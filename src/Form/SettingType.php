@@ -48,6 +48,12 @@ final class SettingType extends AbstractType
                 'required' => false,
                 'label' => 'label.settings.code',
             ])
+            ->add('items_per_page', null, [
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'label' => 'label.settings.limit',
+            ])
             ->add('ymaps_key', null, [
                 'attr' => [
                     'class' => 'form-control',

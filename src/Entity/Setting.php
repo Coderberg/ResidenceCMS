@@ -37,6 +37,11 @@ class Setting
     private $custom_code;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $items_per_page;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $ymaps_key;
@@ -90,6 +95,18 @@ class Setting
     public function setCustomCode(?string $custom_code): self
     {
         $this->custom_code = $custom_code;
+
+        return $this;
+    }
+
+    public function getItemsPerPage(): ?int
+    {
+        return $this->items_per_page;
+    }
+
+    public function setItemsPerPage(int $items_per_page): self
+    {
+        $this->items_per_page = $items_per_page;
 
         return $this;
     }

@@ -315,6 +315,10 @@
                 <source>label.settings.code</source>
                 <target>Custom code in header (Google Analytics etc.)</target>
             </trans-unit>
+            <trans-unit id="label.settings.limit">
+                <source>label.settings.limit</source>
+                <target>Number Of Items Per Page</target>
+            </trans-unit>
             <trans-unit id="label.settings.ymaps_key">
                 <source>label.settings.ymaps_key</source>
                 <target>Yandex.Maps JavaScript API key</target>
