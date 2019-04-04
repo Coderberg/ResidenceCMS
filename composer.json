@@ -3,7 +3,7 @@
     "type": "project",
     "description": "Open Source Property Management System built with Symfony",
     "license": "MIT",
-    "minimum-stability": "dev",
+
     "require": {
         "php": "^7.2",
         "ext-iconv": "*",
