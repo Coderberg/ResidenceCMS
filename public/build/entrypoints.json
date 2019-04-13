@@ -2,51 +2,61 @@
   "entrypoints": {
     "js/app": {
       "js": [
-        "/build/runtime.fa8f03f5.js",
-        "/build/js/app.76ea1049.js"
+        "/build/runtime.1ba6bf05.js",
+        "/build/js/app.f983683a.js"
       ]
     },
     "js/ekko-lightbox": {
       "js": [
-        "/build/runtime.fa8f03f5.js",
-        "/build/js/ekko-lightbox.bd386010.js"
+        "/build/runtime.1ba6bf05.js",
+        "/build/js/ekko-lightbox.d45e9d47.js"
       ]
     },
     "js/slugger": {
       "js": [
-        "/build/runtime.fa8f03f5.js",
-        "/build/js/slugger.6ddbfeb8.js"
+        "/build/runtime.1ba6bf05.js",
+        "/build/js/slugger.cd64200a.js"
       ]
     },
     "js/map": {
       "js": [
-        "/build/runtime.fa8f03f5.js",
-        "/build/js/map.30fb9c89.js"
+        "/build/runtime.1ba6bf05.js",
+        "/build/js/map.030cc1a1.js"
       ]
     },
     "css/app": {
       "js": [
-        "/build/runtime.fa8f03f5.js"
+        "/build/runtime.1ba6bf05.js"
       ],
       "css": [
-        "/build/css/app.5cf2d83e.css"
+        "/build/css/app.c8bdde66.css"
       ]
     },
     "css/admin": {
       "js": [
-        "/build/runtime.fa8f03f5.js"
+        "/build/runtime.1ba6bf05.js"
       ],
       "css": [
-        "/build/css/admin.668ae512.css"
+        "/build/css/admin.ff8c224d.css"
       ]
     },
     "css/ekko-lightbox": {
       "js": [
-        "/build/runtime.fa8f03f5.js"
+        "/build/runtime.1ba6bf05.js"
       ],
       "css": [
-        "/build/css/ekko-lightbox.d656d29c.css"
+        "/build/css/ekko-lightbox.d5c621d9.css"
       ]
     }
+  },
+  "integrity": {
+    "/build/runtime.1ba6bf05.js": "sha384-5WSgDNxkAY6j6/bzAcp3v//+PCXLgXCU3u5QgRXWiRfMnN4Ic/a/EF6HJnbRXik8",
+    "/build/js/app.f983683a.js": "sha384-ha1YSn3ORCEj6kOMRlSoSQT6n6a7iBExzOv60G81o8MvCsZI0Z/9yhoQBWJ9MkCO",
+    "/build/js/ekko-lightbox.d45e9d47.js": "sha384-mFezoVLDe0P9xFUn+74ZofTn+kVfTuG9HWvdXNxCT+4FI55ws6glGgbU7FQ/k2ob",
+    "/build/js/slugger.cd64200a.js": "sha384-Eui6Cu4TjLeZ7cBygqEZWv6Xf04fPJxVZo4Aw5+e8UcJZi8GTvpRZgZC35DYwz3U",
+    "/build/js/map.030cc1a1.js": "sha384-5GzCjbErHBmpflDx1pWN3ZD9wIxQvArzpbBpiQcgSW/k3Y/NDXbk9IRwyV+f+azw",
+    "/build/css/app.c8bdde66.css": "sha384-VFg503tKwiKfPOVz1aJyHXi2REkrfnxO0mJIigi2HhbIN/56AVL247R7k9uV+9Bn",
+    "/build/css/admin.ff8c224d.css": "sha384-n2sAlAYQrJDZiEJg9zZHYuB/hO/423BTrt1urknZ+YW8dLwx1v+4RpcUZJFLHBmj",
+    "/build/css/ekko-lightbox.d5c621d9.css": "sha384-Qtyjq+CnbfY/jrb1fJUj+xjmA/d/TdExPWz/1mbsdULjPnxQt0EQwHzRBMw5lLF6"
   }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f350984416bc90c36431336cc093dd8",
+    "content-hash": "e6015d7d5111d6142cc79d5b47845dc9",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -5340,16 +5340,16 @@
         },
         {
             "name": "symfony/webpack-encore-bundle",
-            "version": "v1.4.0",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/webpack-encore-bundle.git",
-                "reference": "fc18456ed44737995f912c2084505fb67d040e11"
+                "reference": "2384cfde92226f2447eb422570c322afe2ae15ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/webpack-encore-bundle/zipball/fc18456ed44737995f912c2084505fb67d040e11",
-                "reference": "fc18456ed44737995f912c2084505fb67d040e11",
+                "url": "https://api.github.com/repos/symfony/webpack-encore-bundle/zipball/2384cfde92226f2447eb422570c322afe2ae15ea",
+                "reference": "2384cfde92226f2447eb422570c322afe2ae15ea",
                 "shasum": ""
             },
             "require": {
@@ -5390,7 +5390,7 @@
                 }
             ],
             "description": "Integration with your Symfony app & Webpack Encore!",
-            "time": "2019-03-29T14:09:53+00:00"
+            "time": "2019-04-10T17:55:40+00:00"
         },
         {
             "name": "symfony/yaml",

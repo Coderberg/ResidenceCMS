@@ -3,7 +3,7 @@
     "type": "project",
     "description": "Open Source Property Management System built with Symfony",
     "license": "MIT",
-
+    "minimum-stability": "dev",
     "require": {
         "php": "^7.2",
         "ext-iconv": "*",
@@ -29,7 +29,7 @@
         "symfony/twig-bundle": "4.2.*",
         "symfony/validator": "4.2.*",
         "symfony/web-link": "4.2.*",
-        "symfony/webpack-encore-bundle": "^1.2.1",
+        "symfony/webpack-encore-bundle": "^1.5",
         "symfony/yaml": "4.2.*",
         "white-october/pagerfanta-bundle": "^1.2"
     },

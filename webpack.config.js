@@ -1,4 +1,4 @@
-var Encore = require('@symfony/webpack-encore');
+let Encore = require('@symfony/webpack-encore');
 
 Encore
     // directory where compiled assets will be stored
@@ -57,6 +57,11 @@ Encore
     .addStyleEntry('css/app', ['./assets/scss/app.scss'])
     .addStyleEntry('css/admin', ['./assets/scss/admin.scss'])
     .addStyleEntry('css/ekko-lightbox', ['./assets/scss/ekko-lightbox.scss'])
+    .enableIntegrityHashes()
+    .configureBabel(null, {
+        useBuiltIns: 'usage',
+        corejs: 3,
+    })
 
 ;
 
