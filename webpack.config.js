@@ -57,7 +57,7 @@ Encore
     .addStyleEntry('css/app', ['./assets/scss/app.scss'])
     .addStyleEntry('css/admin', ['./assets/scss/admin.scss'])
     .addStyleEntry('css/ekko-lightbox', ['./assets/scss/ekko-lightbox.scss'])
-    .enableIntegrityHashes()
+    //.enableIntegrityHashes()
     .configureBabel(null, {
         useBuiltIns: 'usage',
         corejs: 3,
