@@ -124,6 +124,7 @@ class Property
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Photo", mappedBy="property")
+     * @ORM\OrderBy({"priority" = "DESC"})
      */
     private $photos;
 
