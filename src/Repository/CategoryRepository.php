@@ -34,12 +34,11 @@ final class CategoryRepository extends ServiceEntityRepository
         $cache = new FilesystemAdapter();
 
         $count = $cache->get('categories_count', function (ItemInterface $item) {
-
             $item->expiresAfter(3600);
 
             return $this->countAll();
         });
 
-        return (int)$count;
+        return (int) $count;
     }
 }

@@ -34,17 +34,15 @@ final class PropertyRepository extends ServiceEntityRepository
 
     public function findCount(): int
     {
-
         $cache = new FilesystemAdapter();
 
         $count = $cache->get('properties_count', function (ItemInterface $item) {
-
             $item->expiresAfter(3600);
 
             return $this->countAll();
         });
 
-        return (int)$count;
+        return (int) $count;
     }
 
     public function findLatest(int $page = 1): Pagerfanta

@@ -25,16 +25,14 @@ final class UserRepository extends ServiceEntityRepository
 
     public function findCount(): int
     {
-
         $cache = new FilesystemAdapter();
 
         $count = $cache->get('users_count', function (ItemInterface $item) {
-
             $item->expiresAfter(3600);
 
             return $this->countAll();
         });
 
-        return (int)$count;
+        return (int) $count;
     }
 }
