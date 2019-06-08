@@ -8,7 +8,8 @@ use Doctrine\ORM\Query;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
 use Symfony\Bridge\Doctrine\RegistryInterface;
-use Symfony\Component\Cache\Simple\FilesystemCache;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Contracts\Cache\ItemInterface;
 
 /**
  * @method Page|null find($id, $lockMode = null, $lockVersion = null)
@@ -35,13 +36,17 @@ final class PageRepository extends ServiceEntityRepository
 
     public function findCount(): int
     {
-        $cache = new FilesystemCache();
 
-        if (!$cache->has('pages_count')) {
-            $cache->set('pages_count', $this->countAll(), 3600);
-        }
+        $cache = new FilesystemAdapter();
 
-        return $cache->get('pages_count');
+        $count = $cache->get('pages_count', function (ItemInterface $item) {
+
+            $item->expiresAfter(3600);
+
+            return $this->countAll();
+        });
+
+        return (int)$count;
     }
 
     public function findMenuItems()

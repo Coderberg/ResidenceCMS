@@ -5,7 +5,8 @@ namespace App\Repository;
 use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
-use Symfony\Component\Cache\Simple\FilesystemCache;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Contracts\Cache\ItemInterface;
 
 /**
  * @method Category|null find($id, $lockMode = null, $lockVersion = null)
@@ -30,12 +31,15 @@ final class CategoryRepository extends ServiceEntityRepository
 
     public function findCount(): int
     {
-        $cache = new FilesystemCache();
+        $cache = new FilesystemAdapter();
 
-        if (!$cache->has('categories_count')) {
-            $cache->set('categories_count', $this->countAll(), 3600);
-        }
+        $count = $cache->get('categories_count', function (ItemInterface $item) {
 
-        return $cache->get('categories_count');
+            $item->expiresAfter(3600);
+
+            return $this->countAll();
+        });
+
+        return (int)$count;
     }
 }

@@ -5,7 +5,8 @@ namespace App\Repository;
 use App\Entity\Locality;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
-use Symfony\Component\Cache\Simple\FilesystemCache;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Contracts\Cache\ItemInterface;
 
 /**
  * @method Locality|null find($id, $lockMode = null, $lockVersion = null)
@@ -30,12 +31,16 @@ final class LocalityRepository extends ServiceEntityRepository
 
     public function findCount(): int
     {
-        $cache = new FilesystemCache();
 
-        if (!$cache->has('localities_count')) {
-            $cache->set('localities_count', $this->countAll(), 3600);
-        }
+        $cache = new FilesystemAdapter();
 
-        return $cache->get('localities_count');
+        $count = $cache->get('localities_count', function (ItemInterface $item) {
+
+            $item->expiresAfter(3600);
+
+            return $this->countAll();
+        });
+
+        return (int)$count;
     }
 }

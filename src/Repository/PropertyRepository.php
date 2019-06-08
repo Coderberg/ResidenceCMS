@@ -8,7 +8,8 @@ use Doctrine\ORM\Query;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
 use Symfony\Bridge\Doctrine\RegistryInterface;
-use Symfony\Component\Cache\Simple\FilesystemCache;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Contracts\Cache\ItemInterface;
 
 /**
  * @method Property|null find($id, $lockMode = null, $lockVersion = null)
@@ -33,13 +34,17 @@ final class PropertyRepository extends ServiceEntityRepository
 
     public function findCount(): int
     {
-        $cache = new FilesystemCache();
 
-        if (!$cache->has('properties_count')) {
-            $cache->set('properties_count', $this->countAll(), 3600);
-        }
+        $cache = new FilesystemAdapter();
 
-        return $cache->get('properties_count');
+        $count = $cache->get('properties_count', function (ItemInterface $item) {
+
+            $item->expiresAfter(3600);
+
+            return $this->countAll();
+        });
+
+        return (int)$count;
     }
 
     public function findLatest(int $page = 1): Pagerfanta

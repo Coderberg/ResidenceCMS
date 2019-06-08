@@ -5,7 +5,8 @@ namespace App\Repository;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Symfony\Component\Cache\Simple\FilesystemCache;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Contracts\Cache\ItemInterface;
 
 final class UserRepository extends ServiceEntityRepository
 {
@@ -24,12 +25,16 @@ final class UserRepository extends ServiceEntityRepository
 
     public function findCount(): int
     {
-        $cache = new FilesystemCache();
 
-        if (!$cache->has('users_count')) {
-            $cache->set('users_count', $this->countAll(), 3600);
-        }
+        $cache = new FilesystemAdapter();
 
-        return $cache->get('users_count');
+        $count = $cache->get('users_count', function (ItemInterface $item) {
+
+            $item->expiresAfter(3600);
+
+            return $this->countAll();
+        });
+
+        return (int)$count;
     }
 }
