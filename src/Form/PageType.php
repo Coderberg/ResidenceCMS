@@ -47,11 +47,13 @@ final class PageType extends AbstractType
                 'label' => 'label.content',
             ])
             ->add('show_in_menu', null, [
-                'data' => true,
                 'attr' => [
-                    'class' => 'ml-2',
+                    'class' => 'custom-control-input',
                 ],
                 'label' => 'label.show_in_menu',
+                'label_attr' => [
+                    'class' => 'custom-control-label',
+                ],
             ]);
     }
 
