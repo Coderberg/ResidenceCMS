@@ -16,14 +16,15 @@ matrix:
   include:
     - php: 7.2
     - php: 7.3
-    - php: nightly
+    # 'php: nightly' is PHP 8.0
+    - php: 7.4snapshot
   allow_failures:
-    - php: nightly
+    - php: 7.4snapshot
 
 before_install:
   - cp ./.travis/.env.local .env.local
   - cp ./.travis/.env.test.local .env.test.local
-  - '[[ "$TRAVIS_PHP_VERSION" == "nightly" ]] || phpenv config-rm xdebug.ini'
+  - '[[ "$TRAVIS_PHP_VERSION" == "7.4snapshot" ]] || phpenv config-rm xdebug.ini'
   - composer self-update
 
 addons:
@@ -33,12 +34,12 @@ install:
   - composer install
 
 script:
-  #- php bin/console doctrine:database:create --no-interaction
+ # - php bin/console doctrine:database:create --no-interaction
   - php bin/console doctrine:migrations:migrate --no-interaction
   - php bin/console doctrine:fixtures:load --no-interaction
   - php bin/phpunit
   # this checks that the source code follows the Symfony Code Syntax rules
-  - '[[ "$TRAVIS_PHP_VERSION" == "nightly" ]] || ./vendor/bin/php-cs-fixer fix --diff --dry-run -v'
+  - '[[ "$TRAVIS_PHP_VERSION" == "7.4snapshot" ]] || ./vendor/bin/php-cs-fixer fix --diff --dry-run -v'
   # this checks that the YAML config files contain no syntax errors
   - php bin/console lint:yaml config
   # this checks that the Twig template files contain no syntax errors
