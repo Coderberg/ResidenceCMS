@@ -28,7 +28,12 @@ before_install:
   - composer self-update
 
 addons:
-  mariadb: '10.3'
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+      - mysql-client
 
 install:
   - composer install
