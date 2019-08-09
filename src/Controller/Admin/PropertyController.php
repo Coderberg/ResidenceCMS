@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller\Admin;
 
 use App\Entity\Property;
@@ -37,7 +39,7 @@ final class PropertyController extends AbstractController
         $property = new Property();
         $property->setAuthor($this->getUser());
         $property->setPublishedAt(new \DateTime('now'));
-        $property->setPublished(1);
+        $property->setPublished(true);
 
         $form = $this->createForm(PropertyType::class, $property);
 

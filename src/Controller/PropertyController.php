@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\Property;
@@ -47,9 +49,9 @@ final class PropertyController extends BaseController
      */
     public function search(Request $request, PropertyRepository $properties, ?int $page): Response
     {
-        $locality_id = $request->query->get('locality', 0);
-        $operation_id = $request->query->get('operation', 0);
-        $category_id = $request->query->get('category', 0);
+        $locality_id = (int) ($request->query->get('locality', 0));
+        $operation_id = (int) ($request->query->get('operation', 0));
+        $category_id = (int) ($request->query->get('category', 0));
 
         return $this->render('property/search.html.twig',
             [

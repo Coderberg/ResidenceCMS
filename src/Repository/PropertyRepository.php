@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
 use App\Entity\Property;
@@ -87,7 +89,7 @@ final class PropertyRepository extends ServiceEntityRepository
 
         $query = $em->createQuery("SELECT s.items_per_page FROM App\Entity\Setting s");
 
-        return $query->getSingleScalarResult();
+        return (int) $query->getSingleScalarResult();
     }
 
     private function createPaginator(Query $query, int $page): Pagerfanta
