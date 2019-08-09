@@ -28,10 +28,12 @@ final class PropertyRepository extends ServiceEntityRepository
 
     public function countAll(): int
     {
-        return $this->createQueryBuilder('p')
+        $count = $this->createQueryBuilder('p')
             ->select('count(p.id)')
             ->getQuery()
             ->getSingleScalarResult();
+
+        return (int) $count;
     }
 
     public function findCount(): int

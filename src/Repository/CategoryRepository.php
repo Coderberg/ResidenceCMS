@@ -25,10 +25,12 @@ final class CategoryRepository extends ServiceEntityRepository
 
     public function countAll(): int
     {
-        return $this->createQueryBuilder('c')
+        $count = $this->createQueryBuilder('c')
             ->select('count(c.id)')
             ->getQuery()
             ->getSingleScalarResult();
+
+        return (int) $count;
     }
 
     public function findCount(): int

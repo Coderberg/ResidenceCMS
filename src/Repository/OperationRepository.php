@@ -25,10 +25,12 @@ final class OperationRepository extends ServiceEntityRepository
 
     public function countAll(): int
     {
-        return $this->createQueryBuilder('o')
+        $count = $this->createQueryBuilder('o')
             ->select('count(o.id)')
             ->getQuery()
             ->getSingleScalarResult();
+
+        return (int) $count;
     }
 
     public function findCount(): int

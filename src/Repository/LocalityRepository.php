@@ -25,10 +25,12 @@ final class LocalityRepository extends ServiceEntityRepository
 
     public function countAll(): int
     {
-        return $this->createQueryBuilder('l')
+        $count = $this->createQueryBuilder('l')
             ->select('count(l.id)')
             ->getQuery()
             ->getSingleScalarResult();
+
+        return (int) $count;
     }
 
     public function findCount(): int
