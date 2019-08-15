@@ -6,6 +6,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Page;
 use App\Form\PageType;
+use App\Service\PageService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,7 +23,6 @@ final class PageController extends AbstractController
     {
         // Get pages
         $repository = $this->getDoctrine()->getRepository(Page::class);
-
         $pages = $repository->findLatest($page);
 
         return $this->render('admin/page/index.html.twig', [
@@ -33,19 +33,14 @@ final class PageController extends AbstractController
     /**
      * @Route("/admin/page/new", name="admin_page_new")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, PageService $pageService): Response
     {
         $page = new Page();
-
         $form = $this->createForm(PageType::class, $page);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($page);
-            $em->flush();
-
+            $pageService->create($page);
             $this->addFlash('success', 'message.created');
 
             return $this->redirectToRoute('page', ['slug' => $page->getSlug()]);
@@ -85,15 +80,13 @@ final class PageController extends AbstractController
      * @Route("/page/{id<\d+>}/delete", methods={"POST"}, name="admin_page_delete")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function delete(Request $request, Page $page): Response
+    public function delete(Request $request, Page $page, PageService $pageService): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
             return $this->redirectToRoute('admin_page');
         }
 
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($page);
-        $em->flush();
+        $pageService->delete($page);
         $this->addFlash('success', 'message.deleted');
 
         return $this->redirectToRoute('admin_page');

@@ -19,8 +19,9 @@ Encore
      */
     .addEntry('js/app', './assets/js/app.js')
     .addEntry('js/ekko-lightbox', './assets/js/ekko-lightbox.js')
-    .addEntry('js/slugger', './assets/js/slugger.js')
     .addEntry('js/map', './assets/js/map.js')
+    .addEntry('js/menu-sorting', './assets/js/menu-sorting.js')
+    .addEntry('js/slugger', './assets/js/slugger.js')
 
     // will require an extra script tag for runtime.js
     // but, you probably want this, unless you're building a single-page app

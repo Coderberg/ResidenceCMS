@@ -1,0 +1,48 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ 'title.edit_menu_item' | trans }}{% endblock %}
+
+{% block body %}
+
+    <div class="card mb-3">
+        <div class="card-header"><i class="fas fa-edit"></i> {{ 'title.edit_menu_item' | trans }}</div>
+        <div class="card-body">
+
+            {{ form_start(form) }}
+
+            <div class="form-group">
+
+                {{ form_row(form.title) }}
+
+            </div>
+
+            <div class="form-group">
+                {{ form_row(form.url) }}
+            </div>
+
+            <div class="form-group mb-3 custom-control custom-switch">
+                {{ form_widget(form.new_tab) }}
+                {{ form_label(form.new_tab) }}
+            </div>
+
+            <div class="form-group mb-3 custom-control custom-switch">
+                {{ form_widget(form.nofollow) }}
+                {{ form_label(form.nofollow) }}
+            </div>
+
+            <div class="form-group">
+
+                <button type="submit" class="btn btn-primary">
+                    {{ 'action.save'|trans }}
+                </button>
+
+            </div>
+
+            {{ form_end(form) }}
+
+        </div>
+    </div><br>
+
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

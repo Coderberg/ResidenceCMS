@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller\Admin;
 
+use App\Entity\Menu;
 use App\Entity\Page;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,6 +34,7 @@ final class PageControllerTest extends WebTestCase
             'page[description]' => self::TITLE,
             'page[slug]' => self::SLUG,
             'page[content]' => self::TITLE,
+            'page[show_in_menu]' => true,
         ]);
         $client->submit($form);
 
@@ -45,6 +47,13 @@ final class PageControllerTest extends WebTestCase
         $this->assertNotNull($page);
         $this->assertSame(self::TITLE, $page->getTitle());
         $this->assertSame(self::SLUG, $page->getSlug());
+
+        $menu = $client->getContainer()->get('doctrine')
+            ->getRepository(Menu::class)->findOneBy([
+                'title' => self::TITLE,
+            ]);
+
+        $this->assertSame(self::TITLE, $menu->getTitle());
     }
 
     /**
@@ -102,6 +111,11 @@ final class PageControllerTest extends WebTestCase
         $this->assertNull($client->getContainer()->get('doctrine')
             ->getRepository(Page::class)->findOneBy([
                 'slug' => self::SLUG,
+            ]));
+
+        $this->assertNull($client->getContainer()->get('doctrine')
+            ->getRepository(Menu::class)->findOneBy([
+                'title' => self::TITLE,
             ]));
     }
 }

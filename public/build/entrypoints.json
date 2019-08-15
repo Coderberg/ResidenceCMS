@@ -12,16 +12,22 @@
         "/build/js/ekko-lightbox.5f8d770e.js"
       ]
     },
-    "js/slugger": {
-      "js": [
-        "/build/runtime.e59078a6.js",
-        "/build/js/slugger.e4653337.js"
-      ]
-    },
     "js/map": {
       "js": [
         "/build/runtime.e59078a6.js",
         "/build/js/map.50874e27.js"
+      ]
+    },
+    "js/menu-sorting": {
+      "js": [
+        "/build/runtime.e59078a6.js",
+        "/build/js/menu-sorting.08879320.js"
+      ]
+    },
+    "js/slugger": {
+      "js": [
+        "/build/runtime.e59078a6.js",
+        "/build/js/slugger.e4653337.js"
       ]
     },
     "css/app": {

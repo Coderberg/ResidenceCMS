@@ -68,6 +68,7 @@
                     <a class="dropdown-item" href="{{ path('admin_category') }}">{{ 'categories'|trans }}</a>
                     <a class="dropdown-item" href="{{ path('admin_page') }}">{{ 'pages'|trans }}</a>
                     <a class="dropdown-item" href="{{ path('admin_user') }}">{{ 'users'|trans }}</a>
+                    <a class="dropdown-item" href="{{ path('admin_menu') }}">{{ 'menu'|trans }}</a>
                 </div>
             </li>
 
@@ -139,6 +140,12 @@
             <a class="nav-link" href="{{ path('admin_user') }}">
                 <i class="fas fa-users-cog"></i>
                 <span>{{ 'users'|trans }}</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_menu') }}">
+                <i class="fas fa-bars"></i>
+                <span>{{ 'menu'|trans }}</span>
             </a>
         </li>
         <li class="nav-item">

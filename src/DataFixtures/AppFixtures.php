@@ -12,6 +12,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Category;
 use App\Entity\Locality;
+use App\Entity\Menu;
 use App\Entity\Operation;
 use App\Entity\Page;
 use App\Entity\Photo;
@@ -25,11 +26,14 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 final class AppFixtures extends Fixture
 {
-    private $encoder;
+    /**
+     * @var UserPasswordEncoderInterface
+     */
+    private $passwordEncoder;
 
-    public function __construct(UserPasswordEncoderInterface $encoder)
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
-        $this->encoder = $encoder;
+        $this->passwordEncoder = $passwordEncoder;
     }
 
     public function load(ObjectManager $manager): void
@@ -42,6 +46,7 @@ final class AppFixtures extends Fixture
         $this->loadUsers($manager);
         $this->loadProperties($manager);
         $this->loadPhotos($manager);
+        $this->loadMenu($manager);
     }
 
     private function loadSettings(ObjectManager $manager): void
@@ -108,7 +113,9 @@ final class AppFixtures extends Fixture
         $user = new User();
         $user->setFullName('John Smith');
         $user->setUsername('admin');
-        $user->setPassword($this->encoder->encodePassword($user, 'admin'));
+        $user->setPassword($this->passwordEncoder->encodePassword(
+            $user, 'admin'
+        ));
         $user->setPhone('0(0)99766899');
         $user->setEmail('admin@admin');
         $user->setRoles(['ROLE_ADMIN']);
@@ -152,6 +159,18 @@ final class AppFixtures extends Fixture
             $photo->setPriority($priority);
             $photo->setPhoto($file);
             $manager->persist($photo);
+        }
+        $manager->flush();
+    }
+
+    private function loadMenu(ObjectManager $manager): void
+    {
+        foreach ($this->getMenuData() as [$title, $url]) {
+            $menu = new Menu();
+            $menu->setTitle($title);
+            $menu->setUrl($url);
+            $manager->persist($menu);
+            $this->addReference($title, $menu);
         }
         $manager->flush();
     }
@@ -273,6 +292,15 @@ final class AppFixtures extends Fixture
                 '111 NE 2nd Ave, Miami, FL 33132',
                 '25.775565', '-80.190125', 190000, '',
             ],
+        ];
+    }
+
+    private function getMenuData(): array
+    {
+        return [
+            // $menuData = [$title, $url];
+            ['Homepage', '/'],
+            ['About Us', '/info/about-us'],
         ];
     }
 
