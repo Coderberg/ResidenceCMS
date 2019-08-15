@@ -68,7 +68,9 @@ function slugify() {
         ">": n,
         "№": n
     }, e = "", u = "";
-    for (i = 0; i < t.length; i++) null != r[t[i]] ? u == r[t[i]] && u == n || (e += r[t[i]], u = r[t[i]]) : (e += t[i], u = t[i]);
+    for (i = 0; i < t.length; i++) {
+        null != r[t[i]] ? u == r[t[i]] && u == n || (e += r[t[i]], u = r[t[i]]) : (e += t[i], u = t[i]);
+    }
     e = TrimStr(e), $("#slug input").val(e)
 }
 
