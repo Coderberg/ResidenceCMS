@@ -29,7 +29,7 @@ function sendRequest() {
             url: "/admin/menu/sort",
             data: { items: items }
         }).done(function(resp) {
-            console.log(resp);
+            // console.log(resp);
         });
     }
 }

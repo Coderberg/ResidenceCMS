@@ -8,6 +8,7 @@ use App\Entity\Menu;
 use App\Form\MenuType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,7 +47,10 @@ final class MenuController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', 'message.created');
-            if ($form->get('saveAndCreateNew')->isClicked()) {
+
+            /** @var ClickableInterface $button */
+            $button = $form->get('saveAndCreateNew');
+            if ($button->isClicked()) {
                 return $this->redirectToRoute('admin_menu_new');
             }
 

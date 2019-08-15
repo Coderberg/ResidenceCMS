@@ -15,13 +15,13 @@
     "js/map": {
       "js": [
         "/build/runtime.e59078a6.js",
-        "/build/js/map.50874e27.js"
+        "/build/js/map.69a4951b.js"
       ]
     },
     "js/menu-sorting": {
       "js": [
         "/build/runtime.e59078a6.js",
-        "/build/js/menu-sorting.08879320.js"
+        "/build/js/menu-sorting.2129f9f7.js"
       ]
     },
     "js/slugger": {
