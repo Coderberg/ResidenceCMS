@@ -21,13 +21,13 @@
     "js/menu-sorting": {
       "js": [
         "/build/runtime.e59078a6.js",
-        "/build/js/menu-sorting.2129f9f7.js"
+        "/build/js/menu-sorting.5555cc4d.js"
       ]
     },
     "js/slugger": {
       "js": [
         "/build/runtime.e59078a6.js",
-        "/build/js/slugger.e4653337.js"
+        "/build/js/slugger.e56aaf9a.js"
       ]
     },
     "css/app": {

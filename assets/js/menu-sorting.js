@@ -28,8 +28,6 @@ function sendRequest() {
             method: "POST",
             url: "/admin/menu/sort",
             data: { items: items }
-        }).done(function(resp) {
-            // console.log(resp);
         });
     }
 }
