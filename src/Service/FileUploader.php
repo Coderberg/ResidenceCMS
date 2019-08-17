@@ -43,7 +43,7 @@ final class FileUploader
 
         // Large
         $image = new ImageResize($this->getTargetDirectory().'/'.$fileName);
-        $image->resize(1200, 800, $allow_enlarge = true);
+        $image->resizeToBestFit(1200, 800, $allow_enlarge = true);
         $image->save($this->getTargetDirectory().'/large/'.$fileName);
 
         // Full
