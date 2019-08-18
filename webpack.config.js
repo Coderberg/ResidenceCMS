@@ -22,6 +22,7 @@ Encore
     .addEntry('js/map', './assets/js/map.js')
     .addEntry('js/menu-sorting', './assets/js/menu-sorting.js')
     .addEntry('js/slugger', './assets/js/slugger.js')
+    .addEntry('js/photo', './assets/js/photo.js')
 
     // will require an extra script tag for runtime.js
     // but, you probably want this, unless you're building a single-page app
@@ -58,6 +59,7 @@ Encore
     .addStyleEntry('css/app', ['./assets/scss/app.scss'])
     .addStyleEntry('css/admin', ['./assets/scss/admin.scss'])
     .addStyleEntry('css/ekko-lightbox', ['./assets/scss/ekko-lightbox.scss'])
+    .addStyleEntry('css/photo', ['./assets/scss/photo.scss'])
     //.enableIntegrityHashes()
     .configureBabel(null, {
         useBuiltIns: 'usage',

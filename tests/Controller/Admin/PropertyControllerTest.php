@@ -65,6 +65,7 @@ final class PropertyControllerTest extends WebTestCase
             ->findOneBy(['title' => 'test'])->getId();
 
         $crawler = $client->request('GET', '/admin/photo/'.$property.'/edit');
+        $this->assertSelectorTextContains('html', 'Upload photos');
 
         $photo = new UploadedFile(
             __DIR__.'/../../../public/images/bg.jpg',
@@ -73,14 +74,10 @@ final class PropertyControllerTest extends WebTestCase
             null
         );
 
-        $form = $crawler->selectButton('Upload photo')->form([
-            'photo[priority]' => '0',
-        ]);
-
-        $form['photo[photo]']->upload($photo);
-
+        $form = $crawler->filter('.js-photo-dropzone')->form();
+        $form['file']->upload($photo);
         $client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertTrue($client->getResponse()->isSuccessful(), 'response status is 2xx');
     }
 
     public function testAdminDeletePhoto()

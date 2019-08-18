@@ -13,6 +13,10 @@ namespace App\Service;
 use Gumlet\ImageResize;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\ConstraintViolationListInterface;
+use Symfony\Component\Validator\Validation;
 
 final class FileUploader
 {
@@ -21,6 +25,27 @@ final class FileUploader
     public function __construct($targetDirectory)
     {
         $this->targetDirectory = $targetDirectory;
+    }
+
+    public function validate(UploadedFile $file): ConstraintViolationListInterface
+    {
+        $validator = Validation::createValidator();
+        $violations = $validator->validate(
+            $file,
+            [
+                new NotBlank([
+                    'message' => 'Please select a file to upload',
+                ]),
+                new File([
+                    'maxSize' => '10M',
+                    'mimeTypes' => [
+                        'image/*',
+                    ],
+                ]),
+            ]
+        );
+
+        return $violations;
     }
 
     public function upload(UploadedFile $file): string

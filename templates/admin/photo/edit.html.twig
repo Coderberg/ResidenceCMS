@@ -4,33 +4,7 @@
 
 {% block stylesheets %}
 
-    <style>
-        .single-img {
-            position: relative;
-            max-width: 220px;
-            margin-right: 18px;
-            margin-bottom: 18px;
-            float: left;
-            opacity: 0.8;
-            transition: all .3s linear;
-        }
-
-        button.remove {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            opacity: 0;
-            transition: all .3s linear;
-        }
-
-        .single-img:hover {
-            opacity: 1;
-        }
-
-        .single-img:hover button.remove {
-            opacity: 0.9;
-        }
-    </style>
+    {{ encore_entry_link_tags('css/photo') }}
 
 {% endblock %}
 
@@ -40,31 +14,13 @@
         <div class="card-header"><i class="fas fa-cloud-upload-alt"></i> {{ 'title.upload_photos' | trans }}</div>
         <div class="card-body">
 
-            {{ form_start(form) }}
-
-            <div class="form-group">
-
-                {{ form_row(form.photo) }}
-
-            </div>
-
-            <div class="form-group">
-
-            </div>
-
-            <div class="form-group">
-                {{ form_row(form.priority) }}
-            </div>
-
-            <div class="form-group">
-
-                <button type="submit" class="btn btn-primary" id="upload">
-                    {{ 'action.upload_photo' | trans }}
-                </button>
-
-            </div>
-
-            {{ form_end(form) }}
+            <form action="{{ path('admin_photo_upload', {id: property_id}) }}" method="POST"
+                  enctype="multipart/form-data"
+                  class="dropzone js-photo-dropzone">
+                <div class="fallback">
+                    <input name="file" type="file" multiple />
+                </div>
+            </form>
 
             <br>
 
@@ -89,13 +45,6 @@
 
 {% block javascripts %}
 
-    <script>
-        $('#upload').on('click', function () {
-            let file = $('#photo_photo').val();
-            if (file) {
-                $('#upload').html('<i class="fas fa-spinner fa-spin"></i> Uploading').addClass('disabled');
-            }
-        });
-    </script>
+    {{ encore_entry_script_tags('js/photo') }}
 
 {% endblock %}
