@@ -144,8 +144,11 @@
             "./config/packages/fos_ckeditor.yaml"
         ]
     },
-    "gumlet/php-image-resize": {
-        "version": "1.9.2"
+    "gregwar/cache": {
+        "version": "v1.0.12"
+    },
+    "gregwar/image": {
+        "version": "v2.0.25"
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"

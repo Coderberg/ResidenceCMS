@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use Gumlet\ImageResize;
+use Gregwar\Image\Image;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints\File;
@@ -22,9 +22,12 @@ final class FileUploader
 {
     private $targetDirectory;
 
+    private $fileSystem;
+
     public function __construct($targetDirectory)
     {
         $this->targetDirectory = $targetDirectory;
+        $this->fileSystem = new Filesystem();
     }
 
     public function validate(UploadedFile $file): ConstraintViolationListInterface
@@ -50,37 +53,34 @@ final class FileUploader
 
     public function upload(UploadedFile $file): string
     {
-        $fileSystem = new Filesystem();
-
         $fileName = md5(uniqid()).'.'.$file->guessExtension();
-
-        $file->move($this->getTargetDirectory(), $fileName);
+        $file->move($this->targetDirectory, $fileName);
 
         // Small
-        $image = new ImageResize($this->getTargetDirectory().'/'.$fileName);
-        $image->resize(500, 300, $allow_enlarge = true);
-        $image->save($this->getTargetDirectory().'/small/'.$fileName);
+        Image::open($this->targetDirectory.'/'.$fileName)
+            ->zoomCrop(500, 300, 'transparent', 'center', 'center')
+            ->save($this->targetDirectory.'/small/'.$fileName);
 
         // Medium
-        $image = new ImageResize($this->getTargetDirectory().'/'.$fileName);
-        $image->resize(700, 420, $allow_enlarge = true);
-        $image->save($this->getTargetDirectory().'/medium/'.$fileName);
+        Image::open($this->targetDirectory.'/'.$fileName)
+            ->zoomCrop(700, 420, 'transparent', 'center', 'center')
+            ->save($this->targetDirectory.'/medium/'.$fileName);
 
         // Large
-        $image = new ImageResize($this->getTargetDirectory().'/'.$fileName);
-        $image->resizeToBestFit(1200, 800, $allow_enlarge = true);
-        $image->save($this->getTargetDirectory().'/large/'.$fileName);
+        Image::open($this->targetDirectory.'/'.$fileName)
+            ->cropResize(1200, 800, 'transparent')
+            ->save($this->targetDirectory.'/large/'.$fileName);
 
         // Full
-        $fileSystem->rename($this->getTargetDirectory().'/'.$fileName, $this->getTargetDirectory().'/full/'.$fileName);
+        $this->fileSystem->rename(
+            $this->targetDirectory.'/'.$fileName, $this->targetDirectory.'/full/'.$fileName
+        );
 
         return $fileName;
     }
 
     public function remove(string $fileName): void
     {
-        $fileSystem = new Filesystem();
-
         $folders = [
             '/small/',
             '/medium/',
@@ -89,12 +89,7 @@ final class FileUploader
         ];
 
         foreach ($folders as $folder) {
-            $fileSystem->remove($this->getTargetDirectory().$folder.$fileName);
+            $this->fileSystem->remove($this->targetDirectory.$folder.$fileName);
         }
-    }
-
-    public function getTargetDirectory(): string
-    {
-        return $this->targetDirectory;
     }
 }
