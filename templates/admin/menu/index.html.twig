@@ -12,7 +12,7 @@
                     <thead class="thead">
                     <tr>
                         <th>{{ 'table.link_text' | trans }}</th>
-                        <th>{{ 'table.url' | trans }}</th>
+                        <th class="hidden-sm">{{ 'table.url' | trans }}</th>
                         <th>{{ 'table.move' | trans }}</th>
                         <th>{{ 'table.action' | trans }}</th>
                     </tr>
@@ -22,7 +22,7 @@
                     {% for item in menu %}
                         <tr>
                             <td>{{ item.title }}</td>
-                            <td class="small">{{ item.url }}</td>
+                            <td class="small hidden-sm">{{ item.url }}</td>
                             <td>
                                 {% if loop.first %}
                                     <button class="btn btn-sm btn-light js-move js-down-one"

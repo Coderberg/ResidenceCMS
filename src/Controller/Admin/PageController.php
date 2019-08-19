@@ -23,7 +23,7 @@ final class PageController extends AbstractController
     {
         // Get pages
         $repository = $this->getDoctrine()->getRepository(Page::class);
-        $pages = $repository->findLatest($page);
+        $pages = $repository->findLatest($page ?? 1);
 
         return $this->render('admin/page/index.html.twig', [
             'pages' => $pages,

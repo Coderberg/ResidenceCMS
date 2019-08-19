@@ -159,3 +159,10 @@ code {
 .float-icon{
   margin-top:15px;
 }
+
+// Utilities
+@media (max-width: 767px) {
+  .hidden-sm {
+    display: none;
+  }
+}

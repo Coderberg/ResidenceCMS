@@ -95,9 +95,8 @@ final class MenuController extends AbstractController
         $items = $request->request->get('items');
         $repository = $this->getDoctrine()->getRepository(Menu::class);
         $repository->reorderItems($items);
-        $response = json_encode(['status' => 'ok']);
 
-        return new JsonResponse($response, 200, [], true);
+        return new JsonResponse(['status' => 'ok']);
     }
 
     /**

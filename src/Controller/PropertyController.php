@@ -19,7 +19,7 @@ final class PropertyController extends BaseController
     public function index(?int $page): Response
     {
         $properties = $this->getDoctrine()
-            ->getRepository(Property::class)->findLatest($page);
+            ->getRepository(Property::class)->findLatest($page ?? 1);
 
         return $this->render('property/index.html.twig',
             [

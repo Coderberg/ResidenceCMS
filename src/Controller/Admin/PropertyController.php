@@ -24,7 +24,7 @@ final class PropertyController extends AbstractController
         // Get properties
         $repository = $this->getDoctrine()->getRepository(Property::class);
 
-        $properties = $repository->findLatest($page);
+        $properties = $repository->findLatest($page ?? 1);
 
         return $this->render('admin/property/index.html.twig', [
             'properties' => $properties,
