@@ -20,4 +20,21 @@ final class PhotoRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Photo::class);
     }
+
+    public function reorderPhotos(array $ids): void
+    {
+        $i = 1;
+
+        foreach ($ids as $id) {
+            $this->createQueryBuilder('i')
+                ->update('App\Entity\Photo', 'p')
+                ->set('p.sort_order', $i)
+                ->where('p.id = ?1')
+                ->setParameter(1, $id)
+                ->getQuery()
+                ->execute();
+
+            ++$i;
+        }
+    }
 }

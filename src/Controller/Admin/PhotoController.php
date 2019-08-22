@@ -42,7 +42,7 @@ final class PhotoController extends AbstractController
 
         $photo = new Photo();
         $photo->setProperty($property)
-                ->setPriority(0)
+                ->setSortOrder(0)
                 ->setPhoto($fileName);
 
         $em = $this->getDoctrine()->getManager();
@@ -67,6 +67,20 @@ final class PhotoController extends AbstractController
             'photos' => $photos,
             'property_id' => $property->getId(),
         ]);
+    }
+
+    /**
+     * Sort photos.
+     *
+     * @Route("/admin/photo/sort",methods={"POST"}, name="admin_photo_sort")
+     */
+    public function sort(Request $request)
+    {
+        $ids = $request->request->get('ids');
+        $repository = $this->getDoctrine()->getRepository(Photo::class);
+        $repository->reorderPhotos($ids);
+
+        return new JsonResponse(['status' => 'ok']);
     }
 
     /**

@@ -18,25 +18,43 @@
                   enctype="multipart/form-data"
                   class="dropzone js-photo-dropzone">
                 <div class="fallback">
-                    <input name="file" type="file" accept="image/*" multiple />
+                    <input name="file" type="file" accept="image/*" multiple/>
                 </div>
             </form>
 
             <br>
 
-            {% for photo in photos %}
+            <div class="photos-list">
 
-                <div class="single-img">
+                {% if photos | default %}
+                    <button type="button" class="btn btn btn-outline-dark btn-lg btn-reorder">
+                        Reorder photos
+                    </button>
+                {% endif %}
 
-                    <img class="card-img-top"
-                         src="/uploads/images/small/{{ photo.photo }}"
-                         alt="{{ 'photo' | trans }} #{{ photo.id }}"/>
-
-                    {{ include('admin/photo/_delete_form.html.twig', {photo: photo, property_id: property_id}, with_context = false) }}
-
+                <div class="reorder-help bg-light text-center" style="display:none;">
+                    1. Drag photos to reorder.<br>
+                    2. Click 'Save Reordering' when finished.
                 </div>
+                <div class="gallery">
+                    <ul class="reorder-ul">
 
-            {% endfor %}
+                        {% for photo in photos %}
+
+                            <li id="photo_{{ photo.id }}" class="ui-sortable-handle">
+                                <a href="javascript:void(0);" class="single-img">
+                                    <img src="/uploads/images/small/{{ photo.photo }}"
+                                         alt="{{ 'photo' | trans }} #{{ photo.id }}"/>
+                                </a>
+
+                                {{ include('admin/photo/_delete_form.html.twig', {photo: photo, property_id: property_id}, with_context = false) }}
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
 
         </div>
     </div><br>

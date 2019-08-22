@@ -26,16 +26,16 @@ class Photo
     private $property;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $priority;
-
-    /**
      * @ORM\Column(type="string", length=255)
      *
      * @Assert\File(mimeTypes={ "image/*" })
      */
     private $photo;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $sort_order;
 
     public function getId(): ?int
     {
@@ -54,18 +54,6 @@ class Photo
         return $this;
     }
 
-    public function getPriority(): ?int
-    {
-        return $this->priority;
-    }
-
-    public function setPriority(int $priority): self
-    {
-        $this->priority = $priority;
-
-        return $this;
-    }
-
     public function getPhoto()
     {
         return $this->photo;
@@ -74,6 +62,18 @@ class Photo
     public function setPhoto($photo)
     {
         $this->photo = $photo;
+
+        return $this;
+    }
+
+    public function getSortOrder(): ?int
+    {
+        return $this->sort_order;
+    }
+
+    public function setSortOrder(?int $sort_order): self
+    {
+        $this->sort_order = $sort_order;
 
         return $this;
     }
