@@ -56,7 +56,7 @@ final class PropertyController extends BaseController
         return $this->render('property/search.html.twig',
             [
                 'site' => $this->site(),
-                'properties' => $properties->findByFilter($locality_id, $operation_id, $category_id, $page),
+                'properties' => $properties->findByFilter($locality_id, $operation_id, $category_id, ($page ?? 1)),
             ]
         );
     }
