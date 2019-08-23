@@ -6,7 +6,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Property;
 use App\Form\PropertyType;
-use App\Utils\Slugger;
+use App\Service\PropertyService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,15 +16,23 @@ use Symfony\Component\Routing\Annotation\Route;
 final class PropertyController extends AbstractController
 {
     /**
+     * @var PropertyService
+     */
+    private $propertyService;
+
+    public function __construct(PropertyService $propertyService)
+    {
+        $this->propertyService = $propertyService;
+    }
+
+    /**
      * @Route("/admin/property", defaults={"page": "1"}, methods={"GET"}, name="admin_property")
      * @Route("/admin/property/page/{page<[1-9]\d*>}", methods={"GET"}, name="admin_property_paginated")
      */
     public function index(?int $page): Response
     {
         // Get properties
-        $repository = $this->getDoctrine()->getRepository(Property::class);
-
-        $properties = $repository->findLatest($page ?? 1);
+        $properties = $this->propertyService->findLatest($page ?? 1);
 
         return $this->render('admin/property/index.html.twig', [
             'properties' => $properties,
@@ -34,26 +42,16 @@ final class PropertyController extends AbstractController
     /**
      * @Route("/admin/property/new", name="admin_property_new")
      */
-    public function new(Request $request, Slugger $slugger): Response
+    public function new(Request $request): Response
     {
+        $user = $this->getUser();
         $property = new Property();
-        $property->setAuthor($this->getUser());
-        $property->setPublishedAt(new \DateTime('now'));
-        $property->setPublished(true);
 
         $form = $this->createForm(PropertyType::class, $property);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Make slug
-            $slug = $slugger->slugify($property->getTitle());
-            $property->setSlug($slug);
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($property);
-            $em->flush();
-
+            $this->propertyService->create($property, $user);
             $this->addFlash('success', 'message.created');
 
             return $this->redirectToRoute('admin_photo_edit', ['id' => $property->getId()]);
@@ -70,17 +68,13 @@ final class PropertyController extends AbstractController
      *
      * @Route("/admin/property/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_property_edit")
      */
-    public function edit(Request $request, Property $property, Slugger $slugger): Response
+    public function edit(Request $request, Property $property): Response
     {
         $form = $this->createForm(PropertyType::class, $property);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Update slug
-            $slug = $slugger->slugify($property->getTitle());
-            $property->setSlug($slug);
-
-            $this->getDoctrine()->getManager()->flush();
+            $this->propertyService->update($property);
             $this->addFlash('success', 'message.updated');
 
             return $this->redirectToRoute('admin_property');
@@ -103,20 +97,7 @@ final class PropertyController extends AbstractController
             return $this->redirectToRoute('admin_property');
         }
 
-        $em = $this->getDoctrine()->getManager();
-
-        // Search photos
-        $photos = $property->getPhotos();
-
-        if ($photos) {
-            // Remove photos
-            foreach ($photos as $photo) {
-                $property->removePhoto($photo);
-            }
-        }
-
-        $em->remove($property);
-        $em->flush();
+        $this->propertyService->delete($property);
         $this->addFlash('success', 'message.deleted');
 
         return $this->redirectToRoute('admin_property');

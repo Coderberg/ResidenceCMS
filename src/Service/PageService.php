@@ -24,20 +24,15 @@ final class PageService
     public function create(Page $page)
     {
         // Save page
-        $this->em->persist($page);
-        $this->em->flush();
-
-        // Clear cache
-        $cache = new FilesystemAdapter();
-        $cache->delete('pages_count');
+        $this->save($page);
+        $this->clearCache();
 
         // Add a menu item
         if (true === $page->getShowInMenu()) {
             $menu = new Menu();
             $menu->setTitle($page->getTitle());
             $menu->setUrl('/info/'.$page->getSlug());
-            $this->em->persist($menu);
-            $this->em->flush();
+            $this->save($menu);
         }
     }
 
@@ -52,21 +47,34 @@ final class PageService
         return (int) $count;
     }
 
+    public function save($object): void
+    {
+        $this->em->persist($object);
+        $this->em->flush();
+    }
+
+    public function remove($object): void
+    {
+        $this->em->remove($object);
+        $this->em->flush();
+    }
+
     public function delete(Page $page)
     {
         // Delete page
-        $this->em->remove($page);
-        $this->em->flush();
-
-        // Clear cache
-        $cache = new FilesystemAdapter();
-        $cache->delete('pages_count');
+        $this->remove($page);
+        $this->clearCache();
 
         // Delete a menu item
         $menu = $this->em->getRepository(Menu::class)->findOneBy(['url' => '/info/'.$page->getSlug()]);
         if ($menu) {
-            $this->em->remove($menu);
-            $this->em->flush();
+            $this->remove($menu);
         }
+    }
+
+    private function clearCache(): void
+    {
+        $cache = new FilesystemAdapter();
+        $cache->delete('pages_count');
     }
 }

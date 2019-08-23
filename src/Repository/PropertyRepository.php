@@ -10,8 +10,6 @@ use Doctrine\ORM\Query;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
 use Symfony\Bridge\Doctrine\RegistryInterface;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
-use Symfony\Contracts\Cache\ItemInterface;
 
 /**
  * @method Property|null find($id, $lockMode = null, $lockVersion = null)
@@ -32,19 +30,6 @@ final class PropertyRepository extends ServiceEntityRepository
             ->select('count(p.id)')
             ->getQuery()
             ->getSingleScalarResult();
-
-        return (int) $count;
-    }
-
-    public function findCount(): int
-    {
-        $cache = new FilesystemAdapter();
-
-        $count = $cache->get('properties_count', function (ItemInterface $item) {
-            $item->expiresAfter(3600);
-
-            return $this->countAll();
-        });
 
         return (int) $count;
     }

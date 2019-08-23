@@ -7,9 +7,9 @@ namespace App\Controller\Admin;
 use App\Entity\Category;
 use App\Entity\Locality;
 use App\Entity\Operation;
-use App\Entity\Property;
 use App\Entity\User;
 use App\Service\PageService;
+use App\Service\PropertyService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,11 +19,10 @@ final class DashboardController extends AbstractController
     /**
      * @Route("/admin", name="admin_dashboard")
      */
-    public function index(PageService $pageService): Response
+    public function index(PageService $pageService, PropertyService $propertyService): Response
     {
         // Counting the number of properties
-        $properties = $this->getDoctrine()
-            ->getRepository(Property::class)->findCount();
+        $properties = $propertyService->countAll();
 
         // Counting the number of localities
         $localities = $this->getDoctrine()

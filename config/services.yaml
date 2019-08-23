@@ -35,7 +35,3 @@ services:
     App\Service\FileUploader:
         arguments:
             $targetDirectory: '%images_directory%'
-
-    App\Service\PageService:
-        arguments:
-            $entityManager: "@doctrine.orm.entity_manager"
