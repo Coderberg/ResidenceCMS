@@ -6,7 +6,6 @@ namespace App\Controller\Admin;
 
 use App\Entity\Menu;
 use App\Form\Type\MenuType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -102,8 +101,7 @@ final class MenuController extends AbstractController
     /**
      * Deletes a menu item.
      *
-     * @Route("/menu/{id<\d+>}/delete", methods={"GET", "POST"}, name="admin_menu_delete")
-     * @IsGranted("ROLE_ADMIN")
+     * @Route("/admin/menu/{id<\d+>}/delete", methods={"GET", "POST"}, name="admin_menu_delete")
      */
     public function delete(Request $request, Menu $menu): Response
     {

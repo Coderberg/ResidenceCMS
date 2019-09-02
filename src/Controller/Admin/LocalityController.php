@@ -25,18 +25,6 @@ final class LocalityController extends AbstractController
 
         $localities = $repository->findAll();
 
-        //dd($localities);
-        /*foreach ($localities as $locality) {
-
-            $areas = $locality->getAreas();
-
-            foreach ($areas as $area) {
-                dd($area->getName());
-            }
-
-            //dd($locality->getAreas()[0]['name']);
-        }*/
-
         return $this->render('admin/locality/index.html.twig', [
             'localities' => $localities,
         ]);
