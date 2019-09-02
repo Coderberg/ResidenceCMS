@@ -8,7 +8,7 @@ use App\Entity\Menu;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class MenuFixtures extends Fixture
+final class MenuFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {

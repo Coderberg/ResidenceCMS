@@ -9,7 +9,7 @@ use App\Utils\Slugger;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class PageFixtures extends Fixture
+final class PageFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {

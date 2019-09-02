@@ -30,6 +30,12 @@
         "/build/js/slugger.e56aaf9a.js"
       ]
     },
+    "js/locality": {
+      "js": [
+        "/build/runtime.e59078a6.js",
+        "/build/js/locality.cdc2ebdb.js"
+      ]
+    },
     "js/photo": {
       "js": [
         "/build/runtime.e59078a6.js",
@@ -60,12 +66,20 @@
         "/build/css/ekko-lightbox.d5c621d9.css"
       ]
     },
+    "css/locality": {
+      "js": [
+        "/build/runtime.e59078a6.js"
+      ],
+      "css": [
+        "/build/css/locality.5134c140.css"
+      ]
+    },
     "css/photo": {
       "js": [
         "/build/runtime.e59078a6.js"
       ],
       "css": [
-        "/build/css/photo.f18cf177.css"
+        "/build/css/photo.562a12ef.css"
       ]
     }
   }

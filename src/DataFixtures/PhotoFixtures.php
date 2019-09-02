@@ -6,9 +6,10 @@ namespace App\DataFixtures;
 
 use App\Entity\Photo;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class PhotoFixtures extends Fixture
+final class PhotoFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -42,6 +43,13 @@ class PhotoFixtures extends Fixture
             [$this->getReference('interesting-two-bedroom-apartment-for-sale'), 1, 'demo/11.jpeg'],
             [$this->getReference('interesting-two-bedroom-apartment-for-sale'), 2, 'demo/12.jpeg'],
             [$this->getReference('interesting-two-bedroom-apartment-for-sale'), 3, 'demo/13.jpeg'],
+        ];
+    }
+
+    public function getDependencies()
+    {
+        return [
+            PropertyFixtures::class,
         ];
     }
 }

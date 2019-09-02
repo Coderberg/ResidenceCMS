@@ -8,12 +8,15 @@ declare(strict_types=1);
  * Time: 10:39.
  */
 
-namespace App\Form;
+namespace App\Form\Type;
 
+use App\Entity\Area;
 use App\Entity\Category;
 use App\Entity\Locality;
 use App\Entity\Operation;
 use App\Entity\Property;
+use App\Form\EventSubscriber\AddAreaFieldSubscriber;
+use App\Form\EventSubscriber\UpdateAreaFieldSubscriber;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -31,10 +34,21 @@ final class PropertyType extends AbstractType
             ->add('locality', EntityType::class, [
                 'class' => Locality::class,
                 'choice_label' => 'name',
+                'placeholder' => 'placeholder.select_city',
                 'attr' => [
                     'class' => 'form-control',
                 ],
                 'label' => 'label.locality',
+            ])
+            ->add('area', EntityType::class, [
+                'class' => Area::class,
+                'choice_label' => 'name',
+                'placeholder' => 'placeholder.select_area',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'label' => 'label.area',
+                'choices' => [],
             ])
             ->add('operation', EntityType::class, [
                 'class' => Operation::class,
@@ -138,6 +152,9 @@ final class PropertyType extends AbstractType
                 ],
                 'label' => 'label.content',
             ]);
+
+        $builder->addEventSubscriber(new AddAreaFieldSubscriber());
+        $builder->get('locality')->addEventSubscriber(new UpdateAreaFieldSubscriber());
     }
 
     /**

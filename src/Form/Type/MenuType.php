@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Form;
+namespace App\Form\Type;
 
 use App\Entity\Menu;
 use Symfony\Component\Form\AbstractType;

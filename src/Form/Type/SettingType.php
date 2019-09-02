@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Time: 11:08.
  */
 
-namespace App\Form;
+namespace App\Form\Type;
 
 use App\Entity\Setting;
 use Symfony\Component\Form\AbstractType;

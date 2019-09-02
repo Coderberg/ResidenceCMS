@@ -7,19 +7,21 @@ namespace App\DataFixtures;
 use App\Entity\Property;
 use App\Utils\Slugger;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class PropertyFixtures extends Fixture
+final class PropertyFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        foreach ($this->getPropertyData() as [$operation, $category, $locality, $title,
+        foreach ($this->getPropertyData() as [$operation, $category, $locality, $area, $title,
                     $address, $latitude, $longitude, $price, $price_type, ]) {
             $property = new Property();
             $property->setAuthor($this->getReference(UserFixtures::ADMIN_USER_REFERENCE));
             $property->setOperation($operation);
             $property->setCategory($category);
             $property->setLocality($locality);
+            $property->setArea($area);
             $property->setTitle($title);
             $property->setDescription($title);
             $property->setSlug(Slugger::slugify($title));
@@ -42,7 +44,7 @@ class PropertyFixtures extends Fixture
     {
         return [
             /*
-                $propertyData = [$operation_id, $category_id, $locality_id,
+                $propertyData = [$operation_id, $category_id, $locality_id, $area,
                                 $title, $address, $latitude, $longitude,
                                 $price, $price_type];
             */
@@ -50,6 +52,7 @@ class PropertyFixtures extends Fixture
                 $this->getReference('Rent'),
                 $this->getReference('Apartment'),
                 $this->getReference('Miami'),
+                $this->getReference('South Beach'),
                 'Modern one-bedroom apartment in Miami',
                 '1451 Ocean Dr, Miami Beach, FL 33139',
                 '25.785107', '-80.129460', 250, 'day',
@@ -58,6 +61,7 @@ class PropertyFixtures extends Fixture
                 $this->getReference('Rent'),
                 $this->getReference('Apartment'),
                 $this->getReference('Miami'),
+                $this->getReference('South Beach'),
                 'Bright and Cheerful alcove studio',
                 '1451 Ocean Dr, Miami Beach, FL 33139',
                 '25.785107', '-80.129460', 200, 'day',
@@ -66,6 +70,7 @@ class PropertyFixtures extends Fixture
                 $this->getReference('Rent'),
                 $this->getReference('Penthouse'),
                 $this->getReference('Palm Beach'),
+                null,
                 'Stylish two-level penthouse in Palm Beach',
                 '101 Worth Ave, Palm Beach, FL 33480',
                 '26.701320', '-80.033688', 2000, 'mo',
@@ -74,6 +79,7 @@ class PropertyFixtures extends Fixture
                 $this->getReference('Rent'),
                 $this->getReference('Apartment'),
                 $this->getReference('Palm Beach'),
+                null,
                 'Bright fully furnished 1-bedroom flat on the 2nd floor',
                 '300 S Ocean Blvd, Palm Beach, FL',
                 '26.705007', '-80.033574', 180, 'day',
@@ -82,6 +88,7 @@ class PropertyFixtures extends Fixture
                 $this->getReference('Sale'),
                 $this->getReference('Villa'),
                 $this->getReference('Tampa'),
+                $this->getReference('Culbreath Isles'),
                 'Beautiful villa for sale in Tampa',
                 '4935 New Providence Ave, Tampa, FL',
                 '27.932255', '-82.533187', 1600, 'sq. foot',
@@ -90,6 +97,7 @@ class PropertyFixtures extends Fixture
                 $this->getReference('Rent'),
                 $this->getReference('Apartment'),
                 $this->getReference('Tampa'),
+                $this->getReference('Ballast Point'),
                 'Furnished renovated 2-bedroom 2-bathroom flat',
                 '5411 Bayshore Blvd, Tampa, FL 33611',
                 '27.885095', '-82.486153', 2200, 'mo',
@@ -98,6 +106,7 @@ class PropertyFixtures extends Fixture
                 $this->getReference('Sale'),
                 $this->getReference('Apartment'),
                 $this->getReference('Miami'),
+                $this->getReference('Downtown'),
                 'Interesting two-bedroom apartment for sale',
                 '111 NE 2nd Ave, Miami, FL 33132',
                 '25.775565', '-80.190125', 190000, '',
@@ -127,5 +136,16 @@ class PropertyFixtures extends Fixture
                 magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, 
                 quis nostrum exercitationem ullam corporis suscipit laboriosam, 
                 nisi ut aliquid ex ea commodi consequatur.</p>';
+    }
+
+    public function getDependencies()
+    {
+        return [
+            AreaFixtures::class,
+            CategoryFixtures::class,
+            LocalityFixtures::class,
+            OperationFixtures::class,
+            UserFixtures::class,
+        ];
     }
 }

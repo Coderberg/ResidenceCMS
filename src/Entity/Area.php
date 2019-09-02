@@ -9,9 +9,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\LocalityRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\AreaRepository")
  */
-class Locality
+class Area
 {
     /**
      * @ORM\Id()
@@ -31,20 +31,19 @@ class Locality
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="locality")
+     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="area")
      */
     private $properties;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Area", mappedBy="locality")
-     * @ORM\OrderBy({"name" = "ASC"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Locality", inversedBy="areas")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $areas;
+    private $locality;
 
     public function __construct()
     {
         $this->properties = new ArrayCollection();
-        $this->areas = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -76,6 +75,18 @@ class Locality
         return $this;
     }
 
+    public function getLocality(): ?Locality
+    {
+        return $this->locality;
+    }
+
+    public function setLocality(?Locality $locality): self
+    {
+        $this->locality = $locality;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Property[]
      */
@@ -101,37 +112,6 @@ class Locality
             // set the owning side to null (unless already changed)
             if ($property->getLocality() === $this) {
                 $property->setLocality(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Area[]
-     */
-    public function getAreas(): Collection
-    {
-        return $this->areas;
-    }
-
-    public function addArea(Area $area): self
-    {
-        if (!$this->areas->contains($area)) {
-            $this->areas[] = $area;
-            $area->setLocality($this);
-        }
-
-        return $this;
-    }
-
-    public function removeArea(Area $area): self
-    {
-        if ($this->areas->contains($area)) {
-            $this->areas->removeElement($area);
-            // set the owning side to null (unless already changed)
-            if ($area->getLocality() === $this) {
-                $area->setLocality(null);
             }
         }
 

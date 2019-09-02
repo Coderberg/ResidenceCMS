@@ -8,7 +8,7 @@ use App\Entity\Setting;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class SettingsFixtures extends Fixture
+final class SettingsFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {

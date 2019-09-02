@@ -1,0 +1,25 @@
+.nav-tabs {
+  border-bottom: 0;
+
+  .nav-item {
+    z-index: 3;
+
+    .active {
+      background-color: #fff;
+      border-bottom-color: #fff;
+    }
+
+    a {
+      color: #495057;
+    }
+  }
+}
+
+.locality {
+  font-size: 1.3rem;
+}
+
+.sub-locality {
+  font-size: 1rem;
+  padding-left: 30px !important;
+}

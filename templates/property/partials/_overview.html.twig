@@ -3,7 +3,12 @@
         <tbody>
         <tr>
             <th>{{ 'property.locality' | trans }}:</th>
-            <td>{{ property.locality.name }}</td>
+            <td>
+                {% if property.area.name | default %}
+                    {{ property.area.name }},
+                {% endif %}
+                {{ property.locality.name }}
+            </td>
         </tr>
         <tr>
             <th>{{ 'property.operation' | trans }}:</th>

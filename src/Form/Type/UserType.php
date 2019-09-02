@@ -4,19 +4,19 @@ declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: Valery Maslov
- * Date: 01.11.2018
- * Time: 11:13.
+ * Date: 24.08.2018
+ * Time: 10:07.
  */
 
-namespace App\Form;
+namespace App\Form\Type;
 
-use App\Entity\Page;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class PageType extends AbstractType
+final class UserType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -24,38 +24,36 @@ final class PageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title', null, [
+            ->add('full_name', null, [
+                'attr' => [
+                    'autofocus' => true,
+                    'class' => 'form-control',
+                ],
+                'label' => 'label.full_name',
+            ])
+            ->add('username', null, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'label.title',
+                'label' => 'label.username',
             ])
-            ->add('slug', null, [
+            ->add('phone', null, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'label.slug',
+                'label' => 'label.phone',
             ])
-            ->add('description', null, [
+            ->add('email', null, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'label.description',
+                'label' => 'label.email',
             ])
-            ->add('content', CKEditorType::class, [
-                'config' => [
-                    'uiColor' => '#ffffff',
-                ],
-                'label' => 'label.content',
-            ])
-            ->add('show_in_menu', null, [
+            ->add('password', PasswordType::class, [
                 'attr' => [
-                    'class' => 'custom-control-input',
+                    'class' => 'form-control',
                 ],
-                'label' => 'label.show_in_menu',
-                'label_attr' => [
-                    'class' => 'custom-control-label',
-                ],
+                'label' => 'label.password',
             ]);
     }
 
@@ -65,7 +63,7 @@ final class PageType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Page::class,
+            'data_class' => User::class,
         ]);
     }
 }

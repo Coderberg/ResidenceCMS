@@ -45,6 +45,12 @@ class Property
     private $locality;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Area", inversedBy="properties")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $area;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $title;
@@ -407,6 +413,18 @@ class Property
                 $photo->setProperty(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getArea(): ?Area
+    {
+        return $this->area;
+    }
+
+    public function setArea(?Area $area): self
+    {
+        $this->area = $area;
 
         return $this;
     }

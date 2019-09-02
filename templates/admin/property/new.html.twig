@@ -17,6 +17,10 @@
                 </div>
 
                 <div class="col-md-6 col-lg-4 mb-3">
+                    {{ form_row(form.area) }}
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-3">
                     {{ form_row(form.operation) }}
                 </div>
 
@@ -99,5 +103,11 @@
 
         </div>
     </div><br>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ encore_entry_script_tags('js/locality') }}
 
 {% endblock %}

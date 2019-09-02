@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
-use App\Entity\Locality;
-use App\Form\Type\LocalityType;
+use App\Entity\Area;
+use App\Form\Type\AreaType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
@@ -14,49 +14,23 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class LocalityController extends AbstractController
+final class AreaController extends AbstractController
 {
     /**
-     * @Route("/admin/locality", name="admin_locality")
-     */
-    public function index(): Response
-    {
-        $repository = $this->getDoctrine()->getRepository(Locality::class);
-
-        $localities = $repository->findAll();
-
-        //dd($localities);
-        /*foreach ($localities as $locality) {
-
-            $areas = $locality->getAreas();
-
-            foreach ($areas as $area) {
-                dd($area->getName());
-            }
-
-            //dd($locality->getAreas()[0]['name']);
-        }*/
-
-        return $this->render('admin/locality/index.html.twig', [
-            'localities' => $localities,
-        ]);
-    }
-
-    /**
-     * @Route("/admin/locality/new", name="admin_locality_new")
+     * @Route("/admin/area/new", name="admin_area_new")
      */
     public function new(Request $request): Response
     {
-        $locality = new Locality();
+        $area = new Area();
 
-        $form = $this->createForm(LocalityType::class, $locality)
+        $form = $this->createForm(AreaType::class, $area)
             ->add('saveAndCreateNew', SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $locality->getName();
+            $area->getName();
             $em = $this->getDoctrine()->getManager();
-            $em->persist($locality);
+            $em->persist($area);
             $em->flush();
 
             $this->addFlash('success', 'message.created');
@@ -64,28 +38,27 @@ final class LocalityController extends AbstractController
             /** @var ClickableInterface $button */
             $button = $form->get('saveAndCreateNew');
             if ($button->isClicked()) {
-                return $this->redirectToRoute('admin_locality_new');
+                return $this->redirectToRoute('admin_area_new');
             }
 
             return $this->redirectToRoute('admin_locality');
         }
 
-        return $this->render('admin/locality/new.html.twig', [
-            'locality' => $locality,
+        return $this->render('admin/area/new.html.twig', [
+            'area' => $area,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * Displays a form to edit an existing Locality entity.
+     * Displays a form to edit an existing Area entity.
      *
-     * @Route("/admin/locality/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_locality_edit")
+     * @Route("/admin/area/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_area_edit")
      */
-    public function edit(Request $request, Locality $locality): Response
+    public function edit(Request $request, Area $area): Response
     {
-        $form = $this->createForm(LocalityType::class, $locality);
+        $form = $this->createForm(AreaType::class, $area);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'message.updated');
@@ -93,25 +66,25 @@ final class LocalityController extends AbstractController
             return $this->redirectToRoute('admin_locality');
         }
 
-        return $this->render('admin/locality/edit.html.twig', [
+        return $this->render('admin/area/edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * Deletes a Locality entity.
+     * Deletes an Area entity.
      *
-     * @Route("/locality/{id<\d+>}/delete", methods={"POST"}, name="admin_locality_delete")
+     * @Route("/area/{id<\d+>}/delete", methods={"POST"}, name="admin_area_delete")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function delete(Request $request, Locality $locality): Response
+    public function delete(Request $request, Area $area): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
             return $this->redirectToRoute('admin_locality');
         }
 
         $em = $this->getDoctrine()->getManager();
-        $em->remove($locality);
+        $em->remove($area);
         $em->flush();
         $this->addFlash('success', 'message.deleted');
 
