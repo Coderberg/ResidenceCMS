@@ -94,7 +94,7 @@ final class AreaControllerTest extends WebTestCase
             ])->getId();
 
         $crawler = $client->request('GET', '/admin/locality');
-        $client->submit($crawler->filter('#delete-form-'.$area)->form());
+        $client->submit($crawler->filter('#delete-area-'.$area)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
         $this->assertNull($client->getContainer()->get('doctrine')
