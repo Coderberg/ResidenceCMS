@@ -56,10 +56,6 @@
                 <source>localities</source>
                 <target>Localities</target>
             </trans-unit>
-            <trans-unit id="areas">
-                <source>areas</source>
-                <target>Areas</target>
-            </trans-unit>
             <trans-unit id="operations">
                 <source>operations</source>
                 <target>Operations</target>
@@ -170,10 +166,6 @@
             <trans-unit id="action.search">
                 <source>action.search</source>
                 <target>Search</target>
-            </trans-unit>
-            <trans-unit id="action.upload_photo">
-                <source>action.upload_photo</source>
-                <target>Upload photo</target>
             </trans-unit>
             <trans-unit id="action.save">
                 <source>action.save</source>
@@ -402,10 +394,6 @@
             <trans-unit id="label.photo">
                 <source>label.photo</source>
                 <target>Photo</target>
-            </trans-unit>
-            <trans-unit id="label.priority">
-                <source>label.priority</source>
-                <target>Priority</target>
             </trans-unit>
             <trans-unit id="label.locality">
                 <source>label.locality</source>
