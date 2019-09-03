@@ -2,7 +2,7 @@
       id="delete-form-{{ item.id }}">
 
     <a href="{{ url('admin_menu_edit', {id: item.id}) }}"
-       class="btn btn-sm btn-outline-dark">{{ 'action.edit' | trans }}</a> &nbsp;&nbsp;&nbsp;
+       class="btn btn-sm btn-outline-primary">{{ 'action.edit' | trans }}</a> &nbsp;&nbsp;&nbsp;
 
     <input type="hidden" name="token" value="{{ csrf_token('delete') }}"/>
     <button type="submit" class="btn btn-sm btn-danger"

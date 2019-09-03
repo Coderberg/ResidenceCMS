@@ -4,8 +4,21 @@
 
 {% block body %}
 
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_menu') }}">
+                <i class="fas fa-bars text-danger"></i> {{ 'menu'|trans }}
+            </a>
+        </li>
+        <li class="nav-item active">
+            <span class="nav-link active">
+                <i class="fas fa-plus-square text-danger"></i> {{ 'action.add_menu_item' | trans }}
+            </span>
+        </li>
+    </ul>
+
     <div class="card mb-3">
-        <div class="card-header"><i class="fas fa-plus"></i> {{ 'title.add_menu_item' | trans }}</div>
+
         <div class="card-body">
 
             {{ form_start(form) }}

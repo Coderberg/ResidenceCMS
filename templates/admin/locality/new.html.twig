@@ -2,28 +2,22 @@
 
 {% block title %}{{ 'title.add_locality' | trans }}{% endblock %}
 
-{% block stylesheets %}
-
-    {{ encore_entry_link_tags('css/locality') }}
-
-{% endblock %}
-
 {% block body %}
 
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link" href="{{ path('admin_locality') }}">
-                <i class="fas fa-map-marker-alt"></i> {{ 'localities'|trans }}
+                <i class="fas fa-map-marker-alt text-danger"></i> {{ 'localities'|trans }}
             </a>
         </li>
         <li class="nav-item active">
         <span class="nav-link active">
-            <i class="fas fa-plus-square"></i> {{ 'menu.add_new'|trans }} {{ 'city' | trans }}
+            <i class="fas fa-plus-square text-danger"></i> {{ 'menu.add_new'|trans }} {{ 'city' | trans }}
         </span>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ path('admin_area_new') }}">
-                <i class="fas fa-plus-square"></i> {{ 'menu.add_new'|trans }} {{ 'area' | trans }}
+                <i class="fas fa-plus-square text-danger"></i> {{ 'menu.add_new'|trans }} {{ 'area' | trans }}
             </a>
         </li>
     </ul>

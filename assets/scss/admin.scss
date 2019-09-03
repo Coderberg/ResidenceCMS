@@ -383,3 +383,31 @@ body.sidebar-toggled footer.sticky-footer {
     width: calc(100% - 90px);
   }
 }
+
+/* A little customizations */
+.nav-tabs {
+  border-bottom: 0;
+
+  .nav-item {
+    z-index: 3;
+
+    .active {
+      background-color: #fff;
+      border-bottom-color: #fff;
+    }
+
+    a {
+      color: #495057;
+    }
+  }
+}
+
+$danger-color: #E91E63 !important;
+
+.btn-danger {
+  background-color: $danger-color;
+  border-color: $danger-color;
+}
+.text-danger {
+  color: $danger-color;
+}

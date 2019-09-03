@@ -4,15 +4,28 @@
 
 {% block body %}
 
+    <ul class="nav nav-tabs">
+        <li class="nav-item active">
+            <span class="nav-link active">
+                <i class="far fa-building text-danger"></i> {{ 'categories'|trans }}
+            </span>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_category_new') }}">
+                <i class="fas fa-plus-square text-danger"></i> {{ 'title.add_category' | trans }}
+            </a>
+        </li>
+    </ul>
+
     <div class="card mb-3">
-        <div class="card-header"><i class="far fa-building"></i> {{ 'categories'|trans }}</div>
+
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table" style="background-color: #FFFFFF">
                     <thead class="thead">
                     <tr>
                         <th>{{ 'table.category_name' | trans }}</th>
-                        <th>{{ 'table.slug' | trans }}</th>
+                        <th class="hidden-sm">{{ 'table.slug' | trans }}</th>
                         <th>{{ 'table.action' | trans }}</th>
                     </tr>
                     </thead>
@@ -21,7 +34,7 @@
                     {% for category in categories %}
                         <tr>
                             <td>{{ category.name }}</td>
-                            <td>{{ category.slug }}</td>
+                            <td class="hidden-sm">{{ category.slug }}</td>
                             <td>
                                 {{ include('admin/category/_action_form.html.twig', {category: category}, with_context = false) }}
                             </td>
@@ -40,4 +53,3 @@
     </div>
 
 {% endblock %}
-

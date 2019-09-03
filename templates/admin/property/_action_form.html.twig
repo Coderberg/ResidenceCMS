@@ -9,7 +9,7 @@
         <a href="{{ url('admin_photo_edit', {id: property.id}) }}"
            class="btn btn-light">{{ 'action.edit_photos' | trans }}</a>
 
-        <button type="submit" class="btn btn-danger"
+        <button type="submit" class="btn btn-sm btn-danger"
                 onclick="if(confirm('{{ 'confirmation.delete_item' | trans }}')){ return true }else{ return false }">
             {{ 'action.delete' | trans }}
         </button>

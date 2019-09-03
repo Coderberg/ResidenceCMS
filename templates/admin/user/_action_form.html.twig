@@ -2,10 +2,10 @@
       id="delete-form-{{ user.id }}">
 
     <a href="{{ url('admin_user_edit', {id: user.id}) }}"
-       class="btn btn-outline-primary">{{ 'action.edit' | trans }}</a> &nbsp;&nbsp;&nbsp;
+       class="btn btn-sm btn-outline-primary">{{ 'action.edit' | trans }}</a> &nbsp;&nbsp;&nbsp;
 
     <input type="hidden" name="token" value="{{ csrf_token('delete') }}"/>
-    <button type="submit" class="btn btn-danger"
+    <button type="submit" class="btn btn-sm btn-danger"
             onclick="if(confirm('{{ 'confirmation.delete_user' | trans }}')){ return true }else{ return false }">
         {{ 'action.delete' | trans }}
     </button>

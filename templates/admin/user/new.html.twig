@@ -4,8 +4,21 @@
 
 {% block body %}
 
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_user') }}">
+                <i class="fas fa-users-cog text-danger"></i> {{ 'users'|trans }}
+            </a>
+        </li>
+        <li class="nav-item active">
+            <span class="nav-link active">
+                <i class="fas fa-plus-square text-danger"></i> {{ 'title.add_user' | trans }}
+            </span>
+        </li>
+    </ul>
+
     <div class="card mb-3">
-        <div class="card-header"><i class="fas fa-plus"></i> {{ 'title.add_user' | trans }}</div>
+
         <div class="card-body">
 
             {{ form_start(form) }}

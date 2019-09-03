@@ -4,8 +4,21 @@
 
 {% block body %}
 
+    <ul class="nav nav-tabs">
+        <li class="nav-item active">
+            <span class="nav-link active">
+                <i class="fas fa-bars text-danger"></i> {{ 'menu'|trans }}
+            </span>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_menu_new') }}">
+                <i class="fas fa-plus-square text-danger"></i> {{ 'action.add_menu_item' | trans }}
+            </a>
+        </li>
+    </ul>
+
     <div class="card mb-3">
-        <div class="card-header"><i class="fas fa-bars"></i> {{ 'menu'|trans }}</div>
+
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table" style="background-color: #FFFFFF">
@@ -43,17 +56,7 @@
                             </td>
                         </tr>
 
-                    {% else %}
-
                     {% endfor %}
-
-                        <tr>
-                            <td colspan="4">
-                                <a href="{{ path('admin_menu_new') }}" class="btn btn-outline-dark">
-                                    <i class="fas fa-plus"></i> {{ 'action.add_new' | trans }}
-                                </a>
-                            </td>
-                        </tr>
 
                     </tbody>
                 </table>

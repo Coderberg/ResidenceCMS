@@ -195,9 +195,9 @@
                 <source>action.sign_in</source>
                 <target>Sign in</target>
             </trans-unit>
-            <trans-unit id="action.add_new">
-                <source>action.add_new</source>
-                <target>Add a new item</target>
+            <trans-unit id="action.add_menu_item">
+                <source>action.add_menu_item</source>
+                <target>Add Menu Item</target>
             </trans-unit>
 
             <trans-unit id="table.link_text">
@@ -304,7 +304,7 @@
             </trans-unit>
             <trans-unit id="title.add_operation">
                 <source>title.add_operation</source>
-                <target>Add operation</target>
+                <target>Add New Operation</target>
             </trans-unit>
             <trans-unit id="title.edit_operation">
                 <source>title.edit_operation</source>
@@ -312,7 +312,7 @@
             </trans-unit>
             <trans-unit id="title.add_category">
                 <source>title.add_category</source>
-                <target>Add category</target>
+                <target>Add New Category</target>
             </trans-unit>
             <trans-unit id="title.edit_category">
                 <source>title.edit_category</source>
@@ -320,7 +320,7 @@
             </trans-unit>
             <trans-unit id="title.add_user">
                 <source>title.add_user</source>
-                <target>Add user</target>
+                <target>Add New User</target>
             </trans-unit>
             <trans-unit id="title.edit_user">
                 <source>title.edit_user</source>
@@ -328,11 +328,11 @@
             </trans-unit>
             <trans-unit id="title.add_menu_item">
                 <source>title.add_menu_item</source>
-                <target>Add menu item</target>
+                <target>Add Menu Item</target>
             </trans-unit>
             <trans-unit id="title.edit_menu_item">
                 <source>title.edit_menu_item</source>
-                <target>Edit menu item</target>
+                <target>Edit Menu Item</target>
             </trans-unit>
             <trans-unit id="title.upload_photos">
                 <source>title.upload_photos</source>

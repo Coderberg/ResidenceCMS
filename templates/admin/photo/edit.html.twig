@@ -11,7 +11,7 @@
 {% block body %}
 
     <div class="card mb-3">
-        <div class="card-header"><i class="fas fa-cloud-upload-alt"></i> {{ 'title.upload_photos' | trans }}</div>
+        <div class="card-header"><i class="fas fa-cloud-upload-alt text-danger"></i> {{ 'title.upload_photos' | trans }}</div>
         <div class="card-body">
 
             <form action="{{ path('admin_photo_upload', {id: property_id}) }}" method="POST"
