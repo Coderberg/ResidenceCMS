@@ -57,3 +57,5 @@ script:
   - php bin/console lint:xliff translations
   # this checks that the application doesn't use dependencies with known security vulnerabilities
   - php bin/console security:check
+  # this checks that Doctrine's mapping configurations are valid
+  - ./bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
