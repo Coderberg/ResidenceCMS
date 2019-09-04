@@ -132,7 +132,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 
 .sidebar {
   width: 90px !important;
-  background-color: #212529;
+  background-color: #2B333E;
   min-height: calc(100vh - 56px);
 }
 
@@ -169,11 +169,17 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 }
 
 .sidebar .nav-item .nav-link {
-  color: rgba(255, 255, 255, 0.5);
+  color: #AEB7C2;
+  border-left: 5px solid transparent;
 }
 
-.sidebar .nav-item .nav-link:active, .sidebar .nav-item .nav-link:focus, .sidebar .nav-item .nav-link:hover {
-  color: rgba(255, 255, 255, 0.75);
+.sidebar .nav-item .nav-link:active,
+.sidebar .nav-item .nav-link:focus,
+.sidebar .nav-item .nav-link:hover,
+.sidebar .nav-item.active .nav-link {
+  color: #fff;
+  background-color: #252c35;
+  border-left-color: #f9354c;
 }
 
 .sidebar.toggled {
@@ -241,18 +247,6 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   height: calc(100vh - 56px);
   overflow-y: auto;
 }
-/*
-.card-body-icon {
-  position: absolute;
-  z-index: 0;
-  top: -1.25rem;
-  right: -1rem;
-  opacity: 0.4;
-  font-size: 5rem;
-  -webkit-transform: rotate(15deg);
-  transform: rotate(15deg);
-}
-*/
 
 .card-body-icon {
   position: absolute;
@@ -402,12 +396,10 @@ body.sidebar-toggled footer.sticky-footer {
   }
 }
 
-$danger-color: #E91E63 !important;
-
 .btn-danger {
-  background-color: $danger-color;
-  border-color: $danger-color;
+  background-color: #d9534f !important;
+  border-color: #d43f3a !important;
 }
 .text-danger {
-  color: $danger-color;
+  color: #F9354C !important;
 }

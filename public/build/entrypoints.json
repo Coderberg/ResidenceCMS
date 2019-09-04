@@ -6,6 +6,12 @@
         "/build/js/app.6e7e370a.js"
       ]
     },
+    "js/admin": {
+      "js": [
+        "/build/runtime.e59078a6.js",
+        "/build/js/admin.58ec00de.js"
+      ]
+    },
     "js/ekko-lightbox": {
       "js": [
         "/build/runtime.e59078a6.js",
@@ -47,7 +53,7 @@
         "/build/runtime.e59078a6.js"
       ],
       "css": [
-        "/build/css/app.33118a70.css"
+        "/build/css/app.46707d27.css"
       ]
     },
     "css/admin": {
@@ -55,7 +61,7 @@
         "/build/runtime.e59078a6.js"
       ],
       "css": [
-        "/build/css/admin.d937c863.css"
+        "/build/css/admin.284b1526.css"
       ]
     },
     "css/ekko-lightbox": {

@@ -18,6 +18,7 @@ Encore
      * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
      */
     .addEntry('js/app', './assets/js/app.js')
+    .addEntry('js/admin', './assets/js/admin.js')
     .addEntry('js/ekko-lightbox', './assets/js/ekko-lightbox.js')
     .addEntry('js/map', './assets/js/map.js')
     .addEntry('js/menu-sorting', './assets/js/menu-sorting.js')
