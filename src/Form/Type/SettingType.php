@@ -62,6 +62,14 @@ final class SettingType extends AbstractType
                 ],
                 'required' => false,
                 'label' => 'label.settings.ymaps_key',
+            ])
+            ->add('map_center', null, [
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'placeholder.map_center_example',
+                ],
+                'required' => false,
+                'label' => 'label.settings.map_center',
             ]);
     }
 

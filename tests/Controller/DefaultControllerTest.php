@@ -50,6 +50,7 @@ final class DefaultControllerTest extends WebTestCase
     {
         yield ['/'];
         yield ['/login'];
+        yield ['/map'];
         yield ['/search?locality=0&operation=0&category=0'];
     }
 

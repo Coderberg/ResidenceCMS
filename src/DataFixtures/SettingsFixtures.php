@@ -17,6 +17,7 @@ final class SettingsFixtures extends Fixture
         $setting->setTitle('Site Title');
         $setting->setDescription('Site Description');
         $setting->setItemsPerPage(6);
+        $setting->setMapCenter('27.188534, -81.128735');
         $manager->persist($setting);
         $manager->flush();
     }

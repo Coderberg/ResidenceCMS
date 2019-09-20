@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ "title.properties_on_map"|trans }}{% endblock %}
+
+{% block description %}{{ site.description }}{% endblock %}
+
+{% block body %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+
+        <a href="{{ url('admin_property_new') }}" class="btn btn-primary float">
+            <i class="fas fa-plus float-icon"></i>
+        </a>
+
+    {% endif %}
+
+    {% if site.ymapsKey != '' %}
+
+        <script src="https://api-maps.yandex.ru/2.1/?apikey={{ site.ymapsKey }}&lang=en_US"></script>
+
+    {% else %}
+
+        <script src="https://api-maps.yandex.ru/2.1/?lang=en_US"></script>
+
+    {% endif %}
+
+    <script>
+        ymaps.ready(init);
+
+        function init() {
+            var myMap = new ymaps.Map("map", {
+                center: [{{ site.mapCenter|default('27.188534, -81.128735') }}],
+                zoom: 7
+            });
+
+            {% for property in properties %}
+
+            var myGeoObject = new ymaps.GeoObject({
+                geometry: {
+                    type: "Point",
+                    coordinates: [{{ property.latitude }}, {{ property.longitude }}]
+                },
+                properties: {
+                    hintContent: "${{ property.price }}",
+                    balloonContentHeader: "${{ property.price }}",
+                    balloonContentBody: "{{ property.category.name }}<br><a href=\"{{ path('property_show', { 'id':  property.id }) }}\">{{ 'view_details'|trans }}</a>",
+                }
+            }, {preset: "islands#blueHomeIcon"});
+
+            myMap.geoObjects.add(myGeoObject);
+
+            {% endfor %}
+
+        }
+
+    </script>
+
+    <br>
+    <div id="map"></div>
+    <br>
+
+{% endblock %}

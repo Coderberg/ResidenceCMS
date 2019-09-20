@@ -18,7 +18,16 @@
 
     {% endif %}
 
-    <h3>{{ 'title.latest_properties' | trans }}</h3>
+    <div class="row">
+        <div class="col-6">
+            <h3>{{ 'title.latest_properties' | trans }}</h3>
+        </div>
+        <div class="col-6 text-right">
+            <a href="/map" class="btn btn-sm btn-light">
+                <i class="fas fa-map-marker-alt" style="color: #28a745"></i> {{ 'show_on_map'|trans }}
+            </a>
+        </div>
+    </div>
 
     <br>
     <div class="row">

@@ -60,4 +60,20 @@ final class PropertyController extends BaseController
             ]
         );
     }
+
+    /**
+     * @Route("/map", methods={"GET"}, name="map_view")
+     */
+    public function mapView(Request $request, PropertyRepository $properties): Response
+    {
+        $properties = $this->getDoctrine()
+            ->getRepository(Property::class)->findAll();
+
+        return $this->render('property/map.html.twig',
+            [
+                'site' => $this->site(),
+                'properties' => $properties,
+            ]
+        );
+    }
 }

@@ -48,6 +48,11 @@ class Setting
      */
     private $ymaps_key;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $map_center;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -121,6 +126,18 @@ class Setting
     public function setYmapsKey(?string $ymaps_key): self
     {
         $this->ymaps_key = $ymaps_key;
+
+        return $this;
+    }
+
+    public function getMapCenter(): ?string
+    {
+        return $this->map_center;
+    }
+
+    public function setMapCenter(?string $map_center): self
+    {
+        $this->map_center = $map_center;
 
         return $this;
     }

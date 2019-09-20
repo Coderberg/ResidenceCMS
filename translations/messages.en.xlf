@@ -43,6 +43,10 @@
                 <source>view_details</source>
                 <target>View Details</target>
             </trans-unit>
+            <trans-unit id="show_on_map">
+                <source>show_on_map</source>
+                <target>Show on Map</target>
+            </trans-unit>
 
             <trans-unit id="dashboard">
                 <source>dashboard</source>
@@ -246,6 +250,10 @@
                 <target>Are you sure you want to delete this user?</target>
             </trans-unit>
 
+            <trans-unit id="title.properties_on_map">
+                <source>title.properties_on_map</source>
+                <target>All properties on the map</target>
+            </trans-unit>
             <trans-unit id="title.login">
                 <source>title.login</source>
                 <target>Secure Sign in</target>
@@ -362,6 +370,10 @@
             <trans-unit id="label.settings.ymaps_key">
                 <source>label.settings.ymaps_key</source>
                 <target>Yandex.Maps JavaScript API key</target>
+            </trans-unit>
+            <trans-unit id="label.settings.map_center">
+                <source>label.settings.map_center</source>
+                <target>Map center</target>
             </trans-unit>
             <trans-unit id="label.full_name">
                 <source>label.full_name</source>
@@ -520,6 +532,10 @@
                 <target>Save and create new</target>
             </trans-unit>
 
+            <trans-unit id="placeholder.map_center_example">
+                <source>placeholder.map_center_example</source>
+                <target>e.g. 27.188534, -81.128735</target>
+            </trans-unit>
             <trans-unit id="placeholder.select_city">
                 <source>placeholder.select_city</source>
                 <target>Select a city</target>
