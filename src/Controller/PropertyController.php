@@ -25,6 +25,7 @@ final class PropertyController extends BaseController
             [
                 'site' => $this->site(),
                 'properties' => $properties,
+                'page' => $page,
             ]
         );
     }
@@ -57,6 +58,7 @@ final class PropertyController extends BaseController
             [
                 'site' => $this->site(),
                 'properties' => $properties->findByFilter($locality_id, $operation_id, $category_id, ($page ?? 1)),
+                'page' => $page,
             ]
         );
     }
