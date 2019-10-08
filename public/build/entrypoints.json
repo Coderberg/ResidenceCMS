@@ -48,6 +48,12 @@
         "/build/js/photo.310a58ae.js"
       ]
     },
+    "js/page": {
+      "js": [
+        "/build/runtime.e59078a6.js",
+        "/build/js/page.34a42cbf.js"
+      ]
+    },
     "css/app": {
       "js": [
         "/build/runtime.e59078a6.js"

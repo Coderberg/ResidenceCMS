@@ -56,6 +56,22 @@ final class PageType extends AbstractType
                 'label_attr' => [
                     'class' => 'custom-control-label',
                 ],
+            ])
+            ->add('add_contact_form', null, [
+                'attr' => [
+                    'class' => 'custom-control-input',
+                ],
+                'label' => 'label.add_contact_form',
+                'label_attr' => [
+                    'class' => 'custom-control-label',
+                ],
+            ])
+            ->add('contact_email_address', null, [
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'placeholder.enter_email',
+                ],
+                'label' => 'label.contact_email_address',
             ]);
     }
 

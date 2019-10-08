@@ -36,6 +36,13 @@
                     {{ page.content | raw }}
 
                     <div class="clearfix"></div>
+
+                    {% if page.addContactForm == true and page.contactEmailAddress != '' %}
+
+                        {{ include('page/partials/_contact_form.html.twig') }}
+
+                    {% endif %}
+
                 </div>
             </div>
             <br>

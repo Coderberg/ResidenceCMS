@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PageRepository")
@@ -34,7 +35,7 @@ class Page
     private $slug;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $content;
 
@@ -42,6 +43,17 @@ class Page
      * @ORM\Column(type="boolean")
      */
     private $show_in_menu;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $add_contact_form;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Email()
+     */
+    private $contact_email_address;
 
     public function getId(): ?int
     {
@@ -104,6 +116,30 @@ class Page
     public function setShowInMenu(bool $show_in_menu): self
     {
         $this->show_in_menu = $show_in_menu;
+
+        return $this;
+    }
+
+    public function getAddContactForm(): ?bool
+    {
+        return $this->add_contact_form;
+    }
+
+    public function setAddContactForm(bool $add_contact_form): self
+    {
+        $this->add_contact_form = $add_contact_form;
+
+        return $this;
+    }
+
+    public function getContactEmailAddress(): ?string
+    {
+        return $this->contact_email_address;
+    }
+
+    public function setContactEmailAddress(?string $contact_email_address): self
+    {
+        $this->contact_email_address = $contact_email_address;
 
         return $this;
     }

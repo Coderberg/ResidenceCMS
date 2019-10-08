@@ -133,6 +133,10 @@
                 <source>message.uploaded</source>
                 <target>Photo uploaded successfully</target>
             </trans-unit>
+            <trans-unit id="message.was_sent">
+                <source>message.was_sent</source>
+                <target>Your message was sent successfully. Thanks.</target>
+            </trans-unit>
 
             <trans-unit id="widget.contact_information">
                 <source>widget.contact_information</source>
@@ -194,6 +198,10 @@
             <trans-unit id="action.add_menu_item">
                 <source>action.add_menu_item</source>
                 <target>Add Menu Item</target>
+            </trans-unit>
+            <trans-unit id="action.submit">
+                <source>action.submit</source>
+                <target>Submit</target>
             </trans-unit>
 
             <trans-unit id="table.link_text">
@@ -499,6 +507,18 @@
                 <source>label.show_in_menu</source>
                 <target>Show in menu</target>
             </trans-unit>
+            <trans-unit id="label.add_contact_form">
+                <source>label.add_contact_form</source>
+                <target>Add a Contact Form</target>
+            </trans-unit>
+            <trans-unit id="label.contact_email_address">
+                <source>label.contact_email_address</source>
+                <target>Contact Email Address</target>
+            </trans-unit>
+            <trans-unit id="label.message">
+                <source>label.message</source>
+                <target>Message</target>
+            </trans-unit>
             <trans-unit id="label.create_category">
                 <source>label.create_category</source>
                 <target>Create category</target>
@@ -544,6 +564,10 @@
                 <source>placeholder.select_area</source>
                 <target>Select an area</target>
             </trans-unit>
+            <trans-unit id="placeholder.enter_email">
+                <source>placeholder.enter_email</source>
+                <target>Enter your email</target>
+            </trans-unit>
 
             <trans-unit id="property.locality">
                 <source>property.locality</source>
@@ -580,6 +604,11 @@
             <trans-unit id="all_rights_reserved">
                 <source>all_rights_reserved</source>
                 <target>All Rights Reserved</target>
+            </trans-unit>
+
+            <trans-unit id="email.new_message">
+                <source>email.new_message</source>
+                <target>New Message From Your Website</target>
             </trans-unit>
         </body>
     </file>

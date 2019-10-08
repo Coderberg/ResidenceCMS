@@ -25,6 +25,7 @@ Encore
     .addEntry('js/slugger', './assets/js/slugger.js')
     .addEntry('js/locality', './assets/js/locality.js')
     .addEntry('js/photo', './assets/js/photo.js')
+    .addEntry('js/page', './assets/js/page.js')
 
     // will require an extra script tag for runtime.js
     // but, you probably want this, unless you're building a single-page app

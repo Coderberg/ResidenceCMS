@@ -19,7 +19,18 @@ final class PageFixtures extends Fixture
         $page->setSlug(Slugger::slugify('About Us'));
         $page->setContent($this->getContent());
         $page->setShowInMenu(true);
+        $page->setAddContactForm(false);
         $manager->persist($page);
+
+        $page = new Page();
+        $page->setTitle('Contact');
+        $page->setDescription('Contact Us');
+        $page->setSlug(Slugger::slugify('Contact'));
+        $page->setShowInMenu(true);
+        $page->setAddContactForm(true);
+        $page->setContactEmailAddress('example@domain.com');
+        $manager->persist($page);
+
         $manager->flush();
     }
 

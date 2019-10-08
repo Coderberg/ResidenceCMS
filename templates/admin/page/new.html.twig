@@ -27,6 +27,15 @@
                 {{ form_label(form.show_in_menu) }}
             </div>
 
+            <div class="form-group mb-3 custom-control custom-switch">
+                {{ form_widget(form.add_contact_form) }}
+                {{ form_label(form.add_contact_form) }}
+            </div>
+
+            <div class="form-group" id="email-address" style="display: none">
+                {{ form_row(form.contact_email_address) }}
+            </div>
+
             <div class="form-group">
                 {{ form_row(form.content) }}
             </div>
@@ -49,5 +58,6 @@
 {% block javascripts %}
 
     {{ encore_entry_script_tags('js/slugger') }}
+    {{ encore_entry_script_tags('js/page') }}
 
 {% endblock %}
