@@ -4,11 +4,22 @@ declare(strict_types=1);
 
 namespace App\Twig;
 
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
 final class AppExtension extends AbstractExtension
 {
+    /**
+     * @var TranslatorInterface
+     */
+    private $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
     public function getFilters()
     {
         return [
@@ -18,6 +29,6 @@ final class AppExtension extends AbstractExtension
 
     public function showPageNumber($number = 1)
     {
-        return ($number > 1) ? ' - Page '.$number : '';
+        return ($number > 1) ? ' - '.$this->translator->trans('page').' '.$number : '';
     }
 }
