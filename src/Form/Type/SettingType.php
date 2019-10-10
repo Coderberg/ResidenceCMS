@@ -70,6 +70,12 @@ final class SettingType extends AbstractType
                 ],
                 'required' => false,
                 'label' => 'label.settings.map_center',
+            ])
+            ->add('map_zoom', null, [
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'label' => 'label.settings.map_zoom',
             ]);
     }
 

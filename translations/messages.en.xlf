@@ -383,6 +383,10 @@
                 <source>label.settings.map_center</source>
                 <target>Map center</target>
             </trans-unit>
+            <trans-unit id="label.settings.map_zoom">
+                <source>label.settings.map_zoom</source>
+                <target>Zoom level. Acceptable values: from 0 (the entire world) to 19</target>
+            </trans-unit>
             <trans-unit id="label.full_name">
                 <source>label.full_name</source>
                 <target>Full name</target>

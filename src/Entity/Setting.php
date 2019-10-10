@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SettingRepository")
@@ -52,6 +53,12 @@ class Setting
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $map_center;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Range(min = 0, max = 19)
+     */
+    private $map_zoom;
 
     public function getId(): ?int
     {
@@ -138,6 +145,18 @@ class Setting
     public function setMapCenter(?string $map_center): self
     {
         $this->map_center = $map_center;
+
+        return $this;
+    }
+
+    public function getMapZoom(): ?int
+    {
+        return $this->map_zoom;
+    }
+
+    public function setMapZoom(?int $map_zoom): self
+    {
+        $this->map_zoom = $map_zoom;
 
         return $this;
     }

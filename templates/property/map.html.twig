@@ -30,7 +30,7 @@
         function init() {
             var myMap = new ymaps.Map("map", {
                 center: [{{ site.mapCenter|default('27.188534, -81.128735') }}],
-                zoom: 7
+                zoom: {{ site.mapZoom|default('7') }}
             });
 
             {% for property in properties %}

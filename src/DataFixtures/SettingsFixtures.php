@@ -18,6 +18,7 @@ final class SettingsFixtures extends Fixture
         $setting->setDescription('Site Description');
         $setting->setItemsPerPage(6);
         $setting->setMapCenter('27.188534, -81.128735');
+        $setting->setMapZoom(7);
         $manager->persist($setting);
         $manager->flush();
     }
