@@ -60,6 +60,12 @@ class Setting
      */
     private $map_zoom;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Currency")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $currency;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -157,6 +163,18 @@ class Setting
     public function setMapZoom(?int $map_zoom): self
     {
         $this->map_zoom = $map_zoom;
+
+        return $this;
+    }
+
+    public function getCurrency(): ?Currency
+    {
+        return $this->currency;
+    }
+
+    public function setCurrency(?Currency $currency): self
+    {
+        $this->currency = $currency;
 
         return $this;
     }

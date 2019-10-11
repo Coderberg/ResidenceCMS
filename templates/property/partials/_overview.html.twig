@@ -59,7 +59,8 @@
 
             <tr>
                 <th>{{ 'property.price' | trans }}:</th>
-                <td>${{ property.price }}
+                <td>{{ site.currency.symbolLeft }}{{ property.price }}
+                    {{ site.currency.symbolRight }}
 
                     {% if property.priceType != '' %}
                         / {{ property.priceType }}

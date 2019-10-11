@@ -10,7 +10,9 @@ declare(strict_types=1);
 
 namespace App\Form\Type;
 
+use App\Entity\Currency;
 use App\Entity\Setting;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -55,6 +57,14 @@ final class SettingType extends AbstractType
                     'class' => 'form-control',
                 ],
                 'label' => 'label.settings.limit',
+            ])
+            ->add('currency', EntityType::class, [
+                'class' => Currency::class,
+                'choice_label' => 'currency_title',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'label' => 'label.settings.currency',
             ])
             ->add('ymaps_key', null, [
                 'attr' => [

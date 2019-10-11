@@ -68,6 +68,10 @@
                 <source>categories</source>
                 <target>Categories</target>
             </trans-unit>
+            <trans-unit id="currencies">
+                <source>currencies</source>
+                <target>Currencies</target>
+            </trans-unit>
             <trans-unit id="pages">
                 <source>pages</source>
                 <target>Pages</target>
@@ -228,6 +232,14 @@
                 <source>table.category_name</source>
                 <target>Category name</target>
             </trans-unit>
+            <trans-unit id="table.currency_title">
+                <source>table.currency_title</source>
+                <target>Currency Title</target>
+            </trans-unit>
+            <trans-unit id="table.code">
+                <source>table.code</source>
+                <target>Code</target>
+            </trans-unit>
             <trans-unit id="table.username">
                 <source>table.username</source>
                 <target>Username</target>
@@ -326,6 +338,14 @@
                 <source>title.edit_category</source>
                 <target>Edit category</target>
             </trans-unit>
+            <trans-unit id="title.add_currency">
+                <source>title.add_currency</source>
+                <target>Add New Currency</target>
+            </trans-unit>
+            <trans-unit id="title.edit_currency">
+                <source>title.edit_currency</source>
+                <target>Edit New Currency</target>
+            </trans-unit>
             <trans-unit id="title.add_user">
                 <source>title.add_user</source>
                 <target>Add New User</target>
@@ -375,6 +395,10 @@
                 <source>label.settings.limit</source>
                 <target>Number Of Items Per Page</target>
             </trans-unit>
+            <trans-unit id="label.settings.currency">
+                <source>label.settings.currency</source>
+                <target>Currency</target>
+            </trans-unit>
             <trans-unit id="label.settings.ymaps_key">
                 <source>label.settings.ymaps_key</source>
                 <target>Yandex.Maps JavaScript API key</target>
@@ -414,6 +438,22 @@
             <trans-unit id="label.slug">
                 <source>label.slug</source>
                 <target>Slug</target>
+            </trans-unit>
+            <trans-unit id="label.currency_title">
+                <source>label.currency_title</source>
+                <target>Currency Title</target>
+            </trans-unit>
+            <trans-unit id="label.code">
+                <source>label.code</source>
+                <target>Code</target>
+            </trans-unit>
+            <trans-unit id="label.symbol_left">
+                <source>label.symbol_left</source>
+                <target>Symbol Left</target>
+            </trans-unit>
+            <trans-unit id="label.symbol_right">
+                <source>label.symbol_right</source>
+                <target>Symbol Right</target>
             </trans-unit>
             <trans-unit id="label.photo">
                 <source>label.photo</source>
@@ -526,6 +566,10 @@
             <trans-unit id="label.create_category">
                 <source>label.create_category</source>
                 <target>Create category</target>
+            </trans-unit>
+            <trans-unit id="label.create_currency">
+                <source>label.create_currency</source>
+                <target>Create currency</target>
             </trans-unit>
             <trans-unit id="label.create_operation">
                 <source>label.create_operation</source>

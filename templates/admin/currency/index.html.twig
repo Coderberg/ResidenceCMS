@@ -1,0 +1,55 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ 'currencies'|trans }}{% endblock %}
+
+{% block body %}
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item active">
+            <span class="nav-link active">
+                <i class="fas fa-euro-sign text-danger"></i> {{ 'currencies'|trans }}
+            </span>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_currency_new') }}">
+                <i class="fas fa-plus-square text-danger"></i> {{ 'title.add_currency' | trans }}
+            </a>
+        </li>
+    </ul>
+
+    <div class="card mb-3">
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table" style="background-color: #FFFFFF">
+                    <thead class="thead">
+                    <tr>
+                        <th>{{ 'table.currency_title' | trans }}</th>
+                        <th>{{ 'table.code' | trans }}</th>
+                        <th>{{ 'table.action' | trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for currency in currencies %}
+                        <tr>
+                            <td>{{ currency.currencyTitle }}</td>
+                            <td>{{ currency.code }}</td>
+                            <td>
+                                {{ include('admin/currency/_action_form.html.twig', {currency: currency}, with_context = false) }}
+                            </td>
+                        </tr>
+
+                    {% else %}
+                        <tr>
+                            <td>{{ 'no_items_found' | trans }}</td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

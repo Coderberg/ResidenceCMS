@@ -9,11 +9,21 @@ use App\Entity\Locality;
 use App\Entity\Menu;
 use App\Entity\Operation;
 use App\Entity\Setting;
+use App\Transformer\SettingTransformer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 
 class BaseController extends AbstractController
 {
+    /**
+     * @var SettingTransformer
+     */
+    private $transformer;
+
+    public function __construct(SettingTransformer $transformer)
+    {
+        $this->transformer = $transformer;
+    }
+
     public function settings()
     {
         return $this->getDoctrine()->getRepository(Setting::class)
@@ -51,9 +61,7 @@ class BaseController extends AbstractController
 
     public function site(): array
     {
-        $normalizer = new GetSetMethodNormalizer();
-
-        $settings = $normalizer->normalize($this->settings());
+        $settings = $this->transformer->transform($this->settings());
 
         $fields = $this->searchFields();
 

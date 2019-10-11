@@ -58,7 +58,9 @@
                             {% endfor %}
 
                             {% if property.price != '' %}
-                                <span class="price">${{ property.price }}
+                                <span class="price">
+                                    {{ site.currency.symbolLeft }}{{ property.price }}
+                                    {{ site.currency.symbolRight }}
 
                                     {% if property.priceType != '' %}
                                         / {{ property.priceType }}

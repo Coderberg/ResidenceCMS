@@ -1,0 +1,42 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ 'title.edit_currency' | trans }}{% endblock %}
+
+{% block body %}
+
+    <div class="card mb-3">
+        <div class="card-header"><i class="fas fa-edit text-danger"></i> {{ 'title.edit_currency' | trans }}</div>
+        <div class="card-body">
+
+            {{ form_start(form) }}
+
+            <div class="form-group">
+                {{ form_row(form.currency_title) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(form.code) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(form.symbol_left) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(form.symbol_right) }}
+            </div>
+
+            <div class="form-group">
+
+                <button type="submit" class="btn btn-primary">
+                    {{ 'action.save'|trans }}
+                </button>
+
+            </div>
+
+            {{ form_end(form) }}
+
+        </div>
+    </div><br>
+
+{% endblock %}
