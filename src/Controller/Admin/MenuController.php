@@ -6,6 +6,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Menu;
 use App\Form\Type\MenuType;
+use App\Repository\MenuRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -19,11 +20,8 @@ final class MenuController extends AbstractController
     /**
      * @Route("/admin/menu", name="admin_menu")
      */
-    public function index(): Response
+    public function index(MenuRepository $repository): Response
     {
-        // Get menu
-        $repository = $this->getDoctrine()->getRepository(Menu::class);
-
         return $this->render('admin/menu/index.html.twig', [
             'menu' => $repository->findItems(),
         ]);
@@ -89,10 +87,9 @@ final class MenuController extends AbstractController
      *
      * @Route("/admin/menu/sort",methods={"POST"}, name="admin_menu_sort")
      */
-    public function sort(Request $request)
+    public function sort(Request $request, MenuRepository $repository)
     {
         $items = $request->request->get('items');
-        $repository = $this->getDoctrine()->getRepository(Menu::class);
         $repository->reorderItems($items);
 
         return new JsonResponse(['status' => 'ok']);

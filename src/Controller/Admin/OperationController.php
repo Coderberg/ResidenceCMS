@@ -42,7 +42,6 @@ final class OperationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $operation->getName();
             $em = $this->getDoctrine()->getManager();
             $em->persist($operation);
             $em->flush();

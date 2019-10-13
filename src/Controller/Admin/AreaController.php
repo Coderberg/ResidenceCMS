@@ -28,7 +28,6 @@ final class AreaController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $area->getName();
             $em = $this->getDoctrine()->getManager();
             $em->persist($area);
             $em->flush();

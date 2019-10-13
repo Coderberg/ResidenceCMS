@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
-use App\Entity\Setting;
 use App\Form\Type\SettingType;
+use App\Repository\SettingRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,10 +18,8 @@ final class SettingController extends AbstractController
      * @Route("/admin/setting", name="admin_setting")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function edit(Request $request): Response
+    public function edit(Request $request, SettingRepository $repository): Response
     {
-        $repository = $this->getDoctrine()->getRepository(Setting::class);
-
         $settings = $repository->findAll()[0];
 
         $form = $this->createForm(SettingType::class, $settings);

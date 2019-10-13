@@ -6,6 +6,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Currency;
 use App\Form\Type\CurrencyType;
+use App\Repository\CurrencyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
@@ -19,14 +20,10 @@ final class CurrencyController extends AbstractController
     /**
      * @Route("/admin/currency", name="admin_currency")
      */
-    public function index(): Response
+    public function index(CurrencyRepository $repository): Response
     {
-        $repository = $this->getDoctrine()->getRepository(Currency::class);
-
-        $currencies = $repository->findAll();
-
         return $this->render('admin/currency/index.html.twig', [
-            'currencies' => $currencies,
+            'currencies' => $repository->findAll(),
         ]);
     }
 

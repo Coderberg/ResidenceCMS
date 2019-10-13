@@ -42,7 +42,6 @@ final class LocalityController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $locality->getName();
             $em = $this->getDoctrine()->getManager();
             $em->persist($locality);
             $em->flush();

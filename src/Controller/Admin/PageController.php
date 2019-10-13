@@ -6,6 +6,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Page;
 use App\Form\Type\PageType;
+use App\Repository\PageRepository;
 use App\Service\PageService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,10 +20,9 @@ final class PageController extends AbstractController
      * @Route("/admin/page", defaults={"page": "1"}, methods={"GET"}, name="admin_page")
      * @Route("/admin/page/{page<[1-9]\d*>}", methods={"GET"}, name="admin_page_paginated")
      */
-    public function index(?int $page): Response
+    public function index(?int $page, PageRepository $repository): Response
     {
         // Get pages
-        $repository = $this->getDoctrine()->getRepository(Page::class);
         $pages = $repository->findLatest($page ?? 1);
 
         return $this->render('admin/page/index.html.twig', [
