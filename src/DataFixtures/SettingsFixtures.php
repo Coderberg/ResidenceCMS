@@ -4,31 +4,36 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
-use App\Entity\Setting;
+use App\Entity\Settings;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-final class SettingsFixtures extends Fixture implements DependentFixtureInterface
+final class SettingsFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $setting = new Setting();
-        $setting->setName('Site name');
-        $setting->setTitle('Site Title');
-        $setting->setDescription('Site Description');
-        $setting->setItemsPerPage(6);
-        $setting->setCurrency($this->getReference('USD'));
-        $setting->setMapCenter('27.188534, -81.128735');
-        $setting->setMapZoom(7);
-        $manager->persist($setting);
+        foreach ($this->getData() as [$setting_name, $setting_value]) {
+            $setting = new Settings();
+            $setting->setSettingName($setting_name);
+            $setting->setSettingValue($setting_value);
+            $manager->persist($setting);
+        }
         $manager->flush();
     }
 
-    public function getDependencies()
+    private function getData(): array
     {
         return [
-            CurrencyFixtures::class,
+            // $data = [$setting_name, $setting_value];
+            ['name', 'Site name'],
+            ['title', 'Site Title'],
+            ['description', 'Site Description'],
+            ['custom_code', ''],
+            ['items_per_page', '6'],
+            ['ymaps_key', ''],
+            ['map_center', '27.188534, -81.128735'],
+            ['map_zoom', '7'],
+            ['currency_id', '1'],
         ];
     }
 }
