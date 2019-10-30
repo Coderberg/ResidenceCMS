@@ -14,9 +14,9 @@
 
     {% endif %}
 
-    {% if site.ymapsKey != '' %}
+    {% if site.ymaps_key != '' %}
 
-        <script src="https://api-maps.yandex.ru/2.1/?apikey={{ site.ymapsKey }}&lang=en_US"></script>
+        <script src="https://api-maps.yandex.ru/2.1/?apikey={{ site.ymaps_key }}&lang=en_US"></script>
 
     {% else %}
 
@@ -29,8 +29,8 @@
 
         function init() {
             var myMap = new ymaps.Map("map", {
-                center: [{{ site.mapCenter|default('27.188534, -81.128735') }}],
-                zoom: {{ site.mapZoom|default('7') }}
+                center: [{{ site.map_center|default('27.188534, -81.128735') }}],
+                zoom: {{ site.map_zoom|default('7') }}
             });
 
             {% for property in properties %}

@@ -8,26 +8,19 @@ use App\Entity\Category;
 use App\Entity\Locality;
 use App\Entity\Menu;
 use App\Entity\Operation;
-use App\Entity\Setting;
-use App\Transformer\SettingTransformer;
+use App\Repository\SettingsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BaseController extends AbstractController
 {
     /**
-     * @var SettingTransformer
+     * @var SettingsRepository
      */
-    private $transformer;
+    private $settingsRepository;
 
-    public function __construct(SettingTransformer $transformer)
+    public function __construct(SettingsRepository $settingsRepository)
     {
-        $this->transformer = $transformer;
-    }
-
-    public function settings()
-    {
-        return $this->getDoctrine()->getRepository(Setting::class)
-            ->findAll()[0];
+        $this->settingsRepository = $settingsRepository;
     }
 
     public function menu(): array
@@ -61,7 +54,7 @@ class BaseController extends AbstractController
 
     public function site(): array
     {
-        $settings = $this->transformer->transform($this->settings());
+        $settings = $this->settingsRepository->findAllAsArray();
 
         $fields = $this->searchFields();
 

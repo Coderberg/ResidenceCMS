@@ -1,24 +1,19 @@
 <?php
 
 declare(strict_types=1);
-/**
- * Created by PhpStorm.
- * User: Valery Maslov
- * Date: 30.09.2018
- * Time: 11:08.
- */
 
 namespace App\Form\Type;
 
 use App\Entity\Currency;
-use App\Entity\Setting;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\Range;
 
-final class SettingType extends AbstractType
+final class SettingsType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -32,18 +27,21 @@ final class SettingType extends AbstractType
                     'class' => 'form-control',
                 ],
                 'label' => 'label.settings.name',
+                'constraints' => [new Length(['min' => 2])],
             ])
             ->add('title', null, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
                 'label' => 'label.settings.title',
+                'constraints' => [new Length(['min' => 8])],
             ])
             ->add('description', TextareaType::class, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
                 'label' => 'label.settings.description',
+                'constraints' => [new Length(['min' => 8])],
             ])
             ->add('custom_code', TextareaType::class, [
                 'attr' => [
@@ -57,6 +55,7 @@ final class SettingType extends AbstractType
                     'class' => 'form-control',
                 ],
                 'label' => 'label.settings.limit',
+                'constraints' => [new Range(['min' => 3, 'max' => 100])],
             ])
             ->add('currency', EntityType::class, [
                 'class' => Currency::class,
@@ -86,6 +85,7 @@ final class SettingType extends AbstractType
                     'class' => 'form-control',
                 ],
                 'label' => 'label.settings.map_zoom',
+                'constraints' => [new Range(['min' => 0, 'max' => 19])],
             ]);
     }
 
@@ -94,8 +94,6 @@ final class SettingType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([
-            'data_class' => Setting::class,
-        ]);
+        $resolver->setDefaults([]);
     }
 }

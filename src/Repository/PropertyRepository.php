@@ -72,11 +72,10 @@ final class PropertyRepository extends ServiceEntityRepository
 
     private function findLimit(): int
     {
-        $em = $this->getEntityManager();
+        $repository = $this->getEntityManager()->getRepository('App:Settings');
+        $limit = $repository->findOneBy(['setting_name' => 'items_per_page']);
 
-        $query = $em->createQuery("SELECT s.items_per_page FROM App\Entity\Setting s");
-
-        return (int) $query->getSingleScalarResult();
+        return (int) $limit->getSettingValue();
     }
 
     private function createPaginator(Query $query, int $page): Pagerfanta
