@@ -1,0 +1,53 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ 'features'|trans }}{% endblock %}
+
+{% block body %}
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item active">
+            <span class="nav-link active">
+                <i class="far fa-check-square text-danger"></i> {{ 'features'|trans }}
+            </span>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_feature_new') }}">
+                <i class="fas fa-plus-square text-danger"></i> {{ 'title.add_feature' | trans }}
+            </a>
+        </li>
+    </ul>
+
+    <div class="card mb-3">
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table" style="background-color: #FFFFFF">
+                    <thead class="thead">
+                    <tr>
+                        <th>{{ 'feature' | trans }}</th>
+                        <th>{{ 'table.action' | trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for feature in features %}
+                        <tr>
+                            <td>{{ feature.name }}</td>
+                            <td>
+                                {{ include('admin/feature/_action_form.html.twig', {feature: feature}, with_context = false) }}
+                            </td>
+                        </tr>
+
+                    {% else %}
+                        <tr>
+                            <td>{{ 'no_items_found' | trans }}</td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

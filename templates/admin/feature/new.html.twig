@@ -1,0 +1,51 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ 'title.add_feature' | trans }}{% endblock %}
+
+{% block body %}
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_feature') }}">
+                <i class="far fa-check-square text-danger"></i> {{ 'features'|trans }}
+            </a>
+        </li>
+        <li class="nav-item active">
+            <span class="nav-link active">
+                <i class="fas fa-plus-square text-danger"></i> {{ 'title.add_feature' | trans }}
+            </span>
+        </li>
+    </ul>
+
+    <div class="card mb-3">
+
+        <div class="card-body">
+
+            {{ form_start(form) }}
+
+            <div class="form-group">
+                {{ form_row(form.name) }}
+            </div>
+
+            <div class="form-group">
+
+                <button type="submit" class="btn btn-primary">
+                    {{ 'label.create_feature'|trans }}
+                </button>
+
+                {{ form_widget(form.saveAndCreateNew, {label: 'label.save_and_create_new', attr: {class: 'btn btn-primary'}}) }}
+
+            </div>
+
+            {{ form_end(form) }}
+
+        </div>
+    </div><br>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ encore_entry_script_tags('js/slugger') }}
+
+{% endblock %}

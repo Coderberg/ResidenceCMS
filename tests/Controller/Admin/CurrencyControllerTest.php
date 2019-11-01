@@ -42,7 +42,6 @@ final class CurrencyControllerTest extends WebTestCase
 
         $this->assertNotNull($currency);
         $this->assertSame(self::CURRENCY, $currency->getCode());
-        $this->assertSame(self::CURRENCY, $currency->getCode());
     }
 
     /**

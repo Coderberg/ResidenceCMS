@@ -1,0 +1,11 @@
+@import '~select2/dist/css/select2.css';
+
+.select2-container--default .select2-selection--multiple {
+  border: 1px solid #ced4da;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+  border-color: #8bbafe;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Controller\Admin;
 
 use App\Entity\Category;
+use App\Entity\Feature;
 use App\Entity\Locality;
 use App\Entity\Operation;
 use App\Entity\Property;
@@ -80,6 +81,33 @@ final class PropertyControllerTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isSuccessful(), 'response status is 2xx');
     }
 
+    public function testAdminEditProperty()
+    {
+        $client = static::createClient([], [
+            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
+            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
+        ]);
+
+        $property = $client->getContainer()->get('doctrine')
+            ->getRepository(Property::class)
+            ->findOneBy(['title' => 'test'])->getId();
+
+        $feature = $client->getContainer()->get('doctrine')
+            ->getRepository(Feature::class)->findOneBy(['name' => 'High Impact Doors']);
+
+        $crawler = $client->request('GET', '/admin/property/'.$property.'/edit');
+
+        $form = $crawler->selectButton('Save changes')->form([
+            'property[features]' => [$feature->getId()],
+        ]);
+
+        $client->submit($form);
+        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+
+        $crawler = $client->request('GET', '/property/'.$property);
+        $this->assertContains('High Impact Doors', $crawler->html());
+    }
+
     public function testAdminDeletePhoto()
     {
         $client = static::createClient([], [
@@ -98,7 +126,7 @@ final class PropertyControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
     }
 
-    /**
+    /*
      * This test changes the database contents by deleting a test Property.
      */
     public function testAdminDeleteProperty()

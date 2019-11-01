@@ -12,6 +12,7 @@ namespace App\Form\Type;
 
 use App\Entity\Area;
 use App\Entity\Category;
+use App\Entity\Feature;
 use App\Entity\Locality;
 use App\Entity\Operation;
 use App\Entity\Property;
@@ -48,6 +49,7 @@ final class PropertyType extends AbstractType
                     'class' => 'form-control',
                 ],
                 'label' => 'label.area',
+                'required' => false,
                 'choices' => [],
             ])
             ->add('operation', EntityType::class, [
@@ -146,6 +148,17 @@ final class PropertyType extends AbstractType
                     ],
                 ]
             )
+            ->add('features', EntityType::class, [
+                'class' => Feature::class,
+                'choice_label' => 'name',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'multiple' => true,
+                'required' => false,
+                'label' => 'label.features',
+                //'expanded' => true
+            ])
             ->add('content', CKEditorType::class, [
                 'config' => [
                     'uiColor' => '#ffffff',

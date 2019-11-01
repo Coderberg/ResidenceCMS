@@ -136,9 +136,15 @@ class Property
      */
     private $photos;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Feature", inversedBy="properties")
+     */
+    private $features;
+
     public function __construct()
     {
         $this->photos = new ArrayCollection();
+        $this->features = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -425,6 +431,32 @@ class Property
     public function setArea(?Area $area): self
     {
         $this->area = $area;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Feature[]
+     */
+    public function getFeatures(): Collection
+    {
+        return $this->features;
+    }
+
+    public function addFeature(Feature $feature): self
+    {
+        if (!$this->features->contains($feature)) {
+            $this->features[] = $feature;
+        }
+
+        return $this;
+    }
+
+    public function removeFeature(Feature $feature): self
+    {
+        if ($this->features->contains($feature)) {
+            $this->features->removeElement($feature);
+        }
 
         return $this;
     }

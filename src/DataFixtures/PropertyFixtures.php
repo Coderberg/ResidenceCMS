@@ -34,6 +34,11 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
             $property->setPriceType($price_type);
             $property->setPublished(true);
             $property->setPublishedAt(new \DateTime('now'));
+            $property->addFeature($this->getReference('Air conditioning'));
+            $property->addFeature($this->getReference('Balcony'));
+            $property->addFeature($this->getReference('Fire Alarm'));
+            $property->addFeature($this->getReference('High Impact Doors'));
+            $property->addFeature($this->getReference('Secure parking'));
             $manager->persist($property);
             $this->addReference(Slugger::slugify($title), $property);
         }
@@ -143,6 +148,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
         return [
             AreaFixtures::class,
             CategoryFixtures::class,
+            FeatureFixtures::class,
             LocalityFixtures::class,
             OperationFixtures::class,
             UserFixtures::class,

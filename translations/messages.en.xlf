@@ -68,6 +68,10 @@
                 <source>categories</source>
                 <target>Categories</target>
             </trans-unit>
+            <trans-unit id="features">
+                <source>features</source>
+                <target>Features</target>
+            </trans-unit>
             <trans-unit id="currencies">
                 <source>currencies</source>
                 <target>Currencies</target>
@@ -107,6 +111,10 @@
             <trans-unit id="category">
                 <source>category</source>
                 <target>Category</target>
+            </trans-unit>
+            <trans-unit id="feature">
+                <source>feature</source>
+                <target>Feature</target>
             </trans-unit>
             <trans-unit id="page">
                 <source>page</source>
@@ -338,6 +346,14 @@
                 <source>title.edit_category</source>
                 <target>Edit category</target>
             </trans-unit>
+            <trans-unit id="title.add_feature">
+                <source>title.add_feature</source>
+                <target>Add New Feature</target>
+            </trans-unit>
+            <trans-unit id="title.edit_feature">
+                <source>title.edit_feature</source>
+                <target>Edit feature</target>
+            </trans-unit>
             <trans-unit id="title.add_currency">
                 <source>title.add_currency</source>
                 <target>Add New Currency</target>
@@ -479,6 +495,14 @@
                 <source>label.category</source>
                 <target>Category</target>
             </trans-unit>
+            <trans-unit id="label.features">
+                <source>label.features</source>
+                <target>Features</target>
+            </trans-unit>
+            <trans-unit id="label.feature">
+                <source>label.feature</source>
+                <target>Feature</target>
+            </trans-unit>
             <trans-unit id="label.bathrooms_number">
                 <source>label.bathrooms_number</source>
                 <target>Number of Bathrooms</target>
@@ -570,6 +594,10 @@
             <trans-unit id="label.create_currency">
                 <source>label.create_currency</source>
                 <target>Create currency</target>
+            </trans-unit>
+            <trans-unit id="label.create_feature">
+                <source>label.create_feature</source>
+                <target>Create feature</target>
             </trans-unit>
             <trans-unit id="label.create_operation">
                 <source>label.create_operation</source>

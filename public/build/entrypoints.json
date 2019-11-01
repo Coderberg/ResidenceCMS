@@ -30,6 +30,12 @@
         "/build/js/menu-sorting.5555cc4d.js"
       ]
     },
+    "js/select2": {
+      "js": [
+        "/build/runtime.e59078a6.js",
+        "/build/js/select2.461c0771.js"
+      ]
+    },
     "js/slugger": {
       "js": [
         "/build/runtime.e59078a6.js",
@@ -92,6 +98,14 @@
       ],
       "css": [
         "/build/css/photo.562a12ef.css"
+      ]
+    },
+    "css/select2": {
+      "js": [
+        "/build/runtime.e59078a6.js"
+      ],
+      "css": [
+        "/build/css/select2.458ae337.css"
       ]
     }
   }
