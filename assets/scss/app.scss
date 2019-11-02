@@ -10,8 +10,18 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 
-.navbar, #map {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+.navbar {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+
+.card {
+  border: 0;
+  box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);
+}
+
+.card-header {
+  background: rgba(0,0,0,.03);
+  border-color: transparent;
 }
 
 #map {

@@ -21,7 +21,7 @@
     "js/map": {
       "js": [
         "/build/runtime.dca8fcdd.js",
-        "/build/js/map.d54b6fe1.js"
+        "/build/js/map.5389b873.js"
       ]
     },
     "js/menu-sorting": {
@@ -65,7 +65,7 @@
         "/build/runtime.dca8fcdd.js"
       ],
       "css": [
-        "/build/css/app.d20dfef6.css"
+        "/build/css/app.b7fb680b.css"
       ]
     },
     "css/admin": {
