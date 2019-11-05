@@ -9,9 +9,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\LocalityRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CityRepository")
  */
-class Locality
+class City
 {
     /**
      * @ORM\Id()
@@ -31,12 +31,12 @@ class Locality
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="locality")
+     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="city")
      */
     private $properties;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Area", mappedBy="locality")
+     * @ORM\OneToMany(targetEntity="App\Entity\Area", mappedBy="city")
      * @ORM\OrderBy({"name" = "ASC"})
      */
     private $areas;
@@ -88,7 +88,7 @@ class Locality
     {
         if (!$this->properties->contains($property)) {
             $this->properties[] = $property;
-            $property->setLocality($this);
+            $property->setCity($this);
         }
 
         return $this;
@@ -99,8 +99,8 @@ class Locality
         if ($this->properties->contains($property)) {
             $this->properties->removeElement($property);
             // set the owning side to null (unless already changed)
-            if ($property->getLocality() === $this) {
-                $property->setLocality(null);
+            if ($property->getCity() === $this) {
+                $property->setCity(null);
             }
         }
 
@@ -119,7 +119,7 @@ class Locality
     {
         if (!$this->areas->contains($area)) {
             $this->areas[] = $area;
-            $area->setLocality($this);
+            $area->setCity($this);
         }
 
         return $this;
@@ -130,8 +130,8 @@ class Locality
         if ($this->areas->contains($area)) {
             $this->areas->removeElement($area);
             // set the owning side to null (unless already changed)
-            if ($area->getLocality() === $this) {
-                $area->setLocality(null);
+            if ($area->getCity() === $this) {
+                $area->setCity(null);
             }
         }
 

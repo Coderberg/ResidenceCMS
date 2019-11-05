@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\Category;
-use App\Entity\Locality;
+use App\Entity\City;
 use App\Entity\Menu;
 use App\Entity\Operation;
 use App\Repository\SettingsRepository;
@@ -33,9 +33,9 @@ class BaseController extends AbstractController
 
     public function searchFields(): array
     {
-        // Get localities
-        $localities = $this->getDoctrine()
-            ->getRepository(Locality::class)->findAll();
+        // Get city
+        $cities = $this->getDoctrine()
+            ->getRepository(City::class)->findAll();
 
         // Get categories
         $categories = $this->getDoctrine()
@@ -46,7 +46,7 @@ class BaseController extends AbstractController
             ->getRepository(Operation::class)->findAll();
 
         return [
-            'localities' => $localities,
+            'cities' => $cities,
             'categories' => $categories,
             'operations' => $operations,
         ];

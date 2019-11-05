@@ -12,8 +12,8 @@ namespace App\Form\Type;
 
 use App\Entity\Area;
 use App\Entity\Category;
+use App\Entity\City;
 use App\Entity\Feature;
-use App\Entity\Locality;
 use App\Entity\Operation;
 use App\Entity\Property;
 use App\Form\EventSubscriber\AddAreaFieldSubscriber;
@@ -32,14 +32,14 @@ final class PropertyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('locality', EntityType::class, [
-                'class' => Locality::class,
+            ->add('city', EntityType::class, [
+                'class' => City::class,
                 'choice_label' => 'name',
                 'placeholder' => 'placeholder.select_city',
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'label.locality',
+                'label' => 'label.city',
             ])
             ->add('area', EntityType::class, [
                 'class' => Area::class,
@@ -167,7 +167,7 @@ final class PropertyType extends AbstractType
             ]);
 
         $builder->addEventSubscriber(new AddAreaFieldSubscriber());
-        $builder->get('locality')->addEventSubscriber(new UpdateAreaFieldSubscriber());
+        $builder->get('city')->addEventSubscriber(new UpdateAreaFieldSubscriber());
     }
 
     /**

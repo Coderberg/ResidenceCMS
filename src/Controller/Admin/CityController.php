@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
-use App\Entity\Locality;
-use App\Form\Type\LocalityType;
+use App\Entity\City;
+use App\Form\Type\CityType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
@@ -14,36 +14,36 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class LocalityController extends AbstractController
+final class CityController extends AbstractController
 {
     /**
-     * @Route("/admin/locality", name="admin_locality")
+     * @Route("/admin/city", name="admin_city")
      */
     public function index(): Response
     {
-        $repository = $this->getDoctrine()->getRepository(Locality::class);
+        $repository = $this->getDoctrine()->getRepository(City::class);
 
-        $localities = $repository->findAll();
+        $cities = $repository->findAll();
 
-        return $this->render('admin/locality/index.html.twig', [
-            'localities' => $localities,
+        return $this->render('admin/city/index.html.twig', [
+            'cities' => $cities,
         ]);
     }
 
     /**
-     * @Route("/admin/locality/new", name="admin_locality_new")
+     * @Route("/admin/city/new", name="admin_city_new")
      */
     public function new(Request $request): Response
     {
-        $locality = new Locality();
+        $city = new City();
 
-        $form = $this->createForm(LocalityType::class, $locality)
+        $form = $this->createForm(CityType::class, $city)
             ->add('saveAndCreateNew', SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($locality);
+            $em->persist($city);
             $em->flush();
 
             $this->addFlash('success', 'message.created');
@@ -51,57 +51,57 @@ final class LocalityController extends AbstractController
             /** @var ClickableInterface $button */
             $button = $form->get('saveAndCreateNew');
             if ($button->isClicked()) {
-                return $this->redirectToRoute('admin_locality_new');
+                return $this->redirectToRoute('admin_city_new');
             }
 
-            return $this->redirectToRoute('admin_locality');
+            return $this->redirectToRoute('admin_city');
         }
 
-        return $this->render('admin/locality/new.html.twig', [
-            'locality' => $locality,
+        return $this->render('admin/city/new.html.twig', [
+            'city' => $city,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * Displays a form to edit an existing Locality entity.
+     * Displays a form to edit an existing City entity.
      *
-     * @Route("/admin/locality/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_locality_edit")
+     * @Route("/admin/city/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_city_edit")
      */
-    public function edit(Request $request, Locality $locality): Response
+    public function edit(Request $request, City $city): Response
     {
-        $form = $this->createForm(LocalityType::class, $locality);
+        $form = $this->createForm(CityType::class, $city);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'message.updated');
 
-            return $this->redirectToRoute('admin_locality');
+            return $this->redirectToRoute('admin_city');
         }
 
-        return $this->render('admin/locality/edit.html.twig', [
+        return $this->render('admin/city/edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * Deletes a Locality entity.
+     * Deletes a City entity.
      *
-     * @Route("/locality/{id<\d+>}/delete", methods={"POST"}, name="admin_locality_delete")
+     * @Route("/city/{id<\d+>}/delete", methods={"POST"}, name="admin_city_delete")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function delete(Request $request, Locality $locality): Response
+    public function delete(Request $request, City $city): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
-            return $this->redirectToRoute('admin_locality');
+            return $this->redirectToRoute('admin_city');
         }
 
         $em = $this->getDoctrine()->getManager();
-        $em->remove($locality);
+        $em->remove($city);
         $em->flush();
         $this->addFlash('success', 'message.deleted');
 
-        return $this->redirectToRoute('admin_locality');
+        return $this->redirectToRoute('admin_city');
     }
 }

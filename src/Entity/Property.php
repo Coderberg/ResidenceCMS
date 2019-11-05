@@ -39,10 +39,10 @@ class Property
     private $category;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Locality", inversedBy="properties")
+     * @ORM\ManyToOne(targetEntity="App\Entity\City", inversedBy="properties")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $locality;
+    private $city;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Area", inversedBy="properties")
@@ -188,14 +188,14 @@ class Property
         return $this;
     }
 
-    public function getLocality(): ?Locality
+    public function getCity(): ?City
     {
-        return $this->locality;
+        return $this->city;
     }
 
-    public function setLocality(?Locality $locality): self
+    public function setCity(?City $city): self
     {
-        $this->locality = $locality;
+        $this->city = $city;
 
         return $this;
     }

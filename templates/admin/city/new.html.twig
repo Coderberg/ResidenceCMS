@@ -1,13 +1,13 @@
 {% extends 'admin/base.html.twig' %}
 
-{% block title %}{{ 'title.add_locality' | trans }}{% endblock %}
+{% block title %}{{ 'title.add_city' | trans }}{% endblock %}
 
 {% block body %}
 
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="{{ path('admin_locality') }}">
-                <i class="fas fa-map-marker-alt text-danger"></i> {{ 'localities'|trans }}
+            <a class="nav-link" href="{{ path('admin_city') }}">
+                <i class="fas fa-map-marker-alt text-danger"></i> {{ 'cities'|trans }}
             </a>
         </li>
         <li class="nav-item active">
@@ -39,7 +39,7 @@
             <div class="form-group">
 
                 <button type="submit" class="btn btn-primary">
-                    {{ 'label.create_locality'|trans }}
+                    {{ 'label.create_city'|trans }}
                 </button>
 
                 {{ form_widget(form.saveAndCreateNew, {label: 'label.save_and_create_new', attr: {class: 'btn btn-primary'}}) }}

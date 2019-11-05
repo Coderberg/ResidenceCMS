@@ -36,10 +36,10 @@ class Area
     private $properties;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Locality", inversedBy="areas")
+     * @ORM\ManyToOne(targetEntity="App\Entity\City", inversedBy="areas")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $locality;
+    private $city;
 
     public function __construct()
     {
@@ -75,14 +75,14 @@ class Area
         return $this;
     }
 
-    public function getLocality(): ?Locality
+    public function getCity(): ?City
     {
-        return $this->locality;
+        return $this->city;
     }
 
-    public function setLocality(?Locality $locality): self
+    public function setCity(?City $city): self
     {
-        $this->locality = $locality;
+        $this->city = $city;
 
         return $this;
     }
@@ -99,7 +99,7 @@ class Area
     {
         if (!$this->properties->contains($property)) {
             $this->properties[] = $property;
-            $property->setLocality($this);
+            $property->setCity($this);
         }
 
         return $this;
@@ -110,8 +110,8 @@ class Area
         if ($this->properties->contains($property)) {
             $this->properties->removeElement($property);
             // set the owning side to null (unless already changed)
-            if ($property->getLocality() === $this) {
-                $property->setLocality(null);
+            if ($property->getCity() === $this) {
+                $property->setCity(null);
             }
         }
 

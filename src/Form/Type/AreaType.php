@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Form\Type;
 
 use App\Entity\Area;
-use App\Entity\Locality;
+use App\Entity\City;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,8 +19,8 @@ final class AreaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('locality', EntityType::class, [
-                'class' => Locality::class,
+            ->add('city', EntityType::class, [
+                'class' => City::class,
                 'choice_label' => 'name',
                 'attr' => [
                     'class' => 'form-control',

@@ -13,17 +13,17 @@ class AddAreaFieldSubscriber implements EventSubscriberInterface
 {
     public static function getSubscribedEvents()
     {
-        return [FormEvents::POST_SET_DATA => 'onLocalitySelected'];
+        return [FormEvents::POST_SET_DATA => 'onCitySelected'];
     }
 
-    public function onLocalitySelected(FormEvent $event)
+    public function onCitySelected(FormEvent $event)
     {
         $form = $event->getForm();
         $data = $event->getData();
         $areas = $data->getArea();
 
         if ($areas) {
-            $form->get('locality')->setData($areas->getLocality());
+            $form->get('city')->setData($areas->getCity());
 
             $form->add('area', EntityType::class, [
                 'class' => 'App\Entity\Area',
@@ -34,7 +34,7 @@ class AddAreaFieldSubscriber implements EventSubscriberInterface
                 ],
                 'required' => false,
                 'label' => 'label.area',
-                'choices' => $areas->getLocality()->getAreas(),
+                'choices' => $areas->getCity()->getAreas(),
             ]);
         }
     }

@@ -6,12 +6,12 @@
 
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="{{ path('admin_locality') }}">
-                <i class="fas fa-map-marker-alt text-danger"></i> {{ 'localities'|trans }}
+            <a class="nav-link" href="{{ path('admin_city') }}">
+                <i class="fas fa-map-marker-alt text-danger"></i> {{ 'cities'|trans }}
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ path('admin_locality_new') }}">
+            <a class="nav-link" href="{{ path('admin_city_new') }}">
                 <i class="fas fa-plus-square text-danger"></i> {{ 'menu.add_new'|trans }} {{ 'city' | trans }}
             </a>
         </li>
@@ -29,7 +29,7 @@
             {{ form_start(form) }}
 
             <div class="form-group">
-                {{ form_row(form.locality) }}
+                {{ form_row(form.city) }}
             </div>
 
             <div class="form-group" id="name">

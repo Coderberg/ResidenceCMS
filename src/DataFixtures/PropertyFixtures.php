@@ -14,13 +14,13 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
 {
     public function load(ObjectManager $manager): void
     {
-        foreach ($this->getPropertyData() as [$operation, $category, $locality, $area, $title,
+        foreach ($this->getPropertyData() as [$operation, $category, $city, $area, $title,
                     $address, $latitude, $longitude, $price, $price_type, ]) {
             $property = new Property();
             $property->setAuthor($this->getReference(UserFixtures::ADMIN_USER_REFERENCE));
             $property->setOperation($operation);
             $property->setCategory($category);
-            $property->setLocality($locality);
+            $property->setCity($city);
             $property->setArea($area);
             $property->setTitle($title);
             $property->setDescription($title);
@@ -49,7 +49,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
     {
         return [
             /*
-                $propertyData = [$operation_id, $category_id, $locality_id, $area,
+                $propertyData = [$operation_id, $category_id, $city_id, $area,
                                 $title, $address, $latitude, $longitude,
                                 $price, $price_type];
             */
@@ -149,7 +149,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
             AreaFixtures::class,
             CategoryFixtures::class,
             FeatureFixtures::class,
-            LocalityFixtures::class,
+            CityFixtures::class,
             OperationFixtures::class,
             UserFixtures::class,
         ];

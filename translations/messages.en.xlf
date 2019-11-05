@@ -56,9 +56,9 @@
                 <source>properties</source>
                 <target>Properties</target>
             </trans-unit>
-            <trans-unit id="localities">
-                <source>localities</source>
-                <target>Localities</target>
+            <trans-unit id="cities">
+                <source>cities</source>
+                <target>Cities</target>
             </trans-unit>
             <trans-unit id="operations">
                 <source>operations</source>
@@ -91,10 +91,6 @@
             <trans-unit id="property">
                 <source>property</source>
                 <target>Property</target>
-            </trans-unit>
-            <trans-unit id="locality">
-                <source>locality</source>
-                <target>Locality</target>
             </trans-unit>
             <trans-unit id="city">
                 <source>city</source>
@@ -170,9 +166,9 @@
                 <source>widget.search</source>
                 <target>Search</target>
             </trans-unit>
-            <trans-unit id="widget.all_localities">
-                <source>widget.all_localities</source>
-                <target>All localities</target>
+            <trans-unit id="widget.all_cities">
+                <source>widget.all_cities</source>
+                <target>All cities</target>
             </trans-unit>
             <trans-unit id="widget.all_operations">
                 <source>widget.all_operations</source>
@@ -228,9 +224,9 @@
                 <source>table.move</source>
                 <target>Move</target>
             </trans-unit>
-            <trans-unit id="table.locality_name">
-                <source>table.locality_name</source>
-                <target>Locality name</target>
+            <trans-unit id="table.city_name">
+                <source>table.city_name</source>
+                <target>City name</target>
             </trans-unit>
             <trans-unit id="table.operation_name">
                 <source>table.operation_name</source>
@@ -314,13 +310,13 @@
                 <source>title.edit_property</source>
                 <target>Edit property</target>
             </trans-unit>
-            <trans-unit id="title.add_locality">
-                <source>title.add_locality</source>
-                <target>Add locality</target>
+            <trans-unit id="title.add_city">
+                <source>title.add_city</source>
+                <target>Add city</target>
             </trans-unit>
-            <trans-unit id="title.edit_locality">
-                <source>title.edit_locality</source>
-                <target>Edit locality</target>
+            <trans-unit id="title.edit_city">
+                <source>title.edit_city</source>
+                <target>Edit city</target>
             </trans-unit>
             <trans-unit id="title.add_area">
                 <source>title.add_area</source>
@@ -475,9 +471,9 @@
                 <source>label.photo</source>
                 <target>Photo</target>
             </trans-unit>
-            <trans-unit id="label.locality">
-                <source>label.locality</source>
-                <target>Locality</target>
+            <trans-unit id="label.city">
+                <source>label.city</source>
+                <target>City</target>
             </trans-unit>
             <trans-unit id="label.area">
                 <source>label.area</source>
@@ -603,9 +599,9 @@
                 <source>label.create_operation</source>
                 <target>Create operation</target>
             </trans-unit>
-            <trans-unit id="label.create_locality">
-                <source>label.create_locality</source>
-                <target>Create locality</target>
+            <trans-unit id="label.create_city">
+                <source>label.create_city</source>
+                <target>Create city</target>
             </trans-unit>
             <trans-unit id="label.create_area">
                 <source>label.create_area</source>
@@ -645,9 +641,9 @@
                 <target>Enter your email</target>
             </trans-unit>
 
-            <trans-unit id="property.locality">
-                <source>property.locality</source>
-                <target>Locality</target>
+            <trans-unit id="property.city">
+                <source>property.city</source>
+                <target>City</target>
             </trans-unit>
             <trans-unit id="property.operation">
                 <source>property.operation</source>

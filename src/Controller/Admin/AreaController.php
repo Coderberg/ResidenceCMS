@@ -40,7 +40,7 @@ final class AreaController extends AbstractController
                 return $this->redirectToRoute('admin_area_new');
             }
 
-            return $this->redirectToRoute('admin_locality');
+            return $this->redirectToRoute('admin_city');
         }
 
         return $this->render('admin/area/new.html.twig', [
@@ -62,7 +62,7 @@ final class AreaController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'message.updated');
 
-            return $this->redirectToRoute('admin_locality');
+            return $this->redirectToRoute('admin_city');
         }
 
         return $this->render('admin/area/edit.html.twig', [
@@ -79,7 +79,7 @@ final class AreaController extends AbstractController
     public function delete(Request $request, Area $area): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
-            return $this->redirectToRoute('admin_locality');
+            return $this->redirectToRoute('admin_city');
         }
 
         $em = $this->getDoctrine()->getManager();
@@ -87,6 +87,6 @@ final class AreaController extends AbstractController
         $em->flush();
         $this->addFlash('success', 'message.deleted');
 
-        return $this->redirectToRoute('admin_locality');
+        return $this->redirectToRoute('admin_city');
     }
 }

@@ -1,10 +1,10 @@
 {% extends 'admin/base.html.twig' %}
 
-{% block title %}{{ 'localities'|trans }}{% endblock %}
+{% block title %}{{ 'cities'|trans }}{% endblock %}
 
 {% block stylesheets %}
 
-    {{ encore_entry_link_tags('css/locality') }}
+    {{ encore_entry_link_tags('css/city') }}
 
 {% endblock %}
 
@@ -13,11 +13,11 @@
     <ul class="nav nav-tabs">
         <li class="nav-item active">
             <span class="nav-link active">
-                <i class="fas fa-map-marker-alt text-danger"></i> {{ 'localities'|trans }}
+                <i class="fas fa-map-marker-alt text-danger"></i> {{ 'cities'|trans }}
             </span>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ path('admin_locality_new') }}">
+            <a class="nav-link" href="{{ path('admin_city_new') }}">
                 <i class="fas fa-plus-square text-danger"></i> {{ 'menu.add_new'|trans }} {{ 'city' | trans }}
             </a>
         </li>
@@ -35,26 +35,26 @@
                 <table class="table" style="background-color: #FFFFFF">
                     <thead class="thead">
                     <tr>
-                        <th>{{ 'table.locality_name' | trans }}</th>
+                        <th>{{ 'table.city_name' | trans }}</th>
                         <th class="hidden-sm">{{ 'table.slug' | trans }}</th>
                         <th>{{ 'table.action' | trans }}</th>
                     </tr>
                     </thead>
                     <tbody>
 
-                    {% for locality in localities %}
+                    {% for city in cities %}
                         <tr>
-                            <td class="locality">{{ locality.name }}</td>
-                            <td class="hidden-sm">{{ locality.slug }}</td>
+                            <td class="city">{{ city.name }}</td>
+                            <td class="hidden-sm">{{ city.slug }}</td>
                             <td>
-                                {{ include('admin/locality/_action_form.html.twig', {locality: locality}, with_context = false) }}
+                                {{ include('admin/city/_action_form.html.twig', {city: city}, with_context = false) }}
                             </td>
                         </tr>
 
-                        {% for area in locality.areas %}
+                        {% for area in city.areas %}
 
                             <tr>
-                                <td class="sub-locality text-secondary">{{ area.name }}</td>
+                                <td class="sub-city text-secondary">{{ area.name }}</td>
                                 <td class="hidden-sm">{{ area.slug }}</td>
                                 <td>
                                     {{ include('admin/area/_action_form.html.twig', {area: area}, with_context = false) }}

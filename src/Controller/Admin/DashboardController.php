@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
-use App\Entity\Locality;
+use App\Entity\City;
 use App\Entity\Operation;
 use App\Entity\User;
 use App\Service\PageService;
@@ -24,9 +24,9 @@ final class DashboardController extends AbstractController
         // Counting the number of properties
         $properties = $propertyService->countAll();
 
-        // Counting the number of localities
-        $localities = $this->getDoctrine()
-            ->getRepository(Locality::class)->findCount();
+        // Counting the number of cities
+        $city = $this->getDoctrine()
+            ->getRepository(City::class)->findCount();
 
         // Counting the number of operations
         $operations = $this->getDoctrine()
@@ -45,7 +45,7 @@ final class DashboardController extends AbstractController
 
         return $this->render('admin/dashboard/index.html.twig', [
             'number_of_properties' => $properties,
-            'number_of_localities' => $localities,
+            'number_of_cities' => $city,
             'number_of_operations' => $operations,
             'number_of_categories' => $categories,
             'number_of_pages' => $pages,

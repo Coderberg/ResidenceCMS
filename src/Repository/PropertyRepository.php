@@ -44,15 +44,15 @@ final class PropertyRepository extends ServiceEntityRepository
         return $this->createPaginator($qb->getQuery(), $page);
     }
 
-    public function findByFilter(int $locality, int $operation, int $category, int $page = 1): Pagerfanta
+    public function findByFilter(int $city, int $operation, int $category, int $page = 1): Pagerfanta
     {
         $qb = $this->createQueryBuilder('p');
 
         $qb->Where('p.published = 1');
 
-        // Locality
-        if ($locality > 0) {
-            $qb->andWhere('p.locality = '.(int) $locality);
+        // City
+        if ($city > 0) {
+            $qb->andWhere('p.city = '.(int) $city);
         }
 
         // Operation

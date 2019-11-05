@@ -10,12 +10,12 @@ declare(strict_types=1);
 
 namespace App\Form\Type;
 
-use App\Entity\Locality;
+use App\Entity\City;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class LocalityType extends AbstractType
+final class CityType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -44,7 +44,7 @@ final class LocalityType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Locality::class,
+            'data_class' => City::class,
         ]);
     }
 }

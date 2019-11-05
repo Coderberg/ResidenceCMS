@@ -24,7 +24,7 @@ Encore
     .addEntry('js/menu-sorting', './assets/js/menu-sorting.js')
     .addEntry('js/select2', './assets/js/select2.js')
     .addEntry('js/slugger', './assets/js/slugger.js')
-    .addEntry('js/locality', './assets/js/locality.js')
+    .addEntry('js/city', './assets/js/city.js')
     .addEntry('js/photo', './assets/js/photo.js')
     .addEntry('js/page', './assets/js/page.js')
 
@@ -63,7 +63,7 @@ Encore
     .addStyleEntry('css/app', ['./assets/scss/app.scss'])
     .addStyleEntry('css/admin', ['./assets/scss/admin.scss'])
     .addStyleEntry('css/ekko-lightbox', ['./assets/scss/ekko-lightbox.scss'])
-    .addStyleEntry('css/locality', ['./assets/scss/locality.scss'])
+    .addStyleEntry('css/city', ['./assets/scss/city.scss'])
     .addStyleEntry('css/photo', ['./assets/scss/photo.scss'])
     .addStyleEntry('css/select2', ['./assets/scss/select2.scss'])
     //.enableIntegrityHashes()

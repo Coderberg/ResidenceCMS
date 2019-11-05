@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Tests\Controller\Admin;
 
 use App\Entity\Category;
+use App\Entity\City;
 use App\Entity\Feature;
-use App\Entity\Locality;
 use App\Entity\Operation;
 use App\Entity\Property;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -30,8 +30,8 @@ final class PropertyControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/admin/property/new');
 
-        $locality = $client->getContainer()->get('doctrine')
-            ->getRepository(Locality::class)->findOneBy([])->getId();
+        $city = $client->getContainer()->get('doctrine')
+            ->getRepository(City::class)->findOneBy([])->getId();
 
         $operation = $client->getContainer()->get('doctrine')
             ->getRepository(Operation::class)->findOneBy([])->getId();
@@ -40,7 +40,7 @@ final class PropertyControllerTest extends WebTestCase
             ->getRepository(Category::class)->findOneBy([])->getId();
 
         $form = $crawler->selectButton('Create property')->form([
-            'property[locality]' => $locality,
+            'property[city]' => $city,
             'property[operation]' => $operation,
             'property[category]' => $category,
             'property[title]' => 'test',

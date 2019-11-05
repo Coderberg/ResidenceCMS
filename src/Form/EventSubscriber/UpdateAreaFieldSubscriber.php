@@ -13,10 +13,10 @@ class UpdateAreaFieldSubscriber implements EventSubscriberInterface
 {
     public static function getSubscribedEvents()
     {
-        return [FormEvents::POST_SUBMIT => 'onLocalityChanged'];
+        return [FormEvents::POST_SUBMIT => 'onCityChanged'];
     }
 
-    public function onLocalityChanged(FormEvent $event)
+    public function onCityChanged(FormEvent $event)
     {
         $form = $event->getForm();
 

@@ -2,12 +2,12 @@
     <table>
         <tbody>
         <tr>
-            <th>{{ 'property.locality' | trans }}:</th>
+            <th>{{ 'property.city' | trans }}:</th>
             <td>
                 {% if property.area.name | default %}
                     {{ property.area.name }},
                 {% endif %}
-                {{ property.locality.name }}
+                {{ property.city.name }}
             </td>
         </tr>
         <tr>

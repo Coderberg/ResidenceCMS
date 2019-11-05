@@ -3,14 +3,14 @@
     <div class="card-body">
         <form action="{{ path('property_search') }}" method="get">
             <div class="form-group">
-                <label>{{ 'locality'|trans }}</label>
-                <select name="locality" class="form-control form-control-lg">
+                <label>{{ 'city'|trans }}</label>
+                <select name="city" class="form-control form-control-lg">
 
-                    <option value="0">{{ 'widget.all_localities'|trans }}</option>
+                    <option value="0">{{ 'widget.all_cities'|trans }}</option>
 
-                    {% for locality in site.localities %}
+                    {% for city in site.cities %}
 
-                        <option value="{{ locality.id }}">{{ locality.name }}</option>
+                        <option value="{{ city.id }}">{{ city.name }}</option>
 
                     {% endfor %}
                 </select>

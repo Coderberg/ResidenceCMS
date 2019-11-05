@@ -4,23 +4,23 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Entity\Locality;
+use App\Entity\City;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Contracts\Cache\ItemInterface;
 
 /**
- * @method Locality|null find($id, $lockMode = null, $lockVersion = null)
- * @method Locality|null findOneBy(array $criteria, array $orderBy = null)
- * @method Locality[]    findAll()
- * @method Locality[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method city|null find($id, $lockMode = null, $lockVersion = null)
+ * @method city|null findOneBy(array $criteria, array $orderBy = null)
+ * @method city[]    findAll()
+ * @method city[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-final class LocalityRepository extends ServiceEntityRepository
+final class CityRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Locality::class);
+        parent::__construct($registry, City::class);
     }
 
     public function countAll(): int
@@ -37,7 +37,7 @@ final class LocalityRepository extends ServiceEntityRepository
     {
         $cache = new FilesystemAdapter();
 
-        $count = $cache->get('localities_count', function (ItemInterface $item) {
+        $count = $cache->get('cities_count', function (ItemInterface $item) {
             $item->expiresAfter(3600);
 
             return $this->countAll();

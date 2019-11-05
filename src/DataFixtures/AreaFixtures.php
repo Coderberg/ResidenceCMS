@@ -13,9 +13,9 @@ final class AreaFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        foreach ($this->getAreaData() as [$locality, $name, $slug]) {
+        foreach ($this->getAreaData() as [$city, $name, $slug]) {
             $area = new Area();
-            $area->setLocality($locality);
+            $area->setCity($city);
             $area->setName($name);
             $area->setSlug($slug);
             $manager->persist($area);
@@ -27,7 +27,7 @@ final class AreaFixtures extends Fixture implements DependentFixtureInterface
     private function getAreaData(): array
     {
         return [
-            // $areaData = [$locality, $name, $slug];
+            // $areaData = [$city, $name, $slug];
            [$this->getReference('Miami'), 'South Beach', 'south-beach'],
            [$this->getReference('Miami'), 'Downtown', 'downtown'],
            [$this->getReference('Tampa'), 'Ballast Point', 'ballast-point'],
@@ -38,7 +38,7 @@ final class AreaFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            LocalityFixtures::class,
+            CityFixtures::class,
         ];
     }
 }
