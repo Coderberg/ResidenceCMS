@@ -4,7 +4,11 @@
 
 {% block body %}
 
-    <h3>{{ 'title.pages' | trans }}</h3>
+    <h3>{{ 'title.pages' | trans }}
+        <a href="{{ path('admin_page_new') }}" class="btn btn-light" title="{{ 'menu.add_new'|trans }}">
+            <i class="fas fa-plus-square text-danger"></i>
+        </a>
+    </h3>
 
     <br>
     <div class="row">
@@ -16,7 +20,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title"><a
-                                    href="{{ path('page', { 'slug':  page.slug }) }}">{{ page.title }}</a>
+                                href="{{ path('page', { 'slug':  page.slug }) }}">{{ page.title }}</a>
                         </h4>
                         <p class="card-text">{{ page.description }}</p>
 
