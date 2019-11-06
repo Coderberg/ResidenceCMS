@@ -2,17 +2,17 @@
 
 $(document).ready(function () {
 
-    let $locality = $('#property_locality');
+    let $city = $('#property_city');
     let $title = $('#property_title');
     let $description = $('#property_description');
     let $address = $('#property_address');
     let $content = $('#property_content');
 
-    $locality.change(function () {
+    $city.change(function () {
 
         let $form = $(this).closest('form');
         let data = {};
-        data[$locality.attr('name')] = $locality.val();
+        data[$city.attr('name')] = $city.val();
         data[$title.attr('name')] = $title.val();
         data[$description.attr('name')] = $description.val();
         data[$address.attr('name')] = $address.val();
