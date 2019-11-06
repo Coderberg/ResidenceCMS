@@ -51,7 +51,7 @@ final class DefaultControllerTest extends WebTestCase
         yield ['/'];
         yield ['/login'];
         yield ['/map'];
-        yield ['/search?locality=0&operation=0&category=0'];
+        yield ['/search?city=0&deal_type=0&category=0'];
     }
 
     public function getSecureUrls()

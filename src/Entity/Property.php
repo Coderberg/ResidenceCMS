@@ -27,10 +27,10 @@ class Property
     private $author;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Operation", inversedBy="properties")
+     * @ORM\ManyToOne(targetEntity="App\Entity\DealType", inversedBy="properties")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $operation;
+    private $deal_type;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="properties")
@@ -164,14 +164,14 @@ class Property
         return $this;
     }
 
-    public function getOperation(): ?Operation
+    public function getDealType(): ?DealType
     {
-        return $this->operation;
+        return $this->deal_type;
     }
 
-    public function setOperation(?Operation $operation): self
+    public function setDealType(?DealType $dealType): self
     {
-        $this->operation = $operation;
+        $this->deal_type = $dealType;
 
         return $this;
     }

@@ -1,7 +1,7 @@
-<form action="{{ url('admin_operation_delete', {id: operation.id}) }}" method="post" data-confirmation="true"
-      id="delete-form-{{ operation.id }}">
+<form action="{{ url('admin_deal_type_delete', {id: deal_type.id}) }}" method="post" data-confirmation="true"
+      id="delete-form-{{ deal_type.id }}">
 
-    <a href="{{ url('admin_operation_edit', {id: operation.id}) }}"
+    <a href="{{ url('admin_deal_type_edit', {id: deal_type.id}) }}"
        class="btn btn-sm btn-outline-primary">{{ 'action.edit' | trans }}</a> &nbsp;&nbsp;&nbsp;
 
     <input type="hidden" name="token" value="{{ csrf_token('delete') }}"/>

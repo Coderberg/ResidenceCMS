@@ -17,13 +17,13 @@
             </div>
 
             <div class="form-group">
-                <label>{{ 'operation'|trans }}</label>
-                <select name="operation" class="form-control form-control-lg">
-                    <option value="0">{{ 'widget.all_operations'|trans }}</option>
+                <label>{{ 'deal_type'|trans }}</label>
+                <select name="dealType" class="form-control form-control-lg">
+                    <option value="0">{{ 'widget.all_deal_types'|trans }}</option>
 
-                    {% for operation in site.operations %}
+                    {% for deal_type in site.deal_types %}
 
-                        <option value="{{ operation.id }}">{{ operation.name }}</option>
+                        <option value="{{ deal_type.id }}">{{ deal_type.name }}</option>
 
                     {% endfor %}
                 </select>

@@ -6,7 +6,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Category;
 use App\Entity\City;
-use App\Entity\Operation;
+use App\Entity\DealType;
 use App\Entity\User;
 use App\Service\PageService;
 use App\Service\PropertyService;
@@ -28,9 +28,9 @@ final class DashboardController extends AbstractController
         $city = $this->getDoctrine()
             ->getRepository(City::class)->findCount();
 
-        // Counting the number of operations
-        $operations = $this->getDoctrine()
-            ->getRepository(Operation::class)->findCount();
+        // Counting the number of dealTypes
+        $dealTypes = $this->getDoctrine()
+            ->getRepository(DealType::class)->findCount();
 
         // Counting the number of categories
         $categories = $this->getDoctrine()
@@ -46,7 +46,7 @@ final class DashboardController extends AbstractController
         return $this->render('admin/dashboard/index.html.twig', [
             'number_of_properties' => $properties,
             'number_of_cities' => $city,
-            'number_of_operations' => $operations,
+            'number_of_deal_types' => $dealTypes,
             'number_of_categories' => $categories,
             'number_of_pages' => $pages,
             'number_of_users' => $users,

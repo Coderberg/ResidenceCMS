@@ -17,12 +17,12 @@
                         </select>
                     </div>
                     <div class="col-lg-3 mb-2">
-                        <select name="operation" class="form-control form-control-lg">
-                            <option value="0">{{ 'operation'|trans }}</option>
+                        <select name="deal_type" class="form-control form-control-lg">
+                            <option value="0">{{ 'deal_type'|trans }}</option>
 
-                            {% for operation in site.operations %}
+                            {% for deal_type in site.deal_types %}
 
-                                <option value="{{ operation.id }}">{{ operation.name }}</option>
+                                <option value="{{ deal_type.id }}">{{ deal_type.name }}</option>
 
                             {% endfor %}
 

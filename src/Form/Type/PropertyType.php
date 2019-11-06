@@ -13,8 +13,8 @@ namespace App\Form\Type;
 use App\Entity\Area;
 use App\Entity\Category;
 use App\Entity\City;
+use App\Entity\DealType;
 use App\Entity\Feature;
-use App\Entity\Operation;
 use App\Entity\Property;
 use App\Form\EventSubscriber\AddAreaFieldSubscriber;
 use App\Form\EventSubscriber\UpdateAreaFieldSubscriber;
@@ -52,13 +52,13 @@ final class PropertyType extends AbstractType
                 'required' => false,
                 'choices' => [],
             ])
-            ->add('operation', EntityType::class, [
-                'class' => Operation::class,
+            ->add('dealType', EntityType::class, [
+                'class' => DealType::class,
                 'choice_label' => 'name',
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'label.operation',
+                'label' => 'label.deal_type',
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,

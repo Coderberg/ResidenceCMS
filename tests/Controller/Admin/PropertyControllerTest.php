@@ -6,8 +6,8 @@ namespace App\Tests\Controller\Admin;
 
 use App\Entity\Category;
 use App\Entity\City;
+use App\Entity\DealType;
 use App\Entity\Feature;
-use App\Entity\Operation;
 use App\Entity\Property;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -33,15 +33,15 @@ final class PropertyControllerTest extends WebTestCase
         $city = $client->getContainer()->get('doctrine')
             ->getRepository(City::class)->findOneBy([])->getId();
 
-        $operation = $client->getContainer()->get('doctrine')
-            ->getRepository(Operation::class)->findOneBy([])->getId();
+        $dealType = $client->getContainer()->get('doctrine')
+            ->getRepository(DealType::class)->findOneBy([])->getId();
 
         $category = $client->getContainer()->get('doctrine')
             ->getRepository(Category::class)->findOneBy([])->getId();
 
         $form = $crawler->selectButton('Create property')->form([
             'property[city]' => $city,
-            'property[operation]' => $operation,
+            'property[dealType]' => $dealType,
             'property[category]' => $category,
             'property[title]' => 'test',
             'property[description]' => 'test',

@@ -10,12 +10,12 @@ declare(strict_types=1);
 
 namespace App\Form\Type;
 
-use App\Entity\Operation;
+use App\Entity\DealType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class OperationType extends AbstractType
+final class DealTypeType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -44,7 +44,7 @@ final class OperationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Operation::class,
+            'data_class' => DealType::class,
         ]);
     }
 }

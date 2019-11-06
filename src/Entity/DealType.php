@@ -9,9 +9,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\OperationRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\DealTypeRepository")
  */
-class Operation
+class DealType
 {
     /**
      * @ORM\Id()
@@ -31,7 +31,7 @@ class Operation
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="operation")
+     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="deal_type")
      */
     private $properties;
 
@@ -81,7 +81,7 @@ class Operation
     {
         if (!$this->properties->contains($property)) {
             $this->properties[] = $property;
-            $property->setOperation($this);
+            $property->setDealType($this);
         }
 
         return $this;
@@ -92,8 +92,8 @@ class Operation
         if ($this->properties->contains($property)) {
             $this->properties->removeElement($property);
             // set the owning side to null (unless already changed)
-            if ($property->getOperation() === $this) {
-                $property->setOperation(null);
+            if ($property->getDealType() === $this) {
+                $property->setDealType(null);
             }
         }
 

@@ -4,23 +4,23 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Entity\Operation;
+use App\Entity\DealType;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Contracts\Cache\ItemInterface;
 
 /**
- * @method Operation|null find($id, $lockMode = null, $lockVersion = null)
- * @method Operation|null findOneBy(array $criteria, array $orderBy = null)
- * @method Operation[]    findAll()
- * @method Operation[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method DealType|null find($id, $lockMode = null, $lockVersion = null)
+ * @method DealType|null findOneBy(array $criteria, array $orderBy = null)
+ * @method DealType[]    findAll()
+ * @method DealType[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-final class OperationRepository extends ServiceEntityRepository
+final class DealTypeRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Operation::class);
+        parent::__construct($registry, DealType::class);
     }
 
     public function countAll(): int
@@ -37,7 +37,7 @@ final class OperationRepository extends ServiceEntityRepository
     {
         $cache = new FilesystemAdapter();
 
-        $count = $cache->get('operations_count', function (ItemInterface $item) {
+        $count = $cache->get('deal_types_count', function (ItemInterface $item) {
             $item->expiresAfter(3600);
 
             return $this->countAll();

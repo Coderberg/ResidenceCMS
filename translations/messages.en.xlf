@@ -60,9 +60,9 @@
                 <source>cities</source>
                 <target>Cities</target>
             </trans-unit>
-            <trans-unit id="operations">
-                <source>operations</source>
-                <target>Operations</target>
+            <trans-unit id="deal_types">
+                <source>deal_types</source>
+                <target>Deal Types</target>
             </trans-unit>
             <trans-unit id="categories">
                 <source>categories</source>
@@ -100,9 +100,9 @@
                 <source>area</source>
                 <target>Area</target>
             </trans-unit>
-            <trans-unit id="operation">
-                <source>operation</source>
-                <target>Operation</target>
+            <trans-unit id="deal_type">
+                <source>deal_type</source>
+                <target>Deal Type</target>
             </trans-unit>
             <trans-unit id="category">
                 <source>category</source>
@@ -170,9 +170,9 @@
                 <source>widget.all_cities</source>
                 <target>All cities</target>
             </trans-unit>
-            <trans-unit id="widget.all_operations">
-                <source>widget.all_operations</source>
-                <target>All operations</target>
+            <trans-unit id="widget.all_deal_types">
+                <source>widget.all_deal_types</source>
+                <target>All deal types</target>
             </trans-unit>
             <trans-unit id="widget.all_categories">
                 <source>widget.all_categories</source>
@@ -228,9 +228,9 @@
                 <source>table.city_name</source>
                 <target>City name</target>
             </trans-unit>
-            <trans-unit id="table.operation_name">
-                <source>table.operation_name</source>
-                <target>Operation name</target>
+            <trans-unit id="table.deal_type">
+                <source>table.deal_type</source>
+                <target>Deal Type</target>
             </trans-unit>
             <trans-unit id="table.category_name">
                 <source>table.category_name</source>
@@ -326,13 +326,13 @@
                 <source>title.edit_area</source>
                 <target>Edit area</target>
             </trans-unit>
-            <trans-unit id="title.add_operation">
-                <source>title.add_operation</source>
-                <target>Add New Operation</target>
+            <trans-unit id="title.add_deal_type">
+                <source>title.add_deal_type</source>
+                <target>Add New Deal Type</target>
             </trans-unit>
-            <trans-unit id="title.edit_operation">
-                <source>title.edit_operation</source>
-                <target>Edit operation</target>
+            <trans-unit id="title.edit_deal_type">
+                <source>title.edit_deal_type</source>
+                <target>Edit deal type</target>
             </trans-unit>
             <trans-unit id="title.add_category">
                 <source>title.add_category</source>
@@ -483,9 +483,9 @@
                 <source>label.area_name</source>
                 <target>Area name</target>
             </trans-unit>
-            <trans-unit id="label.operation">
-                <source>label.operation</source>
-                <target>Operation</target>
+            <trans-unit id="label.deal_type">
+                <source>label.deal_type</source>
+                <target>Deal Type</target>
             </trans-unit>
             <trans-unit id="label.category">
                 <source>label.category</source>
@@ -595,9 +595,9 @@
                 <source>label.create_feature</source>
                 <target>Create feature</target>
             </trans-unit>
-            <trans-unit id="label.create_operation">
-                <source>label.create_operation</source>
-                <target>Create operation</target>
+            <trans-unit id="label.create_deal_type">
+                <source>label.create_deal_type</source>
+                <target>Create deal type</target>
             </trans-unit>
             <trans-unit id="label.create_city">
                 <source>label.create_city</source>
@@ -645,9 +645,9 @@
                 <source>property.city</source>
                 <target>City</target>
             </trans-unit>
-            <trans-unit id="property.operation">
-                <source>property.operation</source>
-                <target>Operation</target>
+            <trans-unit id="property.deal_type">
+                <source>property.deal_type</source>
+                <target>Deal Type</target>
             </trans-unit>
             <trans-unit id="property.category">
                 <source>property.category</source>
