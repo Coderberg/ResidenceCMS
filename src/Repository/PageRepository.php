@@ -6,10 +6,10 @@ namespace App\Repository;
 
 use App\Entity\Page;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
-use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
  * @method Page|null find($id, $lockMode = null, $lockVersion = null)
@@ -21,7 +21,7 @@ final class PageRepository extends ServiceEntityRepository
 {
     const NUM_ITEMS = 10;
 
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Page::class);
     }
