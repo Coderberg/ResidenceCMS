@@ -5,7 +5,14 @@
 {% block description %}{{ page.description }}{% endblock %}
 
 {% block header %}
-    <div class="header" style="background-image: url('/images/bg.jpg');">
+    <div class="header"
+     style="background-image: url(
+        {% if site.header_image == '' %}
+            '/images/bg.jpg'
+         {% else %}
+            '/uploads/images/full/{{ site.header_image }}'
+         {% endif %}
+     )">
         <div class="header-overlay"></div>
         <div class="container">
             <div class="search_form text-center">

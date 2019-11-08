@@ -382,6 +382,10 @@
                 <source>title.settings</source>
                 <target>Settings</target>
             </trans-unit>
+            <trans-unit id="title.settings.header_image">
+                <source>title.settings.header_image</source>
+                <target>Header image</target>
+            </trans-unit>
 
             <trans-unit id="label.remember_me">
                 <source>label.remember_me</source>

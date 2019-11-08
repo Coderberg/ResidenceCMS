@@ -1,11 +1,18 @@
-<div class="header" style="background-image: url('/images/bg.jpg');">
+<div class="header"
+     style="background-image: url(
+        {% if site.header_image == '' %}
+            '/images/bg.jpg'
+         {% else %}
+            '/uploads/images/full/{{ site.header_image }}'
+         {% endif %}
+     )">
     <div class="header-overlay"></div>
     <div class="container">
         <div class="search_form">
             <form action="{{ path('property_search') }}" method="get">
                 <div class="form-row">
                     <div class="col-lg-3 mb-2">
-                        <select name="city" class="form-control form-control-lg">
+                        <select name="city" class="form-control form-control-lg" aria-label="{{ 'city'|trans }}">
                             <option value="0">{{ 'city'|trans }}</option>
 
                             {% for city in site.cities %}
@@ -17,7 +24,7 @@
                         </select>
                     </div>
                     <div class="col-lg-3 mb-2">
-                        <select name="deal_type" class="form-control form-control-lg">
+                        <select name="deal_type" class="form-control form-control-lg" aria-label="{{ 'deal_type'|trans }}">
                             <option value="0">{{ 'deal_type'|trans }}</option>
 
                             {% for deal_type in site.deal_types %}
@@ -29,7 +36,7 @@
                         </select>
                     </div>
                     <div class="col-lg-3 mb-2">
-                        <select name="category" class="form-control form-control-lg">
+                        <select name="category" class="form-control form-control-lg" aria-label="{{ 'category'|trans }}">
                             <option value="0">{{ 'category'|trans }}</option>
 
                             {% for category in site.categories %}

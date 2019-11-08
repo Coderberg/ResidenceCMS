@@ -51,6 +51,7 @@ final class DefaultControllerTest extends WebTestCase
         yield ['/'];
         yield ['/login'];
         yield ['/map'];
+        yield ['/info/contact'];
         yield ['/search?city=0&deal_type=0&category=0'];
     }
 
