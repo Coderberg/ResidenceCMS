@@ -77,8 +77,19 @@
                         <p class="small">
                             <i class="fas fa-map-marker-alt" style="color: #28a745"></i> {{ property.address }}
                         </p>
+
+                        {% if property.metroStation %}
+                            <p class="small">
+                                <i class="fas fa-subway" style="color: #28a745"></i> {{ property.metroStation.name }}
+                            </p>
+                        {% endif %}
+
                         <code>{{ property.dealType.name }}</code>
                         <code>{{ property.category.name }}</code>
+
+                        {% if property.bedroomsNumber %}
+                            <code>{{ 'property.bedrooms'|trans }}: {{ property.bedroomsNumber }}</code>
+                        {% endif %}
                     </div>
                 </div>
                 <br>

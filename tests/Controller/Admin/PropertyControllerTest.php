@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller\Admin;
 
+use App\Entity\Area;
 use App\Entity\Category;
 use App\Entity\City;
 use App\Entity\DealType;
 use App\Entity\Feature;
+use App\Entity\Metro;
 use App\Entity\Property;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -31,7 +33,7 @@ final class PropertyControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/admin/property/new');
 
         $city = $client->getContainer()->get('doctrine')
-            ->getRepository(City::class)->findOneBy([])->getId();
+            ->getRepository(City::class)->findOneBy(['slug' => 'miami'])->getId();
 
         $dealType = $client->getContainer()->get('doctrine')
             ->getRepository(DealType::class)->findOneBy([])->getId();
@@ -92,12 +94,20 @@ final class PropertyControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['title' => 'test'])->getId();
 
+        $metroStation = $client->getContainer()->get('doctrine')
+            ->getRepository(Metro::class)->findOneBy(['slug' => 'government-center'])->getId();
+
+        $area = $client->getContainer()->get('doctrine')
+            ->getRepository(Area::class)->findOneBy(['slug' => 'south-beach'])->getId();
+
         $feature = $client->getContainer()->get('doctrine')
             ->getRepository(Feature::class)->findOneBy(['name' => 'High Impact Doors']);
 
         $crawler = $client->request('GET', '/admin/property/'.$property.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
+            'property[area]' => $area,
+            'property[metro_station]' => $metroStation,
             'property[features]' => [$feature->getId()],
         ]);
 
@@ -106,6 +116,8 @@ final class PropertyControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/property/'.$property);
         $this->assertContains('High Impact Doors', $crawler->html());
+        $this->assertContains('Government Center', $crawler->html());
+        $this->assertContains('South Beach', $crawler->html());
     }
 
     public function testAdminDeletePhoto()

@@ -15,9 +15,12 @@ use App\Entity\Category;
 use App\Entity\City;
 use App\Entity\DealType;
 use App\Entity\Feature;
+use App\Entity\Metro;
 use App\Entity\Property;
 use App\Form\EventSubscriber\AddAreaFieldSubscriber;
+use App\Form\EventSubscriber\AddMetroFieldSubscriber;
 use App\Form\EventSubscriber\UpdateAreaFieldSubscriber;
+use App\Form\EventSubscriber\UpdateMetroFieldSubscriber;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -49,6 +52,17 @@ final class PropertyType extends AbstractType
                     'class' => 'form-control',
                 ],
                 'label' => 'label.area',
+                'required' => false,
+                'choices' => [],
+            ])
+            ->add('metro_station', EntityType::class, [
+                'class' => Metro::class,
+                'choice_label' => 'name',
+                'placeholder' => 'placeholder.select_metro_station',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'label' => 'label.metro_station_name',
                 'required' => false,
                 'choices' => [],
             ])
@@ -168,6 +182,9 @@ final class PropertyType extends AbstractType
 
         $builder->addEventSubscriber(new AddAreaFieldSubscriber());
         $builder->get('city')->addEventSubscriber(new UpdateAreaFieldSubscriber());
+
+        $builder->addEventSubscriber(new AddMetroFieldSubscriber());
+        $builder->get('city')->addEventSubscriber(new UpdateMetroFieldSubscriber());
     }
 
     /**

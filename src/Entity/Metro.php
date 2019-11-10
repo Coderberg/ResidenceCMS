@@ -10,10 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\AreaRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\MetroRepository")
  * @UniqueEntity("slug")
  */
-class Area
+class Metro
 {
     /**
      * @ORM\Id()
@@ -25,23 +25,23 @@ class Area
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $slug;
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="area")
-     */
-    private $properties;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\City", inversedBy="areas")
+     * @ORM\ManyToOne(targetEntity="App\Entity\City", inversedBy="metro_stations")
      * @ORM\JoinColumn(nullable=false)
      */
     private $city;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="metro_station")
+     */
+    private $properties;
 
     public function __construct()
     {
@@ -53,18 +53,6 @@ class Area
         return $this->id;
     }
 
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
     public function getName(): ?string
     {
         return $this->name;
@@ -73,6 +61,18 @@ class Area
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
@@ -101,7 +101,7 @@ class Area
     {
         if (!$this->properties->contains($property)) {
             $this->properties[] = $property;
-            $property->setCity($this);
+            $property->setMetroStation($this);
         }
 
         return $this;
@@ -112,8 +112,8 @@ class Area
         if ($this->properties->contains($property)) {
             $this->properties->removeElement($property);
             // set the owning side to null (unless already changed)
-            if ($property->getCity() === $this) {
-                $property->setCity(null);
+            if ($property->getMetroStation() === $this) {
+                $property->setMetroStation(null);
             }
         }
 

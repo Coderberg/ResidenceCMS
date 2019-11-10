@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Area\Admin;
+namespace App\Tests\Metro\Admin;
 
-use App\Entity\Area;
+use App\Entity\Metro;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-final class AreaControllerTest extends WebTestCase
+final class MetroControllerTest extends WebTestCase
 {
     private const PHP_AUTH_USER = 'admin';
     private const PHP_AUTH_PW = 'admin';
@@ -18,87 +18,87 @@ final class AreaControllerTest extends WebTestCase
     private const EDITED_NAME = 'Edited';
 
     /**
-     * This test changes the database contents by creating a new Area.
+     * This test changes the database contents by creating a new Metro station.
      */
-    public function testAdminNewArea()
+    public function testAdminNewStation()
     {
         $client = static::createClient([], [
             'PHP_AUTH_USER' => self::PHP_AUTH_USER,
             'PHP_AUTH_PW' => self::PHP_AUTH_PW,
         ]);
-        $crawler = $client->request('GET', '/admin/area/new');
+        $crawler = $client->request('GET', '/admin/metro/new');
 
-        $form = $crawler->selectButton('Create area')->form([
-            'area[name]' => self::NAME,
-            'area[slug]' => self::SLUG,
+        $form = $crawler->selectButton('Create metro station')->form([
+            'metro[name]' => self::NAME,
+            'metro[slug]' => self::SLUG,
         ]);
         $client->submit($form);
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
-        $area = $client->getContainer()->get('doctrine')
-            ->getRepository(Area::class)->findOneBy([
+        $station = $client->getContainer()->get('doctrine')
+            ->getRepository(Metro::class)->findOneBy([
                 'slug' => self::SLUG,
             ]);
 
-        $this->assertNotNull($area);
-        $this->assertSame(self::NAME, $area->getName());
-        $this->assertSame(self::SLUG, $area->getSlug());
+        $this->assertNotNull($station);
+        $this->assertSame(self::NAME, $station->getName());
+        $this->assertSame(self::SLUG, $station->getSlug());
     }
 
     /**
-     * This test changes the database contents by editing an Area.
+     * This test changes the database contents by editing a Metro station.
      */
-    public function testAdminEditArea()
+    public function testAdminEditStation()
     {
         $client = static::createClient([], [
             'PHP_AUTH_USER' => self::PHP_AUTH_USER,
             'PHP_AUTH_PW' => self::PHP_AUTH_PW,
         ]);
 
-        $area = $client->getContainer()->get('doctrine')
-            ->getRepository(Area::class)
+        $station = $client->getContainer()->get('doctrine')
+            ->getRepository(Metro::class)
             ->findOneBy([
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/area/'.$area.'/edit');
+        $crawler = $client->request('GET', '/admin/metro/'.$station.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
-            'area[name]' => self::EDITED_NAME,
+            'metro[name]' => self::EDITED_NAME,
         ]);
 
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $editedArea = $client->getContainer()->get('doctrine')
-            ->getRepository(Area::class)->findOneBy([
-                'id' => $area,
+        $editedStation = $client->getContainer()->get('doctrine')
+            ->getRepository(Metro::class)->findOneBy([
+                'id' => $station,
             ]);
 
-        $this->assertSame(self::EDITED_NAME, $editedArea->getName());
+        $this->assertSame(self::EDITED_NAME, $editedStation->getName());
     }
 
     /**
-     * This test changes the database contents by deleting a test Area.
+     * This test changes the database contents by deleting a test Metro station.
      */
-    public function testAdminDeleteArea()
+    public function testAdminDeleteStation()
     {
         $client = static::createClient([], [
             'PHP_AUTH_USER' => self::PHP_AUTH_USER,
             'PHP_AUTH_PW' => self::PHP_AUTH_PW,
         ]);
 
-        $area = $client->getContainer()->get('doctrine')
-            ->getRepository(Area::class)->findOneBy([
+        $station = $client->getContainer()->get('doctrine')
+            ->getRepository(Metro::class)->findOneBy([
                 'slug' => self::SLUG,
             ])->getId();
 
         $crawler = $client->request('GET', '/admin/city');
-        $client->submit($crawler->filter('#delete-area-'.$area)->form());
+        $client->submit($crawler->filter('#delete-metro-'.$station)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
         $this->assertNull($client->getContainer()->get('doctrine')
-            ->getRepository(Area::class)->findOneBy([
+            ->getRepository(Metro::class)->findOneBy([
                 'slug' => self::SLUG,
             ]));
     }

@@ -100,6 +100,10 @@
                 <source>area</source>
                 <target>Area</target>
             </trans-unit>
+            <trans-unit id="metro_station">
+                <source>metro_station</source>
+                <target>Metro station</target>
+            </trans-unit>
             <trans-unit id="deal_type">
                 <source>deal_type</source>
                 <target>Deal Type</target>
@@ -322,9 +326,17 @@
                 <source>title.add_area</source>
                 <target>Add area</target>
             </trans-unit>
+            <trans-unit id="title.add_metro_station">
+                <source>title.add_metro_station</source>
+                <target>Add metro station</target>
+            </trans-unit>
             <trans-unit id="title.edit_area">
                 <source>title.edit_area</source>
                 <target>Edit area</target>
+            </trans-unit>
+            <trans-unit id="title.edit_metro_station">
+                <source>title.edit_metro_station</source>
+                <target>Edit metro station</target>
             </trans-unit>
             <trans-unit id="title.add_deal_type">
                 <source>title.add_deal_type</source>
@@ -487,6 +499,10 @@
                 <source>label.area_name</source>
                 <target>Area name</target>
             </trans-unit>
+            <trans-unit id="label.metro_station_name">
+                <source>label.metro_station_name</source>
+                <target>Metro station name</target>
+            </trans-unit>
             <trans-unit id="label.deal_type">
                 <source>label.deal_type</source>
                 <target>Deal Type</target>
@@ -611,6 +627,10 @@
                 <source>label.create_area</source>
                 <target>Create area</target>
             </trans-unit>
+            <trans-unit id="label.create_metro_station">
+                <source>label.create_metro_station</source>
+                <target>Create metro station</target>
+            </trans-unit>
             <trans-unit id="label.create_page">
                 <source>label.create_page</source>
                 <target>Create page</target>
@@ -639,6 +659,10 @@
             <trans-unit id="placeholder.select_area">
                 <source>placeholder.select_area</source>
                 <target>Select an area</target>
+            </trans-unit>
+            <trans-unit id="placeholder.select_metro_station">
+                <source>placeholder.select_metro_station</source>
+                <target>Select a Metro station</target>
             </trans-unit>
             <trans-unit id="placeholder.enter_email">
                 <source>placeholder.enter_email</source>

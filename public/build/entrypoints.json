@@ -45,7 +45,7 @@
     "js/city": {
       "js": [
         "/build/runtime.dca8fcdd.js",
-        "/build/js/city.48454808.js"
+        "/build/js/city.5869c36c.js"
       ]
     },
     "js/photo": {
@@ -65,7 +65,7 @@
         "/build/runtime.dca8fcdd.js"
       ],
       "css": [
-        "/build/css/app.b7fb680b.css"
+        "/build/css/app.76793667.css"
       ]
     },
     "css/admin": {
@@ -89,7 +89,7 @@
         "/build/runtime.dca8fcdd.js"
       ],
       "css": [
-        "/build/css/city.e4d598c3.css"
+        "/build/css/city.51164273.css"
       ]
     },
     "css/photo": {

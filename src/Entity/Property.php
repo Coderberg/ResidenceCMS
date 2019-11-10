@@ -141,6 +141,12 @@ class Property
      */
     private $features;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Metro", inversedBy="properties")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $metro_station;
+
     public function __construct()
     {
         $this->photos = new ArrayCollection();
@@ -457,6 +463,18 @@ class Property
         if ($this->features->contains($feature)) {
             $this->features->removeElement($feature);
         }
+
+        return $this;
+    }
+
+    public function getMetroStation(): ?Metro
+    {
+        return $this->metro_station;
+    }
+
+    public function setMetroStation(?Metro $metro_station): self
+    {
+        $this->metro_station = $metro_station;
 
         return $this;
     }

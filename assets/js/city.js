@@ -11,12 +11,7 @@ $(document).ready(function () {
     $city.change(function () {
 
         let $form = $(this).closest('form');
-        let data = {};
-        data[$city.attr('name')] = $city.val();
-        data[$title.attr('name')] = $title.val();
-        data[$description.attr('name')] = $description.val();
-        data[$address.attr('name')] = $address.val();
-        data[$content.attr('name')] = $content.val();
+        let data = getPropertyData();
 
         $.ajax({
             url: $form.attr('action'),
@@ -26,8 +21,21 @@ $(document).ready(function () {
                 $('#property_area').replaceWith(
                     $(html).find('#property_area')
                 );
+                $('#property_metro_station').replaceWith(
+                    $(html).find('#property_metro_station')
+                );
             }
         });
     });
 
+    function getPropertyData() {
+        let data = {};
+        data[$city.attr('name')] = $city.val();
+        data[$title.attr('name')] = $title.val();
+        data[$description.attr('name')] = $description.val();
+        data[$address.attr('name')] = $address.val();
+        data[$content.attr('name')] = $content.val();
+
+        return data;
+    }
 });

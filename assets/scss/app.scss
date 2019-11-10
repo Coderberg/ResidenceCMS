@@ -35,7 +35,10 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 
 code {
   margin: 0 2px;
-  padding: 0 5px;
+  background-color: #f5f5f5;
+  padding: 8px 6px;
+  font-size: 13px;
+  border-radius: 4px;
 }
 
 // Lazyload
@@ -145,12 +148,17 @@ code {
   border: 1px solid #b5b5b5;
   margin: 0 30px 10px 0;
   padding: 20px;
-}
 
-.overview table th {
-  text-align: left;
-  padding-right: 15px;
-  font-weight: normal;
+  table {
+    th {
+      text-align: left;
+      padding-right: 15px;
+      font-weight: normal;
+    }
+    tr {
+      vertical-align: text-top!important;
+    }
+  }
 }
 
 @media (min-width:992px){

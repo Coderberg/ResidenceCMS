@@ -10,6 +10,16 @@
                 {{ property.city.name }}
             </td>
         </tr>
+
+        {% if property.metroStation %}
+
+            <tr>
+                <th>{{ 'metro_station' | trans }}:</th>
+                <td>{{ property.metroStation.name }}</td>
+            </tr>
+
+        {% endif %}
+
         <tr>
             <th>{{ 'property.deal_type' | trans }}:</th>
             <td>{{ property.dealType.name }}</td>
