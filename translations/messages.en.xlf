@@ -515,6 +515,14 @@
                 <source>label.features</source>
                 <target>Features</target>
             </trans-unit>
+            <trans-unit id="label.priority_number">
+                <source>label.priority_number</source>
+                <target>Listing priority number</target>
+            </trans-unit>
+            <trans-unit id="label.priority_number.help">
+                <source>label.priority_number.help</source>
+                <target>The default priority is zero; relative to the default a priority can be higher (positive numbers) or lower (negative numbers).</target>
+            </trans-unit>
             <trans-unit id="label.feature">
                 <source>label.feature</source>
                 <target>Feature</target>

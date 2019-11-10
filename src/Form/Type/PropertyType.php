@@ -173,6 +173,13 @@ final class PropertyType extends AbstractType
                 'label' => 'label.features',
                 //'expanded' => true
             ])
+            ->add('priority_number', null, [
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'label' => 'label.priority_number',
+                'required' => false,
+            ])
             ->add('content', CKEditorType::class, [
                 'config' => [
                     'uiColor' => '#ffffff',

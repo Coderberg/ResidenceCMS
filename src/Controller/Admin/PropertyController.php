@@ -32,7 +32,7 @@ final class PropertyController extends AbstractController
     public function index(?int $page): Response
     {
         // Get properties
-        $properties = $this->propertyService->findLatest($page ?? 1);
+        $properties = $this->propertyService->findLatest($page ?? 1, 'id');
 
         return $this->render('admin/property/index.html.twig', [
             'properties' => $properties,

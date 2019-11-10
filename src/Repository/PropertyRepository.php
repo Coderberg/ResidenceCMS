@@ -34,12 +34,17 @@ final class PropertyRepository extends ServiceEntityRepository
         return (int) $count;
     }
 
-    public function findLatest(int $page = 1): Pagerfanta
+    public function findLatest(int $page = 1, string $orderBy = 'priority'): Pagerfanta
     {
         $qb = $this->createQueryBuilder('p')
             ->addSelect('f')
-            ->leftJoin('p.photos', 'f')
-            ->orderBy('p.id', 'DESC');
+            ->leftJoin('p.photos', 'f');
+
+        if ('id' === $orderBy) {
+            $qb->orderBy('p.id', 'DESC');
+        } else {
+            $qb->orderBy('p.priority_number', 'DESC');
+        }
 
         return $this->createPaginator($qb->getQuery(), $page);
     }
@@ -65,7 +70,7 @@ final class PropertyRepository extends ServiceEntityRepository
             $qb->andWhere('p.category = '.(int) $category);
         }
 
-        $qb->orderBy('p.id', 'DESC');
+        $qb->orderBy('p.priority_number', 'DESC');
 
         return $this->createPaginator($qb->getQuery(), $page);
     }

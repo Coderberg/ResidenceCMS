@@ -40,6 +40,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
             $property->addFeature($this->getReference('Fire Alarm'));
             $property->addFeature($this->getReference('High Impact Doors'));
             $property->addFeature($this->getReference('Secure parking'));
+            $property->setPriorityNumber(0);
             $manager->persist($property);
             $this->addReference(Slugger::slugify($title), $property);
         }

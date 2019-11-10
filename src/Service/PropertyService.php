@@ -38,15 +38,16 @@ final class PropertyService
         $property->setSlug($slug);
         $property->setPublishedAt(new \DateTime('now'));
         $property->setPublished(true);
+        $property->setPriorityNumber((int) ($property->getPriorityNumber()));
         $this->save($property);
         $this->clearCache();
     }
 
-    public function findLatest(int $page): Pagerfanta
+    public function findLatest(int $page, string $orderBy = 'priority'): Pagerfanta
     {
         $repository = $this->em->getRepository(Property::class);
 
-        return $repository->findLatest($page);
+        return $repository->findLatest($page, $orderBy);
     }
 
     public function countAll(): int
@@ -64,6 +65,7 @@ final class PropertyService
     {
         $slug = $this->slugger->slugify($property->getTitle());
         $property->setSlug($slug);
+        $property->setPriorityNumber((int) ($property->getPriorityNumber()));
         $this->em->flush();
     }
 

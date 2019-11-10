@@ -147,6 +147,11 @@ class Property
      */
     private $metro_station;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $priority_number;
+
     public function __construct()
     {
         $this->photos = new ArrayCollection();
@@ -475,6 +480,18 @@ class Property
     public function setMetroStation(?Metro $metro_station): self
     {
         $this->metro_station = $metro_station;
+
+        return $this;
+    }
+
+    public function getPriorityNumber(): ?int
+    {
+        return $this->priority_number;
+    }
+
+    public function setPriorityNumber(?int $priority_number): self
+    {
+        $this->priority_number = $priority_number;
 
         return $this;
     }
