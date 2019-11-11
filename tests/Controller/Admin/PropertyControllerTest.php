@@ -92,7 +92,7 @@ final class PropertyControllerTest extends WebTestCase
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
-            ->findOneBy(['title' => 'test'])->getId();
+            ->findOneBy(['title' => 'test']);
 
         $metroStation = $client->getContainer()->get('doctrine')
             ->getRepository(Metro::class)->findOneBy(['slug' => 'government-center'])->getId();
@@ -103,7 +103,7 @@ final class PropertyControllerTest extends WebTestCase
         $feature = $client->getContainer()->get('doctrine')
             ->getRepository(Feature::class)->findOneBy(['name' => 'High Impact Doors']);
 
-        $crawler = $client->request('GET', '/admin/property/'.$property.'/edit');
+        $crawler = $client->request('GET', '/admin/property/'.$property->getId().'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'property[area]' => $area,
@@ -114,7 +114,7 @@ final class PropertyControllerTest extends WebTestCase
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $crawler = $client->request('GET', '/property/'.$property);
+        $crawler = $client->request('GET', '/'.$property->getCity()->getSlug().'/detail-'.$property->getId());
         $this->assertContains('High Impact Doors', $crawler->html());
         $this->assertContains('Government Center', $crawler->html());
         $this->assertContains('South Beach', $crawler->html());

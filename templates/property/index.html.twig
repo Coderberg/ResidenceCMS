@@ -40,7 +40,7 @@
 
                     <div class="property-box-img">
 
-                        <a href="{{ path('property_show', { 'id':  property.id }) }}">
+                        <a href="{{ path('property_show', { 'id':  property.id, 'citySlug': property.city.slug }) }}">
 
                             {% for photo in property.photos | slice(0, 1) %}
 
@@ -72,7 +72,9 @@
 
                     <div class="card-body">
                         <h4 class="card-title">
-                            <a href="{{ path('property_show', { 'id':  property.id }) }}">{{ property.title }}</a>
+                            <a href="{{ path('property_show', { 'id':  property.id, 'citySlug': property.city.slug  }) }}">
+                                {{ property.title }}
+                            </a>
                         </h4>
                         <p class="small">
                             <i class="fas fa-map-marker-alt" style="color: #28a745"></i> {{ property.address }}

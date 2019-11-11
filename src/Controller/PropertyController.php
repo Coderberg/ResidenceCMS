@@ -31,10 +31,18 @@ final class PropertyController extends BaseController
     }
 
     /**
-     * @Route("/property/{id<\d+>}", methods={"GET"}, name="property_show")
+     * @Route("/{citySlug}/detail-{id<\d+>}", methods={"GET"}, name="property_show")
      */
-    public function propertyShow(Property $property): Response
+    public function propertyShow(Property $property, string $citySlug): Response
     {
+        // Check slug
+        if ($property->getCity()->getSlug() !== $citySlug) {
+            return $this->redirectToRoute('property_show', [
+                'id' => $property->getId(),
+                'citySlug' => $property->getCity()->getSlug(),
+            ], 301);
+        }
+
         return $this->render('property/show.html.twig',
             [
                 'site' => $this->site(),
@@ -42,6 +50,17 @@ final class PropertyController extends BaseController
                 'number_of_photos' => \count($property->getPhotos()),
             ]
         );
+    }
+
+    /**
+     * @Route("/property/{id<\d+>}", methods={"GET"}, name="property_show_old_route")
+     */
+    public function propertyShowOld(Property $property): Response
+    {
+        return $this->redirectToRoute('property_show', [
+            'id' => $property->getId(),
+            'citySlug' => $property->getCity()->getSlug(),
+        ], 301);
     }
 
     /**
