@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class SitemapControllerTest extends WebTestCase
 {
-    public function testRss()
+    public function testSitemap()
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/sitemap.xml');

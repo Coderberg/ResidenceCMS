@@ -689,9 +689,9 @@
                 <target>Enter your email</target>
             </trans-unit>
 
-            <trans-unit id="property.city">
-                <source>property.city</source>
-                <target>City</target>
+            <trans-unit id="property.location">
+                <source>property.location</source>
+                <target>Location</target>
             </trans-unit>
             <trans-unit id="property.deal_type">
                 <source>property.deal_type</source>
