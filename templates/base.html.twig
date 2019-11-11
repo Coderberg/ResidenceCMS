@@ -38,8 +38,9 @@
     {{ encore_entry_link_tags('css/app') }}
     {% block stylesheets %}{% endblock %}
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
+<body{% if site.fixed_top_navbar == '1' %} class="body"{% endif %}>
+
+<nav class="navbar {% if site.fixed_top_navbar == '1' %}fixed-top{% endif %} navbar-expand-lg navbar-light bg-white">
 
     <a class="navbar-brand" href="{{ path('property') }}">{{ site.name }}</a>
 
@@ -56,8 +57,8 @@
                 <li class="nav-item">
                     <a class="nav-link"
                        href="{{ item.url }}"
-                       {% if item.nofollow == true %} rel="nofollow" {% endif %}
-                       {% if item.newTab == true %} target="_blank" {% endif %}
+                        {% if item.nofollow == true %} rel="nofollow" {% endif %}
+                        {% if item.newTab == true %} target="_blank" {% endif %}
                     >
                         {{ item.title }}
                     </a>

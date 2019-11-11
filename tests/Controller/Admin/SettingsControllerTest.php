@@ -28,6 +28,7 @@ final class SettingsControllerTest extends WebTestCase
 
         $form = $crawler->selectButton('Save changes')->form([
             'settings[title]' => $title.' - Test title',
+            'settings[fixed_top_navbar]' => '1',
             'settings[items_per_page]' => '3',
         ]);
 
@@ -43,6 +44,8 @@ final class SettingsControllerTest extends WebTestCase
 
         $this->assertContains('Test title', $crawler->html());
         $this->assertCount(3, $crawler->filter('.property-box-img'));
+        $this->assertCount(1, $crawler->filter('.fixed-top'));
+        $this->assertCount(1, $crawler->filter('.body'));
     }
 
     public function testChangeBackSettings()
@@ -59,6 +62,7 @@ final class SettingsControllerTest extends WebTestCase
 
         $form = $crawler->selectButton('Save changes')->form([
                 'settings[title]' => mb_substr($title, 0, -13),
+                'settings[fixed_top_navbar]' => '0',
                 'settings[items_per_page]' => '6',
             ]);
 
@@ -74,6 +78,8 @@ final class SettingsControllerTest extends WebTestCase
 
         $this->assertNotContains('Test title', $crawler->html());
         $this->assertCount(6, $crawler->filter('.property-box-img'));
+        $this->assertCount(0, $crawler->filter('.fixed-top'));
+        $this->assertCount(0, $crawler->filter('.body'));
     }
 
     public function testUploadHeaderImage()

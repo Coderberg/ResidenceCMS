@@ -7,6 +7,7 @@ namespace App\Form\Type;
 use App\Entity\Currency;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -65,6 +66,17 @@ final class SettingsType extends AbstractType
                 ],
                 'label' => 'label.settings.currency',
             ])
+            ->add('fixed_top_navbar', ChoiceType::class, [
+                    'choices' => [
+                        'label.settings.off' => '0',
+                        'label.settings.on' => '1',
+                    ],
+                    'attr' => [
+                        'class' => 'form-control',
+                    ],
+                    'label' => 'label.settings.fixed_top_navbar',
+                ]
+            )
             ->add('ymaps_key', null, [
                 'attr' => [
                     'class' => 'form-control',

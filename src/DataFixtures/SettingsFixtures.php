@@ -35,6 +35,7 @@ final class SettingsFixtures extends Fixture
             ['map_zoom', '7'],
             ['currency_id', '1'],
             ['header_image', ''],
+            ['fixed_top_navbar', '0'],
         ];
     }
 }

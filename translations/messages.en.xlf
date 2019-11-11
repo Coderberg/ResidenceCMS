@@ -427,6 +427,18 @@
                 <source>label.settings.currency</source>
                 <target>Currency</target>
             </trans-unit>
+            <trans-unit id="label.settings.fixed_top_navbar">
+                <source>label.settings.fixed_top_navbar</source>
+                <target>Fixed Top Navbar</target>
+            </trans-unit>
+            <trans-unit id="label.settings.on">
+                <source>label.settings.on</source>
+                <target>On</target>
+            </trans-unit>
+            <trans-unit id="label.settings.off">
+                <source>label.settings.off</source>
+                <target>Off</target>
+            </trans-unit>
             <trans-unit id="label.settings.ymaps_key">
                 <source>label.settings.ymaps_key</source>
                 <target>Yandex.Maps JavaScript API key</target>
