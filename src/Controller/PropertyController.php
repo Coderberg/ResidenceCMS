@@ -69,14 +69,21 @@ final class PropertyController extends BaseController
      */
     public function search(Request $request, PropertyRepository $properties, ?int $page): Response
     {
-        $cityId = (int) ($request->query->get('city', 0));
-        $dealTypeId = (int) ($request->query->get('deal_type', 0));
-        $categoryId = (int) ($request->query->get('category', 0));
+        $cityId = $request->query->get('city', 0);
+        $dealTypeId = $request->query->get('deal_type', 0);
+        $categoryId = $request->query->get('category', 0);
+        $numberOfBedrooms = $request->query->get('bedrooms', 0);
 
         return $this->render('property/search.html.twig',
             [
                 'site' => $this->site(),
-                'properties' => $properties->findByFilter($cityId, $dealTypeId, $categoryId, ($page ?? 1)),
+                'properties' => $properties->findByFilter(
+                    (int) $cityId,
+                    (int) $dealTypeId,
+                    (int) $categoryId,
+                    (int) $numberOfBedrooms,
+                    ($page ?? 1)
+                ),
                 'page' => $page,
             ]
         );

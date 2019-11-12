@@ -64,6 +64,7 @@ Encore
     .addStyleEntry('css/admin', ['./assets/scss/admin.scss'])
     .addStyleEntry('css/ekko-lightbox', ['./assets/scss/ekko-lightbox.scss'])
     .addStyleEntry('css/city', ['./assets/scss/city.scss'])
+    .addStyleEntry('css/detail', ['./assets/scss/detail.scss'])
     .addStyleEntry('css/photo', ['./assets/scss/photo.scss'])
     .addStyleEntry('css/select2', ['./assets/scss/select2.scss'])
     //.enableIntegrityHashes()

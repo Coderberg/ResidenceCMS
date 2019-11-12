@@ -1,0 +1,66 @@
+#map {
+  height: 0;
+}
+
+// Contact widget
+.icon-box {
+  background-color: #f9f9f9;
+  border-radius: 50%;
+  height: 50px;
+  text-align: center;
+  transition: all linear .15s;
+  width: 50px;
+  float: left;
+}
+
+.contact-box {
+  margin: 10px 30px;
+
+  h4 {
+    font-weight: 400;
+    padding-top: 2px;
+  }
+
+  p {
+    color: #959595;
+    line-height: 1.8;
+
+    a {
+      color: #959595;
+
+      &:hover {
+        color: #f1572f;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .icon-box i {
+    color: #f1572f;
+  }
+}
+
+// Overview
+.overview {
+  border: 1px solid #b5b5b5;
+  margin: 0 30px 10px 0;
+  padding: 20px;
+
+  table {
+    th {
+      text-align: left;
+      padding-right: 15px;
+      font-weight: normal;
+    }
+
+    tr {
+      vertical-align: text-top !important;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .overview {
+    float: left;
+  }
+}

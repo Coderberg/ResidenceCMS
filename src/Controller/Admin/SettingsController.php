@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Form\Type\FilterSettingsType;
 use App\Form\Type\SettingsType;
 use App\Repository\SettingsRepository;
 use App\Service\FileUploader;
@@ -28,9 +29,9 @@ final class SettingsController extends AbstractController
     }
 
     /**
-     * @Route("/admin/setting", name="admin_setting")
+     * @Route("/admin/settings", name="admin_settings")
      */
-    public function index(Request $request): Response
+    public function settings(Request $request): Response
     {
         $settings = $this->repository->findAllAsArray();
 
@@ -40,23 +41,33 @@ final class SettingsController extends AbstractController
             $this->repository->updateSettings($form->getNormData());
             $this->addFlash('success', 'message.updated');
 
-            return $this->redirectToRoute('admin_setting');
+            return $this->redirectToRoute('admin_settings');
         }
 
-        return $this->render('admin/setting/index.html.twig', [
+        return $this->render('admin/settings/settings.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/admin/setting/header_image", name="admin_setting_header_image")
+     * @Route("/admin/setting/header", name="admin_header_settings")
      */
-    public function changeHeaderImage(): Response
+    public function changeHeaderImage(Request $request): Response
     {
-        $image = $this->repository->findOneBy(['setting_name' => 'header_image']);
+        $settings = $this->repository->findAllAsArray();
 
-        return $this->render('admin/setting/header_image.html.twig', [
-            'header_image' => $image->getSettingValue(),
+        $form = $this->createForm(FilterSettingsType::class, $settings);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->repository->updateSettings($form->getNormData());
+            $this->addFlash('success', 'message.updated');
+
+            return $this->redirectToRoute('admin_header_settings');
+        }
+
+        return $this->render('admin/settings/header_settings.html.twig', [
+            'header_image' => $settings['header_image'],
+            'form' => $form->createView(),
         ]);
     }
 
@@ -100,6 +111,6 @@ final class SettingsController extends AbstractController
             $this->addFlash('success', 'message.deleted');
         }
 
-        return $this->redirectToRoute('admin_setting_header_image');
+        return $this->redirectToRoute('admin_header_settings');
     }
 }

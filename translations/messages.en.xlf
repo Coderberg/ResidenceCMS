@@ -394,9 +394,9 @@
                 <source>title.settings</source>
                 <target>Settings</target>
             </trans-unit>
-            <trans-unit id="title.settings.header_image">
-                <source>title.settings.header_image</source>
-                <target>Header image</target>
+            <trans-unit id="title.settings.header_settings">
+                <source>title.settings.header_settings</source>
+                <target>Header settings</target>
             </trans-unit>
 
             <trans-unit id="label.remember_me">
@@ -431,14 +431,6 @@
                 <source>label.settings.fixed_top_navbar</source>
                 <target>Fixed Top Navbar</target>
             </trans-unit>
-            <trans-unit id="label.settings.on">
-                <source>label.settings.on</source>
-                <target>On</target>
-            </trans-unit>
-            <trans-unit id="label.settings.off">
-                <source>label.settings.off</source>
-                <target>Off</target>
-            </trans-unit>
             <trans-unit id="label.settings.ymaps_key">
                 <source>label.settings.ymaps_key</source>
                 <target>Yandex.Maps JavaScript API key</target>
@@ -450,6 +442,22 @@
             <trans-unit id="label.settings.map_zoom">
                 <source>label.settings.map_zoom</source>
                 <target>Zoom level. Acceptable values: from 0 (the entire world) to 19</target>
+            </trans-unit>
+            <trans-unit id="label.settings.show_filter_by_city">
+                <source>label.settings.show_filter_by_city</source>
+                <target>Show filter by city</target>
+            </trans-unit>
+            <trans-unit id="label.settings.show_filter_by_deal_type">
+                <source>label.settings.show_filter_by_deal_type</source>
+                <target>Show filter by deal type</target>
+            </trans-unit>
+            <trans-unit id="label.settings.show_filter_by_category">
+                <source>label.settings.show_filter_by_category</source>
+                <target>Show filter by category</target>
+            </trans-unit>
+            <trans-unit id="label.settings.show_filter_by_bedrooms">
+                <source>label.settings.show_filter_by_bedrooms</source>
+                <target>Show filter by bedrooms</target>
             </trans-unit>
             <trans-unit id="label.full_name">
                 <source>label.full_name</source>
@@ -666,6 +674,27 @@
             <trans-unit id="label.save_and_create_new">
                 <source>label.save_and_create_new</source>
                 <target>Save and create new</target>
+            </trans-unit>
+
+            <trans-unit id="option.on">
+                <source>option.on</source>
+                <target>On</target>
+            </trans-unit>
+            <trans-unit id="option.off">
+                <source>option.off</source>
+                <target>Off</target>
+            </trans-unit>
+            <trans-unit id="option.any">
+                <source>option.any</source>
+                <target>Any</target>
+            </trans-unit>
+            <trans-unit id="option.bedroom">
+                <source>option.bedroom</source>
+                <target>bedroom</target>
+            </trans-unit>
+            <trans-unit id="option.bedrooms">
+                <source>option.bedrooms</source>
+                <target>bedrooms</target>
             </trans-unit>
 
             <trans-unit id="placeholder.map_center_example">

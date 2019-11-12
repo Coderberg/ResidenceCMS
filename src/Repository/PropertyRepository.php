@@ -49,7 +49,7 @@ final class PropertyRepository extends ServiceEntityRepository
         return $this->createPaginator($qb->getQuery(), $page);
     }
 
-    public function findByFilter(int $city, int $dealType, int $category, int $page = 1): Pagerfanta
+    public function findByFilter(int $city, int $dealType, int $category, int $bedrooms, int $page = 1): Pagerfanta
     {
         $qb = $this->createQueryBuilder('p');
 
@@ -68,6 +68,13 @@ final class PropertyRepository extends ServiceEntityRepository
         // Category
         if ($category > 0) {
             $qb->andWhere('p.category = '.(int) $category);
+        }
+
+        // Number of bedrooms
+        if ($bedrooms > 3) {
+            $qb->andWhere('p.bedrooms_number > 3');
+        } elseif ($bedrooms > 0) {
+            $qb->andWhere('p.bedrooms_number = '.(int) $bedrooms);
         }
 
         $qb->orderBy('p.priority_number', 'DESC');

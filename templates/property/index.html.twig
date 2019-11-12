@@ -86,11 +86,11 @@
                             </p>
                         {% endif %}
 
-                        <code>{{ property.dealType.name }}</code>
-                        <code>{{ property.category.name }}</code>
+                        <span class="attribute">{{ property.dealType.name }}</span>
+                        <span class="attribute">{{ property.category.name }}</span>
 
                         {% if property.bedroomsNumber %}
-                            <code>{{ 'property.bedrooms'|trans }}: {{ property.bedroomsNumber }}</code>
+                            <span class="attribute">{{ 'property.bedrooms'|trans }}: {{ property.bedroomsNumber }}</span>
                         {% endif %}
                     </div>
                 </div>

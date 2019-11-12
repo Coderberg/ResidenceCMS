@@ -2,45 +2,66 @@
     <h5 class="card-header">{{ 'widget.search' | trans }}</h5>
     <div class="card-body">
         <form action="{{ path('property_search') }}" method="get">
-            <div class="form-group">
-                <label>{{ 'city'|trans }}</label>
-                <select name="city" class="form-control form-control-lg">
 
-                    <option value="0">{{ 'widget.all_cities'|trans }}</option>
+            {% if site.show_filter_by_city == '1' %}
+                <div class="form-group">
+                    <label for="city">{{ 'city'|trans }}</label>
+                    <select name="city" id="city" class="form-control form-control-lg">
 
-                    {% for city in site.cities %}
+                        <option value="0">{{ 'widget.all_cities'|trans }}</option>
 
-                        <option value="{{ city.id }}">{{ city.name }}</option>
+                        {% for city in site.cities %}
 
-                    {% endfor %}
-                </select>
-            </div>
+                            <option value="{{ city.id }}">{{ city.name }}</option>
 
-            <div class="form-group">
-                <label>{{ 'deal_type'|trans }}</label>
-                <select name="dealType" class="form-control form-control-lg">
-                    <option value="0">{{ 'widget.all_deal_types'|trans }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            {% endif %}
 
-                    {% for deal_type in site.deal_types %}
+            {% if site.show_filter_by_deal_type == '1' %}
+                <div class="form-group">
+                    <label for="dealType">{{ 'deal_type'|trans }}</label>
+                    <select name="dealType" id="dealType" class="form-control form-control-lg">
+                        <option value="0">{{ 'widget.all_deal_types'|trans }}</option>
 
-                        <option value="{{ deal_type.id }}">{{ deal_type.name }}</option>
+                        {% for deal_type in site.deal_types %}
 
-                    {% endfor %}
-                </select>
-            </div>
+                            <option value="{{ deal_type.id }}">{{ deal_type.name }}</option>
 
-            <div class="form-group">
-                <label>{{ 'category'|trans }}</label>
-                <select name="category" class="form-control form-control-lg">
-                    <option value="0">{{ 'widget.all_categories'|trans }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            {% endif %}
 
-                    {% for category in site.categories %}
+            {% if site.show_filter_by_category == '1' %}
+                <div class="form-group">
+                    <label for="category">{{ 'category'|trans }}</label>
+                    <select name="category" id="category" class="form-control form-control-lg">
+                        <option value="0">{{ 'widget.all_categories'|trans }}</option>
 
-                        <option value="{{ category.id }}">{{ category.name }}</option>
+                        {% for category in site.categories %}
 
-                    {% endfor %}
-                </select>
-            </div>
+                            <option value="{{ category.id }}">{{ category.name }}</option>
+
+                        {% endfor %}
+                    </select>
+                </div>
+            {% endif %}
+
+            {% if site.show_filter_by_bedrooms == '1' %}
+                <div class="form-group">
+                    <label for="bedrooms">{{ 'label.bedrooms_number'|trans }}</label>
+                    <select name="bedrooms" id="bedrooms" class="form-control form-control-lg">
+                        <option value="0">{{ 'property.bedrooms'|trans }}</option>
+                        <option value="0">{{ 'option.any'|trans }}</option>
+                        <option value="1">1 {{ 'option.bedroom'|trans }}</option>
+                        <option value="2">2 {{ 'option.bedrooms'|trans }}</option>
+                        <option value="3">3 {{ 'option.bedrooms'|trans }}</option>
+                        <option value="4">4+ {{ 'option.bedrooms'|trans }}</option>
+                    </select>
+                </div>
+            {% endif %}
 
             <div class="form-group">
                 <button class="btn btn-block btn-lg btn-primary">

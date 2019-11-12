@@ -36,6 +36,10 @@ final class SettingsFixtures extends Fixture
             ['currency_id', '1'],
             ['header_image', ''],
             ['fixed_top_navbar', '0'],
+            ['show_filter_by_city', '1'],
+            ['show_filter_by_deal_type', '1'],
+            ['show_filter_by_category', '1'],
+            ['show_filter_by_bedrooms', '0'],
         ];
     }
 }

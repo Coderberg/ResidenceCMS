@@ -58,8 +58,11 @@
                         <p class="small">
                             <i class="fas fa-map-marker-alt" style="color: #28a745"></i> {{ property.address }}
                         </p>
-                        <code>{{ property.dealType.name }}</code>
-                        <code>{{ property.category.name }}</code>
+                        <span class="attribute">{{ property.dealType.name }}</span>
+                        <span class="attribute">{{ property.category.name }}</span>
+                        {% if property.bedroomsNumber %}
+                            <span class="attribute">{{ 'property.bedrooms'|trans }}: {{ property.bedroomsNumber }}</span>
+                        {% endif %}
                     </div>
                 </div>
                 <br>

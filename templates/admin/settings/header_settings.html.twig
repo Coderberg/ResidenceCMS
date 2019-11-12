@@ -1,0 +1,48 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ 'title.settings.header_settings' | trans }}{% endblock %}
+
+{% block stylesheets %}
+
+    {{ encore_entry_link_tags('css/photo') }}
+
+{% endblock %}
+
+{% block body %}
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_settings') }}">
+                <i class="fas fa-edit text-danger"></i> {{ 'title.settings' | trans }}
+            </a>
+        </li>
+        <li class="nav-item active">
+            <span class="nav-link active">
+                <i class="fas fa-image text-danger"></i> {{ 'title.settings.header_settings' | trans }}
+            </span>
+        </li>
+    </ul>
+
+    <div class="card mb-3">
+        <div class="card-body">
+
+            {{ include('admin/settings/partials/_header_settings_form.html.twig') }}
+
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-body">
+
+            {{ include('admin/settings/partials/_filter_settings_form.html.twig') }}
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ encore_entry_script_tags('js/photo') }}
+
+{% endblock %}

@@ -18,6 +18,14 @@ body.body {
   box-shadow: 0 2px 2px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
 }
 
+.attribute {
+  margin: 0 4px 0 0;
+  padding: 8px 6px;
+  font-size: 14px;
+  color: #757575;
+  border-radius: 4px;
+}
+
 .card {
   border: 0;
   box-shadow: 0 0 8px rgba(0,0,0,0.12);
@@ -35,14 +43,6 @@ body.body {
 
 .invalid-feedback {
   display: block;
-}
-
-code {
-  margin: 0 2px;
-  background-color: #f5f5f5;
-  padding: 8px 6px;
-  font-size: 13px;
-  border-radius: 4px;
 }
 
 // Lazyload
@@ -86,43 +86,6 @@ code {
   }
 }
 
-// Contact widget
-.icon-box {
-  background-color: #f9f9f9;
-  border-radius: 50%;
-  height: 50px;
-  text-align: center;
-  transition: all linear .15s;
-  width: 50px;
-  float: left;
-}
-
-.contact-box {
-  margin: 10px 30px;
-}
-
-.contact-box h4 {
-  font-weight: 400;
-  padding-top: 2px;
-}
-
-.contact-box p {
-  color: #959595;
-  line-height: 1.8;
-}
-.contact-box .icon-box i {
-  color: #f1572f;
-}
-
-.contact-box p a {
-  color: #959595;
-}
-
-.contact-box p a:hover {
-  color: #f1572f;
-  text-decoration: none;
-}
-
 // Img container
 .property-box-img {
   position: relative;
@@ -145,30 +108,6 @@ code {
   bottom: 15px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border-radius: 2px;
-}
-
-// Overview
-.overview {
-  border: 1px solid #b5b5b5;
-  margin: 0 30px 10px 0;
-  padding: 20px;
-
-  table {
-    th {
-      text-align: left;
-      padding-right: 15px;
-      font-weight: normal;
-    }
-    tr {
-      vertical-align: text-top!important;
-    }
-  }
-}
-
-@media (min-width:992px){
-  .overview {
-    float: left;
-  }
 }
 
 // Floating button

@@ -1,0 +1,37 @@
+{% if header_image == '' %}
+
+    <form action="{{ path('admin_setting_upload_header_image') }}" method="POST"
+          enctype="multipart/form-data"
+          class="dropzone js-photo-dropzone">
+        <div class="fallback">
+            <input name="file" type="file" accept="image/*"/>
+        </div>
+    </form>
+
+{% else %}
+
+    <div class="photos-list">
+        <div class="gallery">
+            <ul>
+                <li>
+                    <img src="/uploads/images/small/{{ header_image }}"
+                         alt="{{ 'title.settings.header_settings' | trans }}"/>
+
+                    <form action="{{ path('admin_setting_delete_header_image') }}"
+                          id="delete-form" method="post"
+                          data-confirmation="true">
+
+                        <input type="hidden" name="token" value="{{ csrf_token('delete') }}"/>
+
+                        <button type="submit" class="btn btn-danger btn-sm remove"
+                                onclick="if(confirm('{{ 'confirmation.delete_photo' | trans }}')){ return true }else{ return false }">
+                            {{ 'action.delete' | trans }}
+                        </button>
+                    </form>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+
+{% endif %}

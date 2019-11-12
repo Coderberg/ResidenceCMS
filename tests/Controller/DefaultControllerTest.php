@@ -61,6 +61,6 @@ final class DefaultControllerTest extends WebTestCase
         yield ['/admin/property'];
         yield ['/admin/property/new'];
         yield ['/admin/property/1/edit'];
-        yield ['/admin/setting'];
+        yield ['/admin/settings'];
     }
 }

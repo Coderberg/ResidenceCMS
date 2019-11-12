@@ -24,7 +24,7 @@ final class SettingsControllerTest extends WebTestCase
         $title = $client->getContainer()->get('doctrine')
             ->getRepository(Settings::class)->findOneBy(['setting_name' => 'title'])->getSettingValue();
 
-        $crawler = $client->request('GET', '/admin/setting');
+        $crawler = $client->request('GET', '/admin/settings');
 
         $form = $crawler->selectButton('Save changes')->form([
             'settings[title]' => $title.' - Test title',
@@ -58,7 +58,7 @@ final class SettingsControllerTest extends WebTestCase
         $title = $client->getContainer()->get('doctrine')
                 ->getRepository(Settings::class)->findOneBy(['setting_name' => 'title'])->getSettingValue();
 
-        $crawler = $client->request('GET', '/admin/setting');
+        $crawler = $client->request('GET', '/admin/settings');
 
         $form = $crawler->selectButton('Save changes')->form([
                 'settings[title]' => mb_substr($title, 0, -13),
@@ -89,8 +89,8 @@ final class SettingsControllerTest extends WebTestCase
             'PHP_AUTH_PW' => self::PHP_AUTH_PW,
         ]);
 
-        $crawler = $client->request('GET', '/admin/setting/header_image');
-        $this->assertSelectorTextContains('html', 'Header image');
+        $crawler = $client->request('GET', '/admin/setting/header');
+        $this->assertSelectorTextContains('html', 'Header settings');
 
         $image = new UploadedFile(
             __DIR__.'/../../../public/uploads/images/full/demo/1.jpeg',
@@ -112,7 +112,7 @@ final class SettingsControllerTest extends WebTestCase
             'PHP_AUTH_PW' => self::PHP_AUTH_PW,
         ]);
 
-        $crawler = $client->request('GET', '/admin/setting/header_image');
+        $crawler = $client->request('GET', '/admin/setting/header');
         $this->assertSelectorExists('html', '.gallery>ul>li>button.remove');
         $client->submit($crawler->filter('#delete-form')->form());
 

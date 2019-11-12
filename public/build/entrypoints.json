@@ -65,7 +65,7 @@
         "/build/runtime.dca8fcdd.js"
       ],
       "css": [
-        "/build/css/app.68384df4.css"
+        "/build/css/app.401310b1.css"
       ]
     },
     "css/admin": {
@@ -92,12 +92,20 @@
         "/build/css/city.51164273.css"
       ]
     },
+    "css/detail": {
+      "js": [
+        "/build/runtime.dca8fcdd.js"
+      ],
+      "css": [
+        "/build/css/detail.53db9aba.css"
+      ]
+    },
     "css/photo": {
       "js": [
         "/build/runtime.dca8fcdd.js"
       ],
       "css": [
-        "/build/css/photo.562a12ef.css"
+        "/build/css/photo.e807ae9a.css"
       ]
     },
     "css/select2": {
@@ -105,7 +113,7 @@
         "/build/runtime.dca8fcdd.js"
       ],
       "css": [
-        "/build/css/select2.458ae337.css"
+        "/build/css/select2.8a35f2d5.css"
       ]
     }
   }

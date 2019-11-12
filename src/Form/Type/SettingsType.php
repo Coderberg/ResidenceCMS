@@ -68,8 +68,8 @@ final class SettingsType extends AbstractType
             ])
             ->add('fixed_top_navbar', ChoiceType::class, [
                     'choices' => [
-                        'label.settings.off' => '0',
-                        'label.settings.on' => '1',
+                        'option.off' => '0',
+                        'option.on' => '1',
                     ],
                     'attr' => [
                         'class' => 'form-control',

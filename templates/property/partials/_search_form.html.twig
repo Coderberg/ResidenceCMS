@@ -10,7 +10,9 @@
     <div class="container">
         <div class="search_form">
             <form action="{{ path('property_search') }}" method="get">
-                <div class="form-row">
+                <div class="form-row justify-content-end">
+
+                    {% if site.show_filter_by_city == '1' %}
                     <div class="col-lg-3 mb-2">
                         <select name="city" class="form-control form-control-lg" aria-label="{{ 'city'|trans }}">
                             <option value="0">{{ 'city'|trans }}</option>
@@ -23,6 +25,9 @@
 
                         </select>
                     </div>
+                    {% endif %}
+
+                    {% if site.show_filter_by_deal_type == '1' %}
                     <div class="col-lg-3 mb-2">
                         <select name="deal_type" class="form-control form-control-lg" aria-label="{{ 'deal_type'|trans }}">
                             <option value="0">{{ 'deal_type'|trans }}</option>
@@ -35,6 +40,9 @@
 
                         </select>
                     </div>
+                    {% endif %}
+
+                    {% if site.show_filter_by_category == '1' %}
                     <div class="col-lg-3 mb-2">
                         <select name="category" class="form-control form-control-lg" aria-label="{{ 'category'|trans }}">
                             <option value="0">{{ 'category'|trans }}</option>
@@ -47,6 +55,21 @@
 
                         </select>
                     </div>
+                    {% endif %}
+
+                    {% if site.show_filter_by_bedrooms == '1' %}
+                    <div class="col-lg-3 mb-2">
+                        <select name="bedrooms" class="form-control form-control-lg" aria-label="{{ 'label.bedrooms_number'|trans }}">
+                            <option value="0">{{ 'property.bedrooms'|trans }}</option>
+                                <option value="0">{{ 'option.any'|trans }}</option>
+                                <option value="1">1 {{ 'option.bedroom'|trans }}</option>
+                                <option value="2">2 {{ 'option.bedrooms'|trans }}</option>
+                                <option value="3">3 {{ 'option.bedrooms'|trans }}</option>
+                                <option value="4">4+ {{ 'option.bedrooms'|trans }}</option>
+                        </select>
+                    </div>
+                    {% endif %}
+
                     <div class="col-lg-3 mb-2">
                         <button class="btn btn-block btn-lg btn-primary">
                             <i class="fas fa-search"></i> {{ 'action.search'|trans }}
