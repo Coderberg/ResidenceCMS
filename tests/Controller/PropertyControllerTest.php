@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller;
 
+use App\Entity\City;
 use App\Entity\Property;
 use App\Entity\Settings;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -40,13 +41,18 @@ final class PropertyControllerTest extends WebTestCase
     public function testSearch()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/search?city=72&deal_type=63&category=81&bedrooms=0');
-        $this->assertCount(2, $crawler->filter('.property-box-img'));
+        $repository = $client->getContainer()->get('doctrine')
+            ->getRepository(City::class);
 
-        $crawler = $client->request('GET', '/search?city=72&deal_type=63&category=81&bedrooms=1');
+        $city = $repository->findOneBy(['slug' => 'miami'])->getId();
+
+        $crawler = $client->request('GET', sprintf('/search?city=%d&bedrooms=0', $city));
+        $this->assertCount(3, $crawler->filter('.property-box-img'));
+
+        $crawler = $client->request('GET', sprintf('/search?city=%d&bedrooms=1', $city));
         $this->assertCount(1, $crawler->filter('.property-box-img'));
 
-        $crawler = $client->request('GET', '/search?city=72&deal_type=63&category=81&bedrooms=2');
+        $crawler = $client->request('GET', sprintf('/search?city=%d&bedrooms=3', $city));
         $this->assertCount(0, $crawler->filter('.property-box-img'));
     }
 
