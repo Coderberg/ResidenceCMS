@@ -34,7 +34,12 @@ final class PropertyControllerTest extends WebTestCase
                 'published' => 1,
             ]);
 
-        $client->request('GET', sprintf('/%s/detail-%d', $property->getCity()->getSlug(), $property->getId()));
+        $client->request('GET', sprintf(
+            '/%s/%s/%d',
+            $property->getCity()->getSlug(),
+            $property->getSlug(),
+            $property->getId())
+        );
         $this->assertSame(Response::HTTP_OK, $client->getResponse()->getStatusCode());
     }
 

@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Entity\Property;
 use App\Repository\PropertyRepository;
+use App\Service\URLService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -31,16 +32,12 @@ final class PropertyController extends BaseController
     }
 
     /**
-     * @Route("/{citySlug}/detail-{id<\d+>}", methods={"GET"}, name="property_show")
+     * @Route("/{citySlug}/{slug}/{id<\d+>}", methods={"GET"}, name="property_show")
      */
-    public function propertyShow(Property $property, string $citySlug): Response
+    public function propertyShow(URLService $url, Property $property, string $citySlug, string $slug): Response
     {
-        // Check slug
-        if ($property->getCity()->getSlug() !== $citySlug) {
-            return $this->redirectToRoute('property_show', [
-                'id' => $property->getId(),
-                'citySlug' => $property->getCity()->getSlug(),
-            ], 301);
+        if (!$url->isCanonical($property, $citySlug, $slug)) {
+            return $this->redirect($url->generateCanonical($property), 301);
         }
 
         return $this->render('property/show.html.twig',
@@ -53,14 +50,11 @@ final class PropertyController extends BaseController
     }
 
     /**
-     * @Route("/property/{id<\d+>}", methods={"GET"}, name="property_show_old_route")
+     * @Route("/property/{id<\d+>}", methods={"GET"}, name="property_show_short_link")
      */
-    public function propertyShowOld(Property $property): Response
+    public function propertyShowShort(URLService $url, Property $property)
     {
-        return $this->redirectToRoute('property_show', [
-            'id' => $property->getId(),
-            'citySlug' => $property->getCity()->getSlug(),
-        ], 301);
+        return $this->redirect($url->generateCanonical($property), 301);
     }
 
     /**

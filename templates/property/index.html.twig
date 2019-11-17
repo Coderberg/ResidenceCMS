@@ -40,7 +40,10 @@
 
                     <div class="property-box-img">
 
-                        <a href="{{ path('property_show', { 'id':  property.id, 'citySlug': property.city.slug }) }}">
+                        <a href="{{ path('property_show', {
+                            'id':  property.id,
+                            'citySlug': property.city.slug,
+                            'slug': property.slug}) }}">
 
                             {% for photo in property.photos | slice(0, 1) %}
 
@@ -72,7 +75,10 @@
 
                     <div class="card-body">
                         <h5 class="card-title">
-                            <a href="{{ path('property_show', { 'id':  property.id, 'citySlug': property.city.slug  }) }}">
+                            <a href="{{ path('property_show', {
+                                'id':  property.id,
+                                'citySlug': property.city.slug,
+                                'slug': property.slug}) }}">
                                 {{ property.title }}
                             </a>
                         </h5>
