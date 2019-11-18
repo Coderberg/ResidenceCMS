@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
-use App\Entity\City;
 use App\Entity\Metro;
 use App\Form\Type\MetroType;
+use App\Repository\CityRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
@@ -20,10 +20,8 @@ final class MetroController extends AbstractController
     /**
      * @Route("/admin/locations/metro", name="admin_metro")
      */
-    public function index(): Response
+    public function index(CityRepository $repository): Response
     {
-        $repository = $this->getDoctrine()->getRepository(City::class);
-
         $cities = $repository->findAll();
 
         return $this->render('admin/metro/index.html.twig', [

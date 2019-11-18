@@ -6,6 +6,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\City;
 use App\Form\Type\CityType;
+use App\Repository\CityRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
@@ -19,10 +20,8 @@ final class CityController extends AbstractController
     /**
      * @Route("/admin/locations/city", name="admin_city")
      */
-    public function index(): Response
+    public function index(CityRepository $repository): Response
     {
-        $repository = $this->getDoctrine()->getRepository(City::class);
-
         $cities = $repository->findAll();
 
         return $this->render('admin/city/index.html.twig', [
