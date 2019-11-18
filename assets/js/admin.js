@@ -10,6 +10,8 @@ $(document).ready(function () {
         let sidebarLink = $('a', this).attr('href');
         if (currentUrl.indexOf(sidebarLink) !== -1) {
             $(this).addClass('active');
+        } else if (sidebarLink.indexOf('locations') !== -1 && currentUrl.indexOf('locations') !== -1) {
+            $(this).addClass('active');
         }
     });
 

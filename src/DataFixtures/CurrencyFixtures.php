@@ -13,14 +13,14 @@ final class CurrencyFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         foreach ($this->getCurrencyData() as [$currencyTitle, $code, $symbolLeft, $symbolRight]) {
-            $category = new Currency();
-            $category->setCurrencyTitle($currencyTitle);
-            $category->setCode($code);
-            $category->setSymbolLeft($symbolLeft);
-            $category->setSymbolRight($symbolRight);
+            $currency = new Currency();
+            $currency->setCurrencyTitle($currencyTitle);
+            $currency->setCode($code);
+            $currency->setSymbolLeft($symbolLeft);
+            $currency->setSymbolRight($symbolRight);
 
-            $manager->persist($category);
-            $this->addReference($code, $category);
+            $manager->persist($currency);
+            $this->addReference($code, $currency);
         }
         $manager->flush();
     }

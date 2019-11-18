@@ -56,9 +56,21 @@
                 <source>properties</source>
                 <target>Properties</target>
             </trans-unit>
+            <trans-unit id="locations">
+                <source>locations</source>
+                <target>Locations</target>
+            </trans-unit>
             <trans-unit id="cities">
                 <source>cities</source>
                 <target>Cities</target>
+            </trans-unit>
+            <trans-unit id="neighborhoods">
+                <source>neighborhoods</source>
+                <target>Neighborhoods</target>
+            </trans-unit>
+            <trans-unit id="metro_stations">
+                <source>metro_stations</source>
+                <target>Metro stations</target>
             </trans-unit>
             <trans-unit id="deal_types">
                 <source>deal_types</source>
@@ -96,9 +108,9 @@
                 <source>city</source>
                 <target>City</target>
             </trans-unit>
-            <trans-unit id="area">
-                <source>area</source>
-                <target>Area</target>
+            <trans-unit id="neighborhood">
+                <source>neighborhood</source>
+                <target>Neighborhood</target>
             </trans-unit>
             <trans-unit id="metro_station">
                 <source>metro_station</source>
@@ -322,17 +334,17 @@
                 <source>title.edit_city</source>
                 <target>Edit city</target>
             </trans-unit>
-            <trans-unit id="title.add_area">
-                <source>title.add_area</source>
-                <target>Add area</target>
+            <trans-unit id="title.add_neighborhood">
+                <source>title.add_neighborhood</source>
+                <target>Add neighborhood</target>
             </trans-unit>
             <trans-unit id="title.add_metro_station">
                 <source>title.add_metro_station</source>
                 <target>Add metro station</target>
             </trans-unit>
-            <trans-unit id="title.edit_area">
-                <source>title.edit_area</source>
-                <target>Edit area</target>
+            <trans-unit id="title.edit_neighborhood">
+                <source>title.edit_neighborhood</source>
+                <target>Edit neighborhood</target>
             </trans-unit>
             <trans-unit id="title.edit_metro_station">
                 <source>title.edit_metro_station</source>
@@ -511,13 +523,13 @@
                 <source>label.city</source>
                 <target>City</target>
             </trans-unit>
-            <trans-unit id="label.area">
-                <source>label.area</source>
-                <target>Area</target>
+            <trans-unit id="label.neighborhood">
+                <source>label.neighborhood</source>
+                <target>Neighborhood</target>
             </trans-unit>
-            <trans-unit id="label.area_name">
-                <source>label.area_name</source>
-                <target>Area name</target>
+            <trans-unit id="label.neighborhood_name">
+                <source>label.neighborhood_name</source>
+                <target>Neighborhood name</target>
             </trans-unit>
             <trans-unit id="label.metro_station_name">
                 <source>label.metro_station_name</source>
@@ -651,9 +663,9 @@
                 <source>label.create_city</source>
                 <target>Create city</target>
             </trans-unit>
-            <trans-unit id="label.create_area">
-                <source>label.create_area</source>
-                <target>Create area</target>
+            <trans-unit id="label.create_neighborhood">
+                <source>label.create_neighborhood</source>
+                <target>Create neighborhood</target>
             </trans-unit>
             <trans-unit id="label.create_metro_station">
                 <source>label.create_metro_station</source>
@@ -705,9 +717,9 @@
                 <source>placeholder.select_city</source>
                 <target>Select a city</target>
             </trans-unit>
-            <trans-unit id="placeholder.select_area">
-                <source>placeholder.select_area</source>
-                <target>Select an area</target>
+            <trans-unit id="placeholder.select_neighborhood">
+                <source>placeholder.select_neighborhood</source>
+                <target>Select a neighborhood</target>
             </trans-unit>
             <trans-unit id="placeholder.select_metro_station">
                 <source>placeholder.select_metro_station</source>

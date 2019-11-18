@@ -10,17 +10,17 @@ declare(strict_types=1);
 
 namespace App\Form\Type;
 
-use App\Entity\Area;
 use App\Entity\Category;
 use App\Entity\City;
 use App\Entity\DealType;
 use App\Entity\Feature;
 use App\Entity\Metro;
+use App\Entity\Neighborhood;
 use App\Entity\Property;
-use App\Form\EventSubscriber\AddAreaFieldSubscriber;
 use App\Form\EventSubscriber\AddMetroFieldSubscriber;
-use App\Form\EventSubscriber\UpdateAreaFieldSubscriber;
+use App\Form\EventSubscriber\AddNeighborhoodFieldSubscriber;
 use App\Form\EventSubscriber\UpdateMetroFieldSubscriber;
+use App\Form\EventSubscriber\UpdateNeighborhoodFieldSubscriber;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -44,14 +44,14 @@ final class PropertyType extends AbstractType
                 ],
                 'label' => 'label.city',
             ])
-            ->add('area', EntityType::class, [
-                'class' => Area::class,
+            ->add('neighborhood', EntityType::class, [
+                'class' => Neighborhood::class,
                 'choice_label' => 'name',
-                'placeholder' => 'placeholder.select_area',
+                'placeholder' => 'placeholder.select_neighborhood',
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'label.area',
+                'label' => 'label.neighborhood',
                 'required' => false,
                 'choices' => [],
             ])
@@ -187,8 +187,8 @@ final class PropertyType extends AbstractType
                 'label' => 'label.content',
             ]);
 
-        $builder->addEventSubscriber(new AddAreaFieldSubscriber());
-        $builder->get('city')->addEventSubscriber(new UpdateAreaFieldSubscriber());
+        $builder->addEventSubscriber(new AddNeighborhoodFieldSubscriber());
+        $builder->get('city')->addEventSubscriber(new UpdateNeighborhoodFieldSubscriber());
 
         $builder->addEventSubscriber(new AddMetroFieldSubscriber());
         $builder->get('city')->addEventSubscriber(new UpdateMetroFieldSubscriber());

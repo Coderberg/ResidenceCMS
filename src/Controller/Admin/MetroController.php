@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Entity\City;
 use App\Entity\Metro;
 use App\Form\Type\MetroType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -17,7 +18,21 @@ use Symfony\Component\Routing\Annotation\Route;
 final class MetroController extends AbstractController
 {
     /**
-     * @Route("/admin/metro/new", name="admin_metro_new")
+     * @Route("/admin/locations/metro", name="admin_metro")
+     */
+    public function index(): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(City::class);
+
+        $cities = $repository->findAll();
+
+        return $this->render('admin/metro/index.html.twig', [
+            'cities' => $cities,
+        ]);
+    }
+
+    /**
+     * @Route("/admin/locations/metro/new", name="admin_metro_new")
      */
     public function new(Request $request): Response
     {
@@ -40,7 +55,7 @@ final class MetroController extends AbstractController
                 return $this->redirectToRoute('admin_metro_new');
             }
 
-            return $this->redirectToRoute('admin_city');
+            return $this->redirectToRoute('admin_metro');
         }
 
         return $this->render('admin/metro/new.html.twig', [
@@ -52,7 +67,7 @@ final class MetroController extends AbstractController
     /**
      * Displays a form to edit an existing Metro entity.
      *
-     * @Route("/admin/metro/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_metro_edit")
+     * @Route("/admin/locations/metro/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_metro_edit")
      */
     public function edit(Request $request, Metro $metro): Response
     {
@@ -62,7 +77,7 @@ final class MetroController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'message.updated');
 
-            return $this->redirectToRoute('admin_city');
+            return $this->redirectToRoute('admin_metro');
         }
 
         return $this->render('admin/metro/edit.html.twig', [
@@ -79,7 +94,7 @@ final class MetroController extends AbstractController
     public function delete(Request $request, Metro $metro): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
-            return $this->redirectToRoute('admin_city');
+            return $this->redirectToRoute('admin_metro');
         }
 
         $em = $this->getDoctrine()->getManager();
@@ -87,6 +102,6 @@ final class MetroController extends AbstractController
         $em->flush();
         $this->addFlash('success', 'message.deleted');
 
-        return $this->redirectToRoute('admin_city');
+        return $this->redirectToRoute('admin_metro');
     }
 }

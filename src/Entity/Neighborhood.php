@@ -10,10 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\AreaRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\NeighborhoodRepository")
  * @UniqueEntity("slug")
  */
-class Area
+class Neighborhood
 {
     /**
      * @ORM\Id()
@@ -33,12 +33,12 @@ class Area
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="area")
+     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="neighborhood")
      */
     private $properties;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\City", inversedBy="areas")
+     * @ORM\ManyToOne(targetEntity="App\Entity\City", inversedBy="neighborhoods")
      * @ORM\JoinColumn(nullable=false)
      */
     private $city;

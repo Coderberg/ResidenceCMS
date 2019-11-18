@@ -45,10 +45,10 @@ class Property
     private $city;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Area", inversedBy="properties")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Neighborhood", inversedBy="properties")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $area;
+    private $neighborhood;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -434,14 +434,14 @@ class Property
         return $this;
     }
 
-    public function getArea(): ?Area
+    public function getNeighborhood(): ?Neighborhood
     {
-        return $this->area;
+        return $this->neighborhood;
     }
 
-    public function setArea(?Area $area): self
+    public function setNeighborhood(?Neighborhood $neighborhood): self
     {
-        $this->area = $area;
+        $this->neighborhood = $neighborhood;
 
         return $this;
     }

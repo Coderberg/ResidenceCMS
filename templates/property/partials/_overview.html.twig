@@ -4,8 +4,8 @@
         <tr>
             <th>{{ 'property.location' | trans }}:</th>
             <td>
-                {% if property.area.name | default %}
-                    {{ property.area.name }},
+                {% if property.neighborhood.name | default %}
+                    {{ property.neighborhood.name }},
                 {% endif %}
                 {{ property.city.name }}
             </td>

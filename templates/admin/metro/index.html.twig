@@ -1,6 +1,6 @@
 {% extends 'admin/layout/base.html.twig' %}
 
-{% block title %}{{ 'cities'|trans }}{% endblock %}
+{% block title %}{{ 'metro_stations'|trans }}{% endblock %}
 
 {% block stylesheets %}
 
@@ -13,12 +13,12 @@
     <ul class="nav nav-tabs">
         <li class="nav-item active">
             <span class="nav-link active">
-                <i class="fas fa-map-marker-alt text-danger"></i> {{ 'cities'|trans }}
+                <i class="fas fa-subway text-danger"></i> {{ 'metro_stations'|trans }}
             </span>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ path('admin_city_new') }}">
-                <i class="fas fa-plus-square text-danger"></i> {{ 'menu.add_new'|trans }} {{ 'city' | trans }}
+            <a class="nav-link" href="{{ path('admin_metro_new') }}">
+                <i class="fas fa-plus-square text-danger"></i> {{ 'menu.add_new'|trans }} {{ 'metro_station' | trans }}
             </a>
         </li>
     </ul>
@@ -45,6 +45,20 @@
                                 {{ include('admin/city/_action_form.html.twig', {city: city}, with_context = false) }}
                             </td>
                         </tr>
+
+                        {% for station in city.metroStations %}
+
+                            <tr>
+                                <td class="sub-location text-secondary">
+                                    <small><i class="fas fa-subway" style="color: #28a745"></i></small> {{ station.name }}
+                                </td>
+                                <td class="hidden-sm">{{ station.slug }}</td>
+                                <td>
+                                    {{ include('admin/metro/_action_form.html.twig', {station: station}, with_context = false) }}
+                                </td>
+                            </tr>
+
+                        {% endfor %}
 
                     {% else %}
                         <tr>

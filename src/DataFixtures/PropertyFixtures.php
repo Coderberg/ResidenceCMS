@@ -14,7 +14,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
 {
     public function load(ObjectManager $manager): void
     {
-        foreach ($this->getPropertyData() as [$dealType, $category, $bedrooms, $city, $area, $metro, $title,
+        foreach ($this->getPropertyData() as [$dealType, $category, $bedrooms, $city, $neighborhood, $metro, $title,
                     $address, $latitude, $longitude, $price, $price_type, ]) {
             $property = new Property();
             $property->setAuthor($this->getReference(UserFixtures::ADMIN_USER_REFERENCE));
@@ -22,7 +22,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
             $property->setCategory($category);
             $property->setBedroomsNumber($bedrooms);
             $property->setCity($city);
-            $property->setArea($area);
+            $property->setNeighborhood($neighborhood);
             $property->setMetroStation($metro);
             $property->setTitle($title);
             $property->setDescription($title);
@@ -52,7 +52,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
     {
         return [
             /*
-                $propertyData = [$dealType_id, $category_id, $bedrooms, $city_id, $area, $metro,
+                $propertyData = [$dealType_id, $category_id, $bedrooms, $city_id, $neighborhood, $metro,
                                 $title, $address, $latitude, $longitude,
                                 $price, $price_type];
             */
@@ -163,7 +163,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
     public function getDependencies()
     {
         return [
-            AreaFixtures::class,
+            NeighborhoodFixtures::class,
             MetroFixtures::class,
             CategoryFixtures::class,
             FeatureFixtures::class,

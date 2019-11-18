@@ -18,8 +18,8 @@ $(document).ready(function () {
             type: $form.attr('method'),
             data: data,
             success: function (html) {
-                $('#property_area').replaceWith(
-                    $(html).find('#property_area')
+                $('#property_neighborhood').replaceWith(
+                    $(html).find('#property_neighborhood')
                 );
                 $('#property_metro_station').replaceWith(
                     $(html).find('#property_metro_station')

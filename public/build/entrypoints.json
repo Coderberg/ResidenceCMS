@@ -9,7 +9,7 @@
     "js/admin": {
       "js": [
         "/build/runtime.dca8fcdd.js",
-        "/build/js/admin.5023a15c.js"
+        "/build/js/admin.e16fe4bc.js"
       ]
     },
     "js/ekko-lightbox": {
@@ -45,7 +45,7 @@
     "js/city": {
       "js": [
         "/build/runtime.dca8fcdd.js",
-        "/build/js/city.5869c36c.js"
+        "/build/js/city.0e7326d1.js"
       ]
     },
     "js/photo": {

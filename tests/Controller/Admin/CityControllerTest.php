@@ -27,7 +27,7 @@ final class CityControllerTest extends WebTestCase
             'PHP_AUTH_PW' => self::PHP_AUTH_PW,
         ]);
 
-        $crawler = $client->request('GET', '/admin/city/new');
+        $crawler = $client->request('GET', '/admin/locations/city/new');
 
         $form = $crawler->selectButton('Create city')->form([
             'city[name]' => self::NAME,
@@ -62,7 +62,7 @@ final class CityControllerTest extends WebTestCase
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/city/'.$city.'/edit');
+        $crawler = $client->request('GET', '/admin/locations/city/'.$city.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'city[name]' => self::EDITED_NAME,
@@ -94,7 +94,7 @@ final class CityControllerTest extends WebTestCase
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/city');
+        $crawler = $client->request('GET', '/admin/locations/city');
         $client->submit($crawler->filter('#delete-form-'.$city)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller\Admin;
 
-use App\Entity\Area;
 use App\Entity\Category;
 use App\Entity\City;
 use App\Entity\DealType;
 use App\Entity\Feature;
 use App\Entity\Metro;
+use App\Entity\Neighborhood;
 use App\Entity\Property;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -97,8 +97,8 @@ final class PropertyControllerTest extends WebTestCase
         $metroStation = $client->getContainer()->get('doctrine')
             ->getRepository(Metro::class)->findOneBy(['slug' => 'government-center'])->getId();
 
-        $area = $client->getContainer()->get('doctrine')
-            ->getRepository(Area::class)->findOneBy(['slug' => 'south-beach'])->getId();
+        $neighborhood = $client->getContainer()->get('doctrine')
+            ->getRepository(Neighborhood::class)->findOneBy(['slug' => 'south-beach'])->getId();
 
         $feature = $client->getContainer()->get('doctrine')
             ->getRepository(Feature::class)->findOneBy(['name' => 'High Impact Doors']);
@@ -106,7 +106,7 @@ final class PropertyControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/admin/property/'.$property->getId().'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
-            'property[area]' => $area,
+            'property[neighborhood]' => $neighborhood,
             'property[metro_station]' => $metroStation,
             'property[features]' => [$feature->getId()],
         ]);

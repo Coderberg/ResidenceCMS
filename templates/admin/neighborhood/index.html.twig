@@ -1,6 +1,6 @@
 {% extends 'admin/layout/base.html.twig' %}
 
-{% block title %}{{ 'cities'|trans }}{% endblock %}
+{% block title %}{{ 'neighborhoods'|trans }}{% endblock %}
 
 {% block stylesheets %}
 
@@ -13,12 +13,12 @@
     <ul class="nav nav-tabs">
         <li class="nav-item active">
             <span class="nav-link active">
-                <i class="fas fa-map-marker-alt text-danger"></i> {{ 'cities'|trans }}
+                <i class="fas fa-map-marker-alt text-danger"></i> {{ 'neighborhoods'|trans }}
             </span>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ path('admin_city_new') }}">
-                <i class="fas fa-plus-square text-danger"></i> {{ 'menu.add_new'|trans }} {{ 'city' | trans }}
+            <a class="nav-link" href="{{ path('admin_neighborhood_new') }}">
+                <i class="fas fa-plus-square text-danger"></i> {{ 'menu.add_new'|trans }} {{ 'neighborhood' | trans }}
             </a>
         </li>
     </ul>
@@ -45,6 +45,18 @@
                                 {{ include('admin/city/_action_form.html.twig', {city: city}, with_context = false) }}
                             </td>
                         </tr>
+
+                        {% for neighborhood in city.neighborhoods %}
+
+                            <tr>
+                                <td class="sub-location text-secondary">{{ neighborhood.name }}</td>
+                                <td class="hidden-sm">{{ neighborhood.slug }}</td>
+                                <td>
+                                    {{ include('admin/neighborhood/_action_form.html.twig', {neighborhood: neighborhood}, with_context = false) }}
+                                </td>
+                            </tr>
+
+                        {% endfor %}
 
                     {% else %}
                         <tr>

@@ -4,30 +4,30 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
-use App\Entity\Area;
+use App\Entity\Neighborhood;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-final class AreaFixtures extends Fixture implements DependentFixtureInterface
+final class NeighborhoodFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        foreach ($this->getAreaData() as [$city, $name, $slug]) {
-            $area = new Area();
-            $area->setCity($city);
-            $area->setName($name);
-            $area->setSlug($slug);
-            $manager->persist($area);
-            $this->addReference($name, $area);
+        foreach ($this->getNeighborhoodData() as [$city, $name, $slug]) {
+            $neighborhood = new Neighborhood();
+            $neighborhood->setCity($city);
+            $neighborhood->setName($name);
+            $neighborhood->setSlug($slug);
+            $manager->persist($neighborhood);
+            $this->addReference($name, $neighborhood);
         }
         $manager->flush();
     }
 
-    private function getAreaData(): array
+    private function getNeighborhoodData(): array
     {
         return [
-            // $areaData = [$city, $name, $slug];
+            // $neighborhoodData = [$city, $name, $slug];
            [$this->getReference('Miami'), 'South Beach', 'south-beach'],
            [$this->getReference('Miami'), 'Downtown', 'downtown'],
            [$this->getReference('Tampa'), 'Ballast Point', 'ballast-point'],

@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Form\Type;
 
-use App\Entity\Area;
 use App\Entity\City;
+use App\Entity\Neighborhood;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class AreaType extends AbstractType
+final class NeighborhoodType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -31,7 +31,7 @@ final class AreaType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'label.area_name',
+                'label' => 'label.neighborhood_name',
             ])
             ->add('slug', null, [
                 'attr' => [
@@ -47,7 +47,7 @@ final class AreaType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Area::class,
+            'data_class' => Neighborhood::class,
         ]);
     }
 }

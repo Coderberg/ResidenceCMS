@@ -9,7 +9,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 
-class AddAreaFieldSubscriber implements EventSubscriberInterface
+class AddNeighborhoodFieldSubscriber implements EventSubscriberInterface
 {
     public static function getSubscribedEvents()
     {
@@ -23,16 +23,16 @@ class AddAreaFieldSubscriber implements EventSubscriberInterface
         $city = $data->getCity();
 
         if ($city) {
-            $form->add('area', EntityType::class, [
-                'class' => 'App\Entity\Area',
-                'placeholder' => 'placeholder.select_area',
+            $form->add('neighborhood', EntityType::class, [
+                'class' => 'App\Entity\Neighborhood',
+                'placeholder' => 'placeholder.select_neighborhood',
                 'choice_label' => 'name',
                 'attr' => [
                     'class' => 'form-control',
                 ],
                 'required' => false,
-                'label' => 'label.area',
-                'choices' => $city->getAreas(),
+                'label' => 'label.neighborhood',
+                'choices' => $city->getNeighborhoods(),
             ]);
         }
     }

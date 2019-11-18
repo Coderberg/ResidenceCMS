@@ -1,7 +1,7 @@
-<form action="{{ url('admin_area_delete', {id: area.id}) }}" method="post" data-confirmation="true"
-      id="delete-area-{{ area.id }}">
+<form action="{{ url('admin_neighborhood_delete', {id: neighborhood.id}) }}" method="post" data-confirmation="true"
+      id="delete-neighborhood-{{ neighborhood.id }}">
 
-    <a href="{{ url('admin_area_edit', {id: area.id}) }}"
+    <a href="{{ url('admin_neighborhood_edit', {id: neighborhood.id}) }}"
        class="btn btn-sm btn-outline-primary">{{ 'action.edit' | trans }}</a> &nbsp;&nbsp;&nbsp;
 
     <input type="hidden" name="token" value="{{ csrf_token('delete') }}"/>

@@ -1,11 +1,15 @@
 {% extends 'admin/layout/base.html.twig' %}
 
-{% block title %}{{ 'title.edit_area' | trans }}{% endblock %}
+{% block title %}{{ 'title.edit_neighborhood' | trans }}{% endblock %}
 
 {% block body %}
 
     <div class="card mb-3">
-        <div class="card-header"><i class="fas fa-edit text-danger"></i> {{ 'title.edit_area' | trans }}</div>
+
+        <div class="card-header">
+            <i class="fas fa-edit text-danger"></i> {{ 'title.edit_neighborhood' | trans }}
+        </div>
+
         <div class="card-body">
 
             {{ form_start(form) }}
