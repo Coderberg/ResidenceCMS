@@ -83,8 +83,9 @@ final class SettingsController extends AbstractController
         if ($violations->count() > 0) {
             /** @var ConstraintViolation $violation */
             $violation = $violations[0];
+            $this->addFlash('danger', $violation->getMessage());
 
-            return new JsonResponse(['status' => 'error', 'message' => $violation->getMessage()]);
+            return new JsonResponse(['status' => 'error']);
         }
 
         $fileName = $fileUploader->upload($uploadedFile);
