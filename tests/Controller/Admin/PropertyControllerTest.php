@@ -12,7 +12,6 @@ use App\Entity\Metro;
 use App\Entity\Neighborhood;
 use App\Entity\Property;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Response;
 
 final class PropertyControllerTest extends WebTestCase
@@ -70,12 +69,7 @@ final class PropertyControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/admin/photo/'.$property.'/edit');
         $this->assertSelectorTextContains('html', 'Upload photos');
 
-        $photo = new UploadedFile(
-            __DIR__.'/../../../public/images/bg.jpg',
-            'bg.jpg',
-            'image/jpeg',
-            null
-        );
+        $photo = __DIR__.'/../../../public/images/bg.jpg';
 
         $form = $crawler->filter('.js-photo-dropzone')->form();
         $form['file']->upload($photo);

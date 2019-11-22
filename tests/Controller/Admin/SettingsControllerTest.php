@@ -6,7 +6,6 @@ namespace App\Tests\Controller\Admin;
 
 use App\Entity\Settings;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Response;
 
 final class SettingsControllerTest extends WebTestCase
@@ -92,12 +91,7 @@ final class SettingsControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/admin/setting/header');
         $this->assertSelectorTextContains('html', 'Header settings');
 
-        $image = new UploadedFile(
-            __DIR__.'/../../../public/uploads/images/full/demo/1.jpeg',
-            'bg.jpg',
-            'image/jpeg',
-            null
-        );
+        $image = __DIR__.'/../../../public/uploads/images/full/demo/1.jpeg';
 
         $form = $crawler->filter('.js-photo-dropzone')->form();
         $form['file']->upload($image);

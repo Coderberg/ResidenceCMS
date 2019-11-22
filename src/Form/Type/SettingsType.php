@@ -28,21 +28,21 @@ final class SettingsType extends AbstractType
                     'class' => 'form-control',
                 ],
                 'label' => 'label.settings.name',
-                'constraints' => [new Length(['min' => 2])],
+                'constraints' => [new Length(['min' => 2, 'allowEmptyString' => false])],
             ])
             ->add('title', null, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
                 'label' => 'label.settings.title',
-                'constraints' => [new Length(['min' => 8])],
+                'constraints' => [new Length(['min' => 8, 'allowEmptyString' => false])],
             ])
             ->add('description', TextareaType::class, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
                 'label' => 'label.settings.description',
-                'constraints' => [new Length(['min' => 8])],
+                'constraints' => [new Length(['min' => 8, 'allowEmptyString' => false])],
             ])
             ->add('custom_code', TextareaType::class, [
                 'attr' => [

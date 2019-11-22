@@ -6,6 +6,7 @@ security:
         App\Entity\User:
             algorithm: auto
 
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
         # In this example, users are stored via Doctrine in the database

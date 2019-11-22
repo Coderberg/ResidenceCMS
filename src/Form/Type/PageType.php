@@ -11,8 +11,8 @@ declare(strict_types=1);
 namespace App\Form\Type;
 
 use App\Entity\Page;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -42,9 +42,10 @@ final class PageType extends AbstractType
                 ],
                 'label' => 'label.description',
             ])
-            ->add('content', CKEditorType::class, [
-                'config' => [
-                    'uiColor' => '#ffffff',
+            ->add('content', TextareaType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                    'rows' => '7',
                 ],
                 'label' => 'label.content',
             ])

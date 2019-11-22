@@ -21,9 +21,9 @@ use App\Form\EventSubscriber\AddMetroFieldSubscriber;
 use App\Form\EventSubscriber\AddNeighborhoodFieldSubscriber;
 use App\Form\EventSubscriber\UpdateMetroFieldSubscriber;
 use App\Form\EventSubscriber\UpdateNeighborhoodFieldSubscriber;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -180,9 +180,10 @@ final class PropertyType extends AbstractType
                 'label' => 'label.priority_number',
                 'required' => false,
             ])
-            ->add('content', CKEditorType::class, [
-                'config' => [
-                    'uiColor' => '#ffffff',
+            ->add('content', TextareaType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                    'rows' => '7',
                 ],
                 'label' => 'label.content',
             ]);
