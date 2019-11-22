@@ -28,6 +28,8 @@ before_install:
   - sudo service mysql restart
   - cp ./.travis/.env.local .env.local
   - cp ./.travis/.env.test.local .env.test.local
+  # Set memory to max (memory fail)
+  - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - '[[ "$TRAVIS_PHP_VERSION" == "7.4snapshot" ]] || phpenv config-rm xdebug.ini'
   - composer self-update
 
