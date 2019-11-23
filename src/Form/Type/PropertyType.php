@@ -17,6 +17,8 @@ use App\Entity\Feature;
 use App\Entity\Metro;
 use App\Entity\Neighborhood;
 use App\Entity\Property;
+use App\Entity\User;
+use App\Form\EventSubscriber\AddAgentFieldSubscriber;
 use App\Form\EventSubscriber\AddMetroFieldSubscriber;
 use App\Form\EventSubscriber\AddNeighborhoodFieldSubscriber;
 use App\Form\EventSubscriber\UpdateMetroFieldSubscriber;
@@ -26,9 +28,20 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Core\Security;
 
 final class PropertyType extends AbstractType
 {
+    /**
+     * @var Security
+     */
+    private $security;
+
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -180,6 +193,14 @@ final class PropertyType extends AbstractType
                 'label' => 'label.priority_number',
                 'required' => false,
             ])
+            ->add('author', EntityType::class, [
+                'class' => User::class,
+                'choice_label' => 'full_name',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'label' => 'label.agent',
+            ])
             ->add('content', TextareaType::class, [
                 'attr' => [
                     'class' => 'form-control',
@@ -187,6 +208,8 @@ final class PropertyType extends AbstractType
                 ],
                 'label' => 'label.content',
             ]);
+
+        $builder->addEventSubscriber(new AddAgentFieldSubscriber($this->security));
 
         $builder->addEventSubscriber(new AddNeighborhoodFieldSubscriber());
         $builder->get('city')->addEventSubscriber(new UpdateNeighborhoodFieldSubscriber());

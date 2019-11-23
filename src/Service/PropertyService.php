@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Entity\Property;
-use App\Entity\User;
 use App\Utils\Slugger;
 use Doctrine\ORM\EntityManagerInterface;
 use Pagerfanta\Pagerfanta;
@@ -29,12 +28,11 @@ final class PropertyService
         $this->slugger = $slugger;
     }
 
-    public function create(Property $property, User $user): void
+    public function create(Property $property): void
     {
         // Make slug
         $slug = $this->slugger->slugify($property->getTitle());
 
-        $property->setAuthor($user);
         $property->setSlug($slug);
         $property->setPublishedAt(new \DateTime('now'));
         $property->setPublished(true);

@@ -555,6 +555,10 @@
                 <source>label.priority_number.help</source>
                 <target>The default priority is zero; relative to the default a priority can be higher (positive numbers) or lower (negative numbers).</target>
             </trans-unit>
+            <trans-unit id="label.agent">
+                <source>label.agent</source>
+                <target>Agent</target>
+            </trans-unit>
             <trans-unit id="label.feature">
                 <source>label.feature</source>
                 <target>Feature</target>

@@ -44,14 +44,13 @@ final class PropertyController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $user = $this->getUser();
         $property = new Property();
 
         $form = $this->createForm(PropertyType::class, $property);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->propertyService->create($property, $user);
+            $this->propertyService->create($property);
             $this->addFlash('success', 'message.created');
 
             return $this->redirectToRoute('admin_photo_edit', ['id' => $property->getId()]);
