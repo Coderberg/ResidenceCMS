@@ -165,7 +165,6 @@ final class PropertyType extends AbstractType
                 'label' => 'label.price_type',
             ])
             ->add('available_now', null, [
-                    'data' => true,
                     'attr' => [
                         'class' => 'custom-control-input',
                     ],
