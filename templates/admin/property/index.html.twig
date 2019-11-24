@@ -39,17 +39,26 @@
 
                     </a>
                     <div class="card-body">
-                        <h4 class="card-title"><a
+                        <h5 class="card-title"><a
                                 href="{{ path('property_show', {
                                     'id':  property.id,
                                     'citySlug': property.city.slug,
                                     'slug': property.slug }) }}">
                                 {{ property.title }}
                             </a>
-                        </h4>
-                        <p class="small">{{ property.address }}</p>
-                        <p class="card-text">{{ property.description }}</p>
+                        </h5>
+                        <p class="small">
+                            <i class="fas fa-map-marker-alt" style="color: #28a745"></i> {{ property.address }}
+                        </p>
 
+                        <span class="attribute">{{ property.dealType.name }}</span>
+                        <span class="attribute">{{ property.category.name }}</span>
+
+                        {% if property.bedroomsNumber %}
+                            <span class="attribute">{{ 'property.bedrooms'|trans }}: {{ property.bedroomsNumber }}</span>
+                        {% endif %}
+                        <br>
+                        <br>
                         {{ include('admin/property/_action_form.html.twig', {property: property}, with_context = false) }}
 
                     </div>

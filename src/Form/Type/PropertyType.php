@@ -13,14 +13,17 @@ namespace App\Form\Type;
 use App\Entity\Category;
 use App\Entity\City;
 use App\Entity\DealType;
+use App\Entity\District;
 use App\Entity\Feature;
 use App\Entity\Metro;
 use App\Entity\Neighborhood;
 use App\Entity\Property;
 use App\Entity\User;
 use App\Form\EventSubscriber\AddAgentFieldSubscriber;
+use App\Form\EventSubscriber\AddDistrictFieldSubscriber;
 use App\Form\EventSubscriber\AddMetroFieldSubscriber;
 use App\Form\EventSubscriber\AddNeighborhoodFieldSubscriber;
+use App\Form\EventSubscriber\UpdateDistrictFieldSubscriber;
 use App\Form\EventSubscriber\UpdateMetroFieldSubscriber;
 use App\Form\EventSubscriber\UpdateNeighborhoodFieldSubscriber;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -56,6 +59,17 @@ final class PropertyType extends AbstractType
                     'class' => 'form-control',
                 ],
                 'label' => 'label.city',
+            ])
+            ->add('district', EntityType::class, [
+                'class' => District::class,
+                'choice_label' => 'name',
+                'placeholder' => 'placeholder.select_district',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'label' => 'label.district',
+                'required' => false,
+                'choices' => [],
             ])
             ->add('neighborhood', EntityType::class, [
                 'class' => Neighborhood::class,
@@ -212,6 +226,9 @@ final class PropertyType extends AbstractType
 
         $builder->addEventSubscriber(new AddNeighborhoodFieldSubscriber());
         $builder->get('city')->addEventSubscriber(new UpdateNeighborhoodFieldSubscriber());
+
+        $builder->addEventSubscriber(new AddDistrictFieldSubscriber());
+        $builder->get('city')->addEventSubscriber(new UpdateDistrictFieldSubscriber());
 
         $builder->addEventSubscriber(new AddMetroFieldSubscriber());
         $builder->get('city')->addEventSubscriber(new UpdateMetroFieldSubscriber());

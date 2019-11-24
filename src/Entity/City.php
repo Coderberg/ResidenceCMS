@@ -23,7 +23,7 @@ class City
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $slug;
 
@@ -36,6 +36,12 @@ class City
      * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="city")
      */
     private $properties;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\District", mappedBy="city")
+     * @ORM\OrderBy({"name" = "ASC"})
+     */
+    private $districts;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Neighborhood", mappedBy="city")
@@ -54,6 +60,7 @@ class City
         $this->properties = new ArrayCollection();
         $this->neighborhoods = new ArrayCollection();
         $this->metro_stations = new ArrayCollection();
+        $this->districts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -172,6 +179,37 @@ class City
             // set the owning side to null (unless already changed)
             if ($metroStation->getCity() === $this) {
                 $metroStation->setCity(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|District[]
+     */
+    public function getDistricts(): Collection
+    {
+        return $this->districts;
+    }
+
+    public function addDistrict(District $district): self
+    {
+        if (!$this->districts->contains($district)) {
+            $this->districts[] = $district;
+            $district->setCity($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDistrict(District $district): self
+    {
+        if ($this->districts->contains($district)) {
+            $this->districts->removeElement($district);
+            // set the owning side to null (unless already changed)
+            if ($district->getCity() === $this) {
+                $district->setCity(null);
             }
         }
 

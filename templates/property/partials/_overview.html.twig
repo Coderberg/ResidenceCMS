@@ -6,6 +6,8 @@
             <td>
                 {% if property.neighborhood.name | default %}
                     {{ property.neighborhood.name }},
+                {% elseif property.district.name | default %}
+                    {{ property.district.name }},
                 {% endif %}
                 {{ property.city.name }}
             </td>

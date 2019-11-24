@@ -1,0 +1,59 @@
+{% extends 'admin/layout/base.html.twig' %}
+
+{% block title %}{{ 'title.add_district' | trans }}{% endblock %}
+
+{% block body %}
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_district') }}">
+                <i class="fas fa-map-marker-alt text-danger"></i> {{ 'districts'|trans }}
+            </a>
+        </li>
+        <li class="nav-item active">
+            <span class="nav-link active">
+                <i class="fas fa-plus-square text-danger"></i> {{ 'menu.add_new'|trans }} {{ 'district' | trans }}
+            </span>
+        </li>
+    </ul>
+
+    <div class="card mb-3">
+
+        <div class="card-body">
+
+            {{ form_start(form) }}
+
+            <div class="form-group">
+                {{ form_row(form.city) }}
+            </div>
+
+            <div class="form-group" id="name">
+                {{ form_row(form.name) }}
+            </div>
+
+            <div class="form-group" id="slug">
+                {{ form_row(form.slug) }}
+            </div>
+
+            <div class="form-group">
+
+                <button type="submit" class="btn btn-primary">
+                    {{ 'label.create_district'|trans }}
+                </button>
+
+                {{ form_widget(form.saveAndCreateNew, {label: 'label.save_and_create_new', attr: {class: 'btn btn-primary'}}) }}
+
+            </div>
+
+            {{ form_end(form) }}
+
+        </div>
+    </div><br>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ encore_entry_script_tags('js/slugger') }}
+
+{% endblock %}

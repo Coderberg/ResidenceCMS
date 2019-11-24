@@ -1,0 +1,73 @@
+{% extends 'admin/layout/base.html.twig' %}
+
+{% block title %}{{ 'districts'|trans }}{% endblock %}
+
+{% block stylesheets %}
+
+    {{ encore_entry_link_tags('css/city') }}
+
+{% endblock %}
+
+{% block body %}
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item active">
+            <span class="nav-link active">
+                <i class="fas fa-map-marker-alt text-danger"></i> {{ 'districts'|trans }}
+            </span>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_district_new') }}">
+                <i class="fas fa-plus-square text-danger"></i> {{ 'menu.add_new'|trans }} {{ 'district' | trans }}
+            </a>
+        </li>
+    </ul>
+
+    <div class="card mb-3">
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table" style="background-color: #FFFFFF">
+                    <thead class="thead">
+                    <tr>
+                        <th>{{ 'table.city_name' | trans }}</th>
+                        <th class="hidden-sm">{{ 'table.slug' | trans }}</th>
+                        <th>{{ 'table.action' | trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for city in cities %}
+                        <tr>
+                            <td class="location">{{ city.name }}</td>
+                            <td class="hidden-sm">{{ city.slug }}</td>
+                            <td>
+                                {{ include('admin/city/_action_form.html.twig', {city: city}, with_context = false) }}
+                            </td>
+                        </tr>
+
+                        {% for district in city.districts %}
+
+                            <tr>
+                                <td class="sub-location text-secondary">{{ district.name }}</td>
+                                <td class="hidden-sm">{{ district.slug }}</td>
+                                <td>
+                                    {{ include('admin/district/_action_form.html.twig', {district: district}, with_context = false) }}
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+
+                    {% else %}
+                        <tr>
+                            <td>{{ 'no_items_found' | trans }}</td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

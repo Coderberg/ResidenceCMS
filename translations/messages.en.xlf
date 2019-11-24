@@ -68,6 +68,10 @@
                 <source>neighborhoods</source>
                 <target>Neighborhoods</target>
             </trans-unit>
+            <trans-unit id="districts">
+                <source>districts</source>
+                <target>Districts</target>
+            </trans-unit>
             <trans-unit id="metro_stations">
                 <source>metro_stations</source>
                 <target>Metro stations</target>
@@ -111,6 +115,10 @@
             <trans-unit id="neighborhood">
                 <source>neighborhood</source>
                 <target>Neighborhood</target>
+            </trans-unit>
+            <trans-unit id="district">
+                <source>district</source>
+                <target>District</target>
             </trans-unit>
             <trans-unit id="metro_station">
                 <source>metro_station</source>
@@ -338,6 +346,10 @@
                 <source>title.add_neighborhood</source>
                 <target>Add neighborhood</target>
             </trans-unit>
+            <trans-unit id="title.add_district">
+                <source>title.add_district</source>
+                <target>Add district</target>
+            </trans-unit>
             <trans-unit id="title.add_metro_station">
                 <source>title.add_metro_station</source>
                 <target>Add metro station</target>
@@ -345,6 +357,10 @@
             <trans-unit id="title.edit_neighborhood">
                 <source>title.edit_neighborhood</source>
                 <target>Edit neighborhood</target>
+            </trans-unit>
+            <trans-unit id="title.edit_district">
+                <source>title.edit_district</source>
+                <target>Edit district</target>
             </trans-unit>
             <trans-unit id="title.edit_metro_station">
                 <source>title.edit_metro_station</source>
@@ -527,9 +543,17 @@
                 <source>label.neighborhood</source>
                 <target>Neighborhood</target>
             </trans-unit>
+            <trans-unit id="label.district">
+                <source>label.district</source>
+                <target>District</target>
+            </trans-unit>
             <trans-unit id="label.neighborhood_name">
                 <source>label.neighborhood_name</source>
                 <target>Neighborhood name</target>
+            </trans-unit>
+            <trans-unit id="label.district_name">
+                <source>label.district_name</source>
+                <target>District name</target>
             </trans-unit>
             <trans-unit id="label.metro_station_name">
                 <source>label.metro_station_name</source>
@@ -671,6 +695,10 @@
                 <source>label.create_neighborhood</source>
                 <target>Create neighborhood</target>
             </trans-unit>
+            <trans-unit id="label.create_district">
+                <source>label.create_district</source>
+                <target>Create district</target>
+            </trans-unit>
             <trans-unit id="label.create_metro_station">
                 <source>label.create_metro_station</source>
                 <target>Create metro station</target>
@@ -724,6 +752,10 @@
             <trans-unit id="placeholder.select_neighborhood">
                 <source>placeholder.select_neighborhood</source>
                 <target>Select a neighborhood</target>
+            </trans-unit>
+            <trans-unit id="placeholder.select_district">
+                <source>placeholder.select_district</source>
+                <target>Select a district</target>
             </trans-unit>
             <trans-unit id="placeholder.select_metro_station">
                 <source>placeholder.select_metro_station</source>

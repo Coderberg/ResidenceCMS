@@ -152,6 +152,12 @@ class Property
      */
     private $priority_number;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\District", inversedBy="properties")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $district;
+
     public function __construct()
     {
         $this->photos = new ArrayCollection();
@@ -492,6 +498,18 @@ class Property
     public function setPriorityNumber(?int $priority_number): self
     {
         $this->priority_number = $priority_number;
+
+        return $this;
+    }
+
+    public function getDistrict(): ?District
+    {
+        return $this->district;
+    }
+
+    public function setDistrict(?District $district): self
+    {
+        $this->district = $district;
 
         return $this;
     }

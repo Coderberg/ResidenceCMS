@@ -88,11 +88,11 @@ final class PropertyControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['title' => 'test']);
 
-        $metroStation = $client->getContainer()->get('doctrine')
-            ->getRepository(Metro::class)->findOneBy(['slug' => 'government-center'])->getId();
-
         $neighborhood = $client->getContainer()->get('doctrine')
             ->getRepository(Neighborhood::class)->findOneBy(['slug' => 'south-beach'])->getId();
+
+        $metroStation = $client->getContainer()->get('doctrine')
+            ->getRepository(Metro::class)->findOneBy(['slug' => 'government-center'])->getId();
 
         $feature = $client->getContainer()->get('doctrine')
             ->getRepository(Feature::class)->findOneBy(['name' => 'High Impact Doors']);
