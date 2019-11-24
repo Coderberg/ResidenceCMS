@@ -32,32 +32,6 @@ final class PropertyController extends BaseController
     }
 
     /**
-     * @Route("/{citySlug}/{slug}/{id<\d+>}", methods={"GET"}, name="property_show")
-     */
-    public function propertyShow(URLService $url, Property $property, string $citySlug, string $slug): Response
-    {
-        if (!$url->isCanonical($property, $citySlug, $slug)) {
-            return $this->redirect($url->generateCanonical($property), 301);
-        }
-
-        return $this->render('property/show.html.twig',
-            [
-                'site' => $this->site(),
-                'property' => $property,
-                'number_of_photos' => \count($property->getPhotos()),
-            ]
-        );
-    }
-
-    /**
-     * @Route("/property/{id<\d+>}", methods={"GET"}, name="property_show_short_link")
-     */
-    public function propertyShowShort(URLService $url, Property $property)
-    {
-        return $this->redirect($url->generateCanonical($property), 301);
-    }
-
-    /**
      * @Route("/search", defaults={"page": "1"}, methods={"GET"}, name="property_search")
      * @Route("/search/page/{page<[1-9]\d*>}", methods={"GET"}, name="property_search_paginated")
      */
@@ -94,5 +68,31 @@ final class PropertyController extends BaseController
                 'properties' => $repository->findAll(),
             ]
         );
+    }
+
+    /**
+     * @Route("/{citySlug}/{slug}/{id<\d+>}", methods={"GET"}, name="property_show")
+     */
+    public function propertyShow(URLService $url, Property $property, string $citySlug, string $slug): Response
+    {
+        if (!$url->isCanonical($property, $citySlug, $slug)) {
+            return $this->redirect($url->generateCanonical($property), 301);
+        }
+
+        return $this->render('property/show.html.twig',
+            [
+                'site' => $this->site(),
+                'property' => $property,
+                'number_of_photos' => \count($property->getPhotos()),
+            ]
+        );
+    }
+
+    /**
+     * @Route("/property/{id<\d+>}", methods={"GET"}, name="property_show_short_link")
+     */
+    public function propertyShowShort(URLService $url, Property $property)
+    {
+        return $this->redirect($url->generateCanonical($property), 301);
     }
 }
