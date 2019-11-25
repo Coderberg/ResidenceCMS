@@ -29,6 +29,7 @@ final class SettingsFixtures extends Fixture
             ['title', 'Site Title'],
             ['description', 'Site Description'],
             ['custom_code', ''],
+            ['custom_footer_text', 'All Rights Reserved.'],
             ['items_per_page', '6'],
             ['ymaps_key', ''],
             ['map_center', '27.188534, -81.128735'],

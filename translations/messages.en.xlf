@@ -445,7 +445,11 @@
             </trans-unit>
             <trans-unit id="label.settings.code">
                 <source>label.settings.code</source>
-                <target>Custom code in header (Google Analytics etc.)</target>
+                <target>Custom Code in Header (Google Analytics etc.)</target>
+            </trans-unit>
+            <trans-unit id="label.settings.custom_footer_text">
+                <source>label.settings.custom_footer_text</source>
+                <target>Custom Footer Text</target>
             </trans-unit>
             <trans-unit id="label.settings.limit">
                 <source>label.settings.limit</source>

@@ -51,6 +51,13 @@ final class SettingsType extends AbstractType
                 'required' => false,
                 'label' => 'label.settings.code',
             ])
+            ->add('custom_footer_text', TextareaType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'required' => false,
+                'label' => 'label.settings.custom_footer_text',
+            ])
             ->add('items_per_page', null, [
                 'attr' => [
                     'class' => 'form-control',

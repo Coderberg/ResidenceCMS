@@ -29,6 +29,7 @@ final class SettingsControllerTest extends WebTestCase
             'settings[title]' => $title.' - Test title',
             'settings[fixed_top_navbar]' => '1',
             'settings[items_per_page]' => '3',
+            'settings[custom_footer_text]' => 'Edited text',
         ]);
 
         $client->submit($form);
@@ -42,6 +43,7 @@ final class SettingsControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/');
 
         $this->assertContains('Test title', $crawler->html());
+        $this->assertContains('Edited text', $crawler->html());
         $this->assertCount(3, $crawler->filter('.property-box-img'));
         $this->assertCount(1, $crawler->filter('.fixed-top'));
         $this->assertCount(1, $crawler->filter('.body'));
@@ -61,6 +63,7 @@ final class SettingsControllerTest extends WebTestCase
 
         $form = $crawler->selectButton('Save changes')->form([
                 'settings[title]' => mb_substr($title, 0, -13),
+                'settings[custom_footer_text]' => 'All Rights Reserved.',
                 'settings[fixed_top_navbar]' => '0',
                 'settings[items_per_page]' => '6',
             ]);
