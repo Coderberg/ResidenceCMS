@@ -4,6 +4,8 @@
 
 {% block stylesheets %}
     {{ encore_entry_link_tags('css/select2') }}
+
+    <link href="{{ asset('libs/summernote/0.8.12/summernote-bs4.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 {% block body %}
@@ -143,5 +145,7 @@
 
     {{ encore_entry_script_tags('js/city') }}
     {{ encore_entry_script_tags('js/select2') }}
+
+    <script src="{{ asset('libs/summernote/0.8.12/summernote-bs4.min.js') }}"></script>
 
 {% endblock %}

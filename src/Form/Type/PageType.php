@@ -44,7 +44,7 @@ final class PageType extends AbstractType
             ])
             ->add('content', TextareaType::class, [
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control summer-note',
                     'rows' => '7',
                 ],
                 'label' => 'label.content',
