@@ -17,10 +17,9 @@ final class PropertyController extends BaseController
      * @Route("/", defaults={"page": "1"}, methods={"GET"}, name="property")
      * @Route("/page/{page<[1-9]\d*>}", methods={"GET"}, name="property_paginated")
      */
-    public function index(?int $page): Response
+    public function index(PropertyRepository $repository, ?int $page): Response
     {
-        $properties = $this->getDoctrine()
-            ->getRepository(Property::class)->findLatest($page ?? 1);
+        $properties = $repository->findLatest($page ?? 1);
 
         return $this->render('property/index.html.twig',
             [
@@ -73,11 +72,11 @@ final class PropertyController extends BaseController
     /**
      * @Route("/{citySlug}/{slug}/{id<\d+>}", methods={"GET"}, name="property_show")
      */
-    public function propertyShow(Request $request, URLService $url, Property $property, string $citySlug, string $slug): Response
+    public function propertyShow(Request $request, URLService $url, Property $property): Response
     {
-        if (!$url->isCanonical($property, $citySlug, $slug)) {
+        if (!$url->isCanonical($property, $request)) {
             return $this->redirect($url->generateCanonical($property), 301);
-        } elseif (preg_match('/'.$request->getHost().'/', ($request->server->getHeaders()['REFERER']) ?? '')) {
+        } elseif ($url->isRefererFromCurrentHost($request)) {
             $show_back_button = true;
         }
 
