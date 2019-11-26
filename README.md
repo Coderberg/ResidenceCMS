@@ -7,7 +7,7 @@ The user interface is built with [Bootstrap 4][2].
 
 ## Requirements
 
-- PHP >= 7.2.0;
+- PHP >= 7.2.9;
 - PDO PHP Extension;
 - GD PHP extension
 - MySQL >= 5.7;
@@ -32,7 +32,7 @@ The user interface is built with [Bootstrap 4][2].
 
 5. Create an empty MySQL database
 
-6. Modify your DATABASE_URL config in ```.env```
+6. Create ```.env.local``` from ```.env``` file and fill in your database credentials
 
     ```
     DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
@@ -52,11 +52,11 @@ The user interface is built with [Bootstrap 4][2].
    password: admin
    ```
    
-9. To use feedback forms, configure MAILER_URL in ```.env``` or ```.env.local```
+9. To use feedback forms, configure MAILER_URL in ```.env.local```
    
 ## Tests
 
-1. Modify your DATABASE_URL config in ```.env.test```
+1. Modify your DATABASE_URL config in ```.env.test.local```
    
    ```
    DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name

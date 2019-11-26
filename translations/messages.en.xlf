@@ -22,6 +22,10 @@
                 <source>menu.admin</source>
                 <target>Admin</target>
             </trans-unit>
+            <trans-unit id="menu.edit_profile">
+                <source>menu.edit_profile</source>
+                <target>Edit profile</target>
+            </trans-unit>
             <trans-unit id="menu.login">
                 <source>menu.login</source>
                 <target>Login</target>

@@ -27,7 +27,7 @@ security:
 
             # but the firewall does not require login on every page
             # denying access is done in access_control or in your controllers
-            anonymous: true
+            anonymous: lazy
 
             # This allows the user to login by submitting a username and password
             # Reference: https://symfony.com/doc/current/security/form_login_setup.html
