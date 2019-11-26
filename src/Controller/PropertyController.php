@@ -73,10 +73,12 @@ final class PropertyController extends BaseController
     /**
      * @Route("/{citySlug}/{slug}/{id<\d+>}", methods={"GET"}, name="property_show")
      */
-    public function propertyShow(URLService $url, Property $property, string $citySlug, string $slug): Response
+    public function propertyShow(Request $request, URLService $url, Property $property, string $citySlug, string $slug): Response
     {
         if (!$url->isCanonical($property, $citySlug, $slug)) {
             return $this->redirect($url->generateCanonical($property), 301);
+        } elseif (preg_match('/'.$request->getHost().'/', ($request->server->getHeaders()['REFERER']) ?? '')) {
+            $show_back_button = true;
         }
 
         return $this->render('property/show.html.twig',
@@ -84,6 +86,7 @@ final class PropertyController extends BaseController
                 'site' => $this->site(),
                 'property' => $property,
                 'number_of_photos' => \count($property->getPhotos()),
+                'show_back_button' => $show_back_button ?? false,
             ]
         );
     }
