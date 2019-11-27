@@ -14,13 +14,14 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
 {
     public function load(ObjectManager $manager): void
     {
-        foreach ($this->getPropertyData() as [$dealType, $category, $bedrooms, $city, $district, $neighborhood, $metro,
-                 $title, $address, $latitude, $longitude, $price, $priceType, ]) {
+        foreach ($this->getPropertyData() as [$dealType, $category, $bedrooms, $guests, $city, $district,
+                 $neighborhood, $metro, $title, $address, $latitude, $longitude, $price, $priceType, ]) {
             $property = new Property();
             $property->setAuthor($this->getReference(UserFixtures::ADMIN_USER_REFERENCE));
             $property->setDealType($dealType);
             $property->setCategory($category);
             $property->setBedroomsNumber($bedrooms);
+            $property->setMaxGuests($guests);
             $property->setCity($city);
             $property->setNeighborhood($neighborhood);
             $property->setDistrict($district);
@@ -53,14 +54,15 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
     {
         return [
             /*
-                $propertyData = [$dealType, $category, $bedrooms, $city, $district $neighborhood, $metro,
-                                $title, $address, $latitude, $longitude,
-                                $price, $priceType];
+                $propertyData = [$dealType, $category, $bedrooms, $guests, $city,
+                                $district $neighborhood, $metro, $title, $address,
+                                $latitude, $longitude, $price, $priceType];
             */
             [
                 $this->getReference('Rent'),
                 $this->getReference('Apartment'),
                 1,
+                2,
                 $this->getReference('Miami'),
                 null,
                 $this->getReference('South Beach'),
@@ -73,6 +75,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
                 $this->getReference('Rent'),
                 $this->getReference('Apartment'),
                 null,
+                4,
                 $this->getReference('Miami'),
                 null,
                 $this->getReference('South Beach'),
@@ -85,6 +88,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
                 $this->getReference('Rent'),
                 $this->getReference('Penthouse'),
                 2,
+                5,
                 $this->getReference('Palm Beach'),
                 null,
                 null,
@@ -97,6 +101,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
                 $this->getReference('Rent'),
                 $this->getReference('Apartment'),
                 1,
+                3,
                 $this->getReference('Palm Beach'),
                 null,
                 null,
@@ -109,6 +114,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
                 $this->getReference('Sale'),
                 $this->getReference('Villa'),
                 5,
+                null,
                 $this->getReference('Tampa'),
                 $this->getReference('South Tampa'),
                 $this->getReference('Culbreath Isles'),
@@ -121,6 +127,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
                 $this->getReference('Rent'),
                 $this->getReference('Apartment'),
                 2,
+                6,
                 $this->getReference('Tampa'),
                 null,
                 $this->getReference('Ballast Point'),
@@ -133,6 +140,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
                 $this->getReference('Sale'),
                 $this->getReference('Apartment'),
                 2,
+                null,
                 $this->getReference('Miami'),
                 null,
                 $this->getReference('Downtown'),

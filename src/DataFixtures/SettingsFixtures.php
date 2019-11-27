@@ -41,6 +41,7 @@ final class SettingsFixtures extends Fixture
             ['show_filter_by_deal_type', '1'],
             ['show_filter_by_category', '1'],
             ['show_filter_by_bedrooms', '0'],
+            ['show_filter_by_guests', '0'],
         ];
     }
 }

@@ -59,6 +59,12 @@ final class PropertyControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', sprintf('/search?city=%d&bedrooms=3', $city));
         $this->assertCount(0, $crawler->filter('.property-box-img'));
+
+        $crawler = $client->request('GET', sprintf('/search?guests=6'));
+        $this->assertCount(1, $crawler->filter('.property-box-img'));
+
+        $crawler = $client->request('GET', sprintf('/search?guests=3'));
+        $this->assertCount(4, $crawler->filter('.property-box-img'));
     }
 
     public function testSearchFilter()

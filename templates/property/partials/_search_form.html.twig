@@ -61,11 +61,24 @@
                     <div class="col-lg-3 mb-2">
                         <select name="bedrooms" class="form-control form-control-lg" aria-label="{{ 'label.bedrooms_number'|trans }}">
                             <option value="0">{{ 'property.bedrooms'|trans }}</option>
-                                <option value="0">{{ 'option.any'|trans }}</option>
-                                <option value="1">1 {{ 'option.bedroom'|trans }}</option>
-                                <option value="2">2 {{ 'option.bedrooms'|trans }}</option>
-                                <option value="3">3 {{ 'option.bedrooms'|trans }}</option>
-                                <option value="4">4+ {{ 'option.bedrooms'|trans }}</option>
+                            <option value="0">{{ 'option.any'|trans }}</option>
+                            <option value="1">1 {{ 'option.bedroom'|trans }}</option>
+                            <option value="2">2 {{ 'option.bedrooms'|trans }}</option>
+                            <option value="3">3 {{ 'option.bedrooms'|trans }}</option>
+                            <option value="4">4+ {{ 'option.bedrooms'|trans }}</option>
+                        </select>
+                    </div>
+                    {% endif %}
+
+                    {% if site.show_filter_by_guests == '1' %}
+                    <div class="col-lg-3 mb-2">
+                        <select name="guests" class="form-control form-control-lg" aria-label="{{ 'label.guests'|trans }}">
+                            <option value="0">{{ 'label.guests'|trans }}</option>
+                            <option value="0">{{ 'option.any'|trans }}</option>
+                            {% for i in range(1,8) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                            {% endfor %}
+                            <option value="9">9+</option>
                         </select>
                     </div>
                     {% endif %}

@@ -499,6 +499,10 @@
                 <source>label.settings.show_filter_by_bedrooms</source>
                 <target>Show filter by bedrooms</target>
             </trans-unit>
+            <trans-unit id="label.settings.show_filter_by_guests">
+                <source>label.settings.show_filter_by_guests</source>
+                <target>Show filter by guests</target>
+            </trans-unit>
             <trans-unit id="label.full_name">
                 <source>label.full_name</source>
                 <target>Full name</target>
@@ -610,6 +614,10 @@
             <trans-unit id="label.max_guests">
                 <source>label.max_guests</source>
                 <target>Max Guests</target>
+            </trans-unit>
+            <trans-unit id="label.guests">
+                <source>label.guests</source>
+                <target>Guests</target>
             </trans-unit>
             <trans-unit id="label.title">
                 <source>label.title</source>

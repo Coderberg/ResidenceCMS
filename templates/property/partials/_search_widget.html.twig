@@ -63,6 +63,20 @@
                 </div>
             {% endif %}
 
+            {% if site.show_filter_by_bedrooms == '1' %}
+                <div class="form-group">
+                    <label for="guests">{{ 'label.guests'|trans }}</label>
+                    <select name="guests" id="guests" class="form-control form-control-lg">
+                        <option value="0">{{ 'label.guests'|trans }}</option>
+                        <option value="0">{{ 'option.any'|trans }}</option>
+                        {% for i in range(1,8) %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                        <option value="9">9+</option>
+                    </select>
+                </div>
+            {% endif %}
+
             <div class="form-group">
                 <button class="btn btn-block btn-lg btn-primary">
                     <i class="fas fa-search"></i> {{ 'action.search'|trans }}
