@@ -45,13 +45,11 @@ final class PropertyController extends AbstractController
     public function new(Request $request): Response
     {
         $property = new Property();
-
         $form = $this->createForm(PropertyType::class, $property);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->propertyService->create($property);
-            $this->addFlash('success', 'message.created');
 
             return $this->redirectToRoute('admin_photo_edit', ['id' => $property->getId()]);
         }
@@ -74,7 +72,6 @@ final class PropertyController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->propertyService->update($property);
-            $this->addFlash('success', 'message.updated');
 
             return $this->redirectToRoute('admin_property');
         }
@@ -97,7 +94,6 @@ final class PropertyController extends AbstractController
         }
 
         $this->propertyService->delete($property);
-        $this->addFlash('success', 'message.deleted');
 
         return $this->redirectToRoute('admin_property');
     }

@@ -8,10 +8,16 @@ use App\Entity\Property;
 use App\Utils\Slugger;
 use Doctrine\ORM\EntityManagerInterface;
 use Pagerfanta\Pagerfanta;
+use Psr\Container\ContainerInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 final class PropertyService
 {
+    /**
+     * @var ContainerInterface
+     */
+    private $container;
+
     /**
      * @var EntityManagerInterface
      */
@@ -22,8 +28,9 @@ final class PropertyService
      */
     private $slugger;
 
-    public function __construct(EntityManagerInterface $entityManager, Slugger $slugger)
+    public function __construct(ContainerInterface $container, EntityManagerInterface $entityManager, Slugger $slugger)
     {
+        $this->container = $container;
         $this->em = $entityManager;
         $this->slugger = $slugger;
     }
@@ -39,6 +46,7 @@ final class PropertyService
         $property->setPriorityNumber((int) ($property->getPriorityNumber()));
         $this->save($property);
         $this->clearCache();
+        $this->addFlash('success', 'message.created');
     }
 
     public function findLatest(int $page, string $orderBy = 'priority'): Pagerfanta
@@ -65,6 +73,7 @@ final class PropertyService
         $property->setSlug($slug);
         $property->setPriorityNumber((int) ($property->getPriorityNumber()));
         $this->em->flush();
+        $this->addFlash('success', 'message.updated');
     }
 
     public function save(Property $property): void
@@ -93,11 +102,17 @@ final class PropertyService
 
         $this->remove($property);
         $this->clearCache();
+        $this->addFlash('success', 'message.deleted');
     }
 
     private function clearCache(): void
     {
         $cache = new FilesystemAdapter();
         $cache->delete('properties_count');
+    }
+
+    private function addFlash(string $type, string $message)
+    {
+        $this->container->get('session')->getFlashBag()->add($type, $message);
     }
 }

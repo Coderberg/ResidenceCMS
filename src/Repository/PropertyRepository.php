@@ -17,7 +17,7 @@ use Pagerfanta\Pagerfanta;
  * @method Property[]    findAll()
  * @method Property[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-final class PropertyRepository extends ServiceEntityRepository
+class PropertyRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -49,39 +49,6 @@ final class PropertyRepository extends ServiceEntityRepository
         return $this->createPaginator($qb->getQuery(), $page);
     }
 
-    public function findByFilter(int $city, int $dealType, int $category, int $bedrooms, int $page = 1): Pagerfanta
-    {
-        $qb = $this->createQueryBuilder('p');
-
-        $qb->Where('p.published = 1');
-
-        // City
-        if ($city > 0) {
-            $qb->andWhere('p.city = '.(int) $city);
-        }
-
-        // Deal Type
-        if ($dealType > 0) {
-            $qb->andWhere('p.deal_type = '.(int) $dealType);
-        }
-
-        // Category
-        if ($category > 0) {
-            $qb->andWhere('p.category = '.(int) $category);
-        }
-
-        // Number of bedrooms
-        if ($bedrooms > 3) {
-            $qb->andWhere('p.bedrooms_number > 3');
-        } elseif ($bedrooms > 0) {
-            $qb->andWhere('p.bedrooms_number = '.(int) $bedrooms);
-        }
-
-        $qb->orderBy('p.priority_number', 'DESC');
-
-        return $this->createPaginator($qb->getQuery(), $page);
-    }
-
     private function findLimit(): int
     {
         $repository = $this->getEntityManager()->getRepository('App:Settings');
@@ -90,7 +57,7 @@ final class PropertyRepository extends ServiceEntityRepository
         return (int) $limit->getSettingValue();
     }
 
-    private function createPaginator(Query $query, int $page): Pagerfanta
+    protected function createPaginator(Query $query, int $page): Pagerfanta
     {
         $paginator = new Pagerfanta(new DoctrineORMAdapter($query));
         $paginator->setMaxPerPage($this->findLimit());

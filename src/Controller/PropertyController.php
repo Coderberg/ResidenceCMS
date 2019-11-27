@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\Property;
+use App\Repository\FilterRepository;
 use App\Repository\PropertyRepository;
 use App\Service\URLService;
+use App\Transformer\RequestToArrayTransformer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -34,24 +36,16 @@ final class PropertyController extends BaseController
      * @Route("/search", defaults={"page": "1"}, methods={"GET"}, name="property_search")
      * @Route("/search/page/{page<[1-9]\d*>}", methods={"GET"}, name="property_search_paginated")
      */
-    public function search(Request $request, PropertyRepository $properties, ?int $page): Response
+    public function search(Request $request, FilterRepository $repository, RequestToArrayTransformer $transformer): Response
     {
-        $cityId = $request->query->get('city', 0);
-        $dealTypeId = $request->query->get('deal_type', 0);
-        $categoryId = $request->query->get('category', 0);
-        $numberOfBedrooms = $request->query->get('bedrooms', 0);
+        $searchParams = $transformer->transform($request);
+        $properties = $repository->findByFilter($searchParams);
 
         return $this->render('property/search.html.twig',
             [
                 'site' => $this->site(),
-                'properties' => $properties->findByFilter(
-                    (int) $cityId,
-                    (int) $dealTypeId,
-                    (int) $categoryId,
-                    (int) $numberOfBedrooms,
-                    ($page ?? 1)
-                ),
-                'page' => $page,
+                'properties' => $properties,
+                'page' => $searchParams['page'],
             ]
         );
     }
@@ -59,7 +53,7 @@ final class PropertyController extends BaseController
     /**
      * @Route("/map", methods={"GET"}, name="map_view")
      */
-    public function mapView(Request $request, PropertyRepository $repository): Response
+    public function mapView(PropertyRepository $repository): Response
     {
         return $this->render('property/map.html.twig',
             [
