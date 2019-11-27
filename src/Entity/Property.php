@@ -83,7 +83,7 @@ class Property
     /**
      * @ORM\Column(type="smallint", nullable=true)
      */
-    private $max_occupancy;
+    private $max_guests;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -285,18 +285,6 @@ class Property
     public function setBedroomsNumber(?int $bedrooms_number): self
     {
         $this->bedrooms_number = $bedrooms_number;
-
-        return $this;
-    }
-
-    public function getMaxOccupancy(): ?int
-    {
-        return $this->max_occupancy;
-    }
-
-    public function setMaxOccupancy(?int $max_occupancy): self
-    {
-        $this->max_occupancy = $max_occupancy;
 
         return $this;
     }
@@ -510,6 +498,18 @@ class Property
     public function setDistrict(?District $district): self
     {
         $this->district = $district;
+
+        return $this;
+    }
+
+    public function getMaxGuests(): ?int
+    {
+        return $this->max_guests;
+    }
+
+    public function setMaxGuests(?int $max_guests): self
+    {
+        $this->max_guests = $max_guests;
 
         return $this;
     }

@@ -607,9 +607,9 @@
                 <source>label.bedrooms_number</source>
                 <target>Number of Bedrooms</target>
             </trans-unit>
-            <trans-unit id="label.max_occupancy">
-                <source>label.max_occupancy</source>
-                <target>Maximum Occupancy</target>
+            <trans-unit id="label.max_guests">
+                <source>label.max_guests</source>
+                <target>Max Guests</target>
             </trans-unit>
             <trans-unit id="label.title">
                 <source>label.title</source>
@@ -798,9 +798,9 @@
                 <source>property.bedrooms</source>
                 <target>Bedrooms</target>
             </trans-unit>
-            <trans-unit id="property.max_occupancy">
-                <source>property.max_occupancy</source>
-                <target>Max Occupancy</target>
+            <trans-unit id="property.max_guests">
+                <source>property.max_guests</source>
+                <target>Max Guests</target>
             </trans-unit>
             <trans-unit id="property.available_now">
                 <source>property.available_now</source>

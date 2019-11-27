@@ -121,11 +121,11 @@ final class PropertyType extends AbstractType
                 ],
                 'label' => 'label.bedrooms_number',
             ])
-            ->add('max_occupancy', null, [
+            ->add('max_guests', null, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'label.max_occupancy',
+                'label' => 'label.max_guests',
             ])
             ->add('title', null, [
                 'attr' => [

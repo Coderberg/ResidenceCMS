@@ -49,11 +49,11 @@
 
         {% endif %}
 
-        {% if property.maxOccupancy != '' %}
+        {% if property.maxGuests != '' %}
 
             <tr>
-                <th>{{ 'property.max_occupancy' | trans }}:</th>
-                <td>{{ property.maxOccupancy }}</td>
+                <th>{{ 'property.max_guests' | trans }}:</th>
+                <td>{{ property.maxGuests }}</td>
             </tr>
 
         {% endif %}
