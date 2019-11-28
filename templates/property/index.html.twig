@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ site.meta_title }}{{ page|page }}{% endblock %}
+{% block title %}{{ site.meta_title }}{{ searchParams.page|page }}{% endblock %}
 
-{% block description %}{{ site.meta_description }}{{ page|page }}{% endblock %}
+{% block description %}{{ site.meta_description }}{{ searchParams.page|page }}{% endblock %}
 
 {% block header %}
     {{ include('property/partials/_search_form.html.twig') }}
@@ -96,7 +96,8 @@
                         <span class="attribute">{{ property.category.name }}</span>
 
                         {% if property.bedroomsNumber %}
-                            <span class="attribute">{{ 'property.bedrooms'|trans }}: {{ property.bedroomsNumber }}</span>
+                            <span
+                                class="attribute">{{ 'property.bedrooms'|trans }}: {{ property.bedroomsNumber }}</span>
                         {% endif %}
                     </div>
                 </div>

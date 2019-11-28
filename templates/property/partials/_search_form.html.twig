@@ -1,86 +1,110 @@
 <div class="header"
      style="background-image: url(
-        {% if site.header_image == '' %}
-            '/images/bg-1.5.jpg'
-         {% else %}
-            '/uploads/images/full/{{ site.header_image }}'
-         {% endif %}
-     )">
+     {% if site.header_image == '' %}
+         {{ asset('/images/bg-1.5.jpg') }}
+     {% else %}
+         '/uploads/images/full/{{ site.header_image }}'
+     {% endif %}
+         )">
     <div class="header-overlay"></div>
     <div class="container">
         <div class="search_form">
-            <form action="{{ path('property_search') }}" method="get">
+            <form action="{{ path('property') }}" method="get">
                 <div class="form-row justify-content-end">
 
                     {% if site.show_filter_by_city == '1' %}
-                    <div class="col-lg-3 mb-2">
-                        <select name="city" class="form-control form-control-lg" aria-label="{{ 'city'|trans }}">
-                            <option value="0">{{ 'city'|trans }}</option>
+                        <div class="col-lg-3 mb-2">
+                            <select name="city" class="form-control form-control-lg" aria-label="{{ 'city'|trans }}">
+                                <option value="0">{{ 'city'|trans }}</option>
 
-                            {% for city in site.cities %}
+                                {% for city in site.cities %}
 
-                                <option value="{{ city.id }}">{{ city.name }}</option>
+                                    <option value="{{ city.id }}"
+                                        {% if searchParams.city == city.id %} selected{% endif %}>
+                                        {{ city.name }}
+                                    </option>
 
-                            {% endfor %}
+                                {% endfor %}
 
-                        </select>
-                    </div>
+                            </select>
+                        </div>
                     {% endif %}
 
                     {% if site.show_filter_by_deal_type == '1' %}
-                    <div class="col-lg-3 mb-2">
-                        <select name="deal_type" class="form-control form-control-lg" aria-label="{{ 'deal_type'|trans }}">
-                            <option value="0">{{ 'deal_type'|trans }}</option>
+                        <div class="col-lg-3 mb-2">
+                            <select name="deal_type" class="form-control form-control-lg"
+                                    aria-label="{{ 'deal_type'|trans }}">
+                                <option value="0">{{ 'deal_type'|trans }}</option>
 
-                            {% for deal_type in site.deal_types %}
+                                {% for deal_type in site.deal_types %}
 
-                                <option value="{{ deal_type.id }}">{{ deal_type.name }}</option>
+                                    <option value="{{ deal_type.id }}"
+                                        {% if searchParams.deal_type == deal_type.id %} selected{% endif %}
+                                    >
+                                        {{ deal_type.name }}
+                                    </option>
 
-                            {% endfor %}
+                                {% endfor %}
 
-                        </select>
-                    </div>
+                            </select>
+                        </div>
                     {% endif %}
 
                     {% if site.show_filter_by_category == '1' %}
-                    <div class="col-lg-3 mb-2">
-                        <select name="category" class="form-control form-control-lg" aria-label="{{ 'category'|trans }}">
-                            <option value="0">{{ 'category'|trans }}</option>
+                        <div class="col-lg-3 mb-2">
+                            <select name="category" class="form-control form-control-lg"
+                                    aria-label="{{ 'category'|trans }}">
+                                <option value="0">{{ 'category'|trans }}</option>
 
-                            {% for category in site.categories %}
+                                {% for category in site.categories %}
 
-                                <option value="{{ category.id }}">{{ category.name }}</option>
+                                    <option value="{{ category.id }}"
+                                        {% if searchParams.category == category.id %} selected{% endif %}
+                                    >{{ category.name }}
+                                    </option>
 
-                            {% endfor %}
+                                {% endfor %}
 
-                        </select>
-                    </div>
+                            </select>
+                        </div>
                     {% endif %}
 
                     {% if site.show_filter_by_bedrooms == '1' %}
-                    <div class="col-lg-3 mb-2">
-                        <select name="bedrooms" class="form-control form-control-lg" aria-label="{{ 'label.bedrooms_number'|trans }}">
-                            <option value="0">{{ 'property.bedrooms'|trans }}</option>
-                            <option value="0">{{ 'option.any'|trans }}</option>
-                            <option value="1">1 {{ 'option.bedroom'|trans }}</option>
-                            <option value="2">2 {{ 'option.bedrooms'|trans }}</option>
-                            <option value="3">3 {{ 'option.bedrooms'|trans }}</option>
-                            <option value="4">4+ {{ 'option.bedrooms'|trans }}</option>
-                        </select>
-                    </div>
+                        <div class="col-lg-3 mb-2">
+                            <select name="bedrooms" class="form-control form-control-lg"
+                                    aria-label="{{ 'label.bedrooms_number'|trans }}">
+                                <option value="0">{{ 'property.bedrooms'|trans }}</option>
+                                <option value="0">{{ 'option.any'|trans }}</option>
+                                <option value="1" {% if searchParams.bedrooms == 1 %} selected{% endif %}>
+                                    1 {{ 'option.bedroom'|trans }}
+                                </option>
+                                <option value="2" {% if searchParams.bedrooms == 2 %} selected{% endif %}>
+                                    2 {{ 'option.bedrooms'|trans }}
+                                </option>
+                                <option value="3" {% if searchParams.bedrooms == 3 %} selected{% endif %}>
+                                    3 {{ 'option.bedrooms'|trans }}
+                                </option>
+                                <option value="4" {% if searchParams.bedrooms == 4 %} selected{% endif %}>
+                                    4+ {{ 'option.bedrooms'|trans }}
+                                </option>
+                            </select>
+                        </div>
                     {% endif %}
 
                     {% if site.show_filter_by_guests == '1' %}
-                    <div class="col-lg-3 mb-2">
-                        <select name="guests" class="form-control form-control-lg" aria-label="{{ 'label.guests'|trans }}">
-                            <option value="0">{{ 'label.guests'|trans }}</option>
-                            <option value="0">{{ 'option.any'|trans }}</option>
-                            {% for i in range(1,8) %}
-                                <option value="{{ i }}">{{ i }}</option>
-                            {% endfor %}
-                            <option value="9">9+</option>
-                        </select>
-                    </div>
+                        <div class="col-lg-3 mb-2">
+                            <select name="guests" class="form-control form-control-lg"
+                                    aria-label="{{ 'label.guests'|trans }}">
+                                <option value="0">{{ 'label.guests'|trans }}</option>
+                                <option value="0">{{ 'option.any'|trans }}</option>
+                                {% for i in range(1,8) %}
+                                    <option value="{{ i }}"
+                                        {% if searchParams.guests == i %} selected{% endif %}
+                                    >{{ i }}</option>
+                                {% endfor %}
+                                <option value="9" {% if searchParams.guests == 9 %} selected{% endif %}>9+</option>
+                            </select>
+                        </div>
                     {% endif %}
 
                     <div class="col-lg-3 mb-2">

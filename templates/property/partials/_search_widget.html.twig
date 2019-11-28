@@ -1,7 +1,7 @@
 <div class="card full-xs mb-3">
     <h5 class="card-header">{{ 'widget.search' | trans }}</h5>
     <div class="card-body">
-        <form action="{{ path('property_search') }}" method="get">
+        <form action="{{ path('property') }}" method="get">
 
             {% if site.show_filter_by_city == '1' %}
                 <div class="form-group">

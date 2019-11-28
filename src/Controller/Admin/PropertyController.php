@@ -6,7 +6,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\Property;
 use App\Form\Type\PropertyType;
+use App\Repository\FilterRepository;
 use App\Service\PropertyService;
+use App\Transformer\RequestToArrayTransformer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,10 +31,10 @@ final class PropertyController extends AbstractController
      * @Route("/admin/property", defaults={"page": "1"}, methods={"GET"}, name="admin_property")
      * @Route("/admin/property/page/{page<[1-9]\d*>}", methods={"GET"}, name="admin_property_paginated")
      */
-    public function index(?int $page): Response
+    public function index(Request $request, FilterRepository $repository, RequestToArrayTransformer $transformer): Response
     {
-        // Get properties
-        $properties = $this->propertyService->findLatest($page ?? 1, 'id');
+        $searchParams = $transformer->transform($request);
+        $properties = $repository->findByFilter($searchParams);
 
         return $this->render('admin/property/index.html.twig', [
             'properties' => $properties,

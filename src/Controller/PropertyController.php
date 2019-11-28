@@ -19,33 +19,16 @@ final class PropertyController extends BaseController
      * @Route("/", defaults={"page": "1"}, methods={"GET"}, name="property")
      * @Route("/page/{page<[1-9]\d*>}", methods={"GET"}, name="property_paginated")
      */
-    public function index(PropertyRepository $repository, ?int $page): Response
-    {
-        $properties = $repository->findLatest($page ?? 1);
-
-        return $this->render('property/index.html.twig',
-            [
-                'site' => $this->site(),
-                'properties' => $properties,
-                'page' => $page,
-            ]
-        );
-    }
-
-    /**
-     * @Route("/search", defaults={"page": "1"}, methods={"GET"}, name="property_search")
-     * @Route("/search/page/{page<[1-9]\d*>}", methods={"GET"}, name="property_search_paginated")
-     */
     public function search(Request $request, FilterRepository $repository, RequestToArrayTransformer $transformer): Response
     {
         $searchParams = $transformer->transform($request);
         $properties = $repository->findByFilter($searchParams);
 
-        return $this->render('property/search.html.twig',
+        return $this->render('property/index.html.twig',
             [
                 'site' => $this->site(),
                 'properties' => $properties,
-                'page' => $searchParams['page'],
+                'searchParams' => $searchParams,
             ]
         );
     }

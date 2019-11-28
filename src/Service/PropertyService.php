@@ -7,7 +7,6 @@ namespace App\Service;
 use App\Entity\Property;
 use App\Utils\Slugger;
 use Doctrine\ORM\EntityManagerInterface;
-use Pagerfanta\Pagerfanta;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
@@ -47,13 +46,6 @@ final class PropertyService
         $this->save($property);
         $this->clearCache();
         $this->addFlash('success', 'message.created');
-    }
-
-    public function findLatest(int $page, string $orderBy = 'priority'): Pagerfanta
-    {
-        $repository = $this->em->getRepository(Property::class);
-
-        return $repository->findLatest($page, $orderBy);
     }
 
     public function countAll(): int

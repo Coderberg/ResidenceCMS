@@ -322,10 +322,6 @@
                 <source>title.latest_properties</source>
                 <target>Latest properties</target>
             </trans-unit>
-            <trans-unit id="title.search_results">
-                <source>title.search_results</source>
-                <target>Search Results</target>
-            </trans-unit>
             <trans-unit id="title.add_page">
                 <source>title.add_page</source>
                 <target>Add page</target>
