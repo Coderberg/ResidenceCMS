@@ -47,6 +47,7 @@ final class PropertyControllerTest extends WebTestCase
             'property[title]' => 'test',
             'property[description]' => 'test',
             'property[address]' => 'test',
+            'property[priority_number]' => '999',
             'property[content]' => 'test',
         ]);
 
