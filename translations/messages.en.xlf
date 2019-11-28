@@ -447,9 +447,13 @@
                 <source>label.settings.title</source>
                 <target>Site Title</target>
             </trans-unit>
-            <trans-unit id="label.settings.description">
-                <source>label.settings.description</source>
-                <target>Site Description</target>
+            <trans-unit id="label.settings.meta_title">
+                <source>label.settings.meta_title</source>
+                <target>Meta Title</target>
+            </trans-unit>
+            <trans-unit id="label.settings.meta_meta_description">
+                <source>label.settings.meta_description</source>
+                <target>Meta Description</target>
             </trans-unit>
             <trans-unit id="label.settings.code">
                 <source>label.settings.code</source>

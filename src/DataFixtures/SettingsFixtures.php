@@ -26,8 +26,9 @@ final class SettingsFixtures extends Fixture
         return [
             // $data = [$setting_name, $setting_value];
             ['name', 'Site name'],
-            ['title', 'Site Title'],
-            ['description', 'Site Description'],
+            ['title', 'Popular Listing'],
+            ['meta_title', 'Site Title'],
+            ['meta_description', 'Site Description'],
             ['custom_code', ''],
             ['custom_footer_text', 'All Rights Reserved.'],
             ['items_per_page', '6'],

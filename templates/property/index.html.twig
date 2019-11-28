@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ site.title }}{{ page|page }}{% endblock %}
+{% block title %}{{ site.meta_title }}{{ page|page }}{% endblock %}
 
-{% block description %}{{ site.description }}{{ page|page }}{% endblock %}
+{% block description %}{{ site.meta_description }}{{ page|page }}{% endblock %}
 
 {% block header %}
     {{ include('property/partials/_search_form.html.twig') }}
@@ -20,7 +20,7 @@
 
     <div class="row">
         <div class="col-6">
-            <h3>{{ 'title.latest_properties' | trans }}</h3>
+            <h1 class="h3">{{ site.title }}</h1>
         </div>
         <div class="col-6 text-right">
             <a href="{{ path('map_view') }}" class="btn btn-sm btn-light">
