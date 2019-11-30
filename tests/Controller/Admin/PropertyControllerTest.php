@@ -47,7 +47,7 @@ final class PropertyControllerTest extends WebTestCase
             'property[title]' => 'test',
             'property[description]' => 'test',
             'property[address]' => 'test',
-            'property[priority_number]' => '999',
+            'property[priority_number]' => '-1',
             'property[content]' => 'test',
         ]);
 
@@ -152,7 +152,7 @@ final class PropertyControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['title' => 'test'])->getId();
 
-        $crawler = $client->request('GET', '/admin/property');
+        $crawler = $client->request('GET', '/admin/property?sort_by=id');
         $client->submit($crawler->filter('#delete-form-'.$property)->form());
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());

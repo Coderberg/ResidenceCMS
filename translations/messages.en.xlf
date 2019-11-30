@@ -739,6 +739,10 @@
                 <source>label.save_and_create_new</source>
                 <target>Save and create new</target>
             </trans-unit>
+            <trans-unit id="label.sort_by">
+                <source>label.sort_by</source>
+                <target>Sort by</target>
+            </trans-unit>
 
             <trans-unit id="option.on">
                 <source>option.on</source>
@@ -759,6 +763,14 @@
             <trans-unit id="option.bedrooms">
                 <source>option.bedrooms</source>
                 <target>bedrooms</target>
+            </trans-unit>
+            <trans-unit id="option.priority">
+                <source>option.priority</source>
+                <target>Priority</target>
+            </trans-unit>
+            <trans-unit id="option.latest">
+                <source>option.latest</source>
+                <target>Latest</target>
             </trans-unit>
 
             <trans-unit id="placeholder.map_center_example">

@@ -4,11 +4,34 @@
 
 {% block body %}
 
-    <h3>{{ 'title.latest_properties' | trans }}
-        <a href="{{ path('admin_property_new') }}" class="btn btn-light" title="{{ 'menu.add_new'|trans }}">
-            <i class="fas fa-plus-square text-danger"></i>
-        </a>
-    </h3>
+    <div class="row">
+
+        <div class="col-12 col-lg-6 col-md-6 col-sm-auto">
+            <a href="{{ path('admin_property_new') }}"
+               class="btn btn-light"
+               style="background-color: #fff; border: 1px solid #ced4da;">
+                <i class="fas fa-plus-square text-danger"></i> {{ 'menu.add_new'|trans }}
+            </a>
+        </div>
+
+        <div class="col-12 col-lg-6 col-md-6 col-sm-auto">
+            <div class="form-group row justify-content-end">
+                <label for="sort_by" class="col-auto col-form-label">{{ 'label.sort_by'|trans }}:</label>
+                <div class="col-auto">
+                    <select class="form-control" id="sort_by" name="sort_by">
+                        <option value="id" {% if searchParams.sort_by == 'id' %} selected{% endif %}>
+                            {{ 'option.latest'|trans }}
+                        </option>
+                        <option
+                            value="priority_number" {% if searchParams.sort_by == 'priority_number' %} selected{% endif %}>
+                            {{ 'option.priority'|trans }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <br>
     <div class="row">
@@ -55,7 +78,8 @@
                         <span class="attribute">{{ property.category.name }}</span>
 
                         {% if property.bedroomsNumber %}
-                            <span class="attribute">{{ 'property.bedrooms'|trans }}: {{ property.bedroomsNumber }}</span>
+                            <span
+                                class="attribute">{{ 'property.bedrooms'|trans }}: {{ property.bedroomsNumber }}</span>
                         {% endif %}
                         <br>
                         <br>

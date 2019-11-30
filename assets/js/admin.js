@@ -31,4 +31,10 @@ $(document).ready(function () {
         $(".sidebar").toggleClass("toggled");
     });
 
+    // Sorting
+    $('#sort_by').on('change', function () {
+        let value = $(this).val();
+        window.location.href = '/admin/property?sort_by=' + value;
+    });
+
 });

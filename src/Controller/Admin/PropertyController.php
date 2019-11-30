@@ -38,6 +38,7 @@ final class PropertyController extends AbstractController
 
         return $this->render('admin/property/index.html.twig', [
             'properties' => $properties,
+            'searchParams' => $searchParams,
         ]);
     }
 

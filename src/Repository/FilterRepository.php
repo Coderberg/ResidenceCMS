@@ -41,7 +41,12 @@ final class FilterRepository extends PropertyRepository
             $qb->andWhere('p.max_guests >= '.(int) $params['guests']);
         }
 
-        $qb->orderBy('p.priority_number', 'DESC');
+        // Sort by
+        if (\in_array($params['sort_by'], ['id', 'priority_number'], true)) {
+            $qb->orderBy('p.'.$params['sort_by'], 'DESC');
+        } else {
+            $qb->orderBy('p.priority_number', 'DESC');
+        }
 
         return $this->createPaginator($qb->getQuery(), $params['page']);
     }
