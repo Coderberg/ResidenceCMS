@@ -20,7 +20,7 @@ final class Slugger
 
         $string = trim($string, '-');
 
-        $string = iconv('utf-8', 'us-ascii//TRANSLIT', $string);
+        //$string = iconv('utf-8', 'us-ascii//TRANSLIT', $string);
 
         $string = mb_strtolower($string);
 
