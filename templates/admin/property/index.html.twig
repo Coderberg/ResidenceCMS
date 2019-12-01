@@ -54,7 +54,7 @@
 
                         {% else %}
 
-                            <img class="card-img-top border-bottom" src="/images/no-photo.png"
+                            <img class="card-img-top border-bottom" src="{{ asset('/images/no-photo.png') }}"
                                  alt="{{ property.address }}"
                                  title="{{ property.address }}"/>
 
@@ -70,8 +70,8 @@
                                 {{ property.title }}
                             </a>
                         </h5>
-                        <p class="small">
-                            <i class="fas fa-map-marker-alt" style="color: #28a745"></i> {{ property.address }}
+                        <p class="small icon-green">
+                            <i class="fas fa-map-marker-alt"></i> {{ property.address }}
                         </p>
 
                         <span class="attribute">{{ property.dealType.name }}</span>

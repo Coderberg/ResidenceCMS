@@ -601,7 +601,11 @@
             </trans-unit>
             <trans-unit id="label.feature">
                 <source>label.feature</source>
-                <target>Feature</target>
+                <target>Feature name</target>
+            </trans-unit>
+            <trans-unit id="label.custom_icon">
+                <source>label.custom_icon</source>
+                <target>Custom icon (optional)</target>
             </trans-unit>
             <trans-unit id="label.bathrooms_number">
                 <source>label.bathrooms_number</source>
@@ -796,6 +800,10 @@
             <trans-unit id="placeholder.enter_email">
                 <source>placeholder.enter_email</source>
                 <target>Enter your email</target>
+            </trans-unit>
+            <trans-unit id="placeholder.example_icon">
+                <source>placeholder.example_icon</source>
+                <target>e.g. &lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt;</target>
             </trans-unit>
 
             <trans-unit id="property.location">

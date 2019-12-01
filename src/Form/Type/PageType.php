@@ -48,6 +48,7 @@ final class PageType extends AbstractType
                     'rows' => '7',
                 ],
                 'label' => 'label.content',
+                'required' => false,
             ])
             ->add('show_in_menu', null, [
                 'attr' => [

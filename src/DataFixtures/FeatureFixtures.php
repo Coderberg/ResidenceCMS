@@ -12,9 +12,10 @@ final class FeatureFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        foreach ($this->getFeatureData() as $name) {
+        foreach ($this->getFeatureData() as [$name, $icon]) {
             $feature = new Feature();
             $feature->setName($name);
+            $feature->setIcon($icon);
             $manager->persist($feature);
             $this->addReference($name, $feature);
         }
@@ -24,14 +25,14 @@ final class FeatureFixtures extends Fixture
     private function getFeatureData(): array
     {
         return [
-            'Air conditioning',
-            'Balcony',
-            'Elevator',
-            'Fire Alarm',
-            'First Floor Entry',
-            'High Impact Doors',
-            'Patio',
-            'Secure parking',
+            ['Air conditioning', null],
+            ['Balcony', null],
+            ['Elevator', null],
+            ['Fire Alarm', null],
+            ['First Floor Entry', null],
+            ['High Impact Doors', null],
+            ['Patio', null],
+            ['Secure parking', '<i class="fas fa-parking"></i>'],
         ];
     }
 }

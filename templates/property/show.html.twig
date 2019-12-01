@@ -101,8 +101,9 @@
 
                     <div class="row">
                         {% for feature in property.features %}
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <i class="fas fa-check" style="color: #28a745"></i> {{ feature.name }}
+                            <div class="col-lg-4 col-md-6 col-sm-6 icon-green">
+                                {{ feature.icon|default('<i class="fas fa-check"></i>')|raw }}
+                                {{ feature.name }}
                             </div>
                         {% endfor %}
                     </div>

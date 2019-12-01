@@ -23,8 +23,8 @@
             <h1 class="h3">{{ site.title }}</h1>
         </div>
         <div class="col-6 text-right">
-            <a href="{{ path('map_view') }}" class="btn btn-sm btn-light">
-                <i class="fas fa-map-marker-alt" style="color: #28a745"></i> {{ 'show_on_map'|trans }}
+            <a href="{{ path('map_view') }}" class="btn btn-sm btn-light icon-green">
+                <i class="fas fa-map-marker-alt"></i> {{ 'show_on_map'|trans }}
             </a>
         </div>
     </div>
@@ -47,14 +47,14 @@
 
                             {% for photo in property.photos | slice(0, 1) %}
 
-                                <img class="card-img-top lazyload" src="/images/transparent.png"
+                                <img class="card-img-top lazyload" src="{{ asset('/images/transparent.png') }}"
                                      data-src="/uploads/images/small/{{ photo.photo }}"
                                      alt="{{ property.address }}"
                                      title="{{ property.address }}"/>
 
                             {% else %}
 
-                                <img class="card-img-top border-bottom" src="/images/no-photo.png"
+                                <img class="card-img-top border-bottom" src="{{ asset('/images/no-photo.png') }}"
                                      alt="{{ property.address }}"
                                      title="{{ property.address }}"/>
 
@@ -82,13 +82,13 @@
                                 {{ property.title }}
                             </a>
                         </h5>
-                        <p class="small">
-                            <i class="fas fa-map-marker-alt" style="color: #28a745"></i> {{ property.address }}
+                        <p class="small icon-green">
+                            <i class="fas fa-map-marker-alt"></i> {{ property.address }}
                         </p>
 
                         {% if property.metroStation %}
-                            <p class="small">
-                                <i class="fas fa-subway" style="color: #28a745"></i> {{ property.metroStation.name }}
+                            <p class="small icon-green">
+                                <i class="fas fa-subway"></i> {{ property.metroStation.name }}
                             </p>
                         {% endif %}
 
