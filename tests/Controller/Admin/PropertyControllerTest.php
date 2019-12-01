@@ -115,7 +115,7 @@ final class PropertyControllerTest extends WebTestCase
                 $property->getId())
         );
 
-        $this->assertCount(0, $crawler->filter('.fa-parking'));
+        $this->assertCount(1, $crawler->filter('.fa-parking'));
         $this->assertContains('Secure parking', $crawler->html());
         $this->assertContains('Government Center', $crawler->html());
         $this->assertContains('South Beach', $crawler->html());
