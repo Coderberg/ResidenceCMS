@@ -50,11 +50,8 @@ security:
                 # The name of the route to redirect to after logging out
                 target: property
 
-            remember_me:
-                secret:   '%kernel.secret%'
-                lifetime: 2592000 # 30 days in seconds
-                path:     /
-
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
     access_control:
     # this is a catch-all for the admin area
     # additional security lives in the controllers

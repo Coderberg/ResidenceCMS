@@ -5,33 +5,36 @@
     "license": "MIT",
     "minimum-stability": "dev",
     "require": {
-        "php": "^7.2",
+        "php": "^7.2.5",
+        "ext-ctype": "*",
         "ext-iconv": "*",
         "gregwar/image": "^2.0",
         "knplabs/knp-paginator-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^5.1",
-        "symfony/asset": "4.4.*",
-        "symfony/console": "4.4.*",
-        "symfony/dotenv": "4.4.*",
-        "symfony/expression-language": "4.4.*",
+        "symfony/asset": "5.0.*",
+        "symfony/console": "5.0.*",
+        "symfony/dotenv": "5.0.*",
+        "symfony/expression-language": "5.0.*",
         "symfony/flex": "^1.3.1",
-        "symfony/form": "4.4.*",
-        "symfony/framework-bundle": "4.4.*",
-        "symfony/http-client": "4.4.*",
-        "symfony/intl": "4.4.*",
-        "symfony/mailer": "4.4.*",
+        "symfony/form": "5.0.*",
+        "symfony/framework-bundle": "5.0.*",
+        "symfony/http-client": "5.0.*",
+        "symfony/intl": "5.0.*",
+        "symfony/mailer": "5.0.*",
         "symfony/monolog-bundle": "^3.1",
+        "symfony/notifier": "5.0.*",
         "symfony/orm-pack": "*",
-        "symfony/process": "4.4.*",
-        "symfony/security-bundle": "4.4.*",
+        "symfony/process": "5.0.*",
+        "symfony/security-bundle": "5.0.*",
         "symfony/serializer-pack": "*",
+        "symfony/string": "5.0.*",
         "symfony/swiftmailer-bundle": "^3.4",
-        "symfony/translation": "4.4.*",
+        "symfony/translation": "5.0.*",
         "symfony/twig-pack": "*",
-        "symfony/validator": "4.4.*",
-        "symfony/web-link": "4.4.*",
+        "symfony/validator": "5.0.*",
+        "symfony/web-link": "5.0.*",
         "symfony/webpack-encore-bundle": "^1.7",
-        "symfony/yaml": "4.4.*"
+        "symfony/yaml": "5.0.*"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3",
@@ -61,6 +64,7 @@
         "paragonie/random_compat": "2.*",
         "symfony/polyfill-ctype": "*",
         "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php72": "*",
         "symfony/polyfill-php71": "*",
         "symfony/polyfill-php70": "*",
         "symfony/polyfill-php56": "*"
@@ -83,7 +87,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "4.4.*"
+            "require": "5.0.*"
         }
     }
 }
