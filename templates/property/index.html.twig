@@ -113,12 +113,6 @@
 
     </div>
 
-    {% if properties.haveToPaginate %}
-
-        <div class="navigation text-center">
-            {{ pagerfanta(properties, 'twitter_bootstrap4_translated', {routeName: 'property_paginated', routeParams: app.request.query.all}) }}
-        </div>
-
-    {% endif %}
+    {{ knp_pagination_render(properties) }}
 
 {% endblock %}

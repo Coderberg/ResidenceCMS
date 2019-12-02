@@ -40,12 +40,6 @@
 
     </div>
 
-    {% if pages.haveToPaginate %}
-
-        <div class="navigation text-center">
-            {{ pagerfanta(pages, 'twitter_bootstrap4_translated', {routeName: 'admin_page_paginated', routeParams: app.request.query.all}) }}
-        </div>
-
-    {% endif %}
+    {{ knp_pagination_render(pages) }}
 
 {% endblock %}

@@ -11,13 +11,13 @@ class RequestToArrayTransformer
     public function transform(Request $request): array
     {
         $params = [];
-        $params['city'] = (int) ($request->query->get('city', 0));
-        $params['deal_type'] = (int) ($request->query->get('deal_type', 0));
-        $params['category'] = (int) $request->query->get('category', 0);
-        $params['bedrooms'] = (int) $request->query->get('bedrooms', 0);
-        $params['guests'] = (int) $request->query->get('guests', 0);
+        $params['city'] = $request->query->getInt('city', 0);
+        $params['deal_type'] = $request->query->getInt('deal_type', 0);
+        $params['category'] = $request->query->getInt('category', 0);
+        $params['bedrooms'] = $request->query->getInt('bedrooms', 0);
+        $params['guests'] = $request->query->getInt('guests', 0);
         $params['sort_by'] = $request->query->get('sort_by', 'priority_number');
-        $params['page'] = (int) $request->attributes->get('page', 1);
+        $params['page'] = $request->query->getInt('page', 1);
 
         return $params;
     }

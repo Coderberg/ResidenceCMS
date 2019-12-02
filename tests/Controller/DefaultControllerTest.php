@@ -49,12 +49,12 @@ final class DefaultControllerTest extends WebTestCase
     public function getPublicUrls()
     {
         yield ['/'];
-        yield ['/page/2'];
+        yield ['/?page=2'];
         yield ['/login'];
         yield ['/map'];
         yield ['/info/contact'];
         yield ['/?city=0&deal_type=0&category=0'];
-        yield ['/page/2?city=0&deal_type=0&category=0'];
+        yield ['/?city=0&deal_type=0&category=0&page=2'];
     }
 
     public function getSecureUrls()

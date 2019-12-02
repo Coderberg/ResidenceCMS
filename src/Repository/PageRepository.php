@@ -8,8 +8,8 @@ use App\Entity\Page;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
-use Pagerfanta\Pagerfanta;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @method Page|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,11 +19,15 @@ use Pagerfanta\Pagerfanta;
  */
 final class PageRepository extends ServiceEntityRepository
 {
-    const NUM_ITEMS = 10;
+    /**
+     * @var PaginatorInterface
+     */
+    private $paginator;
 
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator)
     {
         parent::__construct($registry, Page::class);
+        $this->paginator = $paginator;
     }
 
     public function countAll(): int
@@ -36,20 +40,26 @@ final class PageRepository extends ServiceEntityRepository
         return (int) $count;
     }
 
-    public function findLatest(int $page = 1): Pagerfanta
+    private function findLimit(): int
+    {
+        $repository = $this->getEntityManager()->getRepository('App:Settings');
+        $limit = $repository->findOneBy(['setting_name' => 'items_per_page']);
+
+        return (int) $limit->getSettingValue();
+    }
+
+    public function findLatest(Request $request)
     {
         $qb = $this->createQueryBuilder('p')
             ->orderBy('p.id', 'DESC');
 
-        return $this->createPaginator($qb->getQuery(), $page);
+        return $this->createPaginator($qb->getQuery(), $request);
     }
 
-    private function createPaginator(Query $query, int $page): Pagerfanta
+    private function createPaginator(Query $query, Request $request)
     {
-        $paginator = new Pagerfanta(new DoctrineORMAdapter($query));
-        $paginator->setMaxPerPage(self::NUM_ITEMS);
-        $paginator->setCurrentPage($page);
+        $page = $request->query->getInt('page', 1);
 
-        return $paginator;
+        return $this->paginator->paginate($query, $page, $this->findLimit());
     }
 }

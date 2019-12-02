@@ -132,6 +132,12 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "knplabs/knp-components": {
+        "version": "v2.3.0"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.0.0"
+    },
     "monolog/monolog": {
         "version": "1.25.2"
     },
@@ -140,9 +146,6 @@
     },
     "ocramius/proxy-manager": {
         "version": "2.2.3"
-    },
-    "pagerfanta/pagerfanta": {
-        "version": "v2.1.3"
     },
     "php": {
         "version": "7.2"
@@ -578,9 +581,6 @@
     },
     "webmozart/assert": {
         "version": "1.6.0"
-    },
-    "white-october/pagerfanta-bundle": {
-        "version": "v1.3.1"
     },
     "zendframework/zend-code": {
         "version": "3.4.0"

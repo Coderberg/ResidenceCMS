@@ -17,7 +17,7 @@ final class RequestToArrayTransformerTest extends TestCase
         $request->query->set('deal_type', 2);
         $request->query->set('category', 4);
         $request->query->set('bedrooms', 5);
-        $request->attributes->set('page', 2);
+        $request->query->set('page', 2);
 
         $transformer = new RequestToArrayTransformer();
 

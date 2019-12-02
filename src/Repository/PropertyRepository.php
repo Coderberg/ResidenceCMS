@@ -8,8 +8,7 @@ use App\Entity\Property;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
-use Pagerfanta\Pagerfanta;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @method Property|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,9 +18,15 @@ use Pagerfanta\Pagerfanta;
  */
 class PropertyRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    /**
+     * @var PaginatorInterface
+     */
+    private $paginator;
+
+    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator)
     {
         parent::__construct($registry, Property::class);
+        $this->paginator = $paginator;
     }
 
     public function countAll(): int
@@ -42,12 +47,8 @@ class PropertyRepository extends ServiceEntityRepository
         return (int) $limit->getSettingValue();
     }
 
-    protected function createPaginator(Query $query, int $page): Pagerfanta
+    protected function createPaginator(Query $query, int $page)
     {
-        $paginator = new Pagerfanta(new DoctrineORMAdapter($query));
-        $paginator->setMaxPerPage($this->findLimit());
-        $paginator->setCurrentPage($page);
-
-        return $paginator;
+        return $this->paginator->paginate($query, $page, $this->findLimit());
     }
 }

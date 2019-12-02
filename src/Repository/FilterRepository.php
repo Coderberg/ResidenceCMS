@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use Pagerfanta\Pagerfanta;
-
 final class FilterRepository extends PropertyRepository
 {
-    public function findByFilter($params): Pagerfanta
+    public function findByFilter($params)
     {
         $qb = $this->createQueryBuilder('p');
 
