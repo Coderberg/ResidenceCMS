@@ -1,9 +1,10 @@
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg) [![Build Status](https://travis-ci.org/Coderberg/ResidenceCMS.svg?branch=master)](https://travis-ci.org/Coderberg/ResidenceCMS)
 
-ResidenceCMS is an Open Source Property Management System built with [Symfony 4][1].
+ResidenceCMS is a fast and lightweight Property Management System built with [Symfony 5][1].
 
 The user interface is built with [Bootstrap 4][2].
 
+![GitHub](https://raw.githubusercontent.com/Coderberg/ResidenceCMS/master/docs/images/screenshot.png)
 
 ## Requirements
 
@@ -51,13 +52,13 @@ The user interface is built with [Bootstrap 4][2].
    login: admin
    password: admin
    ```
-   
+
 9. To use feedback forms, configure MAILER_URL in ```.env.local```
-   
+
 ## Tests
 
 1. Modify your DATABASE_URL config in ```.env.test.local```
-   
+
    ```
    DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
    ```

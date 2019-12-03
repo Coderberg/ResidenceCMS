@@ -7,7 +7,7 @@
     "require": {
         "php": "^7.2.5",
         "ext-ctype": "*",
-        "ext-iconv": "*",
+        "ext-gd": "*",
         "gregwar/image": "^2.0",
         "knplabs/knp-paginator-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^5.1",
