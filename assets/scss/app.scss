@@ -30,6 +30,10 @@ body.body {
   color: #28a745;
 }
 
+.form-group > div > ul > li {
+  color: $red;
+}
+
 .card {
   border: 0;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.12);
