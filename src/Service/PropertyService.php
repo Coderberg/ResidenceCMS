@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Entity\Property;
+use App\Message\DeletePhotos;
 use App\Utils\Slugger;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Component\Messenger\MessageBusInterface;
 
 final class PropertyService
 {
@@ -23,14 +25,24 @@ final class PropertyService
     private $em;
 
     /**
+     * @var MessageBusInterface
+     */
+    private $messageBus;
+
+    /**
      * @var Slugger
      */
     private $slugger;
 
-    public function __construct(ContainerInterface $container, EntityManagerInterface $entityManager, Slugger $slugger)
-    {
+    public function __construct(
+        ContainerInterface $container,
+        EntityManagerInterface $entityManager,
+        MessageBusInterface $messageBus,
+        Slugger $slugger
+    ) {
         $this->container = $container;
         $this->em = $entityManager;
+        $this->messageBus = $messageBus;
         $this->slugger = $slugger;
     }
 
@@ -82,16 +94,7 @@ final class PropertyService
 
     public function delete(Property $property): void
     {
-        // Search photos
-        $photos = $property->getPhotos();
-
-        if ($photos) {
-            // Remove photos
-            foreach ($photos as $photo) {
-                $this->remove($photo);
-            }
-        }
-
+        $this->messageBus->dispatch(new DeletePhotos($property));
         $this->remove($property);
         $this->clearCache();
         $this->addFlash('success', 'message.deleted');

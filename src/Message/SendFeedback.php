@@ -2,21 +2,20 @@
 
 declare(strict_types=1);
 
-namespace App\Event;
+namespace App\Message;
 
 use App\Entity\Contact;
-use Symfony\Contracts\EventDispatcher\Event;
 
-final class ContactFormSubmittedEvent extends Event
+final class SendFeedback
 {
-    protected $contact;
+    private $contact;
 
     public function __construct(Contact $contact)
     {
         $this->contact = $contact;
     }
 
-    public function getContact(): Contact
+    public function getEmail(): Contact
     {
         return $this->contact;
     }

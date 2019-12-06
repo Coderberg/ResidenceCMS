@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Form\EventSubscriber;
+namespace App\MessageHandler;
 
 use App\Entity\Contact;
-use App\Event\ContactFormSubmittedEvent;
 use App\Mailer\Sender\Adapter\SwiftMailerAdapter;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use App\Message\SendFeedback;
+use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-final class FeedbackNotificationSubscriber implements EventSubscriberInterface
+class SendFeedbackHandler implements MessageHandlerInterface
 {
     /**
      * @var SwiftMailerAdapter
@@ -28,17 +28,10 @@ final class FeedbackNotificationSubscriber implements EventSubscriberInterface
         $this->translator = $translator;
     }
 
-    public static function getSubscribedEvents(): array
-    {
-        return [
-            ContactFormSubmittedEvent::class => 'onContactFormSubmitted',
-        ];
-    }
-
-    public function onContactFormSubmitted(ContactFormSubmittedEvent $event): void
+    public function __invoke(SendFeedback $sendFeedback)
     {
         /** @var Contact $contact */
-        $contact = $event->getContact();
+        $contact = $sendFeedback->getEmail();
 
         $subject = $this->translator->trans('email.new_message');
 

@@ -6,11 +6,11 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Entity\Page;
-use App\Event\ContactFormSubmittedEvent;
 use App\Form\Type\ContactType;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use App\Message\SendFeedback;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 final class PageController extends BaseController
@@ -18,7 +18,7 @@ final class PageController extends BaseController
     /**
      * @Route("/info/{slug}", methods={"GET|POST"}, name="page")
      */
-    public function pageShow(Request $request, Page $page, EventDispatcherInterface $eventDispatcher): Response
+    public function pageShow(Request $request, Page $page, MessageBusInterface $messageBus): Response
     {
         if ($page->getAddContactForm() && '' !== $page->getContactEmailAddress()) {
             $contact = new Contact();
@@ -28,7 +28,7 @@ final class PageController extends BaseController
             $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
-                $eventDispatcher->dispatch(new ContactFormSubmittedEvent($contact));
+                $messageBus->dispatch(new SendFeedback($contact));
                 $this->addFlash('success', 'message.was_sent');
 
                 return $this->redirectToRoute('page', ['slug' => $page->getSlug()]);

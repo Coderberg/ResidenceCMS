@@ -131,7 +131,7 @@ class Property
     private $published_at;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Photo", mappedBy="property")
+     * @ORM\OneToMany(targetEntity="App\Entity\Photo", mappedBy="property", orphanRemoval=true)
      * @ORM\OrderBy({"sort_order" = "ASC"})
      */
     private $photos;
