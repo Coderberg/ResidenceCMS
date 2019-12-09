@@ -29,7 +29,6 @@ final class PropertyController extends AbstractController
 
     /**
      * @Route("/admin/property", defaults={"page": "1"}, methods={"GET"}, name="admin_property")
-     * @Route("/admin/property/page/{page<[1-9]\d*>}", methods={"GET"}, name="admin_property_paginated")
      */
     public function index(Request $request, FilterRepository $repository, RequestToArrayTransformer $transformer): Response
     {

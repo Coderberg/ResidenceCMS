@@ -21,7 +21,7 @@
     "js/map": {
       "js": [
         "/build/runtime.ed3c6480.js",
-        "/build/js/map.8f3801d7.js"
+        "/build/js/map.501e0900.js"
       ]
     },
     "js/menu-sorting": {
@@ -73,7 +73,7 @@
         "/build/runtime.ed3c6480.js"
       ],
       "css": [
-        "/build/css/admin.5739039b.css"
+        "/build/css/admin.8bf639c6.css"
       ]
     },
     "css/ekko-lightbox": {

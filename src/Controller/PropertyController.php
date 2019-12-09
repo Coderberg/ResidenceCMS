@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Entity\Property;
 use App\Repository\FilterRepository;
 use App\Repository\PropertyRepository;
+use App\Repository\SimilarRepository;
 use App\Service\URLService;
 use App\Transformer\RequestToArrayTransformer;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +18,6 @@ final class PropertyController extends BaseController
 {
     /**
      * @Route("/", defaults={"page": "1"}, methods={"GET"}, name="property")
-     * @Route("/page/{page<[1-9]\d*>}", methods={"GET"}, name="property_paginated")
      */
     public function search(Request $request, FilterRepository $repository, RequestToArrayTransformer $transformer): Response
     {
@@ -49,7 +49,7 @@ final class PropertyController extends BaseController
     /**
      * @Route("/{citySlug}/{slug}/{id<\d+>}", methods={"GET"}, name="property_show")
      */
-    public function propertyShow(Request $request, URLService $url, Property $property): Response
+    public function propertyShow(Request $request, URLService $url, Property $property, SimilarRepository $repository): Response
     {
         if (!$url->isCanonical($property, $request)) {
             return $this->redirect($url->generateCanonical($property), 301);
@@ -61,6 +61,7 @@ final class PropertyController extends BaseController
             [
                 'site' => $this->site(),
                 'property' => $property,
+                'properties' => $repository->findSimilarProperties($property),
                 'number_of_photos' => \count($property->getPhotos()),
                 'show_back_button' => $show_back_button ?? false,
             ]

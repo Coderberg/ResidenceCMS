@@ -91,6 +91,17 @@ final class SettingsType extends AbstractType
                     'label' => 'label.settings.fixed_top_navbar',
                 ]
             )
+            ->add('show_similar_properties', ChoiceType::class, [
+                    'choices' => [
+                        'option.off' => '0',
+                        'option.on' => '1',
+                    ],
+                    'attr' => [
+                        'class' => 'form-control',
+                    ],
+                    'label' => 'label.settings.show_similar_properties',
+                ]
+            )
             ->add('ymaps_key', null, [
                 'attr' => [
                     'class' => 'form-control',

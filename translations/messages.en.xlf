@@ -471,6 +471,10 @@
                 <source>label.settings.fixed_top_navbar</source>
                 <target>Fixed Top Navbar</target>
             </trans-unit>
+            <trans-unit id="label.settings.show_similar_properties">
+                <source>label.settings.show_similar_properties</source>
+                <target>Show Similar Properties</target>
+            </trans-unit>
             <trans-unit id="label.settings.ymaps_key">
                 <source>label.settings.ymaps_key</source>
                 <target>Yandex.Maps JavaScript API key</target>
@@ -837,6 +841,10 @@
             <trans-unit id="property.price">
                 <source>property.price</source>
                 <target>Price</target>
+            </trans-unit>
+            <trans-unit id="similar_properties">
+                <source>similar_properties</source>
+                <target>Similar Properties</target>
             </trans-unit>
             <trans-unit id="all_rights_reserved">
                 <source>all_rights_reserved</source>
