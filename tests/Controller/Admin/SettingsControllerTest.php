@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller\Admin;
 
+use App\Entity\Property;
 use App\Entity\Settings;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,6 +29,7 @@ final class SettingsControllerTest extends WebTestCase
         $form = $crawler->selectButton('Save changes')->form([
             'settings[title]' => $title.' - Test title',
             'settings[fixed_top_navbar]' => '1',
+            'settings[show_similar_properties]' => '1',
             'settings[items_per_page]' => '3',
             'settings[custom_footer_text]' => 'Edited text',
         ]);
@@ -45,8 +47,21 @@ final class SettingsControllerTest extends WebTestCase
         $this->assertContains('Test title', $crawler->html());
         $this->assertContains('Edited text', $crawler->html());
         $this->assertCount(3, $crawler->filter('.property-box-img'));
+
+        // Check if fixed top navigation bar is enabled
         $this->assertCount(1, $crawler->filter('.fixed-top'));
         $this->assertCount(1, $crawler->filter('.body'));
+
+        $property = $client->getContainer()->get('doctrine')
+            ->getRepository(Property::class)
+            ->findOneBy(['slug' => 'bright-and-cheerful-alcove-studio']);
+
+        $crawler = $client->request('GET',
+            sprintf('/%s/%s/%d', $property->getCity()->getSlug(), $property->getSlug(), $property->getId())
+        );
+        // Check if similar properties are enabled
+        $this->assertContains('Modern one-bedroom apartment in Miami', $crawler->filter('.card-title>a')
+            ->text());
     }
 
     public function testChangeBackSettings()
@@ -65,6 +80,7 @@ final class SettingsControllerTest extends WebTestCase
                 'settings[title]' => mb_substr($title, 0, -13),
                 'settings[custom_footer_text]' => 'All Rights Reserved.',
                 'settings[fixed_top_navbar]' => '0',
+                'settings[show_similar_properties]' => '0',
                 'settings[items_per_page]' => '6',
             ]);
 
@@ -80,8 +96,21 @@ final class SettingsControllerTest extends WebTestCase
 
         $this->assertNotContains('Test title', $crawler->html());
         $this->assertCount(6, $crawler->filter('.property-box-img'));
+
+        // Check if fixed top navigation bar is disabled
         $this->assertCount(0, $crawler->filter('.fixed-top'));
         $this->assertCount(0, $crawler->filter('.body'));
+
+        $property = $client->getContainer()->get('doctrine')
+            ->getRepository(Property::class)
+            ->findOneBy(['slug' => 'bright-and-cheerful-alcove-studio']);
+
+        $crawler = $client->request('GET',
+            sprintf('/%s/%s/%d', $property->getCity()->getSlug(), $property->getSlug(), $property->getId())
+        );
+        // Check if similar properties are disabled
+        $this->assertNotContains('Similar Properties', $crawler->filter('h4')
+            ->text());
     }
 
     public function testUploadHeaderImage()
