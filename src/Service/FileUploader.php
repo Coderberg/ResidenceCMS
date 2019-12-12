@@ -54,27 +54,24 @@ final class FileUploader
     public function upload(UploadedFile $file): string
     {
         $fileName = md5(uniqid()).'.'.$file->guessExtension();
-        $file->move($this->targetDirectory, $fileName);
+
+        // Full
+        $file->move($this->targetDirectory.'/full/', $fileName);
 
         // Small
-        Image::open($this->targetDirectory.'/'.$fileName)
+        Image::open($this->targetDirectory.'/full/'.$fileName)
             ->zoomCrop(500, 300, 'transparent', 'center', 'center')
             ->save($this->targetDirectory.'/small/'.$fileName);
 
         // Medium
-        Image::open($this->targetDirectory.'/'.$fileName)
+        Image::open($this->targetDirectory.'/full/'.$fileName)
             ->zoomCrop(700, 420, 'transparent', 'center', 'center')
             ->save($this->targetDirectory.'/medium/'.$fileName);
 
         // Large
-        Image::open($this->targetDirectory.'/'.$fileName)
+        Image::open($this->targetDirectory.'/full/'.$fileName)
             ->cropResize(1200, 800, 'transparent')
             ->save($this->targetDirectory.'/large/'.$fileName);
-
-        // Full
-        $this->fileSystem->rename(
-            $this->targetDirectory.'/'.$fileName, $this->targetDirectory.'/full/'.$fileName
-        );
 
         return $fileName;
     }
