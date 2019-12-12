@@ -33,7 +33,8 @@ final class FileUploader
     public function validate(UploadedFile $file): ConstraintViolationListInterface
     {
         $validator = Validation::createValidator();
-        $violations = $validator->validate(
+
+        return $validator->validate(
             $file,
             [
                 new NotBlank([
@@ -47,8 +48,6 @@ final class FileUploader
                 ]),
             ]
         );
-
-        return $violations;
     }
 
     public function upload(UploadedFile $file): string
