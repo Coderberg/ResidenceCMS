@@ -56,12 +56,8 @@ final class PhotoController extends AbstractController
     /**
      * @Route("/admin/photo/{id<\d+>}/edit", name="admin_photo_edit")
      */
-    public function edit(Request $request): Response
+    public function edit(Property $property): Response
     {
-        $property = $this->getDoctrine()
-            ->getRepository(Property::class)
-            ->find($request->attributes->get('id'));
-
         $photos = $property->getPhotos();
 
         return $this->render('admin/photo/edit.html.twig', [
