@@ -1,4 +1,4 @@
-{% extends 'admin/base.html.twig' %}
+{% extends 'admin/layout/base.html.twig' %}
 
 {% block title %}{{ 'title.add_city' | trans }}{% endblock %}
 
@@ -14,16 +14,6 @@
         <span class="nav-link active">
             <i class="fas fa-plus-square text-danger"></i> {{ 'menu.add_new'|trans }} {{ 'city' | trans }}
         </span>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ path('admin_area_new') }}">
-                <i class="fas fa-plus-square text-danger"></i> {{ 'menu.add_new'|trans }} {{ 'area' | trans }}
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ path('admin_metro_new') }}">
-                <i class="fas fa-plus-square text-danger"></i> {{ 'menu.add_new'|trans }} {{ 'metro_station' | trans }}
-            </a>
         </li>
     </ul>
 

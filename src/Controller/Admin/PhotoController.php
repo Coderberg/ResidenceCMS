@@ -21,7 +21,7 @@ final class PhotoController extends AbstractController
     /**
      * @Route("/admin/photo/{id<\d+>}/upload", name="admin_photo_upload", methods={"POST"})
      */
-    public function upload(Request $request, FileUploader $fileUploader): Response
+    public function upload(Property $property, Request $request, FileUploader $fileUploader): Response
     {
         /** @var UploadedFile $uploadedFile */
         $uploadedFile = $request->files->get('file');
@@ -30,15 +30,12 @@ final class PhotoController extends AbstractController
         if ($violations->count() > 0) {
             /** @var ConstraintViolation $violation */
             $violation = $violations[0];
+            $this->addFlash('danger', $violation->getMessage());
 
-            return new JsonResponse(['status' => 'error', 'message' => $violation->getMessage()]);
+            return new JsonResponse(['status' => 'error']);
         }
 
         $fileName = $fileUploader->upload($uploadedFile);
-
-        $property = $this->getDoctrine()
-                ->getRepository(Property::class)
-                ->find($request->attributes->get('id'));
 
         $photo = new Photo();
         $photo->setProperty($property)
@@ -55,12 +52,8 @@ final class PhotoController extends AbstractController
     /**
      * @Route("/admin/photo/{id<\d+>}/edit", name="admin_photo_edit")
      */
-    public function edit(Request $request): Response
+    public function edit(Property $property): Response
     {
-        $property = $this->getDoctrine()
-            ->getRepository(Property::class)
-            ->find($request->attributes->get('id'));
-
         $photos = $property->getPhotos();
 
         return $this->render('admin/photo/edit.html.twig', [

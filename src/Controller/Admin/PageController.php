@@ -18,12 +18,11 @@ final class PageController extends AbstractController
 {
     /**
      * @Route("/admin/page", defaults={"page": "1"}, methods={"GET"}, name="admin_page")
-     * @Route("/admin/page/{page<[1-9]\d*>}", methods={"GET"}, name="admin_page_paginated")
      */
-    public function index(?int $page, PageRepository $repository): Response
+    public function index(Request $request, PageRepository $repository): Response
     {
         // Get pages
-        $pages = $repository->findLatest($page ?? 1);
+        $pages = $repository->findLatest($request);
 
         return $this->render('admin/page/index.html.twig', [
             'pages' => $pages,

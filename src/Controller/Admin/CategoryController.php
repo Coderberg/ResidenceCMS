@@ -6,6 +6,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Category;
 use App\Form\Type\CategoryType;
+use App\Repository\CategoryRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
@@ -19,10 +20,8 @@ final class CategoryController extends AbstractController
     /**
      * @Route("/admin/category", name="admin_category")
      */
-    public function index(): Response
+    public function index(CategoryRepository $repository): Response
     {
-        $repository = $this->getDoctrine()->getRepository(Category::class);
-
         $categories = $repository->findAll();
 
         return $this->render('admin/category/index.html.twig', [

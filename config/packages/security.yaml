@@ -6,6 +6,7 @@ security:
         App\Entity\User:
             algorithm: auto
 
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
         # In this example, users are stored via Doctrine in the database
@@ -26,7 +27,7 @@ security:
 
             # but the firewall does not require login on every page
             # denying access is done in access_control or in your controllers
-            anonymous: true
+            anonymous: lazy
 
             # This allows the user to login by submitting a username and password
             # Reference: https://symfony.com/doc/current/security/form_login_setup.html
@@ -54,6 +55,8 @@ security:
                 lifetime: 2592000 # 30 days in seconds
                 path:     /
 
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
     access_control:
     # this is a catch-all for the admin area
     # additional security lives in the controllers

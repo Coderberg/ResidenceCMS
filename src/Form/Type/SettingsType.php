@@ -28,21 +28,28 @@ final class SettingsType extends AbstractType
                     'class' => 'form-control',
                 ],
                 'label' => 'label.settings.name',
-                'constraints' => [new Length(['min' => 2])],
+                'constraints' => [new Length(['min' => 2, 'allowEmptyString' => false])],
             ])
             ->add('title', null, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
                 'label' => 'label.settings.title',
-                'constraints' => [new Length(['min' => 8])],
+                'constraints' => [new Length(['min' => 4, 'allowEmptyString' => false])],
             ])
-            ->add('description', TextareaType::class, [
+            ->add('meta_title', null, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'label.settings.description',
-                'constraints' => [new Length(['min' => 8])],
+                'label' => 'label.settings.meta_title',
+                'constraints' => [new Length(['min' => 8, 'allowEmptyString' => false])],
+            ])
+            ->add('meta_description', TextareaType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'label' => 'label.settings.meta_description',
+                'constraints' => [new Length(['min' => 8, 'allowEmptyString' => false])],
             ])
             ->add('custom_code', TextareaType::class, [
                 'attr' => [
@@ -50,6 +57,13 @@ final class SettingsType extends AbstractType
                 ],
                 'required' => false,
                 'label' => 'label.settings.code',
+            ])
+            ->add('custom_footer_text', TextareaType::class, [
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'required' => false,
+                'label' => 'label.settings.custom_footer_text',
             ])
             ->add('items_per_page', null, [
                 'attr' => [
@@ -75,6 +89,17 @@ final class SettingsType extends AbstractType
                         'class' => 'form-control',
                     ],
                     'label' => 'label.settings.fixed_top_navbar',
+                ]
+            )
+            ->add('show_similar_properties', ChoiceType::class, [
+                    'choices' => [
+                        'option.off' => '0',
+                        'option.on' => '1',
+                    ],
+                    'attr' => [
+                        'class' => 'form-control',
+                    ],
+                    'label' => 'label.settings.show_similar_properties',
                 ]
             )
             ->add('ymaps_key', null, [

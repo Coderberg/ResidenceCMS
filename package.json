@@ -22,6 +22,7 @@
         "jquery": "^3.3.1",
         "jquery-ui-dist": "^1.12.1",
         "jquery-ui-touch-punch": "^0.2.3",
+        "js-cookie": "^2.2.1",
         "lazysizes": "^4.1.5",
         "popper.js": "^1.14.6",
         "select2": "^4.0.11"

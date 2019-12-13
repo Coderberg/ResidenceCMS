@@ -42,7 +42,13 @@
 
 <nav class="navbar {% if site.fixed_top_navbar == '1' %}fixed-top{% endif %} navbar-expand-lg navbar-light bg-white">
 
-    <a class="navbar-brand" href="{{ path('property') }}">{{ site.name }}</a>
+    {% if show_back_button|default(false) %}
+        <a class="navbar-brand" href="javascript: history.back()">
+            <i class="fas fa-arrow-left"></i> {{ 'menu.back'|trans }}
+        </a>
+    {% else %}
+        <a class="navbar-brand" href="{{ path('property') }}">{{ site.name }}</a>
+    {% endif %}
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,8 +100,10 @@
 
 </div>
 
-<div class="container">
-    <p>Copyright {{ "now" | date("Y") }} {{ site.name }}. {{ 'all_rights_reserved' | trans }}.</p>
+<div class="container text-muted">
+    <p>© {{ "now" | date("Y") }} <a class="text-muted" href="{{ path('property') }}">{{ site.name }}</a>.
+        {{ site.custom_footer_text | raw }}
+    </p>
 </div>
 
 <!-- Scripts -->

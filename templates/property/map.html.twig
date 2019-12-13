@@ -2,7 +2,7 @@
 
 {% block title %}{{ "title.properties_on_map"|trans }}{% endblock %}
 
-{% block description %}{{ site.description }}{% endblock %}
+{% block description %}{{ site.meta_description }}{% endblock %}
 
 {% block body %}
 
@@ -43,7 +43,10 @@
                 properties: {
                     hintContent: "{{ site.currency.symbolLeft }}{{ property.price }} {{ site.currency.symbolRight }}",
                     balloonContentHeader: "{{ site.currency.symbolLeft }}{{ property.price }} {{ site.currency.symbolRight }}",
-                    balloonContentBody: "{{ property.category.name }}<br><a href=\"{{ path('property_show', { 'id':  property.id, 'citySlug': property.city.slug }) }}\">{{ 'view_details'|trans }}</a>",
+                    balloonContentBody: "{{ property.category.name }}<br><a href=\"{{ path('property_show', {
+                        'id':  property.id,
+                        'citySlug': property.city.slug,
+                        'slug': property.slug}) }}\">{{ 'view_details'|trans }}</a>",
                 }
             }, {preset: "islands#blueHomeIcon"});
 

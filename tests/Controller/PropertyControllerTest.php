@@ -19,7 +19,7 @@ final class PropertyControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/');
 
         $this->assertTrue($client->getResponse()->isOk());
-        $this->assertContains('Latest properties', $crawler->filter('h3')
+        $this->assertContains('Popular Listing', $crawler->filter('h1')
             ->text());
     }
 
@@ -34,7 +34,12 @@ final class PropertyControllerTest extends WebTestCase
                 'published' => 1,
             ]);
 
-        $client->request('GET', sprintf('/%s/detail-%d', $property->getCity()->getSlug(), $property->getId()));
+        $client->request('GET', sprintf(
+            '/%s/%s/%d',
+            $property->getCity()->getSlug(),
+            $property->getSlug(),
+            $property->getId())
+        );
         $this->assertSame(Response::HTTP_OK, $client->getResponse()->getStatusCode());
     }
 
@@ -46,14 +51,20 @@ final class PropertyControllerTest extends WebTestCase
 
         $city = $repository->findOneBy(['slug' => 'miami'])->getId();
 
-        $crawler = $client->request('GET', sprintf('/search?city=%d&bedrooms=0', $city));
+        $crawler = $client->request('GET', sprintf('/?city=%d&bedrooms=0', $city));
         $this->assertCount(3, $crawler->filter('.property-box-img'));
 
-        $crawler = $client->request('GET', sprintf('/search?city=%d&bedrooms=1', $city));
+        $crawler = $client->request('GET', sprintf('/?city=%d&bedrooms=1', $city));
         $this->assertCount(1, $crawler->filter('.property-box-img'));
 
-        $crawler = $client->request('GET', sprintf('/search?city=%d&bedrooms=3', $city));
+        $crawler = $client->request('GET', sprintf('/?city=%d&bedrooms=3', $city));
         $this->assertCount(0, $crawler->filter('.property-box-img'));
+
+        $crawler = $client->request('GET', sprintf('/?guests=6'));
+        $this->assertCount(1, $crawler->filter('.property-box-img'));
+
+        $crawler = $client->request('GET', sprintf('/?guests=3'));
+        $this->assertCount(4, $crawler->filter('.property-box-img'));
     }
 
     public function testSearchFilter()

@@ -101,7 +101,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   border: 0;
   font-weight: 900;
   content: '\f105';
-  font-family: 'Font Awesome 5 Free';
+  font-family: 'Font Awesome 5 Free', serif;
 }
 
 .navbar-nav .nav-item.dropdown.show .dropdown-toggle::after {
@@ -193,7 +193,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   }
   .sidebar .nav-item .nav-link {
     display: block;
-    width: 100%;
+    //width: 100%;
     text-align: left;
     padding: 1rem;
     width: 225px;
@@ -400,6 +400,16 @@ body.sidebar-toggled footer.sticky-footer {
   background-color: #d9534f !important;
   border-color: #d43f3a !important;
 }
+
 .text-danger {
   color: #F9354C !important;
+}
+
+.input-group .form-control {
+  border-left: none;
+}
+
+.input-group-text {
+  background-color: #fff;
+  color: rgba(43, 51, 62, 0.38);;
 }

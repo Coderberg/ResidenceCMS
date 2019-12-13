@@ -45,10 +45,10 @@ class Property
     private $city;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Area", inversedBy="properties")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Neighborhood", inversedBy="properties")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $area;
+    private $neighborhood;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -83,7 +83,7 @@ class Property
     /**
      * @ORM\Column(type="smallint", nullable=true)
      */
-    private $max_occupancy;
+    private $max_guests;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -131,7 +131,7 @@ class Property
     private $published_at;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Photo", mappedBy="property")
+     * @ORM\OneToMany(targetEntity="App\Entity\Photo", mappedBy="property", orphanRemoval=true)
      * @ORM\OrderBy({"sort_order" = "ASC"})
      */
     private $photos;
@@ -151,6 +151,12 @@ class Property
      * @ORM\Column(type="integer")
      */
     private $priority_number;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\District", inversedBy="properties")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $district;
 
     public function __construct()
     {
@@ -279,18 +285,6 @@ class Property
     public function setBedroomsNumber(?int $bedrooms_number): self
     {
         $this->bedrooms_number = $bedrooms_number;
-
-        return $this;
-    }
-
-    public function getMaxOccupancy(): ?int
-    {
-        return $this->max_occupancy;
-    }
-
-    public function setMaxOccupancy(?int $max_occupancy): self
-    {
-        $this->max_occupancy = $max_occupancy;
 
         return $this;
     }
@@ -434,14 +428,14 @@ class Property
         return $this;
     }
 
-    public function getArea(): ?Area
+    public function getNeighborhood(): ?Neighborhood
     {
-        return $this->area;
+        return $this->neighborhood;
     }
 
-    public function setArea(?Area $area): self
+    public function setNeighborhood(?Neighborhood $neighborhood): self
     {
-        $this->area = $area;
+        $this->neighborhood = $neighborhood;
 
         return $this;
     }
@@ -492,6 +486,30 @@ class Property
     public function setPriorityNumber(?int $priority_number): self
     {
         $this->priority_number = $priority_number;
+
+        return $this;
+    }
+
+    public function getDistrict(): ?District
+    {
+        return $this->district;
+    }
+
+    public function setDistrict(?District $district): self
+    {
+        $this->district = $district;
+
+        return $this;
+    }
+
+    public function getMaxGuests(): ?int
+    {
+        return $this->max_guests;
+    }
+
+    public function setMaxGuests(?int $max_guests): self
+    {
+        $this->max_guests = $max_guests;
 
         return $this;
     }

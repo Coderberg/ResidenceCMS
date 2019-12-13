@@ -23,7 +23,7 @@ class City
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $slug;
 
@@ -38,10 +38,16 @@ class City
     private $properties;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Area", mappedBy="city")
+     * @ORM\OneToMany(targetEntity="App\Entity\District", mappedBy="city")
      * @ORM\OrderBy({"name" = "ASC"})
      */
-    private $areas;
+    private $districts;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Neighborhood", mappedBy="city")
+     * @ORM\OrderBy({"name" = "ASC"})
+     */
+    private $neighborhoods;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Metro", mappedBy="city", orphanRemoval=true)
@@ -52,8 +58,9 @@ class City
     public function __construct()
     {
         $this->properties = new ArrayCollection();
-        $this->areas = new ArrayCollection();
+        $this->neighborhoods = new ArrayCollection();
         $this->metro_stations = new ArrayCollection();
+        $this->districts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -117,30 +124,30 @@ class City
     }
 
     /**
-     * @return Collection|Area[]
+     * @return Collection|Neighborhood[]
      */
-    public function getAreas(): Collection
+    public function getNeighborhoods(): Collection
     {
-        return $this->areas;
+        return $this->neighborhoods;
     }
 
-    public function addArea(Area $area): self
+    public function addNeighborhood(Neighborhood $neighborhood): self
     {
-        if (!$this->areas->contains($area)) {
-            $this->areas[] = $area;
-            $area->setCity($this);
+        if (!$this->neighborhoods->contains($neighborhood)) {
+            $this->neighborhoods[] = $neighborhood;
+            $neighborhood->setCity($this);
         }
 
         return $this;
     }
 
-    public function removeArea(Area $area): self
+    public function removeNeighborhood(Neighborhood $neighborhood): self
     {
-        if ($this->areas->contains($area)) {
-            $this->areas->removeElement($area);
+        if ($this->neighborhoods->contains($neighborhood)) {
+            $this->neighborhoods->removeElement($neighborhood);
             // set the owning side to null (unless already changed)
-            if ($area->getCity() === $this) {
-                $area->setCity(null);
+            if ($neighborhood->getCity() === $this) {
+                $neighborhood->setCity(null);
             }
         }
 
@@ -172,6 +179,37 @@ class City
             // set the owning side to null (unless already changed)
             if ($metroStation->getCity() === $this) {
                 $metroStation->setCity(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|District[]
+     */
+    public function getDistricts(): Collection
+    {
+        return $this->districts;
+    }
+
+    public function addDistrict(District $district): self
+    {
+        if (!$this->districts->contains($district)) {
+            $this->districts[] = $district;
+            $district->setCity($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDistrict(District $district): self
+    {
+        if ($this->districts->contains($district)) {
+            $this->districts->removeElement($district);
+            // set the owning side to null (unless already changed)
+            if ($district->getCity() === $this) {
+                $district->setCity(null);
             }
         }
 

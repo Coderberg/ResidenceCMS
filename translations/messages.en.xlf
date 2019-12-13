@@ -2,6 +2,10 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
         <body>
+            <trans-unit id="menu.back">
+                <source>menu.back</source>
+                <target>Back</target>
+            </trans-unit>
             <trans-unit id="menu.homepage">
                 <source>menu.homepage</source>
                 <target>Homepage</target>
@@ -21,6 +25,10 @@
             <trans-unit id="menu.admin">
                 <source>menu.admin</source>
                 <target>Admin</target>
+            </trans-unit>
+            <trans-unit id="menu.edit_profile">
+                <source>menu.edit_profile</source>
+                <target>Edit profile</target>
             </trans-unit>
             <trans-unit id="menu.login">
                 <source>menu.login</source>
@@ -56,9 +64,25 @@
                 <source>properties</source>
                 <target>Properties</target>
             </trans-unit>
+            <trans-unit id="locations">
+                <source>locations</source>
+                <target>Locations</target>
+            </trans-unit>
             <trans-unit id="cities">
                 <source>cities</source>
                 <target>Cities</target>
+            </trans-unit>
+            <trans-unit id="neighborhoods">
+                <source>neighborhoods</source>
+                <target>Neighborhoods</target>
+            </trans-unit>
+            <trans-unit id="districts">
+                <source>districts</source>
+                <target>Districts</target>
+            </trans-unit>
+            <trans-unit id="metro_stations">
+                <source>metro_stations</source>
+                <target>Metro stations</target>
             </trans-unit>
             <trans-unit id="deal_types">
                 <source>deal_types</source>
@@ -96,9 +120,13 @@
                 <source>city</source>
                 <target>City</target>
             </trans-unit>
-            <trans-unit id="area">
-                <source>area</source>
-                <target>Area</target>
+            <trans-unit id="neighborhood">
+                <source>neighborhood</source>
+                <target>Neighborhood</target>
+            </trans-unit>
+            <trans-unit id="district">
+                <source>district</source>
+                <target>District</target>
             </trans-unit>
             <trans-unit id="metro_station">
                 <source>metro_station</source>
@@ -294,10 +322,6 @@
                 <source>title.latest_properties</source>
                 <target>Latest properties</target>
             </trans-unit>
-            <trans-unit id="title.search_results">
-                <source>title.search_results</source>
-                <target>Search Results</target>
-            </trans-unit>
             <trans-unit id="title.add_page">
                 <source>title.add_page</source>
                 <target>Add page</target>
@@ -322,17 +346,25 @@
                 <source>title.edit_city</source>
                 <target>Edit city</target>
             </trans-unit>
-            <trans-unit id="title.add_area">
-                <source>title.add_area</source>
-                <target>Add area</target>
+            <trans-unit id="title.add_neighborhood">
+                <source>title.add_neighborhood</source>
+                <target>Add neighborhood</target>
+            </trans-unit>
+            <trans-unit id="title.add_district">
+                <source>title.add_district</source>
+                <target>Add district</target>
             </trans-unit>
             <trans-unit id="title.add_metro_station">
                 <source>title.add_metro_station</source>
                 <target>Add metro station</target>
             </trans-unit>
-            <trans-unit id="title.edit_area">
-                <source>title.edit_area</source>
-                <target>Edit area</target>
+            <trans-unit id="title.edit_neighborhood">
+                <source>title.edit_neighborhood</source>
+                <target>Edit neighborhood</target>
+            </trans-unit>
+            <trans-unit id="title.edit_district">
+                <source>title.edit_district</source>
+                <target>Edit district</target>
             </trans-unit>
             <trans-unit id="title.edit_metro_station">
                 <source>title.edit_metro_station</source>
@@ -411,13 +443,21 @@
                 <source>label.settings.title</source>
                 <target>Site Title</target>
             </trans-unit>
-            <trans-unit id="label.settings.description">
-                <source>label.settings.description</source>
-                <target>Site Description</target>
+            <trans-unit id="label.settings.meta_title">
+                <source>label.settings.meta_title</source>
+                <target>Meta Title</target>
+            </trans-unit>
+            <trans-unit id="label.settings.meta_meta_description">
+                <source>label.settings.meta_description</source>
+                <target>Meta Description</target>
             </trans-unit>
             <trans-unit id="label.settings.code">
                 <source>label.settings.code</source>
-                <target>Custom code in header (Google Analytics etc.)</target>
+                <target>Custom Code in Header (Google Analytics etc.)</target>
+            </trans-unit>
+            <trans-unit id="label.settings.custom_footer_text">
+                <source>label.settings.custom_footer_text</source>
+                <target>Custom Footer Text</target>
             </trans-unit>
             <trans-unit id="label.settings.limit">
                 <source>label.settings.limit</source>
@@ -430,6 +470,10 @@
             <trans-unit id="label.settings.fixed_top_navbar">
                 <source>label.settings.fixed_top_navbar</source>
                 <target>Fixed Top Navbar</target>
+            </trans-unit>
+            <trans-unit id="label.settings.show_similar_properties">
+                <source>label.settings.show_similar_properties</source>
+                <target>Show Similar Properties</target>
             </trans-unit>
             <trans-unit id="label.settings.ymaps_key">
                 <source>label.settings.ymaps_key</source>
@@ -458,6 +502,10 @@
             <trans-unit id="label.settings.show_filter_by_bedrooms">
                 <source>label.settings.show_filter_by_bedrooms</source>
                 <target>Show filter by bedrooms</target>
+            </trans-unit>
+            <trans-unit id="label.settings.show_filter_by_guests">
+                <source>label.settings.show_filter_by_guests</source>
+                <target>Show filter by guests</target>
             </trans-unit>
             <trans-unit id="label.full_name">
                 <source>label.full_name</source>
@@ -511,13 +559,21 @@
                 <source>label.city</source>
                 <target>City</target>
             </trans-unit>
-            <trans-unit id="label.area">
-                <source>label.area</source>
-                <target>Area</target>
+            <trans-unit id="label.neighborhood">
+                <source>label.neighborhood</source>
+                <target>Neighborhood</target>
             </trans-unit>
-            <trans-unit id="label.area_name">
-                <source>label.area_name</source>
-                <target>Area name</target>
+            <trans-unit id="label.district">
+                <source>label.district</source>
+                <target>District</target>
+            </trans-unit>
+            <trans-unit id="label.neighborhood_name">
+                <source>label.neighborhood_name</source>
+                <target>Neighborhood name</target>
+            </trans-unit>
+            <trans-unit id="label.district_name">
+                <source>label.district_name</source>
+                <target>District name</target>
             </trans-unit>
             <trans-unit id="label.metro_station_name">
                 <source>label.metro_station_name</source>
@@ -543,9 +599,17 @@
                 <source>label.priority_number.help</source>
                 <target>The default priority is zero; relative to the default a priority can be higher (positive numbers) or lower (negative numbers).</target>
             </trans-unit>
+            <trans-unit id="label.agent">
+                <source>label.agent</source>
+                <target>Agent</target>
+            </trans-unit>
             <trans-unit id="label.feature">
                 <source>label.feature</source>
-                <target>Feature</target>
+                <target>Feature name</target>
+            </trans-unit>
+            <trans-unit id="label.custom_icon">
+                <source>label.custom_icon</source>
+                <target>Custom icon (optional)</target>
             </trans-unit>
             <trans-unit id="label.bathrooms_number">
                 <source>label.bathrooms_number</source>
@@ -555,9 +619,13 @@
                 <source>label.bedrooms_number</source>
                 <target>Number of Bedrooms</target>
             </trans-unit>
-            <trans-unit id="label.max_occupancy">
-                <source>label.max_occupancy</source>
-                <target>Maximum Occupancy</target>
+            <trans-unit id="label.max_guests">
+                <source>label.max_guests</source>
+                <target>Max Guests</target>
+            </trans-unit>
+            <trans-unit id="label.guests">
+                <source>label.guests</source>
+                <target>Guests</target>
             </trans-unit>
             <trans-unit id="label.title">
                 <source>label.title</source>
@@ -651,9 +719,13 @@
                 <source>label.create_city</source>
                 <target>Create city</target>
             </trans-unit>
-            <trans-unit id="label.create_area">
-                <source>label.create_area</source>
-                <target>Create area</target>
+            <trans-unit id="label.create_neighborhood">
+                <source>label.create_neighborhood</source>
+                <target>Create neighborhood</target>
+            </trans-unit>
+            <trans-unit id="label.create_district">
+                <source>label.create_district</source>
+                <target>Create district</target>
             </trans-unit>
             <trans-unit id="label.create_metro_station">
                 <source>label.create_metro_station</source>
@@ -674,6 +746,10 @@
             <trans-unit id="label.save_and_create_new">
                 <source>label.save_and_create_new</source>
                 <target>Save and create new</target>
+            </trans-unit>
+            <trans-unit id="label.sort_by">
+                <source>label.sort_by</source>
+                <target>Sort by</target>
             </trans-unit>
 
             <trans-unit id="option.on">
@@ -696,6 +772,14 @@
                 <source>option.bedrooms</source>
                 <target>bedrooms</target>
             </trans-unit>
+            <trans-unit id="option.priority">
+                <source>option.priority</source>
+                <target>Priority</target>
+            </trans-unit>
+            <trans-unit id="option.latest">
+                <source>option.latest</source>
+                <target>Latest</target>
+            </trans-unit>
 
             <trans-unit id="placeholder.map_center_example">
                 <source>placeholder.map_center_example</source>
@@ -705,9 +789,13 @@
                 <source>placeholder.select_city</source>
                 <target>Select a city</target>
             </trans-unit>
-            <trans-unit id="placeholder.select_area">
-                <source>placeholder.select_area</source>
-                <target>Select an area</target>
+            <trans-unit id="placeholder.select_neighborhood">
+                <source>placeholder.select_neighborhood</source>
+                <target>Select a neighborhood</target>
+            </trans-unit>
+            <trans-unit id="placeholder.select_district">
+                <source>placeholder.select_district</source>
+                <target>Select a district</target>
             </trans-unit>
             <trans-unit id="placeholder.select_metro_station">
                 <source>placeholder.select_metro_station</source>
@@ -716,6 +804,10 @@
             <trans-unit id="placeholder.enter_email">
                 <source>placeholder.enter_email</source>
                 <target>Enter your email</target>
+            </trans-unit>
+            <trans-unit id="placeholder.example_icon">
+                <source>placeholder.example_icon</source>
+                <target>e.g. &lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt;</target>
             </trans-unit>
 
             <trans-unit id="property.location">
@@ -738,9 +830,9 @@
                 <source>property.bedrooms</source>
                 <target>Bedrooms</target>
             </trans-unit>
-            <trans-unit id="property.max_occupancy">
-                <source>property.max_occupancy</source>
-                <target>Max Occupancy</target>
+            <trans-unit id="property.max_guests">
+                <source>property.max_guests</source>
+                <target>Max Guests</target>
             </trans-unit>
             <trans-unit id="property.available_now">
                 <source>property.available_now</source>
@@ -749,6 +841,10 @@
             <trans-unit id="property.price">
                 <source>property.price</source>
                 <target>Price</target>
+            </trans-unit>
+            <trans-unit id="similar_properties">
+                <source>similar_properties</source>
+                <target>Similar Properties</target>
             </trans-unit>
             <trans-unit id="all_rights_reserved">
                 <source>all_rights_reserved</source>

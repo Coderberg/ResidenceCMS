@@ -6,6 +6,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\City;
 use App\Form\Type\CityType;
+use App\Repository\CityRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
@@ -17,12 +18,10 @@ use Symfony\Component\Routing\Annotation\Route;
 final class CityController extends AbstractController
 {
     /**
-     * @Route("/admin/city", name="admin_city")
+     * @Route("/admin/locations/city", name="admin_city")
      */
-    public function index(): Response
+    public function index(CityRepository $repository): Response
     {
-        $repository = $this->getDoctrine()->getRepository(City::class);
-
         $cities = $repository->findAll();
 
         return $this->render('admin/city/index.html.twig', [
@@ -31,7 +30,7 @@ final class CityController extends AbstractController
     }
 
     /**
-     * @Route("/admin/city/new", name="admin_city_new")
+     * @Route("/admin/locations/city/new", name="admin_city_new")
      */
     public function new(Request $request): Response
     {
@@ -66,7 +65,7 @@ final class CityController extends AbstractController
     /**
      * Displays a form to edit an existing City entity.
      *
-     * @Route("/admin/city/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_city_edit")
+     * @Route("/admin/locations/city/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_city_edit")
      */
     public function edit(Request $request, City $city): Response
     {

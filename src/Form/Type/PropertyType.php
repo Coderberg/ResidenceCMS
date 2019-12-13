@@ -10,25 +10,41 @@ declare(strict_types=1);
 
 namespace App\Form\Type;
 
-use App\Entity\Area;
 use App\Entity\Category;
 use App\Entity\City;
 use App\Entity\DealType;
+use App\Entity\District;
 use App\Entity\Feature;
 use App\Entity\Metro;
+use App\Entity\Neighborhood;
 use App\Entity\Property;
-use App\Form\EventSubscriber\AddAreaFieldSubscriber;
+use App\Entity\User;
+use App\Form\EventSubscriber\AddAgentFieldSubscriber;
+use App\Form\EventSubscriber\AddDistrictFieldSubscriber;
 use App\Form\EventSubscriber\AddMetroFieldSubscriber;
-use App\Form\EventSubscriber\UpdateAreaFieldSubscriber;
+use App\Form\EventSubscriber\AddNeighborhoodFieldSubscriber;
+use App\Form\EventSubscriber\UpdateDistrictFieldSubscriber;
 use App\Form\EventSubscriber\UpdateMetroFieldSubscriber;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use App\Form\EventSubscriber\UpdateNeighborhoodFieldSubscriber;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Core\Security;
 
 final class PropertyType extends AbstractType
 {
+    /**
+     * @var Security
+     */
+    private $security;
+
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -44,14 +60,25 @@ final class PropertyType extends AbstractType
                 ],
                 'label' => 'label.city',
             ])
-            ->add('area', EntityType::class, [
-                'class' => Area::class,
+            ->add('district', EntityType::class, [
+                'class' => District::class,
                 'choice_label' => 'name',
-                'placeholder' => 'placeholder.select_area',
+                'placeholder' => 'placeholder.select_district',
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'label.area',
+                'label' => 'label.district',
+                'required' => false,
+                'choices' => [],
+            ])
+            ->add('neighborhood', EntityType::class, [
+                'class' => Neighborhood::class,
+                'choice_label' => 'name',
+                'placeholder' => 'placeholder.select_neighborhood',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'label' => 'label.neighborhood',
                 'required' => false,
                 'choices' => [],
             ])
@@ -94,11 +121,11 @@ final class PropertyType extends AbstractType
                 ],
                 'label' => 'label.bedrooms_number',
             ])
-            ->add('max_occupancy', null, [
+            ->add('max_guests', null, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'label.max_occupancy',
+                'label' => 'label.max_guests',
             ])
             ->add('title', null, [
                 'attr' => [
@@ -152,7 +179,6 @@ final class PropertyType extends AbstractType
                 'label' => 'label.price_type',
             ])
             ->add('available_now', null, [
-                    'data' => true,
                     'attr' => [
                         'class' => 'custom-control-input',
                     ],
@@ -180,15 +206,29 @@ final class PropertyType extends AbstractType
                 'label' => 'label.priority_number',
                 'required' => false,
             ])
-            ->add('content', CKEditorType::class, [
-                'config' => [
-                    'uiColor' => '#ffffff',
+            ->add('author', EntityType::class, [
+                'class' => User::class,
+                'choice_label' => 'full_name',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'label' => 'label.agent',
+            ])
+            ->add('content', TextareaType::class, [
+                'attr' => [
+                    'class' => 'form-control summer-note',
+                    'rows' => '7',
                 ],
                 'label' => 'label.content',
             ]);
 
-        $builder->addEventSubscriber(new AddAreaFieldSubscriber());
-        $builder->get('city')->addEventSubscriber(new UpdateAreaFieldSubscriber());
+        $builder->addEventSubscriber(new AddAgentFieldSubscriber($this->security));
+
+        $builder->addEventSubscriber(new AddNeighborhoodFieldSubscriber());
+        $builder->get('city')->addEventSubscriber(new UpdateNeighborhoodFieldSubscriber());
+
+        $builder->addEventSubscriber(new AddDistrictFieldSubscriber());
+        $builder->get('city')->addEventSubscriber(new UpdateDistrictFieldSubscriber());
 
         $builder->addEventSubscriber(new AddMetroFieldSubscriber());
         $builder->get('city')->addEventSubscriber(new UpdateMetroFieldSubscriber());

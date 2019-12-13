@@ -1,0 +1,59 @@
+<ul class="sidebar navbar-nav{% if app.request.cookies.get('sidebar-toggled') == 'true' %} toggled{% endif %}">
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('admin_property') }}">
+            <i class="fas fa-home"></i>
+            <span>{{ 'properties'|trans }}</span>
+        </a>
+    </li>
+
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#locations"
+           id="citiesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>{{ 'locations'|trans }}</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="citiesDropdown">
+            <a class="dropdown-item" href="{{ path('admin_city') }}">{{ 'cities'|trans }}</a>
+            <a class="dropdown-item" href="{{ path('admin_district') }}">{{ 'districts'|trans }}</a>
+            <a class="dropdown-item" href="{{ path('admin_neighborhood') }}">{{ 'neighborhoods'|trans }}</a>
+            <a class="dropdown-item" href="{{ path('admin_metro') }}">{{ 'metro_stations'|trans }}</a>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('admin_deal_type') }}">
+            <i class="fas fa-gavel"></i>
+            <span>{{ 'deal_types'|trans }}</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('admin_category') }}">
+            <i class="far fa-building"></i>
+            <span>{{ 'categories'|trans }}</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('admin_page') }}">
+            <i class="far fa-file-alt"></i>
+            <span>{{ 'pages'|trans }}</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('admin_user') }}">
+            <i class="fas fa-users-cog"></i>
+            <span>{{ 'users'|trans }}</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('admin_menu') }}">
+            <i class="fas fa-bars"></i>
+            <span>{{ 'menu'|trans }}</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('admin_settings') }}">
+            <i class="fas fa-cog"></i>
+            <span>{{ 'menu.settings'|trans }}</span>
+        </a>
+    </li>
+</ul>

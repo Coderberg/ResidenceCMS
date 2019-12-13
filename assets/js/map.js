@@ -1,5 +1,12 @@
 /** global: ymaps */
 ymaps.ready(init);
+
+const $map = $('#map');
+const latitude = $map.attr('data-latitude');
+const longitude = $map.attr('data-longitude');
+const hintContent = $map.attr('data-hintContent');
+const balloonContent = $map.attr('data-balloonContent');
+
 function init(){
     // Creating the map.
     let myMap = new ymaps.Map("map", {

@@ -30,6 +30,11 @@ class Feature
      */
     private $properties;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $icon;
+
     public function __construct()
     {
         $this->properties = new ArrayCollection();
@@ -76,6 +81,18 @@ class Feature
             $this->properties->removeElement($property);
             $property->removeFeature($this);
         }
+
+        return $this;
+    }
+
+    public function getIcon(): ?string
+    {
+        return $this->icon;
+    }
+
+    public function setIcon(?string $icon): self
+    {
+        $this->icon = $icon;
 
         return $this;
     }

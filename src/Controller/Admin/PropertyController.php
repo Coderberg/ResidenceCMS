@@ -6,7 +6,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\Property;
 use App\Form\Type\PropertyType;
+use App\Repository\FilterRepository;
 use App\Service\PropertyService;
+use App\Transformer\RequestToArrayTransformer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,15 +29,15 @@ final class PropertyController extends AbstractController
 
     /**
      * @Route("/admin/property", defaults={"page": "1"}, methods={"GET"}, name="admin_property")
-     * @Route("/admin/property/page/{page<[1-9]\d*>}", methods={"GET"}, name="admin_property_paginated")
      */
-    public function index(?int $page): Response
+    public function index(Request $request, FilterRepository $repository, RequestToArrayTransformer $transformer): Response
     {
-        // Get properties
-        $properties = $this->propertyService->findLatest($page ?? 1, 'id');
+        $searchParams = $transformer->transform($request);
+        $properties = $repository->findByFilter($searchParams);
 
         return $this->render('admin/property/index.html.twig', [
             'properties' => $properties,
+            'searchParams' => $searchParams,
         ]);
     }
 
@@ -44,15 +46,12 @@ final class PropertyController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $user = $this->getUser();
         $property = new Property();
-
         $form = $this->createForm(PropertyType::class, $property);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->propertyService->create($property, $user);
-            $this->addFlash('success', 'message.created');
+            $this->propertyService->create($property);
 
             return $this->redirectToRoute('admin_photo_edit', ['id' => $property->getId()]);
         }
@@ -75,7 +74,6 @@ final class PropertyController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->propertyService->update($property);
-            $this->addFlash('success', 'message.updated');
 
             return $this->redirectToRoute('admin_property');
         }
@@ -98,7 +96,6 @@ final class PropertyController extends AbstractController
         }
 
         $this->propertyService->delete($property);
-        $this->addFlash('success', 'message.deleted');
 
         return $this->redirectToRoute('admin_property');
     }

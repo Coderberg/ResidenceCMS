@@ -8,8 +8,7 @@ use App\Entity\Property;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
-use Pagerfanta\Pagerfanta;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @method Property|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,11 +16,17 @@ use Pagerfanta\Pagerfanta;
  * @method Property[]    findAll()
  * @method Property[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-final class PropertyRepository extends ServiceEntityRepository
+class PropertyRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    /**
+     * @var PaginatorInterface
+     */
+    private $paginator;
+
+    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator)
     {
         parent::__construct($registry, Property::class);
+        $this->paginator = $paginator;
     }
 
     public function countAll(): int
@@ -34,54 +39,6 @@ final class PropertyRepository extends ServiceEntityRepository
         return (int) $count;
     }
 
-    public function findLatest(int $page = 1, string $orderBy = 'priority'): Pagerfanta
-    {
-        $qb = $this->createQueryBuilder('p')
-            ->addSelect('f')
-            ->leftJoin('p.photos', 'f');
-
-        if ('id' === $orderBy) {
-            $qb->orderBy('p.id', 'DESC');
-        } else {
-            $qb->orderBy('p.priority_number', 'DESC');
-        }
-
-        return $this->createPaginator($qb->getQuery(), $page);
-    }
-
-    public function findByFilter(int $city, int $dealType, int $category, int $bedrooms, int $page = 1): Pagerfanta
-    {
-        $qb = $this->createQueryBuilder('p');
-
-        $qb->Where('p.published = 1');
-
-        // City
-        if ($city > 0) {
-            $qb->andWhere('p.city = '.(int) $city);
-        }
-
-        // Deal Type
-        if ($dealType > 0) {
-            $qb->andWhere('p.deal_type = '.(int) $dealType);
-        }
-
-        // Category
-        if ($category > 0) {
-            $qb->andWhere('p.category = '.(int) $category);
-        }
-
-        // Number of bedrooms
-        if ($bedrooms > 3) {
-            $qb->andWhere('p.bedrooms_number > 3');
-        } elseif ($bedrooms > 0) {
-            $qb->andWhere('p.bedrooms_number = '.(int) $bedrooms);
-        }
-
-        $qb->orderBy('p.priority_number', 'DESC');
-
-        return $this->createPaginator($qb->getQuery(), $page);
-    }
-
     private function findLimit(): int
     {
         $repository = $this->getEntityManager()->getRepository('App:Settings');
@@ -90,12 +47,8 @@ final class PropertyRepository extends ServiceEntityRepository
         return (int) $limit->getSettingValue();
     }
 
-    private function createPaginator(Query $query, int $page): Pagerfanta
+    protected function createPaginator(Query $query, int $page)
     {
-        $paginator = new Pagerfanta(new DoctrineORMAdapter($query));
-        $paginator->setMaxPerPage($this->findLimit());
-        $paginator->setCurrentPage($page);
-
-        return $paginator;
+        return $this->paginator->paginate($query, $page, $this->findLimit());
     }
 }

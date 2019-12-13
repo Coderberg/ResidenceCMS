@@ -14,11 +14,9 @@ env:
 matrix:
   fast_finish: true
   include:
-    - php: 7.2
+    - php: 7.2.24
     - php: 7.3
-    - php: 7.4snapshot
-  allow_failures:
-    - php: 7.4snapshot
+    - php: 7.4
 
 before_install:
   - sudo systemctl unmask mysql.service
@@ -28,8 +26,9 @@ before_install:
   - sudo service mysql restart
   - cp ./.travis/.env.local .env.local
   - cp ./.travis/.env.test.local .env.test.local
-  - '[[ "$TRAVIS_PHP_VERSION" == "7.4snapshot" ]] || phpenv config-rm xdebug.ini'
   - composer self-update
+  # Set memory to max (memory fail)
+  - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 
 addons:
   apt:
@@ -40,6 +39,7 @@ addons:
       - mysql-client
 
 install:
+  - php -r "echo ini_get('memory_limit').PHP_EOL;"
   - composer install
 
 script:
@@ -48,7 +48,7 @@ script:
   - php bin/console doctrine:fixtures:load --no-interaction
   - php bin/phpunit
   # this checks that the source code follows the Symfony Code Syntax rules
-  - '[[ "$TRAVIS_PHP_VERSION" == "7.4snapshot" ]] || ./vendor/bin/php-cs-fixer fix --diff --dry-run -v'
+  - ./vendor/bin/php-cs-fixer fix --diff --dry-run -v
   # this checks that the YAML config files contain no syntax errors
   - php bin/console lint:yaml config --parse-tags
   # this checks that the Twig template files contain no syntax errors
@@ -56,6 +56,6 @@ script:
   # this checks that the XLIFF translations contain no syntax errors
   - php bin/console lint:xliff translations
   # this checks that the application doesn't use dependencies with known security vulnerabilities
-  - php bin/console security:check
+  #- php bin/console security:check
   # this checks that Doctrine's mapping configurations are valid
   - php bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction

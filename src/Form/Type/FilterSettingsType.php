@@ -60,6 +60,17 @@ final class FilterSettingsType extends AbstractType
                     ],
                     'label' => 'label.settings.show_filter_by_bedrooms',
                 ]
+            )
+            ->add('show_filter_by_guests', ChoiceType::class, [
+                    'choices' => [
+                        'option.off' => '0',
+                        'option.on' => '1',
+                    ],
+                    'attr' => [
+                        'class' => 'form-control',
+                    ],
+                    'label' => 'label.settings.show_filter_by_guests',
+                ]
             );
     }
 

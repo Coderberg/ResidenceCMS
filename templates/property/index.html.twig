@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ site.title }}{{ page|page }}{% endblock %}
+{% block title %}{{ site.meta_title }}{{ searchParams.page|page }}{% endblock %}
 
-{% block description %}{{ site.description }}{{ page|page }}{% endblock %}
+{% block description %}{{ site.meta_description }}{{ searchParams.page|page }}{% endblock %}
 
 {% block header %}
     {{ include('property/partials/_search_form.html.twig') }}
@@ -20,11 +20,11 @@
 
     <div class="row">
         <div class="col-6">
-            <h3>{{ 'title.latest_properties' | trans }}</h3>
+            <h1 class="h3">{{ site.title }}</h1>
         </div>
         <div class="col-6 text-right">
-            <a href="{{ path('map_view') }}" class="btn btn-sm btn-light">
-                <i class="fas fa-map-marker-alt" style="color: #28a745"></i> {{ 'show_on_map'|trans }}
+            <a href="{{ path('map_view') }}" class="btn btn-sm btn-light icon-green">
+                <i class="fas fa-map-marker-alt"></i> {{ 'show_on_map'|trans }}
             </a>
         </div>
     </div>
@@ -40,18 +40,21 @@
 
                     <div class="property-box-img">
 
-                        <a href="{{ path('property_show', { 'id':  property.id, 'citySlug': property.city.slug }) }}">
+                        <a href="{{ path('property_show', {
+                            'id':  property.id,
+                            'citySlug': property.city.slug,
+                            'slug': property.slug}) }}">
 
                             {% for photo in property.photos | slice(0, 1) %}
 
-                                <img class="card-img-top lazyload" src="/images/transparent.png"
+                                <img class="card-img-top lazyload" src="{{ asset('/images/transparent.png') }}"
                                      data-src="/uploads/images/small/{{ photo.photo }}"
                                      alt="{{ property.address }}"
                                      title="{{ property.address }}"/>
 
                             {% else %}
 
-                                <img class="card-img-top border-bottom" src="/images/no-photo.png"
+                                <img class="card-img-top border-bottom" src="{{ asset('/images/no-photo.png') }}"
                                      alt="{{ property.address }}"
                                      title="{{ property.address }}"/>
 
@@ -71,18 +74,21 @@
                     </div>
 
                     <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="{{ path('property_show', { 'id':  property.id, 'citySlug': property.city.slug  }) }}">
+                        <h5 class="card-title">
+                            <a href="{{ path('property_show', {
+                                'id':  property.id,
+                                'citySlug': property.city.slug,
+                                'slug': property.slug}) }}">
                                 {{ property.title }}
                             </a>
-                        </h4>
-                        <p class="small">
-                            <i class="fas fa-map-marker-alt" style="color: #28a745"></i> {{ property.address }}
+                        </h5>
+                        <p class="small icon-green">
+                            <i class="fas fa-map-marker-alt"></i> {{ property.address }}
                         </p>
 
                         {% if property.metroStation %}
-                            <p class="small">
-                                <i class="fas fa-subway" style="color: #28a745"></i> {{ property.metroStation.name }}
+                            <p class="small icon-green">
+                                <i class="fas fa-subway"></i> {{ property.metroStation.name }}
                             </p>
                         {% endif %}
 
@@ -90,7 +96,8 @@
                         <span class="attribute">{{ property.category.name }}</span>
 
                         {% if property.bedroomsNumber %}
-                            <span class="attribute">{{ 'property.bedrooms'|trans }}: {{ property.bedroomsNumber }}</span>
+                            <span
+                                class="attribute">{{ 'property.bedrooms'|trans }}: {{ property.bedroomsNumber }}</span>
                         {% endif %}
                     </div>
                 </div>
@@ -106,12 +113,6 @@
 
     </div>
 
-    {% if properties.haveToPaginate %}
-
-        <div class="navigation text-center">
-            {{ pagerfanta(properties, 'twitter_bootstrap4_translated', {routeName: 'property_paginated', routeParams: app.request.query.all}) }}
-        </div>
-
-    {% endif %}
+    {{ knp_pagination_render(properties) }}
 
 {% endblock %}

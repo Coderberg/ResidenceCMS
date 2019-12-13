@@ -23,7 +23,7 @@ final class Version20191106100237 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('RENAME TABLE operation TO deal_type');
-        $this->addSql("ALTER TABLE property CHANGE operation_id deal_type_id int(11)");
+        $this->addSql("ALTER TABLE property CHANGE operation_id deal_type_id INT NOT NULL");
     }
 
     public function down(Schema $schema) : void
@@ -31,7 +31,7 @@ final class Version20191106100237 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql("ALTER TABLE property CHANGE deal_type_id operation_id int(11)");
+        $this->addSql("ALTER TABLE property CHANGE deal_type_id operation_id INT NOT NULL");
         $this->addSql('RENAME TABLE deal_type TO operation');
     }
 }

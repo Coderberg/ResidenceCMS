@@ -4,8 +4,10 @@
         <tr>
             <th>{{ 'property.location' | trans }}:</th>
             <td>
-                {% if property.area.name | default %}
-                    {{ property.area.name }},
+                {% if property.neighborhood.name | default %}
+                    {{ property.neighborhood.name }},
+                {% elseif property.district.name | default %}
+                    {{ property.district.name }},
                 {% endif %}
                 {{ property.city.name }}
             </td>
@@ -47,11 +49,11 @@
 
         {% endif %}
 
-        {% if property.maxOccupancy != '' %}
+        {% if property.maxGuests != '' %}
 
             <tr>
-                <th>{{ 'property.max_occupancy' | trans }}:</th>
-                <td>{{ property.maxOccupancy }}</td>
+                <th>{{ 'property.max_guests' | trans }}:</th>
+                <td>{{ property.maxGuests }}</td>
             </tr>
 
         {% endif %}

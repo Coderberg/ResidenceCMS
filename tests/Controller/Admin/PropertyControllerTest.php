@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller\Admin;
 
-use App\Entity\Area;
 use App\Entity\Category;
 use App\Entity\City;
 use App\Entity\DealType;
 use App\Entity\Feature;
 use App\Entity\Metro;
+use App\Entity\Neighborhood;
 use App\Entity\Property;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Response;
 
 final class PropertyControllerTest extends WebTestCase
@@ -48,6 +47,7 @@ final class PropertyControllerTest extends WebTestCase
             'property[title]' => 'test',
             'property[description]' => 'test',
             'property[address]' => 'test',
+            'property[priority_number]' => '-1',
             'property[content]' => 'test',
         ]);
 
@@ -70,12 +70,7 @@ final class PropertyControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/admin/photo/'.$property.'/edit');
         $this->assertSelectorTextContains('html', 'Upload photos');
 
-        $photo = new UploadedFile(
-            __DIR__.'/../../../public/images/bg.jpg',
-            'bg.jpg',
-            'image/jpeg',
-            null
-        );
+        $photo = __DIR__.'/../../../public/images/bg.jpg';
 
         $form = $crawler->filter('.js-photo-dropzone')->form();
         $form['file']->upload($photo);
@@ -94,28 +89,34 @@ final class PropertyControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['title' => 'test']);
 
+        $neighborhood = $client->getContainer()->get('doctrine')
+            ->getRepository(Neighborhood::class)->findOneBy(['slug' => 'south-beach'])->getId();
+
         $metroStation = $client->getContainer()->get('doctrine')
             ->getRepository(Metro::class)->findOneBy(['slug' => 'government-center'])->getId();
 
-        $area = $client->getContainer()->get('doctrine')
-            ->getRepository(Area::class)->findOneBy(['slug' => 'south-beach'])->getId();
-
         $feature = $client->getContainer()->get('doctrine')
-            ->getRepository(Feature::class)->findOneBy(['name' => 'High Impact Doors']);
+            ->getRepository(Feature::class)->findOneBy(['name' => 'Secure parking']);
 
         $crawler = $client->request('GET', '/admin/property/'.$property->getId().'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
-            'property[area]' => $area,
+            'property[neighborhood]' => $neighborhood,
             'property[metro_station]' => $metroStation,
             'property[features]' => [$feature->getId()],
         ]);
 
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $crawler = $client->request('GET', sprintf(
+                '/%s/%s/%d',
+                $property->getCity()->getSlug(),
+                $property->getSlug(),
+                $property->getId())
+        );
 
-        $crawler = $client->request('GET', '/'.$property->getCity()->getSlug().'/detail-'.$property->getId());
-        $this->assertContains('High Impact Doors', $crawler->html());
+        $this->assertCount(1, $crawler->filter('.fa-parking'));
+        $this->assertContains('Secure parking', $crawler->html());
         $this->assertContains('Government Center', $crawler->html());
         $this->assertContains('South Beach', $crawler->html());
     }
@@ -152,7 +153,7 @@ final class PropertyControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['title' => 'test'])->getId();
 
-        $crawler = $client->request('GET', '/admin/property');
+        $crawler = $client->request('GET', '/admin/property?sort_by=id');
         $client->submit($crawler->filter('#delete-form-'.$property)->form());
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
