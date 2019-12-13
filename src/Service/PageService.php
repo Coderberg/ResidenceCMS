@@ -59,7 +59,7 @@ final class PageService
         $this->em->flush();
     }
 
-    public function delete(Page $page)
+    public function delete(Page $page): void
     {
         // Delete page
         $this->remove($page);

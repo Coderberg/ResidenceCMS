@@ -21,7 +21,7 @@ final class PhotoController extends AbstractController
     /**
      * @Route("/admin/photo/{id<\d+>}/upload", name="admin_photo_upload", methods={"POST"})
      */
-    public function upload(Request $request, FileUploader $fileUploader): Response
+    public function upload(Property $property, Request $request, FileUploader $fileUploader): Response
     {
         /** @var UploadedFile $uploadedFile */
         $uploadedFile = $request->files->get('file');
@@ -36,10 +36,6 @@ final class PhotoController extends AbstractController
         }
 
         $fileName = $fileUploader->upload($uploadedFile);
-
-        $property = $this->getDoctrine()
-                ->getRepository(Property::class)
-                ->find($request->attributes->get('id'));
 
         $photo = new Photo();
         $photo->setProperty($property)

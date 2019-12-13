@@ -28,7 +28,7 @@ final class Slugger
     /**
      * Russian Cyrillic to Latin Transliteration.
      */
-    private static function transliteration($str)
+    private static function transliteration(string $str): string
     {
         $a = ['зг', 'Зг', 'А', 'а', 'Б', 'б', 'В', 'в', 'Г', 'г', 'Ґ', 'ґ', 'Д', 'д', 'Е',
             'е', 'Ё', 'ё', 'Є', 'є', 'Ж', 'ж', 'З', 'з', 'И', 'и', 'І', 'і', 'Ї', 'ї', 'Й', 'й', 'К', 'к',
@@ -44,6 +44,6 @@ final class Slugger
             '', '', '', '',
         ];
 
-        return str_replace($a, $b, $str);
+        return (string) str_replace($a, $b, $str);
     }
 }

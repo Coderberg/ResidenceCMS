@@ -87,7 +87,7 @@ final class MenuController extends AbstractController
      *
      * @Route("/admin/menu/sort",methods={"POST"}, name="admin_menu_sort")
      */
-    public function sort(Request $request, MenuRepository $repository)
+    public function sort(Request $request, MenuRepository $repository): JsonResponse
     {
         $items = $request->request->get('items');
         $repository->reorderItems($items);
