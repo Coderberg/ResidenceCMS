@@ -16,9 +16,7 @@ matrix:
   include:
     - php: 7.2.24
     - php: 7.3
-    - php: 7.4snapshot
-  allow_failures:
-    - php: 7.4snapshot
+    - php: 7.4
 
 before_install:
   - sudo systemctl unmask mysql.service
@@ -28,7 +26,6 @@ before_install:
   - sudo service mysql restart
   - cp ./.travis/.env.local .env.local
   - cp ./.travis/.env.test.local .env.test.local
-  - '[[ "$TRAVIS_PHP_VERSION" == "7.4snapshot" ]] || phpenv config-rm xdebug.ini'
   - composer self-update
   # Set memory to max (memory fail)
   - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
