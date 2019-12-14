@@ -100,14 +100,18 @@ final class SettingsController extends AbstractController
      */
     public function delete(Request $request, FileUploader $fileUploader): Response
     {
-        $fileName = $this->repository->findOneBy(['setting_name' => 'header_image']);
+        $setting = $this->repository->findOneBy(['setting_name' => 'header_image']);
 
-        if ($fileName && $this->isCsrfTokenValid('delete', $request->request->get('token'))) {
-            // Delete file from folder
-            $fileUploader->remove($fileName->getSettingValue());
+        if ($setting && $this->isCsrfTokenValid('delete', $request->request->get('token'))) {
+            // Filename
+            $filename = $setting->getSettingValue();
 
-            // Delete from db
-            $this->repository->updateSetting('header_image', '');
+            if ($filename) {
+                // Delete file from folder
+                $fileUploader->remove($filename);
+                // Delete from db
+                $this->repository->updateSetting('header_image', '');
+            }
 
             $this->addFlash('success', 'message.deleted');
         }
