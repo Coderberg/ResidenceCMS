@@ -7,25 +7,32 @@ namespace App\Service;
 use App\Entity\Menu;
 use App\Entity\Page;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Cache\InvalidArgumentException;
+use Psr\Container\ContainerInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
-final class PageService
+final class PageService extends AbstractService
 {
     /**
      * @var EntityManagerInterface
      */
     private $em;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager, ContainerInterface $container)
     {
+        parent::__construct($container);
         $this->em = $entityManager;
     }
 
+    /**
+     * @throws InvalidArgumentException
+     */
     public function create(Page $page)
     {
         // Save page
         $this->save($page);
-        $this->clearCache();
+        $this->clearCache('pages_count');
+        $this->addFlash('success', 'message.created');
 
         // Add a menu item
         if (true === $page->getShowInMenu()) {
@@ -36,6 +43,9 @@ final class PageService
         }
     }
 
+    /**
+     * @throws InvalidArgumentException
+     */
     public function countAll(): int
     {
         $cache = new FilesystemAdapter();
@@ -59,22 +69,20 @@ final class PageService
         $this->em->flush();
     }
 
+    /**
+     * @throws InvalidArgumentException
+     */
     public function delete(Page $page): void
     {
         // Delete page
         $this->remove($page);
-        $this->clearCache();
+        $this->clearCache('pages_count');
+        $this->addFlash('success', 'message.deleted');
 
         // Delete a menu item
         $menu = $this->em->getRepository(Menu::class)->findOneBy(['url' => '/info/'.$page->getSlug()]);
         if ($menu) {
             $this->remove($menu);
         }
-    }
-
-    private function clearCache(): void
-    {
-        $cache = new FilesystemAdapter();
-        $cache->delete('pages_count');
     }
 }

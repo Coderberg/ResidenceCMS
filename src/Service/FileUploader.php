@@ -20,8 +20,14 @@ use Symfony\Component\Validator\Validation;
 
 final class FileUploader
 {
+    /**
+     * @var string
+     */
     private $targetDirectory;
 
+    /**
+     * @var Filesystem
+     */
     private $fileSystem;
 
     public function __construct($targetDirectory)
@@ -50,6 +56,9 @@ final class FileUploader
         );
     }
 
+    /**
+     * @throws \Exception
+     */
     public function upload(UploadedFile $file): string
     {
         $fileName = md5(uniqid()).'.'.$file->guessExtension();

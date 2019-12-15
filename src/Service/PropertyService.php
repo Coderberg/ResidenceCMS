@@ -8,17 +8,13 @@ use App\Entity\Property;
 use App\Message\DeletePhotos;
 use App\Utils\Slugger;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Cache\InvalidArgumentException;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-final class PropertyService
+final class PropertyService extends AbstractService
 {
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
-
     /**
      * @var EntityManagerInterface
      */
@@ -40,12 +36,15 @@ final class PropertyService
         MessageBusInterface $messageBus,
         Slugger $slugger
     ) {
-        $this->container = $container;
+        parent::__construct($container);
         $this->em = $entityManager;
         $this->messageBus = $messageBus;
         $this->slugger = $slugger;
     }
 
+    /**
+     * @throws InvalidArgumentException
+     */
     public function create(Property $property): void
     {
         // Make slug
@@ -56,10 +55,15 @@ final class PropertyService
         $property->setPublished(true);
         $property->setPriorityNumber((int) ($property->getPriorityNumber()));
         $this->save($property);
-        $this->clearCache();
+        $this->clearCache('properties_count');
         $this->addFlash('success', 'message.created');
     }
 
+    /**
+     * Count all properties.
+     *
+     * @throws InvalidArgumentException
+     */
     public function countAll(): int
     {
         $cache = new FilesystemAdapter();
@@ -92,22 +96,14 @@ final class PropertyService
         $this->em->flush();
     }
 
+    /**
+     * @throws InvalidArgumentException
+     */
     public function delete(Property $property): void
     {
         $this->messageBus->dispatch(new DeletePhotos($property));
         $this->remove($property);
-        $this->clearCache();
+        $this->clearCache('properties_count');
         $this->addFlash('success', 'message.deleted');
-    }
-
-    private function clearCache(): void
-    {
-        $cache = new FilesystemAdapter();
-        $cache->delete('properties_count');
-    }
-
-    private function addFlash(string $type, string $message)
-    {
-        $this->container->get('session')->getFlashBag()->add($type, $message);
     }
 }
