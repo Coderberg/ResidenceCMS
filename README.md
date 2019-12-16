@@ -1,6 +1,6 @@
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg) [![Build Status](https://travis-ci.org/Coderberg/ResidenceCMS.svg?branch=master)](https://travis-ci.org/Coderberg/ResidenceCMS)
 
-ResidenceCMS is a fast and lightweight Property Management System built with [Symfony 5][1].
+ResidenceCMS is a fast and lightweight Property Management System on top of [Symfony 5][1].
 
 The user interface is built with [Bootstrap 4][2].
 
@@ -69,7 +69,11 @@ The user interface is built with [Bootstrap 4][2].
    php bin/phpunit
    ```
 
+## Additional documentation
+- [How to run Residence CMS in Docker Containers][5]
+
 [1]: https://symfony.com/
 [2]: https://getbootstrap.com
 [3]: https://symfony.com/doc/current/reference/requirements.html
 [4]: https://getcomposer.org/doc/03-cli.md#create-project
+[5]: https://github.com/Coderberg/ResidenceCMS/blob/master/docs/docker.md
