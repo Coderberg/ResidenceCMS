@@ -90,9 +90,9 @@ final class PropertyService extends AbstractService
         $this->em->flush();
     }
 
-    public function remove($object): void
+    public function remove(Property $property): void
     {
-        $this->em->remove($object);
+        $this->em->remove($property);
         $this->em->flush();
     }
 

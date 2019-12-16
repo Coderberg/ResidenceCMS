@@ -57,13 +57,13 @@ final class PageService extends AbstractService
         return (int) $count;
     }
 
-    public function save($object): void
+    public function save(object $object): void
     {
         $this->em->persist($object);
         $this->em->flush();
     }
 
-    public function remove($object): void
+    public function remove(object $object): void
     {
         $this->em->remove($object);
         $this->em->flush();
