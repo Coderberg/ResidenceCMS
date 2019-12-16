@@ -413,3 +413,8 @@ body.sidebar-toggled footer.sticky-footer {
   background-color: #fff;
   color: rgba(43, 51, 62, 0.38);;
 }
+
+.required:after {
+  content: " *";
+  color: #F9354C;
+}
