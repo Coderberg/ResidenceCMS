@@ -23,7 +23,7 @@ The user interface is built with [Bootstrap 4][2].
    ```
    $ composer create-project coderberg/residence-cms mywebsite.loc
    ```
-2. Enter the newly created folder
+3. Enter the newly created folder
 
    ```
    $ cd mywebsite.loc
