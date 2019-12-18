@@ -34,7 +34,7 @@ final class SitemapController extends AbstractController
     public function siteMap(): Response
     {
         $properties = $this->propertyRepository->findAll();
-
+        $urls = [];
         foreach ($properties as $property) {
             $urls[] = [
                 'loc' => $this->urlService->generateCanonical($property),

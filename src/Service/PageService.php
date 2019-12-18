@@ -37,8 +37,8 @@ final class PageService extends AbstractService
         // Add a menu item
         if (true === $page->getShowInMenu()) {
             $menu = new Menu();
-            $menu->setTitle($page->getTitle());
-            $menu->setUrl('/info/'.$page->getSlug());
+            $menu->setTitle($page->getTitle() ?? '');
+            $menu->setUrl('/info/'.($page->getSlug() ?? ''));
             $this->save($menu);
         }
     }
@@ -80,7 +80,7 @@ final class PageService extends AbstractService
         $this->addFlash('success', 'message.deleted');
 
         // Delete a menu item
-        $menu = $this->em->getRepository(Menu::class)->findOneBy(['url' => '/info/'.$page->getSlug()]);
+        $menu = $this->em->getRepository(Menu::class)->findOneBy(['url' => '/info/'.($page->getSlug() ?? '')]);
         if ($menu) {
             $this->remove($menu);
         }
