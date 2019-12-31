@@ -56,9 +56,14 @@ class Property
     private $title;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $meta_title;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
-    private $description;
+    private $meta_description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -229,14 +234,26 @@ class Property
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getMetaTitle(): ?string
     {
-        return $this->description;
+        return $this->meta_title;
     }
 
-    public function setDescription(string $description): self
+    public function setMetaTitle(?string $meta_title): self
     {
-        $this->description = $description;
+        $this->meta_title = $meta_title;
+
+        return $this;
+    }
+
+    public function getMetaDescription(): ?string
+    {
+        return $this->meta_description;
+    }
+
+    public function setMetaDescription(string $meta_description): self
+    {
+        $this->meta_description = $meta_description;
 
         return $this;
     }

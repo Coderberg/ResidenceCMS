@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ property.title }}{% endblock %}
-{% block description %}{{ property.description }}{% endblock %}
+{% block title %}{{ property.metaTitle|default(property.title) }}{% endblock %}
+{% block description %}{{ property.metaDescription }}{% endblock %}
 
 {% block stylesheets %}
 

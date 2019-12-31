@@ -45,7 +45,7 @@ final class PropertyControllerTest extends WebTestCase
             'property[dealType]' => $dealType,
             'property[category]' => $category,
             'property[title]' => 'test',
-            'property[description]' => 'test',
+            'property[meta_description]' => 'test',
             'property[address]' => 'test',
             'property[priority_number]' => '-1',
             'property[content]' => 'test',
@@ -65,7 +65,7 @@ final class PropertyControllerTest extends WebTestCase
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
-            ->findOneBy(['title' => 'test'])->getId();
+            ->findOneBy(['slug' => 'test'])->getId();
 
         $crawler = $client->request('GET', '/admin/photo/'.$property.'/edit');
         $this->assertSelectorTextContains('html', 'Upload photos');
@@ -87,7 +87,7 @@ final class PropertyControllerTest extends WebTestCase
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
-            ->findOneBy(['title' => 'test']);
+            ->findOneBy(['slug' => 'test']);
 
         $neighborhood = $client->getContainer()->get('doctrine')
             ->getRepository(Neighborhood::class)->findOneBy(['slug' => 'south-beach'])->getId();
@@ -101,6 +101,7 @@ final class PropertyControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/admin/property/'.$property->getId().'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
+            'property[meta_title]' => 'Custom Meta Title',
             'property[neighborhood]' => $neighborhood,
             'property[metro_station]' => $metroStation,
             'property[features]' => [$feature->getId()],
@@ -116,6 +117,7 @@ final class PropertyControllerTest extends WebTestCase
         );
 
         $this->assertCount(1, $crawler->filter('.fa-parking'));
+        $this->assertSelectorTextContains('title', 'Custom Meta Title');
         $this->assertContains('Secure parking', $crawler->html());
         $this->assertContains('Government Center', $crawler->html());
         $this->assertContains('South Beach', $crawler->html());
@@ -130,7 +132,7 @@ final class PropertyControllerTest extends WebTestCase
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
-            ->findOneBy(['title' => 'test'])->getId();
+            ->findOneBy(['slug' => 'test'])->getId();
 
         $crawler = $client->request('GET', '/admin/photo/'.$property.'/edit');
 
@@ -151,7 +153,7 @@ final class PropertyControllerTest extends WebTestCase
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
-            ->findOneBy(['title' => 'test'])->getId();
+            ->findOneBy(['slug' => 'test'])->getId();
 
         $crawler = $client->request('GET', '/admin/property?sort_by=id');
         $client->submit($crawler->filter('#delete-form-'.$property)->form());
@@ -160,7 +162,7 @@ final class PropertyControllerTest extends WebTestCase
 
         $this->assertNull($client->getContainer()->get('doctrine')
             ->getRepository(Property::class)->findOneBy([
-                'title' => 'test',
+                'slug' => 'test',
             ]));
     }
 }

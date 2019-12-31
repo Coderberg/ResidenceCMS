@@ -41,14 +41,14 @@ final class SettingsType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'label.settings.meta_title',
+                'label' => 'label.meta_title',
                 'constraints' => [new Length(['min' => 8, 'allowEmptyString' => false])],
             ])
             ->add('meta_description', TextareaType::class, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'label.settings.meta_description',
+                'label' => 'label.meta_description',
                 'constraints' => [new Length(['min' => 8, 'allowEmptyString' => false])],
             ])
             ->add('custom_code', TextareaType::class, [

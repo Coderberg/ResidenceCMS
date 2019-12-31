@@ -133,11 +133,17 @@ final class PropertyType extends AbstractType
                 ],
                 'label' => 'label.title',
             ])
-            ->add('description', null, [
+            ->add('meta_title', null, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'label.description',
+                'label' => 'label.meta_title',
+            ])
+            ->add('meta_description', null, [
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'label' => 'label.meta_description',
             ])
             ->add('address', null, [
                 'attr' => [
