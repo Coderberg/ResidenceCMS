@@ -16,11 +16,7 @@ final class DefaultControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $client->request('GET', $url);
-        $this->assertSame(
-            Response::HTTP_OK,
-            $client->getResponse()->getStatusCode(),
-            sprintf('The %s public URL loads correctly.', $url)
-        );
+        $this->assertResponseIsSuccessful(sprintf('The %s public URL loads correctly.', $url));
     }
 
     /**

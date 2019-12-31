@@ -22,7 +22,7 @@ final class PageControllerTest extends WebTestCase
             ]);
 
         $client->request('GET', sprintf('/info/%s', $page->getSlug()));
-        $this->assertSame(Response::HTTP_OK, $client->getResponse()->getStatusCode());
+        $this->assertResponseIsSuccessful();
     }
 
     public function testContactPage()
@@ -36,7 +36,7 @@ final class PageControllerTest extends WebTestCase
             ]);
 
         $crawler = $client->request('GET', sprintf('/info/%s', $page->getSlug()));
-        $this->assertSame(Response::HTTP_OK, $client->getResponse()->getStatusCode());
+        $this->assertResponseIsSuccessful();
 
         $form = $crawler->selectButton('Submit')->form([
             'contact[from_name]' => 'Tester',

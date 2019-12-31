@@ -40,7 +40,7 @@ final class PropertyControllerTest extends WebTestCase
             $property->getSlug(),
             $property->getId())
         );
-        $this->assertSame(Response::HTTP_OK, $client->getResponse()->getStatusCode());
+        $this->assertResponseIsSuccessful();
     }
 
     public function testSearch()
