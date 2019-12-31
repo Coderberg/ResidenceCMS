@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Tests\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\HttpFoundation\Response;
 
 final class DashboardControllerTest extends WebTestCase
 {
@@ -20,6 +19,6 @@ final class DashboardControllerTest extends WebTestCase
         ]);
 
         $client->request('GET', '/admin');
-        $this->assertResponseIsSuccessful(sprintf('The %s public URL loads correctly.','/admin'));
+        $this->assertResponseIsSuccessful(sprintf('The %s public URL loads correctly.', '/admin'));
     }
 }

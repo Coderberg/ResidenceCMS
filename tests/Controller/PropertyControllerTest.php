@@ -8,7 +8,6 @@ use App\Entity\City;
 use App\Entity\Property;
 use App\Entity\Settings;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\HttpFoundation\Response;
 
 final class PropertyControllerTest extends WebTestCase
 {
