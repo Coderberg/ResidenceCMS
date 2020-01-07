@@ -91,11 +91,11 @@
 
         {% if site.ymaps_key != '' %}
 
-            <script src="https://api-maps.yandex.ru/2.1/?apikey={{ site.ymaps_key }}&lang=en_US"></script>
+            <script src="https://api-maps.yandex.ru/2.1/?apikey={{ site.ymaps_key }}&lang={{ app.request.locale }}"></script>
 
         {% else %}
 
-            <script src="https://api-maps.yandex.ru/2.1/?lang=en_US"></script>
+            <script src="https://api-maps.yandex.ru/2.1/?lang={{ app.request.locale }}"></script>
 
         {% endif %}
 

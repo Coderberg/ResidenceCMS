@@ -11,7 +11,8 @@
 {% block body %}
 
     <div class="card mb-3">
-        <div class="card-header"><i class="fas fa-cloud-upload-alt text-danger"></i> {{ 'title.upload_photos' | trans }}</div>
+        <div class="card-header"><i class="fas fa-cloud-upload-alt text-danger"></i> {{ 'title.upload_photos' | trans }}
+        </div>
         <div class="card-body">
 
             <form action="{{ path('admin_photo_upload', {id: property_id}) }}" method="POST"
@@ -27,14 +28,17 @@
             <div class="photos-list">
 
                 {% if photos | default %}
-                    <button type="button" class="btn btn btn-outline-dark btn-lg btn-reorder">
-                        Reorder photos
+                    <button type="button"
+                            data-processing="{{ 'processing'|trans }}"
+                            data-save="{{ 'action.save_reordering'|trans }}"
+                            class="btn btn btn-outline-dark btn-lg btn-reorder">
+                        {{ 'action.reorder_photos'|trans }}
                     </button>
                 {% endif %}
 
                 <div class="reorder-help bg-light text-center" style="display:none;">
-                    1. Drag photos to reorder.<br>
-                    2. Click 'Save Reordering' when finished.
+                    1. {{ 'drag_photos'|trans }}.<br>
+                    2. {{ 'click_save_reordering'|trans }}.
                 </div>
                 <div class="gallery">
                     <ul class="reorder-ul">

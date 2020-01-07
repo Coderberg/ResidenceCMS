@@ -1,59 +1,59 @@
 <?xml version="1.0"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <file source-language="en" target-language="ru" datatype="plaintext" original="file.ext">
         <body>
             <trans-unit id="menu.back">
                 <source>menu.back</source>
-                <target>Back</target>
+                <target>Назад</target>
             </trans-unit>
             <trans-unit id="menu.homepage">
                 <source>menu.homepage</source>
-                <target>Homepage</target>
+                <target>Главная</target>
             </trans-unit>
             <trans-unit id="menu.catalog">
                 <source>menu.catalog</source>
-                <target>Catalog</target>
+                <target>Каталог</target>
             </trans-unit>
             <trans-unit id="menu.add_new">
                 <source>menu.add_new</source>
-                <target>Add new</target>
+                <target>Добавить</target>
             </trans-unit>
             <trans-unit id="menu.settings">
                 <source>menu.settings</source>
-                <target>Settings</target>
+                <target>Настройки</target>
             </trans-unit>
             <trans-unit id="menu.admin">
                 <source>menu.admin</source>
-                <target>Admin</target>
+                <target>Админ</target>
             </trans-unit>
             <trans-unit id="menu.edit_profile">
                 <source>menu.edit_profile</source>
-                <target>Edit profile</target>
+                <target>Редактировать профиль</target>
             </trans-unit>
             <trans-unit id="menu.login">
                 <source>menu.login</source>
-                <target>Login</target>
+                <target>Войти</target>
             </trans-unit>
             <trans-unit id="menu.logout">
                 <source>menu.logout</source>
-                <target>Logout</target>
+                <target>Выйти</target>
             </trans-unit>
 
             <trans-unit id="yes">
                 <source>yes</source>
-                <target>Yes</target>
+                <target>Да</target>
             </trans-unit>
             <trans-unit id="no_items_found">
                 <source>no_items_found</source>
-                <target>No items found.</target>
+                <target>Ничего не найдено.</target>
             </trans-unit>
             <trans-unit id="view_details">
                 <source>view_details</source>
-                <target>View Details</target>
+                <target>Посмотреть детали</target>
             </trans-unit>
             <trans-unit id="show_on_map">
                 <source>show_on_map</source>
-                <target>Show on Map</target>
+                <target>Показать на карте</target>
             </trans-unit>
 
             <trans-unit id="dashboard">
@@ -62,133 +62,133 @@
             </trans-unit>
             <trans-unit id="properties">
                 <source>properties</source>
-                <target>Properties</target>
+                <target>Объекты</target>
             </trans-unit>
             <trans-unit id="locations">
                 <source>locations</source>
-                <target>Locations</target>
+                <target>Места</target>
             </trans-unit>
             <trans-unit id="cities">
                 <source>cities</source>
-                <target>Cities</target>
+                <target>Города</target>
             </trans-unit>
             <trans-unit id="neighborhoods">
                 <source>neighborhoods</source>
-                <target>Neighborhoods</target>
+                <target>Микрорайоны</target>
             </trans-unit>
             <trans-unit id="districts">
                 <source>districts</source>
-                <target>Districts</target>
+                <target>Районы</target>
             </trans-unit>
             <trans-unit id="metro_stations">
                 <source>metro_stations</source>
-                <target>Metro stations</target>
+                <target>Станции метро</target>
             </trans-unit>
             <trans-unit id="deal_types">
                 <source>deal_types</source>
-                <target>Deal Types</target>
+                <target>Типы сделок</target>
             </trans-unit>
             <trans-unit id="categories">
                 <source>categories</source>
-                <target>Categories</target>
+                <target>Категории</target>
             </trans-unit>
             <trans-unit id="features">
                 <source>features</source>
-                <target>Features</target>
+                <target>Особенности</target>
             </trans-unit>
             <trans-unit id="currencies">
                 <source>currencies</source>
-                <target>Currencies</target>
+                <target>Валюты</target>
             </trans-unit>
             <trans-unit id="pages">
                 <source>pages</source>
-                <target>Pages</target>
+                <target>Страницы</target>
             </trans-unit>
             <trans-unit id="users">
                 <source>users</source>
-                <target>Users</target>
+                <target>Агенты</target>
             </trans-unit>
             <trans-unit id="menu">
                 <source>menu</source>
-                <target>Menu</target>
+                <target>Меню</target>
             </trans-unit>
             <trans-unit id="property">
                 <source>property</source>
-                <target>Property</target>
+                <target>Объект</target>
             </trans-unit>
             <trans-unit id="city">
                 <source>city</source>
-                <target>City</target>
+                <target>Город</target>
             </trans-unit>
             <trans-unit id="neighborhood">
                 <source>neighborhood</source>
-                <target>Neighborhood</target>
+                <target>Микрорайон</target>
             </trans-unit>
             <trans-unit id="district">
                 <source>district</source>
-                <target>District</target>
+                <target>Район</target>
             </trans-unit>
             <trans-unit id="metro_station">
                 <source>metro_station</source>
-                <target>Metro station</target>
+                <target>Станция метро</target>
             </trans-unit>
             <trans-unit id="deal_type">
                 <source>deal_type</source>
-                <target>Deal Type</target>
+                <target>Тип сделки</target>
             </trans-unit>
             <trans-unit id="category">
                 <source>category</source>
-                <target>Category</target>
+                <target>Категория</target>
             </trans-unit>
             <trans-unit id="feature">
                 <source>feature</source>
-                <target>Feature</target>
+                <target>Особенность</target>
             </trans-unit>
             <trans-unit id="page">
                 <source>page</source>
-                <target>Page</target>
+                <target>Страница</target>
             </trans-unit>
             <trans-unit id="user">
                 <source>user</source>
-                <target>User</target>
+                <target>Пользователь</target>
             </trans-unit>
             <trans-unit id="photo">
                 <source>photo</source>
-                <target>Photo</target>
+                <target>Фотография</target>
             </trans-unit>
 
             <trans-unit id="message.created">
                 <source>message.created</source>
-                <target>Created successfully</target>
+                <target>Информация успешно добавлена</target>
             </trans-unit>
             <trans-unit id="message.updated">
                 <source>message.updated</source>
-                <target>Updated successfully</target>
+                <target>Информация успешно обновлена</target>
             </trans-unit>
             <trans-unit id="message.deleted">
                 <source>message.deleted</source>
-                <target>Deleted successfully</target>
+                <target>Информация успешно удалена</target>
             </trans-unit>
             <trans-unit id="message.uploaded">
                 <source>message.uploaded</source>
-                <target>Photo uploaded successfully</target>
+                <target>Фото успешно загружено</target>
             </trans-unit>
             <trans-unit id="message.was_sent">
                 <source>message.was_sent</source>
-                <target>Your message was sent successfully. Thanks.</target>
+                <target>Ваше сообщение было успешно отправлено. Спасибо.</target>
             </trans-unit>
 
             <trans-unit id="widget.contact_information">
                 <source>widget.contact_information</source>
-                <target>Contact Information</target>
+                <target>Контакты</target>
             </trans-unit>
             <trans-unit id="widget.agent">
                 <source>widget.agent</source>
-                <target>Agent</target>
+                <target>Агент</target>
             </trans-unit>
             <trans-unit id="widget.phone">
                 <source>widget.phone</source>
-                <target>Phone</target>
+                <target>Телефон</target>
             </trans-unit>
             <trans-unit id="widget.email">
                 <source>widget.email</source>
@@ -196,65 +196,65 @@
             </trans-unit>
             <trans-unit id="widget.search">
                 <source>widget.search</source>
-                <target>Search</target>
+                <target>Поиск</target>
             </trans-unit>
             <trans-unit id="widget.all_cities">
                 <source>widget.all_cities</source>
-                <target>All cities</target>
+                <target>Все города</target>
             </trans-unit>
             <trans-unit id="widget.all_deal_types">
                 <source>widget.all_deal_types</source>
-                <target>All deal types</target>
+                <target>Все типы сделок</target>
             </trans-unit>
             <trans-unit id="widget.all_categories">
                 <source>widget.all_categories</source>
-                <target>All categories</target>
+                <target>Все категории</target>
             </trans-unit>
 
             <trans-unit id="action.search">
                 <source>action.search</source>
-                <target>Search</target>
+                <target>Поиск</target>
             </trans-unit>
             <trans-unit id="action.save">
                 <source>action.save</source>
-                <target>Save changes</target>
+                <target>Сохранить изменения</target>
             </trans-unit>
             <trans-unit id="action.edit">
                 <source>action.edit</source>
-                <target>Edit</target>
+                <target>Править</target>
             </trans-unit>
             <trans-unit id="action.edit_photos">
                 <source>action.edit_photos</source>
-                <target>Edit photos</target>
+                <target>Фото</target>
             </trans-unit>
             <trans-unit id="action.reorder_photos">
                 <source>action.reorder_photos</source>
-                <target>Reorder photos</target>
+                <target>Сортировать фото</target>
             </trans-unit>
             <trans-unit id="action.save_reordering">
                 <source>action.save_reordering</source>
-                <target>Save reordering</target>
+                <target>Сохранить порядок</target>
             </trans-unit>
             <trans-unit id="action.delete">
                 <source>action.delete</source>
-                <target>Delete</target>
+                <target>Удалить</target>
             </trans-unit>
             <trans-unit id="action.sign_in">
                 <source>action.sign_in</source>
-                <target>Sign in</target>
+                <target>Войти</target>
             </trans-unit>
             <trans-unit id="action.add_menu_item">
                 <source>action.add_menu_item</source>
-                <target>Add Menu Item</target>
+                <target>Добавить пункт меню</target>
             </trans-unit>
             <trans-unit id="action.submit">
                 <source>action.submit</source>
-                <target>Submit</target>
+                <target>Отправить</target>
             </trans-unit>
 
             <trans-unit id="table.link_text">
                 <source>table.link_text</source>
-                <target>Link Text</target>
+                <target>Текст ссылки</target>
             </trans-unit>
             <trans-unit id="table.url">
                 <source>table.url</source>
@@ -262,31 +262,31 @@
             </trans-unit>
             <trans-unit id="table.move">
                 <source>table.move</source>
-                <target>Move</target>
+                <target>Переместить</target>
             </trans-unit>
             <trans-unit id="table.city_name">
                 <source>table.city_name</source>
-                <target>City name</target>
+                <target>Название города</target>
             </trans-unit>
             <trans-unit id="table.deal_type">
                 <source>table.deal_type</source>
-                <target>Deal Type</target>
+                <target>Тип сделки</target>
             </trans-unit>
             <trans-unit id="table.category_name">
                 <source>table.category_name</source>
-                <target>Category name</target>
+                <target>Название категории</target>
             </trans-unit>
             <trans-unit id="table.currency_title">
                 <source>table.currency_title</source>
-                <target>Currency Title</target>
+                <target>Название валюты</target>
             </trans-unit>
             <trans-unit id="table.code">
                 <source>table.code</source>
-                <target>Code</target>
+                <target>Код</target>
             </trans-unit>
             <trans-unit id="table.username">
                 <source>table.username</source>
-                <target>Username</target>
+                <target>Имя пользователя</target>
             </trans-unit>
             <trans-unit id="table.email">
                 <source>table.email</source>
@@ -298,158 +298,158 @@
             </trans-unit>
             <trans-unit id="table.action">
                 <source>table.action</source>
-                <target>Action</target>
+                <target>Действие</target>
             </trans-unit>
 
             <trans-unit id="confirmation.delete_item">
                 <source>confirmation.delete_item</source>
-                <target>Are you sure you want to delete this item?</target>
+                <target>Вы уверены, что хотите удалить эту запись?</target>
             </trans-unit>
             <trans-unit id="confirmation.delete_photo">
                 <source>confirmation.delete_photo</source>
-                <target>Are you sure you want to delete this photo?</target>
+                <target>Вы уверены, что хотите удалить это фото?</target>
             </trans-unit>
             <trans-unit id="confirmation.delete_user">
                 <source>confirmation.delete_user</source>
-                <target>Are you sure you want to delete this user?</target>
+                <target>Вы уверены, что хотите удалить этого пользователя?</target>
             </trans-unit>
 
             <trans-unit id="title.properties_on_map">
                 <source>title.properties_on_map</source>
-                <target>All properties on the map</target>
+                <target>Все объекты на карте</target>
             </trans-unit>
             <trans-unit id="title.login">
                 <source>title.login</source>
-                <target>Secure Sign in</target>
+                <target>Вход в систему</target>
             </trans-unit>
             <trans-unit id="title.pages">
                 <source>title.pages</source>
-                <target>Pages</target>
+                <target>Страницы</target>
             </trans-unit>
             <trans-unit id="title.latest_properties">
                 <source>title.latest_properties</source>
-                <target>Latest properties</target>
+                <target>Свежие объекты</target>
             </trans-unit>
             <trans-unit id="title.add_page">
                 <source>title.add_page</source>
-                <target>Add page</target>
+                <target>Добавление страницы</target>
             </trans-unit>
             <trans-unit id="title.edit_page">
                 <source>title.edit_page</source>
-                <target>Edit page</target>
+                <target>Редактирование страницы</target>
             </trans-unit>
             <trans-unit id="title.add_property">
                 <source>title.add_property</source>
-                <target>Add property</target>
+                <target>Добавление объекта</target>
             </trans-unit>
             <trans-unit id="title.edit_property">
                 <source>title.edit_property</source>
-                <target>Edit property</target>
+                <target>Редактирование объекта</target>
             </trans-unit>
             <trans-unit id="title.add_city">
                 <source>title.add_city</source>
-                <target>Add city</target>
+                <target>Добавление города</target>
             </trans-unit>
             <trans-unit id="title.edit_city">
                 <source>title.edit_city</source>
-                <target>Edit city</target>
+                <target>Редактирование города</target>
             </trans-unit>
             <trans-unit id="title.add_neighborhood">
                 <source>title.add_neighborhood</source>
-                <target>Add neighborhood</target>
+                <target>Добавление микрорайона</target>
             </trans-unit>
             <trans-unit id="title.add_district">
                 <source>title.add_district</source>
-                <target>Add district</target>
+                <target>Добавление района</target>
             </trans-unit>
             <trans-unit id="title.add_metro_station">
                 <source>title.add_metro_station</source>
-                <target>Add metro station</target>
+                <target>Добавление станции метро</target>
             </trans-unit>
             <trans-unit id="title.edit_neighborhood">
                 <source>title.edit_neighborhood</source>
-                <target>Edit neighborhood</target>
+                <target>Редактирование микрорайона</target>
             </trans-unit>
             <trans-unit id="title.edit_district">
                 <source>title.edit_district</source>
-                <target>Edit district</target>
+                <target>Редактирование района</target>
             </trans-unit>
             <trans-unit id="title.edit_metro_station">
                 <source>title.edit_metro_station</source>
-                <target>Edit metro station</target>
+                <target>Редактирование станции метро</target>
             </trans-unit>
             <trans-unit id="title.add_deal_type">
                 <source>title.add_deal_type</source>
-                <target>Add New Deal Type</target>
+                <target>Добавление нового типа сделки</target>
             </trans-unit>
             <trans-unit id="title.edit_deal_type">
                 <source>title.edit_deal_type</source>
-                <target>Edit deal type</target>
+                <target>Редактирование типа сделки</target>
             </trans-unit>
             <trans-unit id="title.add_category">
                 <source>title.add_category</source>
-                <target>Add New Category</target>
+                <target>Добавление новой категории</target>
             </trans-unit>
             <trans-unit id="title.edit_category">
                 <source>title.edit_category</source>
-                <target>Edit category</target>
+                <target>Редактирование категории</target>
             </trans-unit>
             <trans-unit id="title.add_feature">
                 <source>title.add_feature</source>
-                <target>Add New Feature</target>
+                <target>Добавление новой особенности</target>
             </trans-unit>
             <trans-unit id="title.edit_feature">
                 <source>title.edit_feature</source>
-                <target>Edit feature</target>
+                <target>Редактирование особенности</target>
             </trans-unit>
             <trans-unit id="title.add_currency">
                 <source>title.add_currency</source>
-                <target>Add New Currency</target>
+                <target>Добавление новой валюты</target>
             </trans-unit>
             <trans-unit id="title.edit_currency">
                 <source>title.edit_currency</source>
-                <target>Edit New Currency</target>
+                <target>Редактирование валюты</target>
             </trans-unit>
             <trans-unit id="title.add_user">
                 <source>title.add_user</source>
-                <target>Add New User</target>
+                <target>Добавление нового пользователя</target>
             </trans-unit>
             <trans-unit id="title.edit_user">
                 <source>title.edit_user</source>
-                <target>Edit user</target>
+                <target>Редактирование пользователя</target>
             </trans-unit>
             <trans-unit id="title.add_menu_item">
                 <source>title.add_menu_item</source>
-                <target>Add Menu Item</target>
+                <target>Добавление нового пункта меню</target>
             </trans-unit>
             <trans-unit id="title.edit_menu_item">
                 <source>title.edit_menu_item</source>
-                <target>Edit Menu Item</target>
+                <target>Редактирование пункта меню</target>
             </trans-unit>
             <trans-unit id="title.upload_photos">
                 <source>title.upload_photos</source>
-                <target>Upload photos</target>
+                <target>Загрузка фотографий</target>
             </trans-unit>
             <trans-unit id="title.settings">
                 <source>title.settings</source>
-                <target>Settings</target>
+                <target>Настройки</target>
             </trans-unit>
             <trans-unit id="title.settings.header_settings">
                 <source>title.settings.header_settings</source>
-                <target>Header settings</target>
+                <target>Настройки шапки</target>
             </trans-unit>
 
             <trans-unit id="label.remember_me">
                 <source>label.remember_me</source>
-                <target>Keep me logged in</target>
+                <target>Оставаться в системе</target>
             </trans-unit>
             <trans-unit id="label.settings.name">
                 <source>label.settings.name</source>
-                <target>Site Name</target>
+                <target>Название сайта</target>
             </trans-unit>
             <trans-unit id="label.settings.title">
                 <source>label.settings.title</source>
-                <target>Site Title</target>
+                <target>Заголовок сайта</target>
             </trans-unit>
             <trans-unit id="label.meta_title">
                 <source>label.meta_title</source>
@@ -461,71 +461,71 @@
             </trans-unit>
             <trans-unit id="label.settings.code">
                 <source>label.settings.code</source>
-                <target>Custom Code in Header (Google Analytics etc.)</target>
+                <target>Пользовательский код в секции head (Google Analytics и т.д.)</target>
             </trans-unit>
             <trans-unit id="label.settings.custom_footer_text">
                 <source>label.settings.custom_footer_text</source>
-                <target>Custom Footer Text</target>
+                <target>Пользовательский текст в футере</target>
             </trans-unit>
             <trans-unit id="label.settings.limit">
                 <source>label.settings.limit</source>
-                <target>Number Of Items Per Page</target>
+                <target>Кол-во элементов на странице</target>
             </trans-unit>
             <trans-unit id="label.settings.currency">
                 <source>label.settings.currency</source>
-                <target>Currency</target>
+                <target>Валюта</target>
             </trans-unit>
             <trans-unit id="label.settings.fixed_top_navbar">
                 <source>label.settings.fixed_top_navbar</source>
-                <target>Fixed Top Navbar</target>
+                <target>Закрепить меню вверху страницы</target>
             </trans-unit>
             <trans-unit id="label.settings.show_similar_properties">
                 <source>label.settings.show_similar_properties</source>
-                <target>Show Similar Properties</target>
+                <target>Показывать похожие объекты</target>
             </trans-unit>
             <trans-unit id="label.settings.ymaps_key">
                 <source>label.settings.ymaps_key</source>
-                <target>Yandex.Maps JavaScript API key</target>
+                <target>API-ключ Яндекс.Карт</target>
             </trans-unit>
             <trans-unit id="label.settings.map_center">
                 <source>label.settings.map_center</source>
-                <target>Map center</target>
+                <target>Центр карты</target>
             </trans-unit>
             <trans-unit id="label.settings.map_zoom">
                 <source>label.settings.map_zoom</source>
-                <target>Zoom level. Acceptable values: from 0 (the entire world) to 19</target>
+                <target>Масштаб карты: число от 0 (весь мир) до 19</target>
             </trans-unit>
             <trans-unit id="label.settings.show_filter_by_city">
                 <source>label.settings.show_filter_by_city</source>
-                <target>Show filter by city</target>
+                <target>Фильтр по городу</target>
             </trans-unit>
             <trans-unit id="label.settings.show_filter_by_deal_type">
                 <source>label.settings.show_filter_by_deal_type</source>
-                <target>Show filter by deal type</target>
+                <target>Фильтр по типу сделки</target>
             </trans-unit>
             <trans-unit id="label.settings.show_filter_by_category">
                 <source>label.settings.show_filter_by_category</source>
-                <target>Show filter by category</target>
+                <target>Фильтр по категории</target>
             </trans-unit>
             <trans-unit id="label.settings.show_filter_by_bedrooms">
                 <source>label.settings.show_filter_by_bedrooms</source>
-                <target>Show filter by bedrooms</target>
+                <target>Фильтр по кол-ву комнат</target>
             </trans-unit>
             <trans-unit id="label.settings.show_filter_by_guests">
                 <source>label.settings.show_filter_by_guests</source>
-                <target>Show filter by guests</target>
+                <target>Фильтр по кол-ву гостей</target>
             </trans-unit>
             <trans-unit id="label.full_name">
                 <source>label.full_name</source>
-                <target>Full name</target>
+                <target>ФИО</target>
             </trans-unit>
             <trans-unit id="label.username">
                 <source>label.username</source>
-                <target>Username</target>
+                <target>Логин</target>
             </trans-unit>
             <trans-unit id="label.phone">
                 <source>label.phone</source>
-                <target>Phone</target>
+                <target>Телефон</target>
             </trans-unit>
             <trans-unit id="label.email">
                 <source>label.email</source>
@@ -533,11 +533,11 @@
             </trans-unit>
             <trans-unit id="label.password">
                 <source>label.password</source>
-                <target>Password</target>
+                <target>Пароль</target>
             </trans-unit>
             <trans-unit id="label.name">
                 <source>label.name</source>
-                <target>Name</target>
+                <target>Имя</target>
             </trans-unit>
             <trans-unit id="label.slug">
                 <source>label.slug</source>
@@ -545,63 +545,63 @@
             </trans-unit>
             <trans-unit id="label.currency_title">
                 <source>label.currency_title</source>
-                <target>Currency Title</target>
+                <target>Название валюты</target>
             </trans-unit>
             <trans-unit id="label.code">
                 <source>label.code</source>
-                <target>Code</target>
+                <target>Код</target>
             </trans-unit>
             <trans-unit id="label.symbol_left">
                 <source>label.symbol_left</source>
-                <target>Symbol Left</target>
+                <target>Символ слева</target>
             </trans-unit>
             <trans-unit id="label.symbol_right">
                 <source>label.symbol_right</source>
-                <target>Symbol Right</target>
+                <target>Символ справа</target>
             </trans-unit>
             <trans-unit id="label.photo">
                 <source>label.photo</source>
-                <target>Photo</target>
+                <target>Фото</target>
             </trans-unit>
             <trans-unit id="label.city">
                 <source>label.city</source>
-                <target>City</target>
+                <target>Город</target>
             </trans-unit>
             <trans-unit id="label.neighborhood">
                 <source>label.neighborhood</source>
-                <target>Neighborhood</target>
+                <target>Микрорайон</target>
             </trans-unit>
             <trans-unit id="label.district">
                 <source>label.district</source>
-                <target>District</target>
+                <target>Район</target>
             </trans-unit>
             <trans-unit id="label.neighborhood_name">
                 <source>label.neighborhood_name</source>
-                <target>Neighborhood name</target>
+                <target>Название микрорайона</target>
             </trans-unit>
             <trans-unit id="label.district_name">
                 <source>label.district_name</source>
-                <target>District name</target>
+                <target>Название района</target>
             </trans-unit>
             <trans-unit id="label.metro_station_name">
                 <source>label.metro_station_name</source>
-                <target>Metro station name</target>
+                <target>Название станции метро</target>
             </trans-unit>
             <trans-unit id="label.deal_type">
                 <source>label.deal_type</source>
-                <target>Deal Type</target>
+                <target>Тип сделки</target>
             </trans-unit>
             <trans-unit id="label.category">
                 <source>label.category</source>
-                <target>Category</target>
+                <target>Категория</target>
             </trans-unit>
             <trans-unit id="label.features">
                 <source>label.features</source>
-                <target>Features</target>
+                <target>Особенности</target>
             </trans-unit>
             <trans-unit id="label.priority_number">
                 <source>label.priority_number</source>
-                <target>Listing priority number</target>
+                <target>Номер приоритета в списке</target>
             </trans-unit>
             <trans-unit id="label.priority_number.help">
                 <source>label.priority_number.help</source>
@@ -609,39 +609,39 @@
             </trans-unit>
             <trans-unit id="label.agent">
                 <source>label.agent</source>
-                <target>Agent</target>
+                <target>Агент</target>
             </trans-unit>
             <trans-unit id="label.feature">
                 <source>label.feature</source>
-                <target>Feature name</target>
+                <target>Название особенности</target>
             </trans-unit>
             <trans-unit id="label.custom_icon">
                 <source>label.custom_icon</source>
-                <target>Custom icon (optional)</target>
+                <target>Иконка (необязательно)</target>
             </trans-unit>
             <trans-unit id="label.bathrooms_number">
                 <source>label.bathrooms_number</source>
-                <target>Number of Bathrooms</target>
+                <target>Количество ванных</target>
             </trans-unit>
             <trans-unit id="label.bedrooms_number">
                 <source>label.bedrooms_number</source>
-                <target>Number of Bedrooms</target>
+                <target>Количество комнат</target>
             </trans-unit>
             <trans-unit id="label.max_guests">
                 <source>label.max_guests</source>
-                <target>Max Guests</target>
+                <target>Максимум гостей</target>
             </trans-unit>
             <trans-unit id="label.guests">
                 <source>label.guests</source>
-                <target>Guests</target>
+                <target>Гостей</target>
             </trans-unit>
             <trans-unit id="label.title">
                 <source>label.title</source>
-                <target>Title</target>
+                <target>Заголовок</target>
             </trans-unit>
             <trans-unit id="label.link_text">
                 <source>label.link_text</source>
-                <target>Link Text</target>
+                <target>Текст ссылки</target>
             </trans-unit>
             <trans-unit id="label.url">
                 <source>label.url</source>
@@ -649,7 +649,7 @@
             </trans-unit>
             <trans-unit id="label.new_tab">
                 <source>label.new_tab</source>
-                <target>Open in new tab</target>
+                <target>Открывать в новой вкладке</target>
             </trans-unit>
             <trans-unit id="label.nofollow">
                 <source>label.nofollow</source>
@@ -657,202 +657,202 @@
             </trans-unit>
             <trans-unit id="label.description">
                 <source>label.description</source>
-                <target>Description</target>
+                <target>Описание</target>
             </trans-unit>
             <trans-unit id="label.address">
                 <source>label.address</source>
-                <target>Address</target>
+                <target>Адрес</target>
             </trans-unit>
             <trans-unit id="label.latitude">
                 <source>label.latitude</source>
-                <target>Latitude</target>
+                <target>Широта</target>
             </trans-unit>
             <trans-unit id="label.longitude">
                 <source>label.longitude</source>
-                <target>Longitude</target>
+                <target>Долгота</target>
             </trans-unit>
             <trans-unit id="label.show_map">
                 <source>label.show_map</source>
-                <target>Show map</target>
+                <target>Показывать карту</target>
             </trans-unit>
             <trans-unit id="label.price">
                 <source>label.price</source>
-                <target>Price</target>
+                <target>Цена</target>
             </trans-unit>
             <trans-unit id="label.price_type">
                 <source>label.price_type</source>
-                <target>Price type</target>
+                <target>Тип цены</target>
             </trans-unit>
             <trans-unit id="label.available_now">
                 <source>label.available_now</source>
-                <target>Available now</target>
+                <target>Доступно сейчас</target>
             </trans-unit>
             <trans-unit id="label.content">
                 <source>label.content</source>
-                <target>Content</target>
+                <target>Содержание</target>
             </trans-unit>
             <trans-unit id="label.show_in_menu">
                 <source>label.show_in_menu</source>
-                <target>Show in menu</target>
+                <target>Добавить в меню</target>
             </trans-unit>
             <trans-unit id="label.add_contact_form">
                 <source>label.add_contact_form</source>
-                <target>Add a Contact Form</target>
+                <target>Добавить форму обратной связи</target>
             </trans-unit>
             <trans-unit id="label.contact_email_address">
                 <source>label.contact_email_address</source>
-                <target>Contact Email Address</target>
+                <target>Контактный адрес Email</target>
             </trans-unit>
             <trans-unit id="label.message">
                 <source>label.message</source>
-                <target>Message</target>
+                <target>Сообщение</target>
             </trans-unit>
             <trans-unit id="label.create_category">
                 <source>label.create_category</source>
-                <target>Create category</target>
+                <target>Создать категорию</target>
             </trans-unit>
             <trans-unit id="label.create_currency">
                 <source>label.create_currency</source>
-                <target>Create currency</target>
+                <target>Создать валюту</target>
             </trans-unit>
             <trans-unit id="label.create_feature">
                 <source>label.create_feature</source>
-                <target>Create feature</target>
+                <target>Создать особенность</target>
             </trans-unit>
             <trans-unit id="label.create_deal_type">
                 <source>label.create_deal_type</source>
-                <target>Create deal type</target>
+                <target>Создать тип сделки</target>
             </trans-unit>
             <trans-unit id="label.create_city">
                 <source>label.create_city</source>
-                <target>Create city</target>
+                <target>Создать город</target>
             </trans-unit>
             <trans-unit id="label.create_neighborhood">
                 <source>label.create_neighborhood</source>
-                <target>Create neighborhood</target>
+                <target>Создать микрорайон</target>
             </trans-unit>
             <trans-unit id="label.create_district">
                 <source>label.create_district</source>
-                <target>Create district</target>
+                <target>Создать район</target>
             </trans-unit>
             <trans-unit id="label.create_metro_station">
                 <source>label.create_metro_station</source>
-                <target>Create metro station</target>
+                <target>Создать станцию метро</target>
             </trans-unit>
             <trans-unit id="label.create_page">
                 <source>label.create_page</source>
-                <target>Create page</target>
+                <target>Создать страницу</target>
             </trans-unit>
             <trans-unit id="label.create_property">
                 <source>label.create_property</source>
-                <target>Create property</target>
+                <target>Создать объект</target>
             </trans-unit>
             <trans-unit id="label.create_user">
                 <source>label.create_user</source>
-                <target>Create user</target>
+                <target>Создать пользователя</target>
             </trans-unit>
             <trans-unit id="label.save_and_create_new">
                 <source>label.save_and_create_new</source>
-                <target>Save and create new</target>
+                <target>Сохранить и добавить ещё</target>
             </trans-unit>
             <trans-unit id="label.sort_by">
                 <source>label.sort_by</source>
-                <target>Sort by</target>
+                <target>Сортировать по</target>
             </trans-unit>
 
             <trans-unit id="option.on">
                 <source>option.on</source>
-                <target>On</target>
+                <target>Вкл</target>
             </trans-unit>
             <trans-unit id="option.off">
                 <source>option.off</source>
-                <target>Off</target>
+                <target>Выкл</target>
             </trans-unit>
             <trans-unit id="option.any">
                 <source>option.any</source>
-                <target>Any</target>
+                <target>Не важно</target>
             </trans-unit>
             <trans-unit id="option.bedroom">
                 <source>option.bedroom</source>
-                <target>bedroom</target>
+                <target>комната</target>
             </trans-unit>
             <trans-unit id="option.bedrooms">
                 <source>option.bedrooms</source>
-                <target>bedrooms</target>
+                <target>комнаты</target>
             </trans-unit>
             <trans-unit id="option.priority">
                 <source>option.priority</source>
-                <target>Priority</target>
+                <target>Приоритет</target>
             </trans-unit>
             <trans-unit id="option.latest">
                 <source>option.latest</source>
-                <target>Latest</target>
+                <target>Дата добавления</target>
             </trans-unit>
 
             <trans-unit id="placeholder.map_center_example">
                 <source>placeholder.map_center_example</source>
-                <target>e.g. 27.188534, -81.128735</target>
+                <target>например 27.188534, -81.128735</target>
             </trans-unit>
             <trans-unit id="placeholder.select_city">
                 <source>placeholder.select_city</source>
-                <target>Select a city</target>
+                <target>Выберите город</target>
             </trans-unit>
             <trans-unit id="placeholder.select_neighborhood">
                 <source>placeholder.select_neighborhood</source>
-                <target>Select a neighborhood</target>
+                <target>Выберите микрорайон</target>
             </trans-unit>
             <trans-unit id="placeholder.select_district">
                 <source>placeholder.select_district</source>
-                <target>Select a district</target>
+                <target>Выберите район</target>
             </trans-unit>
             <trans-unit id="placeholder.select_metro_station">
                 <source>placeholder.select_metro_station</source>
-                <target>Select a Metro station</target>
+                <target>Выберите станцию метро</target>
             </trans-unit>
             <trans-unit id="placeholder.enter_email">
                 <source>placeholder.enter_email</source>
-                <target>Enter your email</target>
+                <target>Введите ваш email</target>
             </trans-unit>
             <trans-unit id="placeholder.example_icon">
                 <source>placeholder.example_icon</source>
-                <target>e.g. &lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt;</target>
+                <target>например &lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt;</target>
             </trans-unit>
 
             <trans-unit id="property.location">
                 <source>property.location</source>
-                <target>Location</target>
+                <target>Местоположение</target>
             </trans-unit>
             <trans-unit id="property.deal_type">
                 <source>property.deal_type</source>
-                <target>Deal Type</target>
+                <target>Тип сделки</target>
             </trans-unit>
             <trans-unit id="property.category">
                 <source>property.category</source>
-                <target>Category</target>
+                <target>Категория</target>
             </trans-unit>
             <trans-unit id="property.bathrooms">
                 <source>property.bathrooms</source>
-                <target>Bathrooms</target>
+                <target>Ванные</target>
             </trans-unit>
             <trans-unit id="property.bedrooms">
                 <source>property.bedrooms</source>
-                <target>Bedrooms</target>
+                <target>Комнаты</target>
             </trans-unit>
             <trans-unit id="property.max_guests">
                 <source>property.max_guests</source>
-                <target>Max Guests</target>
+                <target>Макс. гостей</target>
             </trans-unit>
             <trans-unit id="property.available_now">
                 <source>property.available_now</source>
-                <target>Available now</target>
+                <target>Доступно сейчас</target>
             </trans-unit>
             <trans-unit id="property.price">
                 <source>property.price</source>
-                <target>Price</target>
+                <target>Цена</target>
             </trans-unit>
             <trans-unit id="similar_properties">
                 <source>similar_properties</source>
-                <target>Similar Properties</target>
+                <target>Похожие объекты</target>
             </trans-unit>
             <trans-unit id="all_rights_reserved">
                 <source>all_rights_reserved</source>
@@ -860,20 +860,20 @@
             </trans-unit>
             <trans-unit id="drag_photos">
                 <source>drag_photos</source>
-                <target>Drag photos to reorder</target>
+                <target>Перетащите фотографии, чтобы изменить порядок</target>
             </trans-unit>
             <trans-unit id="click_save_reordering">
                 <source>click_save_reordering</source>
-                <target>Click 'Save Reordering' when finished.</target>
+                <target>Нажмите 'Сохранить порядкок', когда закончите</target>
             </trans-unit>
             <trans-unit id="processing">
                 <source>processing</source>
-                <target>Please wait...</target>
+                <target>Подождите...</target>
             </trans-unit>
 
             <trans-unit id="email.new_message">
                 <source>email.new_message</source>
-                <target>New Message From Your Website</target>
+                <target>Новое сообщение с вашего сайта</target>
             </trans-unit>
         </body>
     </file>

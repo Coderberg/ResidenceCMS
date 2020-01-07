@@ -25,7 +25,7 @@ $(document).ready(function () {
 
     $btnReorder.on('click', function () {
 
-        $(this).html('Save reordering');
+        $(this).html($(this).attr('data-save'));
         $(".reorder-ul").sortable({tolerance: 'pointer'});
         $('.reorder-help').slideDown('slow');
         $('.single-img').css('cursor', 'move');
@@ -34,7 +34,7 @@ $(document).ready(function () {
             if (!$('i', this).length) {
 
                 $('.reorder-ul').sortable('destroy');
-                $(this).html('<i class="fas fa-spin fa-spinner"></i> Please wait...').prop('disabled', true);
+                $(this).html('<i class="fas fa-spin fa-spinner"></i> ' + $(this).attr('data-processing')).prop('disabled', true);
 
                 let ids = [];
                 $('.reorder-ul li').each(function () {

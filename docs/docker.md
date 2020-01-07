@@ -9,7 +9,9 @@ $ git clone https://github.com/Coderberg/ResidenceCMS.git symfony
 
 2. Сreate ```.env``` files
 ```
-$ echo 'DATABASE_URL=mysql://symfony:symfony@db/symfony?serverVersion=5.7' > ./symfony/.env.local
+$ echo -e '
+DATABASE_URL=mysql://symfony:symfony@db/symfony?serverVersion=5.7\r
+LANGUAGE_CODE=en' > ./symfony/.env.local
 
 $ echo -e "\
 KERNEL_CLASS='App\Kernel'\r\

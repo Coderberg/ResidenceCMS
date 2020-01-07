@@ -51,7 +51,7 @@
     "js/photo": {
       "js": [
         "/build/runtime.ed3c6480.js",
-        "/build/js/photo.5ef2d0c4.js"
+        "/build/js/photo.a33f6fdb.js"
       ]
     },
     "js/page": {
@@ -73,7 +73,7 @@
         "/build/runtime.ed3c6480.js"
       ],
       "css": [
-        "/build/css/admin.997cec02.css"
+        "/build/css/admin.a4a7ca12.css"
       ]
     },
     "css/ekko-lightbox": {

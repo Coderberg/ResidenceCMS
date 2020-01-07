@@ -1,5 +1,5 @@
 {
-  "build/css/admin.css": "/build/css/admin.997cec02.css",
+  "build/css/admin.css": "/build/css/admin.a4a7ca12.css",
   "build/css/app.css": "/build/css/app.def3f6b2.css",
   "build/css/city.css": "/build/css/city.51164273.css",
   "build/css/detail.css": "/build/css/detail.53db9aba.css",
@@ -13,7 +13,7 @@
   "build/js/map.js": "/build/js/map.501e0900.js",
   "build/js/menu-sorting.js": "/build/js/menu-sorting.4093f42a.js",
   "build/js/page.js": "/build/js/page.9466c6cc.js",
-  "build/js/photo.js": "/build/js/photo.5ef2d0c4.js",
+  "build/js/photo.js": "/build/js/photo.a33f6fdb.js",
   "build/js/select2.js": "/build/js/select2.7eba068c.js",
   "build/js/slugger.js": "/build/js/slugger.a784f5f9.js",
   "build/runtime.js": "/build/runtime.ed3c6480.js",
