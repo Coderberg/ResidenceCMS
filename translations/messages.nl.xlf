@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="nl" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="NmAxWpr" resname="page">
+        <source>page</source>
+        <target>Pagina</target>
+      </trans-unit>
+      <trans-unit id="58q1Q2k" resname="email.new_message">
+        <source>email.new_message</source>
+        <target>Nieuw bericht</target>
+      </trans-unit>
+      <trans-unit id="DEOkZa1" resname="menu.back">
+        <source>menu.back</source>
+        <target>Terug</target>
+      </trans-unit>
+      <trans-unit id="wvvYSw_" resname="menu.admin">
+        <source>menu.admin</source>
+        <target>Beheer</target>
+      </trans-unit>
+      <trans-unit id="mMdg0uH" resname="menu.login">
+        <source>menu.login</source>
+        <target>Inloggen</target>
+      </trans-unit>
+      <trans-unit id="OYmRAJ2" resname="menu">
+        <source>menu</source>
+        <target>Menu</target>
+      </trans-unit>
+      <trans-unit id="_nt67y7" resname="action.add_menu_item">
+        <source>action.add_menu_item</source>
+        <target>Menuitem toevoegen</target>
+      </trans-unit>
+      <trans-unit id="BL1IAqs" resname="table.link_text">
+        <source>table.link_text</source>
+        <target>Linktekst</target>
+      </trans-unit>
+      <trans-unit id="1ENvZ.X" resname="table.url">
+        <source>table.url</source>
+        <target>Url</target>
+      </trans-unit>
+      <trans-unit id="irMk3Mb" resname="table.move">
+        <source>table.move</source>
+        <target>Verplaats</target>
+      </trans-unit>
+      <trans-unit id="wfSeU9G" resname="table.action">
+        <source>table.action</source>
+        <target>Bewerken</target>
+      </trans-unit>
+      <trans-unit id="exN6r4F" resname="title.add_menu_item">
+        <source>title.add_menu_item</source>
+        <target>Menuitem toevoegen</target>
+      </trans-unit>
+      <trans-unit id="HLtdhYw" resname="action.save">
+        <source>action.save</source>
+        <target>Opslaan</target>
+      </trans-unit>
+      <trans-unit id="ovKkXwU" resname="action.edit">
+        <source>action.edit</source>
+        <target>Bewerken</target>
+      </trans-unit>
+      <trans-unit id="yCRbx7H" resname="confirmation.delete_item">
+        <source>confirmation.delete_item</source>
+        <target>Item verwijderen</target>
+      </trans-unit>
+      <trans-unit id="hTKWQ6g" resname="action.delete">
+        <source>action.delete</source>
+        <target>Verwijderen</target>
+      </trans-unit>
+      <trans-unit id="w.69jaO" resname="title.edit_menu_item">
+        <source>title.edit_menu_item</source>
+        <target>Item bewerken</target>
+      </trans-unit>
+      <trans-unit id="7OZsK72" resname="all_rights_reserved">
+        <source>all_rights_reserved</source>
+        <target>Alle rechten voorbehouden</target>
+      </trans-unit>
+      <trans-unit id="lq25JFK" resname="properties">
+        <source>properties</source>
+        <target>Vastgoed</target>
+      </trans-unit>
+      <trans-unit id="8KXlYnI" resname="locations">
+        <source>locations</source>
+        <target>Locaties</target>
+      </trans-unit>
+      <trans-unit id="U.JRSIA" resname="cities">
+        <source>cities</source>
+        <target>Plaatsen</target>
+      </trans-unit>
+      <trans-unit id="qXBqbWe" resname="districts">
+        <source>districts</source>
+        <target>Wijken</target>
+      </trans-unit>
+      <trans-unit id="JsAHswD" resname="neighborhoods">
+        <source>neighborhoods</source>
+        <target>Buurten</target>
+      </trans-unit>
+      <trans-unit id="hmaIgvs" resname="metro_stations">
+        <source>metro_stations</source>
+        <target>Metrostations</target>
+      </trans-unit>
+      <trans-unit id="ScRqgBs" resname="deal_types">
+        <source>deal_types</source>
+        <target>Aanbiedingsvorm</target>
+      </trans-unit>
+      <trans-unit id="piFuoD5" resname="categories">
+        <source>categories</source>
+        <target>Categoriën</target>
+      </trans-unit>
+      <trans-unit id="v6Bi3gQ" resname="pages">
+        <source>pages</source>
+        <target>Pagina's</target>
+      </trans-unit>
+      <trans-unit id="fftM9nd" resname="users">
+        <source>users</source>
+        <target>Gebruikers</target>
+      </trans-unit>
+      <trans-unit id="4UTsL.X" resname="menu.settings">
+        <source>menu.settings</source>
+        <target>Instellingen</target>
+      </trans-unit>
+      <trans-unit id="Zs2WiKK" resname="dashboard">
+        <source>dashboard</source>
+        <target>Dashboard</target>
+      </trans-unit>
+      <trans-unit id="UoOv6mx" resname="menu.homepage">
+        <source>menu.homepage</source>
+        <target>Homepagina</target>
+      </trans-unit>
+      <trans-unit id="WrACbQw" resname="menu.catalog">
+        <source>menu.catalog</source>
+        <target>Inhoud</target>
+      </trans-unit>
+      <trans-unit id="LRhYNBg" resname="menu.add_new">
+        <source>menu.add_new</source>
+        <target>Toevoegen</target>
+      </trans-unit>
+      <trans-unit id=".JGEE0r" resname="property">
+        <source>property</source>
+        <target>Vastgoed</target>
+      </trans-unit>
+      <trans-unit id="EaYsI0E" resname="city">
+        <source>city</source>
+        <target>Plaats</target>
+      </trans-unit>
+      <trans-unit id="5TYDrns" resname="deal_type">
+        <source>deal_type</source>
+        <target>Aanbiedingsvorm</target>
+      </trans-unit>
+      <trans-unit id="7bLNO3T" resname="category">
+        <source>category</source>
+        <target>Categorie</target>
+      </trans-unit>
+      <trans-unit id="BPiZbad" resname="user">
+        <source>user</source>
+        <target>Gebruiker</target>
+      </trans-unit>
+      <trans-unit id="1oHe_Uk" resname="menu.edit_profile">
+        <source>menu.edit_profile</source>
+        <target>Bewerk profiel</target>
+      </trans-unit>
+      <trans-unit id="wBTFKFR" resname="menu.logout">
+        <source>menu.logout</source>
+        <target>Afmelden</target>
+      </trans-unit>
+      <trans-unit id="W4qLVtr" resname="features">
+        <source>features</source>
+        <target>Kenmerken</target>
+      </trans-unit>
+      <trans-unit id="Tdhb2Cb" resname="title.add_feature">
+        <source>title.add_feature</source>
+        <target>Kenmerk teovoegen</target>
+      </trans-unit>
+      <trans-unit id="KtViMZd" resname="feature">
+        <source>feature</source>
+        <target>Kenmerk</target>
+      </trans-unit>
+      <trans-unit id="jCmmqX3" resname="no_items_found">
+        <source>no_items_found</source>
+        <target>Geen items gevonden</target>
+      </trans-unit>
+      <trans-unit id="3g2vSXF" resname="label.create_feature">
+        <source>label.create_feature</source>
+        <target>Kenmerk maken</target>
+      </trans-unit>
+      <trans-unit id="OnRjAaP" resname="title.edit_feature">
+        <source>title.edit_feature</source>
+        <target>Kenmerk bewerken</target>
+      </trans-unit>
+      <trans-unit id="pNRu5U9" resname="metro_station">
+        <source>metro_station</source>
+        <target>Metrostation</target>
+      </trans-unit>
+      <trans-unit id="0NbW7JI" resname="table.city_name">
+        <source>table.city_name</source>
+        <target>Plaatsnaam</target>
+      </trans-unit>
+      <trans-unit id="ye4m8wo" resname="table.slug">
+        <source>table.slug</source>
+        <target>Slug</target>
+      </trans-unit>
+      <trans-unit id="qmDZtrN" resname="title.add_metro_station">
+        <source>title.add_metro_station</source>
+        <target>Metrostation toevoegen</target>
+      </trans-unit>
+      <trans-unit id="kKNtFfi" resname="label.create_metro_station">
+        <source>label.create_metro_station</source>
+        <target>Maak metrostation</target>
+      </trans-unit>
+      <trans-unit id="wbyQrMe" resname="title.edit_metro_station">
+        <source>title.edit_metro_station</source>
+        <target>Bewerk metrostation</target>
+      </trans-unit>
+      <trans-unit id="4QERw9r" resname="currencies">
+        <source>currencies</source>
+        <target>Valuta's</target>
+      </trans-unit>
+      <trans-unit id="iezBg11" resname="title.add_currency">
+        <source>title.add_currency</source>
+        <target>Valuta toevoegen</target>
+      </trans-unit>
+      <trans-unit id="fxzvMCD" resname="table.currency_title">
+        <source>table.currency_title</source>
+        <target>Valutanaam</target>
+      </trans-unit>
+      <trans-unit id="sA0TbFu" resname="table.code">
+        <source>table.code</source>
+        <target>Code</target>
+      </trans-unit>
+      <trans-unit id="qDk76sM" resname="label.create_currency">
+        <source>label.create_currency</source>
+        <target>Maak valuta</target>
+      </trans-unit>
+      <trans-unit id="hMoatLf" resname="title.edit_currency">
+        <source>title.edit_currency</source>
+        <target>Bewerk valuta</target>
+      </trans-unit>
+      <trans-unit id="lXCOy1Y" resname="title.settings.header_settings">
+        <source>title.settings.header_settings</source>
+        <target>Header instellingen</target>
+      </trans-unit>
+      <trans-unit id="bLyHJ5T" resname="title.settings">
+        <source>title.settings</source>
+        <target>Instellingen</target>
+      </trans-unit>
+      <trans-unit id="oVNmFbC" resname="confirmation.delete_photo">
+        <source>confirmation.delete_photo</source>
+        <target>Foto verwijderen</target>
+      </trans-unit>
+      <trans-unit id="FcXvWL8" resname="title.add_user">
+        <source>title.add_user</source>
+        <target>Gebruiker toevoegen</target>
+      </trans-unit>
+      <trans-unit id="ZzQNFRe" resname="table.username">
+        <source>table.username</source>
+        <target>Gebruikersnaam</target>
+      </trans-unit>
+      <trans-unit id="gur7Cu_" resname="table.email">
+        <source>table.email</source>
+        <target>E-mail</target>
+      </trans-unit>
+      <trans-unit id="TCm0PkD" resname="label.create_user">
+        <source>label.create_user</source>
+        <target>Maak gebruiker</target>
+      </trans-unit>
+      <trans-unit id="aHw5Vzp" resname="confirmation.delete_user">
+        <source>confirmation.delete_user</source>
+        <target>Verwijder gebruiker</target>
+      </trans-unit>
+      <trans-unit id="1sstKF9" resname="title.edit_user">
+        <source>title.edit_user</source>
+        <target>Bewerk gebruiker</target>
+      </trans-unit>
+      <trans-unit id="Fr8pdJU" resname="title.add_city">
+        <source>title.add_city</source>
+        <target>Plaats toevoegen</target>
+      </trans-unit>
+      <trans-unit id="V3ulQzk" resname="label.create_city">
+        <source>label.create_city</source>
+        <target>Maak plaats</target>
+      </trans-unit>
+      <trans-unit id="Cap3ass" resname="title.edit_city">
+        <source>title.edit_city</source>
+        <target>Bewerk plaats</target>
+      </trans-unit>
+      <trans-unit id="WzYd.jq" resname="neighborhood">
+        <source>neighborhood</source>
+        <target>Buurt</target>
+      </trans-unit>
+      <trans-unit id="VSn.8gV" resname="title.add_neighborhood">
+        <source>title.add_neighborhood</source>
+        <target>Buurt toevoegen</target>
+      </trans-unit>
+      <trans-unit id="Luiw_ej" resname="label.create_neighborhood">
+        <source>label.create_neighborhood</source>
+        <target>Maak buurt</target>
+      </trans-unit>
+      <trans-unit id="Q8MmaIh" resname="title.edit_neighborhood">
+        <source>title.edit_neighborhood</source>
+        <target>Bewerk buurt</target>
+      </trans-unit>
+      <trans-unit id="bMtElm1" resname="title.upload_photos">
+        <source>title.upload_photos</source>
+        <target>Foto's uploaden</target>
+      </trans-unit>
+      <trans-unit id="VcZND81" resname="photo">
+        <source>photo</source>
+        <target>Foto</target>
+      </trans-unit>
+      <trans-unit id="rOlspj3" resname="title.latest_properties">
+        <source>title.latest_properties</source>
+        <target>Laatste huizen</target>
+      </trans-unit>
+      <trans-unit id="W7b6Z9t" resname="label.sort_by">
+        <source>label.sort_by</source>
+        <target>Sorteren op</target>
+      </trans-unit>
+      <trans-unit id="7sWaZB7" resname="option.latest">
+        <source>option.latest</source>
+        <target>Laatste</target>
+      </trans-unit>
+      <trans-unit id="e43dVcT" resname="option.priority">
+        <source>option.priority</source>
+        <target>Prioriteit</target>
+      </trans-unit>
+      <trans-unit id="0BsIOYb" resname="property.bedrooms">
+        <source>property.bedrooms</source>
+        <target>Slaapkamers</target>
+      </trans-unit>
+      <trans-unit id="HZ2XfO." resname="title.add_property">
+        <source>title.add_property</source>
+        <target>Vastgoed toevoegen</target>
+      </trans-unit>
+      <trans-unit id="jCSEPbc" resname="label.priority_number.help">
+        <source>label.priority_number.help</source>
+        <target>De standaard prioriteit is 0; Relatief ten opzichte van de standaard kan een prioriteit hoger zijn (positieve getallen) of lager zijn (negatieve getallen).</target>
+      </trans-unit>
+      <trans-unit id="fxIofA_" resname="label.create_property">
+        <source>label.create_property</source>
+        <target>Maak vastgoed</target>
+      </trans-unit>
+      <trans-unit id="2ueVKpY" resname="action.edit_photos">
+        <source>action.edit_photos</source>
+        <target>Foto's bewerken</target>
+      </trans-unit>
+      <trans-unit id="HBBJ.6S" resname="title.edit_property">
+        <source>title.edit_property</source>
+        <target>Bewerk foto</target>
+      </trans-unit>
+      <trans-unit id="Yv2StFx" resname="title.pages">
+        <source>title.pages</source>
+        <target>Pagina's</target>
+      </trans-unit>
+      <trans-unit id="dgqVjEj" resname="title.add_page">
+        <source>title.add_page</source>
+        <target>Pagina toevoegen</target>
+      </trans-unit>
+      <trans-unit id="cAUz0vD" resname="label.create_page">
+        <source>label.create_page</source>
+        <target>Maak pagina</target>
+      </trans-unit>
+      <trans-unit id="YfGs7UW" resname="title.edit_page">
+        <source>title.edit_page</source>
+        <target>Bewerk pagina</target>
+      </trans-unit>
+      <trans-unit id="fESDzs5" resname="district">
+        <source>district</source>
+        <target>Wijk</target>
+      </trans-unit>
+      <trans-unit id="CD26QcR" resname="title.add_district">
+        <source>title.add_district</source>
+        <target>Wijk toevoegen</target>
+      </trans-unit>
+      <trans-unit id="POTsVi2" resname="label.create_district">
+        <source>label.create_district</source>
+        <target>Maak wijk</target>
+      </trans-unit>
+      <trans-unit id="cEGS8XE" resname="title.edit_district">
+        <source>title.edit_district</source>
+        <target>Bewerk wijk</target>
+      </trans-unit>
+      <trans-unit id="4t0ZL9J" resname="view_details">
+        <source>view_details</source>
+        <target>Details bekijken</target>
+      </trans-unit>
+      <trans-unit id="oMD.8K9" resname="title.add_deal_type">
+        <source>title.add_deal_type</source>
+        <target>Aanbiedingsvorm toevoegen</target>
+      </trans-unit>
+      <trans-unit id="U6srI0q" resname="table.deal_type">
+        <source>table.deal_type</source>
+        <target>Aanbiedingsvorm</target>
+      </trans-unit>
+      <trans-unit id="ZpAMa91" resname="label.create_deal_type">
+        <source>label.create_deal_type</source>
+        <target>Maak aanbiedingsvorm</target>
+      </trans-unit>
+      <trans-unit id="VAwkrBH" resname="title.edit_deal_type">
+        <source>title.edit_deal_type</source>
+        <target>Bewerk aanbiedingsvorm</target>
+      </trans-unit>
+      <trans-unit id="W7q1I1c" resname="title.add_category">
+        <source>title.add_category</source>
+        <target>Categorie toevoegen</target>
+      </trans-unit>
+      <trans-unit id="CxcXsEl" resname="table.category_name">
+        <source>table.category_name</source>
+        <target>Naam categorie</target>
+      </trans-unit>
+      <trans-unit id="QQTBlnE" resname="label.create_category">
+        <source>label.create_category</source>
+        <target>Maak categorie</target>
+      </trans-unit>
+      <trans-unit id="TXdI4vN" resname="title.edit_category">
+        <source>title.edit_category</source>
+        <target>Bewerk categorie</target>
+      </trans-unit>
+      <trans-unit id="80JoLd0" resname="title.login">
+        <source>title.login</source>
+        <target>Aanmelden</target>
+      </trans-unit>
+      <trans-unit id="LDhDPrF" resname="label.username">
+        <source>label.username</source>
+        <target>Gebruikersnaam</target>
+      </trans-unit>
+      <trans-unit id="9pvowqn" resname="label.password">
+        <source>label.password</source>
+        <target>Wachtwoord</target>
+      </trans-unit>
+      <trans-unit id="B0loISu" resname="label.remember_me">
+        <source>label.remember_me</source>
+        <target>Onthoud me</target>
+      </trans-unit>
+      <trans-unit id="z2pPSYV" resname="action.sign_in">
+        <source>action.sign_in</source>
+        <target>Inloggen</target>
+      </trans-unit>
+      <trans-unit id="xPkFNi5" resname="show_on_map">
+        <source>show_on_map</source>
+        <target>Toon op kaart</target>
+      </trans-unit>
+      <trans-unit id="c9w3oSf" resname="title.properties_on_map">
+        <source>title.properties_on_map</source>
+        <target>Vastgoed op kaart</target>
+      </trans-unit>
+      <trans-unit id="6tVIWrN" resname="widget.search">
+        <source>widget.search</source>
+        <target>Zoeken</target>
+      </trans-unit>
+      <trans-unit id="6MEvFDR" resname="widget.all_cities">
+        <source>widget.all_cities</source>
+        <target>Alle plaatsen</target>
+      </trans-unit>
+      <trans-unit id="jUVeIWn" resname="widget.all_deal_types">
+        <source>widget.all_deal_types</source>
+        <target>Alle aanbiedingsvormen</target>
+      </trans-unit>
+      <trans-unit id="llA.XNd" resname="widget.all_categories">
+        <source>widget.all_categories</source>
+        <target>Alle categoriën</target>
+      </trans-unit>
+      <trans-unit id="Z5Tdkuy" resname="label.bedrooms_number">
+        <source>label.bedrooms_number</source>
+        <target>Aantal slaapkamers</target>
+      </trans-unit>
+      <trans-unit id="kEe_Du2" resname="option.any">
+        <source>option.any</source>
+        <target>Alle</target>
+      </trans-unit>
+      <trans-unit id="vnvhiaD" resname="option.bedroom">
+        <source>option.bedroom</source>
+        <target>Slaapkamer</target>
+      </trans-unit>
+      <trans-unit id="NIKI7iF" resname="option.bedrooms">
+        <source>option.bedrooms</source>
+        <target>Slaapkamers</target>
+      </trans-unit>
+      <trans-unit id="eHX1rfL" resname="label.guests">
+        <source>label.guests</source>
+        <target>Gasten</target>
+      </trans-unit>
+      <trans-unit id="odDw0du" resname="action.search">
+        <source>action.search</source>
+        <target>Zoeken</target>
+      </trans-unit>
+      <trans-unit id="rjuOCZi" resname="widget.contact_information">
+        <source>widget.contact_information</source>
+        <target>Contactinformatie</target>
+      </trans-unit>
+      <trans-unit id="KnwI2C6" resname="widget.agent">
+        <source>widget.agent</source>
+        <target>Makelaar</target>
+      </trans-unit>
+      <trans-unit id="1MSpZ4K" resname="widget.phone">
+        <source>widget.phone</source>
+        <target>Telefoon</target>
+      </trans-unit>
+      <trans-unit id="WuxU06u" resname="widget.email">
+        <source>widget.email</source>
+        <target>E-mail</target>
+      </trans-unit>
+      <trans-unit id="j3DPU65" resname="property.location">
+        <source>property.location</source>
+        <target>Locatie</target>
+      </trans-unit>
+      <trans-unit id="u8HgocA" resname="property.deal_type">
+        <source>property.deal_type</source>
+        <target>Aanbiedingsvorm</target>
+      </trans-unit>
+      <trans-unit id="K2J79cq" resname="property.category">
+        <source>property.category</source>
+        <target>Categorie</target>
+      </trans-unit>
+      <trans-unit id="47tblYw" resname="property.bathrooms">
+        <source>property.bathrooms</source>
+        <target>Badkamers</target>
+      </trans-unit>
+      <trans-unit id="8xsSxZc" resname="property.max_guests">
+        <source>property.max_guests</source>
+        <target>Max gasten</target>
+      </trans-unit>
+      <trans-unit id="Je1AD4H" resname="property.available_now">
+        <source>property.available_now</source>
+        <target>Nu beschikbaar</target>
+      </trans-unit>
+      <trans-unit id="inmIkP6" resname="yes">
+        <source>yes</source>
+        <target>Ja</target>
+      </trans-unit>
+      <trans-unit id="sNXq0tb" resname="property.price">
+        <source>property.price</source>
+        <target>Prijs</target>
+      </trans-unit>
+      <trans-unit id="oj2C3x3" resname="similar_properties">
+        <source>similar_properties</source>
+        <target>Vergelijkbare huizen</target>
+      </trans-unit>
+      <trans-unit id="qs0xIfZ" resname="action.submit">
+        <source>action.submit</source>
+        <target>Verstuur</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
