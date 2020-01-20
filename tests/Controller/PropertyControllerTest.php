@@ -33,12 +33,18 @@ final class PropertyControllerTest extends WebTestCase
                 'published' => 1,
             ]);
 
-        $client->request('GET', sprintf(
+        $crawler = $client->request('GET', sprintf(
             '/%s/%s/%d',
             $property->getCity()->getSlug(),
             $property->getSlug(),
             $property->getId())
         );
+        $this->assertResponseIsSuccessful();
+
+        // Find link to City's page
+        $link = $crawler->filter('.overview a')->link();
+        $uri = $link->getUri();
+        $client->request('GET', $uri);
         $this->assertResponseIsSuccessful();
     }
 

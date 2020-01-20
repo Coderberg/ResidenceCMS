@@ -55,6 +55,21 @@ class City
      */
     private $metro_stations;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $meta_title;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $meta_description;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $title;
+
     public function __construct()
     {
         $this->properties = new ArrayCollection();
@@ -212,6 +227,42 @@ class City
                 $district->setCity(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMetaTitle(): ?string
+    {
+        return $this->meta_title;
+    }
+
+    public function setMetaTitle(?string $meta_title): self
+    {
+        $this->meta_title = $meta_title;
+
+        return $this;
+    }
+
+    public function getMetaDescription(): ?string
+    {
+        return $this->meta_description;
+    }
+
+    public function setMetaDescription(?string $meta_description): self
+    {
+        $this->meta_description = $meta_description;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(?string $title): self
+    {
+        $this->title = $title;
 
         return $this;
     }

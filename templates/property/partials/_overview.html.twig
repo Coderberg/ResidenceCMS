@@ -9,7 +9,7 @@
                 {% elseif property.district.name | default %}
                     {{ property.district.name }},
                 {% endif %}
-                {{ property.city.name }}
+                <a href="{{ path('city', {slug: property.city.slug}) }}">{{ property.city.name }}</a>
             </td>
         </tr>
 

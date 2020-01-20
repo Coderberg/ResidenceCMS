@@ -32,6 +32,9 @@ final class CityControllerTest extends WebTestCase
         $form = $crawler->selectButton('Create city')->form([
             'city[name]' => self::NAME,
             'city[slug]' => self::SLUG,
+            'city[title]' => self::NAME,
+            'city[meta_title]' => 'Custom Meta Title',
+            'city[meta_description]' => 'Custom Meta Description',
         ]);
         $client->submit($form);
 
@@ -44,6 +47,8 @@ final class CityControllerTest extends WebTestCase
         $this->assertNotNull($city);
         $this->assertSame(self::NAME, $city->getName());
         $this->assertSame(self::SLUG, $city->getSlug());
+        $this->assertSame('Custom Meta Title', $city->getMetaTitle());
+        $this->assertSame('Custom Meta Description', $city->getMetaDescription());
     }
 
     /**
@@ -66,6 +71,9 @@ final class CityControllerTest extends WebTestCase
 
         $form = $crawler->selectButton('Save changes')->form([
             'city[name]' => self::EDITED_NAME,
+            'city[title]' => 'Edited Title',
+            'city[meta_title]' => '',
+            'city[meta_description]' => 'Edited Meta Description',
         ]);
 
         $client->submit($form);
@@ -77,6 +85,8 @@ final class CityControllerTest extends WebTestCase
             ]);
 
         $this->assertSame(self::EDITED_NAME, $editedCity->getName());
+        $this->assertSame('Edited Title', $editedCity->getTitle());
+        $this->assertSame('Edited Meta Description', $editedCity->getMetaDescription());
     }
 
     /**
