@@ -8,6 +8,7 @@ use App\Entity\Page;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -56,7 +57,7 @@ final class PageRepository extends ServiceEntityRepository
         return $this->createPaginator($qb->getQuery(), $request);
     }
 
-    private function createPaginator(Query $query, Request $request)
+    private function createPaginator(Query $query, Request $request): PaginationInterface
     {
         $page = $request->query->getInt('page', 1);
 

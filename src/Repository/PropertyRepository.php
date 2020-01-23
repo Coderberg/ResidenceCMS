@@ -8,6 +8,7 @@ use App\Entity\Property;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
@@ -47,7 +48,7 @@ class PropertyRepository extends ServiceEntityRepository
         return (int) $limit->getSettingValue();
     }
 
-    protected function createPaginator(Query $query, int $page)
+    protected function createPaginator(Query $query, int $page): PaginationInterface
     {
         return $this->paginator->paginate($query, $page, $this->findLimit());
     }
