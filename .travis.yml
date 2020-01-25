@@ -56,4 +56,3 @@ script:
   #- php bin/console security:check
   # this checks that Doctrine's mapping configurations are valid
   - php bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
-  - composer validate
