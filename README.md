@@ -53,7 +53,7 @@ The user interface is built with [Bootstrap 4][2].
    password: admin
    ```
 
-9. To use feedback forms, configure MAILER_URL in ```.env.local```
+9. To use feedback forms, configure MAILER_DSN in ```.env.local```
 
 ## Tests
 
