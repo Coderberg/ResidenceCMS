@@ -15,7 +15,7 @@ final class SendFeedback
         $this->contact = $contact;
     }
 
-    public function getEmail(): Contact
+    public function getContact(): Contact
     {
         return $this->contact;
     }
