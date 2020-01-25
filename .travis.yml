@@ -27,8 +27,6 @@ before_install:
   - cp ./.travis/.env.local .env.local
   - cp ./.travis/.env.test.local .env.test.local
   - composer self-update
-  # Set memory to max (memory fail)
-  - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 
 addons:
   apt:
@@ -39,11 +37,10 @@ addons:
       - mysql-client
 
 install:
-  - php -r "echo ini_get('memory_limit').PHP_EOL;"
   - composer install
 
 script:
- # - php bin/console doctrine:database:create --no-interaction
+  - php bin/console doctrine:database:create --if-not-exists --no-interaction
   - php bin/console doctrine:migrations:migrate --no-interaction
   - php bin/console doctrine:fixtures:load --no-interaction
   - php bin/phpunit
@@ -59,3 +56,4 @@ script:
   #- php bin/console security:check
   # this checks that Doctrine's mapping configurations are valid
   - php bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
+  - composer validate

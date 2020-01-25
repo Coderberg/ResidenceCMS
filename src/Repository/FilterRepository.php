@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use Knp\Component\Pager\Pagination\PaginationInterface;
+
 final class FilterRepository extends PropertyRepository
 {
-    public function findByFilter($params)
+    public function findByFilter($params): PaginationInterface
     {
         $qb = $this->createQueryBuilder('p');
 
