@@ -1,16 +1,8 @@
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
 {{ form_start(form) }}
 
-    <div class="form-group">
-        {{ form_row(form.from_name) }}
-    </div>
-
-    <div class="form-group">
-        {{ form_row(form.from_email) }}
-    </div>
-
-    <div class="form-group">
-        {{ form_row(form.message) }}
-    </div>
+    {{ form_widget(form) }}
 
     <button type="submit" class="btn btn-lg btn-primary">
         {{ 'action.submit'|trans }}

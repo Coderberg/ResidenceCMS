@@ -452,7 +452,7 @@
             </trans-unit>
             <trans-unit id="title.edit_currency">
                 <source>title.edit_currency</source>
-                <target>Edit New Currency</target>
+                <target>Edit Currency</target>
             </trans-unit>
             <trans-unit id="title.add_user">
                 <source>title.add_user</source>
