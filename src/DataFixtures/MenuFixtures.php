@@ -6,7 +6,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Menu;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 
 final class MenuFixtures extends Fixture
 {

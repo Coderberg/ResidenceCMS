@@ -6,7 +6,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Settings;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 
 final class SettingsFixtures extends Fixture
 {

@@ -8,7 +8,7 @@ use App\Entity\Property;
 use App\Utils\Slugger;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 
 final class PropertyFixtures extends Fixture implements DependentFixtureInterface
 {
