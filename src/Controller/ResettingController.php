@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\Type\PasswordType;
+use App\Form\Type\UserEmailType;
 use App\Repository\ResettingRepository;
 use App\Service\ResettingService;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -22,14 +23,16 @@ final class ResettingController extends BaseController
      */
     public function passwordReset(ResettingService $service, Request $request): Response
     {
-        if ($request->get('email')
-            && $this->isCsrfTokenValid('password_reset', $request->request->get('_csrf_token'))) {
-            $status = $service->sendResetPasswordLink($request);
+        $form = $this->createForm(UserEmailType::class, []);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $service->sendResetPasswordLink($request);
         }
 
         return $this->render('resetting/password_reset.html.twig', [
             'site' => $this->site(),
-            'status' => $status ?? '',
+            'form' => $form->createView(),
         ]);
     }
 

@@ -177,14 +177,6 @@
                 <source>message.was_sent</source>
                 <target>Your message was sent successfully. Thanks.</target>
             </trans-unit>
-            <trans-unit id="message.cannot_find_a_user">
-                <source>message.cannot_find_a_user</source>
-                <target>We can't find a user with that e-mail address.</target>
-            </trans-unit>
-            <trans-unit id="message.reset_link">
-                <source>message.reset_link</source>
-                <target>We have e-mailed your password reset link!</target>
-            </trans-unit>
             <trans-unit id="message.token_expired">
                 <source>message.token_expired</source>
                 <target>Sorry, your token has expired. Please try again.</target>
@@ -196,10 +188,6 @@
             <trans-unit id="message.emailed_reset_link">
                 <source>message.emailed_reset_link</source>
                 <target>We have e-mailed your password reset link!</target>
-            </trans-unit>
-            <trans-unit id="message.user_not_found">
-                <source>message.user_not_found</source>
-                <target>We can't find a user with that e-mail address.</target>
             </trans-unit>
 
             <trans-unit id="widget.contact_information">

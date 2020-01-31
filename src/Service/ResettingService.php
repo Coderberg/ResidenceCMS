@@ -8,10 +8,11 @@ use App\Entity\User;
 use App\Message\SendResetPasswordLink;
 use App\Repository\ResettingRepository;
 use App\Utils\TokenGenerator;
+use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-final class ResettingService
+final class ResettingService extends AbstractService
 {
     const RETRY_TTL = 3600;
 
@@ -30,30 +31,28 @@ final class ResettingService
      */
     private $generator;
 
-    public function __construct(ResettingRepository $repository, MessageBusInterface $messageBus, TokenGenerator $generator)
-    {
+    public function __construct(
+        ContainerInterface $container,
+        ResettingRepository $repository,
+        MessageBusInterface $messageBus,
+        TokenGenerator $generator
+    ) {
+        parent::__construct($container);
         $this->repository = $repository;
         $this->messageBus = $messageBus;
         $this->generator = $generator;
     }
 
-    public function sendResetPasswordLink(Request $request): string
+    public function sendResetPasswordLink(Request $request): void
     {
         /** @var User $user */
-        $user = $this->repository->findOneBy(['email' => $request->get('email')]);
+        $user = $this->repository->findOneBy(['email' => $request->get('user_email')['email']]);
 
-        if ($user) {
-            if ($user->isPasswordRequestNonExpired(self::RETRY_TTL)) {
-                return '';
-            }
-
+        if (!$user->isPasswordRequestNonExpired(self::RETRY_TTL)) {
             $this->updateToken($user);
             $this->messageBus->dispatch(new SendResetPasswordLink($user));
-
-            return 'success';
+            $this->addFlash('success', 'message.emailed_reset_link');
         }
-
-        return 'error';
     }
 
     /**

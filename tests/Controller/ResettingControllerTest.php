@@ -18,15 +18,15 @@ final class ResettingControllerTest extends WebTestCase
         $this->assertSelectorTextContains('.card-header', 'Reset Password');
 
         $form = $crawler->selectButton('Send Password Reset Link')->form([
-            'email' => 'test@test.com',
+            'user_email[email]' => 'test@test.com',
         ]);
 
         $client->submit($form);
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('strong', 'We can\'t find a user with that e-mail address.');
+        $this->assertSelectorTextContains('.form-error-message', 'We can\'t find a user with that e-mail address.');
 
         $form = $crawler->selectButton('Send Password Reset Link')->form([
-            'email' => 'admin@admin.com',
+            'user_email[email]' => 'admin@admin.com',
         ]);
 
         $client->submit($form);

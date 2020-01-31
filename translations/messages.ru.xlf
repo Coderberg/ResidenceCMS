@@ -177,14 +177,6 @@
                 <source>message.was_sent</source>
                 <target>Ваше сообщение было успешно отправлено. Спасибо.</target>
             </trans-unit>
-            <trans-unit id="message.cannot_find_a_user">
-                <source>message.cannot_find_a_user</source>
-                <target>Не удаётся найти пользователя с таким адресом e-mail</target>
-            </trans-unit>
-            <trans-unit id="message.reset_link">
-                <source>message.reset_link</source>
-                <target>На вашу почту отправлена ссылка для сброса пароля!</target>
-            </trans-unit>
             <trans-unit id="message.token_expired">
                 <source>message.token_expired</source>
                 <target>Срок действия вашего токена истёк. Попробуйте заново.</target>
@@ -196,10 +188,6 @@
             <trans-unit id="message.emailed_reset_link">
                 <source>message.emailed_reset_link</source>
                 <target>Мы отправили на вашу электронную почту ссылку для сброса пароля!</target>
-            </trans-unit>
-            <trans-unit id="message.user_not_found">
-                <source>message.user_not_found</source>
-                <target>Пользователь с таким адресом электронной почты не найден.</target>
             </trans-unit>
 
             <trans-unit id="widget.contact_information">
