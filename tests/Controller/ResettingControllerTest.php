@@ -62,7 +62,7 @@ final class ResettingControllerTest extends WebTestCase
             'PHP_AUTH_PW' => 'admin',
         ]);
 
-        $crawler = $client->request('GET', '/admin');
+        $client->request('GET', '/admin');
         $this->assertSelectorTextContains('.navbar-brand', 'Dashboard');
 
         $user = $client->getContainer()->get('doctrine')

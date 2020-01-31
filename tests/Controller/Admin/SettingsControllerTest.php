@@ -49,8 +49,8 @@ final class SettingsControllerTest extends WebTestCase
         $this->assertCount(3, $crawler->filter('.property-box-img'));
 
         // Check if fixed top navigation bar is enabled
-        $this->assertCount(1, $crawler->filter('.fixed-top'));
-        $this->assertCount(1, $crawler->filter('.body'));
+        $this->assertSelectorExists('.fixed-top');
+        $this->assertSelectorExists('.body');
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
@@ -98,8 +98,8 @@ final class SettingsControllerTest extends WebTestCase
         $this->assertCount(6, $crawler->filter('.property-box-img'));
 
         // Check if fixed top navigation bar is disabled
-        $this->assertCount(0, $crawler->filter('.fixed-top'));
-        $this->assertCount(0, $crawler->filter('.body'));
+        $this->assertSelectorNotExists('.fixed-top');
+        $this->assertSelectorNotExists('.body');
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
@@ -139,7 +139,7 @@ final class SettingsControllerTest extends WebTestCase
         ]);
 
         $crawler = $client->request('GET', '/admin/setting/header');
-        $this->assertSelectorExists('html', '.gallery>ul>li>button.remove');
+        $this->assertSelectorExists('.remove');
         $client->submit($crawler->filter('#delete-form')->form());
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
