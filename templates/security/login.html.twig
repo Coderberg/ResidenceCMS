@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ 'title.login' | trans }}{% endblock %}
+
 {% block body %}
 
     <br>
@@ -64,6 +66,10 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ 'action.sign_in'|trans }}
                                 </button>
+
+                                <a class="btn btn-link" href="{{ path('password_reset') }}">
+                                    {{ 'action.forgot_password'|trans }}
+                                </a>
                             </div>
                         </div>
                     </form>

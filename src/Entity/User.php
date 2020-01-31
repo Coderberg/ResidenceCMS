@@ -73,6 +73,16 @@ class User implements UserInterface, \Serializable
      */
     private $properties;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $confirmation_token;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $password_requested_at;
+
     public function __construct()
     {
         $this->properties = new ArrayCollection();
@@ -223,5 +233,35 @@ class User implements UserInterface, \Serializable
         }
 
         return $this;
+    }
+
+    public function getConfirmationToken(): ?string
+    {
+        return $this->confirmation_token;
+    }
+
+    public function setConfirmationToken(?string $confirmation_token): self
+    {
+        $this->confirmation_token = $confirmation_token;
+
+        return $this;
+    }
+
+    public function getPasswordRequestedAt(): ?\DateTimeInterface
+    {
+        return $this->password_requested_at;
+    }
+
+    public function setPasswordRequestedAt(?\DateTimeInterface $password_requested_at): self
+    {
+        $this->password_requested_at = $password_requested_at;
+
+        return $this;
+    }
+
+    public function isPasswordRequestNonExpired($ttl)
+    {
+        return $this->getPasswordRequestedAt() instanceof \DateTime &&
+            $this->getPasswordRequestedAt()->getTimestamp() + $ttl > time();
     }
 }

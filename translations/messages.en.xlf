@@ -177,6 +177,30 @@
                 <source>message.was_sent</source>
                 <target>Your message was sent successfully. Thanks.</target>
             </trans-unit>
+            <trans-unit id="message.cannot_find_a_user">
+                <source>message.cannot_find_a_user</source>
+                <target>We can't find a user with that e-mail address.</target>
+            </trans-unit>
+            <trans-unit id="message.reset_link">
+                <source>message.reset_link</source>
+                <target>We have e-mailed your password reset link!</target>
+            </trans-unit>
+            <trans-unit id="message.token_expired">
+                <source>message.token_expired</source>
+                <target>Sorry, your token has expired. Please try again.</target>
+            </trans-unit>
+            <trans-unit id="message.password_has_been_reset">
+                <source>message.password_has_been_reset</source>
+                <target>Password has been changed successfully. Now you can log in with new password.</target>
+            </trans-unit>
+            <trans-unit id="message.emailed_reset_link">
+                <source>message.emailed_reset_link</source>
+                <target>We have e-mailed your password reset link!</target>
+            </trans-unit>
+            <trans-unit id="message.user_not_found">
+                <source>message.user_not_found</source>
+                <target>We can't find a user with that e-mail address.</target>
+            </trans-unit>
 
             <trans-unit id="widget.contact_information">
                 <source>widget.contact_information</source>
@@ -243,6 +267,14 @@
                 <source>action.sign_in</source>
                 <target>Sign in</target>
             </trans-unit>
+            <trans-unit id="action.forgot_password">
+                <source>action.forgot_password</source>
+                <target>Forgot Your Password?</target>
+            </trans-unit>
+            <trans-unit id="action.send_reset_link">
+                <source>action.send_reset_link</source>
+                <target>Send Password Reset Link</target>
+            </trans-unit>
             <trans-unit id="action.add_menu_item">
                 <source>action.add_menu_item</source>
                 <target>Add Menu Item</target>
@@ -250,6 +282,10 @@
             <trans-unit id="action.submit">
                 <source>action.submit</source>
                 <target>Submit</target>
+            </trans-unit>
+            <trans-unit id="action.continue">
+                <source>action.continue</source>
+                <target>Continue</target>
             </trans-unit>
 
             <trans-unit id="table.link_text">
@@ -321,6 +357,14 @@
             <trans-unit id="title.login">
                 <source>title.login</source>
                 <target>Secure Sign in</target>
+            </trans-unit>
+            <trans-unit id="title.reset_password">
+                <source>title.reset_password</source>
+                <target>Reset Password</target>
+            </trans-unit>
+            <trans-unit id="title.set_new_pass">
+                <source>title.set_new_pass</source>
+                <target>Set a new password</target>
             </trans-unit>
             <trans-unit id="title.pages">
                 <source>title.pages</source>
@@ -534,6 +578,14 @@
             <trans-unit id="label.password">
                 <source>label.password</source>
                 <target>Password</target>
+            </trans-unit>
+            <trans-unit id="label.new_password">
+                <source>label.new_password</source>
+                <target>New password</target>
+            </trans-unit>
+            <trans-unit id="label.confirm_password">
+                <source>label.confirm_password</source>
+                <target>Confirm new password</target>
             </trans-unit>
             <trans-unit id="label.name">
                 <source>label.name</source>
@@ -874,6 +926,18 @@
             <trans-unit id="email.new_message">
                 <source>email.new_message</source>
                 <target>New Message From Your Website</target>
+            </trans-unit>
+            <trans-unit id="resetting.email.subject">
+                <source>resetting.email.subject</source>
+                <target>Reset Password</target>
+            </trans-unit>
+            <trans-unit id="resetting.email.message">
+                <source>resetting.email.message</source>
+                <target>
+                    Hello %username%!
+                    To reset your password - please visit %confirmationUrl%
+                    Regards, the Team.
+                </target>
             </trans-unit>
         </body>
     </file>
