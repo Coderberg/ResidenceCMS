@@ -67,7 +67,7 @@ final class PhotoController extends AbstractController
      *
      * @Route("/admin/photo/sort",methods={"POST"}, name="admin_photo_sort")
      */
-    public function sort(Request $request)
+    public function sort(Request $request): Response
     {
         $ids = $request->request->get('ids');
         $repository = $this->getDoctrine()->getRepository(Photo::class);

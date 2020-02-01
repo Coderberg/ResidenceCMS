@@ -17,7 +17,7 @@ final class RegisteredUserValidator extends ConstraintValidator
         $this->userRepository = $repository;
     }
 
-    public function validate($value, Constraint $constraint)
+    public function validate($value, Constraint $constraint): void
     {
         /* @var $constraint \App\Validator\RegisteredUser */
 

@@ -16,7 +16,7 @@ class AddNeighborhoodFieldSubscriber implements EventSubscriberInterface
         return [FormEvents::POST_SET_DATA => 'onCitySelected'];
     }
 
-    public function onCitySelected(FormEvent $event)
+    public function onCitySelected(FormEvent $event): void
     {
         $form = $event->getForm();
         $data = $event->getData();

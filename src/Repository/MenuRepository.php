@@ -21,7 +21,7 @@ final class MenuRepository extends ServiceEntityRepository
         parent::__construct($registry, Menu::class);
     }
 
-    public function findItems()
+    public function findItems(): array
     {
         return $this->findBy([], ['sort_order' => 'ASC']);
     }

@@ -27,7 +27,7 @@ class AddAgentFieldSubscriber implements EventSubscriberInterface
         return [FormEvents::POST_SET_DATA => 'onAgentNotSelected'];
     }
 
-    public function onAgentNotSelected(FormEvent $event)
+    public function onAgentNotSelected(FormEvent $event): void
     {
         $form = $event->getForm();
         $data = $event->getData();

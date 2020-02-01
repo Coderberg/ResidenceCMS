@@ -27,7 +27,7 @@ final class PageService extends AbstractService
     /**
      * @throws InvalidArgumentException
      */
-    public function create(Page $page)
+    public function create(Page $page): void
     {
         // Save page
         $this->save($page);

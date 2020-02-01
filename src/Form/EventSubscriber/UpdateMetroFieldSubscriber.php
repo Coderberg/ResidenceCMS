@@ -16,7 +16,7 @@ class UpdateMetroFieldSubscriber implements EventSubscriberInterface
         return [FormEvents::POST_SUBMIT => 'onCityChanged'];
     }
 
-    public function onCityChanged(FormEvent $event)
+    public function onCityChanged(FormEvent $event): void
     {
         $form = $event->getForm();
 

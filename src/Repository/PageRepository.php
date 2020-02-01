@@ -49,7 +49,7 @@ final class PageRepository extends ServiceEntityRepository
         return (int) $limit->getSettingValue();
     }
 
-    public function findLatest(Request $request)
+    public function findLatest(Request $request): PaginationInterface
     {
         $qb = $this->createQueryBuilder('p')
             ->orderBy('p.id', 'DESC');
