@@ -21,15 +21,11 @@ final class PasswordType extends AbstractType
             ->add('password', null, [
                 'attr' => [
                     'autofocus' => true,
-                    'class' => 'form-control',
                 ],
                 'label' => 'label.new_password',
                 'constraints' => [new Length(['min' => 5])],
             ])
             ->add('password_confirmation', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.confirm_password',
                 'constraints' => [new Length(['min' => 5]), new ConfirmPassword()],
             ]);
