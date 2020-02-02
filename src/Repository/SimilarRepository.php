@@ -10,7 +10,7 @@ final class SimilarRepository extends PropertyRepository
 {
     const NUM_ITEMS = 6;
 
-    public function findSimilarProperties(Property $property)
+    public function findSimilarProperties(Property $property): array
     {
         if (!$this->isModuleEnabled()) {
             return [];
@@ -33,7 +33,7 @@ final class SimilarRepository extends PropertyRepository
         return [];
     }
 
-    private function findByArea(Property $property, $area = 'district')
+    private function findByArea(Property $property, $area = 'district'): array
     {
         $qb = $this->createQueryBuilder('p')
             ->Where('p.published = 1')

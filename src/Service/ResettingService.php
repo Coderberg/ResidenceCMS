@@ -14,8 +14,6 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 final class ResettingService extends AbstractService
 {
-    const RETRY_TTL = 3600;
-
     /**
      * @var ResettingRepository
      */
@@ -48,7 +46,7 @@ final class ResettingService extends AbstractService
         /** @var User $user */
         $user = $this->repository->findOneBy(['email' => $request->get('user_email')['email']]);
 
-        if (!$user->isPasswordRequestNonExpired(self::RETRY_TTL)) {
+        if (!$user->isPasswordRequestNonExpired($user::RETRY_TTL)) {
             $this->updateToken($user);
             $this->messageBus->dispatch(new SendResetPasswordLink($user));
             $this->addFlash('success', 'message.emailed_reset_link');

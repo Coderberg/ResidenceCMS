@@ -30,7 +30,7 @@ final class FileUploader
      */
     private $fileSystem;
 
-    public function __construct($targetDirectory)
+    public function __construct(string $targetDirectory)
     {
         $this->targetDirectory = $targetDirectory;
         $this->fileSystem = new Filesystem();

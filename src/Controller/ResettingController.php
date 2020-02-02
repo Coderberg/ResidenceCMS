@@ -16,8 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class ResettingController extends BaseController
 {
-    const TOKEN_TTL = 43200;
-
     /**
      * @Route("/password/reset", methods={"GET|POST"}, name="password_reset")
      */
@@ -47,7 +45,7 @@ final class ResettingController extends BaseController
         if (!$user) {
             // Token not found.
             return new RedirectResponse($this->generateUrl('security_login'));
-        } elseif (!$user->isPasswordRequestNonExpired(self::TOKEN_TTL)) {
+        } elseif (!$user->isPasswordRequestNonExpired($user::TOKEN_TTL)) {
             // Token has expired.
             $this->addFlash('danger', 'message.token_expired');
 

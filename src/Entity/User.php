@@ -19,6 +19,15 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User implements UserInterface, \Serializable
 {
     /**
+     * Requests older than this many seconds will be considered expired.
+     */
+    public const RETRY_TTL = 3600;
+    /**
+     * Maximum time that the confirmation token will be valid.
+     */
+    public const TOKEN_TTL = 43200;
+
+    /**
      * @var int
      *
      * @ORM\Id
@@ -259,6 +268,9 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
+    /**
+     * Checks whether the password reset request has expired.
+     */
     public function isPasswordRequestNonExpired($ttl): bool
     {
         return $this->getPasswordRequestedAt() instanceof \DateTime &&
