@@ -27,32 +27,19 @@ final class UserType extends AbstractType
             ->add('full_name', null, [
                 'attr' => [
                     'autofocus' => true,
-                    'class' => 'form-control',
                 ],
                 'label' => 'label.full_name',
             ])
             ->add('username', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.username',
             ])
             ->add('phone', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.phone',
             ])
             ->add('email', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.email',
             ])
             ->add('password', PasswordType::class, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.password',
             ]);
     }
