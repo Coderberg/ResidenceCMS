@@ -20,13 +20,11 @@ final class FeatureType extends AbstractType
             ->add('name', null, [
                 'attr' => [
                     'autofocus' => true,
-                    'class' => 'form-control',
                 ],
                 'label' => 'label.feature',
             ])
             ->add('icon', null, [
                 'attr' => [
-                    'class' => 'form-control',
                     'rows' => '1',
                     'placeholder' => 'placeholder.example_icon',
                 ],

@@ -213,9 +213,6 @@ class User implements UserInterface, \Serializable
         [$this->id, $this->username, $this->password] = unserialize($serialized, ['allowed_classes' => false]);
     }
 
-    /**
-     * @return Collection|Property[]
-     */
     public function getProperties(): Collection
     {
         return $this->properties;
@@ -271,7 +268,7 @@ class User implements UserInterface, \Serializable
     /**
      * Checks whether the password reset request has expired.
      */
-    public function isPasswordRequestNonExpired($ttl): bool
+    public function isPasswordRequestNonExpired(int $ttl): bool
     {
         return $this->getPasswordRequestedAt() instanceof \DateTime &&
             $this->getPasswordRequestedAt()->getTimestamp() + $ttl > time();

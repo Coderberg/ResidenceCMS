@@ -414,9 +414,6 @@ class Property
         return $this;
     }
 
-    /**
-     * @return Collection|Photo[]
-     */
     public function getPhotos(): Collection
     {
         return $this->photos;
@@ -457,9 +454,6 @@ class Property
         return $this;
     }
 
-    /**
-     * @return Collection|Feature[]
-     */
     public function getFeatures(): Collection
     {
         return $this->features;

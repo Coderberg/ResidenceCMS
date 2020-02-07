@@ -37,7 +37,7 @@ final class ResettingController extends BaseController
     /**
      * @Route("/password/reset/{token}", methods={"GET|POST"}, name="password_reset_confirm")
      */
-    public function passwordResetConfirm(ResettingRepository $repository, Request $request, $token): Response
+    public function passwordResetConfirm(ResettingRepository $repository, Request $request, string $token): Response
     {
         /** @var User $user */
         $user = $repository->findOneBy(['confirmation_token' => $token]);

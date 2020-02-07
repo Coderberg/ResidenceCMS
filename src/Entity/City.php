@@ -107,9 +107,6 @@ class City
         return $this;
     }
 
-    /**
-     * @return Collection|Property[]
-     */
     public function getProperties(): Collection
     {
         return $this->properties;
@@ -138,9 +135,6 @@ class City
         return $this;
     }
 
-    /**
-     * @return Collection|Neighborhood[]
-     */
     public function getNeighborhoods(): Collection
     {
         return $this->neighborhoods;
@@ -169,9 +163,6 @@ class City
         return $this;
     }
 
-    /**
-     * @return Collection|Metro[]
-     */
     public function getMetroStations(): Collection
     {
         return $this->metro_stations;
@@ -200,9 +191,6 @@ class City
         return $this;
     }
 
-    /**
-     * @return Collection|District[]
-     */
     public function getDistricts(): Collection
     {
         return $this->districts;

@@ -89,9 +89,6 @@ class Metro
         return $this;
     }
 
-    /**
-     * @return Collection|Property[]
-     */
     public function getProperties(): Collection
     {
         return $this->properties;

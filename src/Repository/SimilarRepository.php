@@ -20,7 +20,7 @@ final class SimilarRepository extends PropertyRepository
             // Find in a small area
             $result = $this->findByArea($property, 'neighborhood');
 
-            if (!$result && $property->getDistrict()) {
+            if (empty($result) && $property->getDistrict()) {
                 // Find in a larger area
                 $result = $this->findByArea($property);
             }

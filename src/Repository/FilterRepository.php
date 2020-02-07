@@ -8,7 +8,7 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 
 final class FilterRepository extends PropertyRepository
 {
-    public function findByFilter($params): PaginationInterface
+    public function findByFilter(array $params): PaginationInterface
     {
         $qb = $this->createQueryBuilder('p');
 

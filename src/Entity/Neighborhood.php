@@ -77,9 +77,6 @@ class Neighborhood
         return $this;
     }
 
-    /**
-     * @return Collection|Property[]
-     */
     public function getProperties(): Collection
     {
         return $this->properties;
