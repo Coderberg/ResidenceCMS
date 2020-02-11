@@ -27,32 +27,19 @@ final class CityType extends AbstractType
             ->add('name', null, [
                 'attr' => [
                     'autofocus' => true,
-                    'class' => 'form-control',
                 ],
                 'label' => 'label.name',
             ])
             ->add('slug', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.slug',
             ])
             ->add('title', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.title',
             ])
             ->add('meta_title', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.meta_title',
             ])
             ->add('meta_description', TextareaType::class, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.meta_description',
             ]);
     }

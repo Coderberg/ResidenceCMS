@@ -7,7 +7,7 @@ namespace App\Controller\Admin;
 use App\Form\Type\FilterSettingsType;
 use App\Form\Type\SettingsType;
 use App\Repository\SettingsRepository;
-use App\Service\SettingsService;
+use App\Service\Admin\SettingsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

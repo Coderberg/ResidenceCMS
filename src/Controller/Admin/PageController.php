@@ -7,7 +7,7 @@ namespace App\Controller\Admin;
 use App\Entity\Page;
 use App\Form\Type\PageType;
 use App\Repository\PageRepository;
-use App\Service\PageService;
+use App\Service\Admin\PageService;
 use Psr\Cache\InvalidArgumentException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

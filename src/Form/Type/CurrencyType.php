@@ -20,26 +20,16 @@ final class CurrencyType extends AbstractType
             ->add('currency_title', null, [
                 'attr' => [
                     'autofocus' => true,
-                    'class' => 'form-control',
                 ],
                 'label' => 'label.currency_title',
             ])
             ->add('code', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.code',
             ])
             ->add('symbol_left', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.symbol_left',
             ])
             ->add('symbol_right', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.symbol_right',
             ]);
     }

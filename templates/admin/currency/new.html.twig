@@ -21,23 +21,13 @@
 
         <div class="card-body">
 
+            {% form_theme form 'bootstrap_4_layout.html.twig' %}
+
             {{ form_start(form) }}
-
-            <div class="form-group">
                 {{ form_row(form.currency_title) }}
-            </div>
-
-            <div class="form-group">
                 {{ form_row(form.code) }}
-            </div>
-
-            <div class="form-group">
                 {{ form_row(form.symbol_left) }}
-            </div>
-
-            <div class="form-group">
                 {{ form_row(form.symbol_right) }}
-            </div>
 
             <div class="form-group">
 

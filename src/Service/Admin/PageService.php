@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Service;
+namespace App\Service\Admin;
 
 use App\Entity\Menu;
 use App\Entity\Page;
+use App\Service\AbstractService;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Cache\InvalidArgumentException;
 use Psr\Container\ContainerInterface;

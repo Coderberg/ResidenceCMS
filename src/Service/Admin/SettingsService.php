@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Service;
+namespace App\Service\Admin;
 
 use App\Repository\SettingsRepository;
+use App\Service\AbstractService;
+use App\Service\FileUploader;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;

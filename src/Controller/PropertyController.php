@@ -67,12 +67,4 @@ final class PropertyController extends BaseController
             ]
         );
     }
-
-    /**
-     * @Route("/property/{id<\d+>}", methods={"GET"}, name="property_show_short_link")
-     */
-    public function propertyShowShort(URLService $url, Property $property): Response
-    {
-        return $this->redirect($url->generateCanonical($property), 301);
-    }
 }

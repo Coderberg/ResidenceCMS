@@ -22,21 +22,12 @@ final class MetroType extends AbstractType
             ->add('city', EntityType::class, [
                 'class' => City::class,
                 'choice_label' => 'name',
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'city',
             ])
             ->add('name', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.metro_station_name',
             ])
             ->add('slug', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.slug',
             ]);
     }

@@ -7,7 +7,7 @@ namespace App\Controller\Admin;
 use App\Entity\Property;
 use App\Form\Type\PropertyType;
 use App\Repository\FilterRepository;
-use App\Service\PropertyService;
+use App\Service\Admin\PropertyService;
 use App\Transformer\RequestToArrayTransformer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,11 +20,11 @@ final class PropertyController extends AbstractController
     /**
      * @var PropertyService
      */
-    private $propertyService;
+    private $service;
 
-    public function __construct(PropertyService $propertyService)
+    public function __construct(PropertyService $service)
     {
-        $this->propertyService = $propertyService;
+        $this->service = $service;
     }
 
     /**
@@ -51,7 +51,7 @@ final class PropertyController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->propertyService->create($property);
+            $this->service->create($property);
 
             return $this->redirectToRoute('admin_photo_edit', ['id' => $property->getId()]);
         }
@@ -73,7 +73,7 @@ final class PropertyController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->propertyService->update($property);
+            $this->service->update($property);
 
             return $this->redirectToRoute('admin_property');
         }
@@ -95,7 +95,7 @@ final class PropertyController extends AbstractController
             return $this->redirectToRoute('admin_property');
         }
 
-        $this->propertyService->delete($property);
+        $this->service->delete($property);
 
         return $this->redirectToRoute('admin_property');
     }

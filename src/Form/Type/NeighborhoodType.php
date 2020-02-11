@@ -22,21 +22,12 @@ final class NeighborhoodType extends AbstractType
             ->add('city', EntityType::class, [
                 'class' => City::class,
                 'choice_label' => 'name',
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'city',
             ])
             ->add('name', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.neighborhood_name',
             ])
             ->add('slug', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.slug',
             ]);
     }

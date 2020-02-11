@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Service;
+namespace App\Service\Admin;
 
 use App\Entity\Property;
 use App\Message\DeletePhotos;
+use App\Service\AbstractService;
 use App\Utils\Slugger;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Cache\InvalidArgumentException;
