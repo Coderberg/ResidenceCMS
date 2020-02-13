@@ -14,6 +14,11 @@ final class FilterRepository extends PropertyRepository
 
         $qb->Where('p.published = 1');
 
+        // User
+        if (!empty($params['user'])) {
+            $qb->andWhere('p.author = '.(int) $params['user']);
+        }
+
         // City
         if ($params['city'] > 0) {
             $qb->andWhere('p.city = '.(int) $params['city']);

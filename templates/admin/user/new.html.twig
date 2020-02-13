@@ -24,6 +24,7 @@
             {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
             {{ form_start(form) }}
+                {{ form_row(form.roles) }}
                 {{ form_row(form.full_name) }}
                 {{ form_row(form.username) }}
                 {{ form_row(form.phone) }}

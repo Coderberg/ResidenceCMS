@@ -40,55 +40,7 @@
 </head>
 <body{% if site.fixed_top_navbar == '1' %} class="body"{% endif %}>
 
-<nav class="navbar {% if site.fixed_top_navbar == '1' %}fixed-top{% endif %} navbar-expand-lg navbar-light bg-white">
-
-    {% if show_back_button|default(false) %}
-        <a class="navbar-brand" href="javascript: history.back()">
-            <i class="fas fa-arrow-left"></i> {{ 'menu.back'|trans }}
-        </a>
-    {% else %}
-        <a class="navbar-brand" href="{{ path('property') }}">{{ site.name }}</a>
-    {% endif %}
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-
-            {% for item in site.menu %}
-
-                <li class="nav-item">
-                    <a class="nav-link"
-                       href="{{ item.url }}"
-                        {% if item.nofollow == true %} rel="nofollow" {% endif %}
-                        {% if item.newTab == true %} target="_blank" {% endif %}
-                    >
-                        {{ item.title }}
-                    </a>
-                </li>
-
-            {% endfor %}
-        </ul>
-
-        <ul class="navbar-nav ml-auto">
-
-            {% if is_granted('ROLE_ADMIN') %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('admin_dashboard') }}">{{ 'menu.admin'|trans }}</a>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('security_login') }}">{{ 'menu.login'|trans }}</a>
-                </li>
-            {% endif %}
-        </ul>
-
-    </div>
-</nav>
-<!-- end #menu -->
+{{ include('layout/partials/_navbar.thml.twig') }}
 
 {% block header %}{% endblock %}
 

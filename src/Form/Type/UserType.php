@@ -12,6 +12,7 @@ namespace App\Form\Type;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,6 +25,17 @@ final class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add(
+                'roles', ChoiceType::class, [
+                    'choices' => [
+                        'label.roles.admin' => 'ROLE_ADMIN',
+                    ],
+                    'expanded' => true,
+                    'multiple' => true,
+                    'label' => false,
+                    'label_attr' => ['class' => 'switch-custom'],
+                ]
+            )
             ->add('full_name', null, [
                 'attr' => [
                     'autofocus' => true,

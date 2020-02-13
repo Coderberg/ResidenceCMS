@@ -22,9 +22,17 @@
                 <source>menu.settings</source>
                 <target>Settings</target>
             </trans-unit>
+            <trans-unit id="menu.my_properties">
+                <source>menu.my_properties</source>
+                <target>My properties</target>
+            </trans-unit>
             <trans-unit id="menu.admin">
                 <source>menu.admin</source>
                 <target>Admin</target>
+            </trans-unit>
+            <trans-unit id="menu.account">
+                <source>menu.account</source>
+                <target>Account</target>
             </trans-unit>
             <trans-unit id="menu.edit_profile">
                 <source>menu.edit_profile</source>
@@ -338,6 +346,10 @@
                 <target>Are you sure you want to delete this user?</target>
             </trans-unit>
 
+            <trans-unit id="title.my_properties">
+                <source>title.my_properties</source>
+                <target>My properties</target>
+            </trans-unit>
             <trans-unit id="title.properties_on_map">
                 <source>title.properties_on_map</source>
                 <target>All properties on the map</target>
@@ -546,6 +558,10 @@
             <trans-unit id="label.settings.show_filter_by_guests">
                 <source>label.settings.show_filter_by_guests</source>
                 <target>Show filter by guests</target>
+            </trans-unit>
+            <trans-unit id="label.roles.admin">
+                <source>label.roles.admin</source>
+                <target>Admin permissions</target>
             </trans-unit>
             <trans-unit id="label.full_name">
                 <source>label.full_name</source>

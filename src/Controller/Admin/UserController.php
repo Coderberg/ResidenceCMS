@@ -6,6 +6,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\User;
 use App\Form\Type\UserType;
+use App\Repository\UserRepository;
+use App\Service\Admin\UserService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
@@ -13,24 +15,14 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 final class UserController extends AbstractController
 {
-    private $passwordEncoder;
-
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
-    {
-        $this->passwordEncoder = $passwordEncoder;
-    }
-
     /**
      * @Route("/admin/user", name="admin_user")
      */
-    public function index(): Response
+    public function index(UserRepository $repository): Response
     {
-        $repository = $this->getDoctrine()->getRepository(User::class);
-
         $users = $repository->findAll();
 
         return $this->render('admin/user/index.html.twig', [
@@ -41,7 +33,7 @@ final class UserController extends AbstractController
     /**
      * @Route("/admin/user/new", name="admin_user_new")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserService $service): Response
     {
         $user = new User();
 
@@ -50,18 +42,7 @@ final class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Encode password
-            $password = $user->getPassword();
-            $user->setPassword($this->passwordEncoder->encodePassword($user, $password));
-
-            // Set role
-            $user->setRoles(['ROLE_ADMIN']);
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-
-            $this->addFlash('success', 'message.created');
+            $service->create($user);
 
             /** @var ClickableInterface $button */
             $button = $form->get('saveAndCreateNew');
@@ -83,17 +64,12 @@ final class UserController extends AbstractController
      *
      * @Route("/admin/user/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_user_edit")
      */
-    public function edit(Request $request, User $user): Response
+    public function edit(Request $request, User $user, UserService $service): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // Encode password
-            $password = $user->getPassword();
-            $user->setPassword($this->passwordEncoder->encodePassword($user, $password));
-
-            $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', 'message.updated');
+            $service->update($user);
 
             return $this->redirectToRoute('admin_user');
         }
@@ -109,16 +85,13 @@ final class UserController extends AbstractController
      * @Route("/user/{id<\d+>}/delete", methods={"POST"}, name="admin_user_delete")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function delete(Request $request, User $user): Response
+    public function delete(Request $request, User $user, UserService $service): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
             return $this->redirectToRoute('admin_user');
         }
 
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($user);
-        $em->flush();
-        $this->addFlash('success', 'message.deleted');
+        $service->remove($user);
 
         return $this->redirectToRoute('admin_user');
     }

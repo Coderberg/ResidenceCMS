@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Service;
+namespace App\Service\User;
 
 use App\Entity\User;
 use App\Message\SendResetPasswordLink;
 use App\Repository\ResettingRepository;
+use App\Service\AbstractService;
 use App\Utils\TokenGenerator;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;

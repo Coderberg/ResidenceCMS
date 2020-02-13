@@ -24,7 +24,7 @@
                 <table class="table" style="background-color: #FFFFFF">
                     <thead class="thead">
                     <tr>
-                        <th>{{ 'table.username' | trans }}</th>
+                        <th class="hidden-sm">{{ 'table.username' | trans }}</th>
                         <th>{{ 'table.email' | trans }}</th>
                         <th>{{ 'table.action' | trans }}</th>
                     </tr>
@@ -33,7 +33,7 @@
 
                     {% for user in users %}
                         <tr>
-                            <td>{{ user.username }}</td>
+                            <td class="hidden-sm">{{ user.username }}</td>
                             <td>{{ user.email }}</td>
                             <td>
                                 {{ include('admin/user/_action_form.html.twig', {user: user}, with_context = false) }}

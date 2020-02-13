@@ -19,6 +19,8 @@ final class SecurityController extends BaseController
         // if user is already logged in, don't display the login page again
         if ($security->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute('admin_dashboard');
+        } elseif ($security->isGranted('ROLE_USER')) {
+            return $this->redirectToRoute('user_account');
         }
 
         return $this->render('security/login.html.twig', [

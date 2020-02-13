@@ -16,8 +16,6 @@ final class UserFixtures extends Fixture
      */
     private $passwordEncoder;
 
-    public const ADMIN_USER_REFERENCE = 'admin';
-
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->passwordEncoder = $passwordEncoder;
@@ -25,17 +23,28 @@ final class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $user = new User();
-        $user->setFullName('John Smith');
-        $user->setUsername('admin');
-        $user->setPassword($this->passwordEncoder->encodePassword(
-            $user, 'admin'
-        ));
-        $user->setPhone('0(0)99766899');
-        $user->setEmail('admin@admin.com');
-        $user->setRoles(['ROLE_ADMIN']);
-        $manager->persist($user);
+        foreach ($this->getUserData() as [$fullName, $username, $phone, $email, $roles]) {
+            $user = new User();
+            $user->setFullName($fullName);
+            $user->setUsername($username);
+            $user->setPassword($this->passwordEncoder->encodePassword(
+                $user, $username
+            ));
+            $user->setPhone($phone);
+            $user->setEmail($email);
+            $user->setRoles($roles);
+            $manager->persist($user);
+            $this->addReference($username, $user);
+        }
         $manager->flush();
-        $this->addReference(self::ADMIN_USER_REFERENCE, $user);
+    }
+
+    private function getUserData(): array
+    {
+        return [
+            // $cityData = [$fullName, $username, $phone, $email, $roles];
+            ['John Smith', 'admin', '0(0)99766899', 'admin@admin.com', ['ROLE_ADMIN', 'ROLE_USER']],
+            ['Rhonda Jordan', 'user', '0(0)99766899', 'user@user.com', ['ROLE_USER']],
+        ];
     }
 }

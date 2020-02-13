@@ -44,14 +44,28 @@ final class UserControllerTest extends WebTestCase
         $this->assertSame('test', $user->getUsername());
     }
 
+    public function testUserPermissions()
+    {
+        $client = static::createClient([], [
+            'PHP_AUTH_USER' => 'test',
+            'PHP_AUTH_PW' => 'test',
+        ]);
+
+        $client->request('GET', '/user/account');
+        $this->assertResponseIsSuccessful();
+
+        $client->request('GET', '/admin');
+        $this->assertResponseStatusCodeSame(403);
+    }
+
     /**
      * This test changes the database contents by editing a User.
      */
     public function testAdminEditUser()
     {
         $client = static::createClient([], [
-            'PHP_AUTH_USER' => 'test',
-            'PHP_AUTH_PW' => 'test',
+            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
+            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
         ]);
 
         $user = $client->getContainer()->get('doctrine')
@@ -63,6 +77,7 @@ final class UserControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/admin/user/'.$user.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
+            'user[roles]' => ['ROLE_ADMIN'],
             'user[username]' => 'edited',
             'user[password]' => 'test',
         ]);
@@ -76,6 +91,20 @@ final class UserControllerTest extends WebTestCase
             ]);
 
         $this->assertSame('edited', $editedUser->getUsername());
+    }
+
+    public function testAdminPermissions()
+    {
+        $client = static::createClient([], [
+            'PHP_AUTH_USER' => 'edited',
+            'PHP_AUTH_PW' => 'test',
+        ]);
+
+        $client->request('GET', '/user/account');
+        $this->assertResponseIsSuccessful();
+
+        $client->request('GET', '/admin');
+        $this->assertResponseIsSuccessful();
     }
 
     /**

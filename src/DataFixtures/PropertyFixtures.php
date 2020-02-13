@@ -14,10 +14,10 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
 {
     public function load(ObjectManager $manager): void
     {
-        foreach ($this->getPropertyData() as [$dealType, $category, $bedrooms, $guests, $city, $district,
+        foreach ($this->getPropertyData() as [$author, $dealType, $category, $bedrooms, $guests, $city, $district,
                  $neighborhood, $metro, $title, $address, $latitude, $longitude, $price, $priceType, ]) {
             $property = new Property();
-            $property->setAuthor($this->getReference(UserFixtures::ADMIN_USER_REFERENCE));
+            $property->setAuthor($author);
             $property->setDealType($dealType);
             $property->setCategory($category);
             $property->setBedroomsNumber($bedrooms);
@@ -54,11 +54,12 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
     {
         return [
             /*
-                $propertyData = [$dealType, $category, $bedrooms, $guests, $city,
+                $propertyData = [$author, $dealType, $category, $bedrooms, $guests, $city,
                                 $district $neighborhood, $metro, $title, $address,
                                 $latitude, $longitude, $price, $priceType];
             */
             [
+                $this->getReference('admin'),
                 $this->getReference('Sale'),
                 $this->getReference('Villa'),
                 5,
@@ -72,6 +73,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
                 '27.932255', '-82.533187', 1600, 'sq. foot',
             ],
             [
+                $this->getReference('admin'),
                 $this->getReference('Rent'),
                 $this->getReference('Penthouse'),
                 2,
@@ -85,6 +87,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
                 '26.701320', '-80.033688', 2000, 'mo',
             ],
             [
+                $this->getReference('admin'),
                 $this->getReference('Rent'),
                 $this->getReference('Apartment'),
                 null,
@@ -98,6 +101,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
                 '25.785107', '-80.129460', 200, 'day',
             ],
             [
+                $this->getReference('admin'),
                 $this->getReference('Rent'),
                 $this->getReference('Apartment'),
                 1,
@@ -111,6 +115,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
                 '25.785107', '-80.129460', 250, 'day',
             ],
             [
+                $this->getReference('admin'),
                 $this->getReference('Rent'),
                 $this->getReference('Apartment'),
                 1,
@@ -124,6 +129,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
                 '26.705007', '-80.033574', 180, 'day',
             ],
             [
+                $this->getReference('user'),
                 $this->getReference('Sale'),
                 $this->getReference('Apartment'),
                 2,
@@ -137,6 +143,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
                 '25.775565', '-80.190125', 190000, '',
             ],
             [
+                $this->getReference('user'),
                 $this->getReference('Rent'),
                 $this->getReference('Apartment'),
                 2,
