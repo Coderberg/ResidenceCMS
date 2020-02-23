@@ -7,7 +7,6 @@ namespace App\Repository;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 class UserRepository extends ServiceEntityRepository
 {
@@ -22,17 +21,6 @@ class UserRepository extends ServiceEntityRepository
             ->select('count(u.id)')
             ->getQuery()
             ->getSingleScalarResult();
-
-        return (int) $count;
-    }
-
-    public function findCount(): int
-    {
-        $cache = new FilesystemAdapter();
-
-        $count = $cache->get('users_count', function () {
-            return $this->countAll();
-        });
 
         return (int) $count;
     }

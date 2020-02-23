@@ -8,7 +8,6 @@ use App\Entity\Page;
 use App\Form\Type\PageType;
 use App\Repository\PageRepository;
 use App\Service\Admin\PageService;
-use Psr\Cache\InvalidArgumentException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,8 +31,6 @@ final class PageController extends AbstractController
 
     /**
      * @Route("/admin/page/new", name="admin_page_new")
-     *
-     * @throws InvalidArgumentException
      */
     public function new(Request $request, PageService $pageService): Response
     {
@@ -80,8 +77,6 @@ final class PageController extends AbstractController
      *
      * @Route("/page/{id<\d+>}/delete", methods={"POST"}, name="admin_page_delete")
      * @IsGranted("ROLE_ADMIN")
-     *
-     * @throws InvalidArgumentException
      */
     public function delete(Request $request, Page $page, PageService $pageService): Response
     {

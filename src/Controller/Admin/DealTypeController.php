@@ -6,6 +6,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\DealType;
 use App\Form\Type\DealTypeType;
+use App\Service\Admin\DealTypeService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
@@ -33,7 +34,7 @@ final class DealTypeController extends AbstractController
     /**
      * @Route("/admin/deal_type/new", name="admin_deal_type_new")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, DealTypeService $service): Response
     {
         $dealType = new DealType();
 
@@ -42,11 +43,7 @@ final class DealTypeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($dealType);
-            $em->flush();
-
-            $this->addFlash('success', 'message.created');
+            $service->create($dealType);
 
             /** @var ClickableInterface $button */
             $button = $form->get('saveAndCreateNew');
@@ -68,13 +65,12 @@ final class DealTypeController extends AbstractController
      *
      * @Route("/admin/deal_type/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_deal_type_edit")
      */
-    public function edit(Request $request, DealType $dealType): Response
+    public function edit(Request $request, DealType $dealType, DealTypeService $service): Response
     {
         $form = $this->createForm(DealTypeType::class, $dealType);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', 'message.updated');
+            $service->update($dealType);
 
             return $this->redirectToRoute('admin_deal_type');
         }
@@ -90,16 +86,13 @@ final class DealTypeController extends AbstractController
      * @Route("/deal_type/{id<\d+>}/delete", methods={"POST"}, name="admin_deal_type_delete")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function delete(Request $request, DealType $dealType): Response
+    public function delete(Request $request, DealType $dealType, DealTypeService $service): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
             return $this->redirectToRoute('admin_deal_type');
         }
 
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($dealType);
-        $em->flush();
-        $this->addFlash('success', 'message.deleted');
+        $service->remove($dealType);
 
         return $this->redirectToRoute('admin_deal_type');
     }

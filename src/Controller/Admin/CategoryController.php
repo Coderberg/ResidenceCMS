@@ -7,6 +7,7 @@ namespace App\Controller\Admin;
 use App\Entity\Category;
 use App\Form\Type\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Service\Admin\CategoryService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
@@ -32,7 +33,7 @@ final class CategoryController extends AbstractController
     /**
      * @Route("/admin/category/new", name="admin_category_new")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, CategoryService $service): Response
     {
         $category = new Category();
 
@@ -41,11 +42,7 @@ final class CategoryController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($category);
-            $em->flush();
-
-            $this->addFlash('success', 'message.created');
+            $service->create($category);
 
             /** @var ClickableInterface $button */
             $button = $form->get('saveAndCreateNew');
@@ -67,13 +64,12 @@ final class CategoryController extends AbstractController
      *
      * @Route("/admin/category/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_category_edit")
      */
-    public function edit(Request $request, Category $category): Response
+    public function edit(Request $request, Category $category, CategoryService $service): Response
     {
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', 'message.updated');
+            $service->update($category);
 
             return $this->redirectToRoute('admin_category');
         }
@@ -89,16 +85,13 @@ final class CategoryController extends AbstractController
      * @Route("/category/{id<\d+>}/delete", methods={"POST"}, name="admin_category_delete")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function delete(Request $request, Category $category): Response
+    public function delete(Request $request, Category $category, CategoryService $service): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
             return $this->redirectToRoute('admin_category');
         }
 
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($category);
-        $em->flush();
-        $this->addFlash('success', 'message.deleted');
+        $service->remove($category);
 
         return $this->redirectToRoute('admin_category');
     }

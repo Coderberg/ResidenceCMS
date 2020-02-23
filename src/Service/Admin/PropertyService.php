@@ -9,9 +9,7 @@ use App\Message\DeletePhotos;
 use App\Service\AbstractService;
 use App\Utils\Slugger;
 use Doctrine\ORM\EntityManagerInterface;
-use Psr\Cache\InvalidArgumentException;
 use Psr\Container\ContainerInterface;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 final class PropertyService extends AbstractService
@@ -43,9 +41,6 @@ final class PropertyService extends AbstractService
         $this->slugger = $slugger;
     }
 
-    /**
-     * @throws InvalidArgumentException
-     */
     public function create(Property $property): void
     {
         // Make slug
@@ -58,22 +53,6 @@ final class PropertyService extends AbstractService
         $this->save($property);
         $this->clearCache('properties_count');
         $this->addFlash('success', 'message.created');
-    }
-
-    /**
-     * Count all properties.
-     *
-     * @throws InvalidArgumentException
-     */
-    public function countAll(): int
-    {
-        $cache = new FilesystemAdapter();
-
-        $count = $cache->get('properties_count', function () {
-            return $this->em->getRepository(Property::class)->countAll();
-        });
-
-        return (int) $count;
     }
 
     public function update(Property $property): void
@@ -97,9 +76,6 @@ final class PropertyService extends AbstractService
         $this->em->flush();
     }
 
-    /**
-     * @throws InvalidArgumentException
-     */
     public function delete(Property $property): void
     {
         $this->messageBus->dispatch(new DeletePhotos($property));

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use Psr\Cache\InvalidArgumentException;
+use App\Service\Cache\ClearCache;
 use Psr\Container\ContainerInterface;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\Security\Csrf\CsrfToken;
 
 abstract class AbstractService
 {
+    use ClearCache;
     /**
      * @var ContainerInterface
      */
@@ -45,16 +45,5 @@ abstract class AbstractService
         }
 
         $this->container->get('session')->getFlashBag()->add($type, $message);
-    }
-
-    /**
-     * Clear cache by key.
-     *
-     * @throws InvalidArgumentException
-     */
-    protected function clearCache(string $key): void
-    {
-        $cache = new FilesystemAdapter();
-        $cache->delete($key);
     }
 }

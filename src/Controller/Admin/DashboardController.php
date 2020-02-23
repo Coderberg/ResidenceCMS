@@ -4,12 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
-use App\Entity\Category;
-use App\Entity\City;
-use App\Entity\DealType;
-use App\Entity\User;
-use App\Service\Admin\PageService;
-use App\Service\Admin\PropertyService;
+use App\Service\Admin\DashboardService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,33 +14,23 @@ final class DashboardController extends AbstractController
     /**
      * @Route("/admin", name="admin_dashboard")
      */
-    public function index(PageService $pageService, PropertyService $propertyService): Response
+    public function index(DashboardService $service): Response
     {
-        // Counting the number of properties
-        $properties = $propertyService->countAll();
+        $properties = $service->countProperties();
 
-        // Counting the number of cities
-        $city = $this->getDoctrine()
-            ->getRepository(City::class)->findCount();
+        $cities = $service->countCities();
 
-        // Counting the number of dealTypes
-        $dealTypes = $this->getDoctrine()
-            ->getRepository(DealType::class)->findCount();
+        $dealTypes = $service->countDealTypes();
 
-        // Counting the number of categories
-        $categories = $this->getDoctrine()
-            ->getRepository(Category::class)->findCount();
+        $categories = $service->countCategories();
 
-        // Counting the number of pages
-        $pages = $pageService->countAll();
+        $pages = $service->countPages();
 
-        // Counting the number of users
-        $users = $this->getDoctrine()
-            ->getRepository(User::class)->findCount();
+        $users = $service->countUsers();
 
         return $this->render('admin/dashboard/index.html.twig', [
             'number_of_properties' => $properties,
-            'number_of_cities' => $city,
+            'number_of_cities' => $cities,
             'number_of_deal_types' => $dealTypes,
             'number_of_categories' => $categories,
             'number_of_pages' => $pages,

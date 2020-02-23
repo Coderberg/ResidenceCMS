@@ -8,9 +8,7 @@ use App\Entity\Menu;
 use App\Entity\Page;
 use App\Service\AbstractService;
 use Doctrine\ORM\EntityManagerInterface;
-use Psr\Cache\InvalidArgumentException;
 use Psr\Container\ContainerInterface;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 final class PageService extends AbstractService
 {
@@ -25,9 +23,6 @@ final class PageService extends AbstractService
         $this->em = $entityManager;
     }
 
-    /**
-     * @throws InvalidArgumentException
-     */
     public function create(Page $page): void
     {
         // Save page
@@ -44,20 +39,6 @@ final class PageService extends AbstractService
         }
     }
 
-    /**
-     * @throws InvalidArgumentException
-     */
-    public function countAll(): int
-    {
-        $cache = new FilesystemAdapter();
-
-        $count = $cache->get('pages_count', function () {
-            return $this->em->getRepository(Page::class)->countAll();
-        });
-
-        return (int) $count;
-    }
-
     public function save(object $object): void
     {
         $this->em->persist($object);
@@ -70,9 +51,6 @@ final class PageService extends AbstractService
         $this->em->flush();
     }
 
-    /**
-     * @throws InvalidArgumentException
-     */
     public function delete(Page $page): void
     {
         // Delete page

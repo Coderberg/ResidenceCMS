@@ -7,6 +7,7 @@ namespace App\Controller\Admin;
 use App\Entity\City;
 use App\Form\Type\CityType;
 use App\Repository\CityRepository;
+use App\Service\Admin\CityService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
@@ -32,7 +33,7 @@ final class CityController extends AbstractController
     /**
      * @Route("/admin/locations/city/new", name="admin_city_new")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, CityService $service): Response
     {
         $city = new City();
 
@@ -41,11 +42,7 @@ final class CityController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($city);
-            $em->flush();
-
-            $this->addFlash('success', 'message.created');
+            $service->create($city);
 
             /** @var ClickableInterface $button */
             $button = $form->get('saveAndCreateNew');
@@ -67,14 +64,13 @@ final class CityController extends AbstractController
      *
      * @Route("/admin/locations/city/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_city_edit")
      */
-    public function edit(Request $request, City $city): Response
+    public function edit(Request $request, City $city, CityService $service): Response
     {
         $form = $this->createForm(CityType::class, $city);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', 'message.updated');
+            $service->update($city);
 
             return $this->redirectToRoute('admin_city');
         }
@@ -90,16 +86,12 @@ final class CityController extends AbstractController
      * @Route("/city/{id<\d+>}/delete", methods={"POST"}, name="admin_city_delete")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function delete(Request $request, City $city): Response
+    public function delete(Request $request, City $city, CityService $service): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
             return $this->redirectToRoute('admin_city');
         }
-
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($city);
-        $em->flush();
-        $this->addFlash('success', 'message.deleted');
+        $service->remove($city);
 
         return $this->redirectToRoute('admin_city');
     }

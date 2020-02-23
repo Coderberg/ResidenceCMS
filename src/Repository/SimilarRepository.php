@@ -36,7 +36,7 @@ final class SimilarRepository extends PropertyRepository
     private function findByArea(Property $property, $area = 'district'): array
     {
         $qb = $this->createQueryBuilder('p')
-            ->Where('p.published = 1')
+            ->where('p.published = 1')
             ->andWhere('p.id != '.(int) ($property->getId()))
             ->andWhere('p.deal_type = '.(int) ($property->getDealType()->getId()))
             ->andWhere('p.category = '.(int) ($property->getCategory()->getId()));
