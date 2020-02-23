@@ -22,30 +22,30 @@ final class CityService extends AbstractService
         $this->em = $entityManager;
     }
 
-    public function create(City $category): void
+    public function create(City $city): void
     {
-        $this->save($category);
+        $this->save($city);
         $this->clearCache('cities_count');
         $this->addFlash('success', 'message.created');
     }
 
-    public function update(City $category): void
+    public function update(City $city): void
     {
-        $this->save($category);
+        $this->save($city);
         $this->addFlash('success', 'message.updated');
     }
 
-    public function remove(City $category): void
+    public function remove(City $city): void
     {
-        $this->em->remove($category);
+        $this->em->remove($city);
         $this->em->flush();
         $this->clearCache('cities_count');
         $this->addFlash('success', 'message.deleted');
     }
 
-    private function save(City $category): void
+    private function save(City $city): void
     {
-        $this->em->persist($category);
+        $this->em->persist($city);
         $this->em->flush();
     }
 }
