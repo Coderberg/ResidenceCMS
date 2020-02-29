@@ -5,7 +5,7 @@
     "license": "MIT",
     "minimum-stability": "dev",
     "require": {
-        "php": "^7.2.5",
+        "php": "^7.2.9",
         "ext-ctype": "*",
         "ext-gd": "*",
         "gregwar/image": "^2.0",
