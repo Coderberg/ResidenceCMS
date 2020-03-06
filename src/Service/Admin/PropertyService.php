@@ -48,7 +48,7 @@ final class PropertyService extends AbstractService
 
         $property->setSlug($slug);
         $property->setPublishedAt(new \DateTime('now'));
-        $property->setPublished(true);
+        $property->setState('published');
         $property->setPriorityNumber((int) ($property->getPriorityNumber()));
         $this->save($property);
         $this->clearCache('properties_count');

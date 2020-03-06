@@ -12,7 +12,7 @@ final class FilterRepository extends PropertyRepository
     {
         $qb = $this->createQueryBuilder('p');
 
-        $qb->where('p.published = 1');
+        $qb->where("p.state = 'published'");
 
         // User
         if (!empty($params['user'])) {

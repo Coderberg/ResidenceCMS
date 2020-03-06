@@ -10,6 +10,7 @@ use App\Repository\PropertyRepository;
 use App\Repository\SimilarRepository;
 use App\Service\URLService;
 use App\Transformer\RequestToArrayTransformer;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -48,6 +49,7 @@ final class PropertyController extends BaseController
 
     /**
      * @Route("/{citySlug}/{slug}/{id<\d+>}", methods={"GET"}, name="property_show")
+     * @IsGranted("PROPERTY_VIEW", subject="property", message="Properties can only be shown to their owners.")
      */
     public function propertyShow(Request $request, URLService $url, Property $property, SimilarRepository $repository): Response
     {

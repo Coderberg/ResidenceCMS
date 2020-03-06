@@ -126,9 +126,9 @@ class Property
     private $available_now;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="string", length=255, options={"default": "pending"})
      */
-    private $published;
+    private $state = 'pending ';
 
     /**
      * @ORM\Column(type="datetime")
@@ -390,18 +390,6 @@ class Property
         return $this;
     }
 
-    public function getPublished(): ?bool
-    {
-        return $this->published;
-    }
-
-    public function setPublished(?bool $published): self
-    {
-        $this->published = $published;
-
-        return $this;
-    }
-
     public function getPublishedAt(): ?\DateTimeInterface
     {
         return $this->published_at;
@@ -523,5 +511,22 @@ class Property
         $this->max_guests = $max_guests;
 
         return $this;
+    }
+
+    public function getState(): ?string
+    {
+        return $this->state;
+    }
+
+    public function setState(string $state): self
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    public function isPublished(): bool
+    {
+        return 'published' === $this->state;
     }
 }

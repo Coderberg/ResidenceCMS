@@ -30,7 +30,7 @@ final class PropertyControllerTest extends WebTestCase
             ->get('doctrine')
             ->getRepository(Property::class)
             ->findOneBy([
-                'published' => 1,
+                'state' => 'published',
             ]);
 
         $crawler = $client->request('GET', sprintf(
