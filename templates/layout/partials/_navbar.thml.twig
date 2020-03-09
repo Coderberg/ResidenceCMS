@@ -47,7 +47,7 @@
                         <a class="dropdown-item" href="{{ path('admin_dashboard') }}">
                             {{ 'dashboard'|trans }}
                         </a>
-                        <a class="dropdown-item" href="{{ path('user_account') }}">
+                        <a class="dropdown-item" href="{{ path('user_property') }}">
                             {{ 'menu.account'|trans }}
                         </a>
                         <a class="dropdown-item" href="{{ path('admin_user_edit', {id: app.user.id}) }}">
@@ -61,7 +61,7 @@
                 </li>
             {% elseif is_granted('ROLE_USER') %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('user_account') }}">{{ 'menu.account'|trans }}</a>
+                    <a class="nav-link" href="{{ path('user_property') }}">{{ 'menu.account'|trans }}</a>
                 </li>
             {% else %}
                 <li class="nav-item">

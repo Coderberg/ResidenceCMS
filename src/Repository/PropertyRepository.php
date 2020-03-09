@@ -30,6 +30,16 @@ class PropertyRepository extends ServiceEntityRepository
         $this->paginator = $paginator;
     }
 
+    public function findAllPublished(): array
+    {
+        $qb = $this->createQueryBuilder('p');
+        $query = $qb->where("p.state = 'published'")
+            ->orderBy('p.id', 'DESC')
+            ->getQuery();
+
+        return $query->execute();
+    }
+
     public function countAll(): int
     {
         $count = $this->createQueryBuilder('p')

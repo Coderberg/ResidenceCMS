@@ -20,7 +20,7 @@ final class SecurityController extends BaseController
         if ($security->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute('admin_dashboard');
         } elseif ($security->isGranted('ROLE_USER')) {
-            return $this->redirectToRoute('user_account');
+            return $this->redirectToRoute('user_property');
         }
 
         return $this->render('security/login.html.twig', [
@@ -34,6 +34,8 @@ final class SecurityController extends BaseController
 
     /**
      * @Route("/logout", name="security_logout")
+     *
+     * @throws \Exception
      */
     public function logout(): void
     {

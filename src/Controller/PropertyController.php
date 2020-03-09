@@ -42,7 +42,7 @@ final class PropertyController extends BaseController
         return $this->render('property/map.html.twig',
             [
                 'site' => $this->site(),
-                'properties' => $repository->findAll(),
+                'properties' => $repository->findAllPublished(),
             ]
         );
     }

@@ -6,7 +6,7 @@ namespace App\Tests\Controller\User;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-final class AccountControllerTest extends WebTestCase
+final class PropertyControllerTest extends WebTestCase
 {
     public function testIndex()
     {
@@ -15,7 +15,7 @@ final class AccountControllerTest extends WebTestCase
             'PHP_AUTH_PW' => 'user',
         ]);
 
-        $crawler = $client->request('GET', '/user/account');
+        $crawler = $client->request('GET', '/user/property');
         $this->assertResponseIsSuccessful(sprintf('The %s public URL loads correctly.', '/user/account'));
         $this->assertCount(2, $crawler->filter('.property-box-img'));
         $this->assertSelectorTextContains('html', 'My properties (2)');

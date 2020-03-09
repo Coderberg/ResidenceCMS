@@ -37,7 +37,7 @@ final class SitemapController extends AbstractController
      */
     public function properties(PropertyRepository $propertyRepository): Response
     {
-        $properties = $propertyRepository->findAll();
+        $properties = $propertyRepository->findAllPublished();
 
         return $this->render('sitemap/properties.xml.twig', [
             'properties' => $properties,

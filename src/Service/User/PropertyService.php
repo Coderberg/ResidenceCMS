@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace App\Service\User;
 
-use App\Repository\FilterRepository;
+use App\Repository\UserPropertyRepository;
 use App\Transformer\RequestToArrayTransformer;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
-final class AccountService
+final class PropertyService
 {
     /**
-     * @var FilterRepository
+     * @var UserPropertyRepository
      */
     private $repository;
 
@@ -28,7 +28,7 @@ final class AccountService
     private $tokenStorage;
 
     public function __construct(
-        FilterRepository $repository,
+        UserPropertyRepository $repository,
         RequestToArrayTransformer $transformer,
         TokenStorageInterface $tokenStorage
     ) {
@@ -41,8 +41,7 @@ final class AccountService
     {
         $searchParams = $this->transformer->transform($request);
         $searchParams['user'] = $this->tokenStorage->getToken()->getUser()->getId();
-        $searchParams['sort_by'] = 'id';
 
-        return $this->repository->findByFilter($searchParams);
+        return $this->repository->findByUser($searchParams);
     }
 }

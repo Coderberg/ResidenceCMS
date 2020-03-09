@@ -51,7 +51,7 @@ final class UserControllerTest extends WebTestCase
             'PHP_AUTH_PW' => 'test',
         ]);
 
-        $client->request('GET', '/user/account');
+        $client->request('GET', '/user/property');
         $this->assertResponseIsSuccessful();
 
         $client->request('GET', '/admin');
@@ -100,7 +100,7 @@ final class UserControllerTest extends WebTestCase
             'PHP_AUTH_PW' => 'test',
         ]);
 
-        $client->request('GET', '/user/account');
+        $client->request('GET', '/user/property');
         $this->assertResponseIsSuccessful();
 
         $client->request('GET', '/admin');

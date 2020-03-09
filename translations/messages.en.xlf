@@ -26,6 +26,10 @@
                 <source>menu.my_properties</source>
                 <target>My properties</target>
             </trans-unit>
+            <trans-unit id="menu.unpublished">
+                <source>menu.unpublished</source>
+                <target>Unpublished</target>
+            </trans-unit>
             <trans-unit id="menu.admin">
                 <source>menu.admin</source>
                 <target>Admin</target>
@@ -282,6 +286,14 @@
             <trans-unit id="action.continue">
                 <source>action.continue</source>
                 <target>Continue</target>
+            </trans-unit>
+            <trans-unit id="action.publish">
+                <source>action.publish</source>
+                <target>Publish</target>
+            </trans-unit>
+            <trans-unit id="action.unpublish">
+                <source>action.unpublish</source>
+                <target>Unpublish</target>
             </trans-unit>
 
             <trans-unit id="table.link_text">

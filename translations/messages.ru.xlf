@@ -26,6 +26,10 @@
                 <source>menu.my_properties</source>
                 <target>Мои объекты</target>
             </trans-unit>
+            <trans-unit id="menu.unpublished">
+                <source>menu.unpublished</source>
+                <target>Неопубликованное</target>
+            </trans-unit>
             <trans-unit id="menu.admin">
                 <source>menu.admin</source>
                 <target>Админ</target>
@@ -282,6 +286,14 @@
             <trans-unit id="action.continue">
                 <source>action.continue</source>
                 <target>Продолжить</target>
+            </trans-unit>
+            <trans-unit id="action.publish">
+                <source>action.publish</source>
+                <target>Опубликовать</target>
+            </trans-unit>
+            <trans-unit id="action.unpublish">
+                <source>action.unpublish</source>
+                <target>Снять с публикации</target>
             </trans-unit>
 
             <trans-unit id="table.link_text">

@@ -1,0 +1,37 @@
+{% extends 'layout/base.html.twig' %}
+
+{% block title %}{{ 'title.my_properties'|trans }}{% endblock %}
+
+{% block body %}
+
+    <div class="row mt-4 mb-4">
+
+        <div class="col-md-8">
+
+            <div class="row">
+                <div class="col-sm-12 mb-3">
+                    <h3>{{ 'title.my_properties'|trans }} (<span
+                            class="js-counter">{{ properties.getTotalItemCount }}</span>)</h3>
+                </div>
+            </div>
+
+            <!-- Properties -->
+            {{ include('user/property/partials/_properties.html.twig') }}
+        </div>
+
+        <div class="col-md-4">
+            <!-- Sidebar -->
+            {{ include('user/property/partials/_sidebar.html.twig') }}
+        </div>
+
+    </div>
+
+    {{ knp_pagination_render(properties) }}
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ encore_entry_script_tags('js/user') }}
+
+{% endblock %}
