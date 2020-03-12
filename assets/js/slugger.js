@@ -1,85 +1,54 @@
-function slugify() {
-    var n = "-", t = $("#name input").val().toLowerCase(), r = {
-        "а": "a",
-        "б": "b",
-        "в": "v",
-        "г": "g",
-        "д": "d",
-        "е": "e",
-        "ё": "e",
-        "ж": "zh",
-        "з": "z",
-        "и": "i",
-        "й": "j",
-        "к": "k",
-        "л": "l",
-        "м": "m",
-        "н": "n",
-        "о": "o",
-        "п": "p",
-        "р": "r",
-        "с": "s",
-        "т": "t",
-        "у": "u",
-        "ф": "f",
-        "х": "h",
-        "ц": "c",
-        "ч": "ch",
-        "ш": "sh",
-        "щ": "sh",
-        "ъ": n,
-        "ы": "y",
-        "ь": n,
-        "э": "e",
-        "ю": "yu",
-        "я": "ya",
-        " ": n,
-        _: n,
-        "`": n,
-        "~": n,
-        "!": n,
-        "@": n,
-        "#": n,
-        $: n,
-        "%": n,
-        "^": n,
-        "&": n,
-        "*": n,
-        "(": n,
-        ")": n,
-        "-": n,
-        "=": n,
-        "+": n,
-        "[": n,
-        "]": n,
-        "\\": n,
-        "|": n,
-        "/": n,
-        ".": n,
-        ",": n,
-        "{": n,
-        "}": n,
-        "'": n,
-        '"': n,
-        ";": n,
-        ":": n,
-        "?": n,
-        "<": n,
-        ">": n,
-        "№": n
-    }, e = "", u = "";
-    for (let i = 0; i < t.length; i++) {
-        null != r[t[i]] ? u == r[t[i]] && u == n || (e += r[t[i]], u = r[t[i]]) : (e += t[i], u = t[i]);
+$(document).ready(function () {
+
+    'use strict';
+
+    function transliterate(str) {
+
+        let transliterated = [];
+        let ru = {
+            'а': 'a', 'б': 'b', 'в': 'v',
+            'г': 'g', 'д': 'd', 'е': 'e',
+            'ё': 'e', 'ж': 'zh', 'з': 'z',
+            'и': 'i', 'й': 'y', 'к': 'k',
+            'л': 'l', 'м': 'm', 'н': 'n',
+            'о': 'o', 'п': 'p', 'р': 'r',
+            'с': 's', 'т': 't', 'у': 'u',
+            'ф': 'f', 'х': 'h', 'ц': 'ts',
+            'ч': 'ch', 'ш': 'sh', 'щ': 'shch',
+            'ы': 'y', 'э': 'e', 'ю': 'iu',
+            'я': 'ya', 'ь': '', 'ъ': ''
+        };
+
+        for (let i = 0; i < str.length; ++i) {
+            transliterated.push(
+                ru[str[i]]
+                || ru[str[i].toLowerCase()] === undefined && str[i]
+                || ru[str[i].toLowerCase()].replace(/^(.)/, function (match) {
+                    return match.toUpperCase();
+                })
+            );
+        }
+
+        return transliterated.join('');
     }
-    e = TrimStr(e), $("#slug input").val(e)
-}
 
-function TrimStr(i) {
-    return (i = i.replace(/^-/, "")).replace(/-$/, "")
-}
+    function slugify(str) {
 
-$(function () {
+        return str
+            .replace(/^\s+|\s+$/g, '')
+            .toLowerCase()
+            .replace(/[^a-z0-9 -]/g, '-')
+            .replace(/\s+/g, '-')
+            .replace(/-+/g, '-')
+            .replace(/^-/, '')
+            .replace(/-$/, '');
+    }
+
     $("#name input").keyup(function () {
-        return slugify(), !1
-    })
+
+        let name = transliterate($("#name input").val());
+
+        $("#slug input").val(slugify(name));
+    });
+
 });
