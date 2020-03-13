@@ -10,8 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class DealTypeControllerTest extends WebTestCase
 {
-    private const PHP_AUTH_USER = 'admin';
-    private const PHP_AUTH_PW = 'admin';
+    private const SERVER = [
+        'PHP_AUTH_USER' => 'admin',
+        'PHP_AUTH_PW' => 'admin',
+    ];
 
     private const NAME = 'Test';
     private const SLUG = 'test';
@@ -22,10 +24,7 @@ final class DealTypeControllerTest extends WebTestCase
      */
     public function testAdminNewDealType()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/admin/deal_type/new');
 
@@ -51,10 +50,7 @@ final class DealTypeControllerTest extends WebTestCase
      */
     public function testAdminEditDealType()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $dealType = $client->getContainer()->get('doctrine')
             ->getRepository(DealType::class)
@@ -84,10 +80,7 @@ final class DealTypeControllerTest extends WebTestCase
      */
     public function testAdminDeleteDealType()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $dealType = $client->getContainer()->get('doctrine')
             ->getRepository(DealType::class)->findOneBy([

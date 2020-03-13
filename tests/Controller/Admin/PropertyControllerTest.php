@@ -16,18 +16,17 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class PropertyControllerTest extends WebTestCase
 {
-    private const PHP_AUTH_USER = 'admin';
-    private const PHP_AUTH_PW = 'admin';
+    private const SERVER = [
+        'PHP_AUTH_USER' => 'admin',
+        'PHP_AUTH_PW' => 'admin',
+    ];
 
     /**
      * This test changes the database contents by creating a new Property.
      */
     public function testAdminNewProperty()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/admin/property/new');
 
@@ -58,10 +57,7 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testAdminEditPhoto()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
@@ -80,10 +76,7 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testAdminEditProperty()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
@@ -125,10 +118,7 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testAdminDeletePhoto()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
@@ -146,10 +136,7 @@ final class PropertyControllerTest extends WebTestCase
      */
     public function testAdminDeleteProperty()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)

@@ -10,18 +10,17 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class UserControllerTest extends WebTestCase
 {
-    private const PHP_AUTH_USER = 'admin';
-    private const PHP_AUTH_PW = 'admin';
+    private const SERVER = [
+        'PHP_AUTH_USER' => 'admin',
+        'PHP_AUTH_PW' => 'admin',
+    ];
 
     /**
      * This test changes the database contents by creating a new User.
      */
     public function testAdminNewUser()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
         $crawler = $client->request('GET', '/admin/user/new');
 
         $form = $crawler->selectButton('Create user')->form([
@@ -63,10 +62,7 @@ final class UserControllerTest extends WebTestCase
      */
     public function testAdminEditUser()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $user = $client->getContainer()->get('doctrine')
             ->getRepository(User::class)
@@ -95,10 +91,7 @@ final class UserControllerTest extends WebTestCase
 
     public function testAdminPermissions()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => 'edited',
-            'PHP_AUTH_PW' => 'test',
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $client->request('GET', '/user/property');
         $this->assertResponseIsSuccessful();
@@ -112,10 +105,7 @@ final class UserControllerTest extends WebTestCase
      */
     public function testAdminDeleteUser()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $user = $client->getContainer()->get('doctrine')
             ->getRepository(User::class)->findOneBy([

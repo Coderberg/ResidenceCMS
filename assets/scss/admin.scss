@@ -144,6 +144,8 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   text-align: center;
   padding: 0.75rem 1rem;
   width: 90px;
+  color: #AEB7C2;
+  border-left: 5px solid transparent;
 }
 
 .sidebar .nav-item .nav-link span {
@@ -166,11 +168,6 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 
 .sidebar .nav-item.dropdown .dropdown-toggle::after {
   display: none;
-}
-
-.sidebar .nav-item .nav-link {
-  color: #AEB7C2;
-  border-left: 5px solid transparent;
 }
 
 .sidebar .nav-item .nav-link:active,
@@ -411,7 +408,7 @@ body.sidebar-toggled footer.sticky-footer {
 
 .input-group-text {
   background-color: #fff;
-  color: rgba(43, 51, 62, 0.38);;
+  color: rgba(43, 51, 62, 0.38);
 }
 
 .required:after {

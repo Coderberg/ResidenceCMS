@@ -10,8 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class MenuControllerTest extends WebTestCase
 {
-    private const PHP_AUTH_USER = 'admin';
-    private const PHP_AUTH_PW = 'admin';
+    private const SERVER = [
+        'PHP_AUTH_USER' => 'admin',
+        'PHP_AUTH_PW' => 'admin',
+    ];
 
     private const TITLE = 'Custom Menu Item';
     private const URL = '/?custom-link';
@@ -22,10 +24,8 @@ final class MenuControllerTest extends WebTestCase
      */
     public function testAdminNewItem(): void
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
+
         $crawler = $client->request('GET', '/admin/menu/new');
 
         $form = $crawler->selectButton('Save changes')->form([
@@ -50,10 +50,7 @@ final class MenuControllerTest extends WebTestCase
      */
     public function testAdminEditItem()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $item = $client->getContainer()->get('doctrine')
             ->getRepository(Menu::class)
@@ -83,10 +80,7 @@ final class MenuControllerTest extends WebTestCase
      */
     public function testAdminDeleteItem()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $item = $client->getContainer()->get('doctrine')
             ->getRepository(Menu::class)->findOneBy([

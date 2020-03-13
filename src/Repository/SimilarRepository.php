@@ -55,6 +55,6 @@ final class SimilarRepository extends PropertyRepository
         $repository = $this->getEntityManager()->getRepository('App:Settings');
         $state = $repository->findOneBy(['setting_name' => 'show_similar_properties']);
 
-        return ('1' === $state->getSettingValue()) ? true : false;
+        return '1' === $state->getSettingValue();
     }
 }

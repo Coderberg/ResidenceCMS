@@ -11,15 +11,14 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class SettingsControllerTest extends WebTestCase
 {
-    private const PHP_AUTH_USER = 'admin';
-    private const PHP_AUTH_PW = 'admin';
+    private const SERVER = [
+        'PHP_AUTH_USER' => 'admin',
+        'PHP_AUTH_PW' => 'admin',
+    ];
 
     public function testAdminEditSettings()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $title = $client->getContainer()->get('doctrine')
             ->getRepository(Settings::class)->findOneBy(['setting_name' => 'title'])->getSettingValue();
@@ -66,10 +65,7 @@ final class SettingsControllerTest extends WebTestCase
 
     public function testChangeBackSettings()
     {
-        $client = static::createClient([], [
-                'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-                'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-            ]);
+        $client = static::createClient([], self::SERVER);
 
         $title = $client->getContainer()->get('doctrine')
                 ->getRepository(Settings::class)->findOneBy(['setting_name' => 'title'])->getSettingValue();
@@ -115,10 +111,7 @@ final class SettingsControllerTest extends WebTestCase
 
     public function testUploadHeaderImage()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/admin/setting/header');
         $this->assertSelectorTextContains('html', 'Header settings');
@@ -133,10 +126,7 @@ final class SettingsControllerTest extends WebTestCase
 
     public function testDeleteHeaderImage()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/admin/setting/header');
         $this->assertSelectorExists('.remove');

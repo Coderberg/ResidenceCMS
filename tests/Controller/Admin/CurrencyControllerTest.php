@@ -10,8 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class CurrencyControllerTest extends WebTestCase
 {
-    private const PHP_AUTH_USER = 'admin';
-    private const PHP_AUTH_PW = 'admin';
+    private const SERVER = [
+        'PHP_AUTH_USER' => 'admin',
+        'PHP_AUTH_PW' => 'admin',
+    ];
 
     private const CURRENCY = 'NEW';
     private const EDITED = 'EDT';
@@ -21,10 +23,7 @@ final class CurrencyControllerTest extends WebTestCase
      */
     public function testAdminNewCurrency()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/admin/currency/new');
 
@@ -49,10 +48,7 @@ final class CurrencyControllerTest extends WebTestCase
      */
     public function testAdminEditCurrency()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $currency = $client->getContainer()->get('doctrine')
             ->getRepository(Currency::class)
@@ -83,10 +79,7 @@ final class CurrencyControllerTest extends WebTestCase
      */
     public function testAdminDeleteCurrency()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $currency = $client->getContainer()->get('doctrine')
             ->getRepository(Currency::class)->findOneBy([

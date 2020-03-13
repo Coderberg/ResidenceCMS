@@ -11,8 +11,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class PageControllerTest extends WebTestCase
 {
-    private const PHP_AUTH_USER = 'admin';
-    private const PHP_AUTH_PW = 'admin';
+    private const SERVER = [
+        'PHP_AUTH_USER' => 'admin',
+        'PHP_AUTH_PW' => 'admin',
+    ];
 
     private const TITLE = 'Test';
     private const SLUG = 'test';
@@ -23,10 +25,7 @@ final class PageControllerTest extends WebTestCase
      */
     public function testAdminNewPage()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
         $crawler = $client->request('GET', '/admin/page/new');
 
         $form = $crawler->selectButton('Create page')->form([
@@ -61,10 +60,7 @@ final class PageControllerTest extends WebTestCase
      */
     public function testAdminEditPage()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $page = $client->getContainer()->get('doctrine')
             ->getRepository(Page::class)
@@ -94,10 +90,7 @@ final class PageControllerTest extends WebTestCase
      */
     public function testAdminDeletePage()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $page = $client->getContainer()->get('doctrine')
             ->getRepository(Page::class)->findOneBy([

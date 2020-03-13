@@ -10,8 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class FeatureControllerTest extends WebTestCase
 {
-    private const PHP_AUTH_USER = 'admin';
-    private const PHP_AUTH_PW = 'admin';
+    private const SERVER = [
+        'PHP_AUTH_USER' => 'admin',
+        'PHP_AUTH_PW' => 'admin',
+    ];
 
     private const FEATURE = 'New feature';
     private const EDITED = 'Edited feature';
@@ -21,10 +23,7 @@ final class FeatureControllerTest extends WebTestCase
      */
     public function testAdminNewFeature()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/admin/feature/new');
 
@@ -48,10 +47,7 @@ final class FeatureControllerTest extends WebTestCase
      */
     public function testAdminEditFeature()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $feature = $client->getContainer()->get('doctrine')
             ->getRepository(Feature::class)
@@ -81,10 +77,7 @@ final class FeatureControllerTest extends WebTestCase
      */
     public function testAdminDeleteFeature()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $feature = $client->getContainer()->get('doctrine')
             ->getRepository(Feature::class)->findOneBy([

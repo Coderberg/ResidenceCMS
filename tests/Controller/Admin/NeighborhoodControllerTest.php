@@ -10,8 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class NeighborhoodControllerTest extends WebTestCase
 {
-    private const PHP_AUTH_USER = 'admin';
-    private const PHP_AUTH_PW = 'admin';
+    private const SERVER = [
+        'PHP_AUTH_USER' => 'admin',
+        'PHP_AUTH_PW' => 'admin',
+    ];
 
     private const NAME = 'Test';
     private const SLUG = 'test';
@@ -22,10 +24,7 @@ final class NeighborhoodControllerTest extends WebTestCase
      */
     public function testAdminNewNeighborhood()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
         $crawler = $client->request('GET', '/admin/locations/neighborhood/new');
 
         $form = $crawler->selectButton('Create neighborhood')->form([
@@ -50,10 +49,7 @@ final class NeighborhoodControllerTest extends WebTestCase
      */
     public function testAdminEditNeighborhood()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $neighborhood = $client->getContainer()->get('doctrine')
             ->getRepository(Neighborhood::class)
@@ -83,10 +79,7 @@ final class NeighborhoodControllerTest extends WebTestCase
      */
     public function testAdminDeleteNeighborhood()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $neighborhood = $client->getContainer()->get('doctrine')
             ->getRepository(Neighborhood::class)->findOneBy([

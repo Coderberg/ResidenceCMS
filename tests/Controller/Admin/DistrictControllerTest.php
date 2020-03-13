@@ -10,8 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class DistrictControllerTest extends WebTestCase
 {
-    private const PHP_AUTH_USER = 'admin';
-    private const PHP_AUTH_PW = 'admin';
+    private const SERVER = [
+        'PHP_AUTH_USER' => 'admin',
+        'PHP_AUTH_PW' => 'admin',
+    ];
 
     private const NAME = 'Test';
     private const SLUG = 'test';
@@ -22,10 +24,7 @@ final class DistrictControllerTest extends WebTestCase
      */
     public function testAdminNewDistrict()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
         $crawler = $client->request('GET', '/admin/locations/district/new');
 
         $form = $crawler->selectButton('Create district')->form([
@@ -50,10 +49,7 @@ final class DistrictControllerTest extends WebTestCase
      */
     public function testAdminEditDistrict()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $district = $client->getContainer()->get('doctrine')
             ->getRepository(District::class)
@@ -83,10 +79,7 @@ final class DistrictControllerTest extends WebTestCase
      */
     public function testAdminDeleteDistrict()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/admin/locations/district');
 

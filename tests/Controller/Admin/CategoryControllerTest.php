@@ -10,8 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class CategoryControllerTest extends WebTestCase
 {
-    private const PHP_AUTH_USER = 'admin';
-    private const PHP_AUTH_PW = 'admin';
+    private const SERVER = [
+        'PHP_AUTH_USER' => 'admin',
+        'PHP_AUTH_PW' => 'admin',
+    ];
 
     private const NAME = 'Test';
     private const SLUG = 'test';
@@ -22,10 +24,7 @@ final class CategoryControllerTest extends WebTestCase
      */
     public function testAdminNewCategory()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
         $crawler = $client->request('GET', '/admin/category/new');
 
         $form = $crawler->selectButton('Create category')->form([
@@ -50,10 +49,7 @@ final class CategoryControllerTest extends WebTestCase
      */
     public function testAdminEditCategory()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $category = $client->getContainer()->get('doctrine')
             ->getRepository(Category::class)
@@ -83,10 +79,7 @@ final class CategoryControllerTest extends WebTestCase
      */
     public function testAdminDeleteCategory()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => self::PHP_AUTH_USER,
-            'PHP_AUTH_PW' => self::PHP_AUTH_PW,
-        ]);
+        $client = static::createClient([], self::SERVER);
 
         $category = $client->getContainer()->get('doctrine')
             ->getRepository(Category::class)->findOneBy([
