@@ -33,7 +33,7 @@ final class PropertyController extends BaseController
      * @Route("/user/property/{id<\d+>}/publish", methods={"GET"}, name="user_property_publish")
      * @IsGranted("PROPERTY_EDIT", subject="property", message="You cannot change this property.")
      */
-    public function publish(Property $property, UserPropertyRepository $repository)
+    public function publish(Property $property, UserPropertyRepository $repository): JsonResponse
     {
         if ($repository->changeState($property, 'published')) {
             return new JsonResponse(['status' => 'ok']);
@@ -46,7 +46,7 @@ final class PropertyController extends BaseController
      * @Route("/user/property/{id<\d+>}/unpublish", methods={"GET"}, name="user_property_unpublish")
      * @IsGranted("PROPERTY_EDIT", subject="property", message="You cannot change this property.")
      */
-    public function unPublish(Property $property, UserPropertyRepository $repository)
+    public function unpublish(Property $property, UserPropertyRepository $repository): JsonResponse
     {
         if ($repository->changeState($property, 'private')) {
             return new JsonResponse(['status' => 'ok']);
