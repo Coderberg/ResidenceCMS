@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     let $city = $('#property_city');
     let $title = $('#property_title');
-    let $description = $('#property_description');
+    let $description = $('#property_meta_description');
     let $address = $('#property_address');
     let $content = $('#property_content');
 
