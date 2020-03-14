@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\MessageHandler;
 
-use App\Entity\Contact;
+use App\Dto\FeedbackDto;
 use App\Mailer\Mailer;
 use App\Message\SendFeedback;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
@@ -32,18 +32,18 @@ final class SendFeedbackHandler implements MessageHandlerInterface
 
     public function __invoke(SendFeedback $sendFeedback)
     {
-        /** @var Contact $contact */
-        $contact = $sendFeedback->getContact();
+        /** @var FeedbackDto $feedback */
+        $feedback = $sendFeedback->getFeedback();
 
         $subject = $this->translator->trans('email.new_message');
 
         $email = (new Email())
-            ->from(new Address($contact->getFromEmail(), $contact->getFromName()))
-            ->to($contact->getToEmail())
-            ->replyTo($contact->getFromEmail())
+            ->from(new Address($feedback->getFromEmail(), $feedback->getFromName()))
+            ->to($feedback->getToEmail())
+            ->replyTo($feedback->getFromEmail())
             ->subject($subject)
-            ->text($contact->getMessage())
-            ->html($contact->getMessage());
+            ->text($feedback->getMessage())
+            ->html($feedback->getMessage());
 
         $this->mailer->send($email);
     }

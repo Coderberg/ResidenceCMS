@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Message;
 
-use App\Entity\Contact;
+use App\Dto\FeedbackDto;
 
 final class SendFeedback
 {
-    private $contact;
+    private $feedback;
 
-    public function __construct(Contact $contact)
+    public function __construct(FeedbackDto $feedback)
     {
-        $this->contact = $contact;
+        $this->feedback = $feedback;
     }
 
-    public function getContact(): Contact
+    public function getFeedback(): FeedbackDto
     {
-        return $this->contact;
+        return $this->feedback;
     }
 }

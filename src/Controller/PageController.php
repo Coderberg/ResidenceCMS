@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\Contact;
+use App\Dto\FeedbackDto;
 use App\Entity\Page;
-use App\Form\Type\ContactType;
+use App\Form\Type\FeedbackType;
 use App\Message\SendFeedback;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,14 +21,14 @@ final class PageController extends BaseController
     public function pageShow(Request $request, Page $page, MessageBusInterface $messageBus): Response
     {
         if ($page->getAddContactForm() && '' !== $page->getContactEmailAddress()) {
-            $contact = new Contact();
-            $contact->setToEmail($page->getContactEmailAddress());
+            $feedback = new FeedbackDto();
+            $feedback->setToEmail($page->getContactEmailAddress());
 
-            $form = $this->createForm(ContactType::class, $contact);
+            $form = $this->createForm(FeedbackType::class, $feedback);
             $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
-                $messageBus->dispatch(new SendFeedback($contact));
+                $messageBus->dispatch(new SendFeedback($feedback));
                 $this->addFlash('success', 'message.was_sent');
 
                 return $this->redirectToRoute('page', ['slug' => $page->getSlug()]);

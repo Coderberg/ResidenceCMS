@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Form\Type;
 
-use App\Entity\Contact;
+use App\Dto\FeedbackDto;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class ContactType extends AbstractType
+final class FeedbackType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -35,7 +35,7 @@ final class ContactType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Contact::class,
+            'data_class' => FeedbackDto::class,
         ]);
     }
 }

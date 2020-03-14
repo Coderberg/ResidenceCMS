@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Entity;
+namespace App\Dto;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-class Contact
+final class FeedbackDto
 {
     /**
      * @var string|null

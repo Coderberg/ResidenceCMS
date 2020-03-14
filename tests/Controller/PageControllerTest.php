@@ -39,9 +39,9 @@ final class PageControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
 
         $form = $crawler->selectButton('Submit')->form([
-            'contact[from_name]' => 'Tester',
-            'contact[from_email]' => 'test@test.com',
-            'contact[message]' => 'Let\'s test it!',
+            'feedback[from_name]' => 'Tester',
+            'feedback[from_email]' => 'test@test.com',
+            'feedback[message]' => 'Let\'s test it!',
         ]);
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
