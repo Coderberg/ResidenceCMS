@@ -59,7 +59,7 @@ class Photo
         return $this->photo;
     }
 
-    public function setPhoto($photo)
+    public function setPhoto(string $photo)
     {
         $this->photo = $photo;
 

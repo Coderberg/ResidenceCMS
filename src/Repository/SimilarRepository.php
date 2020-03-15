@@ -33,7 +33,7 @@ final class SimilarRepository extends PropertyRepository
         return [];
     }
 
-    private function findByArea(Property $property, $area = 'district'): array
+    private function findByArea(Property $property, string $area = 'district'): array
     {
         $qb = $this->createQueryBuilder('p')
             ->where("p.state = 'published'")
