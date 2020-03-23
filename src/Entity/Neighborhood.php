@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Entity\Traits\EntityIdTrait;
+use App\Entity\Traits\EntityNameTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -17,16 +18,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class Neighborhood
 {
     use EntityIdTrait;
-
-    /**
-     * @ORM\Column(type="string", length=255, unique=true)
-     */
-    private $slug;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $name;
+    use EntityNameTrait;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="neighborhood")
@@ -42,30 +34,6 @@ class Neighborhood
     public function __construct()
     {
         $this->properties = new ArrayCollection();
-    }
-
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     public function getProperties(): Collection
