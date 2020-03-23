@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Traits\EntityIdTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -12,12 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Photo
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    use EntityIdTrait;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="photos")
@@ -36,11 +32,6 @@ class Photo
      * @ORM\Column(type="integer", nullable=true)
      */
     private $sort_order;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getProperty(): ?Property
     {

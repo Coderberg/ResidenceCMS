@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Traits\EntityIdTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -18,6 +19,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User implements UserInterface, \Serializable
 {
+    use EntityIdTrait;
     /**
      * Requests older than this many seconds will be considered expired.
      */
@@ -27,14 +29,6 @@ class User implements UserInterface, \Serializable
      */
     public const TOKEN_TTL = 43200;
 
-    /**
-     * @var int
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
     /**
      * @var string
      *
@@ -95,11 +89,6 @@ class User implements UserInterface, \Serializable
     public function __construct()
     {
         $this->properties = new ArrayCollection();
-    }
-
-    public function getId(): int
-    {
-        return $this->id;
     }
 
     public function setFullName(string $fullName): void

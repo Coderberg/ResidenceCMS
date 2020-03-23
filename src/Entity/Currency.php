@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Traits\EntityIdTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,12 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Currency
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    use EntityIdTrait;
 
     /**
      * @ORM\Column(type="string", length=32)
@@ -37,11 +33,6 @@ class Currency
      * @ORM\Column(type="string", length=12, nullable=true)
      */
     private $symbol_right;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getCurrencyTitle(): ?string
     {
