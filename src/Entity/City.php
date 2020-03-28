@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Entity\Traits\EntityIdTrait;
+use App\Entity\Traits\EntityMetaTrait;
 use App\Entity\Traits\EntityNameTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -19,6 +20,7 @@ class City
 {
     use EntityIdTrait;
     use EntityNameTrait;
+    use EntityMetaTrait;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="city")
@@ -42,16 +44,6 @@ class City
      * @ORM\OrderBy({"name" = "ASC"})
      */
     private $metro_stations;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $meta_title;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $meta_description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -174,30 +166,6 @@ class City
                 $district->setCity(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getMetaTitle(): ?string
-    {
-        return $this->meta_title;
-    }
-
-    public function setMetaTitle(?string $meta_title): self
-    {
-        $this->meta_title = $meta_title;
-
-        return $this;
-    }
-
-    public function getMetaDescription(): ?string
-    {
-        return $this->meta_description;
-    }
-
-    public function setMetaDescription(?string $meta_description): self
-    {
-        $this->meta_description = $meta_description;
 
         return $this;
     }

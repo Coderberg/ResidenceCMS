@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Entity\Traits\EntityIdTrait;
+use App\Entity\Traits\EntityMetaTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -15,6 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Property
 {
     use EntityIdTrait;
+    use EntityMetaTrait;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="properties")
@@ -50,16 +52,6 @@ class Property
      * @ORM\Column(type="string", length=255)
      */
     private $title;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $meta_title;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $meta_description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -221,30 +213,6 @@ class Property
     public function setTitle(string $title): self
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function getMetaTitle(): ?string
-    {
-        return $this->meta_title;
-    }
-
-    public function setMetaTitle(?string $meta_title): self
-    {
-        $this->meta_title = $meta_title;
-
-        return $this;
-    }
-
-    public function getMetaDescription(): ?string
-    {
-        return $this->meta_description;
-    }
-
-    public function setMetaDescription(string $meta_description): self
-    {
-        $this->meta_description = $meta_description;
 
         return $this;
     }
