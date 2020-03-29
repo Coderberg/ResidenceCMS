@@ -64,8 +64,9 @@
                     <span class="attribute">{{ property.category.name }}</span>
 
                     {% if property.bedroomsNumber %}
-                        <span
-                            class="attribute">{{ 'property.bedrooms'|trans }}: {{ property.bedroomsNumber }}</span>
+                        <span class="attribute">
+                            {{ 'property.bedrooms'|trans }}: {{ property.bedroomsNumber }}
+                        </span>
                     {% endif %}
 
                     <br>
@@ -84,6 +85,9 @@
                         </a>
 
                     {% endif %}
+
+                    <a href="{{ url('user_property_edit', {id: property.id}) }}"
+                       class="btn btn-light mt-3">{{ 'action.edit' | trans }}</a>
 
                 </div>
             </div>

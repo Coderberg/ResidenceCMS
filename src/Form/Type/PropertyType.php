@@ -28,6 +28,7 @@ use App\Form\EventSubscriber\UpdateMetroFieldSubscriber;
 use App\Form\EventSubscriber\UpdateNeighborhoodFieldSubscriber;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -55,18 +56,12 @@ final class PropertyType extends AbstractType
                 'class' => City::class,
                 'choice_label' => 'name',
                 'placeholder' => 'placeholder.select_city',
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.city',
             ])
             ->add('district', EntityType::class, [
                 'class' => District::class,
                 'choice_label' => 'name',
                 'placeholder' => 'placeholder.select_district',
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.district',
                 'required' => false,
                 'choices' => [],
@@ -75,9 +70,6 @@ final class PropertyType extends AbstractType
                 'class' => Neighborhood::class,
                 'choice_label' => 'name',
                 'placeholder' => 'placeholder.select_neighborhood',
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.neighborhood',
                 'required' => false,
                 'choices' => [],
@@ -86,9 +78,6 @@ final class PropertyType extends AbstractType
                 'class' => Metro::class,
                 'choice_label' => 'name',
                 'placeholder' => 'placeholder.select_metro_station',
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.metro_station_name',
                 'required' => false,
                 'choices' => [],
@@ -96,129 +85,63 @@ final class PropertyType extends AbstractType
             ->add('dealType', EntityType::class, [
                 'class' => DealType::class,
                 'choice_label' => 'name',
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.deal_type',
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.category',
             ])
             ->add('bathrooms_number', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.bathrooms_number',
             ])
             ->add('bedrooms_number', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.bedrooms_number',
             ])
             ->add('max_guests', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.max_guests',
             ])
             ->add('title', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.title',
             ])
             ->add('meta_title', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.meta_title',
             ])
             ->add('meta_description', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.meta_description',
             ])
             ->add('address', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.address',
             ])
             ->add('latitude', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.latitude',
             ])
             ->add('longitude', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.longitude',
             ])
-            ->add('show_map', null, [
-                'attr' => [
-                    'class' => 'custom-control-input',
-                ],
+            ->add('show_map', CheckboxType::class, [
                 'label' => 'label.show_map',
-                'label_attr' => [
-                    'class' => 'custom-control-label',
-                ],
+                'label_attr' => ['class' => 'switch-custom'],
+                'required' => false,
             ])
             ->add('price', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.price',
             ])
             ->add('price_type', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.price_type',
             ])
-            ->add('available_now', null, [
-                    'attr' => [
-                        'class' => 'custom-control-input',
-                    ],
-                    'label' => 'label.available_now',
-                    'label_attr' => [
-                        'class' => 'custom-control-label',
-                    ],
-                ]
-            )
+            ->add('available_now', CheckboxType::class, [
+                'label' => 'label.available_now',
+                'label_attr' => ['class' => 'switch-custom'],
+                'required' => false,
+            ])
             ->add('features', EntityType::class, [
                 'class' => Feature::class,
                 'choice_label' => 'name',
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'multiple' => true,
                 'required' => false,
                 'label' => 'label.features',
                 //'expanded' => true
-            ])
-            ->add('priority_number', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
-                'label' => 'label.priority_number',
-                'required' => false,
-            ])
-            ->add('author', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'full_name',
-                'attr' => [
-                    'class' => 'form-control',
-                ],
-                'label' => 'label.agent',
             ])
             ->add('content', TextareaType::class, [
                 'attr' => [
@@ -228,16 +151,36 @@ final class PropertyType extends AbstractType
                 'label' => 'label.content',
             ]);
 
+        $builder->addEventSubscriber(new AddNeighborhoodFieldSubscriber())
+            ->get('city')->addEventSubscriber(new UpdateNeighborhoodFieldSubscriber());
+
+        $builder->addEventSubscriber(new AddDistrictFieldSubscriber())
+            ->get('city')->addEventSubscriber(new UpdateDistrictFieldSubscriber());
+
+        $builder->addEventSubscriber(new AddMetroFieldSubscriber())
+            ->get('city')->addEventSubscriber(new UpdateMetroFieldSubscriber());
+
+        if ($this->security->isGranted('ROLE_ADMIN')) {
+            $this->addFieldsForAdmin($builder);
+        }
+    }
+
+    private function addFieldsForAdmin(FormBuilderInterface $builder): FormBuilderInterface
+    {
+        $builder
+            ->add('priority_number', null, [
+                'label' => 'label.priority_number',
+                'required' => false,
+            ])
+            ->add('author', EntityType::class, [
+                'class' => User::class,
+                'choice_label' => 'full_name',
+                'label' => 'label.agent',
+            ]);
+
         $builder->addEventSubscriber(new AddAgentFieldSubscriber($this->security));
 
-        $builder->addEventSubscriber(new AddNeighborhoodFieldSubscriber());
-        $builder->get('city')->addEventSubscriber(new UpdateNeighborhoodFieldSubscriber());
-
-        $builder->addEventSubscriber(new AddDistrictFieldSubscriber());
-        $builder->get('city')->addEventSubscriber(new UpdateDistrictFieldSubscriber());
-
-        $builder->addEventSubscriber(new AddMetroFieldSubscriber());
-        $builder->get('city')->addEventSubscriber(new UpdateMetroFieldSubscriber());
+        return $builder;
     }
 
     /**

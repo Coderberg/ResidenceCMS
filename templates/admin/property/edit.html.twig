@@ -11,8 +11,13 @@
 {% block body %}
 
     <div class="card mb-3">
-        <div class="card-header"><i class="fas fa-edit text-danger"></i> {{ 'title.edit_property' | trans }}</div>
+        <div class="card-header">
+            <i class="fas fa-edit text-danger"></i> {{ 'title.edit_property' | trans }}
+        </div>
+
         <div class="card-body">
+
+            {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
             {{ form_start(form) }}
 
@@ -34,7 +39,8 @@
                     {{ form_row(form.metro_station) }}
                 </div>
 
-            </div><hr>
+            </div>
+            <hr>
 
             <div class="row">
                 <div class="col-md-6 col-lg-4 mb-3">
@@ -60,17 +66,9 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                {{ form_row(form.title) }}
-            </div>
-
-            <div class="form-group">
-                {{ form_row(form.meta_title) }}
-            </div>
-
-            <div class="form-group">
-                {{ form_row(form.meta_description) }}
-            </div>
+            {{ form_row(form.title) }}
+            {{ form_row(form.meta_title) }}
+            {{ form_row(form.meta_description) }}
 
             <div class="form-group row">
                 <div class="col-md-6 col-lg-8 mb-3">
@@ -88,10 +86,7 @@
                 </div>
             </div>
 
-            <div class="form-group mb-3 custom-control custom-switch">
-                {{ form_widget(form.show_map) }}
-                {{ form_label(form.show_map) }}
-            </div>
+            {{ form_row(form.show_map) }}
 
             <div class="row">
                 <div class="col-md-6 col-lg-4 mb-3">
@@ -103,10 +98,7 @@
                 </div>
             </div>
 
-            <div class="form-group mb-3 custom-control custom-switch">
-                {{ form_widget(form.available_now) }}
-                {{ form_label(form.available_now) }}
-            </div>
+            {{ form_row(form.available_now) }}
 
             <div class="form-group">
                 {{ form_row(form.features) }}
@@ -122,13 +114,8 @@
                 <p><small class="ml-2">{{ 'label.priority_number.help'|trans }}</small></p>
             </div>
 
-            <div class="form-group">
-                {{ form_row(form.author) }}
-            </div>
-
-            <div class="form-group">
-                {{ form_row(form.content) }}
-            </div>
+            {{ form_row(form.author) }}
+            {{ form_row(form.content) }}
 
             <div class="form-group">
 

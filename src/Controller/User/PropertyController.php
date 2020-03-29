@@ -6,7 +6,9 @@ namespace App\Controller\User;
 
 use App\Controller\BaseController;
 use App\Entity\Property;
+use App\Form\Type\PropertyType;
 use App\Repository\UserPropertyRepository;
+use App\Service\Admin\PropertyService as AdminPropertyService;
 use App\Service\User\PropertyService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -53,5 +55,28 @@ final class PropertyController extends BaseController
         }
 
         return new JsonResponse(['status' => 'error']);
+    }
+
+    /**
+     * Displays a form to edit an existing Property entity.
+     *
+     * @Route("/user/property/{id<\d+>}/edit",methods={"GET", "POST"}, name="user_property_edit")
+     * @IsGranted("PROPERTY_EDIT", subject="property", message="You cannot change this property.")
+     */
+    public function edit(Request $request, Property $property, AdminPropertyService $service): Response
+    {
+        $form = $this->createForm(PropertyType::class, $property);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $service->update($property);
+
+            return $this->redirectToRoute('user_property');
+        }
+
+        return $this->render('user/property/edit.html.twig', [
+            'form' => $form->createView(),
+            'site' => $this->site(),
+        ]);
     }
 }
