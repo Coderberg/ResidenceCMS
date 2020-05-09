@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Admin;
+namespace App\Controller\User;
 
+use App\Controller\BaseController;
 use App\Entity\Photo;
 use App\Entity\Property;
 use App\Service\FileUploader;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,10 +16,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\ConstraintViolation;
 
-final class PhotoController extends AbstractController
+final class PhotoController extends BaseController
 {
     /**
-     * @Route("/admin/photo/{id<\d+>}/upload", name="admin_photo_upload", methods={"POST"})
+     * @Route("/user/photo/{id<\d+>}/upload", name="user_photo_upload", methods={"POST"})
+     * @IsGranted("PROPERTY_EDIT", subject="property", message="You cannot change this property.")
      */
     public function upload(Property $property, Request $request, FileUploader $fileUploader): Response
     {
@@ -50,22 +51,25 @@ final class PhotoController extends AbstractController
     }
 
     /**
-     * @Route("/admin/photo/{id<\d+>}/edit", name="admin_photo_edit")
+     * @Route("/user/photo/{id<\d+>}/edit", name="user_photo_edit")
+     * @IsGranted("PROPERTY_EDIT", subject="property", message="You cannot change this property.")
      */
     public function edit(Property $property): Response
     {
         $photos = $property->getPhotos();
 
-        return $this->render('admin/photo/edit.html.twig', [
+        return $this->render('user/photo/edit.html.twig', [
             'photos' => $photos,
             'property_id' => $property->getId(),
+            'site' => $this->site(),
         ]);
     }
 
     /**
      * Sort photos.
      *
-     * @Route("/admin/photo/{id<\d+>}/sort",methods={"POST"}, name="admin_photo_sort")
+     * @Route("/user/photo/{id<\d+>}/sort",methods={"POST"}, name="user_photo_sort")
+     * @IsGranted("PROPERTY_EDIT", subject="property", message="You cannot change this property.")
      */
     public function sort(Request $request, Property $property): Response
     {
@@ -79,17 +83,21 @@ final class PhotoController extends AbstractController
     /**
      * Deletes a Photo entity.
      *
-     * @Route("/property/{property_id<\d+>}/photo/{id<\d+>}/delete", methods={"POST"}, name="admin_photo_delete")
-     * @IsGranted("ROLE_ADMIN")
+     * @Route("/user/photo/{id<\d+>}/delete", methods={"POST"}, name="user_photo_delete")
      */
     public function delete(Request $request, Photo $photo, FileUploader $fileUploader): Response
     {
+        $property = $photo->getProperty();
+
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
             return $this->redirectToRoute(
-                'admin_photo_edit',
-                ['id' => $request->attributes->get('property_id')]
+                'user_photo_edit',
+                ['id' => $property->getId()]
             );
         }
+
+        // Check permissions
+        $this->denyAccessUnlessGranted('PROPERTY_EDIT', $property);
 
         // Delete from db
         $em = $this->getDoctrine()->getManager();
@@ -102,8 +110,8 @@ final class PhotoController extends AbstractController
         $this->addFlash('success', 'message.deleted');
 
         return $this->redirectToRoute(
-            'admin_photo_edit',
-            ['id' => $request->attributes->get('property_id')]
+            'user_photo_edit',
+            ['id' => $property->getId()]
         );
     }
 }

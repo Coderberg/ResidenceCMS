@@ -71,7 +71,7 @@ final class PropertyController extends BaseController
         if ($form->isSubmitted() && $form->isValid()) {
             $service->update($property);
 
-            return $this->redirectToRoute('user_property');
+            return $this->redirectToRoute('user_photo_edit', ['id' => $property->getId()]);
         }
 
         return $this->render('user/property/edit.html.twig', [

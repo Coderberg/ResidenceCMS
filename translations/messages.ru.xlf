@@ -247,6 +247,10 @@
                 <source>action.edit</source>
                 <target>Править</target>
             </trans-unit>
+            <trans-unit id="action.finish_editing">
+                <source>action.finish_editing</source>
+                <target>Завершить редактирование</target>
+            </trans-unit>
             <trans-unit id="action.edit_photos">
                 <source>action.edit_photos</source>
                 <target>Фото</target>
@@ -673,7 +677,9 @@
             </trans-unit>
             <trans-unit id="label.priority_number.help">
                 <source>label.priority_number.help</source>
-                <target>The default priority is zero; relative to the default a priority can be higher (positive numbers) or lower (negative numbers).</target>
+                <target>The default priority is zero; relative to the default a priority can be higher (positive
+                    numbers) or lower (negative numbers).
+                </target>
             </trans-unit>
             <trans-unit id="label.agent">
                 <source>label.agent</source>

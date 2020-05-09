@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Entity\Photo;
+use App\Entity\Property;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -21,7 +22,7 @@ final class PhotoRepository extends ServiceEntityRepository
         parent::__construct($registry, Photo::class);
     }
 
-    public function reorderPhotos(array $ids): void
+    public function reorderPhotos(Property $property, array $ids): void
     {
         $i = 1;
 
@@ -30,7 +31,9 @@ final class PhotoRepository extends ServiceEntityRepository
                 ->update('App\Entity\Photo', 'p')
                 ->set('p.sort_order', $i)
                 ->where('p.id = ?1')
+                ->andWhere('p.property = ?2')
                 ->setParameter(1, $id)
+                ->setParameter(2, $property->getId())
                 ->getQuery()
                 ->execute();
 

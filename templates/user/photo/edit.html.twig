@@ -1,0 +1,97 @@
+{% extends 'layout/base.html.twig' %}
+
+{% block title %}{{ 'title.upload_photos' | trans }}{% endblock %}
+
+{% block stylesheets %}
+
+    {{ encore_entry_link_tags('css/photo') }}
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="row mt-4 mb-4">
+
+        <div class="col-md-8">
+
+            <div class="row">
+                <div class="col-sm-12 mb-3">
+                    <h3>{{ 'title.upload_photos'|trans }}</h3>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-header"><i
+                        class="fas fa-cloud-upload-alt text-danger"></i> {{ 'title.upload_photos' | trans }}
+                </div>
+                <div class="card-body">
+
+                    <form action="{{ path('user_photo_upload', {id: property_id}) }}" method="POST"
+                          enctype="multipart/form-data"
+                          class="dropzone js-photo-dropzone">
+                        <div class="fallback">
+                            <input name="file" type="file" accept="image/*" multiple/>
+                        </div>
+                    </form>
+
+                    <br>
+
+                    <div class="photos-list">
+
+                        {% if photos | default %}
+                            <button type="button"
+                                    data-processing="{{ 'processing'|trans }}"
+                                    data-save="{{ 'action.save_reordering'|trans }}"
+                                    class="btn btn btn-outline-dark btn-lg btn-reorder">
+                                {{ 'action.reorder_photos'|trans }}
+                            </button>
+                        {% endif %}
+
+                        <a href="{{ path('user_property') }}"
+                           class="btn btn btn-outline-dark btn-lg btn-finish">
+                            {{ 'action.finish_editing'|trans }}
+                        </a>
+
+                        <div class="reorder-help bg-light text-center" style="display:none;">
+                            1. {{ 'drag_photos'|trans }}.<br>
+                            2. {{ 'click_save_reordering'|trans }}.
+                        </div>
+                        <div class="gallery">
+                            <ul class="reorder-ul">
+
+                                {% for photo in photos %}
+
+                                    <li id="photo_{{ photo.id }}" class="ui-sortable-handle">
+                                        <a href="javascript:void(0);" class="single-img">
+                                            <img src="/uploads/images/small/{{ photo.photo }}"
+                                                 alt="{{ 'photo' | trans }} #{{ photo.id }}"/>
+                                        </a>
+
+                                        {{ include('user/photo/_delete_form.html.twig', {photo: photo, property_id: property_id}, with_context = false) }}
+                                    </li>
+
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <br>
+
+        </div>
+
+        <div class="col-md-4">
+            <!-- Sidebar -->
+            {{ include('user/property/partials/_sidebar.html.twig') }}
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ encore_entry_script_tags('js/photo') }}
+
+{% endblock %}
