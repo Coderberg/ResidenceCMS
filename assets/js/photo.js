@@ -8,6 +8,7 @@ Dropzone.autoDiscover = false;
 $(document).ready(function () {
 
     let $form = $('.js-photo-dropzone');
+    let ajaxUrl = ($form.attr('action')).replace('upload', 'sort');
 
     if ($form.length) {
         $form.dropzone({
@@ -29,6 +30,7 @@ $(document).ready(function () {
         $(".reorder-ul").sortable({tolerance: 'pointer'});
         $('.reorder-help').slideDown('slow');
         $('.single-img').css('cursor', 'move');
+        $('.btn-finish').fadeOut(100);
 
         $btnReorder.click(function () {
             if (!$('i', this).length) {
@@ -43,7 +45,7 @@ $(document).ready(function () {
 
                 $.ajax({
                     type: 'POST',
-                    url: '/admin/photo/sort',
+                    url: ajaxUrl,
                     data: {ids: ids}
                 }).done(function () {
                     window.location.reload();
