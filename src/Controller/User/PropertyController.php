@@ -6,6 +6,7 @@ namespace App\Controller\User;
 
 use App\Controller\BaseController;
 use App\Entity\Property;
+use App\Entity\User;
 use App\Form\Type\PropertyType;
 use App\Repository\UserPropertyRepository;
 use App\Service\Admin\PropertyService as AdminPropertyService;
@@ -55,6 +56,33 @@ final class PropertyController extends BaseController
         }
 
         return new JsonResponse(['status' => 'error']);
+    }
+
+    /**
+     * @Route("/user/property/new", name="user_property_new")
+     */
+    public function new(Request $request, AdminPropertyService $service): Response
+    {
+        /**
+         * @var User $user
+         */
+        $user = $this->getUser();
+        $property = new Property();
+        $property->setAuthor($user);
+        $form = $this->createForm(PropertyType::class, $property);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $service->create($property);
+
+            return $this->redirectToRoute('user_photo_edit', ['id' => $property->getId()]);
+        }
+
+        return $this->render('user/property/new.html.twig', [
+            'property' => $property,
+            'form' => $form->createView(),
+            'site' => $this->site(),
+        ]);
     }
 
     /**
