@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests;
+namespace App\Tests\Controller\Admin;
 
 use App\Entity\Menu;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Metro\Admin;
+namespace App\Tests\Controller\Admin;
 
 use App\Entity\Metro;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;

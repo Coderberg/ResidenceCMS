@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\District\Admin;
+namespace App\Tests\Controller\Admin;
 
 use App\Entity\District;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
