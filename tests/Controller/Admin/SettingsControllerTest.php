@@ -43,8 +43,8 @@ final class SettingsControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/');
 
-        $this->assertContains('Test title', $crawler->html());
-        $this->assertContains('Edited text', $crawler->html());
+        $this->assertStringContainsString('Test title', $crawler->html());
+        $this->assertStringContainsString('Edited text', $crawler->html());
         $this->assertCount(3, $crawler->filter('.property-box-img'));
 
         // Check if fixed top navigation bar is enabled
@@ -59,7 +59,7 @@ final class SettingsControllerTest extends WebTestCase
             sprintf('/%s/%s/%d', $property->getCity()->getSlug(), $property->getSlug(), $property->getId())
         );
         // Check if similar properties are enabled
-        $this->assertContains('Modern one-bedroom apartment in Miami', $crawler->filter('.card-title>a')
+        $this->assertStringContainsString('Modern one-bedroom apartment in Miami', $crawler->filter('.card-title>a')
             ->text());
     }
 
@@ -90,7 +90,7 @@ final class SettingsControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/');
 
-        $this->assertNotContains('Test title', $crawler->html());
+        $this->assertStringNotContainsString('Test title', $crawler->html());
         $this->assertCount(6, $crawler->filter('.property-box-img'));
 
         // Check if fixed top navigation bar is disabled
@@ -105,7 +105,7 @@ final class SettingsControllerTest extends WebTestCase
             sprintf('/%s/%s/%d', $property->getCity()->getSlug(), $property->getSlug(), $property->getId())
         );
         // Check if similar properties are disabled
-        $this->assertNotContains('Similar Properties', $crawler->filter('h4')
+        $this->assertStringNotContainsString('Similar Properties', $crawler->filter('h4')
             ->text());
     }
 

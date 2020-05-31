@@ -9,9 +9,10 @@ use App\Message\SendResetPasswordLink;
 use App\Repository\ResettingRepository;
 use App\Service\AbstractService;
 use App\Utils\TokenGenerator;
-use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 final class ResettingService extends AbstractService
 {
@@ -31,12 +32,13 @@ final class ResettingService extends AbstractService
     private $generator;
 
     public function __construct(
-        ContainerInterface $container,
+        CsrfTokenManagerInterface $tokenManager,
+        SessionInterface $session,
         ResettingRepository $repository,
         MessageBusInterface $messageBus,
         TokenGenerator $generator
     ) {
-        parent::__construct($container);
+        parent::__construct($tokenManager, $session);
         $this->repository = $repository;
         $this->messageBus = $messageBus;
         $this->generator = $generator;

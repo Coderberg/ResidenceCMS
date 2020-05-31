@@ -52,7 +52,7 @@ final class PropertyControllerTest extends WebTestCase
             'the "Content-Type" header is "application/json"'
         );
 
-        $this->assertContains('ok', $client->getResponse()->getContent());
+        $this->assertStringContainsString('ok', $client->getResponse()->getContent());
     }
 
     public function testEditingForbidden()
@@ -93,7 +93,7 @@ final class PropertyControllerTest extends WebTestCase
             'the "Content-Type" header is "application/json"'
         );
 
-        $this->assertContains('ok', $client->getResponse()->getContent());
+        $this->assertStringContainsString('ok', $client->getResponse()->getContent());
     }
 
     public function testEditProperty()

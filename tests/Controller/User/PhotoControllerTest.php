@@ -43,7 +43,7 @@ final class PhotoControllerTest extends WebTestCase
         $crawler = $client->request('GET', sprintf('/user/photo/%d/edit', $property->getId()));
         $this->assertResponseIsSuccessful();
 
-        $this->assertContains('Upload photos', $crawler->filter('h3')->text());
+        $this->assertStringContainsString('Upload photos', $crawler->filter('h3')->text());
 
         $photo = __DIR__.'/../../../public/images/bg.jpg';
 

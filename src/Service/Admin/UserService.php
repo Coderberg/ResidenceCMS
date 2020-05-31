@@ -7,8 +7,9 @@ namespace App\Service\Admin;
 use App\Entity\User;
 use App\Service\AbstractService;
 use Doctrine\ORM\EntityManagerInterface;
-use Psr\Container\ContainerInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 final class UserService extends AbstractService
 {
@@ -23,11 +24,12 @@ final class UserService extends AbstractService
     private $passwordEncoder;
 
     public function __construct(
+        CsrfTokenManagerInterface $tokenManager,
+        SessionInterface $session,
         EntityManagerInterface $entityManager,
-        ContainerInterface $container,
         UserPasswordEncoderInterface $passwordEncoder
     ) {
-        parent::__construct($container);
+        parent::__construct($tokenManager, $session);
         $this->em = $entityManager;
         $this->passwordEncoder = $passwordEncoder;
     }

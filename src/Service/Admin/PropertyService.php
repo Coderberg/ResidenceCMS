@@ -9,8 +9,9 @@ use App\Message\DeletePhotos;
 use App\Service\AbstractService;
 use App\Utils\Slugger;
 use Doctrine\ORM\EntityManagerInterface;
-use Psr\Container\ContainerInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 final class PropertyService extends AbstractService
 {
@@ -30,12 +31,13 @@ final class PropertyService extends AbstractService
     private $slugger;
 
     public function __construct(
-        ContainerInterface $container,
+        CsrfTokenManagerInterface $tokenManager,
+        SessionInterface $session,
         EntityManagerInterface $entityManager,
         MessageBusInterface $messageBus,
         Slugger $slugger
     ) {
-        parent::__construct($container);
+        parent::__construct($tokenManager, $session);
         $this->em = $entityManager;
         $this->messageBus = $messageBus;
         $this->slugger = $slugger;

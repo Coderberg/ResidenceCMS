@@ -111,9 +111,9 @@ final class PropertyControllerTest extends WebTestCase
 
         $this->assertCount(1, $crawler->filter('.fa-parking'));
         $this->assertSelectorTextContains('title', 'Custom Meta Title');
-        $this->assertContains('Secure parking', $crawler->html());
-        $this->assertContains('Government Center', $crawler->html());
-        $this->assertContains('South Beach', $crawler->html());
+        $this->assertStringContainsString('Secure parking', $crawler->html());
+        $this->assertStringContainsString('Government Center', $crawler->html());
+        $this->assertStringContainsString('South Beach', $crawler->html());
     }
 
     public function testAdminDeletePhoto()

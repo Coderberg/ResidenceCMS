@@ -7,11 +7,12 @@ namespace App\Service\Admin;
 use App\Repository\SettingsRepository;
 use App\Service\AbstractService;
 use App\Service\FileUploader;
-use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Validator\ConstraintViolation;
 
 final class SettingsService extends AbstractService
@@ -27,11 +28,12 @@ final class SettingsService extends AbstractService
     private $fileUploader;
 
     public function __construct(
+        CsrfTokenManagerInterface $tokenManager,
+        SessionInterface $session,
         SettingsRepository $repository,
-        FileUploader $fileUploader,
-        ContainerInterface $container
+        FileUploader $fileUploader
     ) {
-        parent::__construct($container);
+        parent::__construct($tokenManager, $session);
         $this->repository = $repository;
         $this->fileUploader = $fileUploader;
     }

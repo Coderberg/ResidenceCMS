@@ -4,30 +4,30 @@ declare(strict_types=1);
 
 namespace App\Service\Cache;
 
-use Psr\Container\ContainerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 trait GetCache
 {
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
-
     /**
      * @var FilesystemAdapter
      */
     private $cache;
 
     /**
+     * @var ManagerRegistry
+     */
+    private $doctrine;
+
+    /**
      * @var string
      */
     private $persistentObjectName;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(ManagerRegistry $doctrine)
     {
-        $this->container = $container;
         $this->cache = new FilesystemAdapter();
+        $this->doctrine = $doctrine;
     }
 
     public function getCount(string $key, string $class): int
@@ -43,7 +43,7 @@ trait GetCache
 
     private function countItems(): int
     {
-        return (int) $this->container->get('doctrine')
+        return (int) $this->doctrine
             ->getRepository($this->persistentObjectName)
             ->countAll();
     }

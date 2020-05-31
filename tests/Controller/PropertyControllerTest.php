@@ -18,7 +18,7 @@ final class PropertyControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/');
 
         $this->assertTrue($client->getResponse()->isOk());
-        $this->assertContains('Popular Listing', $crawler->filter('h1')
+        $this->assertStringContainsString('Popular Listing', $crawler->filter('h1')
             ->text());
     }
 

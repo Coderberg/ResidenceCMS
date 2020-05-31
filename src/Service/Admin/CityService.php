@@ -7,7 +7,8 @@ namespace App\Service\Admin;
 use App\Entity\City;
 use App\Service\AbstractService;
 use Doctrine\ORM\EntityManagerInterface;
-use Psr\Container\ContainerInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 final class CityService extends AbstractService
 {
@@ -16,9 +17,12 @@ final class CityService extends AbstractService
      */
     private $em;
 
-    public function __construct(ContainerInterface $container, EntityManagerInterface $entityManager)
-    {
-        parent::__construct($container);
+    public function __construct(
+        CsrfTokenManagerInterface $tokenManager,
+        SessionInterface $session,
+        EntityManagerInterface $entityManager
+    ) {
+        parent::__construct($tokenManager, $session);
         $this->em = $entityManager;
     }
 

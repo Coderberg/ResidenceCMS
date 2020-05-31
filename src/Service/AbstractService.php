@@ -5,20 +5,28 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Service\Cache\ClearCache;
-use Psr\Container\ContainerInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Csrf\CsrfToken;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 abstract class AbstractService
 {
     use ClearCache;
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
 
-    public function __construct(ContainerInterface $container)
+    /**
+     * @var SessionInterface
+     */
+    private $session;
+
+    /**
+     * @var CsrfTokenManagerInterface
+     */
+    private $tokenManager;
+
+    public function __construct(CsrfTokenManagerInterface $tokenManager, SessionInterface $session)
     {
-        $this->container = $container;
+        $this->tokenManager = $tokenManager;
+        $this->session = $session;
     }
 
     /**
@@ -26,11 +34,7 @@ abstract class AbstractService
      */
     protected function isCsrfTokenValid(string $id, ?string $token): bool
     {
-        if (!$this->container->has('security.csrf.token_manager')) {
-            throw new \LogicException('CSRF protection is not enabled in your application. Enable it with the "csrf_protection" key in "config/packages/framework.yaml".');
-        }
-
-        return $this->container->get('security.csrf.token_manager')->isTokenValid(new CsrfToken($id, $token));
+        return $this->tokenManager->isTokenValid(new CsrfToken($id, $token));
     }
 
     /**
@@ -40,10 +44,6 @@ abstract class AbstractService
      */
     protected function addFlash(string $type, string $message): void
     {
-        if (!$this->container->has('session')) {
-            throw new \LogicException('You can not use the addFlash method if sessions are disabled. Enable them in "config/packages/framework.yaml".');
-        }
-
-        $this->container->get('session')->getFlashBag()->add($type, $message);
+        $this->session->getFlashBag()->add($type, $message);
     }
 }
