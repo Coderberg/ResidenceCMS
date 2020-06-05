@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller\User;
 
+use App\Entity\Category;
+use App\Entity\City;
+use App\Entity\DealType;
 use App\Entity\Property;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -96,13 +99,62 @@ final class PropertyControllerTest extends WebTestCase
         $this->assertStringContainsString('ok', $client->getResponse()->getContent());
     }
 
+    public function testNewProperty()
+    {
+        $client = static::createClient([], self::USER);
+
+        $crawler = $client->request('GET', '/user/property/new');
+
+        $city = $client->getContainer()->get('doctrine')
+            ->getRepository(City::class)->findOneBy(['slug' => 'miami'])->getId();
+
+        $dealType = $client->getContainer()->get('doctrine')
+            ->getRepository(DealType::class)->findOneBy([])->getId();
+
+        $category = $client->getContainer()->get('doctrine')
+            ->getRepository(Category::class)->findOneBy([])->getId();
+
+        $form = $crawler->selectButton('Save changes')->form([
+            'property[city]' => $city,
+            'property[dealType]' => $dealType,
+            'property[category]' => $category,
+            'property[title]' => 'added by user',
+            'property[meta_description]' => 'test',
+            'property[address]' => 'test',
+            'property[content]' => 'test',
+        ]);
+
+        $client->submit($form);
+
+        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+    }
+
+    public function testAEditPhoto()
+    {
+        $client = static::createClient([], self::USER);
+
+        $property = $client->getContainer()->get('doctrine')
+            ->getRepository(Property::class)
+            ->findOneBy(['slug' => 'added-by-user'])->getId();
+
+        $crawler = $client->request('GET', '/user/photo/'.$property.'/edit');
+        $this->assertSelectorTextContains('html', 'Upload photos');
+
+        $photo = __DIR__.'/../../../public/images/bg.jpg';
+
+        $form = $crawler->filter('.js-photo-dropzone')->form();
+        $form['file']->upload($photo);
+        $client->submit($form);
+        $this->assertTrue($client->getResponse()->isSuccessful(), 'response status is 2xx');
+    }
+
     public function testEditProperty()
     {
         $client = static::createClient([], self::USER);
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
-            ->findOneBy(['slug' => 'furnished-renovated-2-bedroom-2-bathroom-flat']);
+            ->findOneBy(['slug' => 'added-by-user']);
 
         $crawler = $client->request('GET', sprintf('/user/property/%d/edit', $property->getId()));
         $this->assertResponseIsSuccessful();
@@ -118,14 +170,29 @@ final class PropertyControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['meta_title' => 'Custom Meta Title']);
 
-        $crawler = $client->request('GET', sprintf('/user/property/%d/edit', $editedProperty->getId()));
+        $client->request('GET', sprintf('/user/property/%d/edit', $editedProperty->getId()));
         $this->assertResponseIsSuccessful();
+    }
 
-        $form = $crawler->selectButton('Save changes')->form([
-            'property[meta_title]' => '',
+    public function testDeleteProperty()
+    {
+        $client = static::createClient([], [
+            'PHP_AUTH_USER' => 'admin',
+            'PHP_AUTH_PW' => 'admin',
         ]);
 
-        $client->submit($form);
+        $property = $client->getContainer()->get('doctrine')
+            ->getRepository(Property::class)
+            ->findOneBy(['slug' => 'added-by-user'])->getId();
+
+        $crawler = $client->request('GET', '/admin/property?sort_by=id');
+        $client->submit($crawler->filter('#delete-form-'.$property)->form());
+
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+
+        $this->assertNull($client->getContainer()->get('doctrine')
+            ->getRepository(Property::class)->findOneBy([
+                'slug' => 'test',
+            ]));
     }
 }
