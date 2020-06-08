@@ -10,11 +10,10 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use App\Validator\PhotoRequirements;
 use Gregwar\Image\Image;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\Validator\Constraints\File;
-use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validation;
 
@@ -43,15 +42,7 @@ final class FileUploader
         return $validator->validate(
             $file,
             [
-                new NotBlank([
-                    'message' => 'Please select a file to upload',
-                ]),
-                new File([
-                    'maxSize' => '10M',
-                    'mimeTypes' => [
-                        'image/*',
-                    ],
-                ]),
+                new PhotoRequirements(),
             ]
         );
     }
