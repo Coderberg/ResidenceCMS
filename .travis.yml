@@ -5,20 +5,24 @@ cache:
   directories:
     - $HOME/.composer/cache/files
     - ./bin/.phpunit
+    - $HOME/.symfony
 
 env:
   global:
     - SYMFONY_PHPUNIT_DIR=./bin/.phpunit
-    - SYMFONY_DEPRECATIONS_HELPER=29
+    - SYMFONY_DEPRECATIONS_HELPER=9
+    - PATH="$HOME/.symfony/bin:$PATH"
 
 matrix:
   fast_finish: true
   include:
-    - php: 7.2.24
+    - php: 7.2
     - php: 7.3
     - php: 7.4
 
 before_install:
+  - '[[ -z $SYMFONY ]] || composer config extra.symfony.require "$SYMFONY"'
+  - if symfony self:version; then symfony self:update --yes ; else wget https://get.symfony.com/cli/installer -O - | bash ; fi
   - sudo systemctl unmask mysql.service
   - sudo service mysql start
   - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('new_password') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
@@ -52,7 +56,9 @@ script:
   - php bin/console lint:twig templates --env=prod
   # this checks that the XLIFF translations contain no syntax errors
   - php bin/console lint:xliff translations
-  # this checks that the application doesn't use dependencies with known security vulnerabilities
-  #- php bin/console security:check
+  # This checks that arguments injected into services match type declarations.
+  - php bin/console lint:container
+  # This checks that the application doesn't use dependencies with known security vulnerabilities.
+  - symfony check:security
   # this checks that Doctrine's mapping configurations are valid
   - php bin/console doctrine:schema:validate -vvv --no-interaction
