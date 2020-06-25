@@ -12,7 +12,13 @@ final class FilterRepository extends PropertyRepository
     {
         $qb = $this->createQueryBuilder('p');
 
-        $qb->where("p.state = 'published'");
+        if ($this->security->isGranted('ROLE_ADMIN')) {
+            if (\in_array($params['state'], ['published', 'private', 'pending', 'rejected'], true)) {
+                $qb->where("p.state = '".$params['state']."'");
+            }
+        } else {
+            $qb->where("p.state = 'published'");
+        }
 
         // City
         if ($params['city'] > 0) {

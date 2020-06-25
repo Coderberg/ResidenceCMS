@@ -9,7 +9,7 @@
     "js/admin": {
       "js": [
         "/build/runtime.518d4a5c.js",
-        "/build/js/admin.cba31824.js"
+        "/build/js/admin.9bb1d6e9.js"
       ]
     },
     "js/ekko-lightbox": {
@@ -79,7 +79,7 @@
         "/build/runtime.518d4a5c.js"
       ],
       "css": [
-        "/build/css/admin.4c711124.css"
+        "/build/css/admin.f9e91257.css"
       ]
     },
     "css/ekko-lightbox": {

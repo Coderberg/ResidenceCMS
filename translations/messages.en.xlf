@@ -685,6 +685,30 @@
                 <source>label.agent</source>
                 <target>Agent</target>
             </trans-unit>
+            <trans-unit id="label.moderation_status">
+                <source>label.moderation_status</source>
+                <target>Moderation status</target>
+            </trans-unit>
+            <trans-unit id="option.published">
+                <source>option.published</source>
+                <target>Published</target>
+            </trans-unit>
+            <trans-unit id="option.private">
+                <source>option.private</source>
+                <target>Private</target>
+            </trans-unit>
+            <trans-unit id="option.pending">
+                <source>option.pending</source>
+                <target>Pending review</target>
+            </trans-unit>
+            <trans-unit id="option.rejected">
+                <source>option.rejected</source>
+                <target>Rejected</target>
+            </trans-unit>
+            <trans-unit id="option.all">
+                <source>option.all</source>
+                <target>All</target>
+            </trans-unit>
             <trans-unit id="label.feature">
                 <source>label.feature</source>
                 <target>Feature name</target>

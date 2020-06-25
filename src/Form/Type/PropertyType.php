@@ -29,6 +29,7 @@ use App\Form\EventSubscriber\UpdateNeighborhoodFieldSubscriber;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -176,6 +177,15 @@ final class PropertyType extends AbstractType
                 'class' => User::class,
                 'choice_label' => 'full_name',
                 'label' => 'label.agent',
+            ])
+            ->add('state', ChoiceType::class, [
+                'label' => 'label.moderation_status',
+                'choices' => [
+                    'option.published' => 'published',
+                    'option.private' => 'private',
+                    'option.pending' => 'pending',
+                    'option.rejected' => 'rejected',
+                ],
             ]);
 
         $builder->addEventSubscriber(new AddAgentFieldSubscriber($this->security));

@@ -28,6 +28,27 @@
                         </option>
                     </select>
                 </div>
+
+                <div class="col-auto pl-0">
+                    <select class="form-control" id="state" name="state" aria-label="{{ 'label.moderation_status'|trans }}">
+                        <option value="published" {% if searchParams.state == 'published' %} selected{% endif %}>
+                            {{ 'option.published'|trans }}
+                        </option>
+                        <option value="private" {% if searchParams.state == 'private' %} selected{% endif %}>
+                            {{ 'option.private'|trans }}
+                        </option>
+                        <option value="pending" {% if searchParams.state == 'pending' %} selected{% endif %}>
+                            {{ 'option.pending'|trans }}
+                        </option>
+                        <option value="rejected" {% if searchParams.state == 'rejected' %} selected{% endif %}>
+                            {{ 'option.rejected'|trans }}
+                        </option>
+                        <option
+                            value="all" {% if searchParams.state == 'all' %} selected{% endif %}>
+                            {{ 'option.all'|trans }}
+                        </option>
+                    </select>
+                </div>
             </div>
         </div>
 

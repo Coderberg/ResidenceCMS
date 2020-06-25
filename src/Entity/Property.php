@@ -116,7 +116,7 @@ class Property
     /**
      * @ORM\Column(type="string", length=255, options={"default": "pending"})
      */
-    private $state = 'pending ';
+    private $state = 'published';
 
     /**
      * @ORM\Column(type="datetime")

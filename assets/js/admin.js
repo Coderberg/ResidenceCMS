@@ -32,9 +32,10 @@ $(document).ready(function () {
     });
 
     // Sorting
-    $('#sort_by').on('change', function () {
-        let value = $(this).val();
-        window.location.href = '/admin/property?sort_by=' + value;
+    $('#sort_by, #state').on('change', function () {
+        let value = $('#sort_by').val();
+        let state = $('#state').val();
+        window.location.href = '/admin/property?sort_by=' + value + '&state=' + state;
     });
 
 });

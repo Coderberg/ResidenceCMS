@@ -685,6 +685,30 @@
                 <source>label.agent</source>
                 <target>Агент</target>
             </trans-unit>
+            <trans-unit id="label.moderation_status">
+                <source>label.moderation_status</source>
+                <target>Статус модерации</target>
+            </trans-unit>
+            <trans-unit id="option.published">
+                <source>option.published</source>
+                <target>Опубликовано</target>
+            </trans-unit>
+            <trans-unit id="option.private">
+                <source>option.private</source>
+                <target>Не опубликовано</target>
+            </trans-unit>
+            <trans-unit id="option.pending">
+                <source>option.pending</source>
+                <target>Ожидает модерации</target>
+            </trans-unit>
+            <trans-unit id="option.rejected">
+                <source>option.rejected</source>
+                <target>Отклонено</target>
+            </trans-unit>
+            <trans-unit id="option.all">
+                <source>option.all</source>
+                <target>Все статусы</target>
+            </trans-unit>
             <trans-unit id="label.feature">
                 <source>label.feature</source>
                 <target>Название особенности</target>

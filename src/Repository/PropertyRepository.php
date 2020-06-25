@@ -10,6 +10,7 @@ use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @method Property|null find($id, $lockMode = null, $lockVersion = null)
@@ -24,10 +25,16 @@ class PropertyRepository extends ServiceEntityRepository
      */
     private $paginator;
 
-    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator)
+    /**
+     * @var Security
+     */
+    protected $security;
+
+    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator, Security $security)
     {
         parent::__construct($registry, Property::class);
         $this->paginator = $paginator;
+        $this->security = $security;
     }
 
     public function findAllPublished(): array
