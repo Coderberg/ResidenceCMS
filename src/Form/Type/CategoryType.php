@@ -26,14 +26,10 @@ final class CategoryType extends AbstractType
             ->add('name', null, [
                 'attr' => [
                     'autofocus' => true,
-                    'class' => 'form-control',
                 ],
                 'label' => 'label.name',
             ])
             ->add('slug', null, [
-                'attr' => [
-                    'class' => 'form-control',
-                ],
                 'label' => 'label.slug',
             ]);
     }
