@@ -48,11 +48,9 @@ final class FilterRepository extends PropertyRepository
         }
 
         // Sort by
-        if (\in_array($params['sort_by'], ['id', 'priority_number'], true)) {
-            $qb->orderBy('p.'.$params['sort_by'], 'DESC');
-        } else {
-            $qb->orderBy('p.priority_number', 'DESC');
-        }
+        ('id' === $params['sort_by'])
+            ? $qb->orderBy('p.id', 'DESC')
+            : $qb->orderBy('p.priority_number', 'DESC');
 
         return $this->createPaginator($qb->getQuery(), $params['page']);
     }
