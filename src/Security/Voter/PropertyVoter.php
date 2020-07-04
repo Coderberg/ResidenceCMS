@@ -42,7 +42,7 @@ final class PropertyVoter extends Voter
         throw new LogicException('This code should not be reached!');
     }
 
-    private function canView(Property $property, TokenInterface $token)
+    private function canView(Property $property, TokenInterface $token): bool
     {
         // if they can edit, they can view
         if ($this->canEdit($property, $token)) {
@@ -52,7 +52,7 @@ final class PropertyVoter extends Voter
         return $property->isPublished();
     }
 
-    private function canEdit(Property $property, TokenInterface $token)
+    private function canEdit(Property $property, TokenInterface $token): bool
     {
         $user = $token->getUser();
         // if the user is anonymous, do not grant access
