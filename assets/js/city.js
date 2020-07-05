@@ -7,6 +7,7 @@ $(document).ready(function () {
     let $description = $('#property_meta_description');
     let $address = $('#property_address');
     let $content = $('#property_content');
+    let $state = $('#property_state');
 
     $city.change(function () {
 
@@ -38,6 +39,7 @@ $(document).ready(function () {
         data[$description.attr('name')] = $description.val();
         data[$address.attr('name')] = $address.val();
         data[$content.attr('name')] = $content.val();
+        data[$state.attr('name')] = $state.val();
 
         return data;
     }

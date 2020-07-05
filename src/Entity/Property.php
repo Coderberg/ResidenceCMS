@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use App\Entity\Traits\EntityIdTrait;
 use App\Entity\Traits\EntityMetaTrait;
+use App\Entity\Traits\EntityTimestampableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -17,6 +18,7 @@ class Property
 {
     use EntityIdTrait;
     use EntityMetaTrait;
+    use EntityTimestampableTrait;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="properties")
@@ -117,11 +119,6 @@ class Property
      * @ORM\Column(type="string", length=255, options={"default": "pending"})
      */
     private $state = 'published';
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $published_at;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Photo", mappedBy="property", orphanRemoval=true)
@@ -345,18 +342,6 @@ class Property
     public function setAvailableNow(?bool $available_now): self
     {
         $this->available_now = $available_now;
-
-        return $this;
-    }
-
-    public function getPublishedAt(): ?\DateTimeInterface
-    {
-        return $this->published_at;
-    }
-
-    public function setPublishedAt(\DateTimeInterface $published_at): self
-    {
-        $this->published_at = $published_at;
 
         return $this;
     }
