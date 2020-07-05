@@ -37,7 +37,8 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
             $property->setPrice($price);
             $property->setPriceType($priceType);
             $property->setState('published');
-            $property->setPublishedAt(new \DateTime('now'));
+            $property->setCreatedAt(new \DateTime('now'));
+            $property->setUpdatedAt(new \DateTime('now'));
             $property->addFeature($this->getReference('Air conditioning'));
             $property->addFeature($this->getReference('Balcony'));
             $property->addFeature($this->getReference('Fire Alarm'));

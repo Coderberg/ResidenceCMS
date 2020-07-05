@@ -12,7 +12,7 @@
                     'slug': property.slug
                 }) }}
             </loc>
-            <lastmod>{{ property.publishedAt|date('Y-m-d\\TH:i:s+00:00') }}</lastmod>
+            <lastmod>{{ property.updatedAt|date('Y-m-d\\TH:i:s+00:00') }}</lastmod>
             <priority>0.5</priority>
         </url>
     {% endfor %}
