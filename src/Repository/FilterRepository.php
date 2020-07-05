@@ -20,21 +20,6 @@ final class FilterRepository extends PropertyRepository
             $qb->where("p.state = 'published'");
         }
 
-        // City
-        if ($params['city'] > 0) {
-            $qb->andWhere('p.city = '.(int) $params['city']);
-        }
-
-        // Deal Type
-        if ($params['deal_type'] > 0) {
-            $qb->andWhere('p.deal_type = '.(int) $params['deal_type']);
-        }
-
-        // Category
-        if ($params['category'] > 0) {
-            $qb->andWhere('p.category = '.(int) $params['category']);
-        }
-
         // Number of bedrooms
         if ($params['bedrooms'] > 3) {
             $qb->andWhere('p.bedrooms_number > 3');
@@ -45,6 +30,13 @@ final class FilterRepository extends PropertyRepository
         // Number of guests
         if ($params['guests'] > 0) {
             $qb->andWhere('p.max_guests >= '.(int) $params['guests']);
+        }
+
+        // Additional params
+        foreach (['city', 'deal_type', 'category'] as $parameter) {
+            if ($params[$parameter] > 0) {
+                $qb->andWhere('p.'.$parameter.' = '.(int) $params[$parameter]);
+            }
         }
 
         // Sort by
