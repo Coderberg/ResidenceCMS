@@ -20,6 +20,7 @@
     <div class="card mb-3">
         <div class="card-body">
 
+            {% form_theme form 'bootstrap_4_layout.html.twig' %}
             {{ form_start(form) }}
 
             <div class="form-group">
@@ -50,9 +51,11 @@
                 <div class="col-lg-4 col-md-6 col-12 mb-3">
                     {{ form_row(form.currency) }}
 
-                    <p><small><a class="ml-2" href="{{ path('admin_currency') }}">
-                                {{ 'action.edit'|trans }} {{ 'currencies'|trans }}
-                            </a></small></p>
+                    <div class="small edit-link">
+                        <a class="ml-2" href="{{ path('admin_currency') }}">
+                            {{ 'action.edit'|trans }} {{ 'currencies'|trans }}
+                        </a>
+                    </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12 mb-3">
                     {{ form_row(form.items_per_page) }}
