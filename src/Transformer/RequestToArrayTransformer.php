@@ -6,7 +6,7 @@ namespace App\Transformer;
 
 use Symfony\Component\HttpFoundation\Request;
 
-class RequestToArrayTransformer
+final class RequestToArrayTransformer
 {
     public function transform(Request $request): array
     {

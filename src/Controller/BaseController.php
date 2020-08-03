@@ -23,7 +23,7 @@ class BaseController extends AbstractController
         $this->settingsRepository = $settingsRepository;
     }
 
-    public function menu(): array
+    private function menu(): array
     {
         return [
             'menu' => $this->getDoctrine()->getRepository(Menu::class)
@@ -31,7 +31,7 @@ class BaseController extends AbstractController
         ];
     }
 
-    public function searchFields(): array
+    private function searchFields(): array
     {
         // Get city
         $cities = $this->getDoctrine()
