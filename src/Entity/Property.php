@@ -18,9 +18,9 @@ use Doctrine\ORM\Mapping as ORM;
 class Property
 {
     use EntityIdTrait;
+    use EntityLocationTrait;
     use EntityMetaTrait;
     use EntityTimestampableTrait;
-    use EntityLocationTrait;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="properties")
