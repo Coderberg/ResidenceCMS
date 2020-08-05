@@ -19,8 +19,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class City
 {
     use EntityIdTrait;
-    use EntityNameTrait;
     use EntityMetaTrait;
+    use EntityNameTrait;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="city")
