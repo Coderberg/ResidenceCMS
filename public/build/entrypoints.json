@@ -2,124 +2,124 @@
   "entrypoints": {
     "js/app": {
       "js": [
-        "/build/runtime.518d4a5c.js",
-        "/build/js/app.b4341a92.js"
+        "/build/runtime.d94b3b43.js",
+        "/build/js/app.1422e45f.js"
       ]
     },
     "js/admin": {
       "js": [
-        "/build/runtime.518d4a5c.js",
-        "/build/js/admin.9bb1d6e9.js"
+        "/build/runtime.d94b3b43.js",
+        "/build/js/admin.3a8a26f4.js"
       ]
     },
     "js/ekko-lightbox": {
       "js": [
-        "/build/runtime.518d4a5c.js",
-        "/build/js/ekko-lightbox.179755ef.js"
+        "/build/runtime.d94b3b43.js",
+        "/build/js/ekko-lightbox.579bda2b.js"
       ]
     },
     "js/map": {
       "js": [
-        "/build/runtime.518d4a5c.js",
-        "/build/js/map.b0e5c7db.js"
+        "/build/runtime.d94b3b43.js",
+        "/build/js/map.39d68c5e.js"
       ]
     },
     "js/menu-sorting": {
       "js": [
-        "/build/runtime.518d4a5c.js",
-        "/build/js/menu-sorting.df2b08f9.js"
+        "/build/runtime.d94b3b43.js",
+        "/build/js/menu-sorting.8af9c908.js"
       ]
     },
     "js/select2": {
       "js": [
-        "/build/runtime.518d4a5c.js",
-        "/build/js/select2.52a1fc77.js"
+        "/build/runtime.d94b3b43.js",
+        "/build/js/select2.5bafdd5e.js"
       ]
     },
     "js/slugger": {
       "js": [
-        "/build/runtime.518d4a5c.js",
-        "/build/js/slugger.ed8ba162.js"
+        "/build/runtime.d94b3b43.js",
+        "/build/js/slugger.5cdbaf01.js"
       ]
     },
     "js/city": {
       "js": [
-        "/build/runtime.518d4a5c.js",
-        "/build/js/city.54079c8d.js"
+        "/build/runtime.d94b3b43.js",
+        "/build/js/city.45693d06.js"
       ]
     },
     "js/photo": {
       "js": [
-        "/build/runtime.518d4a5c.js",
-        "/build/js/photo.d6ba2d07.js"
+        "/build/runtime.d94b3b43.js",
+        "/build/js/photo.5ae4b4d3.js"
       ]
     },
     "js/page": {
       "js": [
-        "/build/runtime.518d4a5c.js",
-        "/build/js/page.eb2252a7.js"
+        "/build/runtime.d94b3b43.js",
+        "/build/js/page.db3a37c4.js"
       ]
     },
     "js/user": {
       "js": [
-        "/build/runtime.518d4a5c.js",
-        "/build/js/user.ab38567e.js"
+        "/build/runtime.d94b3b43.js",
+        "/build/js/user.db6829da.js"
       ]
     },
     "css/app": {
       "js": [
-        "/build/runtime.518d4a5c.js"
+        "/build/runtime.d94b3b43.js"
       ],
       "css": [
-        "/build/css/app.e5b35194.css"
+        "/build/css/app.192d4923.css"
       ]
     },
     "css/admin": {
       "js": [
-        "/build/runtime.518d4a5c.js"
+        "/build/runtime.d94b3b43.js"
       ],
       "css": [
-        "/build/css/admin.961caf20.css"
+        "/build/css/admin.8dfed1d2.css"
       ]
     },
     "css/ekko-lightbox": {
       "js": [
-        "/build/runtime.518d4a5c.js"
+        "/build/runtime.d94b3b43.js"
       ],
       "css": [
-        "/build/css/ekko-lightbox.d5c621d9.css"
+        "/build/css/ekko-lightbox.8141a109.css"
       ]
     },
     "css/city": {
       "js": [
-        "/build/runtime.518d4a5c.js"
+        "/build/runtime.d94b3b43.js"
       ],
       "css": [
-        "/build/css/city.51164273.css"
+        "/build/css/city.c6745445.css"
       ]
     },
     "css/detail": {
       "js": [
-        "/build/runtime.518d4a5c.js"
+        "/build/runtime.d94b3b43.js"
       ],
       "css": [
-        "/build/css/detail.53db9aba.css"
+        "/build/css/detail.d790e56d.css"
       ]
     },
     "css/photo": {
       "js": [
-        "/build/runtime.518d4a5c.js"
+        "/build/runtime.d94b3b43.js"
       ],
       "css": [
-        "/build/css/photo.4ae3bf6b.css"
+        "/build/css/photo.7848d3a6.css"
       ]
     },
     "css/select2": {
       "js": [
-        "/build/runtime.518d4a5c.js"
+        "/build/runtime.d94b3b43.js"
       ],
       "css": [
-        "/build/css/select2.8a35f2d5.css"
+        "/build/css/select2.ec05fde8.css"
       ]
     }
   }
