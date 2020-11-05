@@ -11,7 +11,7 @@ use App\Entity\Menu;
 use App\Repository\SettingsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class BaseController extends AbstractController
+abstract class BaseController extends AbstractController
 {
     /**
      * @var SettingsRepository
