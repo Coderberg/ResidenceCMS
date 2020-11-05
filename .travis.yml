@@ -41,6 +41,7 @@ addons:
       - mysql-client
 
 install:
+  - composer update symfony/flex --no-plugins
   - composer install
 
 script:
