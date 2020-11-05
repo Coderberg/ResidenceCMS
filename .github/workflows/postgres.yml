@@ -38,7 +38,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Install Composer dependencies
         run: |
-          composer update symfony/flex --no-plugins
+          composer update symfony/flex --no-plugins --no-scripts
           composer install --no-progress --prefer-dist --optimize-autoloader
       - name: Run Migration
         run: |

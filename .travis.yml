@@ -41,13 +41,13 @@ addons:
       - mysql-client
 
 install:
-  - composer update symfony/flex --no-plugins
-  - composer install
+  - COMPOSER_MEMORY_LIMIT=-1 composer update symfony/flex --no-plugins --no-scripts
+  - COMPOSER_MEMORY_LIMIT=-1 composer install
 
 script:
-  - php bin/console doctrine:database:create --if-not-exists --no-interaction
-  - php bin/console doctrine:migrations:migrate --no-interaction
-  - php bin/console doctrine:fixtures:load --no-interaction
+  - php bin/console doctrine:database:create --if-not-exists -n
+  - php bin/console doctrine:migrations:migrate -n
+  - php bin/console doctrine:fixtures:load -n
   - php bin/phpunit
   # this checks that the source code follows the Symfony Code Syntax rules
   - ./vendor/bin/php-cs-fixer fix --diff --dry-run -v
