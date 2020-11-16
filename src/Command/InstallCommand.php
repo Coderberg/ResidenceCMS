@@ -20,12 +20,12 @@ final class InstallCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        foreach ($this->getCommands() as $c) {
-            $input = new ArrayInput($c['arguments']);
-            $input->setInteractive(false);
+        foreach ($this->getCommands() as $command) {
+            $consoleInput = new ArrayInput($command['arguments']);
+            $consoleInput->setInteractive(false);
             $this->getApplication()
-                ->find($c['command'])
-                ->run($input, $output);
+                ->find($command['command'])
+                ->run($consoleInput, $output);
         }
 
         return Command::SUCCESS;
