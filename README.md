@@ -31,29 +31,26 @@ The user interface is built with [Bootstrap 4][2].
 
 4. After installing you should configure your web server's document / web root to be the ```public``` directory.
 
-5. Create an empty MySQL database
-
-6. Create ```.env.local``` from ```.env``` file and fill in your database credentials
+5. Create ```.env.local``` from ```.env``` file and fill in your database credentials
 
     ```
     DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
     ```
 
-7. Run
+6. Run
 
     ```
-    $ php bin/console doctrine:migrations:migrate
-    $ php bin/console doctrine:fixtures:load
+    $ php bin/console app:install
     ```
 
-8. Go to http://mywebsite.loc/admin and log in.
+7. Go to http://mywebsite.loc/admin and log in.
 
    ```
    login: admin
    password: admin
    ```
 
-9. To use feedback forms, configure MAILER_DSN in ```.env.local```
+8. To use feedback forms, configure MAILER_DSN in ```.env.local```
 
 ## Tests
 
