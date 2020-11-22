@@ -28,8 +28,8 @@ before_install:
   - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('new_password') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
   - sudo mysql_upgrade -u root -pnew_password
   - sudo service mysql restart
-  - cp ./.travis/.env.local .env.local
-  - cp ./.travis/.env.test.local .env.test.local
+  - sed -i -e 's/db_user:db_password/travis:/g' ./.env ./.env.test
+  - sed -i -e 's/db_name/travis/g' ./.env ./.env.test
   - composer self-update
 
 addons:
