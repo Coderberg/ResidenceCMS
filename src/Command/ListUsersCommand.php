@@ -68,6 +68,6 @@ final class ListUsersCommand extends Command
         $usersAsATable = $bufferedOutput->fetch();
         $output->write($usersAsATable);
 
-        return 0;
+        return Command::SUCCESS;
     }
 }
