@@ -3,13 +3,13 @@
     "js/app": {
       "js": [
         "/build/runtime.d94b3b43.js",
-        "/build/js/app.1422e45f.js"
+        "/build/js/app.24e67d2c.js"
       ]
     },
     "js/admin": {
       "js": [
         "/build/runtime.d94b3b43.js",
-        "/build/js/admin.3a8a26f4.js"
+        "/build/js/admin.9f04d2ad.js"
       ]
     },
     "js/ekko-lightbox": {
@@ -27,7 +27,7 @@
     "js/menu-sorting": {
       "js": [
         "/build/runtime.d94b3b43.js",
-        "/build/js/menu-sorting.8af9c908.js"
+        "/build/js/menu-sorting.133e9cf0.js"
       ]
     },
     "js/select2": {
@@ -39,19 +39,19 @@
     "js/slugger": {
       "js": [
         "/build/runtime.d94b3b43.js",
-        "/build/js/slugger.5cdbaf01.js"
+        "/build/js/slugger.25a8c2fa.js"
       ]
     },
     "js/city": {
       "js": [
         "/build/runtime.d94b3b43.js",
-        "/build/js/city.45693d06.js"
+        "/build/js/city.c27ba938.js"
       ]
     },
     "js/photo": {
       "js": [
         "/build/runtime.d94b3b43.js",
-        "/build/js/photo.5ae4b4d3.js"
+        "/build/js/photo.7ad0b545.js"
       ]
     },
     "js/page": {
@@ -63,7 +63,7 @@
     "js/user": {
       "js": [
         "/build/runtime.d94b3b43.js",
-        "/build/js/user.db6829da.js"
+        "/build/js/user.83daf736.js"
       ]
     },
     "css/app": {
@@ -71,7 +71,7 @@
         "/build/runtime.d94b3b43.js"
       ],
       "css": [
-        "/build/css/app.192d4923.css"
+        "/build/css/app.cf9d88d8.css"
       ]
     },
     "css/admin": {
