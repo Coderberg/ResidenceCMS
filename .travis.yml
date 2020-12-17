@@ -32,6 +32,9 @@ before_install:
   - sed -i -e 's/db_name/travis/g' ./.env ./.env.test
   - composer self-update
 
+before_script:
+  - phpenv config-rm xdebug.ini
+
 addons:
   apt:
     sources:
