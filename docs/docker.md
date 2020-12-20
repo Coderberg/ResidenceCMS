@@ -1,13 +1,13 @@
 ## How to run Residence CMS  in Docker Containers ##
 
-1. Сlone repositories
+1. Clone repositories
 ```
 $ git clone https://github.com/eko/docker-symfony.git
 $ cd docker-symfony
 $ git clone https://github.com/Coderberg/ResidenceCMS.git symfony
 ```
 
-2. Сreate ```.env``` files
+2. Create ```.env``` files
 ```
 $ echo -e '
 DATABASE_URL=mysql://symfony:symfony@db/symfony?serverVersion=5.7\r
@@ -32,9 +32,7 @@ $ docker exec -it php-fpm /bin/sh
 4. Install app
 ```
 # composer install
-# php bin/console doctrine:database:create --if-not-exists --no-interaction
-# php bin/console doctrine:migrations:migrate --no-interaction
-# php bin/console doctrine:fixtures:load --no-interaction
+# php bin/console app:install
 # find ./public/uploads -type d -print | xargs chmod 777
 
 # php bin/phpunit
