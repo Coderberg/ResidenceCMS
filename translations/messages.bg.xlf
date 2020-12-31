@@ -4,215 +4,215 @@
         <body>
             <trans-unit id="menu.back">
                 <source>menu.back</source>
-                <target>Назад</target>
+                <target>РќР°Р·Р°Рґ</target>
             </trans-unit>
             <trans-unit id="menu.homepage">
                 <source>menu.homepage</source>
-                <target>Начало</target>
+                <target>РќР°С‡Р°Р»Рѕ</target>
             </trans-unit>
             <trans-unit id="menu.catalog">
                 <source>menu.catalog</source>
-                <target>Каталог</target>
+                <target>РљР°С‚Р°Р»РѕРі</target>
             </trans-unit>
             <trans-unit id="menu.add_new">
                 <source>menu.add_new</source>
-                <target>Добави</target>
+                <target>Р”РѕР±Р°РІРё</target>
             </trans-unit>
             <trans-unit id="menu.settings">
                 <source>menu.settings</source>
-                <target>Настройки</target>
+                <target>РќР°СЃС‚СЂРѕР№РєРё</target>
             </trans-unit>
             <trans-unit id="menu.my_properties">
                 <source>menu.my_properties</source>
-                <target>Моите имоти</target>
+                <target>РњРѕРёС‚Рµ РёРјРѕС‚Рё</target>
             </trans-unit>
             <trans-unit id="menu.unpublished">
                 <source>menu.unpublished</source>
-                <target>Непубликувани</target>
+                <target>РќРµРїСѓР±Р»РёРєСѓРІР°РЅРё</target>
             </trans-unit>
             <trans-unit id="menu.admin">
                 <source>menu.admin</source>
-                <target>Администрация</target>
+                <target>РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ</target>
             </trans-unit>
             <trans-unit id="menu.account">
                 <source>menu.account</source>
-                <target>Акаунт</target>
+                <target>РђРєР°СѓРЅС‚</target>
             </trans-unit>
             <trans-unit id="menu.edit_profile">
                 <source>menu.edit_profile</source>
-                <target>Промени профил</target>
+                <target>РџСЂРѕРјРµРЅРё РїСЂРѕС„РёР»</target>
             </trans-unit>
             <trans-unit id="menu.login">
                 <source>menu.login</source>
-                <target>Вход</target>
+                <target>Р’С…РѕРґ</target>
             </trans-unit>
             <trans-unit id="menu.logout">
                 <source>menu.logout</source>
-                <target>Изход</target>
+                <target>РР·С…РѕРґ</target>
             </trans-unit>
 
             <trans-unit id="yes">
                 <source>yes</source>
-                <target>Да</target>
+                <target>Р”Р°</target>
             </trans-unit>
             <trans-unit id="no_items_found">
                 <source>no_items_found</source>
-                <target>Няма намерени резултати.</target>
+                <target>РќСЏРјР° РЅР°РјРµСЂРµРЅРё СЂРµР·СѓР»С‚Р°С‚Рё.</target>
             </trans-unit>
             <trans-unit id="view_details">
                 <source>view_details</source>
-                <target>Виж детайли</target>
+                <target>Р’РёР¶ РґРµС‚Р°Р№Р»Рё</target>
             </trans-unit>
             <trans-unit id="show_on_map">
                 <source>show_on_map</source>
-                <target>Покажи на картата</target>
+                <target>РџРѕРєР°Р¶Рё РЅР° РєР°СЂС‚Р°С‚Р°</target>
             </trans-unit>
 
             <trans-unit id="dashboard">
                 <source>dashboard</source>
-                <target>Табло</target>
+                <target>РўР°Р±Р»Рѕ</target>
             </trans-unit>
             <trans-unit id="properties">
                 <source>properties</source>
-                <target>Имоти</target>
+                <target>РРјРѕС‚Рё</target>
             </trans-unit>
             <trans-unit id="locations">
                 <source>locations</source>
-                <target>Местоположения</target>
+                <target>РњРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёСЏ</target>
             </trans-unit>
             <trans-unit id="cities">
                 <source>cities</source>
-                <target>Градове</target>
+                <target>Р“СЂР°РґРѕРІРµ</target>
             </trans-unit>
             <trans-unit id="neighborhoods">
                 <source>neighborhoods</source>
-                <target>Квартали/Населени места</target>
+                <target>РљРІР°СЂС‚Р°Р»Рё/РќР°СЃРµР»РµРЅРё РјРµСЃС‚Р°</target>
             </trans-unit>
             <trans-unit id="districts">
                 <source>districts</source>
-                <target>Райони</target>
+                <target>Р Р°Р№РѕРЅРё</target>
             </trans-unit>
             <trans-unit id="metro_stations">
                 <source>metro_stations</source>
-                <target>Метро станции</target>
+                <target>РњРµС‚СЂРѕ СЃС‚Р°РЅС†РёРё</target>
             </trans-unit>
             <trans-unit id="deal_types">
                 <source>deal_types</source>
-                <target>Типове сделки</target>
+                <target>РўРёРїРѕРІРµ СЃРґРµР»РєРё</target>
             </trans-unit>
             <trans-unit id="categories">
                 <source>categories</source>
-                <target>Категории</target>
+                <target>РљР°С‚РµРіРѕСЂРёРё</target>
             </trans-unit>
             <trans-unit id="features">
                 <source>features</source>
-                <target>Особености</target>
+                <target>РћСЃРѕР±РµРЅРѕСЃС‚Рё</target>
             </trans-unit>
             <trans-unit id="currencies">
                 <source>currencies</source>
-                <target>Валути</target>
+                <target>Р’Р°Р»СѓС‚Рё</target>
             </trans-unit>
             <trans-unit id="pages">
                 <source>pages</source>
-                <target>Страници</target>
+                <target>РЎС‚СЂР°РЅРёС†Рё</target>
             </trans-unit>
             <trans-unit id="users">
                 <source>users</source>
-                <target>Потребители</target>
+                <target>РџРѕС‚СЂРµР±РёС‚РµР»Рё</target>
             </trans-unit>
             <trans-unit id="menu">
                 <source>menu</source>
-                <target>Меню</target>
+                <target>РњРµРЅСЋ</target>
             </trans-unit>
             <trans-unit id="property">
                 <source>property</source>
-                <target>Имот</target>
+                <target>РРјРѕС‚</target>
             </trans-unit>
             <trans-unit id="city">
                 <source>city</source>
-                <target>Град</target>
+                <target>Р“СЂР°Рґ</target>
             </trans-unit>
             <trans-unit id="neighborhood">
                 <source>neighborhood</source>
-                <target>Квартал/Населено място</target>
+                <target>РљРІР°СЂС‚Р°Р»/РќР°СЃРµР»РµРЅРѕ РјСЏСЃС‚Рѕ</target>
             </trans-unit>
             <trans-unit id="district">
                 <source>district</source>
-                <target>Район</target>
+                <target>Р Р°Р№РѕРЅ</target>
             </trans-unit>
             <trans-unit id="metro_station">
                 <source>metro_station</source>
-                <target>Метро станция</target>
+                <target>РњРµС‚СЂРѕ СЃС‚Р°РЅС†РёСЏ</target>
             </trans-unit>
             <trans-unit id="deal_type">
                 <source>deal_type</source>
-                <target>Тип</target>
+                <target>РўРёРї</target>
             </trans-unit>
             <trans-unit id="category">
                 <source>category</source>
-                <target>Тип на имота</target>
+                <target>РўРёРї РЅР° РёРјРѕС‚Р°</target>
             </trans-unit>
             <trans-unit id="feature">
                 <source>feature</source>
-                <target>Особеност</target>
+                <target>РћСЃРѕР±РµРЅРѕСЃС‚</target>
             </trans-unit>
             <trans-unit id="page">
                 <source>page</source>
-                <target>Страница</target>
+                <target>РЎС‚СЂР°РЅРёС†Р°</target>
             </trans-unit>
             <trans-unit id="user">
                 <source>user</source>
-                <target>Потребител</target>
+                <target>РџРѕС‚СЂРµР±РёС‚РµР»</target>
             </trans-unit>
             <trans-unit id="photo">
                 <source>photo</source>
-                <target>Снимка</target>
+                <target>РЎРЅРёРјРєР°</target>
             </trans-unit>
 
             <trans-unit id="message.created">
                 <source>message.created</source>
-                <target>Успешно създаване</target>
+                <target>РЈСЃРїРµС€РЅРѕ СЃСЉР·РґР°РІР°РЅРµ</target>
             </trans-unit>
             <trans-unit id="message.updated">
                 <source>message.updated</source>
-                <target>Успешно обновяване</target>
+                <target>РЈСЃРїРµС€РЅРѕ РѕР±РЅРѕРІСЏРІР°РЅРµ</target>
             </trans-unit>
             <trans-unit id="message.deleted">
                 <source>message.deleted</source>
-                <target>Успешно изтриване</target>
+                <target>РЈСЃРїРµС€РЅРѕ РёР·С‚СЂРёРІР°РЅРµ</target>
             </trans-unit>
             <trans-unit id="message.uploaded">
                 <source>message.uploaded</source>
-                <target>Снимката е качена успешно</target>
+                <target>РЎРЅРёРјРєР°С‚Р° Рµ РєР°С‡РµРЅР° СѓСЃРїРµС€РЅРѕ</target>
             </trans-unit>
             <trans-unit id="message.was_sent">
                 <source>message.was_sent</source>
-                <target>Вашето съобщение е изпратено успешно. Благодарим Ви.</target>
+                <target>Р’Р°С€РµС‚Рѕ СЃСЉРѕР±С‰РµРЅРёРµ Рµ РёР·РїСЂР°С‚РµРЅРѕ СѓСЃРїРµС€РЅРѕ. Р‘Р»Р°РіРѕРґР°СЂРёРј Р’Рё.</target>
             </trans-unit>
             <trans-unit id="message.token_expired">
                 <source>message.token_expired</source>
-                <target>За съжаление, вашия ключ е изтекъл. Моля опитайте отново!</target>
+                <target>Sorry, your token has expired. Please try again.</target>
             </trans-unit>
             <trans-unit id="message.password_has_been_reset">
                 <source>message.password_has_been_reset</source>
-                <target>Паролата е променена успешно. Вече можете да влезете с новата си парола.</target>
+                <target>РџР°СЂРѕР»Р°С‚Р° Рµ РїСЂРѕРјРµРЅРµРЅР° СѓСЃРїРµС€РЅРѕ. Р’РµС‡Рµ РјРѕР¶РµС‚Рµ РґР° РІР»РµР·РµС‚Рµ СЃ РЅРѕРІР°С‚Р° СЃРё РїР°СЂРѕР»Р°.</target>
             </trans-unit>
             <trans-unit id="message.emailed_reset_link">
                 <source>message.emailed_reset_link</source>
-                <target>Изпратихме Ви връзка за ресет на паролата!</target>
+                <target>We have e-mailed your password reset link!</target>
             </trans-unit>
 
             <trans-unit id="widget.contact_information">
                 <source>widget.contact_information</source>
-                <target>Информация за контакт</target>
+                <target>РРЅС„РѕСЂРјР°С†РёСЏ Р·Р° РєРѕРЅС‚Р°РєС‚</target>
             </trans-unit>
             <trans-unit id="widget.agent">
                 <source>widget.agent</source>
-                <target>Брокер</target>
+                <target>Р‘СЂРѕРєРµСЂ</target>
             </trans-unit>
             <trans-unit id="widget.phone">
                 <source>widget.phone</source>
-                <target>Телефон</target>
+                <target>РўРµР»РµС„РѕРЅ</target>
             </trans-unit>
             <trans-unit id="widget.email">
                 <source>widget.email</source>
@@ -220,93 +220,93 @@
             </trans-unit>
             <trans-unit id="widget.search">
                 <source>widget.search</source>
-                <target>Търсене</target>
+                <target>РўСЉСЂСЃРµРЅРµ</target>
             </trans-unit>
             <trans-unit id="widget.all_cities">
                 <source>widget.all_cities</source>
-                <target>Всички градове</target>
+                <target>Р’СЃРёС‡РєРё РіСЂР°РґРѕРІРµ</target>
             </trans-unit>
             <trans-unit id="widget.all_neighborhoods">
                 <source>widget.all_neighborhoods</source>
-                <target>Всички квартали</target>
+                <target>Р’СЃРёС‡РєРё РєРІР°СЂС‚Р°Р»Рё</target>
             </trans-unit>
             <trans-unit id="widget.all_deal_types">
                 <source>widget.all_deal_types</source>
-                <target>Всички типове</target>
+                <target>Р’СЃРёС‡РєРё С‚РёРїРѕРІРµ</target>
             </trans-unit>
             <trans-unit id="widget.all_categories">
                 <source>widget.all_categories</source>
-                <target>Всички типове имоти</target>
+                <target>Р’СЃРёС‡РєРё С‚РёРїРѕРІРµ РёРјРѕС‚Рё</target>
             </trans-unit>
 
             <trans-unit id="action.search">
                 <source>action.search</source>
-                <target>Търсене</target>
+                <target>РўСЉСЂСЃРµРЅРµ</target>
             </trans-unit>
             <trans-unit id="action.save">
                 <source>action.save</source>
-                <target>Запази промените</target>
+                <target>Р—Р°РїР°Р·Рё РїСЂРѕРјРµРЅРёС‚Рµ</target>
             </trans-unit>
             <trans-unit id="action.edit">
                 <source>action.edit</source>
-                <target>Промени</target>
+                <target>РџСЂРѕРјРµРЅРё</target>
             </trans-unit>
             <trans-unit id="action.finish_editing">
                 <source>action.finish_editing</source>
-                <target>Завършване на промените</target>
+                <target>Р—Р°РІСЉСЂС€РІР°РЅРµ РЅР° РїСЂРѕРјРµРЅРёС‚Рµ</target>
             </trans-unit>
             <trans-unit id="action.edit_photos">
                 <source>action.edit_photos</source>
-                <target>Промени снимки</target>
+                <target>РџСЂРѕРјРµРЅРё СЃРЅРёРјРєРё</target>
             </trans-unit>
             <trans-unit id="action.reorder_photos">
                 <source>action.reorder_photos</source>
-                <target>Пренареди снимките</target>
+                <target>РџСЂРµРЅР°СЂРµРґРё СЃРЅРёРјРєРёС‚Рµ</target>
             </trans-unit>
             <trans-unit id="action.save_reordering">
                 <source>action.save_reordering</source>
-                <target>Запази подредба</target>
+                <target>Р—Р°РїР°Р·Рё РїРѕРґСЂРµРґР±Р°</target>
             </trans-unit>
             <trans-unit id="action.delete">
                 <source>action.delete</source>
-                <target>Изтриване</target>
+                <target>РР·С‚СЂРёРІР°РЅРµ</target>
             </trans-unit>
             <trans-unit id="action.sign_in">
                 <source>action.sign_in</source>
-                <target>Вход</target>
+                <target>Р’С…РѕРґ</target>
             </trans-unit>
             <trans-unit id="action.forgot_password">
                 <source>action.forgot_password</source>
-                <target>Забравена парола?</target>
+                <target>Р—Р°Р±СЂР°РІРµРЅР° РїР°СЂРѕР»Р°?</target>
             </trans-unit>
             <trans-unit id="action.send_reset_link">
                 <source>action.send_reset_link</source>
-                <target>Изпрати връзка за ресет на паролата</target>
+                <target>Send Password Reset Link</target>
             </trans-unit>
             <trans-unit id="action.add_menu_item">
                 <source>action.add_menu_item</source>
-                <target>Добави меню елемент</target>
+                <target>Р”РѕР±Р°РІРё РјРµРЅСЋ РµР»РµРјРµРЅС‚</target>
             </trans-unit>
             <trans-unit id="action.submit">
                 <source>action.submit</source>
-                <target>Потвърди</target>
+                <target>РџРѕС‚РІСЉСЂРґРё</target>
             </trans-unit>
             <trans-unit id="action.continue">
                 <source>action.continue</source>
-                <target>Продължи</target>
+                <target>РџСЂРѕРґСЉР»Р¶Рё</target>
             </trans-unit>
             <trans-unit id="action.publish">
                 <source>action.publish</source>
-                <target>Публикувай</target>
+                <target>РџСѓР±Р»РёРєСѓРІР°Р№</target>
             </trans-unit>
             <trans-unit id="action.unpublish">
                 <source>action.unpublish</source>
-                <target>Отмяна на публикуването</target>
+                <target>РћС‚РјСЏРЅР° РЅР° РїСѓР±Р»РёРєСѓРІР°РЅРµС‚Рѕ</target>
             </trans-unit>
 
             <trans-unit id="table.link_text">
                 <source>table.link_text</source>
-                <target>Текст на връзката</target>
+                <target>Link Text</target>
             </trans-unit>
             <trans-unit id="table.url">
                 <source>table.url</source>
@@ -314,31 +314,31 @@
             </trans-unit>
             <trans-unit id="table.move">
                 <source>table.move</source>
-                <target>Премести</target>
+                <target>РџСЂРµРјРµСЃС‚Рё</target>
             </trans-unit>
             <trans-unit id="table.city_name">
                 <source>table.city_name</source>
-                <target>Град</target>
+                <target>Р“СЂР°Рґ</target>
             </trans-unit>
             <trans-unit id="table.deal_type">
                 <source>table.deal_type</source>
-                <target>Тип сделка</target>
+                <target>РўРёРї СЃРґРµР»РєР°</target>
             </trans-unit>
             <trans-unit id="table.category_name">
                 <source>table.category_name</source>
-                <target>Име на категорията</target>
+                <target>РРјРµ РЅР° РєР°С‚РµРіРѕСЂРёСЏС‚Р°</target>
             </trans-unit>
             <trans-unit id="table.currency_title">
                 <source>table.currency_title</source>
-                <target>Заглавие на валута</target>
+                <target>Р—Р°РіР»Р°РІРёРµ РЅР° РІР°Р»СѓС‚Р°</target>
             </trans-unit>
             <trans-unit id="table.code">
                 <source>table.code</source>
-                <target>Код</target>
+                <target>Code</target>
             </trans-unit>
             <trans-unit id="table.username">
                 <source>table.username</source>
-                <target>Потребителско име</target>
+                <target>РџРѕС‚СЂРµР±РёС‚РµР»СЃРєРѕ РёРјРµ</target>
             </trans-unit>
             <trans-unit id="table.email">
                 <source>table.email</source>
@@ -346,254 +346,254 @@
             </trans-unit>
             <trans-unit id="table.slug">
                 <source>table.slug</source>
-                <target>Път в URL</target>
+                <target>РџСЉС‚ РІ URL</target>
             </trans-unit>
             <trans-unit id="table.action">
                 <source>table.action</source>
-                <target>Действие</target>
+                <target>Р”РµР№СЃС‚РІРёРµ</target>
             </trans-unit>
 
             <trans-unit id="confirmation.delete_item">
                 <source>confirmation.delete_item</source>
-                <target>Сигурни ли сте, че искате да изтриете този елемент?</target>
+                <target>Are you sure you want to delete this item?</target>
             </trans-unit>
             <trans-unit id="confirmation.delete_photo">
                 <source>confirmation.delete_photo</source>
-                <target>Сигурни ли сте, че искате да изтриете тази снимка?</target>
+                <target>Are you sure you want to delete this photo?</target>
             </trans-unit>
             <trans-unit id="confirmation.delete_user">
                 <source>confirmation.delete_user</source>
-                <target>Сигурни ли сте, че искате да изтриете този потребител?</target>
+                <target>Are you sure you want to delete this user?</target>
             </trans-unit>
 
             <trans-unit id="title.my_properties">
                 <source>title.my_properties</source>
-                <target>Моите имоти</target>
+                <target>РњРѕРёС‚Рµ РёРјРѕС‚Рё</target>
             </trans-unit>
             <trans-unit id="title.properties_on_map">
                 <source>title.properties_on_map</source>
-                <target>Всички имоти на картата</target>
+                <target>Р’СЃРёС‡РєРё РёРјРѕС‚Рё РЅР° РєР°СЂС‚Р°С‚Р°</target>
             </trans-unit>
             <trans-unit id="title.login">
                 <source>title.login</source>
-                <target>Влизане в системата</target>
+                <target>Р’Р»РёР·Р°РЅРµ РІ СЃРёСЃС‚РµРјР°С‚Р°</target>
             </trans-unit>
             <trans-unit id="title.reset_password">
                 <source>title.reset_password</source>
-                <target>Ресет на паролата</target>
+                <target>Р РµСЃРµС‚ РЅР° РїР°СЂРѕР»Р°С‚Р°</target>
             </trans-unit>
             <trans-unit id="title.set_new_pass">
                 <source>title.set_new_pass</source>
-                <target>Задайте нова парола</target>
+                <target>Set a new password</target>
             </trans-unit>
             <trans-unit id="title.pages">
                 <source>title.pages</source>
-                <target>Страници</target>
+                <target>РЎС‚СЂР°РЅРёС†Рё</target>
             </trans-unit>
             <trans-unit id="title.latest_properties">
                 <source>title.latest_properties</source>
-                <target>Последни имоти</target>
+                <target>РџРѕСЃР»РµРґРЅРё РёРјРѕС‚Рё</target>
             </trans-unit>
             <trans-unit id="title.add_page">
                 <source>title.add_page</source>
-                <target>Добави страница</target>
+                <target>Р”РѕР±Р°РІРё СЃС‚СЂР°РЅРёС†Р°</target>
             </trans-unit>
             <trans-unit id="title.edit_page">
                 <source>title.edit_page</source>
-                <target>Промени страница</target>
+                <target>РџСЂРѕРјРµРЅРё СЃС‚СЂР°РЅРёС†Р°</target>
             </trans-unit>
             <trans-unit id="title.add_property">
                 <source>title.add_property</source>
-                <target>Добави имот</target>
+                <target>Р”РѕР±Р°РІРё РёРјРѕС‚</target>
             </trans-unit>
             <trans-unit id="title.edit_property">
                 <source>title.edit_property</source>
-                <target>Промени имот</target>
+                <target>РџСЂРѕРјРµРЅРё РёРјРѕС‚</target>
             </trans-unit>
             <trans-unit id="title.add_city">
                 <source>title.add_city</source>
-                <target>Добави град</target>
+                <target>Р”РѕР±Р°РІРё РіСЂР°Рґ</target>
             </trans-unit>
             <trans-unit id="title.edit_city">
                 <source>title.edit_city</source>
-                <target>Промени град</target>
+                <target>РџСЂРѕРјРµРЅРё РіСЂР°Рґ</target>
             </trans-unit>
             <trans-unit id="title.add_neighborhood">
                 <source>title.add_neighborhood</source>
-                <target>Добави квартал/населено място</target>
+                <target>Р”РѕР±Р°РІРё РєРІР°СЂС‚Р°Р»/РЅР°СЃРµР»РµРЅРѕ РјСЏСЃС‚Рѕ</target>
             </trans-unit>
             <trans-unit id="title.add_district">
                 <source>title.add_district</source>
-                <target>Добави район</target>
+                <target>Р”РѕР±Р°РІРё СЂР°Р№РѕРЅ</target>
             </trans-unit>
             <trans-unit id="title.add_metro_station">
                 <source>title.add_metro_station</source>
-                <target>Добави метро странция</target>
+                <target>Р”РѕР±Р°РІРё РјРµС‚СЂРѕ СЃС‚СЂР°РЅС†РёСЏ</target>
             </trans-unit>
             <trans-unit id="title.edit_neighborhood">
                 <source>title.edit_neighborhood</source>
-                <target>Промени квартал/населено място</target>
+                <target>РџСЂРѕРјРµРЅРё РєРІР°СЂС‚Р°Р»/РЅР°СЃРµР»РµРЅРѕ РјСЏСЃС‚Рѕ</target>
             </trans-unit>
             <trans-unit id="title.edit_district">
                 <source>title.edit_district</source>
-                <target>Промени район</target>
+                <target>РџСЂРѕРјРµРЅРё СЂР°Р№РѕРЅ</target>
             </trans-unit>
             <trans-unit id="title.edit_metro_station">
                 <source>title.edit_metro_station</source>
-                <target>Промени метро станция</target>
+                <target>РџСЂРѕРјРµРЅРё РјРµС‚СЂРѕ СЃС‚Р°РЅС†РёСЏ</target>
             </trans-unit>
             <trans-unit id="title.add_deal_type">
                 <source>title.add_deal_type</source>
-                <target>Добави тип сделка</target>
+                <target>Р”РѕР±Р°РІРё С‚РёРї СЃРґРµР»РєР°</target>
             </trans-unit>
             <trans-unit id="title.edit_deal_type">
                 <source>title.edit_deal_type</source>
-                <target>Промени тип сделка</target>
+                <target>РџСЂРѕРјРµРЅРё С‚РёРї СЃРґРµР»РєР°</target>
             </trans-unit>
             <trans-unit id="title.add_category">
                 <source>title.add_category</source>
-                <target>Добави категория</target>
+                <target>Р”РѕР±Р°РІРё РєР°С‚РµРіРѕСЂРёСЏ</target>
             </trans-unit>
             <trans-unit id="title.edit_category">
                 <source>title.edit_category</source>
-                <target>Промени категория</target>
+                <target>РџСЂРѕРјРµРЅРё РєР°С‚РµРіРѕСЂРёСЏ</target>
             </trans-unit>
             <trans-unit id="title.add_feature">
                 <source>title.add_feature</source>
-                <target>Добави особеност</target>
+                <target>Р”РѕР±Р°РІРё РѕСЃРѕР±РµРЅРѕСЃС‚</target>
             </trans-unit>
             <trans-unit id="title.edit_feature">
                 <source>title.edit_feature</source>
-                <target>Промени особеност</target>
+                <target>РџСЂРѕРјРµРЅРё РѕСЃРѕР±РµРЅРѕСЃС‚</target>
             </trans-unit>
             <trans-unit id="title.add_currency">
                 <source>title.add_currency</source>
-                <target>Добави валута</target>
+                <target>Р”РѕР±Р°РІРё РІР°Р»СѓС‚Р°</target>
             </trans-unit>
             <trans-unit id="title.edit_currency">
                 <source>title.edit_currency</source>
-                <target>Промени валута</target>
+                <target>РџСЂРѕРјРµРЅРё РІР°Р»СѓС‚Р°</target>
             </trans-unit>
             <trans-unit id="title.add_user">
                 <source>title.add_user</source>
-                <target>Добави потребител</target>
+                <target>Р”РѕР±Р°РІРё РїРѕС‚СЂРµР±РёС‚РµР»</target>
             </trans-unit>
             <trans-unit id="title.edit_user">
                 <source>title.edit_user</source>
-                <target>Промени потребител</target>
+                <target>РџСЂРѕРјРµРЅРё РїРѕС‚СЂРµР±РёС‚РµР»</target>
             </trans-unit>
             <trans-unit id="title.add_menu_item">
                 <source>title.add_menu_item</source>
-                <target>Добави меню елемент</target>
+                <target>Р”РѕР±Р°РІРё РјРµРЅСЋ РµР»РµРјРµРЅС‚</target>
             </trans-unit>
             <trans-unit id="title.edit_menu_item">
                 <source>title.edit_menu_item</source>
-                <target>Промени меню елемент</target>
+                <target>РџСЂРѕРјРµРЅРё РјРµРЅСЋ РµР»РµРјРµРЅС‚</target>
             </trans-unit>
             <trans-unit id="title.upload_photos">
                 <source>title.upload_photos</source>
-                <target>Качи снимки</target>
+                <target>РљР°С‡Рё СЃРЅРёРјРєРё</target>
             </trans-unit>
             <trans-unit id="title.settings">
                 <source>title.settings</source>
-                <target>Настройки</target>
+                <target>РќР°СЃС‚СЂРѕР№РєРё</target>
             </trans-unit>
             <trans-unit id="title.settings.header_settings">
                 <source>title.settings.header_settings</source>
-                <target>Настройки на заглавката</target>
+                <target>РќР°СЃС‚СЂРѕР№РєРё РЅР° Р·Р°РіР»Р°РІРєР°С‚Р°</target>
             </trans-unit>
 
             <trans-unit id="label.remember_me">
                 <source>label.remember_me</source>
-                <target>Запомни ме</target>
+                <target>Р—Р°РїРѕРјРЅРё РјРµ</target>
             </trans-unit>
             <trans-unit id="label.settings.name">
                 <source>label.settings.name</source>
-                <target>Име на сайта</target>
+                <target>РРјРµ РЅР° СЃР°Р№С‚Р°</target>
             </trans-unit>
             <trans-unit id="label.settings.title">
                 <source>label.settings.title</source>
-                <target>Заглавие на сайта</target>
+                <target>Р—Р°РіР»Р°РІРёРµ РЅР° СЃР°Р№С‚Р°</target>
             </trans-unit>
             <trans-unit id="label.meta_title">
                 <source>label.meta_title</source>
-                <target>Meta заглавие</target>
+                <target>Meta Р·Р°РіР»Р°РІРёРµ</target>
             </trans-unit>
             <trans-unit id="label.meta_description">
                 <source>label.meta_description</source>
-                <target>Meta описание</target>
+                <target>Meta РѕРїРёСЃР°РЅРёРµ</target>
             </trans-unit>
             <trans-unit id="label.settings.code">
                 <source>label.settings.code</source>
-                <target>Персонализиран код в хедъра&lt;head&gt; (Google Analytics и др.)</target>
+                <target>РџРµСЂСЃРѕРЅР°Р»РёР·РёСЂР°РЅ РєРѕРґ РІ С…РµРґСЉСЂР°&lt;head&gt; (Google Analytics Рё РґСЂ.)</target>
             </trans-unit>
             <trans-unit id="label.settings.custom_footer_text">
                 <source>label.settings.custom_footer_text</source>
-                <target>Персонализиран текст във футъра преди &lt;/body&gt;</target>
+                <target>РџРµСЂСЃРѕРЅР°Р»РёР·РёСЂР°РЅ С‚РµРєСЃС‚ РІСЉРІ С„СѓС‚СЉСЂР° РїСЂРµРґРё &lt;/body&gt;</target>
             </trans-unit>
             <trans-unit id="label.settings.limit">
                 <source>label.settings.limit</source>
-                <target>Брой резултати на страница</target>
+                <target>Р‘СЂРѕР№ СЂРµР·СѓР»С‚Р°С‚Рё РЅР° СЃС‚СЂР°РЅРёС†Р°</target>
             </trans-unit>
             <trans-unit id="label.settings.currency">
                 <source>label.settings.currency</source>
-                <target>Валута</target>
+                <target>Р’Р°Р»СѓС‚Р°</target>
             </trans-unit>
             <trans-unit id="label.settings.fixed_top_navbar">
                 <source>label.settings.fixed_top_navbar</source>
-                <target>Фиксирана горна лента</target>
+                <target>Р¤РёРєСЃРёСЂР°РЅР° РіРѕСЂРЅР° Р»РµРЅС‚Р°</target>
             </trans-unit>
             <trans-unit id="label.settings.show_similar_properties">
                 <source>label.settings.show_similar_properties</source>
-                <target>Показване на подобни имоти</target>
+                <target>РџРѕРєР°Р·РІР°РЅРµ РЅР° РїРѕРґРѕР±РЅРё РёРјРѕС‚Рё</target>
             </trans-unit>
             <trans-unit id="label.settings.ymaps_key">
                 <source>label.settings.ymaps_key</source>
-                <target>Yandex.Maps JavaScript API ключ</target>
+                <target>Yandex.Maps JavaScript API key</target>
             </trans-unit>
             <trans-unit id="label.settings.map_center">
                 <source>label.settings.map_center</source>
-                <target>Център на картата</target>
+                <target>Р¦РµРЅС‚СЉСЂ РЅР° РєР°СЂС‚Р°С‚Р°</target>
             </trans-unit>
             <trans-unit id="label.settings.map_zoom">
                 <source>label.settings.map_zoom</source>
-                <target>Доближаване. Използват се стойности от 0 до 19</target>
+                <target>Р”РѕР±Р»РёР¶Р°РІР°РЅРµ. РР·РїРѕР»Р·РІР°С‚ СЃРµ СЃС‚РѕР№РЅРѕСЃС‚Рё РѕС‚ 0 РґРѕ 19</target>
             </trans-unit>
             <trans-unit id="label.settings.show_filter_by_city">
                 <source>label.settings.show_filter_by_city</source>
-                <target>Показване на филтър по град</target>
+                <target>РџРѕРєР°Р·РІР°РЅРµ РЅР° С„РёР»С‚СЉСЂ РїРѕ РіСЂР°Рґ</target>
             </trans-unit>
             <trans-unit id="label.settings.show_filter_by_deal_type">
                 <source>label.settings.show_filter_by_deal_type</source>
-                <target>Показване на филтър по тип сделка</target>
+                <target>РџРѕРєР°Р·РІР°РЅРµ РЅР° С„РёР»С‚СЉСЂ РїРѕ С‚РёРї СЃРґРµР»РєР°</target>
             </trans-unit>
             <trans-unit id="label.settings.show_filter_by_category">
                 <source>label.settings.show_filter_by_category</source>
-                <target>Показване на филтър по тип имот</target>
+                <target>РџРѕРєР°Р·РІР°РЅРµ РЅР° С„РёР»С‚СЉСЂ РїРѕ С‚РёРї РёРјРѕС‚</target>
             </trans-unit>
             <trans-unit id="label.settings.show_filter_by_bedrooms">
                 <source>label.settings.show_filter_by_bedrooms</source>
-                <target>Показване на филтър за стаи</target>
+                <target>РџРѕРєР°Р·РІР°РЅРµ РЅР° С„РёР»С‚СЉСЂ Р·Р° СЃС‚Р°Рё</target>
             </trans-unit>
             <trans-unit id="label.settings.show_filter_by_guests">
                 <source>label.settings.show_filter_by_guests</source>
-                <target>Показване на филтър за брой посетители</target>
+                <target>РџРѕРєР°Р·РІР°РЅРµ РЅР° С„РёР»С‚СЉСЂ Р·Р° Р±СЂРѕР№ РїРѕСЃРµС‚РёС‚РµР»Рё</target>
             </trans-unit>
             <trans-unit id="label.roles.admin">
                 <source>label.roles.admin</source>
-                <target>Администраторски права</target>
+                <target>РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂСЃРєРё РїСЂР°РІР°</target>
             </trans-unit>
             <trans-unit id="label.full_name">
                 <source>label.full_name</source>
-                <target>Пълно име</target>
+                <target>РџСЉР»РЅРѕ РёРјРµ</target>
             </trans-unit>
             <trans-unit id="label.username">
                 <source>label.username</source>
-                <target>Потребителско име</target>
+                <target>РџРѕС‚СЂРµР±РёС‚РµР»СЃРєРѕ РёРјРµ</target>
             </trans-unit>
             <trans-unit id="label.phone">
                 <source>label.phone</source>
-                <target>Телефон</target>
+                <target>РўРµР»РµС„РѕРЅ</target>
             </trans-unit>
             <trans-unit id="label.email">
                 <source>label.email</source>
@@ -601,148 +601,149 @@
             </trans-unit>
             <trans-unit id="label.password">
                 <source>label.password</source>
-                <target>Парола</target>
+                <target>РџР°СЂРѕР»Р°</target>
             </trans-unit>
             <trans-unit id="label.new_password">
                 <source>label.new_password</source>
-                <target>Нова парола</target>
+                <target>РќРѕРІР° РїР°СЂРѕР»Р°</target>
             </trans-unit>
             <trans-unit id="label.confirm_password">
                 <source>label.confirm_password</source>
-                <target>Потвърди нова парола</target>
+                <target>РџРѕС‚РІСЉСЂРґРё РЅРѕРІР° РїР°СЂРѕР»Р°</target>
             </trans-unit>
             <trans-unit id="label.name">
                 <source>label.name</source>
-                <target>Име</target>
+                <target>РРјРµ</target>
             </trans-unit>
             <trans-unit id="label.slug">
                 <source>label.slug</source>
-                <target>Път в URL</target>
+                <target>РџСЉС‚ РІ URL</target>
             </trans-unit>
             <trans-unit id="label.currency_title">
                 <source>label.currency_title</source>
-                <target>Наименование</target>
+                <target>РќР°РёРјРµРЅРѕРІР°РЅРёРµ</target>
             </trans-unit>
             <trans-unit id="label.code">
                 <source>label.code</source>
-                <target>Код</target>
+                <target>РљРѕРґ</target>
             </trans-unit>
             <trans-unit id="label.symbol_left">
                 <source>label.symbol_left</source>
-                <target>Символ в ляво</target>
+                <target>РЎРёРјРІРѕР» РІ Р»СЏРІРѕ</target>
             </trans-unit>
             <trans-unit id="label.symbol_right">
                 <source>label.symbol_right</source>
-                <target>Символ в дясно</target>
+                <target>РЎРёРјРІРѕР» РІ РґСЏСЃРЅРѕ</target>
             </trans-unit>
             <trans-unit id="label.photo">
                 <source>label.photo</source>
-                <target>Снимка</target>
+                <target>РЎРЅРёРјРєР°</target>
             </trans-unit>
             <trans-unit id="label.city">
                 <source>label.city</source>
-                <target>Град</target>
+                <target>Р“СЂР°Рґ</target>
             </trans-unit>
             <trans-unit id="label.neighborhood">
                 <source>label.neighborhood</source>
-                <target>Квартал/Населено място</target>
+                <target>РљРІР°СЂС‚Р°Р»/РќР°СЃРµР»РµРЅРѕ РјСЏСЃС‚Рѕ</target>
             </trans-unit>
             <trans-unit id="label.district">
                 <source>label.district</source>
-                <target>Район</target>
+                <target>Р Р°Р№РѕРЅ</target>
             </trans-unit>
             <trans-unit id="label.neighborhood_name">
                 <source>label.neighborhood_name</source>
-                <target>Име на квартал/населено място</target>
+                <target>РРјРµ РЅР° РєРІР°СЂС‚Р°Р»/РЅР°СЃРµР»РµРЅРѕ РјСЏСЃС‚Рѕ</target>
             </trans-unit>
             <trans-unit id="label.district_name">
                 <source>label.district_name</source>
-                <target>Име на район</target>
+                <target>РРјРµ РЅР° СЂР°Р№РѕРЅ</target>
             </trans-unit>
             <trans-unit id="label.metro_station_name">
                 <source>label.metro_station_name</source>
-                <target>Име на метро станция</target>
+                <target>РРјРµ РЅР° РјРµС‚СЂРѕ СЃС‚Р°РЅС†РёСЏ</target>
             </trans-unit>
             <trans-unit id="label.deal_type">
                 <source>label.deal_type</source>
-                <target>Тип на сделката</target>
+                <target>РўРёРї РЅР° СЃРґРµР»РєР°С‚Р°</target>
             </trans-unit>
             <trans-unit id="label.category">
                 <source>label.category</source>
-                <target>Тип имот</target>
+                <target>РўРёРї РёРјРѕС‚</target>
             </trans-unit>
             <trans-unit id="label.features">
                 <source>label.features</source>
-                <target>Особености</target>
+                <target>РћСЃРѕР±РµРЅРѕСЃС‚Рё</target>
             </trans-unit>
             <trans-unit id="label.priority_number">
                 <source>label.priority_number</source>
-                <target>Списъци по приоритет</target>
+                <target>Listing priority number</target>
             </trans-unit>
             <trans-unit id="label.priority_number.help">
                 <source>label.priority_number.help</source>
-                <target>Приоритета по подразбиране е 0; релативно на подразбиращия се приоритет, може да бъде по-висок (числа по-големи от 0) или по-ниски (числа по-малки от 0).
+                <target>The default priority is zero; relative to the default a priority can be higher (positive
+                    numbers) or lower (negative numbers).
                 </target>
             </trans-unit>
             <trans-unit id="label.agent">
                 <source>label.agent</source>
-                <target>Брокер</target>
+                <target>Р‘СЂРѕРєРµСЂ</target>
             </trans-unit>
             <trans-unit id="label.moderation_status">
                 <source>label.moderation_status</source>
-                <target>Статус</target>
+                <target>РЎС‚Р°С‚СѓСЃ</target>
             </trans-unit>
             <trans-unit id="option.published">
                 <source>option.published</source>
-                <target>Публикувана</target>
+                <target>РџСѓР±Р»РёРєСѓРІР°РЅР°</target>
             </trans-unit>
             <trans-unit id="option.private">
                 <source>option.private</source>
-                <target>Лична</target>
+                <target>Р›РёС‡РЅР°</target>
             </trans-unit>
             <trans-unit id="option.pending">
                 <source>option.pending</source>
-                <target>Изчаква преглед</target>
+                <target>РР·С‡Р°РєРІР° РїСЂРµРіР»РµРґ</target>
             </trans-unit>
             <trans-unit id="option.rejected">
                 <source>option.rejected</source>
-                <target>Отказана</target>
+                <target>РћС‚РєР°Р·Р°РЅР°</target>
             </trans-unit>
             <trans-unit id="option.all">
                 <source>option.all</source>
-                <target>Всички</target>
+                <target>Р’СЃРёС‡РєРё</target>
             </trans-unit>
             <trans-unit id="label.feature">
                 <source>label.feature</source>
-                <target>Име на особеност</target>
+                <target>РРјРµ РЅР° РѕСЃРѕР±РµРЅРѕСЃС‚</target>
             </trans-unit>
             <trans-unit id="label.custom_icon">
                 <source>label.custom_icon</source>
-                <target>Собствена икона (незадължително)</target>
+                <target>РЎРѕР±СЃС‚РІРµРЅР° РёРєРѕРЅР° (РЅРµР·Р°РґСЉР»Р¶РёС‚РµР»РЅРѕ)</target>
             </trans-unit>
             <trans-unit id="label.bathrooms_number">
                 <source>label.bathrooms_number</source>
-                <target>Брой бани</target>
+                <target>Р‘СЂРѕР№ Р±Р°РЅРё</target>
             </trans-unit>
             <trans-unit id="label.bedrooms_number">
                 <source>label.bedrooms_number</source>
-                <target>Брой стаи</target>
+                <target>Р‘СЂРѕР№ СЃС‚Р°Рё</target>
             </trans-unit>
             <trans-unit id="label.max_guests">
                 <source>label.max_guests</source>
-                <target>Максимално посетители</target>
+                <target>РњР°РєСЃРёРјР°Р»РЅРѕ РїРѕСЃРµС‚РёС‚РµР»Рё</target>
             </trans-unit>
             <trans-unit id="label.guests">
                 <source>label.guests</source>
-                <target>Посетители</target>
+                <target>РџРѕСЃРµС‚РёС‚РµР»Рё</target>
             </trans-unit>
             <trans-unit id="label.title">
                 <source>label.title</source>
-                <target>Заглавие</target>
+                <target>Title</target>
             </trans-unit>
             <trans-unit id="label.link_text">
                 <source>label.link_text</source>
-                <target>Текст на връзката</target>
+                <target>Link Text</target>
             </trans-unit>
             <trans-unit id="label.url">
                 <source>label.url</source>
@@ -750,198 +751,198 @@
             </trans-unit>
             <trans-unit id="label.new_tab">
                 <source>label.new_tab</source>
-                <target>Отвори в нов прозорец/таб</target>
+                <target>РћС‚РІРѕСЂРё РІ РЅРѕРІ РїСЂРѕР·РѕСЂРµС†/С‚Р°Р±</target>
             </trans-unit>
             <trans-unit id="label.nofollow">
                 <source>label.nofollow</source>
-                <target>Непроследима</target>
+                <target>Nofollow</target>
             </trans-unit>
             <trans-unit id="label.description">
                 <source>label.description</source>
-                <target>Описание</target>
+                <target>РћРїРёСЃР°РЅРёРµ</target>
             </trans-unit>
             <trans-unit id="label.address">
                 <source>label.address</source>
-                <target>Адрес</target>
+                <target>РђРґСЂРµСЃ</target>
             </trans-unit>
             <trans-unit id="label.latitude">
                 <source>label.latitude</source>
-                <target>Географска ширина</target>
+                <target>Р“РµРѕРіСЂР°С„СЃРєР° С€РёСЂРёРЅР°</target>
             </trans-unit>
             <trans-unit id="label.longitude">
                 <source>label.longitude</source>
-                <target>Географска дължина</target>
+                <target>Р“РµРѕРіСЂР°С„СЃРєР° РґСЉР»Р¶РёРЅР°</target>
             </trans-unit>
             <trans-unit id="label.show_map">
                 <source>label.show_map</source>
-                <target>Покажи карта</target>
+                <target>РџРѕРєР°Р¶Рё РєР°СЂС‚Р°</target>
             </trans-unit>
             <trans-unit id="label.price">
                 <source>label.price</source>
-                <target>Цена</target>
+                <target>Р¦РµРЅР°</target>
             </trans-unit>
             <trans-unit id="label.price_type">
                 <source>label.price_type</source>
-                <target>Тип на цена</target>
+                <target>РўРёРї РЅР° С†РµРЅР°</target>
             </trans-unit>
             <trans-unit id="label.available_now">
                 <source>label.available_now</source>
-                <target>Налично</target>
+                <target>РќР°Р»РёС‡РЅРѕ</target>
             </trans-unit>
             <trans-unit id="label.content">
                 <source>label.content</source>
-                <target>Съдържание</target>
+                <target>РЎСЉРґСЉСЂР¶Р°РЅРёРµ</target>
             </trans-unit>
             <trans-unit id="label.show_in_menu">
                 <source>label.show_in_menu</source>
-                <target>Покажи в менюто</target>
+                <target>РџРѕРєР°Р¶Рё РІ РјРµРЅСЋС‚Рѕ</target>
             </trans-unit>
             <trans-unit id="label.add_contact_form">
                 <source>label.add_contact_form</source>
-                <target>Добави контактна форма</target>
+                <target>Р”РѕР±Р°РІРё РєРѕРЅС‚Р°РєС‚РЅР° С„РѕСЂРјР°</target>
             </trans-unit>
             <trans-unit id="label.contact_email_address">
                 <source>label.contact_email_address</source>
-                <target>Email за контакт</target>
+                <target>Email Р·Р° РєРѕРЅС‚Р°РєС‚</target>
             </trans-unit>
             <trans-unit id="label.message">
                 <source>label.message</source>
-                <target>Съобщение</target>
+                <target>РЎСЉРѕР±С‰РµРЅРёРµ</target>
             </trans-unit>
             <trans-unit id="label.create_category">
                 <source>label.create_category</source>
-                <target>Създай тип имот</target>
+                <target>РЎСЉР·РґР°Р№ С‚РёРї РёРјРѕС‚</target>
             </trans-unit>
             <trans-unit id="label.create_currency">
                 <source>label.create_currency</source>
-                <target>Добави валута</target>
+                <target>Р”РѕР±Р°РІРё РІР°Р»СѓС‚Р°</target>
             </trans-unit>
             <trans-unit id="label.create_feature">
                 <source>label.create_feature</source>
-                <target>Добави особеност</target>
+                <target>Р”РѕР±Р°РІРё РѕСЃРѕР±РµРЅРѕСЃС‚</target>
             </trans-unit>
             <trans-unit id="label.create_deal_type">
                 <source>label.create_deal_type</source>
-                <target>Добави тип на сделката</target>
+                <target>Р”РѕР±Р°РІРё С‚РёРї РЅР° СЃРґРµР»РєР°С‚Р°</target>
             </trans-unit>
             <trans-unit id="label.create_city">
                 <source>label.create_city</source>
-                <target>Добави град</target>
+                <target>Р”РѕР±Р°РІРё РіСЂР°Рґ</target>
             </trans-unit>
             <trans-unit id="label.create_neighborhood">
                 <source>label.create_neighborhood</source>
-                <target>Създай квартал/населено място</target>
+                <target>РЎСЉР·РґР°Р№ РєРІР°СЂС‚Р°Р»/РЅР°СЃРµР»РµРЅРѕ РјСЏСЃС‚Рѕ</target>
             </trans-unit>
             <trans-unit id="label.create_district">
                 <source>label.create_district</source>
-                <target>Добави район</target>
+                <target>Р”РѕР±Р°РІРё СЂР°Р№РѕРЅ</target>
             </trans-unit>
             <trans-unit id="label.create_metro_station">
                 <source>label.create_metro_station</source>
-                <target>Добави метро станция</target>
+                <target>Р”РѕР±Р°РІРё РјРµС‚СЂРѕ СЃС‚Р°РЅС†РёСЏ</target>
             </trans-unit>
             <trans-unit id="label.create_page">
                 <source>label.create_page</source>
-                <target>Добави страница</target>
+                <target>Р”РѕР±Р°РІРё СЃС‚СЂР°РЅРёС†Р°</target>
             </trans-unit>
             <trans-unit id="label.create_property">
                 <source>label.create_property</source>
-                <target>Добави имот</target>
+                <target>Р”РѕР±Р°РІРё РёРјРѕС‚</target>
             </trans-unit>
             <trans-unit id="label.create_user">
                 <source>label.create_user</source>
-                <target>Добави потребител</target>
+                <target>Р”РѕР±Р°РІРё РїРѕС‚СЂРµР±РёС‚РµР»</target>
             </trans-unit>
             <trans-unit id="label.save_and_create_new">
                 <source>label.save_and_create_new</source>
-                <target>Запази и добави нов</target>
+                <target>Р—Р°РїР°Р·Рё Рё РґРѕР±Р°РІРё РЅРѕРІ</target>
             </trans-unit>
             <trans-unit id="label.sort_by">
                 <source>label.sort_by</source>
-                <target>Сортиране по</target>
+                <target>РЎРѕСЂС‚РёСЂР°РЅРµ РїРѕ</target>
             </trans-unit>
 
             <trans-unit id="option.on">
                 <source>option.on</source>
-                <target>Да</target>
+                <target>Р”Р°</target>
             </trans-unit>
             <trans-unit id="option.off">
                 <source>option.off</source>
-                <target>Не</target>
+                <target>РќРµ</target>
             </trans-unit>
             <trans-unit id="option.any">
                 <source>option.any</source>
-                <target>Всички</target>
+                <target>Р’СЃРёС‡РєРё</target>
             </trans-unit>
             <trans-unit id="option.bedroom">
                 <source>option.bedroom</source>
-                <target>стая</target>
+                <target>СЃС‚Р°СЏ</target>
             </trans-unit>
             <trans-unit id="option.bedrooms">
                 <source>option.bedrooms</source>
-                <target>стаи</target>
+                <target>СЃС‚Р°Рё</target>
             </trans-unit>
             <trans-unit id="option.priority">
                 <source>option.priority</source>
-                <target>Приоритет</target>
+                <target>РџСЂРёРѕСЂРёС‚РµС‚</target>
             </trans-unit>
             <trans-unit id="option.latest">
                 <source>option.latest</source>
-                <target>Последни</target>
+                <target>РџРѕСЃР»РµРґРЅРё</target>
             </trans-unit>
 
             <trans-unit id="placeholder.map_center_example">
                 <source>placeholder.map_center_example</source>
-                <target>например 43.2093004,27.903251 за Варна</target>
+                <target>РЅР°РїСЂРёРјРµСЂ 43.2093004,27.903251 Р·Р° Р’Р°СЂРЅР°</target>
             </trans-unit>
             <trans-unit id="placeholder.select_city">
                 <source>placeholder.select_city</source>
-                <target>Изберете град</target>
+                <target>РР·Р±РµСЂРµС‚Рµ РіСЂР°Рґ</target>
             </trans-unit>
             <trans-unit id="placeholder.select_neighborhood">
                 <source>placeholder.select_neighborhood</source>
-                <target>Изберете квартал/населено място</target>
+                <target>РР·Р±РµСЂРµС‚Рµ РєРІР°СЂС‚Р°Р»/РЅР°СЃРµР»РµРЅРѕ РјСЏСЃС‚Рѕ</target>
             </trans-unit>
             <trans-unit id="placeholder.select_district">
                 <source>placeholder.select_district</source>
-                <target>Изберете район</target>
+                <target>РР·Р±РµСЂРµС‚Рµ СЂР°Р№РѕРЅ</target>
             </trans-unit>
             <trans-unit id="placeholder.select_metro_station">
                 <source>placeholder.select_metro_station</source>
-                <target>Изберете метро станция</target>
+                <target>РР·Р±РµСЂРµС‚Рµ РјРµС‚СЂРѕ СЃС‚Р°РЅС†РёСЏ</target>
             </trans-unit>
             <trans-unit id="placeholder.enter_email">
                 <source>placeholder.enter_email</source>
-                <target>Въведете вашият email</target>
+                <target>Р’СЉРІРµРґРµС‚Рµ РІР°С€РёСЏС‚ email</target>
             </trans-unit>
             <trans-unit id="placeholder.example_icon">
                 <source>placeholder.example_icon</source>
-                <target>например &lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt;</target>
+                <target>РЅР°РїСЂРёРјРµСЂ &lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt;</target>
             </trans-unit>
 
             <trans-unit id="property.location">
                 <source>property.location</source>
-                <target>Местоположение</target>
+                <target>РњРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёРµ</target>
             </trans-unit>
             <trans-unit id="property.deal_type">
                 <source>property.deal_type</source>
-                <target>Тип</target>
+                <target>РўРёРї</target>
             </trans-unit>
             <trans-unit id="property.category">
                 <source>property.category</source>
-                <target>Тип имот</target>
+                <target>РўРёРї РёРјРѕС‚</target>
             </trans-unit>
             <trans-unit id="property.bathrooms">
                 <source>property.bathrooms</source>
-                <target>Бани</target>
+                <target>Р‘Р°РЅРё</target>
             </trans-unit>
             <trans-unit id="property.bedrooms">
                 <source>property.bedrooms</source>
-                <target>Стаи</target>
+                <target>РЎС‚Р°Рё</target>
             </trans-unit>
             <trans-unit id="property.max_guests">
                 <source>property.max_guests</source>
-                <target>Максимално посетители</target>
+                <target>РњР°РєСЃРёРјР°Р»РЅРѕ РїРѕСЃРµС‚РёС‚РµР»Рё</target>
             </trans-unit>
             <trans-unit id="property.available_now">
                 <source>property.available_now</source>
@@ -949,43 +950,43 @@
             </trans-unit>
             <trans-unit id="property.price">
                 <source>property.price</source>
-                <target>Цена</target>
+                <target>Р¦РµРЅР°</target>
             </trans-unit>
             <trans-unit id="similar_properties">
                 <source>similar_properties</source>
-                <target>Сходни имоти</target>
+                <target>РЎС…РѕРґРЅРё РёРјРѕС‚Рё</target>
             </trans-unit>
             <trans-unit id="all_rights_reserved">
                 <source>all_rights_reserved</source>
-                <target>Всички права запазени</target>
+                <target>Р’СЃРёС‡РєРё РїСЂР°РІР° Р·Р°РїР°Р·РµРЅРё</target>
             </trans-unit>
             <trans-unit id="drag_photos">
                 <source>drag_photos</source>
-                <target>Провлачете снимките за пренареждане</target>
+                <target>РџСЂРѕРІР»Р°С‡РµС‚Рµ СЃРЅРёРјРєРёС‚Рµ Р·Р° РїСЂРµРЅР°СЂРµР¶РґР°РЅРµ</target>
             </trans-unit>
             <trans-unit id="click_save_reordering">
                 <source>click_save_reordering</source>
-                <target>Натиснете 'Запази подредба' когато сте готови.</target>
+                <target>РќР°С‚РёСЃРЅРµС‚Рµ 'Р—Р°РїР°Р·Рё РїРѕРґСЂРµРґР±Р°' РєРѕРіР°С‚Рѕ СЃС‚Рµ РіРѕС‚РѕРІРё.</target>
             </trans-unit>
             <trans-unit id="processing">
                 <source>processing</source>
-                <target>Моля изчакайте...</target>
+                <target>РњРѕР»СЏ РёР·С‡Р°РєР°Р№С‚Рµ...</target>
             </trans-unit>
 
             <trans-unit id="email.new_message">
                 <source>email.new_message</source>
-                <target>Ново съобщение от Вашия Website</target>
+                <target>РќРѕРІРѕ СЃСЉРѕР±С‰РµРЅРёРµ РѕС‚ Р’Р°С€РёСЏ Website</target>
             </trans-unit>
             <trans-unit id="resetting.email.subject">
                 <source>resetting.email.subject</source>
-                <target>Ресетни парола</target>
+                <target>Р РµСЃРµС‚РЅРё РїР°СЂРѕР»Р°</target>
             </trans-unit>
             <trans-unit id="resetting.email.message">
                 <source>resetting.email.message</source>
                 <target>
-                    Здравейте, %username%!
-                    За да ресетнете паролата си, моля посетете %confirmationUrl%
-                    С най-добри пожелания, Екипът.
+                    Р—РґСЂР°РІРµР№С‚Рµ, %username%!
+                    Р—Р° РґР° СЂРµСЃРµС‚РЅРµС‚Рµ РїР°СЂРѕР»Р°С‚Р° СЃРё, РјРѕР»СЏ РїРѕСЃРµС‚РµС‚Рµ %confirmationUrl%
+                    РЎ РЅР°Р№-РґРѕР±СЂРё РїРѕР¶РµР»Р°РЅРёСЏ, Р•РєРёРїСЉС‚.
                 </target>
             </trans-unit>
         </body>
