@@ -25,25 +25,25 @@ final class SettingsFixtures extends Fixture
     {
         return [
             // $data = [$setting_name, $setting_value];
-            ['name', 'Site name'],
-            ['title', 'Popular Listing'],
-            ['meta_title', 'Site Title'],
+            ['name', 'Имоти Варна'],
+            ['title', 'Популярни имоти'],
+            ['meta_title', 'Имоти Варна'],
             ['meta_description', 'Site Description'],
             ['custom_code', ''],
-            ['custom_footer_text', 'All Rights Reserved.'],
+            ['custom_footer_text', 'Всички права запазени.'],
             ['items_per_page', '6'],
             ['ymaps_key', ''],
-            ['map_center', '27.188534, -81.128735'],
-            ['map_zoom', '7'],
+            ['map_center', '43.2048197, 27.872869'],
+            ['map_zoom', '12'],
             ['currency_id', '1'],
             ['header_image', ''],
-            ['fixed_top_navbar', '0'],
+            ['fixed_top_navbar', '1'],
             ['show_similar_properties', '0'],
             ['show_filter_by_city', '1'],
             ['show_filter_by_neighborhood', '1'],
             ['show_filter_by_deal_type', '1'],
             ['show_filter_by_category', '1'],
-            ['show_filter_by_bedrooms', '0'],
+            ['show_filter_by_bedrooms', '1'],
             ['show_filter_by_guests', '0'],
         ];
     }

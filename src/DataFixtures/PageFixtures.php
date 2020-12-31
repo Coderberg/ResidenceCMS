@@ -14,8 +14,8 @@ final class PageFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $page = new Page();
-        $page->setTitle('About Us');
-        $page->setDescription('About Us Page');
+        $page->setTitle('За нас');
+        $page->setDescription('Повече за нас');
         $page->setSlug(Slugger::slugify('About Us'));
         $page->setContent($this->getContent());
         $page->setShowInMenu(true);
