@@ -26,6 +26,7 @@ final class DealTypeFixtures extends Fixture
     {
         return [
             // $dealTypeData = [$slug, $name];
+            ['нощувки', 'Нощувки'],
             ['наеми', 'Наеми'],
             ['купува', 'Купува'],
             ['продава', 'Продава'],

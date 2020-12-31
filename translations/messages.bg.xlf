@@ -253,7 +253,7 @@
             </trans-unit>
             <trans-unit id="action.finish_editing">
                 <source>action.finish_editing</source>
-                <target>Finish editing</target>
+                <target>Завършване на промените</target>
             </trans-unit>
             <trans-unit id="action.edit_photos">
                 <source>action.edit_photos</source>
