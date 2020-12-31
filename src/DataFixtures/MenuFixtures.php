@@ -26,9 +26,9 @@ final class MenuFixtures extends Fixture
     {
         return [
             // $menuData = [$title, $url];
-            ['Homepage', '/'],
-            ['About Us', '/info/about-us'],
-            ['Contact', '/info/contact'],
+            ['Начало', '/'],
+            ['За нас', '/info/about-us'],
+            ['Контакти', '/info/contact'],
         ];
     }
 }

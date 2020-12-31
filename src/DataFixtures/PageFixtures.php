@@ -36,7 +36,7 @@ final class PageFixtures extends Fixture
 
     private function getContent(): string
     {
-        return '<h3>Why Choose Us</h3>
+        return '<h3>Защо да изберете нас</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris

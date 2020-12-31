@@ -25,14 +25,17 @@ final class FeatureFixtures extends Fixture
     private function getFeatureData(): array
     {
         return [
-            ['Air conditioning', null],
-            ['Balcony', null],
-            ['Elevator', null],
-            ['Fire Alarm', null],
-            ['First Floor Entry', null],
-            ['High Impact Doors', null],
-            ['Patio', null],
-            ['Secure parking', '<i class="fas fa-parking"></i>'],
+            ['Климатизация', null],
+            ['Балкон', null],
+            ['Асансьор', null],
+            ['Противопожарна аларма', null],
+            ['Партер', null],
+            ['Интериорни врати', null],
+            ['ТЕЦ', null],
+            ['ВиК', null],
+            ['Ток', null],
+            ['Защитен паркинг', '<i class="fas fa-parking"></i>'],
+            ['Затворен комплекс', ''],
         ];
     }
 }

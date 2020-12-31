@@ -28,7 +28,7 @@ final class DistrictFixtures extends Fixture implements DependentFixtureInterfac
     {
         return [
             // $districtData = [$city, $name, $slug];
-           [$this->getReference('Tampa'), 'South Tampa', 'south-tampa'],
+           [$this->getReference('Варна'), 'Община Варна', 'south-tampa'],
         ];
     }
 

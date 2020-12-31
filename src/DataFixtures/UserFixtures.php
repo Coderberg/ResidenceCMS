@@ -43,8 +43,8 @@ final class UserFixtures extends Fixture
     {
         return [
             // $cityData = [$fullName, $username, $phone, $email, $roles];
-            ['John Smith', 'admin', '0(0)99766899', 'admin@admin.com', ['ROLE_ADMIN', 'ROLE_USER']],
-            ['Rhonda Jordan', 'user', '0(0)99766899', 'user@user.com', ['ROLE_USER']],
+            ['Пламен Николов', 'admin', '+359892473515', 'plamen.nikolov89@gmail.com', ['ROLE_ADMIN', 'ROLE_USER']],
+            ['Тестов потребител', 'user', '+359892473515', 'user@user.com', ['ROLE_USER']],
         ];
     }
 }

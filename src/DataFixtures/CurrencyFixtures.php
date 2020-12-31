@@ -29,12 +29,8 @@ final class CurrencyFixtures extends Fixture
     {
         return [
             // $currencyData = [$currencyTitle, $code, $symbolLeft, $symbolRight];
-            ['US Dollar', 'USD', '$', ''],
             ['Euro', 'EUR', '', '€'],
-            ['Pound Sterling', 'GBP', '£', ''],
-            ['Hong Kong Dollar', 'HKD', 'HK$', ''],
-            ['Russian Ruble', 'RUB', '₽', ''],
-            ['Belarusian ruble', 'BYN', '', 'Br'],
+            ['Български лев', 'BGN', '', 'лв.'],
         ];
     }
 }

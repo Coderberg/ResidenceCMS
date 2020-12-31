@@ -26,10 +26,13 @@ final class CategoryFixtures extends Fixture
     {
         return [
             // $categoryData = [$slug, $name];
-            ['apartment', 'Apartment'],
-            ['duplex', 'Duplex'],
-            ['penthouse', 'Penthouse'],
-            ['villa', 'Villa'],
+            ['апартамент', 'Апартамент'],
+            ['къща', 'Къща'],
+            ['вила', 'Вила'],
+            ['гараж', 'Гараж'],
+            ['паркомясто', 'Паркомясто'],
+            ['парцел', 'Парцел'],
+            ['земеделска-земя', 'Земеделска земя'],
         ];
     }
 }
