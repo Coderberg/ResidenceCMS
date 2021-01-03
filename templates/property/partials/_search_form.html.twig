@@ -10,7 +10,7 @@
     <div class="container">
         <div class="search_form">
             <form action="{{ path('property') }}" method="get">
-                <div class="form-row justify-content-end">
+                <div class="form-row justify-content-start">
                     {% if site.show_filter_by_city == '1' %}
                         <div class="col-lg-3 mb-2">
                             <select name="city" class="form-control form-control-lg" aria-label="{{ 'city'|trans }}">
@@ -123,8 +123,7 @@
                             </select>
                         </div>
                     {% endif %}
-                </div>
-                <div class="row">
+
                     <div class="col-lg-3 mb-2">
                         <button class="btn btn-block btn-lg btn-primary">
                             <i class="fas fa-search"></i> {{ 'action.search'|trans }}

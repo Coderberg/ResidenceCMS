@@ -226,6 +226,10 @@
                 <source>widget.all_cities</source>
                 <target>All cities</target>
             </trans-unit>
+            <trans-unit id="widget.all_neighborhoods">
+                <source>widget.all_neighborhoods</source>
+                <target>All neighborhoods</target>
+            </trans-unit>
             <trans-unit id="widget.all_deal_types">
                 <source>widget.all_deal_types</source>
                 <target>All deal types</target>
