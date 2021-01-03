@@ -7,7 +7,9 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Entity\City;
 use App\Entity\DealType;
+use App\Entity\District;
 use App\Entity\Menu;
+use App\Entity\Neighborhood;
 use App\Repository\SettingsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -37,6 +39,10 @@ abstract class BaseController extends AbstractController
         $cities = $this->getDoctrine()
             ->getRepository(City::class)->findAll();
 
+        // Get neighborhood
+        $neighborhoods = $this->getDoctrine()
+            ->getRepository(Neighborhood::class)->findAll();
+
         // Get categories
         $categories = $this->getDoctrine()
             ->getRepository(Category::class)->findAll();
@@ -47,6 +53,7 @@ abstract class BaseController extends AbstractController
 
         return [
             'cities' => $cities,
+            'neighborhoods' => $neighborhoods,
             'categories' => $categories,
             'deal_types' => $dealTypes,
         ];

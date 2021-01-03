@@ -11,7 +11,7 @@ use App\Transformer\RequestToArrayTransformer;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-final class CityService
+final class NeighborhoodService
 {
     /**
      * @var RequestToArrayTransformer
@@ -29,10 +29,10 @@ final class CityService
         $this->repository = $repository;
     }
 
-    public function getSearchParams(Request $request, City $city): array
+    public function getSearchParams(Request $request, Neighborhood $neighborhood): array
     {
         $searchParams = $this->transformer->transform($request);
-        $searchParams['city'] = $city->getId();
+        $searchParams['neighborhood'] = $neighborhood->getId();
 
         return $searchParams;
     }
@@ -42,11 +42,9 @@ final class CityService
         return $this->repository->findByFilter($searchParams);
     }
 
-    public function decorateOptions(array $siteOptions, City $city): array
+    public function decorateOptions(array $siteOptions, Neighborhood $neighborhood): array
     {
-        $siteOptions['title'] = $city->getTitle() ?? $siteOptions['title'];
-        $siteOptions['meta_title'] = $city->getMetaTitle() ?? $city->getName();
-        $siteOptions['meta_description'] = $city->getMetaDescription() ?? $siteOptions['meta_description'];
+        $siteOptions['title'] = $neighborhood->getCity() ?? $siteOptions['title'];
 
         return $siteOptions;
     }

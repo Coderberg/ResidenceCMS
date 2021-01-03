@@ -17,6 +17,11 @@ final class PageController extends BaseController
 {
     /**
      * @Route("/info/{slug}", methods={"GET|POST"}, name="page")
+     * @param Request             $request
+     * @param Page                $page
+     * @param MessageBusInterface $messageBus
+     *
+     * @return Response
      */
     public function pageShow(Request $request, Page $page, MessageBusInterface $messageBus): Response
     {

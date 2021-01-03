@@ -91,6 +91,7 @@ final class PropertyControllerTest extends WebTestCase
 
         // Enable 2 fields
         $repository->updateSetting('show_filter_by_city', '1');
+        $repository->updateSetting('show_filter_by_neighborhood', '1');
         $repository->updateSetting('show_filter_by_bedrooms', '1');
 
         // Expects 4 fields in the filter on Homepage

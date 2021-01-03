@@ -2,7 +2,6 @@
     <h5 class="card-header">{{ 'widget.search' | trans }}</h5>
     <div class="card-body">
         <form action="{{ path('property') }}" method="get">
-
             {% if site.show_filter_by_city == '1' %}
                 <div class="form-group">
                     <label for="city">{{ 'city'|trans }}</label>
@@ -13,6 +12,22 @@
                         {% for city in site.cities %}
 
                             <option value="{{ city.id }}">{{ city.name }}</option>
+
+                        {% endfor %}
+                    </select>
+                </div>
+            {% endif %}
+
+            {% if site.show_filter_by_neighborhood == '1' %}
+                <div class="form-group">
+                    <label for="neighborhood">{{ 'neighborhood'|trans }}</label>
+                    <select name="neighborhood" id="neighborhood" class="form-control form-control-lg">
+
+                        <option value="0">{{ 'widget.all_neighborhoods'|trans }}</option>
+
+                        {% for neighborhood in site.neighborhoods %}
+
+                            <option value="{{ neighborhood.id }}">{{ neighborhood.name }}</option>
 
                         {% endfor %}
                     </select>

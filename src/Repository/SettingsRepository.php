@@ -38,7 +38,7 @@ final class SettingsRepository extends ServiceEntityRepository
             } else {
                 $currency = $this->currency->find((int) $setting->getSettingValue());
                 if (!$currency) {
-                    $currency = $this->currency->findOneBy(['code' => 'USD']);
+                    $currency = $this->currency->findOneBy(['code' => 'EUR']);
                 }
                 $settingsArray['currency'] = $currency;
             }

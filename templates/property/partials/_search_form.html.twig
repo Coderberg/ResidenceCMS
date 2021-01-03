@@ -11,7 +11,6 @@
         <div class="search_form">
             <form action="{{ path('property') }}" method="get">
                 <div class="form-row justify-content-end">
-
                     {% if site.show_filter_by_city == '1' %}
                         <div class="col-lg-3 mb-2">
                             <select name="city" class="form-control form-control-lg" aria-label="{{ 'city'|trans }}">
@@ -22,6 +21,24 @@
                                     <option value="{{ city.id }}"
                                         {% if searchParams.city == city.id %} selected{% endif %}>
                                         {{ city.name }}
+                                    </option>
+
+                                {% endfor %}
+
+                            </select>
+                        </div>
+                    {% endif %}
+
+                    {% if site.show_filter_by_neighborhood == '1' %}
+                        <div class="col-lg-3 mb-2">
+                            <select name="neighborhood" class="form-control form-control-lg" aria-label="{{ 'neighborhood'|trans }}">
+                                <option value="0">{{ 'neighborhood'|trans }}</option>
+
+                                {% for neighborhood in site.neighborhoods %}
+
+                                    <option value="{{ neighborhood.id }}"
+                                        {% if searchParams.neighborhood == neighborhood.id %} selected{% endif %}>
+                                        {{ neighborhood.name }}
                                     </option>
 
                                 {% endfor %}
@@ -106,7 +123,8 @@
                             </select>
                         </div>
                     {% endif %}
-
+                </div>
+                <div class="row">
                     <div class="col-lg-3 mb-2">
                         <button class="btn btn-block btn-lg btn-primary">
                             <i class="fas fa-search"></i> {{ 'action.search'|trans }}

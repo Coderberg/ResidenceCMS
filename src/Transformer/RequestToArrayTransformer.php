@@ -12,6 +12,7 @@ final class RequestToArrayTransformer
     {
         $params = [];
         $params['city'] = $request->query->getInt('city', 0);
+        $params['neighborhood'] = $request->query->getInt('neighborhood', 0);
         $params['deal_type'] = $request->query->getInt('deal_type', 0);
         $params['category'] = $request->query->getInt('category', 0);
         $params['bedrooms'] = $request->query->getInt('bedrooms', 0);
