@@ -28,6 +28,17 @@ final class FilterSettingsType extends AbstractType
                     'label' => 'label.settings.show_filter_by_city',
                 ]
             )
+            ->add('show_filter_by_district', ChoiceType::class, [
+                    'choices' => [
+                        'option.off' => '0',
+                        'option.on' => '1',
+                    ],
+                    'attr' => [
+                        'class' => 'form-control',
+                    ],
+                    'label' => 'label.settings.show_filter_by_district',
+                ]
+            )
             ->add('show_filter_by_neighborhood', ChoiceType::class, [
                     'choices' => [
                         'option.off' => '0',

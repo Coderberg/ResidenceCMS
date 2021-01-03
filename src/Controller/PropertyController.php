@@ -19,6 +19,11 @@ final class PropertyController extends BaseController
 {
     /**
      * @Route("/", defaults={"page": "1"}, methods={"GET"}, name="property")
+     * @param Request                   $request
+     * @param FilterRepository          $repository
+     * @param RequestToArrayTransformer $transformer
+     *
+     * @return Response
      */
     public function search(Request $request, FilterRepository $repository, RequestToArrayTransformer $transformer): Response
     {
@@ -36,6 +41,9 @@ final class PropertyController extends BaseController
 
     /**
      * @Route("/map", methods={"GET"}, name="map_view")
+     * @param PropertyRepository $repository
+     *
+     * @return Response
      */
     public function mapView(PropertyRepository $repository): Response
     {
@@ -50,6 +58,12 @@ final class PropertyController extends BaseController
     /**
      * @Route("/{citySlug}/{slug}/{id<\d+>}", methods={"GET"}, name="property_show")
      * @IsGranted("PROPERTY_VIEW", subject="property", message="Properties can only be shown to their owners.")
+     * @param Request           $request
+     * @param URLService        $url
+     * @param Property          $property
+     * @param SimilarRepository $repository
+     *
+     * @return Response
      */
     public function propertyShow(Request $request, URLService $url, Property $property, SimilarRepository $repository): Response
     {

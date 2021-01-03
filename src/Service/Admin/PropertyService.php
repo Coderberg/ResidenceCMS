@@ -18,7 +18,7 @@ final class PropertyService extends AbstractService
     /**
      * @var EntityManagerInterface
      */
-    private $em;
+    private $entityManager;
 
     /**
      * @var MessageBusInterface
@@ -38,7 +38,7 @@ final class PropertyService extends AbstractService
         Slugger $slugger
     ) {
         parent::__construct($tokenManager, $session);
-        $this->em = $entityManager;
+        $this->entityManager = $entityManager;
         $this->messageBus = $messageBus;
         $this->slugger = $slugger;
     }
@@ -64,20 +64,20 @@ final class PropertyService extends AbstractService
         $property->setSlug($slug);
         $property->setUpdatedAt(new \DateTime('now'));
         $property->setPriorityNumber((int) ($property->getPriorityNumber()));
-        $this->em->flush();
+        $this->entityManager->flush();
         $this->addFlash('success', 'message.updated');
     }
 
     public function save(Property $property): void
     {
-        $this->em->persist($property);
-        $this->em->flush();
+        $this->entityManager->persist($property);
+        $this->entityManager->flush();
     }
 
     public function remove(Property $property): void
     {
-        $this->em->remove($property);
-        $this->em->flush();
+        $this->entityManager->remove($property);
+        $this->entityManager->flush();
     }
 
     public function delete(Property $property): void

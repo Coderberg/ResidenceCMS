@@ -1,0 +1,63 @@
+{% extends 'layout/base.html.twig' %}
+
+{% block title %}{{ 'title.register' | trans }}{% endblock %}
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    <br>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">{{ 'title.register'|trans }}</div>
+
+                <div class="card-body">
+                    {{ form_start(registrationForm) }}
+                    <div class="form_group">
+                        <div class="col-md-12 mb-3">
+                            {{ form_row(registrationForm.full_name, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form_group">
+                        <div class="col-md-12 mb-3">
+                            {{ form_row(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form_group">
+                        <div class="col-md-12 mb-3">
+                            {{ form_row(registrationForm.username, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form_group">
+                        <div class="col-md-12 mb-3">
+                            {{ form_row(registrationForm.password, {
+                                'attr': {
+                                    class: 'form-control'
+                                }
+                            }) }}
+                        </div>
+                    </div>
+                    <div class="form_group">
+                        <div class="col-md-12 mb-3">
+                            {{ form_row(registrationForm.phone, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="form_group">
+                        <div class="col-md-12 mb-3">
+                            <button type="submit" class="btn btn-primary">
+                                {{ 'action.sign_up'|trans }}
+                            </button>
+                        </div>
+                    </div>
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+{% endblock %}

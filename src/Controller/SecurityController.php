@@ -13,6 +13,10 @@ final class SecurityController extends BaseController
 {
     /**
      * @Route("/login", name="security_login")
+     * @param Security            $security
+     * @param AuthenticationUtils $helper
+     *
+     * @return Response
      */
     public function login(Security $security, AuthenticationUtils $helper): Response
     {
@@ -24,11 +28,11 @@ final class SecurityController extends BaseController
         }
 
         return $this->render('security/login.html.twig', [
-            'site' => $this->site(),
+            'site'          => $this->site(),
             // last username entered by the user (if any)
             'last_username' => $helper->getLastUsername(),
             // last authentication error (if any)
-            'error' => $helper->getLastAuthenticationError(),
+            'error'         => $helper->getLastAuthenticationError(),
         ]);
     }
 

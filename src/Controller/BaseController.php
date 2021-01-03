@@ -39,6 +39,10 @@ abstract class BaseController extends AbstractController
         $cities = $this->getDoctrine()
             ->getRepository(City::class)->findAll();
 
+        // Get district
+        $districts = $this->getDoctrine()
+            ->getRepository(District::class)->findAll();
+
         // Get neighborhood
         $neighborhoods = $this->getDoctrine()
             ->getRepository(Neighborhood::class)->findAll();
@@ -53,6 +57,7 @@ abstract class BaseController extends AbstractController
 
         return [
             'cities' => $cities,
+            'districts' => $districts,
             'neighborhoods' => $neighborhoods,
             'categories' => $categories,
             'deal_types' => $dealTypes,

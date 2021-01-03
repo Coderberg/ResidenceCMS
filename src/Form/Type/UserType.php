@@ -25,20 +25,10 @@ final class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add(
-                'roles', ChoiceType::class, [
-                    'choices' => [
-                        'label.roles.admin' => 'ROLE_ADMIN',
-                    ],
-                    'expanded' => true,
-                    'multiple' => true,
-                    'label' => false,
-                    'label_attr' => ['class' => 'switch-custom'],
-                ]
-            )
             ->add('full_name', null, [
                 'attr' => [
                     'autofocus' => true,
+                    'required' => 'required'
                 ],
                 'label' => 'label.full_name',
             ])

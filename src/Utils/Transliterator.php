@@ -20,9 +20,9 @@ final class Transliterator implements TransliteratorInterface
 
         $b = ['zgh', 'Zgh', 'A', 'a', 'B', 'b', 'V', 'v', 'G', 'g', 'G', 'g', 'D', 'd', 'E',
             'e', 'E', 'e', 'Ye', 'ie', 'Zh', 'zh', 'Z', 'z', 'I', 'i', 'I', 'i', 'Yi', 'i', 'Y', 'y', 'K', 'k',
-            'L', 'l', 'M', 'm', 'N', 'n', 'O', 'o', 'P', 'p', 'R', 'r', 'S', 's', 'T', 't', 'U', 'u', 'F', 'f', 'Kh', 'kh',
-            'Ts', 'ts', 'Ch', 'ch', 'Sh', 'sh', 'Shch', 'shch', 'Y', 'y', 'E', 'e', 'Yu', 'iu', 'Ya', 'ya',
-            '', '', '', '',
+            'L', 'l', 'M', 'm', 'N', 'n', 'O', 'o', 'P', 'p', 'R', 'r', 'S', 's', 'T', 't', 'U', 'u', 'F', 'f', 'H', 'H',
+            'Ts', 'ts', 'Ch', 'ch', 'Sh', 'sh', 'Sht', 'sht', 'Y', 'y', 'E', 'e', 'Yu', 'yu', 'Ya', 'ya',
+            '', '', 'A', 'a',
         ];
 
         return (string) str_replace($a, $b, $str);

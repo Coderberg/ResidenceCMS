@@ -46,6 +46,10 @@
                 <source>menu.login</source>
                 <target>Вход</target>
             </trans-unit>
+            <trans-unit id="menu.sign_up">
+                <source>menu.sign_up</source>
+                <target>Регистрация</target>
+            </trans-unit>
             <trans-unit id="menu.logout">
                 <source>menu.logout</source>
                 <target>Изход</target>
@@ -86,11 +90,11 @@
             </trans-unit>
             <trans-unit id="neighborhoods">
                 <source>neighborhoods</source>
-                <target>Райони</target>
+                <target>Квартали/Населени места</target>
             </trans-unit>
             <trans-unit id="districts">
                 <source>districts</source>
-                <target>Общини</target>
+                <target>Райони</target>
             </trans-unit>
             <trans-unit id="metro_stations">
                 <source>metro_stations</source>
@@ -106,7 +110,7 @@
             </trans-unit>
             <trans-unit id="features">
                 <source>features</source>
-                <target>Features</target>
+                <target>Особености</target>
             </trans-unit>
             <trans-unit id="currencies">
                 <source>currencies</source>
@@ -134,11 +138,11 @@
             </trans-unit>
             <trans-unit id="neighborhood">
                 <source>neighborhood</source>
-                <target>Район</target>
+                <target>Квартал/Населено място</target>
             </trans-unit>
             <trans-unit id="district">
                 <source>district</source>
-                <target>Община</target>
+                <target>Район</target>
             </trans-unit>
             <trans-unit id="metro_station">
                 <source>metro_station</source>
@@ -154,7 +158,7 @@
             </trans-unit>
             <trans-unit id="feature">
                 <source>feature</source>
-                <target>Feature</target>
+                <target>Особеност</target>
             </trans-unit>
             <trans-unit id="page">
                 <source>page</source>
@@ -191,7 +195,7 @@
             </trans-unit>
             <trans-unit id="message.token_expired">
                 <source>message.token_expired</source>
-                <target>Sorry, your token has expired. Please try again.</target>
+                <target>Съжаляваме, но сесията Ви е изтекла. Моля опитайте отново!</target>
             </trans-unit>
             <trans-unit id="message.password_has_been_reset">
                 <source>message.password_has_been_reset</source>
@@ -199,7 +203,7 @@
             </trans-unit>
             <trans-unit id="message.emailed_reset_link">
                 <source>message.emailed_reset_link</source>
-                <target>We have e-mailed your password reset link!</target>
+                <target>Изпратихме Ви мейл за ресетване на паролата!</target>
             </trans-unit>
 
             <trans-unit id="widget.contact_information">
@@ -228,7 +232,7 @@
             </trans-unit>
             <trans-unit id="widget.all_neighborhoods">
                 <source>widget.all_neighborhoods</source>
-                <target>Всички райони</target>
+                <target>Всички квартали</target>
             </trans-unit>
             <trans-unit id="widget.all_deal_types">
                 <source>widget.all_deal_types</source>
@@ -274,6 +278,10 @@
             <trans-unit id="action.sign_in">
                 <source>action.sign_in</source>
                 <target>Вход</target>
+            </trans-unit>
+            <trans-unit id="action.sign_up">
+                <source>action.sign_up</source>
+                <target>Регистрация</target>
             </trans-unit>
             <trans-unit id="action.forgot_password">
                 <source>action.forgot_password</source>
@@ -378,6 +386,10 @@
                 <source>title.login</source>
                 <target>Влизане в системата</target>
             </trans-unit>
+            <trans-unit id="title.register">
+                <source>title.register</source>
+                <target>Регистрация в системата</target>
+            </trans-unit>
             <trans-unit id="title.reset_password">
                 <source>title.reset_password</source>
                 <target>Ресет на паролата</target>
@@ -420,11 +432,11 @@
             </trans-unit>
             <trans-unit id="title.add_neighborhood">
                 <source>title.add_neighborhood</source>
-                <target>Добави район</target>
+                <target>Добави квартал/населено място</target>
             </trans-unit>
             <trans-unit id="title.add_district">
                 <source>title.add_district</source>
-                <target>Добави община</target>
+                <target>Добави район</target>
             </trans-unit>
             <trans-unit id="title.add_metro_station">
                 <source>title.add_metro_station</source>
@@ -432,11 +444,11 @@
             </trans-unit>
             <trans-unit id="title.edit_neighborhood">
                 <source>title.edit_neighborhood</source>
-                <target>Промени район</target>
+                <target>Промени квартал/населено място</target>
             </trans-unit>
             <trans-unit id="title.edit_district">
                 <source>title.edit_district</source>
-                <target>Промени община</target>
+                <target>Промени район</target>
             </trans-unit>
             <trans-unit id="title.edit_metro_station">
                 <source>title.edit_metro_station</source>
@@ -460,11 +472,11 @@
             </trans-unit>
             <trans-unit id="title.add_feature">
                 <source>title.add_feature</source>
-                <target>Add New Feature</target>
+                <target>Добави особеност</target>
             </trans-unit>
             <trans-unit id="title.edit_feature">
                 <source>title.edit_feature</source>
-                <target>Edit feature</target>
+                <target>Промени особеност</target>
             </trans-unit>
             <trans-unit id="title.add_currency">
                 <source>title.add_currency</source>
@@ -563,10 +575,6 @@
                 <source>label.settings.show_filter_by_city</source>
                 <target>Показване на филтър по град</target>
             </trans-unit>
-            <trans-unit id="label.settings.show_filter_by_neighborhood">
-                <source>label.settings.show_filter_by_neighborhood</source>
-                <target>Показване на филтър по район</target>
-            </trans-unit>
             <trans-unit id="label.settings.show_filter_by_deal_type">
                 <source>label.settings.show_filter_by_deal_type</source>
                 <target>Показване на филтър по тип сделка</target>
@@ -581,7 +589,7 @@
             </trans-unit>
             <trans-unit id="label.settings.show_filter_by_guests">
                 <source>label.settings.show_filter_by_guests</source>
-                <target>Показване на филтър за гости</target>
+                <target>Показване на филтър за брой посетители</target>
             </trans-unit>
             <trans-unit id="label.roles.admin">
                 <source>label.roles.admin</source>
@@ -606,6 +614,10 @@
             <trans-unit id="label.password">
                 <source>label.password</source>
                 <target>Парола</target>
+            </trans-unit>
+            <trans-unit id="label.repeat_password">
+                <source>label.repeat_password</source>
+                <target>Повтори паролата</target>
             </trans-unit>
             <trans-unit id="label.new_password">
                 <source>label.new_password</source>
@@ -649,19 +661,19 @@
             </trans-unit>
             <trans-unit id="label.neighborhood">
                 <source>label.neighborhood</source>
-                <target>Район</target>
+                <target>Квартал/Населено място</target>
             </trans-unit>
             <trans-unit id="label.district">
                 <source>label.district</source>
-                <target>Община</target>
+                <target>Район</target>
             </trans-unit>
             <trans-unit id="label.neighborhood_name">
                 <source>label.neighborhood_name</source>
-                <target>Име на район</target>
+                <target>Име на квартал/населено място</target>
             </trans-unit>
             <trans-unit id="label.district_name">
                 <source>label.district_name</source>
-                <target>Име на община</target>
+                <target>Име на район</target>
             </trans-unit>
             <trans-unit id="label.metro_station_name">
                 <source>label.metro_station_name</source>
@@ -677,7 +689,7 @@
             </trans-unit>
             <trans-unit id="label.features">
                 <source>label.features</source>
-                <target>Features</target>
+                <target>Особености</target>
             </trans-unit>
             <trans-unit id="label.priority_number">
                 <source>label.priority_number</source>
@@ -719,11 +731,11 @@
             </trans-unit>
             <trans-unit id="label.feature">
                 <source>label.feature</source>
-                <target>Feature name</target>
+                <target>Име на особеност</target>
             </trans-unit>
             <trans-unit id="label.custom_icon">
                 <source>label.custom_icon</source>
-                <target>Custom icon (optional)</target>
+                <target>Собствена икона (незадължително)</target>
             </trans-unit>
             <trans-unit id="label.bathrooms_number">
                 <source>label.bathrooms_number</source>
@@ -735,11 +747,11 @@
             </trans-unit>
             <trans-unit id="label.max_guests">
                 <source>label.max_guests</source>
-                <target>Максимално гости</target>
+                <target>Максимално посетители</target>
             </trans-unit>
             <trans-unit id="label.guests">
                 <source>label.guests</source>
-                <target>Гости</target>
+                <target>Посетители</target>
             </trans-unit>
             <trans-unit id="label.title">
                 <source>label.title</source>
@@ -823,7 +835,7 @@
             </trans-unit>
             <trans-unit id="label.create_feature">
                 <source>label.create_feature</source>
-                <target>Добави feature</target>
+                <target>Добави особеност</target>
             </trans-unit>
             <trans-unit id="label.create_deal_type">
                 <source>label.create_deal_type</source>
@@ -835,11 +847,11 @@
             </trans-unit>
             <trans-unit id="label.create_neighborhood">
                 <source>label.create_neighborhood</source>
-                <target>Създай район</target>
+                <target>Създай квартал/населено място</target>
             </trans-unit>
             <trans-unit id="label.create_district">
                 <source>label.create_district</source>
-                <target>Добави община</target>
+                <target>Добави район</target>
             </trans-unit>
             <trans-unit id="label.create_metro_station">
                 <source>label.create_metro_station</source>
@@ -901,27 +913,27 @@
             </trans-unit>
             <trans-unit id="placeholder.select_city">
                 <source>placeholder.select_city</source>
-                <target>Избери град</target>
+                <target>Изберете град</target>
             </trans-unit>
             <trans-unit id="placeholder.select_neighborhood">
                 <source>placeholder.select_neighborhood</source>
-                <target>Избери район</target>
+                <target>Изберете квартал/населено място</target>
             </trans-unit>
             <trans-unit id="placeholder.select_district">
                 <source>placeholder.select_district</source>
-                <target>Избери община</target>
+                <target>Изберете район</target>
             </trans-unit>
             <trans-unit id="placeholder.select_metro_station">
                 <source>placeholder.select_metro_station</source>
-                <target>Select a Metro station</target>
+                <target>Изберете метро станция</target>
             </trans-unit>
             <trans-unit id="placeholder.enter_email">
                 <source>placeholder.enter_email</source>
-                <target>Enter your email</target>
+                <target>Въведете вашият email</target>
             </trans-unit>
             <trans-unit id="placeholder.example_icon">
                 <source>placeholder.example_icon</source>
-                <target>e.g. &lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt;</target>
+                <target>например &lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt;</target>
             </trans-unit>
 
             <trans-unit id="property.location">
@@ -946,7 +958,7 @@
             </trans-unit>
             <trans-unit id="property.max_guests">
                 <source>property.max_guests</source>
-                <target>Максимално гости</target>
+                <target>Максимално посетители</target>
             </trans-unit>
             <trans-unit id="property.available_now">
                 <source>property.available_now</source>
@@ -954,43 +966,43 @@
             </trans-unit>
             <trans-unit id="property.price">
                 <source>property.price</source>
-                <target>Price</target>
+                <target>Цена</target>
             </trans-unit>
             <trans-unit id="similar_properties">
                 <source>similar_properties</source>
-                <target>Similar Properties</target>
+                <target>Сходни имоти</target>
             </trans-unit>
             <trans-unit id="all_rights_reserved">
                 <source>all_rights_reserved</source>
-                <target>All Rights Reserved</target>
+                <target>Всички права запазени</target>
             </trans-unit>
             <trans-unit id="drag_photos">
                 <source>drag_photos</source>
-                <target>Drag photos to reorder</target>
+                <target>Провлачете снимките за пренареждане</target>
             </trans-unit>
             <trans-unit id="click_save_reordering">
                 <source>click_save_reordering</source>
-                <target>Click 'Save Reordering' when finished.</target>
+                <target>Натиснете 'Запази подредба' когато сте готови.</target>
             </trans-unit>
             <trans-unit id="processing">
                 <source>processing</source>
-                <target>Please wait...</target>
+                <target>Моля изчакайте...</target>
             </trans-unit>
 
             <trans-unit id="email.new_message">
                 <source>email.new_message</source>
-                <target>New Message From Your Website</target>
+                <target>Ново съобщение от Вашия Website</target>
             </trans-unit>
             <trans-unit id="resetting.email.subject">
                 <source>resetting.email.subject</source>
-                <target>Reset Password</target>
+                <target>Ресетни парола</target>
             </trans-unit>
             <trans-unit id="resetting.email.message">
                 <source>resetting.email.message</source>
                 <target>
-                    Hello %username%!
-                    To reset your password - please visit %confirmationUrl%
-                    Regards, the Team.
+                    Здравейте, %username%!
+                    За да ресетнете паролата си, моля посетете %confirmationUrl%
+                    С най-добри пожелания, Екипът.
                 </target>
             </trans-unit>
         </body>

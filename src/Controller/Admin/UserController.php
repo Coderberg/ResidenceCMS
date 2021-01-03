@@ -11,6 +11,7 @@ use App\Service\Admin\UserService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,6 +39,17 @@ final class UserController extends AbstractController
         $user = new User();
 
         $form = $this->createForm(UserType::class, $user)
+            ->add(
+                'roles', ChoiceType::class, [
+                    'choices' => [
+                        'label.roles.admin' => 'ROLE_ADMIN',
+                    ],
+                    'expanded' => true,
+                    'multiple' => true,
+                    'label' => false,
+                    'label_attr' => ['class' => 'switch-custom'],
+                ]
+            )
             ->add('saveAndCreateNew', SubmitType::class);
         $form->handleRequest($request);
 
@@ -66,7 +78,18 @@ final class UserController extends AbstractController
      */
     public function edit(Request $request, User $user, UserService $service): Response
     {
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserType::class, $user)
+            ->add(
+                'roles', ChoiceType::class, [
+                    'choices' => [
+                        'label.roles.admin' => 'ROLE_ADMIN',
+                    ],
+                    'expanded' => true,
+                    'multiple' => true,
+                    'label' => false,
+                    'label_attr' => ['class' => 'switch-custom'],
+                ]
+            );
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $service->update($user);
