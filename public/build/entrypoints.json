@@ -1,15 +1,15 @@
 {
   "entrypoints": {
+    "js/page": {
+      "js": [
+        "/build/runtime.d94b3b43.js",
+        "/build/js/page.db3a37c4.js"
+      ]
+    },
     "js/app": {
       "js": [
         "/build/runtime.d94b3b43.js",
         "/build/js/app.24e67d2c.js"
-      ]
-    },
-    "js/admin": {
-      "js": [
-        "/build/runtime.d94b3b43.js",
-        "/build/js/admin.9f04d2ad.js"
       ]
     },
     "js/ekko-lightbox": {
@@ -54,10 +54,10 @@
         "/build/js/photo.7ad0b545.js"
       ]
     },
-    "js/page": {
+    "js/admin": {
       "js": [
         "/build/runtime.d94b3b43.js",
-        "/build/js/page.db3a37c4.js"
+        "/build/js/admin.9f04d2ad.js"
       ]
     },
     "js/user": {

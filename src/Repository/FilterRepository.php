@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use App\Entity\Feature;
+use Doctrine\ORM\Query\Expr\Join;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
 final class FilterRepository extends PropertyRepository
@@ -39,11 +41,18 @@ final class FilterRepository extends PropertyRepository
             }
         }
 
+        if ($params['feature'] > 0) {
+            $qb->innerJoin('p.features', 'pf');
+            $qb->andWhere(':feature MEMBER OF p.features')
+                ->setParameter(':feature', (int) $params['feature']);
+        }
+
         // Sort by
         ('id' === $params['sort_by'])
             ? $qb->orderBy('p.id', 'DESC')
             : $qb->orderBy('p.priority_number', 'DESC');
 
+        dump($qb->getQuery()->getDQL());
         return $this->createPaginator($qb->getQuery(), $params['page']);
     }
 }
