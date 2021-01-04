@@ -33,6 +33,11 @@ class Page
     private $slug;
 
     /**
+     * @ORM\Column(type="string", length=2)
+     */
+    private $locale;
+
+    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $content;
@@ -133,6 +138,26 @@ class Page
     public function setContactEmailAddress(?string $contact_email_address): self
     {
         $this->contact_email_address = $contact_email_address;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLocale(): string
+    {
+        return $this->locale;
+    }
+
+    /**
+     * @param string $locale
+     *
+     * @return $this
+     */
+    public function setLocale(string $locale): self
+    {
+        $this->locale = $locale;
 
         return $this;
     }
