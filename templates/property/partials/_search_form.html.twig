@@ -107,6 +107,22 @@
                         </div>
                     {% endif %}
 
+                    {% if site.show_filter_by_features == '1' %}
+                        <div class="col-lg-3 mb-2">
+                            <select name="feature" class="form-control form-control-lg"
+                                    aria-label="{{ 'feature'|trans }}">
+                                <option value="0">{{ 'feature'|trans }}</option>
+
+                                {% for feature in site.features %}
+                                    <option value="{{ feature.id }}"
+                                        {% if searchParams.feature == feature.id %} selected{% endif %}
+                                    >{{ feature.name }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {% endif %}
+
                     <div class="col-lg-3 mb-2">
                         <button class="btn btn-block btn-lg btn-primary">
                             <i class="fas fa-search"></i> {{ 'action.search'|trans }}

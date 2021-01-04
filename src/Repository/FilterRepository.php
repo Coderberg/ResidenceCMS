@@ -39,6 +39,12 @@ final class FilterRepository extends PropertyRepository
             }
         }
 
+        if ($params['feature'] > 0) {
+            $qb->innerJoin('p.features', 'pf');
+            $qb->andWhere(':feature MEMBER OF p.features')
+                ->setParameter(':feature', (int) $params['feature']);
+        }
+
         // Sort by
         ('id' === $params['sort_by'])
             ? $qb->orderBy('p.id', 'DESC')

@@ -77,6 +77,20 @@
                 </div>
             {% endif %}
 
+            {% if site.show_filter_by_features == '1' %}
+                <div class="form-group">
+                    <label for="feature">{{ 'feature'|trans }}</label>
+                    <select name="feature" id="feature" class="form-control form-control-lg">
+
+                        <option value="0">{{ 'widget.all_features'|trans }}</option>
+
+                        {% for feature in site.features %}
+                            <option value="{{ feature.id }}">{{ feature.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            {% endif %}
+
             <div class="form-group">
                 <button class="btn btn-block btn-lg btn-primary">
                     <i class="fas fa-search"></i> {{ 'action.search'|trans }}
