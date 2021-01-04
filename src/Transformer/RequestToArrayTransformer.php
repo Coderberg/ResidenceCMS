@@ -16,6 +16,7 @@ final class RequestToArrayTransformer
         $params['category'] = $request->query->getInt('category', 0);
         $params['bedrooms'] = $request->query->getInt('bedrooms', 0);
         $params['guests'] = $request->query->getInt('guests', 0);
+        $params['feature'] = $request->query->getInt('feature', 0);
         $params['sort_by'] = $request->query->get('sort_by', 'priority_number');
         $params['state'] = $request->query->get('state', 'published');
         $params['page'] = $request->query->getInt('page', 1);

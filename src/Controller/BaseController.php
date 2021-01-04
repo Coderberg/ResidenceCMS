@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Entity\City;
 use App\Entity\DealType;
+use App\Entity\Feature;
 use App\Entity\Menu;
 use App\Repository\SettingsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,8 +46,13 @@ abstract class BaseController extends AbstractController
         $dealTypes = $this->getDoctrine()
             ->getRepository(DealType::class)->findAll();
 
+        // Get features
+        $features = $this->getDoctrine()
+            ->getRepository(Feature::class)->findAll();
+
         return [
             'cities' => $cities,
+            'features' => $features,
             'categories' => $categories,
             'deal_types' => $dealTypes,
         ];

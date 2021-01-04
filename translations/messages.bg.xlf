@@ -242,6 +242,10 @@
                 <source>widget.all_categories</source>
                 <target>Всички типове имоти</target>
             </trans-unit>
+            <trans-unit id="widget.all_features">
+                <source>widget.all_features</source>
+                <target>Всички особености</target>
+            </trans-unit>
 
             <trans-unit id="action.search">
                 <source>action.search</source>
@@ -582,6 +586,10 @@
             <trans-unit id="label.settings.show_filter_by_guests">
                 <source>label.settings.show_filter_by_guests</source>
                 <target>Показване на филтър за брой посетители</target>
+            </trans-unit>
+            <trans-unit id="label.settings.show_filter_by_features">
+                <source>label.settings.show_filter_by_features</source>
+                <target>Показване на филтър за особености</target>
             </trans-unit>
             <trans-unit id="label.roles.admin">
                 <source>label.roles.admin</source>
