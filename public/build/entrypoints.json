@@ -1,125 +1,125 @@
 {
   "entrypoints": {
-    "js/page": {
-      "js": [
-        "/build/runtime.d94b3b43.js",
-        "/build/js/page.db3a37c4.js"
-      ]
-    },
-    "js/app": {
-      "js": [
-        "/build/runtime.d94b3b43.js",
-        "/build/js/app.24e67d2c.js"
-      ]
-    },
-    "js/ekko-lightbox": {
-      "js": [
-        "/build/runtime.d94b3b43.js",
-        "/build/js/ekko-lightbox.579bda2b.js"
-      ]
-    },
-    "js/map": {
-      "js": [
-        "/build/runtime.d94b3b43.js",
-        "/build/js/map.39d68c5e.js"
-      ]
-    },
-    "js/menu-sorting": {
-      "js": [
-        "/build/runtime.d94b3b43.js",
-        "/build/js/menu-sorting.133e9cf0.js"
-      ]
-    },
-    "js/select2": {
-      "js": [
-        "/build/runtime.d94b3b43.js",
-        "/build/js/select2.5bafdd5e.js"
-      ]
-    },
-    "js/slugger": {
-      "js": [
-        "/build/runtime.d94b3b43.js",
-        "/build/js/slugger.25a8c2fa.js"
-      ]
-    },
-    "js/city": {
-      "js": [
-        "/build/runtime.d94b3b43.js",
-        "/build/js/city.c27ba938.js"
-      ]
-    },
     "js/photo": {
       "js": [
-        "/build/runtime.d94b3b43.js",
-        "/build/js/photo.7ad0b545.js"
+        "/build/runtime.js",
+        "/build/js/photo.js"
       ]
     },
     "js/admin": {
       "js": [
-        "/build/runtime.d94b3b43.js",
-        "/build/js/admin.9f04d2ad.js"
+        "/build/runtime.js",
+        "/build/js/admin.js"
+      ]
+    },
+    "js/ekko-lightbox": {
+      "js": [
+        "/build/runtime.js",
+        "/build/js/ekko-lightbox.js"
+      ]
+    },
+    "js/map": {
+      "js": [
+        "/build/runtime.js",
+        "/build/js/map.js"
+      ]
+    },
+    "js/menu-sorting": {
+      "js": [
+        "/build/runtime.js",
+        "/build/js/menu-sorting.js"
+      ]
+    },
+    "js/select2": {
+      "js": [
+        "/build/runtime.js",
+        "/build/js/select2.js"
+      ]
+    },
+    "js/slugger": {
+      "js": [
+        "/build/runtime.js",
+        "/build/js/slugger.js"
+      ]
+    },
+    "js/city": {
+      "js": [
+        "/build/runtime.js",
+        "/build/js/city.js"
+      ]
+    },
+    "js/app": {
+      "js": [
+        "/build/runtime.js",
+        "/build/js/app.js"
+      ]
+    },
+    "js/page": {
+      "js": [
+        "/build/runtime.js",
+        "/build/js/page.js"
       ]
     },
     "js/user": {
       "js": [
-        "/build/runtime.d94b3b43.js",
-        "/build/js/user.83daf736.js"
+        "/build/runtime.js",
+        "/build/js/user.js"
       ]
     },
     "css/app": {
       "js": [
-        "/build/runtime.d94b3b43.js"
+        "/build/runtime.js"
       ],
       "css": [
-        "/build/css/app.cf9d88d8.css"
+        "/build/css/app.css"
       ]
     },
     "css/admin": {
       "js": [
-        "/build/runtime.d94b3b43.js"
+        "/build/runtime.js"
       ],
       "css": [
-        "/build/css/admin.8dfed1d2.css"
+        "/build/css/admin.css"
       ]
     },
     "css/ekko-lightbox": {
       "js": [
-        "/build/runtime.d94b3b43.js"
+        "/build/runtime.js"
       ],
       "css": [
-        "/build/css/ekko-lightbox.8141a109.css"
+        "/build/css/ekko-lightbox.css"
       ]
     },
     "css/city": {
       "js": [
-        "/build/runtime.d94b3b43.js"
+        "/build/runtime.js"
       ],
       "css": [
-        "/build/css/city.c6745445.css"
+        "/build/css/city.css"
       ]
     },
     "css/detail": {
       "js": [
-        "/build/runtime.d94b3b43.js"
+        "/build/runtime.js"
       ],
       "css": [
-        "/build/css/detail.d790e56d.css"
+        "/build/css/detail.css"
       ]
     },
     "css/photo": {
       "js": [
-        "/build/runtime.d94b3b43.js"
+        "/build/runtime.js"
       ],
       "css": [
-        "/build/css/photo.7848d3a6.css"
+        "/build/css/photo.css"
       ]
     },
     "css/select2": {
       "js": [
-        "/build/runtime.d94b3b43.js"
+        "/build/runtime.js"
       ],
       "css": [
-        "/build/css/select2.ec05fde8.css"
+        "/build/css/select2.css"
       ]
     }
   }

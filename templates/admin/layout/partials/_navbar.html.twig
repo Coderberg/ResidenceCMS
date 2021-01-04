@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand navbar-light bg-white static-top">
 
-    <a class="navbar-brand mr-1" href="{{ path('admin_dashboard') }}">{{ 'dashboard'|trans }}</a>
+    <a class="navbar-brand mr-1" href="{{ path('admin_dashboard') }}"><img src="{{ asset('images/residence-logo.png') }}" alt="{{ 'dashboard'|trans }}"></a>
 
     <button class="btn btn-link btn-sm order-1 order-sm-0 text-dark" id="sidebarToggle">
         <i class="fas fa-bars"></i>
@@ -54,6 +54,10 @@
                 <a class="dropdown-item" href="{{ path('admin_user_new') }}">{{ 'user'|trans }}</a>
             </div>
         </li>
+
+        {% include 'layout/partials/_locale_switcher.html.twig' with {
+            noArrow: true
+        } %}
 
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle"

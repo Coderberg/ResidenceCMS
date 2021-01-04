@@ -5,7 +5,7 @@
             <i class="fas fa-arrow-left"></i> {{ 'menu.back'|trans }}
         </a>
     {% else %}
-        <a class="navbar-brand" href="{{ path('property') }}">{{ site.name }}</a>
+        <a class="navbar-brand" href="{{ path('property') }}"><img src="{{ asset('images/residence-logo.png') }}" alt="{{ site.name }}"></a>
     {% endif %}
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -20,7 +20,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="{{ item.url }}"
+                       href="{{ item.locale }}{{ item.url }}"
                         {% if item.nofollow == true %} rel="nofollow" {% endif %}
                         {% if item.newTab == true %} target="_blank" {% endif %}
                     >
@@ -32,6 +32,7 @@
         </ul>
 
         <ul class="navbar-nav ml-auto">
+            {% include 'layout/partials/_locale_switcher.html.twig' %}
 
             {% if is_granted('ROLE_ADMIN') %}
                 <li class="nav-item dropdown no-arrow">

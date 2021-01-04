@@ -1,3 +1,6 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+default_route:
+    path: /
+    controller: App\Controller\PropertyController::search
+    defaults:
+      path: /en
+      permanent: true

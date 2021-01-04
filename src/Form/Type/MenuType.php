@@ -30,6 +30,12 @@ final class MenuType extends AbstractType
                 ],
                 'label' => 'label.url',
             ])
+            ->add('locale', null, [
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+                'label' => 'label.locale',
+            ])
             ->add('nofollow', null, [
                 'attr' => [
                     'class' => 'custom-control-input',

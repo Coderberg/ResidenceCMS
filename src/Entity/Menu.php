@@ -20,6 +20,11 @@ class Menu
     private $title;
 
     /**
+     * @ORM\Column(type="string", length=2)
+     */
+    private $locale;
+
+    /**
      * @ORM\Column(type="smallint", nullable=true)
      */
     private $sort_order;
@@ -95,6 +100,26 @@ class Menu
     public function setNewTab(?bool $new_tab): self
     {
         $this->new_tab = $new_tab;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLocale(): string
+    {
+        return $this->locale;
+    }
+
+    /**
+     * @param string $locale
+     *
+     * @return $this
+     */
+    public function setLocale(string $locale): self
+    {
+        $this->locale = $locale;
 
         return $this;
     }

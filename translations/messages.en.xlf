@@ -753,6 +753,10 @@
                 <source>label.url</source>
                 <target>URL</target>
             </trans-unit>
+            <trans-unit id="label.locale">
+                <source>label.locale</source>
+                <target>Language code (bg,en,nl,ru)</target>
+            </trans-unit>
             <trans-unit id="label.new_tab">
                 <source>label.new_tab</source>
                 <target>Open in new tab</target>

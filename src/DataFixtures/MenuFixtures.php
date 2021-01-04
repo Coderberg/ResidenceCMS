@@ -12,10 +12,11 @@ final class MenuFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        foreach ($this->getMenuData() as [$title, $url]) {
+        foreach ($this->getMenuData() as [$title, $url, $locale]) {
             $menu = new Menu();
             $menu->setTitle($title);
             $menu->setUrl($url);
+            $menu->setLocale($locale);
             $manager->persist($menu);
             $this->addReference($title, $menu);
         }
@@ -25,10 +26,10 @@ final class MenuFixtures extends Fixture
     private function getMenuData(): array
     {
         return [
-            // $menuData = [$title, $url];
-            ['Homepage', '/'],
-            ['About Us', '/info/about-us'],
-            ['Contact', '/info/contact'],
+            // $menuData = [$title, $url, $locale];
+            ['Homepage', '/', 'en'],
+            ['About Us', '/info/about-us', 'en'],
+            ['Contact', '/info/contact', 'en'],
         ];
     }
 }
