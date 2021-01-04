@@ -33,11 +33,6 @@ final class FilterSettingsType extends AbstractType
         $resolver->setDefaults([]);
     }
 
-    /**
-     * @param string $label
-     *
-     * @return array
-     */
     private function getChoiceTypeFilterOptions(string $label): array
     {
         return [
