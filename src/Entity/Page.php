@@ -11,7 +11,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PageRepository")
- * @UniqueEntity("slug")
+ * @UniqueEntity({"slug", "locale"})
+ * @ORM\Table(
+ *    uniqueConstraints={
+ *        @ORM\UniqueConstraint(name="slug_locale_unique_key",
+ *            columns={"slug", "locale"})
+ *    }
+ * )
  */
 class Page
 {
