@@ -31,7 +31,7 @@ abstract class BaseController extends AbstractController
         return [
             'menu' => $this->getDoctrine()->getRepository(Menu::class)
                 ->findBy([
-                    'locale' => $request->getLocale()
+                    'locale' => $request->getLocale(),
                 ]),
         ];
     }
