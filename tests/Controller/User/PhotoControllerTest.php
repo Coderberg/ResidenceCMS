@@ -28,7 +28,7 @@ final class PhotoControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['author' => $user]);
 
-        $client->request('GET', sprintf('/user/photo/%d/edit', $property->getId()));
+        $client->request('GET', sprintf('/en/user/photo/%d/edit', $property->getId()));
         $this->assertResponseStatusCodeSame(403);
     }
 
@@ -40,7 +40,7 @@ final class PhotoControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['slug' => 'furnished-renovated-2-bedroom-2-bathroom-flat']);
 
-        $crawler = $client->request('GET', sprintf('/user/photo/%d/edit', $property->getId()));
+        $crawler = $client->request('GET', sprintf('/en/user/photo/%d/edit', $property->getId()));
         $this->assertResponseIsSuccessful();
 
         $this->assertStringContainsString('Upload photos', $crawler->filter('h3')->text());
@@ -61,7 +61,7 @@ final class PhotoControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['slug' => 'furnished-renovated-2-bedroom-2-bathroom-flat']);
 
-        $crawler = $client->request('GET', sprintf('/user/photo/%d/edit', $property->getId()));
+        $crawler = $client->request('GET', sprintf('/en/user/photo/%d/edit', $property->getId()));
 
         $form = $crawler->selectButton('Delete')->first()->form();
         $client->submit($form);

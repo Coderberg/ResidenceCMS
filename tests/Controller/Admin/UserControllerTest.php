@@ -21,7 +21,7 @@ final class UserControllerTest extends WebTestCase
     public function testAdminNewUser()
     {
         $client = static::createClient([], self::SERVER);
-        $crawler = $client->request('GET', '/admin/user/new');
+        $crawler = $client->request('GET', '/en/admin/user/new');
 
         $form = $crawler->selectButton('Create user')->form([
             'user[full_name]' => 'test',
@@ -50,10 +50,10 @@ final class UserControllerTest extends WebTestCase
             'PHP_AUTH_PW' => 'test',
         ]);
 
-        $client->request('GET', '/user/property');
+        $client->request('GET', '/en/user/property');
         $this->assertResponseIsSuccessful();
 
-        $client->request('GET', '/admin');
+        $client->request('GET', '/en/admin');
         $this->assertResponseStatusCodeSame(403);
     }
 
@@ -70,7 +70,7 @@ final class UserControllerTest extends WebTestCase
                 'username' => 'test',
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/user/'.$user.'/edit');
+        $crawler = $client->request('GET', '/en/admin/user/'.$user.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'user[roles]' => ['ROLE_ADMIN'],
@@ -93,10 +93,10 @@ final class UserControllerTest extends WebTestCase
     {
         $client = static::createClient([], self::SERVER);
 
-        $client->request('GET', '/user/property');
+        $client->request('GET', '/en/user/property');
         $this->assertResponseIsSuccessful();
 
-        $client->request('GET', '/admin');
+        $client->request('GET', '/en/admin');
         $this->assertResponseIsSuccessful();
     }
 
@@ -112,7 +112,7 @@ final class UserControllerTest extends WebTestCase
                 'username' => 'edited',
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/user');
+        $crawler = $client->request('GET', '/en/admin/user');
         $client->submit($crawler->filter('#delete-form-'.$user)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 

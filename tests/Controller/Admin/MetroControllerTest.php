@@ -26,7 +26,7 @@ final class MetroControllerTest extends WebTestCase
     {
         $client = static::createClient([], self::SERVER);
 
-        $crawler = $client->request('GET', '/admin/locations/metro/new');
+        $crawler = $client->request('GET', '/en/admin/locations/metro/new');
 
         $form = $crawler->selectButton('Create metro station')->form([
             'metro[name]' => self::NAME,
@@ -58,7 +58,7 @@ final class MetroControllerTest extends WebTestCase
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/locations/metro/'.$station.'/edit');
+        $crawler = $client->request('GET', '/en/admin/locations/metro/'.$station.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'metro[name]' => self::EDITED_NAME,
@@ -87,7 +87,7 @@ final class MetroControllerTest extends WebTestCase
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/locations/metro');
+        $crawler = $client->request('GET', '/en/admin/locations/metro');
         $client->submit($crawler->filter('#delete-metro-'.$station)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 

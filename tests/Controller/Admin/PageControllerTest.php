@@ -27,7 +27,7 @@ final class PageControllerTest extends WebTestCase
     public function testAdminNewPage()
     {
         $client = static::createClient([], self::SERVER);
-        $crawler = $client->request('GET', '/admin/page/new');
+        $crawler = $client->request('GET', '/en/admin/page/new');
 
         $form = $crawler->selectButton('Create page')->form([
             'page[title]' => self::TITLE,
@@ -70,7 +70,7 @@ final class PageControllerTest extends WebTestCase
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/page/'.$page.'/edit');
+        $crawler = $client->request('GET', '/en/admin/page/'.$page.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'page[title]' => self::EDITED_TITLE,
@@ -99,7 +99,7 @@ final class PageControllerTest extends WebTestCase
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/page');
+        $crawler = $client->request('GET', '/en/admin/page');
         $client->submit($crawler->filter('#delete-form-'.$page)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 

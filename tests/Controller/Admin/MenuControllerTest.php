@@ -26,7 +26,7 @@ final class MenuControllerTest extends WebTestCase
     {
         $client = static::createClient([], self::SERVER);
 
-        $crawler = $client->request('GET', '/admin/menu/new');
+        $crawler = $client->request('GET', '/en/admin/menu/new');
 
         $form = $crawler->selectButton('Save changes')->form([
             'menu[title]' => self::TITLE,
@@ -58,7 +58,7 @@ final class MenuControllerTest extends WebTestCase
                 'url' => self::URL,
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/menu/'.$item.'/edit');
+        $crawler = $client->request('GET', '/en/admin/menu/'.$item.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'menu[title]' => self::EDITED_TITLE,
@@ -87,7 +87,7 @@ final class MenuControllerTest extends WebTestCase
                 'url' => self::URL,
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/menu');
+        $crawler = $client->request('GET', '/en/admin/menu');
         $client->submit($crawler->filter('#delete-form-'.$item)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 

@@ -23,7 +23,7 @@ final class SettingsControllerTest extends WebTestCase
         $title = $client->getContainer()->get('doctrine')
             ->getRepository(Settings::class)->findOneBy(['setting_name' => 'title'])->getSettingValue();
 
-        $crawler = $client->request('GET', '/admin/settings');
+        $crawler = $client->request('GET', '/en/admin/settings');
 
         $form = $crawler->selectButton('Save changes')->form([
             'settings[title]' => $title.' - Test title',
@@ -41,7 +41,7 @@ final class SettingsControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request('GET', '/en/');
 
         $this->assertStringContainsString('Test title', $crawler->html());
         $this->assertStringContainsString('Edited text', $crawler->html());
@@ -70,7 +70,7 @@ final class SettingsControllerTest extends WebTestCase
         $title = $client->getContainer()->get('doctrine')
                 ->getRepository(Settings::class)->findOneBy(['setting_name' => 'title'])->getSettingValue();
 
-        $crawler = $client->request('GET', '/admin/settings');
+        $crawler = $client->request('GET', '/en/admin/settings');
 
         $form = $crawler->selectButton('Save changes')->form([
                 'settings[title]' => mb_substr($title, 0, -13),
@@ -88,7 +88,7 @@ final class SettingsControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request('GET', '/en/');
 
         $this->assertStringNotContainsString('Test title', $crawler->html());
         $this->assertCount(6, $crawler->filter('.property-box-img'));
@@ -113,7 +113,7 @@ final class SettingsControllerTest extends WebTestCase
     {
         $client = static::createClient([], self::SERVER);
 
-        $crawler = $client->request('GET', '/admin/setting/header');
+        $crawler = $client->request('GET', '/en/admin/setting/header');
         $this->assertSelectorTextContains('html', 'Header settings');
 
         $image = __DIR__.'/../../../public/uploads/images/full/demo/1.jpeg';
@@ -128,7 +128,7 @@ final class SettingsControllerTest extends WebTestCase
     {
         $client = static::createClient([], self::SERVER);
 
-        $crawler = $client->request('GET', '/admin/setting/header');
+        $crawler = $client->request('GET', '/en/admin/setting/header');
         $this->assertSelectorExists('.remove');
         $client->submit($crawler->filter('#delete-form')->form());
 

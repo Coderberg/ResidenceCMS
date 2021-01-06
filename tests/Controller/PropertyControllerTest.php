@@ -15,7 +15,7 @@ final class PropertyControllerTest extends WebTestCase
     {
         $client = $this->createClient();
         $client->followRedirects(true);
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request('GET', '/en/');
 
         $this->assertTrue($client->getResponse()->isOk());
         $this->assertStringContainsString('Popular Listing', $crawler->filter('h1')
@@ -34,7 +34,7 @@ final class PropertyControllerTest extends WebTestCase
             ]);
 
         $crawler = $client->request('GET', sprintf(
-            '/%s/%s/%d',
+            '/en/%s/%s/%d',
             $property->getCity()->getSlug(),
             $property->getSlug(),
             $property->getId())
@@ -56,19 +56,19 @@ final class PropertyControllerTest extends WebTestCase
 
         $city = $repository->findOneBy(['slug' => 'miami'])->getId();
 
-        $crawler = $client->request('GET', sprintf('/?city=%d&bedrooms=0', $city));
+        $crawler = $client->request('GET', sprintf('/en/?city=%d&bedrooms=0', $city));
         $this->assertCount(3, $crawler->filter('.property-box-img'));
 
-        $crawler = $client->request('GET', sprintf('/?city=%d&bedrooms=1', $city));
+        $crawler = $client->request('GET', sprintf('/en/?city=%d&bedrooms=1', $city));
         $this->assertCount(1, $crawler->filter('.property-box-img'));
 
-        $crawler = $client->request('GET', sprintf('/?city=%d&bedrooms=3', $city));
+        $crawler = $client->request('GET', sprintf('/en/?city=%d&bedrooms=3', $city));
         $this->assertCount(0, $crawler->filter('.property-box-img'));
 
-        $crawler = $client->request('GET', '/?guests=6');
+        $crawler = $client->request('GET', '/en/?guests=6');
         $this->assertCount(1, $crawler->filter('.property-box-img'));
 
-        $crawler = $client->request('GET', '/?guests=3');
+        $crawler = $client->request('GET', '/en/?guests=3');
         $this->assertCount(4, $crawler->filter('.property-box-img'));
     }
 
@@ -79,14 +79,14 @@ final class PropertyControllerTest extends WebTestCase
             ->getRepository(Settings::class);
 
         // Expects 3 fields in the filter on Homepage
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request('GET', '/en/');
         $this->assertCount(3, $crawler->filter('.form-control'));
 
         // Disable 1 field
         $repository->updateSetting('show_filter_by_city', '0');
 
         // Expects 2 fields in the filter on Homepage
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request('GET', '/en/');
         $this->assertCount(2, $crawler->filter('.form-control'));
 
         // Enable 2 fields
@@ -94,14 +94,14 @@ final class PropertyControllerTest extends WebTestCase
         $repository->updateSetting('show_filter_by_bedrooms', '1');
 
         // Expects 4 fields in the filter on Homepage
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request('GET', '/en/');
         $this->assertCount(4, $crawler->filter('.form-control'));
 
         // Disable 1 field
         $repository->updateSetting('show_filter_by_bedrooms', '0');
 
         // Expects 3 fields in the filter on Homepage
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request('GET', '/en/');
         $this->assertCount(3, $crawler->filter('.form-control'));
     }
 }

@@ -25,7 +25,7 @@ final class NeighborhoodControllerTest extends WebTestCase
     public function testAdminNewNeighborhood()
     {
         $client = static::createClient([], self::SERVER);
-        $crawler = $client->request('GET', '/admin/locations/neighborhood/new');
+        $crawler = $client->request('GET', '/en/admin/locations/neighborhood/new');
 
         $form = $crawler->selectButton('Create neighborhood')->form([
             'neighborhood[name]' => self::NAME,
@@ -57,7 +57,7 @@ final class NeighborhoodControllerTest extends WebTestCase
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/locations/neighborhood/'.$neighborhood.'/edit');
+        $crawler = $client->request('GET', '/en/admin/locations/neighborhood/'.$neighborhood.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'neighborhood[name]' => self::EDITED_NAME,
@@ -86,7 +86,7 @@ final class NeighborhoodControllerTest extends WebTestCase
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/locations/neighborhood');
+        $crawler = $client->request('GET', '/en/admin/locations/neighborhood');
         $client->submit($crawler->filter('#delete-neighborhood-'.$neighborhood)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
