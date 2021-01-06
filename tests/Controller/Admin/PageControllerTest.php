@@ -18,6 +18,7 @@ final class PageControllerTest extends WebTestCase
 
     private const TITLE = 'Test';
     private const SLUG = 'test';
+    private const LOCALE = 'en';
     private const EDITED_TITLE = 'Edited';
 
     /**
@@ -32,6 +33,7 @@ final class PageControllerTest extends WebTestCase
             'page[title]' => self::TITLE,
             'page[description]' => self::TITLE,
             'page[slug]' => self::SLUG,
+            'page[locale]' => self::LOCALE,
             'page[content]' => self::TITLE,
             'page[show_in_menu]' => true,
         ]);
