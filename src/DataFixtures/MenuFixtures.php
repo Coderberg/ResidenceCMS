@@ -26,7 +26,6 @@ final class MenuFixtures extends Fixture
     private function getMenuData(): array
     {
         return [
-            // $menuData = [$title, $url, $locale];
             ['Homepage', '/', 'en'],
             ['About Us', '/info/about-us', 'en'],
             ['Contact', '/info/contact', 'en'],
