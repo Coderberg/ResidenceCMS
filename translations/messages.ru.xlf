@@ -234,6 +234,10 @@
                 <source>widget.all_categories</source>
                 <target>Все категории</target>
             </trans-unit>
+            <trans-unit id="widget.all_features">
+                <source>widget.all_features</source>
+                <target>Все особенности</target>
+            </trans-unit>
 
             <trans-unit id="action.search">
                 <source>action.search</source>
@@ -574,6 +578,10 @@
             <trans-unit id="label.settings.show_filter_by_guests">
                 <source>label.settings.show_filter_by_guests</source>
                 <target>Фильтр по кол-ву гостей</target>
+            </trans-unit>
+            <trans-unit id="label.settings.show_filter_by_features">
+                <source>label.settings.show_filter_by_features</source>
+                <target>Фильтр по особенностям</target>
             </trans-unit>
             <trans-unit id="label.roles.admin">
                 <source>label.roles.admin</source>
