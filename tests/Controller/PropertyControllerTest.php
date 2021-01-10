@@ -81,6 +81,7 @@ final class PropertyControllerTest extends WebTestCase
         // Expects 3 fields in the filter on Homepage
         $crawler = $client->request('GET', '/en/');
         $this->assertCount(3, $crawler->filter('.form-control'));
+        $this->assertSelectorTextNotContains('.search_form', 'Feature');
 
         // Disable 1 field
         $repository->updateSetting('show_filter_by_city', '0');
@@ -88,6 +89,7 @@ final class PropertyControllerTest extends WebTestCase
         // Expects 2 fields in the filter on Homepage
         $crawler = $client->request('GET', '/en/');
         $this->assertCount(2, $crawler->filter('.form-control'));
+        $this->assertSelectorTextNotContains('.search_form', 'City');
 
         // Enable 2 fields
         $repository->updateSetting('show_filter_by_city', '1');
@@ -96,12 +98,30 @@ final class PropertyControllerTest extends WebTestCase
         // Expects 4 fields in the filter on Homepage
         $crawler = $client->request('GET', '/en/');
         $this->assertCount(4, $crawler->filter('.form-control'));
+        $this->assertSelectorTextContains('.search_form', 'City');
+        $this->assertSelectorTextContains('.search_form', 'Bedrooms');
 
         // Disable 1 field
         $repository->updateSetting('show_filter_by_bedrooms', '0');
 
         // Expects 3 fields in the filter on Homepage
         $crawler = $client->request('GET', '/en/');
+        $this->assertCount(3, $crawler->filter('.form-control'));
+        $this->assertSelectorTextNotContains('.search_form', 'Bedrooms');
+
+        // Enable filter by features
+        $repository->updateSetting('show_filter_by_features', '1');
+
+        // Expects 4 fields in the filter on Homepage
+        $crawler = $client->request('GET', '/');
+        $this->assertCount(4, $crawler->filter('.form-control'));
+        $this->assertSelectorTextContains('.search_form', 'Feature');
+
+        // Disable filter by features
+        $repository->updateSetting('show_filter_by_features', '0');
+
+        // Expects 3 fields in the filter on Homepage
+        $crawler = $client->request('GET', '/');
         $this->assertCount(3, $crawler->filter('.form-control'));
     }
 }
