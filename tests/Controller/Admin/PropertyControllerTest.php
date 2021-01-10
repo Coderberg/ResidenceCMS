@@ -103,7 +103,7 @@ final class PropertyControllerTest extends WebTestCase
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
         $crawler = $client->request('GET', sprintf(
-                '/%s/%s/%d',
+                '/en/%s/%s/%d',
                 $property->getCity()->getSlug(),
                 $property->getSlug(),
                 $property->getId())

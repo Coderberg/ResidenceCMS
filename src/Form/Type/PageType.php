@@ -47,6 +47,7 @@ final class PageType extends AbstractType
                     'class' => 'form-control',
                 ],
                 'label' => 'label.locale',
+                'required' => false,
             ])
             ->add('content', TextareaType::class, [
                 'attr' => [

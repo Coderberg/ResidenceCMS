@@ -13,7 +13,7 @@ final class PageControllerTest extends WebTestCase
 {
     private const SERVER = [
         'PHP_AUTH_USER' => 'admin',
-        'PHP_AUTH_PW' => 'admin',
+        'PHP_AUTH_PW'   => 'admin',
     ];
 
     private const TITLE = 'Test';
@@ -30,19 +30,19 @@ final class PageControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/en/admin/page/new');
 
         $form = $crawler->selectButton('Create page')->form([
-            'page[title]' => self::TITLE,
-            'page[description]' => self::TITLE,
-            'page[slug]' => self::SLUG,
-            'page[locale]' => self::LOCALE,
-            'page[content]' => self::TITLE,
+            'page[title]'        => self::TITLE,
+            'page[description]'  => self::TITLE,
+            'page[slug]'         => self::SLUG,
+            'page[content]'      => self::TITLE,
             'page[show_in_menu]' => true,
         ]);
         $client->submit($form);
 
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(Response::HTTP_OK, $client->getResponse()->getStatusCode());
         $page = $client->getContainer()->get('doctrine')
             ->getRepository(Page::class)->findOneBy([
-                'slug' => self::SLUG,
+                'slug'   => self::SLUG,
+                'locale' => self::LOCALE,
             ]);
 
         $this->assertNotNull($page);
@@ -67,10 +67,11 @@ final class PageControllerTest extends WebTestCase
         $page = $client->getContainer()->get('doctrine')
             ->getRepository(Page::class)
             ->findOneBy([
-                'slug' => self::SLUG,
+                'slug'   => self::SLUG,
+                'locale' => self::LOCALE,
             ])->getId();
 
-        $crawler = $client->request('GET', '/en/admin/page/'.$page.'/edit');
+        $crawler = $client->request('GET', '/en/admin/page/' . $page . '/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'page[title]' => self::EDITED_TITLE,
@@ -96,16 +97,19 @@ final class PageControllerTest extends WebTestCase
 
         $page = $client->getContainer()->get('doctrine')
             ->getRepository(Page::class)->findOneBy([
-                'slug' => self::SLUG,
+                'slug'   => self::SLUG,
+                'locale' => self::LOCALE,
             ])->getId();
 
         $crawler = $client->request('GET', '/en/admin/page');
-        $client->submit($crawler->filter('#delete-form-'.$page)->form());
+        $client->submit($crawler->filter('#delete-form-' . $page)->form());
+
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
         $this->assertNull($client->getContainer()->get('doctrine')
             ->getRepository(Page::class)->findOneBy([
-                'slug' => self::SLUG,
+                'slug'   => self::SLUG,
+                'locale' => self::LOCALE,
             ]));
 
         $this->assertNull($client->getContainer()->get('doctrine')

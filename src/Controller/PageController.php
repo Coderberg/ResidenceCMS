@@ -25,7 +25,7 @@ final class PageController extends BaseController
 
         $page = $pageRepository->findOneBy(['locale' => $locale, 'slug' => $slug]);
 
-        if ($page->getAddContactForm() && '' !== $page->getContactEmailAddress()) {
+        if ($page && $page->getAddContactForm() && '' !== $page->getContactEmailAddress()) {
             $feedback = new FeedbackDto();
             $feedback->setToEmail($page->getContactEmailAddress());
 
