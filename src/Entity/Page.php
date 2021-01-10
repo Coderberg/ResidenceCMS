@@ -39,7 +39,7 @@ class Page
     private $slug;
 
     /**
-     * @ORM\Column(type="string", length=2)
+     * @ORM\Column(type="string", length=2, options={"default":"en"})
      */
     private $locale;
 

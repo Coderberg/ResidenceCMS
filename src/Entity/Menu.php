@@ -6,9 +6,17 @@ namespace App\Entity;
 
 use App\Entity\Traits\EntityIdTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MenuRepository")
+ * @UniqueEntity({"url", "locale"})
+ * @ORM\Table(
+ *    uniqueConstraints={
+ *        @ORM\UniqueConstraint(name="url_locale_unique_key",
+ *            columns={"url", "locale"})
+ *    }
+ * )
  */
 class Menu
 {
