@@ -118,7 +118,22 @@ final class SettingsControllerTest extends WebTestCase
 
         $image = __DIR__.'/../../../public/uploads/images/full/demo/1.jpeg';
 
-        $form = $crawler->filter('.js-photo-dropzone')->form();
+        $form = $crawler->filter('.js-photo-dropzone:last-of-type')->form();
+        $form['file']->upload($image);
+        $client->submit($form);
+        $this->assertTrue($client->getResponse()->isSuccessful(), 'response status is 2xx');
+    }
+
+    public function testUploadLogoImage()
+    {
+        $client = static::createClient([], self::SERVER);
+
+        $crawler = $client->request('GET', '/en/admin/setting/header');
+        $this->assertSelectorTextContains('html', 'Header settings');
+
+        $image = __DIR__.'/../../../public/images/logo-square.png';
+
+        $form = $crawler->filter('.js-photo-dropzone:first-of-type')->form();
         $form['file']->upload($image);
         $client->submit($form);
         $this->assertTrue($client->getResponse()->isSuccessful(), 'response status is 2xx');
@@ -129,8 +144,19 @@ final class SettingsControllerTest extends WebTestCase
         $client = static::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/en/admin/setting/header');
-        $this->assertSelectorExists('.remove');
-        $client->submit($crawler->filter('#delete-form')->form());
+        $this->assertSelectorExists('.remove-header_image');
+        $client->submit($crawler->filter('#delete-form-header_image')->form());
+
+        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+    }
+
+    public function testDeleteLogoImage()
+    {
+        $client = static::createClient([], self::SERVER);
+
+        $crawler = $client->request('GET', '/en/admin/setting/header');
+        $this->assertSelectorExists('.remove-logo_image');
+        $client->submit($crawler->filter('#delete-form-logo_image')->form());
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
     }
@@ -142,6 +168,16 @@ final class SettingsControllerTest extends WebTestCase
         $this->assertEmpty($client->getContainer()->get('doctrine')
             ->getRepository(Settings::class)->findOneBy([
                 'setting_name' => 'header_image',
+            ])->getSettingValue());
+    }
+
+    public function testDeletedLogoImage()
+    {
+        $client = static::createClient();
+
+        $this->assertEmpty($client->getContainer()->get('doctrine')
+            ->getRepository(Settings::class)->findOneBy([
+                'setting_name' => 'logo_image',
             ])->getSettingValue());
     }
 }

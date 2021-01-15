@@ -20,12 +20,12 @@
                          alt="{{ 'title.settings.header_settings' | trans }}"/>
 
                     <form action="{{ formDeletePath }}"
-                          id="delete-form" method="post"
+                          id="delete-form-{{ formType }}" method="post"
                           data-confirmation="true">
 
                         <input type="hidden" name="token" value="{{ csrf_token('delete') }}"/>
 
-                        <button type="submit" class="btn btn-danger btn-sm remove"
+                        <button type="submit" class="btn btn-danger btn-sm remove-{{ formType }}"
                                 onclick="if(confirm('{{ 'confirmation.delete_photo' | trans }}')){ return true }else{ return false }">
                             {{ 'action.delete' | trans }}
                         </button>
