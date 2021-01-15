@@ -5,7 +5,10 @@
             <i class="fas fa-arrow-left"></i> {{ 'menu.back'|trans }}
         </a>
     {% else %}
-        <a class="navbar-brand" href="{{ path('property') }}"><img src="{{ asset('images/residence-logo.png') }}" alt="{{ site.name }}"></a>
+        <a class="navbar-brand" href="{{ path('property') }}">
+            <img
+                src="{% if site.logo_image == '' %}{{ asset('images/residence-logo.png') }}{% else %}{{ asset('uploads/images/full/' ~ site.logo_image) }}{% endif %}"
+                alt="{{ site.name }}"></a>
     {% endif %}
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"

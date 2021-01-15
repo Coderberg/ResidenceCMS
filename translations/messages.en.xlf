@@ -502,6 +502,14 @@
                 <source>title.settings.header_settings</source>
                 <target>Header settings</target>
             </trans-unit>
+            <trans-unit id="title.settings.logo_image_label">
+                <source>title.settings.logo_image_label</source>
+                <target>Site logo</target>
+            </trans-unit>
+            <trans-unit id="title.settings.header_image_label">
+                <source>title.settings.header_image_label</source>
+                <target>Header image</target>
+            </trans-unit>
 
             <trans-unit id="label.remember_me">
                 <source>label.remember_me</source>
