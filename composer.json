@@ -37,8 +37,8 @@
         "symfony/web-link": "5.2.*",
         "symfony/webpack-encore-bundle": "^1.8",
         "symfony/yaml": "5.2.*",
-        "twig/intl-extra": "9999999-dev",
-        "twig/string-extra": "9999999-dev"
+        "twig/intl-extra": "^3.2",
+        "twig/string-extra": "^3.2"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.4",

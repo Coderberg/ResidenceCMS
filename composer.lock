@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4e0bb831103087c202b75f6edc17423a",
+    "content-hash": "ee16f98b242e83e4ec66417ebbf1f846",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -7543,16 +7543,16 @@
         },
         {
             "name": "twig/intl-extra",
-            "version": "2.x-dev",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/intl-extra.git",
-                "reference": "b108161f50d31fcadabf9f11f761ccc58b433319"
+                "reference": "919e8f945c30bd3efeb6a4d79722cda538116658"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/intl-extra/zipball/b108161f50d31fcadabf9f11f761ccc58b433319",
-                "reference": "b108161f50d31fcadabf9f11f761ccc58b433319",
+                "url": "https://api.github.com/repos/twigphp/intl-extra/zipball/919e8f945c30bd3efeb6a4d79722cda538116658",
+                "reference": "919e8f945c30bd3efeb6a4d79722cda538116658",
                 "shasum": ""
             },
             "require": {
@@ -7563,11 +7563,10 @@
             "require-dev": {
                 "symfony/phpunit-bridge": "^4.4.9|^5.0.9"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.14-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -7596,9 +7595,6 @@
                 "intl",
                 "twig"
             ],
-            "support": {
-                "source": "https://github.com/twigphp/intl-extra/tree/2.x"
-            },
             "funding": [
                 {
                     "url": "https://github.com/fabpot",
@@ -7609,20 +7605,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-01T14:53:48+00:00"
+            "time": "2021-01-01T14:58:18+00:00"
         },
         {
             "name": "twig/string-extra",
-            "version": "2.x-dev",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/string-extra.git",
-                "reference": "21a99d1f0a77b06b593800d686734fcf8e8fe826"
+                "reference": "8aaf91255d3c524dc09d3e474e3172626ac05c2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/string-extra/zipball/21a99d1f0a77b06b593800d686734fcf8e8fe826",
-                "reference": "21a99d1f0a77b06b593800d686734fcf8e8fe826",
+                "url": "https://api.github.com/repos/twigphp/string-extra/zipball/8aaf91255d3c524dc09d3e474e3172626ac05c2b",
+                "reference": "8aaf91255d3c524dc09d3e474e3172626ac05c2b",
                 "shasum": ""
             },
             "require": {
@@ -7633,11 +7629,10 @@
             "require-dev": {
                 "symfony/phpunit-bridge": "^4.4.9|^5.0.9"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.14-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -7668,9 +7663,6 @@
                 "twig",
                 "unicode"
             ],
-            "support": {
-                "source": "https://github.com/twigphp/string-extra/tree/2.x"
-            },
             "funding": [
                 {
                     "url": "https://github.com/fabpot",
@@ -7681,7 +7673,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-01T14:53:48+00:00"
+            "time": "2021-01-01T14:58:18+00:00"
         },
         {
             "name": "twig/twig",
@@ -9051,11 +9043,8 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": {
-        "twig/intl-extra": 20,
-        "twig/string-extra": 20
-    },
+    "minimum-stability": "stable",
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
@@ -9064,5 +9053,5 @@
         "ext-gd": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "1.1.0"
 }
