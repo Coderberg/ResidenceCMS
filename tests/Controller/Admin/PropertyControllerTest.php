@@ -28,7 +28,7 @@ final class PropertyControllerTest extends WebTestCase
     {
         $client = static::createClient([], self::SERVER);
 
-        $crawler = $client->request('GET', '/admin/property/new');
+        $crawler = $client->request('GET', '/en/admin/property/new');
 
         $city = $client->getContainer()->get('doctrine')
             ->getRepository(City::class)->findOneBy(['slug' => 'miami'])->getId();
@@ -63,7 +63,7 @@ final class PropertyControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['slug' => 'test'])->getId();
 
-        $crawler = $client->request('GET', '/admin/photo/'.$property.'/edit');
+        $crawler = $client->request('GET', '/en/admin/photo/'.$property.'/edit');
         $this->assertSelectorTextContains('html', 'Upload photos');
 
         $photo = __DIR__.'/../../../public/images/bg.jpg';
@@ -91,7 +91,7 @@ final class PropertyControllerTest extends WebTestCase
         $feature = $client->getContainer()->get('doctrine')
             ->getRepository(Feature::class)->findOneBy(['name' => 'Secure parking']);
 
-        $crawler = $client->request('GET', '/admin/property/'.$property->getId().'/edit');
+        $crawler = $client->request('GET', '/en/admin/property/'.$property->getId().'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'property[meta_title]' => 'Custom Meta Title',
@@ -103,7 +103,7 @@ final class PropertyControllerTest extends WebTestCase
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
         $crawler = $client->request('GET', sprintf(
-                '/%s/%s/%d',
+                '/en/%s/%s/%d',
                 $property->getCity()->getSlug(),
                 $property->getSlug(),
                 $property->getId())
@@ -124,7 +124,7 @@ final class PropertyControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['slug' => 'test'])->getId();
 
-        $crawler = $client->request('GET', '/admin/photo/'.$property.'/edit');
+        $crawler = $client->request('GET', '/en/admin/photo/'.$property.'/edit');
 
         $form = $crawler->selectButton('Delete')->form();
         $client->submit($form);
@@ -142,7 +142,7 @@ final class PropertyControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['slug' => 'test'])->getId();
 
-        $crawler = $client->request('GET', '/admin/property?sort_by=id');
+        $crawler = $client->request('GET', '/en/admin/property?sort_by=id');
         $client->submit($crawler->filter('#delete-form-'.$property)->form());
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());

@@ -19,8 +19,10 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title"><a
-                                href="{{ path('page', { 'slug':  page.slug }) }}">{{ page.title }}</a>
+                        {% set language = page.locale|locale_name(page.locale)|u.title %}
+                        <span class="float-right badge badge-info">{{ language }}</span>
+                        <h4 class="card-title">
+                            <a href="{{ path('page', { 'slug':  page.slug }) }}">{{ page.title }}</a>
                         </h4>
                         <p class="card-text">{{ page.description }}</p>
 

@@ -21,7 +21,7 @@ final class PageControllerTest extends WebTestCase
                 'add_contact_form' => 0,
             ]);
 
-        $client->request('GET', sprintf('/info/%s', $page->getSlug()));
+        $client->request('GET', sprintf('/en/info/%s', $page->getSlug()));
         $this->assertResponseIsSuccessful();
     }
 
@@ -35,7 +35,7 @@ final class PageControllerTest extends WebTestCase
                 'add_contact_form' => 1,
             ]);
 
-        $crawler = $client->request('GET', sprintf('/info/%s', $page->getSlug()));
+        $crawler = $client->request('GET', sprintf('/en/info/%s', $page->getSlug()));
         $this->assertResponseIsSuccessful();
 
         $form = $crawler->selectButton('Submit')->form([
@@ -44,6 +44,6 @@ final class PageControllerTest extends WebTestCase
             'feedback[message]' => 'Let\'s test it!',
         ]);
         $client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(Response::HTTP_OK, $client->getResponse()->getStatusCode());
     }
 }

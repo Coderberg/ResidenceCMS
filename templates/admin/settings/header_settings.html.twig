@@ -25,9 +25,25 @@
 
     <div class="card mb-3">
         <div class="card-body">
+            {% include 'admin/settings/partials/_header_settings_form.html.twig' with {
+                formType: 'logo_image',
+                formTitle: 'title.settings.logo_image_label'|trans,
+                formImage: logo_image,
+                formPath: path('admin_setting_upload_logo_image'),
+                formDeletePath: path('admin_setting_delete_logo_image')
+            } %}
+        </div>
+    </div>
 
-            {{ include('admin/settings/partials/_header_settings_form.html.twig') }}
-
+    <div class="card mb-3">
+        <div class="card-body">
+            {% include 'admin/settings/partials/_header_settings_form.html.twig' with {
+                formType: 'header_image',
+                formTitle: 'title.settings.header_image_label'|trans,
+                formImage: header_image,
+                formPath: path('admin_setting_upload_header_image'),
+                formDeletePath: path('admin_setting_delete_header_image')
+            } %}
         </div>
     </div>
 

@@ -8,6 +8,7 @@ use App\Dto\FeedbackDto;
 use App\Entity\Page;
 use App\Form\Type\FeedbackType;
 use App\Message\SendFeedback;
+use App\Repository\PageRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
@@ -18,9 +19,13 @@ final class PageController extends BaseController
     /**
      * @Route("/info/{slug}", methods={"GET|POST"}, name="page")
      */
-    public function pageShow(Request $request, Page $page, MessageBusInterface $messageBus): Response
+    public function pageShow(Request $request, string $slug, MessageBusInterface $messageBus, PageRepository $pageRepository): Response
     {
-        if ($page->getAddContactForm() && '' !== $page->getContactEmailAddress()) {
+        $locale = $request->isMethod(Request::METHOD_POST) ? $request->request->get('locale') : $request->getLocale();
+
+        $page = $pageRepository->findOneBy(['locale' => $locale, 'slug' => $slug]);
+
+        if ($page && $page->getAddContactForm() && '' !== $page->getContactEmailAddress()) {
             $feedback = new FeedbackDto();
             $feedback->setToEmail($page->getContactEmailAddress());
 

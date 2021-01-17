@@ -23,7 +23,7 @@ final class SettingsControllerTest extends WebTestCase
         $title = $client->getContainer()->get('doctrine')
             ->getRepository(Settings::class)->findOneBy(['setting_name' => 'title'])->getSettingValue();
 
-        $crawler = $client->request('GET', '/admin/settings');
+        $crawler = $client->request('GET', '/en/admin/settings');
 
         $form = $crawler->selectButton('Save changes')->form([
             'settings[title]' => $title.' - Test title',
@@ -41,7 +41,7 @@ final class SettingsControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request('GET', '/en/');
 
         $this->assertStringContainsString('Test title', $crawler->html());
         $this->assertStringContainsString('Edited text', $crawler->html());
@@ -56,7 +56,7 @@ final class SettingsControllerTest extends WebTestCase
             ->findOneBy(['slug' => 'bright-and-cheerful-alcove-studio']);
 
         $crawler = $client->request('GET',
-            sprintf('/%s/%s/%d', $property->getCity()->getSlug(), $property->getSlug(), $property->getId())
+            sprintf('/en/%s/%s/%d', $property->getCity()->getSlug(), $property->getSlug(), $property->getId())
         );
         // Check if similar properties are enabled
         $this->assertStringContainsString('Modern one-bedroom apartment in Miami', $crawler->filter('.card-title>a')
@@ -70,7 +70,7 @@ final class SettingsControllerTest extends WebTestCase
         $title = $client->getContainer()->get('doctrine')
                 ->getRepository(Settings::class)->findOneBy(['setting_name' => 'title'])->getSettingValue();
 
-        $crawler = $client->request('GET', '/admin/settings');
+        $crawler = $client->request('GET', '/en/admin/settings');
 
         $form = $crawler->selectButton('Save changes')->form([
                 'settings[title]' => mb_substr($title, 0, -13),
@@ -88,7 +88,7 @@ final class SettingsControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request('GET', '/en/');
 
         $this->assertStringNotContainsString('Test title', $crawler->html());
         $this->assertCount(6, $crawler->filter('.property-box-img'));
@@ -102,7 +102,7 @@ final class SettingsControllerTest extends WebTestCase
             ->findOneBy(['slug' => 'bright-and-cheerful-alcove-studio']);
 
         $crawler = $client->request('GET',
-            sprintf('/%s/%s/%d', $property->getCity()->getSlug(), $property->getSlug(), $property->getId())
+            sprintf('/en/%s/%s/%d', $property->getCity()->getSlug(), $property->getSlug(), $property->getId())
         );
         // Check if similar properties are disabled
         $this->assertStringNotContainsString('Similar Properties', $crawler->filter('h4')
@@ -113,12 +113,27 @@ final class SettingsControllerTest extends WebTestCase
     {
         $client = static::createClient([], self::SERVER);
 
-        $crawler = $client->request('GET', '/admin/setting/header');
+        $crawler = $client->request('GET', '/en/admin/setting/header');
         $this->assertSelectorTextContains('html', 'Header settings');
 
         $image = __DIR__.'/../../../public/uploads/images/full/demo/1.jpeg';
 
-        $form = $crawler->filter('.js-photo-dropzone')->form();
+        $form = $crawler->filter('.js-photo-dropzone:last-of-type')->form();
+        $form['file']->upload($image);
+        $client->submit($form);
+        $this->assertTrue($client->getResponse()->isSuccessful(), 'response status is 2xx');
+    }
+
+    public function testUploadLogoImage()
+    {
+        $client = static::createClient([], self::SERVER);
+
+        $crawler = $client->request('GET', '/en/admin/setting/header');
+        $this->assertSelectorTextContains('html', 'Header settings');
+
+        $image = __DIR__.'/../../../public/images/logo-square.png';
+
+        $form = $crawler->filter('.js-photo-dropzone:first-of-type')->form();
         $form['file']->upload($image);
         $client->submit($form);
         $this->assertTrue($client->getResponse()->isSuccessful(), 'response status is 2xx');
@@ -128,9 +143,20 @@ final class SettingsControllerTest extends WebTestCase
     {
         $client = static::createClient([], self::SERVER);
 
-        $crawler = $client->request('GET', '/admin/setting/header');
-        $this->assertSelectorExists('.remove');
-        $client->submit($crawler->filter('#delete-form')->form());
+        $crawler = $client->request('GET', '/en/admin/setting/header');
+        $this->assertSelectorExists('.remove-header_image');
+        $client->submit($crawler->filter('#delete-form-header_image')->form());
+
+        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+    }
+
+    public function testDeleteLogoImage()
+    {
+        $client = static::createClient([], self::SERVER);
+
+        $crawler = $client->request('GET', '/en/admin/setting/header');
+        $this->assertSelectorExists('.remove-logo_image');
+        $client->submit($crawler->filter('#delete-form-logo_image')->form());
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
     }
@@ -142,6 +168,16 @@ final class SettingsControllerTest extends WebTestCase
         $this->assertEmpty($client->getContainer()->get('doctrine')
             ->getRepository(Settings::class)->findOneBy([
                 'setting_name' => 'header_image',
+            ])->getSettingValue());
+    }
+
+    public function testDeletedLogoImage()
+    {
+        $client = static::createClient();
+
+        $this->assertEmpty($client->getContainer()->get('doctrine')
+            ->getRepository(Settings::class)->findOneBy([
+                'setting_name' => 'logo_image',
             ])->getSettingValue());
     }
 }

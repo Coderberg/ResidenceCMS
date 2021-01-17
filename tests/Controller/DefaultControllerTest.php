@@ -29,7 +29,7 @@ final class DefaultControllerTest extends WebTestCase
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_FOUND, $response->getStatusCode());
         $this->assertSame(
-            'http://localhost/login',
+            'http://localhost/en/login',
             $response->getTargetUrl(),
             sprintf('The %s secure URL redirects to the login form.', $url)
         );
@@ -38,29 +38,29 @@ final class DefaultControllerTest extends WebTestCase
     public function test404()
     {
         $client = static::createClient();
-        $client->request('GET', '/wrong-url');
+        $client->request('GET', '/en/wrong-url');
         $this->assertTrue($client->getResponse()->isNotFound());
     }
 
     public function getPublicUrls()
     {
-        yield ['/'];
-        yield ['/?page=2'];
-        yield ['/login'];
-        yield ['/map'];
-        yield ['/info/contact'];
-        yield ['/city/palm-beach'];
-        yield ['/?city=0&deal_type=0&category=0'];
-        yield ['/?city=0&deal_type=0&category=0&page=2'];
+        yield ['/en/'];
+        yield ['/en/?page=2'];
+        yield ['/en/login'];
+        yield ['/en/map'];
+        yield ['/en/info/contact'];
+        yield ['/en/city/palm-beach'];
+        yield ['/en/?city=0&deal_type=0&category=0'];
+        yield ['/en/?city=0&deal_type=0&category=0&page=2'];
     }
 
     public function getSecureUrls()
     {
-        yield ['/admin'];
-        yield ['/admin/property'];
-        yield ['/admin/property/new'];
-        yield ['/admin/property/1/edit'];
-        yield ['/admin/settings'];
-        yield ['/user/property'];
+        yield ['/en/admin'];
+        yield ['/en/admin/property'];
+        yield ['/en/admin/property/new'];
+        yield ['/en/admin/property/1/edit'];
+        yield ['/en/admin/settings'];
+        yield ['/en/user/property'];
     }
 }

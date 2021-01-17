@@ -16,7 +16,7 @@ final class DashboardControllerTest extends WebTestCase
     public function testAdminDashboard()
     {
         $client = static::createClient([], self::SERVER);
-        $client->request('GET', '/admin');
+        $client->request('GET', '/en/admin');
         $this->assertResponseIsSuccessful(sprintf('The %s public URL loads correctly.', '/admin'));
     }
 }

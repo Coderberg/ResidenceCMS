@@ -23,12 +23,12 @@ final class PropertyControllerTest extends WebTestCase
     {
         $client = static::createClient([], self::USER);
 
-        $crawler = $client->request('GET', '/user/property');
+        $crawler = $client->request('GET', '/en/user/property');
         $this->assertResponseIsSuccessful(sprintf('The %s public URL loads correctly.', '/user/account'));
         $this->assertCount(2, $crawler->filter('.property-box-img'));
         $this->assertSelectorTextContains('html', 'My properties (2)');
 
-        $client->request('GET', '/admin');
+        $client->request('GET', '/en/admin');
         $this->assertResponseStatusCodeSame(403);
     }
 
@@ -44,7 +44,7 @@ final class PropertyControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['author' => $user]);
 
-        $client->request('GET', sprintf('/user/property/%d/unpublish', $property->getId()));
+        $client->request('GET', sprintf('/en/user/property/%d/unpublish', $property->getId()));
 
         // asserts that the "Content-Type" header is "application/json"
         $this->assertTrue(
@@ -70,10 +70,10 @@ final class PropertyControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['author' => $user]);
 
-        $client->request('GET', sprintf('/user/property/%d/unpublish', $property->getId()));
+        $client->request('GET', sprintf('/en/user/property/%d/unpublish', $property->getId()));
         $this->assertResponseStatusCodeSame(403);
 
-        $client->request('GET', sprintf('/user/property/%d/edit', $property->getId()));
+        $client->request('GET', sprintf('/en/user/property/%d/edit', $property->getId()));
         $this->assertResponseStatusCodeSame(403);
     }
 
@@ -85,7 +85,7 @@ final class PropertyControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['state' => 'private']);
 
-        $client->request('GET', sprintf('/user/property/%d/publish', $property->getId()));
+        $client->request('GET', sprintf('/en/user/property/%d/publish', $property->getId()));
 
         // asserts that the "Content-Type" header is "application/json"
         $this->assertTrue(
@@ -103,7 +103,7 @@ final class PropertyControllerTest extends WebTestCase
     {
         $client = static::createClient([], self::USER);
 
-        $crawler = $client->request('GET', '/user/property/new');
+        $crawler = $client->request('GET', '/en/user/property/new');
 
         $city = $client->getContainer()->get('doctrine')
             ->getRepository(City::class)->findOneBy(['slug' => 'miami'])->getId();
@@ -137,7 +137,7 @@ final class PropertyControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['slug' => 'added-by-user'])->getId();
 
-        $crawler = $client->request('GET', '/user/photo/'.$property.'/edit');
+        $crawler = $client->request('GET', '/en/user/photo/'.$property.'/edit');
         $this->assertSelectorTextContains('html', 'Upload photos');
 
         $photo = __DIR__.'/../../../public/images/bg.jpg';
@@ -156,7 +156,7 @@ final class PropertyControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['slug' => 'added-by-user']);
 
-        $crawler = $client->request('GET', sprintf('/user/property/%d/edit', $property->getId()));
+        $crawler = $client->request('GET', sprintf('/en/user/property/%d/edit', $property->getId()));
         $this->assertResponseIsSuccessful();
 
         $form = $crawler->selectButton('Save changes')->form([
@@ -170,7 +170,7 @@ final class PropertyControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['meta_title' => 'Custom Meta Title']);
 
-        $client->request('GET', sprintf('/user/property/%d/edit', $editedProperty->getId()));
+        $client->request('GET', sprintf('/en/user/property/%d/edit', $editedProperty->getId()));
         $this->assertResponseIsSuccessful();
     }
 
@@ -185,7 +185,7 @@ final class PropertyControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['slug' => 'added-by-user'])->getId();
 
-        $crawler = $client->request('GET', '/admin/property?sort_by=id');
+        $crawler = $client->request('GET', '/en/admin/property?sort_by=id');
         $client->submit($crawler->filter('#delete-form-'.$property)->form());
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());

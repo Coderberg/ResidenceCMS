@@ -50,9 +50,13 @@ final class SettingsService extends AbstractService
     /**
      * Upload custom header image.
      *
+     * @param string  $type
+     * @param Request $request
+     *
+     * @return Response
      * @throws \Exception
      */
-    public function uploadHeaderImage(Request $request): Response
+    public function uploadImage(string $type = 'header_image', Request $request): Response
     {
         /** @var UploadedFile $uploadedFile */
         $uploadedFile = $request->files->get('file');
@@ -62,7 +66,7 @@ final class SettingsService extends AbstractService
         }
 
         $fileName = $this->fileUploader->upload($uploadedFile);
-        $this->repository->updateSetting('header_image', $fileName);
+        $this->repository->updateSetting($type, $fileName);
 
         return new JsonResponse(['status' => 'ok']);
     }
@@ -87,10 +91,13 @@ final class SettingsService extends AbstractService
 
     /**
      * Reset a header image to the default image.
+     *
+     * @param string  $type
+     * @param Request $request
      */
-    public function resetHeaderImage(Request $request): void
+    public function resetImage(string $type = 'header_image', Request $request): void
     {
-        $setting = $this->repository->findOneBy(['setting_name' => 'header_image']);
+        $setting = $this->repository->findOneBy(['setting_name' => $type]);
 
         if ($setting && $this->isCsrfTokenValid('delete', $request->request->get('token'))) {
             // Find filename
@@ -98,20 +105,23 @@ final class SettingsService extends AbstractService
 
             if ($filename) {
                 // Delete
-                $this->deleteHeaderImage($filename);
+                $this->deleteImage($filename, $type);
             }
         }
     }
 
     /**
      * Delete header image.
+     *
+     * @param string $filename
+     * @param string $type
      */
-    private function deleteHeaderImage(string $filename): void
+    private function deleteImage(string $filename, string $type = 'header_image'): void
     {
         // Delete file from folder
         $this->fileUploader->remove($filename);
         // Delete from db
-        $this->repository->updateSetting('header_image', '');
+        $this->repository->updateSetting($type, '');
         // Add flash message
         $this->addFlash('success', 'message.deleted');
     }

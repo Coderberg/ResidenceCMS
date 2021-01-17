@@ -25,7 +25,7 @@ final class CategoryControllerTest extends WebTestCase
     public function testAdminNewCategory()
     {
         $client = static::createClient([], self::SERVER);
-        $crawler = $client->request('GET', '/admin/category/new');
+        $crawler = $client->request('GET', '/en/admin/category/new');
 
         $form = $crawler->selectButton('Create category')->form([
             'category[name]' => self::NAME,
@@ -57,7 +57,7 @@ final class CategoryControllerTest extends WebTestCase
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/category/'.$category.'/edit');
+        $crawler = $client->request('GET', '/en/admin/category/'.$category.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'category[name]' => self::EDITED_NAME,
@@ -86,7 +86,7 @@ final class CategoryControllerTest extends WebTestCase
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/category');
+        $crawler = $client->request('GET', '/en/admin/category');
         $client->submit($crawler->filter('#delete-form-'.$category)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 

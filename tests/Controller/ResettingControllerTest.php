@@ -12,7 +12,7 @@ final class ResettingControllerTest extends WebTestCase
     public function testPasswordReset()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/password/reset');
+        $crawler = $client->request('GET', '/en/password/reset');
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.card-header', 'Reset Password');
@@ -42,7 +42,7 @@ final class ResettingControllerTest extends WebTestCase
         $user = $client->getContainer()->get('doctrine')
             ->getRepository(User::class)->findOneBy(['username' => 'admin']);
 
-        $crawler = $client->request('GET', sprintf('/password/reset/%s', $user->getConfirmationToken()));
+        $crawler = $client->request('GET', sprintf('/en/password/reset/%s', $user->getConfirmationToken()));
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.card-header', 'Set a new password');
 
@@ -62,7 +62,7 @@ final class ResettingControllerTest extends WebTestCase
             'PHP_AUTH_PW' => 'admin',
         ]);
 
-        $client->request('GET', '/admin');
+        $client->request('GET', '/en/admin');
         $this->assertSelectorTextContains('.navbar-brand', 'Dashboard');
 
         $user = $client->getContainer()->get('doctrine')

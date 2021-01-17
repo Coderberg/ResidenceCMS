@@ -25,7 +25,7 @@ final class DistrictControllerTest extends WebTestCase
     public function testAdminNewDistrict()
     {
         $client = static::createClient([], self::SERVER);
-        $crawler = $client->request('GET', '/admin/locations/district/new');
+        $crawler = $client->request('GET', '/en/admin/locations/district/new');
 
         $form = $crawler->selectButton('Create district')->form([
             'district[name]' => self::NAME,
@@ -57,7 +57,7 @@ final class DistrictControllerTest extends WebTestCase
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/locations/district/'.$district.'/edit');
+        $crawler = $client->request('GET', '/en/admin/locations/district/'.$district.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'district[name]' => self::EDITED_NAME,
@@ -81,7 +81,7 @@ final class DistrictControllerTest extends WebTestCase
     {
         $client = static::createClient([], self::SERVER);
 
-        $crawler = $client->request('GET', '/admin/locations/district');
+        $crawler = $client->request('GET', '/en/admin/locations/district');
 
         $district = $client->getContainer()->get('doctrine')
             ->getRepository(District::class)->findOneBy([

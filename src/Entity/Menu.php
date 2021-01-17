@@ -6,9 +6,17 @@ namespace App\Entity;
 
 use App\Entity\Traits\EntityIdTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MenuRepository")
+ * @UniqueEntity({"url", "locale"})
+ * @ORM\Table(
+ *    uniqueConstraints={
+ *        @ORM\UniqueConstraint(name="url_locale_unique_key",
+ *            columns={"url", "locale"})
+ *    }
+ * )
  */
 class Menu
 {
@@ -18,6 +26,11 @@ class Menu
      * @ORM\Column(type="string", length=255)
      */
     private $title;
+
+    /**
+     * @ORM\Column(type="string", length=2)
+     */
+    private $locale;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
@@ -95,6 +108,18 @@ class Menu
     public function setNewTab(?bool $new_tab): self
     {
         $this->new_tab = $new_tab;
+
+        return $this;
+    }
+
+    public function getLocale(): string
+    {
+        return $this->locale;
+    }
+
+    public function setLocale(string $locale): self
+    {
+        $this->locale = $locale;
 
         return $this;
     }

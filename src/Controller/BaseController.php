@@ -26,9 +26,13 @@ abstract class BaseController extends AbstractController
 
     private function menu(): array
     {
+        $request = $this->get('request_stack')->getCurrentRequest();
+
         return [
             'menu' => $this->getDoctrine()->getRepository(Menu::class)
-                ->findItems(),
+                ->findBy([
+                    'locale' => $request->getLocale(),
+                ]),
         ];
     }
 

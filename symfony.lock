@@ -587,6 +587,12 @@
     "twig/extra-bundle": {
         "version": "v3.1.1"
     },
+    "twig/intl-extra": {
+        "version": "2.x-dev"
+    },
+    "twig/string-extra": {
+        "version": "2.x-dev"
+    },
     "twig/twig": {
         "version": "v3.1.1"
     },

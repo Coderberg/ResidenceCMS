@@ -36,7 +36,9 @@
         "symfony/validator": "5.2.*",
         "symfony/web-link": "5.2.*",
         "symfony/webpack-encore-bundle": "^1.8",
-        "symfony/yaml": "5.2.*"
+        "symfony/yaml": "5.2.*",
+        "twig/intl-extra": "9999999-dev",
+        "twig/string-extra": "9999999-dev"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.4",

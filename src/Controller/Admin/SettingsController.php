@@ -68,6 +68,7 @@ final class SettingsController extends AbstractController
 
         return $this->render('admin/settings/header_settings.html.twig', [
             'header_image' => $settings['header_image'],
+            'logo_image' => $settings['logo_image'],
             'form' => $form->createView(),
         ]);
     }
@@ -80,7 +81,18 @@ final class SettingsController extends AbstractController
     public function uploadHeaderImage(Request $request): Response
     {
         // Upload custom header image
-        return $this->service->uploadHeaderImage($request);
+        return $this->service->uploadImage('header_image', $request);
+    }
+
+    /**
+     * @Route("/admin/setting/upload_logo_image", methods={"POST"}, name="admin_setting_upload_logo_image")
+     *
+     * @throws \Exception
+     */
+    public function uploadLogoImage(Request $request): Response
+    {
+        // Upload custom header image
+        return $this->service->uploadImage('logo_image', $request);
     }
 
     /**
@@ -89,7 +101,18 @@ final class SettingsController extends AbstractController
     public function deleteHeaderImage(Request $request): Response
     {
         // Reset a header image to the default image.
-        $this->service->resetHeaderImage($request);
+        $this->service->resetImage('header_image', $request);
+
+        return $this->redirectToRoute('admin_header_settings');
+    }
+
+    /**
+     * @Route("/admin/setting/delete_logo_image", methods={"POST"}, name="admin_setting_delete_logo_image")
+     */
+    public function deleteLogoImage(Request $request): Response
+    {
+        // Reset a header image to the default image.
+        $this->service->resetImage('logo_image', $request);
 
         return $this->redirectToRoute('admin_header_settings');
     }

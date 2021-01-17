@@ -1,6 +1,8 @@
-{% if header_image == '' %}
+<h5 class="card-title">{{ formTitle }}</h5>
 
-    <form action="{{ path('admin_setting_upload_header_image') }}" method="POST"
+{% if formImage == '' %}
+
+    <form action="{{ formPath }}" method="POST"
           enctype="multipart/form-data"
           class="dropzone js-photo-dropzone">
         <div class="fallback">
@@ -14,16 +16,16 @@
         <div class="gallery">
             <ul>
                 <li>
-                    <img src="/uploads/images/small/{{ header_image }}"
+                    <img src="/uploads/images/small/{{ formImage }}"
                          alt="{{ 'title.settings.header_settings' | trans }}"/>
 
-                    <form action="{{ path('admin_setting_delete_header_image') }}"
-                          id="delete-form" method="post"
+                    <form action="{{ formDeletePath }}"
+                          id="delete-form-{{ formType }}" method="post"
                           data-confirmation="true">
 
                         <input type="hidden" name="token" value="{{ csrf_token('delete') }}"/>
 
-                        <button type="submit" class="btn btn-danger btn-sm remove"
+                        <button type="submit" class="btn btn-danger btn-sm remove-{{ formType }}"
                                 onclick="if(confirm('{{ 'confirmation.delete_photo' | trans }}')){ return true }else{ return false }">
                             {{ 'action.delete' | trans }}
                         </button>

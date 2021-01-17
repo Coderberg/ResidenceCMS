@@ -12,11 +12,12 @@ final class MenuControllerTest extends WebTestCase
 {
     private const SERVER = [
         'PHP_AUTH_USER' => 'admin',
-        'PHP_AUTH_PW' => 'admin',
+        'PHP_AUTH_PW'   => 'admin',
     ];
 
     private const TITLE = 'Custom Menu Item';
     private const URL = '/?custom-link';
+    private const LOCALE = 'en';
     private const EDITED_TITLE = 'Edited';
 
     /**
@@ -26,18 +27,20 @@ final class MenuControllerTest extends WebTestCase
     {
         $client = static::createClient([], self::SERVER);
 
-        $crawler = $client->request('GET', '/admin/menu/new');
+        $crawler = $client->request('GET', '/en/admin/menu/new');
 
         $form = $crawler->selectButton('Save changes')->form([
-            'menu[title]' => self::TITLE,
-            'menu[url]' => self::URL,
+            'menu[title]'  => self::TITLE,
+            'menu[url]'    => self::URL,
+            'menu[locale]' => self::LOCALE,
         ]);
         $client->submit($form);
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
         $item = $client->getContainer()->get('doctrine')
             ->getRepository(Menu::class)->findOneBy([
-                'url' => self::URL,
+                'url'    => self::URL,
+                'locale' => self::LOCALE,
             ]);
 
         $this->assertNotNull($item);
@@ -55,10 +58,11 @@ final class MenuControllerTest extends WebTestCase
         $item = $client->getContainer()->get('doctrine')
             ->getRepository(Menu::class)
             ->findOneBy([
-                'url' => self::URL,
+                'url'    => self::URL,
+                'locale' => self::LOCALE,
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/menu/'.$item.'/edit');
+        $crawler = $client->request('GET', '/en/admin/menu/' . $item . '/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'menu[title]' => self::EDITED_TITLE,
@@ -87,8 +91,8 @@ final class MenuControllerTest extends WebTestCase
                 'url' => self::URL,
             ])->getId();
 
-        $crawler = $client->request('GET', '/admin/menu');
-        $client->submit($crawler->filter('#delete-form-'.$item)->form());
+        $crawler = $client->request('GET', '/en/admin/menu');
+        $client->submit($crawler->filter('#delete-form-' . $item)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
         $this->assertNull($client->getContainer()->get('doctrine')

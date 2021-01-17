@@ -11,7 +11,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PageRepository")
- * @UniqueEntity("slug")
+ * @UniqueEntity({"slug", "locale"})
+ * @ORM\Table(
+ *    uniqueConstraints={
+ *        @ORM\UniqueConstraint(name="slug_locale_unique_key",
+ *            columns={"slug", "locale"})
+ *    }
+ * )
  */
 class Page
 {
@@ -31,6 +37,11 @@ class Page
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
+
+    /**
+     * @ORM\Column(type="string", length=2, options={"default":"en"})
+     */
+    private $locale;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -133,6 +144,18 @@ class Page
     public function setContactEmailAddress(?string $contact_email_address): self
     {
         $this->contact_email_address = $contact_email_address;
+
+        return $this;
+    }
+
+    public function getLocale(): string
+    {
+        return $this->locale;
+    }
+
+    public function setLocale(string $locale): self
+    {
+        $this->locale = $locale;
 
         return $this;
     }
