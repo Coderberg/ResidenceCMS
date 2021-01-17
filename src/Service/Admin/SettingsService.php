@@ -50,13 +50,9 @@ final class SettingsService extends AbstractService
     /**
      * Upload custom header image.
      *
-     * @param string  $type
-     * @param Request $request
-     *
-     * @return Response
      * @throws \Exception
      */
-    public function uploadImage(string $type = 'header_image', Request $request): Response
+    public function uploadImage(string $type, Request $request): Response
     {
         /** @var UploadedFile $uploadedFile */
         $uploadedFile = $request->files->get('file');
@@ -91,11 +87,8 @@ final class SettingsService extends AbstractService
 
     /**
      * Reset a header image to the default image.
-     *
-     * @param string  $type
-     * @param Request $request
      */
-    public function resetImage(string $type = 'header_image', Request $request): void
+    public function resetImage(string $type, Request $request): void
     {
         $setting = $this->repository->findOneBy(['setting_name' => $type]);
 
@@ -112,9 +105,6 @@ final class SettingsService extends AbstractService
 
     /**
      * Delete header image.
-     *
-     * @param string $filename
-     * @param string $type
      */
     private function deleteImage(string $filename, string $type = 'header_image'): void
     {
