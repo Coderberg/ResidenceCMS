@@ -33,12 +33,13 @@ final class PageControllerTest extends WebTestCase
             'page[title]' => self::TITLE,
             'page[description]' => self::TITLE,
             'page[slug]' => self::SLUG,
+            'page[locale]' => self::LOCALE,
             'page[content]' => self::TITLE,
             'page[show_in_menu]' => true,
         ]);
         $client->submit($form);
 
-        $this->assertSame(Response::HTTP_OK, $client->getResponse()->getStatusCode());
+        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
         $page = $client->getContainer()->get('doctrine')
             ->getRepository(Page::class)->findOneBy([
                 'slug' => self::SLUG,

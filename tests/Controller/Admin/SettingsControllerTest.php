@@ -118,7 +118,7 @@ final class SettingsControllerTest extends WebTestCase
 
         $image = __DIR__.'/../../../public/uploads/images/full/demo/1.jpeg';
 
-        $form = $crawler->filter('.js-photo-dropzone:last-of-type')->form();
+        $form = $crawler->filter('.js-photo-dropzone')->last()->form();
         $form['file']->upload($image);
         $client->submit($form);
         $this->assertTrue($client->getResponse()->isSuccessful(), 'response status is 2xx');

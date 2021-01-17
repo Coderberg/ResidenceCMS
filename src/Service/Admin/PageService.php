@@ -38,6 +38,7 @@ final class PageService extends AbstractService
         if (true === $page->getShowInMenu()) {
             $menu = new Menu();
             $menu->setTitle($page->getTitle() ?? '');
+            $menu->setLocale($page->getLocale() ?? '');
             $menu->setUrl('/info/'.($page->getSlug() ?? ''));
             $this->save($menu);
         }
