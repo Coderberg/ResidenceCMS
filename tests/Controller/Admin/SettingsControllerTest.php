@@ -133,7 +133,7 @@ final class SettingsControllerTest extends WebTestCase
 
         $image = __DIR__.'/../../../public/images/logo-square.png';
 
-        $form = $crawler->filter('.js-photo-dropzone:first-of-type')->form();
+        $form = $crawler->filter('.js-photo-dropzone')->first()->form();
         $form['file']->upload($image);
         $client->submit($form);
         $this->assertTrue($client->getResponse()->isSuccessful(), 'response status is 2xx');
