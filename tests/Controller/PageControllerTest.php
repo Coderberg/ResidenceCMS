@@ -44,6 +44,6 @@ final class PageControllerTest extends WebTestCase
             'feedback[message]' => 'Let\'s test it!',
         ]);
         $client->submit($form);
-        $this->assertSame(Response::HTTP_OK, $client->getResponse()->getStatusCode());
+        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
     }
 }

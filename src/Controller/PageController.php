@@ -19,13 +19,11 @@ final class PageController extends BaseController
     /**
      * @Route("/info/{slug}", methods={"GET|POST"}, name="page")
      */
-    public function pageShow(Request $request, string $slug, MessageBusInterface $messageBus, PageRepository $pageRepository): Response
+    public function pageShow(Request $request, MessageBusInterface $messageBus, PageRepository $pageRepository): Response
     {
-        $locale = $request->isMethod(Request::METHOD_POST) ? $request->request->get('locale') : $request->getLocale();
+        $page = $pageRepository->findOneBy(['locale' => $request->getLocale(), 'slug' => $request->attributes->get('slug')]);
 
-        $page = $pageRepository->findOneBy(['locale' => $locale, 'slug' => $slug]);
-
-        if ($page && $page->getAddContactForm() && '' !== $page->getContactEmailAddress()) {
+        if ($page->getAddContactForm() && '' !== $page->getContactEmailAddress()) {
             $feedback = new FeedbackDto();
             $feedback->setToEmail($page->getContactEmailAddress());
 
