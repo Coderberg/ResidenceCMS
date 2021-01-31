@@ -126,6 +126,9 @@
     "knplabs/knp-paginator-bundle": {
         "version": "v5.3.0"
     },
+    "laminas/laminas-zendframework-bridge": {
+        "version": "1.1.1"
+    },
     "monolog/monolog": {
         "version": "2.2.0"
     },
@@ -427,6 +430,9 @@
     },
     "symfony/property-info": {
         "version": "v5.2.1"
+    },
+    "symfony/proxy-manager-bridge": {
+        "version": "v5.2.2"
     },
     "symfony/redis-messenger": {
         "version": "v5.2.1"
