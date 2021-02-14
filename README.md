@@ -8,7 +8,7 @@ The user interface is built with [Bootstrap 4][2].
 
 ## Requirements
 
-- PHP >= 7.2.9;
+- PHP >= 7.3;
 - PDO PHP Extension;
 - GD PHP extension
 - MySQL >= 5.7;
