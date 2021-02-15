@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Controller\BaseController;
 use App\Entity\Category;
 use App\Form\Type\CategoryType;
 use App\Repository\CategoryRepository;
 use App\Service\Admin\CategoryService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class CategoryController extends AbstractController
+final class CategoryController extends BaseController
 {
     /**
      * @Route("/admin/category", name="admin_category")
@@ -26,6 +26,7 @@ final class CategoryController extends AbstractController
         $categories = $repository->findAll();
 
         return $this->render('admin/category/index.html.twig', [
+            'site' => $this->site(),
             'categories' => $categories,
         ]);
     }
@@ -54,6 +55,7 @@ final class CategoryController extends AbstractController
         }
 
         return $this->render('admin/category/new.html.twig', [
+            'site' => $this->site(),
             'category' => $category,
             'form' => $form->createView(),
         ]);
@@ -75,6 +77,7 @@ final class CategoryController extends AbstractController
         }
 
         return $this->render('admin/category/edit.html.twig', [
+            'site' => $this->site(),
             'form' => $form->createView(),
         ]);
     }

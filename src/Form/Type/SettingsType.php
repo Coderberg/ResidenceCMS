@@ -49,15 +49,23 @@ final class SettingsType extends AbstractType
                 'required' => false,
                 'label' => 'label.settings.custom_footer_text',
             ])
-            ->add('items_per_page', null, [
-                'label' => 'label.settings.limit',
-                'constraints' => [new Range(['min' => 3, 'max' => 100])],
-            ])
             ->add('currency', EntityType::class, [
                 'class' => Currency::class,
                 'choice_label' => 'currency_title',
                 'label' => 'label.settings.currency',
             ])
+            ->add('items_per_page', null, [
+                'label' => 'label.settings.limit',
+                'constraints' => [new Range(['min' => 3, 'max' => 100])],
+            ])
+            ->add('show_similar_properties', ChoiceType::class, [
+                    'choices' => [
+                        'option.off' => '0',
+                        'option.on' => '1',
+                    ],
+                    'label' => 'label.settings.show_similar_properties',
+                ]
+            )
             ->add('fixed_top_navbar', ChoiceType::class, [
                     'choices' => [
                         'option.off' => '0',
@@ -66,12 +74,12 @@ final class SettingsType extends AbstractType
                     'label' => 'label.settings.fixed_top_navbar',
                 ]
             )
-            ->add('show_similar_properties', ChoiceType::class, [
+            ->add('show_language_selector', ChoiceType::class, [
                     'choices' => [
                         'option.off' => '0',
                         'option.on' => '1',
                     ],
-                    'label' => 'label.settings.show_similar_properties',
+                    'label' => 'label.settings.show_language_selector',
                 ]
             )
             ->add('ymaps_key', null, [

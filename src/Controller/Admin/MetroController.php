@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Controller\BaseController;
 use App\Entity\Metro;
 use App\Form\Type\MetroType;
 use App\Repository\CityRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class MetroController extends AbstractController
+final class MetroController extends BaseController
 {
     /**
      * @Route("/admin/locations/metro", name="admin_metro")
@@ -25,6 +25,7 @@ final class MetroController extends AbstractController
         $cities = $repository->findAll();
 
         return $this->render('admin/metro/index.html.twig', [
+            'site' => $this->site(),
             'cities' => $cities,
         ]);
     }
@@ -57,6 +58,7 @@ final class MetroController extends AbstractController
         }
 
         return $this->render('admin/metro/new.html.twig', [
+            'site' => $this->site(),
             'metro' => $metro,
             'form' => $form->createView(),
         ]);
@@ -79,6 +81,7 @@ final class MetroController extends AbstractController
         }
 
         return $this->render('admin/metro/edit.html.twig', [
+            'site' => $this->site(),
             'form' => $form->createView(),
         ]);
     }

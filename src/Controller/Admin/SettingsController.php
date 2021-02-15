@@ -47,6 +47,7 @@ final class SettingsController extends AbstractController
         }
 
         return $this->render('admin/settings/settings.html.twig', [
+            'site' => $settings,
             'form' => $form->createView(),
         ]);
     }
@@ -67,6 +68,7 @@ final class SettingsController extends AbstractController
         }
 
         return $this->render('admin/settings/header_settings.html.twig', [
+            'site' => $settings,
             'header_image' => $settings['header_image'],
             'logo_image' => $settings['logo_image'],
             'form' => $form->createView(),

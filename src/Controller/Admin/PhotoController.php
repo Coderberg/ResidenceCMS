@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Controller\BaseController;
 use App\Entity\Photo;
 use App\Entity\Property;
 use App\Service\FileUploader;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\ConstraintViolation;
 
-final class PhotoController extends AbstractController
+final class PhotoController extends BaseController
 {
     /**
      * @Route("/admin/photo/{id<\d+>}/upload", name="admin_photo_upload", methods={"POST"})
@@ -57,6 +57,7 @@ final class PhotoController extends AbstractController
         $photos = $property->getPhotos();
 
         return $this->render('admin/photo/edit.html.twig', [
+            'site' => $this->site(),
             'photos' => $photos,
             'property_id' => $property->getId(),
         ]);

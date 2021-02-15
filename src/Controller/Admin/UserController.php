@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Controller\BaseController;
 use App\Entity\User;
 use App\Form\Type\UserType;
 use App\Repository\UserRepository;
 use App\Service\Admin\UserService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class UserController extends AbstractController
+final class UserController extends BaseController
 {
     /**
      * @Route("/admin/user", name="admin_user")
@@ -26,6 +26,7 @@ final class UserController extends AbstractController
         $users = $repository->findAll();
 
         return $this->render('admin/user/index.html.twig', [
+            'site' => $this->site(),
             'users' => $users,
         ]);
     }
@@ -54,6 +55,7 @@ final class UserController extends AbstractController
         }
 
         return $this->render('admin/user/new.html.twig', [
+            'site' => $this->site(),
             'user' => $user,
             'form' => $form->createView(),
         ]);
@@ -75,6 +77,7 @@ final class UserController extends AbstractController
         }
 
         return $this->render('admin/user/edit.html.twig', [
+            'site' => $this->site(),
             'form' => $form->createView(),
         ]);
     }

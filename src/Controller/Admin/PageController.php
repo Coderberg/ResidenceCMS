@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Controller\BaseController;
 use App\Entity\Page;
 use App\Form\Type\PageType;
 use App\Repository\PageRepository;
 use App\Service\Admin\PageService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class PageController extends AbstractController
+final class PageController extends BaseController
 {
     /**
      * @Route("/admin/page", defaults={"page": "1"}, methods={"GET"}, name="admin_page")
@@ -25,6 +25,7 @@ final class PageController extends AbstractController
         $pages = $repository->findLatest($request);
 
         return $this->render('admin/page/index.html.twig', [
+            'site' => $this->site(),
             'pages' => $pages,
         ]);
     }
@@ -45,6 +46,7 @@ final class PageController extends AbstractController
         }
 
         return $this->render('admin/page/new.html.twig', [
+            'site' => $this->site(),
             'page' => $page,
             'form' => $form->createView(),
         ]);
@@ -68,6 +70,7 @@ final class PageController extends AbstractController
         }
 
         return $this->render('admin/page/edit.html.twig', [
+            'site' => $this->site(),
             'form' => $form->createView(),
         ]);
     }

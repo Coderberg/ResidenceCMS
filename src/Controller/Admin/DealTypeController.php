@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Controller\BaseController;
 use App\Entity\DealType;
 use App\Form\Type\DealTypeType;
 use App\Service\Admin\DealTypeService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class DealTypeController extends AbstractController
+final class DealTypeController extends BaseController
 {
     /**
      * @Route("/admin/deal_type", name="admin_deal_type")
@@ -27,6 +27,7 @@ final class DealTypeController extends AbstractController
         $dealTypes = $repository->findAll();
 
         return $this->render('admin/deal_type/index.html.twig', [
+            'site' => $this->site(),
             'dealTypes' => $dealTypes,
         ]);
     }
@@ -55,6 +56,7 @@ final class DealTypeController extends AbstractController
         }
 
         return $this->render('admin/deal_type/new.html.twig', [
+            'site' => $this->site(),
             'deal_type' => $dealType,
             'form' => $form->createView(),
         ]);
@@ -76,6 +78,7 @@ final class DealTypeController extends AbstractController
         }
 
         return $this->render('admin/deal_type/edit.html.twig', [
+            'site' => $this->site(),
             'form' => $form->createView(),
         ]);
     }
