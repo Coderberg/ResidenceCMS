@@ -35,7 +35,7 @@
         </ul>
 
         <ul class="navbar-nav ml-auto">
-            {% include 'layout/partials/_locale_switcher.html.twig' %}
+            {{ include('layout/partials/_locale_switcher.html.twig', {site: site}) }}
 
             {% if is_granted('ROLE_ADMIN') %}
                 <li class="nav-item dropdown no-arrow">

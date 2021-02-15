@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Controller\BaseController;
 use App\Entity\District;
 use App\Form\Type\DistrictType;
 use App\Repository\CityRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class DistrictController extends AbstractController
+final class DistrictController extends BaseController
 {
     /**
      * @Route("/admin/locations/district", name="admin_district")
@@ -25,6 +25,7 @@ final class DistrictController extends AbstractController
         $cities = $repository->findAll();
 
         return $this->render('admin/district/index.html.twig', [
+            'site' => $this->site(),
             'cities' => $cities,
         ]);
     }
@@ -57,6 +58,7 @@ final class DistrictController extends AbstractController
         }
 
         return $this->render('admin/district/new.html.twig', [
+            'site' => $this->site(),
             'district' => $district,
             'form' => $form->createView(),
         ]);
@@ -79,6 +81,7 @@ final class DistrictController extends AbstractController
         }
 
         return $this->render('admin/district/edit.html.twig', [
+            'site' => $this->site(),
             'form' => $form->createView(),
         ]);
     }

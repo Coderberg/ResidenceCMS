@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Controller\BaseController;
 use App\Entity\Menu;
 use App\Form\Type\MenuType;
 use App\Repository\MenuRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class MenuController extends AbstractController
+final class MenuController extends BaseController
 {
     /**
      * @Route("/admin/menu", name="admin_menu")
@@ -23,6 +23,7 @@ final class MenuController extends AbstractController
     public function index(MenuRepository $repository): Response
     {
         return $this->render('admin/menu/index.html.twig', [
+            'site' => $this->site(),
             'menu' => $repository->findItems(),
         ]);
     }
@@ -55,6 +56,7 @@ final class MenuController extends AbstractController
         }
 
         return $this->render('admin/menu/new.html.twig', [
+            'site' => $this->site(),
             'menu' => $menu,
             'form' => $form->createView(),
         ]);
@@ -78,6 +80,7 @@ final class MenuController extends AbstractController
         }
 
         return $this->render('admin/menu/edit.html.twig', [
+            'site' => $this->site(),
             'form' => $form->createView(),
         ]);
     }

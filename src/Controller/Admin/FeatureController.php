@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Controller\BaseController;
 use App\Entity\Feature;
 use App\Form\Type\FeatureType;
 use App\Repository\FeatureRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class FeatureController extends AbstractController
+final class FeatureController extends BaseController
 {
     /**
      * @Route("/admin/feature", name="admin_feature")
@@ -23,6 +23,7 @@ final class FeatureController extends AbstractController
     public function index(FeatureRepository $repository): Response
     {
         return $this->render('admin/feature/index.html.twig', [
+            'site' => $this->site(),
             'features' => $repository->findAll(),
         ]);
     }
@@ -55,6 +56,7 @@ final class FeatureController extends AbstractController
         }
 
         return $this->render('admin/feature/new.html.twig', [
+            'site' => $this->site(),
             'feature' => $feature,
             'form' => $form->createView(),
         ]);
@@ -77,6 +79,7 @@ final class FeatureController extends AbstractController
         }
 
         return $this->render('admin/feature/edit.html.twig', [
+            'site' => $this->site(),
             'form' => $form->createView(),
         ]);
     }

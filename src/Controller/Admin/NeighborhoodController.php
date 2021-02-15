@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Controller\BaseController;
 use App\Entity\Neighborhood;
 use App\Form\Type\NeighborhoodType;
 use App\Repository\CityRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class NeighborhoodController extends AbstractController
+final class NeighborhoodController extends BaseController
 {
     /**
      * @Route("/admin/locations/neighborhood", name="admin_neighborhood")
@@ -25,6 +25,7 @@ final class NeighborhoodController extends AbstractController
         $cities = $repository->findAll();
 
         return $this->render('admin/neighborhood/index.html.twig', [
+            'site' => $this->site(),
             'cities' => $cities,
         ]);
     }
@@ -57,6 +58,7 @@ final class NeighborhoodController extends AbstractController
         }
 
         return $this->render('admin/neighborhood/new.html.twig', [
+            'site' => $this->site(),
             'neighborhood' => $neighborhood,
             'form' => $form->createView(),
         ]);
@@ -79,6 +81,7 @@ final class NeighborhoodController extends AbstractController
         }
 
         return $this->render('admin/neighborhood/edit.html.twig', [
+            'site' => $this->site(),
             'form' => $form->createView(),
         ]);
     }

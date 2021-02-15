@@ -46,6 +46,7 @@ final class SettingsFixtures extends Fixture
             ['show_filter_by_features', '0'],
             ['show_filter_by_bedrooms', '0'],
             ['show_filter_by_guests', '0'],
+            ['show_language_selector', '1'],
         ];
     }
 }

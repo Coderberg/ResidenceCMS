@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Controller\BaseController;
 use App\Entity\Currency;
 use App\Form\Type\CurrencyType;
 use App\Repository\CurrencyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class CurrencyController extends AbstractController
+final class CurrencyController extends BaseController
 {
     /**
      * @Route("/admin/currency", name="admin_currency")
@@ -23,6 +23,7 @@ final class CurrencyController extends AbstractController
     public function index(CurrencyRepository $repository): Response
     {
         return $this->render('admin/currency/index.html.twig', [
+            'site' => $this->site(),
             'currencies' => $repository->findAll(),
         ]);
     }
@@ -55,6 +56,7 @@ final class CurrencyController extends AbstractController
         }
 
         return $this->render('admin/currency/new.html.twig', [
+            'site' => $this->site(),
             'currency' => $currency,
             'form' => $form->createView(),
         ]);
@@ -77,6 +79,7 @@ final class CurrencyController extends AbstractController
         }
 
         return $this->render('admin/currency/edit.html.twig', [
+            'site' => $this->site(),
             'form' => $form->createView(),
         ]);
     }

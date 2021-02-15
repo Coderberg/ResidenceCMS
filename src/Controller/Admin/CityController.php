@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Controller\BaseController;
 use App\Entity\City;
 use App\Form\Type\CityType;
 use App\Repository\CityRepository;
 use App\Service\Admin\CityService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class CityController extends AbstractController
+final class CityController extends BaseController
 {
     /**
      * @Route("/admin/locations/city", name="admin_city")
@@ -26,6 +26,7 @@ final class CityController extends AbstractController
         $cities = $repository->findAll();
 
         return $this->render('admin/city/index.html.twig', [
+            'site' => $this->site(),
             'cities' => $cities,
         ]);
     }
@@ -54,6 +55,7 @@ final class CityController extends AbstractController
         }
 
         return $this->render('admin/city/new.html.twig', [
+            'site' => $this->site(),
             'city' => $city,
             'form' => $form->createView(),
         ]);
@@ -76,6 +78,7 @@ final class CityController extends AbstractController
         }
 
         return $this->render('admin/city/edit.html.twig', [
+            'site' => $this->site(),
             'form' => $form->createView(),
         ]);
     }

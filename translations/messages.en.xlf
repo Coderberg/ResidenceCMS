@@ -543,6 +543,10 @@
                 <source>label.settings.limit</source>
                 <target>Number Of Items Per Page</target>
             </trans-unit>
+            <trans-unit id="label.settings.show_language_selector">
+                <source>label.settings.show_language_selector</source>
+                <target>Show language selector</target>
+            </trans-unit>
             <trans-unit id="label.settings.currency">
                 <source>label.settings.currency</source>
                 <target>Currency</target>

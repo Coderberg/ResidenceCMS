@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Controller\BaseController;
 use App\Service\Admin\DashboardService;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class DashboardController extends AbstractController
+final class DashboardController extends BaseController
 {
     /**
      * @Route("/admin", name="admin_dashboard")
@@ -29,6 +29,7 @@ final class DashboardController extends AbstractController
         $users = $service->countUsers();
 
         return $this->render('admin/dashboard/index.html.twig', [
+            'site' => $this->site(),
             'number_of_properties' => $properties,
             'number_of_cities' => $cities,
             'number_of_deal_types' => $dealTypes,
