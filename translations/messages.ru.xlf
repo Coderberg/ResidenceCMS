@@ -502,6 +502,14 @@
                 <source>title.settings.header_settings</source>
                 <target>Настройки шапки</target>
             </trans-unit>
+            <trans-unit id="title.settings.logo_image_label">
+                <source>title.settings.logo_image_label</source>
+                <target>Логотип сайта</target>
+            </trans-unit>
+            <trans-unit id="title.settings.header_image_label">
+                <source>title.settings.header_image_label</source>
+                <target>Фон шапки</target>
+            </trans-unit>
 
             <trans-unit id="label.remember_me">
                 <source>label.remember_me</source>
@@ -756,6 +764,10 @@
             <trans-unit id="label.url">
                 <source>label.url</source>
                 <target>URL</target>
+            </trans-unit>
+            <trans-unit id="label.locale">
+                <source>label.locale</source>
+                <target>Код языка (bg,en,nl,ru)</target>
             </trans-unit>
             <trans-unit id="label.new_tab">
                 <source>label.new_tab</source>
