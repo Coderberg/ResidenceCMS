@@ -4,6 +4,7 @@
 ```
 $ git clone https://github.com/eko/docker-symfony.git
 $ cd docker-symfony
+$ git checkout 5cc2522
 $ git clone https://github.com/Coderberg/ResidenceCMS.git symfony
 ```
 
