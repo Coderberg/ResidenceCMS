@@ -2,21 +2,21 @@
 
 import Cookies from 'js-cookie/src/js.cookie';
 
-$(document).ready(function () {
+$(document).ready(() => {
 
     let currentUrl = window.location.href;
 
     $('.sidebar .nav-item').each(function () {
         let sidebarLink = $('a', this).attr('href');
-        if (currentUrl.indexOf(sidebarLink) !== -1) {
+        if (currentUrl.includes(sidebarLink)) {
             $(this).addClass('active');
-        } else if (sidebarLink.indexOf('locations') !== -1 && currentUrl.indexOf('locations') !== -1) {
+        } else if (sidebarLink.includes('locations') && currentUrl.includes('locations')) {
             $(this).addClass('active');
         }
     });
 
     // Toggle the side navigation
-    $("#sidebarToggle").on('click', function (e) {
+    $("#sidebarToggle").on('click', (e) => {
 
         let $body = $('body');
         e.preventDefault();
@@ -32,10 +32,10 @@ $(document).ready(function () {
     });
 
     // Sorting
-    $('#sort_by, #state').on('change', function () {
+    $('#sort_by, #state').on('change', () => {
         let value = $('#sort_by').val();
         let state = $('#state').val();
-        window.location.href = '/admin/property?sort_by=' + value + '&state=' + state;
+        window.location.href = window.location.pathname + '?sort_by=' + value + '&state=' + state;
     });
 
 });
