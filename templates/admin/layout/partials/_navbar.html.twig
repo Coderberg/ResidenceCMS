@@ -4,7 +4,11 @@
         <i class="fas fa-bars"></i>
     </button>
 
-    <a class="navbar-brand mr-1" href="{{ path('admin_dashboard') }}"><img src="{{ asset('images/residence-logo.png') }}" alt="{{ 'dashboard'|trans }}"> Dashboard</a>
+    <a class="navbar-brand mr-1" href="{{ path('admin_dashboard') }}">
+        <img src="{{ asset('images/residence-logo.png') }}"
+             class="hidden-sm"
+             alt="{{ 'dashboard'|trans }}"> {{ 'dashboard'|trans }}
+    </a>
 
     <div class="hidden-sm" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
