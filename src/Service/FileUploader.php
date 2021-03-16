@@ -14,6 +14,7 @@ use App\Validator\PhotoRequirements;
 use Gregwar\Image\Image;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\String\ByteString;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validation;
 
@@ -52,7 +53,7 @@ final class FileUploader
      */
     public function upload(UploadedFile $file): string
     {
-        $fileName = md5(uniqid()).'.'.$file->guessExtension();
+        $fileName = ByteString::fromRandom(20).'.'.$file->guessExtension();
 
         // Full
         $file->move($this->targetDirectory.'/full/', $fileName);
