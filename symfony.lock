@@ -617,6 +617,9 @@
     "twig/twig": {
         "version": "v3.3.0"
     },
+    "voku/portable-ascii": {
+        "version": "1.5.6"
+    },
     "webmozart/assert": {
         "version": "1.9.1"
     }

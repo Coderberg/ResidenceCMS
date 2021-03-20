@@ -10,18 +10,25 @@ declare(strict_types=1);
 
 namespace App\Utils;
 
+use Symfony\Component\String\Slugger\AsciiSlugger;
+use voku\helper\ASCII;
+
 final class Slugger implements SluggerInterface
 {
     public static function slugify(string $string): string
     {
-        $string = preg_replace('~[^\\pL\d]+~u', '-', $string);
+        if (!\function_exists('transliterator_transliterate')) {
+            $string = self::ascii($string);
+        }
 
-        $string = Transliterator::transliterate($string);
+        $slugger = new AsciiSlugger();
+        $slug = $slugger->slug($string)->lower();
 
-        $string = trim($string, '-');
+        return (string) $slug;
+    }
 
-        $string = mb_strtolower($string);
-
-        return preg_replace('/\s+/', '-', mb_strtolower(trim(strip_tags($string)), 'UTF-8'));
+    private static function ascii($value, $language = 'en'): string
+    {
+        return ASCII::to_ascii((string) $value, $language);
     }
 }
