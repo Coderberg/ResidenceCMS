@@ -58,7 +58,7 @@ script:
   # this checks that the XLIFF translations contain no syntax errors
   - php bin/console lint:xliff translations
   # This checks that arguments injected into services match type declarations.
-  - php bin/console lint:container
+  - php bin/console lint:container --no-debug
   # This checks that the application doesn't use dependencies with known security vulnerabilities.
   - symfony check:security
   # this checks that Doctrine's mapping configurations are valid
