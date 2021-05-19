@@ -30,7 +30,7 @@ before_install:
   - sudo service mysql restart
   - sed -i -e 's/db_user:db_password/travis:/g' ./.env ./.env.test
   - sed -i -e 's/db_name/travis/g' ./.env ./.env.test
-  - sudo rm -rf ~/.nvm - curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+  - curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
   - sudo apt-get install -y nodejs
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.22.5
   - export PATH="$HOME/.yarn/bin:$PATH"
