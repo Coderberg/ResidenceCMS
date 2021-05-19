@@ -4,10 +4,12 @@ sudo: true
 cache:
   directories:
     - $HOME/.composer/cache/files
-    - ./bin/.phpunit
     - $HOME/.symfony
+    - ./bin/.phpunit
+  yarn: true
 
 env:
+  - NODE_VERSION=16.x
   global:
     - SYMFONY_PHPUNIT_DIR=./bin/.phpunit
     - SYMFONY_DEPRECATIONS_HELPER=9
@@ -29,9 +31,13 @@ before_install:
   - sudo service mysql restart
   - sed -i -e 's/db_user:db_password/travis:/g' ./.env ./.env.test
   - sed -i -e 's/db_name/travis/g' ./.env ./.env.test
-  - composer self-update
+  - sudo rm -rf ~/.nvm - curl -sL "https://deb.nodesource.com/setup_${NODE_VERSION}" | sudo -E bash -
+  - sudo apt-get install -y nodejs
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.22.5
+  - export PATH="$HOME/.yarn/bin:$PATH"
 
 before_script:
+  - composer self-update
   - phpenv config-rm xdebug.ini
 
 addons:
@@ -45,6 +51,8 @@ addons:
 install:
   - COMPOSER_MEMORY_LIMIT=-1 composer update symfony/flex --no-plugins --no-scripts
   - COMPOSER_MEMORY_LIMIT=-1 composer install
+  - yarn install
+  - yarn build
 
 script:
   - php bin/console app:install
