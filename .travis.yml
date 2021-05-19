@@ -50,8 +50,6 @@ addons:
 install:
   - COMPOSER_MEMORY_LIMIT=-1 composer update symfony/flex --no-plugins --no-scripts
   - COMPOSER_MEMORY_LIMIT=-1 composer install
-  - node -v
-  - yarn config set ignore-engines true
   - yarn install
   - yarn build
 
