@@ -6,9 +6,12 @@
         </a>
     {% else %}
         <a class="navbar-brand" href="{{ path('property') }}">
-            <img
-                src="{% if site.logo_image == '' %}{{ asset('images/residence-logo.png') }}{% else %}{{ asset('uploads/images/full/' ~ site.logo_image) }}{% endif %}"
-                alt="{{ site.name }}"></a>
+            {% if site.logo_image == '' %}
+                {{ site.name }}
+            {% else %}
+                <img src="{{ asset('uploads/images/full/' ~ site.logo_image) }}" alt="{{ site.name }}">
+            {% endif %}
+        </a>
     {% endif %}
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
