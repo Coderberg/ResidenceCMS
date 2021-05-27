@@ -21,7 +21,9 @@ final class PageController extends BaseController
      */
     public function pageShow(Request $request, MessageBusInterface $messageBus, PageRepository $pageRepository): Response
     {
-        $page = $pageRepository->findOneBy(['locale' => $request->getLocale(), 'slug' => $request->attributes->get('slug')]);
+        $slug = $request->attributes->get('slug');
+        $page = $pageRepository->findOneBy(['locale' => $request->getLocale(), 'slug' => $slug])
+            ?? $pageRepository->findOneBy(['slug' => $slug]);
 
         if ($page->getAddContactForm() && '' !== $page->getContactEmailAddress()) {
             $feedback = new FeedbackDto();
