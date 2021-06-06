@@ -14,7 +14,7 @@ final class UserFixtures extends Fixture
     /**
      * @var UserPasswordHasherInterface
      */
-    private $passwordEncoder;
+    private $passwordHasher;
 
     public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
