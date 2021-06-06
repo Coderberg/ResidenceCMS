@@ -8,7 +8,7 @@ use App\Entity\User;
 use App\Service\AbstractService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 final class UserService extends AbstractService
@@ -19,19 +19,19 @@ final class UserService extends AbstractService
     private $em;
 
     /**
-     * @var UserPasswordEncoderInterface
+     * @var UserPasswordHasherInterface
      */
-    private $passwordEncoder;
+    private $passwordHasher;
 
     public function __construct(
         CsrfTokenManagerInterface $tokenManager,
         SessionInterface $session,
         EntityManagerInterface $entityManager,
-        UserPasswordEncoderInterface $passwordEncoder
+        UserPasswordHasherInterface $passwordHasher
     ) {
         parent::__construct($tokenManager, $session);
         $this->em = $entityManager;
-        $this->passwordEncoder = $passwordEncoder;
+        $this->passwordHasher = $passwordHasher;
     }
 
     public function create(User $user): void
@@ -73,7 +73,7 @@ final class UserService extends AbstractService
     private function setEncodedPassword(User $user): User
     {
         $password = $user->getPassword();
-        $user->setPassword($this->passwordEncoder->encodePassword($user, $password));
+        $user->setPassword($this->passwordHasher->hashPassword($user, $password));
 
         return $user;
     }
