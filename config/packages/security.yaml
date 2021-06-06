@@ -1,5 +1,10 @@
 security:
-    encoders:
+    # a new authentication system is available since Symfony 5.1 to make
+    # Symfony security more extensible and easier to understand
+    # https://symfony.com/doc/current/security/experimental_authenticators.html
+    enable_authenticator_manager: true
+
+    password_hashers:
         # Our user class and the algorithm we'll use to encode passwords
         # 'auto' means to let Symfony choose the best possible password hasher (Argon2 or Bcrypt)
         # https://symfony.com/doc/current/security.html#c-encoding-the-user-s-password
@@ -25,9 +30,6 @@ security:
             # this firewall applies to all URLs
             pattern: ^/
 
-            # but the firewall does not require login on every page
-            # denying access is done in access_control or in your controllers
-            anonymous: true
             lazy: true
 
             # This allows the user to login by submitting a username and password
@@ -39,8 +41,8 @@ security:
                 # When the user tries to access a protected page, they are redirected here
                 login_path: security_login
                 # Secure the login form against CSRF
-                # Reference: https://symfony.com/doc/current/security/csrf_in_login_form.html
-                csrf_token_generator: security.csrf.token_manager
+                # Reference: https://symfony.com/doc/current/security/csrf.html
+                enable_csrf: true
                 # The page users are redirect to when there is no previous page stored in the
                 # session (for example when the users access directly to the login page).
                 default_target_path: security_login
@@ -56,6 +58,12 @@ security:
                 lifetime: 2592000 # 30 days in seconds
                 path:     /
 
+            # needed because in tests we redefine the 'main' firewall to use
+            # HTTP Basic instead of the login form, so this firewall has
+            # multiple authenticators
+            # See https://symfony.com/doc/current/security/experimental_authenticators.html#configuring-the-authentication-entry-point
+            entry_point: 'form_login'
+
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
@@ -63,3 +71,11 @@ security:
     # additional security lives in the controllers
     - { path: '^/(%app_locales%)/admin', roles: ROLE_ADMIN }
     - { path: '^/(%app_locales%)/user', roles: ROLE_USER }
+
+when@test:
+    # this configuration simplifies testing URLs protected by the security mechanism
+    # See https://symfony.com/doc/current/testing/http_authentication.html
+    security:
+        firewalls:
+            main:
+                http_basic: ~
