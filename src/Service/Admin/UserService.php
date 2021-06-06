@@ -7,7 +7,7 @@ namespace App\Service\Admin;
 use App\Entity\User;
 use App\Service\AbstractService;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
@@ -25,11 +25,11 @@ final class UserService extends AbstractService
 
     public function __construct(
         CsrfTokenManagerInterface $tokenManager,
-        SessionInterface $session,
+        RequestStack $requestStack,
         EntityManagerInterface $entityManager,
         UserPasswordHasherInterface $passwordHasher
     ) {
-        parent::__construct($tokenManager, $session);
+        parent::__construct($tokenManager, $requestStack);
         $this->em = $entityManager;
         $this->passwordHasher = $passwordHasher;
     }

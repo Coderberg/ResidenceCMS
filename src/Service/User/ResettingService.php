@@ -10,7 +10,7 @@ use App\Repository\ResettingRepository;
 use App\Service\AbstractService;
 use App\Utils\TokenGenerator;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
@@ -33,12 +33,12 @@ final class ResettingService extends AbstractService
 
     public function __construct(
         CsrfTokenManagerInterface $tokenManager,
-        SessionInterface $session,
+        RequestStack $requestStack,
         ResettingRepository $repository,
         MessageBusInterface $messageBus,
         TokenGenerator $generator
     ) {
-        parent::__construct($tokenManager, $session);
+        parent::__construct($tokenManager, $requestStack);
         $this->repository = $repository;
         $this->messageBus = $messageBus;
         $this->generator = $generator;

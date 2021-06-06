@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Service\Cache\ClearCache;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
@@ -13,9 +13,6 @@ abstract class AbstractService
 {
     use ClearCache;
 
-    /**
-     * @var SessionInterface
-     */
     private $session;
 
     /**
@@ -23,10 +20,10 @@ abstract class AbstractService
      */
     private $tokenManager;
 
-    public function __construct(CsrfTokenManagerInterface $tokenManager, SessionInterface $session)
+    public function __construct(CsrfTokenManagerInterface $tokenManager, RequestStack $requestStack)
     {
         $this->tokenManager = $tokenManager;
-        $this->session = $session;
+        $this->session = $requestStack->getSession();
     }
 
     /**
