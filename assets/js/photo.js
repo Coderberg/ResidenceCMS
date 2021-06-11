@@ -6,9 +6,8 @@ require('jquery-ui-touch-punch');
 Dropzone.autoDiscover = false;
 
 $(document).ready(function () {
-
     let $form = $('.js-photo-dropzone');
-    let ajaxUrl = ($form.attr('action')).replace('upload', 'sort');
+    let ajaxUrl = $form.attr('action').replace('upload', 'sort');
 
     if ($form.length) {
         $form.dropzone({
@@ -25,18 +24,21 @@ $(document).ready(function () {
     let $btnReorder = $('.btn-reorder');
 
     $btnReorder.on('click', function () {
-
         $(this).html($(this).attr('data-save'));
-        $(".reorder-ul").sortable({tolerance: 'pointer'});
+        $('.reorder-ul').sortable({ tolerance: 'pointer' });
         $('.reorder-help').slideDown('slow');
         $('.single-img').css('cursor', 'move');
         $('.btn-finish').fadeOut(100);
 
         $btnReorder.click(function () {
             if (!$('i', this).length) {
-
                 $('.reorder-ul').sortable('destroy');
-                $(this).html('<i class="fas fa-spin fa-spinner"></i> ' + $(this).attr('data-processing')).prop('disabled', true);
+                $(this)
+                    .html(
+                        '<i class="fas fa-spin fa-spinner"></i> ' +
+                            $(this).attr('data-processing')
+                    )
+                    .prop('disabled', true);
 
                 let ids = [];
                 $('.reorder-ul li').each(function () {
@@ -46,13 +48,11 @@ $(document).ready(function () {
                 $.ajax({
                     type: 'POST',
                     url: ajaxUrl,
-                    data: {ids: ids}
+                    data: { ids: ids }
                 }).done(function () {
                     window.location.reload();
                 });
             }
         });
-
     });
-
 });

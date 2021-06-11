@@ -1,7 +1,6 @@
 'use strict';
 
 $(document).ready(function () {
-
     let currentUrl = window.location.href;
 
     // Sidebar
@@ -19,7 +18,7 @@ $(document).ready(function () {
         let url = $(this).attr('href');
         let $div = $(this).parent().parent().parent();
 
-        $div.css({'opacity': '0.5'});
+        $div.css({ opacity: '0.5' });
 
         $.get(url, function (data) {
             if ('ok' === data.status) {
@@ -37,5 +36,4 @@ $(document).ready(function () {
         counter = counter - 1;
         $counter.text(counter);
     }
-
 });

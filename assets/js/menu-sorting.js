@@ -6,18 +6,16 @@ function changeButtons() {
         .addClass('js-up-one')
         .html('<i class="fas fa-arrow-up"></i> Up one');
 
-    $(".js-move:first")
+    $('.js-move:first')
         .removeClass('js-up-one')
         .addClass('js-down-one')
         .html('<i class="fas fa-arrow-down"></i> Down one');
 }
 
 function sendRequest() {
-
     let item = $('.js-move');
 
     if (item.length > 1) {
-
         let items = [];
 
         item.each(function () {
@@ -25,20 +23,18 @@ function sendRequest() {
         });
 
         $.ajax({
-            method: "POST",
-            url: "/admin/menu/sort",
+            method: 'POST',
+            url: '/en/admin/menu/sort',
             data: { items: items }
         });
     }
 }
 
 $(document).ready(function () {
+    $('body').on('click', '.js-move', function () {
+        let row = $(this).parents('tr:first');
 
-    $('body').on('click', ".js-move", function () {
-
-        let row = $(this).parents("tr:first");
-
-        if ($(this).is(".js-up-one")) {
+        if ($(this).is('.js-up-one')) {
             row.insertBefore(row.prev());
         } else {
             row.insertAfter(row.next());
