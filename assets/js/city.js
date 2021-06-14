@@ -1,7 +1,6 @@
 'use strict';
 
 $(document).ready(function () {
-
     let $city = $('#property_city');
     let $title = $('#property_title');
     let $description = $('#property_meta_description');
@@ -10,7 +9,6 @@ $(document).ready(function () {
     let $state = $('#property_state');
 
     $city.change(function () {
-
         let $form = $(this).closest('form');
         let data = getPropertyData();
 

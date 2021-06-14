@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -17,7 +18,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="users")
  * @UniqueEntity("email")
  */
-class User implements UserInterface, \Serializable
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     use EntityIdTrait;
     /**
@@ -106,6 +107,11 @@ class User implements UserInterface, \Serializable
         return $this->username;
     }
 
+    public function getUserIdentifier(): string
+    {
+        return $this->username;
+    }
+
     public function setUsername(string $username): void
     {
         $this->username = $username;
@@ -187,19 +193,19 @@ class User implements UserInterface, \Serializable
     /**
      * {@inheritdoc}
      */
-    public function serialize(): string
+    public function __serialize(): array
     {
         // add $this->salt too if you don't use Bcrypt or Argon2i
-        return serialize([$this->id, $this->username, $this->password]);
+        return [$this->id, $this->username, $this->password];
     }
 
     /**
      * {@inheritdoc}
      */
-    public function unserialize($serialized): void
+    public function __unserialize(array $data): void
     {
         // add $this->salt too if you don't use Bcrypt or Argon2i
-        [$this->id, $this->username, $this->password] = unserialize($serialized, ['allowed_classes' => false]);
+        [$this->id, $this->username, $this->password] = $data;
     }
 
     public function getProperties(): Collection

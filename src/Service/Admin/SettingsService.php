@@ -10,8 +10,8 @@ use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Validator\ConstraintViolation;
 
@@ -29,11 +29,11 @@ final class SettingsService extends AbstractService
 
     public function __construct(
         CsrfTokenManagerInterface $tokenManager,
-        SessionInterface $session,
+        RequestStack $requestStack,
         SettingsRepository $repository,
         FileUploader $fileUploader
     ) {
-        parent::__construct($tokenManager, $session);
+        parent::__construct($tokenManager, $requestStack);
         $this->repository = $repository;
         $this->fileUploader = $fileUploader;
     }

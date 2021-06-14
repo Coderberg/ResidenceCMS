@@ -1,0 +1,34 @@
+{
+  "parser": "@babel/eslint-parser",
+  "env": {
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "sourceType": "module"
+  },
+  "rules": {
+    "linebreak-style": ["off", "unix"],
+    "no-console": "error",
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "no-var": "error",
+    "eqeqeq": ["error", "always"],
+    "object-curly-spacing": "off",
+    "no-const-assign": "error",
+    "newline-before-return": "error",
+    "no-unreachable": "error",
+    "no-extra-semi": "error",
+    "no-unexpected-multiline": "error",
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "never",
+        "objects": "never",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never"
+      }
+    ]
+  }
+}

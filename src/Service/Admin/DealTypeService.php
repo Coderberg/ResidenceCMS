@@ -7,7 +7,7 @@ namespace App\Service\Admin;
 use App\Entity\DealType;
 use App\Service\AbstractService;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 final class DealTypeService extends AbstractService
@@ -19,10 +19,10 @@ final class DealTypeService extends AbstractService
 
     public function __construct(
         CsrfTokenManagerInterface $tokenManager,
-        SessionInterface $session,
+        RequestStack $requestStack,
         EntityManagerInterface $entityManager
     ) {
-        parent::__construct($tokenManager, $session);
+        parent::__construct($tokenManager, $requestStack);
         $this->em = $entityManager;
     }
 

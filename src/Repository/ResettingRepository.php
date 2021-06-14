@@ -6,24 +6,24 @@ namespace App\Repository;
 
 use App\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 final class ResettingRepository extends UserRepository
 {
     /**
-     * @var UserPasswordEncoderInterface
+     * @var UserPasswordHasherInterface
      */
-    private $passwordEncoder;
+    private $passwordHasher;
 
-    public function __construct(ManagerRegistry $registry, UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(ManagerRegistry $registry, UserPasswordHasherInterface $passwordHasher)
     {
         parent::__construct($registry);
-        $this->passwordEncoder = $passwordEncoder;
+        $this->passwordHasher = $passwordHasher;
     }
 
     public function setPassword(User $user, string $plainPassword): void
     {
-        $user->setPassword($this->passwordEncoder->encodePassword($user, $plainPassword));
+        $user->setPassword($this->passwordHasher->hashPassword($user, $plainPassword));
         $user->setConfirmationToken(null);
         $user->setPasswordRequestedAt(null);
         $this->save($user);
