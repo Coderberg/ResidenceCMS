@@ -9,7 +9,7 @@
         "ext-ctype": "*",
         "ext-gd": "*",
         "gregwar/image": "^2.1",
-        "knplabs/knp-paginator-bundle": "^5.5",
+        "knplabs/knp-paginator-bundle": "^5.6",
         "sensio/framework-extra-bundle": "^6.1",
         "symfony/asset": "5.3.*",
         "symfony/console": "5.3.*",
