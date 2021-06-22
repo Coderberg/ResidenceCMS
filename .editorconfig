@@ -11,3 +11,9 @@ trim_trailing_whitespace = true
 [*.{php,html,twig}]
 indent_style = space
 indent_size = 4
+
+[*.php]
+ij_php_comma_after_last_array_element = true
+ij_php_blank_lines_before_return_statement = 1
+ij_php_blank_lines_after_opening_tag = 1
+ij_php_space_after_type_cast = true
