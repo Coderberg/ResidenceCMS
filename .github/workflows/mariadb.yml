@@ -50,7 +50,6 @@ jobs:
           composer install --no-progress --prefer-dist --optimize-autoloader
       - name: Run Migration
         run: |
-          php bin/console doctrine:database:create --if-not-exists --no-interaction
           php bin/console app:install
         env:
           DATABASE_URL: mysql://mariadb:mariadb@127.0.0.1:${{ job.services.mariadb.ports[3306] }}/mariadb?serverVersion=mariadb-10.6.4
