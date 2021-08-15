@@ -11,7 +11,12 @@
             {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
             {{ form_start(form) }}
-            {{ form_widget(form) }}
+            {{ form_row(form.roles) }}
+            {{ form_row(form.profile.full_name) }}
+            {{ form_row(form.username) }}
+            {{ form_row(form.profile.phone) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.password) }}
 
             <div class="form-group">
 

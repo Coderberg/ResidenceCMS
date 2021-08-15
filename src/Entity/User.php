@@ -29,14 +29,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * Maximum time that the confirmation token will be valid.
      */
     public const TOKEN_TTL = 43200;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string")
-     * @Assert\NotBlank()
-     */
-    private $fullName;
     /**
      * @var string
      *
@@ -45,13 +37,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @Assert\Length(min=2, max=50)
      */
     private $username;
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string")
-     * @Assert\NotBlank()
-     */
-    private $phone;
     /**
      * @var string
      *
@@ -87,19 +72,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $password_requested_at;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Profile::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $profile;
+
     public function __construct()
     {
         $this->properties = new ArrayCollection();
-    }
-
-    public function setFullName(string $fullName): void
-    {
-        $this->fullName = $fullName;
-    }
-
-    public function getFullName(): ?string
-    {
-        return $this->fullName;
     }
 
     public function getUsername(): ?string
@@ -115,16 +95,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUsername(string $username): void
     {
         $this->username = $username;
-    }
-
-    public function getPhone(): ?string
-    {
-        return $this->phone;
-    }
-
-    public function setPhone(string $phone): void
-    {
-        $this->phone = $phone;
     }
 
     public function getEmail(): ?string
@@ -267,5 +237,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->getPasswordRequestedAt() instanceof \DateTime &&
             $this->getPasswordRequestedAt()->getTimestamp() + $ttl > time();
+    }
+
+    public function getProfile(): ?Profile
+    {
+        return $this->profile;
+    }
+
+    public function setProfile(Profile $profile): self
+    {
+        // set the owning side of the relation if necessary
+        if ($profile->getUser() !== $this) {
+            $profile->setUser($this);
+        }
+
+        $this->profile = $profile;
+
+        return $this;
     }
 }

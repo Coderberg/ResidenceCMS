@@ -175,7 +175,7 @@ final class PropertyType extends AbstractType
             ])
             ->add('author', EntityType::class, [
                 'class' => User::class,
-                'choice_label' => 'full_name',
+                'choice_label' => 'profile.full_name',
                 'label' => 'label.agent',
             ])
             ->add('state', ChoiceType::class, [

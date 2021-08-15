@@ -24,9 +24,9 @@ final class UserControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/en/admin/user/new');
 
         $form = $crawler->selectButton('Create user')->form([
-            'user[full_name]' => 'test',
+            'user[profile][full_name]' => 'test',
             'user[username]' => 'test',
-            'user[phone]' => 'test',
+            'user[profile][phone]' => 'test',
             'user[email]' => 'test@test.com',
             'user[password]' => 'test',
         ]);
@@ -39,7 +39,7 @@ final class UserControllerTest extends WebTestCase
             ]);
 
         $this->assertNotNull($user);
-        $this->assertSame('test', $user->getFullName());
+        $this->assertSame('test', $user->getProfile()->getFullName());
         $this->assertSame('test', $user->getUsername());
     }
 

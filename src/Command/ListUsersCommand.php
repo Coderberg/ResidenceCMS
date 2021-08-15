@@ -51,7 +51,7 @@ final class ListUsersCommand extends Command
         $usersAsPlainArrays = array_map(function (User $user) {
             return [
                 $user->getId(),
-                $user->getFullName(),
+                $user->getProfile()->getFullName(),
                 $user->getUsername(),
                 $user->getEmail(),
                 implode(', ', $user->getRoles()),

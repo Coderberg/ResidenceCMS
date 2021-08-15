@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
+use App\Entity\Profile;
 use App\Entity\User;
 use App\Transformer\UserTransformer;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -22,12 +23,15 @@ final class UserFixtures extends Fixture
     {
         foreach ($this->getUserData() as [$fullName, $username, $phone, $email, $roles]) {
             $user = new User();
-            $user->setFullName($fullName);
             $user->setUsername($username);
             $user->setPassword($username);
-            $user->setPhone($phone);
             $user->setEmail($email);
             $user->setRoles($roles);
+            $user->setProfile(
+                (new Profile())
+                    ->setFullName($fullName)
+                    ->setPhone($phone)
+            );
             $user = $this->transformer->transform($user);
             $manager->persist($user);
             $this->addReference($username, $user);

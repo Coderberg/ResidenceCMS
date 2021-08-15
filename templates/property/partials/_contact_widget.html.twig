@@ -11,7 +11,7 @@
             <div class="col-auto">
                 <h4>{{ 'widget.agent' | trans }}</h4>
 
-                <p>{{ property.author.fullName }}</p>
+                <p>{{ property.author.profile.fullName }}</p>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
             <div class="col-auto">
                 <h4>{{ 'widget.phone' | trans }}</h4>
 
-                <p><a href="tel:{{ property.author.phone }}">{{ property.author.phone }}</a></p>
+                <p><a href="tel:{{ property.author.profile.phone }}">{{ property.author.profile.phone }}</a></p>
             </div>
         </div>
     </div>
