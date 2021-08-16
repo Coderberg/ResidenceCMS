@@ -76,7 +76,7 @@ final class UpdateCommand extends Command
         $profile = (new Profile())
             ->setUser($this->repository->find($user['id']))
             ->setFullName($user['full_name'])
-            ->setPhone($user['full_name']);
+            ->setPhone($user['phone']);
 
         $this->entityManager->persist($profile);
         $this->entityManager->flush();
