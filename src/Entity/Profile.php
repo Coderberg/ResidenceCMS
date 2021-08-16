@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Traits\EntityIdTrait;
 use App\Repository\ProfileRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -12,12 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Profile
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    use EntityIdTrait;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)

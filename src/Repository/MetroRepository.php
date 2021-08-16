@@ -14,7 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Metro[]    findAll()
  * @method Metro[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class MetroRepository extends ServiceEntityRepository
+final class MetroRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
