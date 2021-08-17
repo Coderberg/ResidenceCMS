@@ -30,7 +30,6 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Security;
@@ -102,15 +101,6 @@ final class PropertyType extends AbstractType
             ->add('max_guests', null, [
                 'label' => 'label.max_guests',
             ])
-            ->add('title', null, [
-                'label' => 'label.title',
-            ])
-            ->add('meta_title', null, [
-                'label' => 'label.meta_title',
-            ])
-            ->add('meta_description', null, [
-                'label' => 'label.meta_description',
-            ])
             ->add('address', null, [
                 'label' => 'label.address',
             ])
@@ -144,13 +134,7 @@ final class PropertyType extends AbstractType
                 'label' => 'label.features',
                 //'expanded' => true
             ])
-            ->add('content', TextareaType::class, [
-                'attr' => [
-                    'class' => 'form-control summer-note',
-                    'rows' => '7',
-                ],
-                'label' => 'label.content',
-            ]);
+            ->add('property_description', PropertyDescriptionType::class);
 
         $builder->addEventSubscriber(new AddNeighborhoodFieldSubscriber())
             ->get('city')->addEventSubscriber(new UpdateNeighborhoodFieldSubscriber());

@@ -8,6 +8,7 @@ use App\Entity\Category;
 use App\Entity\City;
 use App\Entity\DealType;
 use App\Entity\Property;
+use App\Entity\PropertyDescription;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
@@ -118,10 +119,10 @@ final class PropertyControllerTest extends WebTestCase
             'property[city]' => $city,
             'property[dealType]' => $dealType,
             'property[category]' => $category,
-            'property[title]' => 'added by user',
-            'property[meta_description]' => 'test',
+            'property[property_description][title]' => 'added by user',
+            'property[property_description][meta_description]' => 'test',
             'property[address]' => 'test',
-            'property[content]' => 'test',
+            'property[property_description][content]' => 'test',
         ]);
 
         $client->submit($form);
@@ -160,15 +161,15 @@ final class PropertyControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
 
         $form = $crawler->selectButton('Save changes')->form([
-            'property[meta_title]' => 'Custom Meta Title',
+            'property[property_description][meta_title]' => 'Custom Meta Title',
         ]);
 
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
         $editedProperty = $client->getContainer()->get('doctrine')
-            ->getRepository(Property::class)
-            ->findOneBy(['meta_title' => 'Custom Meta Title']);
+            ->getRepository(PropertyDescription::class)
+            ->findOneBy(['meta_title' => 'Custom Meta Title'])->getProperty();
 
         $client->request('GET', sprintf('/en/user/property/%d/edit', $editedProperty->getId()));
         $this->assertResponseIsSuccessful();

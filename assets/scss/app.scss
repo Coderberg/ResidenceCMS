@@ -155,3 +155,8 @@ body.body {
     margin: 0 -15px;
   }
 }
+
+.required:after {
+  content: " *";
+  color: #F9354C;
+}

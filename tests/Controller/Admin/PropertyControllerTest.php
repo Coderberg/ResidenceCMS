@@ -43,11 +43,11 @@ final class PropertyControllerTest extends WebTestCase
             'property[city]' => $city,
             'property[dealType]' => $dealType,
             'property[category]' => $category,
-            'property[title]' => 'test',
-            'property[meta_description]' => 'test',
+            'property[property_description][title]' => 'test',
+            'property[property_description][meta_description]' => 'test',
             'property[address]' => 'test',
             'property[priority_number]' => '-1',
-            'property[content]' => 'test',
+            'property[property_description][content]' => 'test',
         ]);
 
         $client->submit($form);
@@ -94,7 +94,7 @@ final class PropertyControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/en/admin/property/'.$property->getId().'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
-            'property[meta_title]' => 'Custom Meta Title',
+            'property[property_description][meta_title]' => 'Custom Meta Title',
             'property[neighborhood]' => $neighborhood,
             'property[metro_station]' => $metroStation,
             'property[features]' => [$feature->getId()],

@@ -31,11 +31,6 @@ class Profile
      */
     private $user;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
     public function getFullName(): ?string
     {
         return $this->full_name;

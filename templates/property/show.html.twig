@@ -1,7 +1,7 @@
 {% extends 'layout/base.html.twig' %}
 
-{% block title %}{{ property.metaTitle|default(property.title) }}{% endblock %}
-{% block description %}{{ property.metaDescription }}{% endblock %}
+{% block title %}{{ property.propertyDescription.metaTitle|default(property.propertyDescription.title) }}{% endblock %}
+{% block description %}{{ property.propertyDescription.metaDescription }}{% endblock %}
 
 {% block stylesheets %}
 
@@ -31,13 +31,13 @@
 
                 <div class="card-body">
 
-                    <h4 class="card-title">{{ property.title }}</h4>
+                    <h4 class="card-title">{{ property.propertyDescription.title }}</h4>
 
                     <p class="address">{{ property.address }}</p>
 
                     {{ include('property/partials/_overview.html.twig') }}
 
-                    {{ property.content | raw }}
+                    {{ property.propertyDescription.content | raw }}
 
                     <div class="clearfix"></div>
 
@@ -51,7 +51,7 @@
                     </div>
 
                     <div id="map"
-                         data-balloonContent="{{ property.title }}"
+                         data-balloonContent="{{ property.propertyDescription.title }}"
                          data-hintContent="{{ property.category.name }}"
                          data-latitude="{{ property.latitude }}"
                          data-longitude="{{ property.longitude }}"

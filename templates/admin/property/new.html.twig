@@ -66,9 +66,9 @@
                 </div>
             </div>
 
-            {{ form_row(form.title) }}
-            {{ form_row(form.meta_title) }}
-            {{ form_row(form.meta_description) }}
+            {{ form_row(form.property_description.title) }}
+            {{ form_row(form.property_description.meta_title) }}
+            {{ form_row(form.property_description.meta_description) }}
 
             <div class="form-group row">
                 <div class="col-md-6 col-lg-8 mb-3">
@@ -115,7 +115,7 @@
             </div>
 
             {{ form_row(form.author) }}
-            {{ form_row(form.content) }}
+            {{ form_row(form.property_description.content) }}
             {{ form_row(form.state) }}
 
             <div class="form-group">

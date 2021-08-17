@@ -8,6 +8,7 @@ use App\Entity\Profile;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 final class ProfileType extends AbstractType
 {
@@ -22,9 +23,15 @@ final class ProfileType extends AbstractType
                     'autofocus' => true,
                 ],
                 'label' => 'label.full_name',
+                'constraints' => [
+                    new NotNull(),
+                ],
             ])
             ->add('phone', null, [
                 'label' => 'label.phone',
+                'constraints' => [
+                    new NotNull(),
+                ],
             ]);
     }
 

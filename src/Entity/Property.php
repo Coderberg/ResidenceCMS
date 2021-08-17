@@ -6,7 +6,6 @@ namespace App\Entity;
 
 use App\Entity\Traits\EntityIdTrait;
 use App\Entity\Traits\EntityLocationTrait;
-use App\Entity\Traits\EntityMetaTrait;
 use App\Entity\Traits\EntityTimestampableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -19,7 +18,6 @@ class Property
 {
     use EntityIdTrait;
     use EntityLocationTrait;
-    use EntityMetaTrait;
     use EntityTimestampableTrait;
 
     /**
@@ -41,19 +39,9 @@ class Property
     private $category;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $title;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $slug;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $content;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
@@ -111,6 +99,11 @@ class Property
      */
     private $priority_number;
 
+    /**
+     * @ORM\OneToOne(targetEntity=PropertyDescription::class, mappedBy="property", cascade={"persist", "remove"})
+     */
+    private $propertyDescription;
+
     public function __construct()
     {
         $this->photos = new ArrayCollection();
@@ -153,18 +146,6 @@ class Property
         return $this;
     }
 
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
     public function getSlug(): ?string
     {
         return $this->slug;
@@ -173,18 +154,6 @@ class Property
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
-
-        return $this;
-    }
-
-    public function getContent(): ?string
-    {
-        return $this->content;
-    }
-
-    public function setContent(string $content): self
-    {
-        $this->content = $content;
 
         return $this;
     }
@@ -351,5 +320,22 @@ class Property
     public function isPublished(): bool
     {
         return 'published' === $this->state;
+    }
+
+    public function getPropertyDescription(): ?PropertyDescription
+    {
+        return $this->propertyDescription;
+    }
+
+    public function setPropertyDescription(PropertyDescription $propertyDescription): self
+    {
+        // set the owning side of the relation if necessary
+        if ($propertyDescription->getProperty() !== $this) {
+            $propertyDescription->setProperty($this);
+        }
+
+        $this->propertyDescription = $propertyDescription;
+
+        return $this;
     }
 }
