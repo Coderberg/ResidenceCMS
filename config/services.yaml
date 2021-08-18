@@ -7,7 +7,7 @@ parameters:
     locale: 'en'
     app_locales: 'en|ru|nl|bg'
     images_directory: '%kernel.project_dir%/public/uploads/images'
-    app_version: '1.9.0-dev'
+    app_version: '1.9.0'
 
 services:
     # default configuration for services in *this* file
