@@ -22,7 +22,7 @@
             {% if site.show_filter_by_deal_type == '1' %}
                 <div class="form-group">
                     <label for="dealType">{{ 'deal_type'|trans }}</label>
-                    <select name="dealType" id="dealType" class="form-control form-control-lg">
+                    <select name="deal_type" id="dealType" class="form-control form-control-lg">
                         <option value="0">{{ 'widget.all_deal_types'|trans }}</option>
 
                         {% for deal_type in site.deal_types %}
