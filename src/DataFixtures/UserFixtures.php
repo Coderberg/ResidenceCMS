@@ -4,35 +4,35 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
+use App\Entity\Profile;
 use App\Entity\User;
+use App\Transformer\UserTransformer;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 final class UserFixtures extends Fixture
 {
-    /**
-     * @var UserPasswordHasherInterface
-     */
-    private $passwordHasher;
+    private $transformer;
 
-    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    public function __construct(UserTransformer $transformer)
     {
-        $this->passwordHasher = $passwordHasher;
+        $this->transformer = $transformer;
     }
 
     public function load(ObjectManager $manager): void
     {
         foreach ($this->getUserData() as [$fullName, $username, $phone, $email, $roles]) {
             $user = new User();
-            $user->setFullName($fullName);
             $user->setUsername($username);
-            $user->setPassword($this->passwordHasher->hashPassword(
-                $user, $username
-            ));
-            $user->setPhone($phone);
+            $user->setPassword($username);
             $user->setEmail($email);
             $user->setRoles($roles);
+            $user->setProfile(
+                (new Profile())
+                    ->setFullName($fullName)
+                    ->setPhone($phone)
+            );
+            $user = $this->transformer->transform($user);
             $manager->persist($user);
             $this->addReference($username, $user);
         }

@@ -46,7 +46,7 @@ final class PropertyService extends AbstractService
     public function create(Property $property): void
     {
         // Make slug
-        $slug = $this->slugger->slugify($property->getTitle() ?? 'property');
+        $slug = $this->slugger->slugify($property->getPropertyDescription()->getTitle() ?? 'property');
 
         $property->setSlug($slug);
         $property->setCreatedAt(new \DateTime('now'));
@@ -60,7 +60,7 @@ final class PropertyService extends AbstractService
 
     public function update(Property $property): void
     {
-        $slug = $this->slugger->slugify($property->getTitle() ?? 'property');
+        $slug = $this->slugger->slugify($property->getPropertyDescription()->getTitle() ?? 'property');
         $property->setSlug($slug);
         $property->setUpdatedAt(new \DateTime('now'));
         $property->setPriorityNumber((int) ($property->getPriorityNumber()));

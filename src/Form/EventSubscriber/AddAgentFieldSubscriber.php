@@ -36,7 +36,7 @@ class AddAgentFieldSubscriber implements EventSubscriberInterface
         if (!$agent) {
             $form->add('author', EntityType::class, [
                 'class' => 'App\Entity\User',
-                'choice_label' => 'full_name',
+                'choice_label' => 'profile.full_name',
                 'attr' => [
                     'class' => 'form-control',
                 ],

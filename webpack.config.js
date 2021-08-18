@@ -71,7 +71,7 @@ Encore
     //.enableIntegrityHashes()
     .configureBabel(null, {
         useBuiltIns: 'usage',
-        corejs: 3,
+        corejs: 3
     })
 
 ;

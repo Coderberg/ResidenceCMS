@@ -36,18 +36,10 @@ final class UserType extends AbstractType
                     'label_attr' => ['class' => 'switch-custom'],
                 ]
             )
-            ->add('full_name', null, [
-                'attr' => [
-                    'autofocus' => true,
-                ],
-                'label' => 'label.full_name',
-            ])
             ->add('username', null, [
                 'label' => 'label.username',
             ])
-            ->add('phone', null, [
-                'label' => 'label.phone',
-            ])
+            ->add('profile', ProfileType::class)
             ->add('email', null, [
                 'label' => 'label.email',
             ])

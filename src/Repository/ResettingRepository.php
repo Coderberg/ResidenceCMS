@@ -5,27 +5,25 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Entity\User;
+use App\Transformer\UserTransformer;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 final class ResettingRepository extends UserRepository
 {
-    /**
-     * @var UserPasswordHasherInterface
-     */
-    private $passwordHasher;
+    private $transformer;
 
-    public function __construct(ManagerRegistry $registry, UserPasswordHasherInterface $passwordHasher)
+    public function __construct(ManagerRegistry $registry, UserTransformer $transformer)
     {
         parent::__construct($registry);
-        $this->passwordHasher = $passwordHasher;
+        $this->transformer = $transformer;
     }
 
     public function setPassword(User $user, string $plainPassword): void
     {
-        $user->setPassword($this->passwordHasher->hashPassword($user, $plainPassword));
+        $user->setPassword($plainPassword);
         $user->setConfirmationToken(null);
         $user->setPasswordRequestedAt(null);
+        $user = $this->transformer->transform($user);
         $this->save($user);
     }
 

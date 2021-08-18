@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\DataFixtures;
 
 use App\Entity\Property;
+use App\Entity\PropertyDescription;
 use App\Utils\Slugger;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -26,10 +27,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
             $property->setNeighborhood($neighborhood);
             $property->setDistrict($district);
             $property->setMetroStation($metro);
-            $property->setTitle($title);
-            $property->setMetaDescription($title);
             $property->setSlug(Slugger::slugify($title));
-            $property->setContent($this->getPropertyContent());
             $property->setAddress($address);
             $property->setLatitude($latitude);
             $property->setLongitude($longitude);
@@ -45,6 +43,11 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
             $property->addFeature($this->getReference('High Impact Doors'));
             $property->addFeature($this->getReference('Secure parking'));
             $property->setPriorityNumber(0);
+            $property->setPropertyDescription((new PropertyDescription())
+                ->setTitle($title)
+                ->setMetaDescription($title)
+                ->setContent($this->getPropertyContent())
+            );
             $manager->persist($property);
             $this->addReference(Slugger::slugify($title), $property);
         }

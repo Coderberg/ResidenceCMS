@@ -14,7 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Neighborhood[]    findAll()
  * @method Neighborhood[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class NeighborhoodRepository extends ServiceEntityRepository
+final class NeighborhoodRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

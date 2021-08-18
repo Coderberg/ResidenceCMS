@@ -6,9 +6,9 @@ namespace App\Service\Admin;
 
 use App\Entity\User;
 use App\Service\AbstractService;
+use App\Transformer\UserTransformer;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 final class UserService extends AbstractService
@@ -18,26 +18,22 @@ final class UserService extends AbstractService
      */
     private $em;
 
-    /**
-     * @var UserPasswordHasherInterface
-     */
-    private $passwordHasher;
+    private $transformer;
 
     public function __construct(
         CsrfTokenManagerInterface $tokenManager,
         RequestStack $requestStack,
         EntityManagerInterface $entityManager,
-        UserPasswordHasherInterface $passwordHasher
+        UserTransformer $transformer
     ) {
         parent::__construct($tokenManager, $requestStack);
         $this->em = $entityManager;
-        $this->passwordHasher = $passwordHasher;
+        $this->transformer = $transformer;
     }
 
     public function create(User $user): void
     {
-        $user = $this->setRoles($user);
-        $user = $this->setEncodedPassword($user);
+        $user = $this->transformer->transform($user);
         $this->save($user);
         $this->clearCache('users_count');
         $this->addFlash('success', 'message.created');
@@ -45,8 +41,7 @@ final class UserService extends AbstractService
 
     public function update(User $user): void
     {
-        $user = $this->setRoles($user);
-        $user = $this->setEncodedPassword($user);
+        $user = $this->transformer->transform($user);
         $this->save($user);
         $this->addFlash('success', 'message.updated');
     }
@@ -57,25 +52,6 @@ final class UserService extends AbstractService
         $this->em->flush();
         $this->clearCache('users_count');
         $this->addFlash('success', 'message.deleted');
-    }
-
-    private function setRoles(User $user): User
-    {
-        if (\in_array('ROLE_ADMIN', $user->getRoles(), true)) {
-            $user->setRoles(['ROLE_ADMIN', 'ROLE_USER']);
-        } else {
-            $user->setRoles(['ROLE_USER']);
-        }
-
-        return $user;
-    }
-
-    private function setEncodedPassword(User $user): User
-    {
-        $password = $user->getPassword();
-        $user->setPassword($this->passwordHasher->hashPassword($user, $password));
-
-        return $user;
     }
 
     private function save(User $user): void
