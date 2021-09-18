@@ -36,17 +36,11 @@ final class PropertyControllerTest extends WebTestCase
     public function testUnpublish()
     {
         $client = static::createClient([], self::USER);
+        $crawler = $client->request('GET', '/en/user/property');
+        $link = $crawler->filter('.btn-outline-secondary')->first()->link();
+        $client->request('GET', $link->getUri());
 
-        $user = $client->getContainer()->get('doctrine')
-            ->getRepository(User::class)
-            ->findOneBy(['username' => 'user']);
-
-        $property = $client->getContainer()->get('doctrine')
-            ->getRepository(Property::class)
-            ->findOneBy(['author' => $user]);
-
-        $client->request('GET', sprintf('/en/user/property/%d/unpublish', $property->getId()));
-
+        $this->assertResponseIsSuccessful();
         // asserts that the "Content-Type" header is "application/json"
         $this->assertTrue(
             $client->getResponse()->headers->contains(
@@ -55,8 +49,6 @@ final class PropertyControllerTest extends WebTestCase
             ),
             'the "Content-Type" header is "application/json"'
         );
-
-        $this->assertStringContainsString('ok', $client->getResponse()->getContent());
     }
 
     public function testEditingForbidden()
@@ -81,13 +73,11 @@ final class PropertyControllerTest extends WebTestCase
     public function testPublish()
     {
         $client = static::createClient([], self::USER);
+        $crawler = $client->request('GET', '/en/user/property?state=unpublished');
+        $link = $crawler->filter('.btn-outline-secondary')->first()->link();
+        $client->request('GET', $link->getUri());
 
-        $property = $client->getContainer()->get('doctrine')
-            ->getRepository(Property::class)
-            ->findOneBy(['state' => 'private']);
-
-        $client->request('GET', sprintf('/en/user/property/%d/publish', $property->getId()));
-
+        $this->assertResponseIsSuccessful();
         // asserts that the "Content-Type" header is "application/json"
         $this->assertTrue(
             $client->getResponse()->headers->contains(
@@ -96,8 +86,6 @@ final class PropertyControllerTest extends WebTestCase
             ),
             'the "Content-Type" header is "application/json"'
         );
-
-        $this->assertStringContainsString('ok', $client->getResponse()->getContent());
     }
 
     public function testNewProperty()
