@@ -36,6 +36,12 @@
         "/build/js/select2.8f373d96.js"
       ]
     },
+    "js/settings": {
+      "js": [
+        "/build/runtime.8c994506.js",
+        "/build/js/settings.38791856.js"
+      ]
+    },
     "js/slugger": {
       "js": [
         "/build/runtime.8c994506.js",

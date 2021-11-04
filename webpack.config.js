@@ -23,6 +23,7 @@ Encore
     .addEntry('js/map', './assets/js/map.js')
     .addEntry('js/menu-sorting', './assets/js/menu-sorting.js')
     .addEntry('js/select2', './assets/js/select2.js')
+    .addEntry('js/settings', './assets/js/settings.js')
     .addEntry('js/slugger', './assets/js/slugger.js')
     .addEntry('js/city', './assets/js/city.js')
     .addEntry('js/photo', './assets/js/photo.js')
