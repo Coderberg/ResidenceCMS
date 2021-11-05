@@ -30,6 +30,7 @@ final class ResettingControllerTest extends WebTestCase
         ]);
 
         $client->submit($form);
+        $this->assertEmailCount(1);
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.alert-success', 'We have e-mailed your password reset link!');
     }

@@ -36,26 +36,30 @@ final class PropertyController extends BaseController
      * @Route("/user/property/{id<\d+>}/publish", methods={"GET"}, name="user_property_publish")
      * @IsGranted("PROPERTY_EDIT", subject="property", message="You cannot change this property.")
      */
-    public function publish(Property $property, UserPropertyRepository $repository): JsonResponse
+    public function publish(Request $request, Property $property, UserPropertyRepository $repository): JsonResponse
     {
-        if ($repository->changeState($property, 'published')) {
-            return new JsonResponse(['status' => 'ok']);
+        if ($this->isCsrfTokenValid('update', $request->query->get('token'))) {
+            if ($repository->changeState($property, 'published')) {
+                return new JsonResponse(['status' => 'ok']);
+            }
         }
 
-        return new JsonResponse(['status' => 'error']);
+        return new JsonResponse([], 500);
     }
 
     /**
      * @Route("/user/property/{id<\d+>}/unpublish", methods={"GET"}, name="user_property_unpublish")
      * @IsGranted("PROPERTY_EDIT", subject="property", message="You cannot change this property.")
      */
-    public function unpublish(Property $property, UserPropertyRepository $repository): JsonResponse
+    public function unpublish(Request $request, Property $property, UserPropertyRepository $repository): JsonResponse
     {
-        if ($repository->changeState($property, 'private')) {
-            return new JsonResponse(['status' => 'ok']);
+        if ($this->isCsrfTokenValid('update', $request->query->get('token'))) {
+            if ($repository->changeState($property, 'private')) {
+                return new JsonResponse(['status' => 'ok']);
+            }
         }
 
-        return new JsonResponse(['status' => 'error']);
+        return new JsonResponse([], 500);
     }
 
     /**

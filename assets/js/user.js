@@ -20,11 +20,9 @@ $(document).ready(function () {
 
         $div.css({ opacity: '0.5' });
 
-        $.get(url, function (data) {
-            if ('ok' === data.status) {
-                $div.fadeOut();
-                changeCount();
-            }
+        $.get(url).done(function () {
+            $div.fadeOut();
+            changeCount();
         });
     });
 
