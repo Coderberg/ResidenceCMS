@@ -20,12 +20,12 @@ final class NeighborhoodController extends BaseController
     /**
      * @Route("/admin/locations/neighborhood", name="admin_neighborhood")
      */
-    public function index(CityRepository $repository): Response
+    public function index(Request $request, CityRepository $repository): Response
     {
         $cities = $repository->findAll();
 
         return $this->render('admin/neighborhood/index.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'cities' => $cities,
         ]);
     }
@@ -42,7 +42,7 @@ final class NeighborhoodController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $em = $this->doctrine->getManager();
             $em->persist($neighborhood);
             $em->flush();
 
@@ -58,7 +58,7 @@ final class NeighborhoodController extends BaseController
         }
 
         return $this->render('admin/neighborhood/new.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'neighborhood' => $neighborhood,
             'form' => $form->createView(),
         ]);
@@ -74,14 +74,14 @@ final class NeighborhoodController extends BaseController
         $form = $this->createForm(NeighborhoodType::class, $neighborhood);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->doctrine->getManager()->flush();
             $this->addFlash('success', 'message.updated');
 
             return $this->redirectToRoute('admin_neighborhood');
         }
 
         return $this->render('admin/neighborhood/edit.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'form' => $form->createView(),
         ]);
     }
@@ -98,7 +98,7 @@ final class NeighborhoodController extends BaseController
             return $this->redirectToRoute('admin_neighborhood');
         }
 
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->doctrine->getManager();
         $em->remove($neighborhood);
         $em->flush();
         $this->addFlash('success', 'message.deleted');

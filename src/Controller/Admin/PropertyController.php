@@ -26,7 +26,7 @@ final class PropertyController extends BaseController
         $properties = $repository->findByFilter($searchParams);
 
         return $this->render('admin/property/index.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'properties' => $properties,
             'searchParams' => $searchParams,
         ]);
@@ -48,7 +48,7 @@ final class PropertyController extends BaseController
         }
 
         return $this->render('admin/property/new.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'property' => $property,
             'form' => $form->createView(),
         ]);
@@ -71,7 +71,7 @@ final class PropertyController extends BaseController
         }
 
         return $this->render('admin/property/edit.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'form' => $form->createView(),
         ]);
     }

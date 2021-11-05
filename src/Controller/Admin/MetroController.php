@@ -20,12 +20,12 @@ final class MetroController extends BaseController
     /**
      * @Route("/admin/locations/metro", name="admin_metro")
      */
-    public function index(CityRepository $repository): Response
+    public function index(Request $request, CityRepository $repository): Response
     {
         $cities = $repository->findAll();
 
         return $this->render('admin/metro/index.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'cities' => $cities,
         ]);
     }
@@ -42,7 +42,7 @@ final class MetroController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $em = $this->doctrine->getManager();
             $em->persist($metro);
             $em->flush();
 
@@ -58,7 +58,7 @@ final class MetroController extends BaseController
         }
 
         return $this->render('admin/metro/new.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'metro' => $metro,
             'form' => $form->createView(),
         ]);
@@ -74,14 +74,14 @@ final class MetroController extends BaseController
         $form = $this->createForm(MetroType::class, $metro);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->doctrine->getManager()->flush();
             $this->addFlash('success', 'message.updated');
 
             return $this->redirectToRoute('admin_metro');
         }
 
         return $this->render('admin/metro/edit.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'form' => $form->createView(),
         ]);
     }
@@ -98,7 +98,7 @@ final class MetroController extends BaseController
             return $this->redirectToRoute('admin_metro');
         }
 
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->doctrine->getManager();
         $em->remove($metro);
         $em->flush();
         $this->addFlash('success', 'message.deleted');

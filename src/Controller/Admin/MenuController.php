@@ -20,10 +20,10 @@ final class MenuController extends BaseController
     /**
      * @Route("/admin/menu", name="admin_menu")
      */
-    public function index(MenuRepository $repository): Response
+    public function index(Request $request, MenuRepository $repository): Response
     {
         return $this->render('admin/menu/index.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'menu' => $repository->findItems(),
         ]);
     }
@@ -40,7 +40,7 @@ final class MenuController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $em = $this->doctrine->getManager();
             $em->persist($menu);
             $em->flush();
 
@@ -56,7 +56,7 @@ final class MenuController extends BaseController
         }
 
         return $this->render('admin/menu/new.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'menu' => $menu,
             'form' => $form->createView(),
         ]);
@@ -73,14 +73,14 @@ final class MenuController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->doctrine->getManager()->flush();
             $this->addFlash('success', 'message.updated');
 
             return $this->redirectToRoute('admin_menu');
         }
 
         return $this->render('admin/menu/edit.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'form' => $form->createView(),
         ]);
     }
@@ -93,7 +93,7 @@ final class MenuController extends BaseController
     public function sort(Request $request, MenuRepository $repository): JsonResponse
     {
         $items = $request->request->get('items');
-        $repository->reorderItems($items);
+        $repository->reorderItems((array) $items);
 
         return new JsonResponse(['status' => 'ok']);
     }
@@ -109,7 +109,7 @@ final class MenuController extends BaseController
             return $this->redirectToRoute('admin_menu');
         }
 
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->doctrine->getManager();
         $em->remove($menu);
         $em->flush();
         $this->addFlash('success', 'message.deleted');

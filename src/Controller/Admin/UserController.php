@@ -21,12 +21,12 @@ final class UserController extends BaseController
     /**
      * @Route("/admin/user", name="admin_user")
      */
-    public function index(UserRepository $repository): Response
+    public function index(Request $request, UserRepository $repository): Response
     {
         $users = $repository->findAll();
 
         return $this->render('admin/user/index.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'users' => $users,
         ]);
     }
@@ -55,7 +55,7 @@ final class UserController extends BaseController
         }
 
         return $this->render('admin/user/new.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'user' => $user,
             'form' => $form->createView(),
         ]);
@@ -77,7 +77,7 @@ final class UserController extends BaseController
         }
 
         return $this->render('admin/user/edit.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'form' => $form->createView(),
         ]);
     }

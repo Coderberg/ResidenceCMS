@@ -42,7 +42,7 @@ final class PhotoController extends BaseController
                 ->setSortOrder(0)
                 ->setPhoto($fileName);
 
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->doctrine->getManager();
         $em->persist($photo);
         $em->flush();
 
@@ -52,12 +52,12 @@ final class PhotoController extends BaseController
     /**
      * @Route("/admin/photo/{id<\d+>}/edit", name="admin_photo_edit")
      */
-    public function edit(Property $property): Response
+    public function edit(Request $request, Property $property): Response
     {
         $photos = $property->getPhotos();
 
         return $this->render('admin/photo/edit.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'photos' => $photos,
             'property_id' => $property->getId(),
         ]);
@@ -71,8 +71,8 @@ final class PhotoController extends BaseController
     public function sort(Request $request, Property $property): Response
     {
         $ids = $request->request->get('ids');
-        $repository = $this->getDoctrine()->getRepository(Photo::class);
-        $repository->reorderPhotos($property, $ids);
+        $repository = $this->doctrine->getRepository(Photo::class);
+        $repository->reorderPhotos($property, (array) $ids);
 
         return new JsonResponse(['status' => 'ok']);
     }
@@ -93,7 +93,7 @@ final class PhotoController extends BaseController
         }
 
         // Delete from db
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->doctrine->getManager();
         $em->remove($photo);
         $em->flush();
 

@@ -20,10 +20,10 @@ final class CurrencyController extends BaseController
     /**
      * @Route("/admin/currency", name="admin_currency")
      */
-    public function index(CurrencyRepository $repository): Response
+    public function index(Request $request, CurrencyRepository $repository): Response
     {
         return $this->render('admin/currency/index.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'currencies' => $repository->findAll(),
         ]);
     }
@@ -40,7 +40,7 @@ final class CurrencyController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $em = $this->doctrine->getManager();
             $em->persist($currency);
             $em->flush();
 
@@ -56,7 +56,7 @@ final class CurrencyController extends BaseController
         }
 
         return $this->render('admin/currency/new.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'currency' => $currency,
             'form' => $form->createView(),
         ]);
@@ -72,14 +72,14 @@ final class CurrencyController extends BaseController
         $form = $this->createForm(CurrencyType::class, $currency);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->doctrine->getManager()->flush();
             $this->addFlash('success', 'message.updated');
 
             return $this->redirectToRoute('admin_currency');
         }
 
         return $this->render('admin/currency/edit.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'form' => $form->createView(),
         ]);
     }
@@ -96,7 +96,7 @@ final class CurrencyController extends BaseController
             return $this->redirectToRoute('admin_currency');
         }
 
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->doctrine->getManager();
         $em->remove($currency);
         $em->flush();
         $this->addFlash('success', 'message.deleted');

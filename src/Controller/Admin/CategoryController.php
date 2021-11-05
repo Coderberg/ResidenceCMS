@@ -21,12 +21,12 @@ final class CategoryController extends BaseController
     /**
      * @Route("/admin/category", name="admin_category")
      */
-    public function index(CategoryRepository $repository): Response
+    public function index(Request $request, CategoryRepository $repository): Response
     {
         $categories = $repository->findAll();
 
         return $this->render('admin/category/index.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'categories' => $categories,
         ]);
     }
@@ -55,7 +55,7 @@ final class CategoryController extends BaseController
         }
 
         return $this->render('admin/category/new.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'category' => $category,
             'form' => $form->createView(),
         ]);
@@ -77,7 +77,7 @@ final class CategoryController extends BaseController
         }
 
         return $this->render('admin/category/edit.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'form' => $form->createView(),
         ]);
     }

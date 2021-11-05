@@ -27,7 +27,7 @@ final class PropertyController extends BaseController
 
         return $this->render('property/index.html.twig',
             [
-                'site' => $this->site(),
+                'site' => $this->site($request),
                 'properties' => $properties,
                 'searchParams' => $searchParams,
             ]
@@ -37,11 +37,11 @@ final class PropertyController extends BaseController
     /**
      * @Route("/map", methods={"GET"}, name="map_view")
      */
-    public function mapView(PropertyRepository $repository): Response
+    public function mapView(Request $request, PropertyRepository $repository): Response
     {
         return $this->render('property/map.html.twig',
             [
-                'site' => $this->site(),
+                'site' => $this->site($request),
                 'properties' => $repository->findAllPublished(),
             ]
         );
@@ -61,7 +61,7 @@ final class PropertyController extends BaseController
 
         return $this->render('property/show.html.twig',
             [
-                'site' => $this->site(),
+                'site' => $this->site($request),
                 'property' => $property,
                 'properties' => $repository->findSimilarProperties($property),
                 'number_of_photos' => \count($property->getPhotos()),

@@ -30,7 +30,7 @@ final class ResettingController extends BaseController
         }
 
         return $this->render('user/resetting/password_reset.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'form' => $form->createView(),
         ]);
     }
@@ -64,7 +64,7 @@ final class ResettingController extends BaseController
         }
 
         return $this->render('user/resetting/password_change.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'form' => $form->createView(),
         ]);
     }
