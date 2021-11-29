@@ -12,7 +12,7 @@ final class ListUsersCommandTest extends KernelTestCase
 {
     public function testExecute()
     {
-        $kernel = static::createKernel();
+        $kernel = self::createKernel();
         $application = new Application($kernel);
         $command = $application->find('app:list-users');
         $commandTester = new CommandTester($command);
