@@ -11,7 +11,10 @@ use Symfony\Component\Form\FormEvents;
 
 class UpdateDistrictFieldSubscriber implements EventSubscriberInterface
 {
-    public static function getSubscribedEvents()
+    /**
+     * @return string[]
+     */
+    public static function getSubscribedEvents(): array
     {
         return [FormEvents::POST_SUBMIT => 'onCityChanged'];
     }

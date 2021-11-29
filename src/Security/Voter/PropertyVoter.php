@@ -29,7 +29,7 @@ final class PropertyVoter extends Voter
             && $subject instanceof Property;
     }
 
-    protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
+    protected function voteOnAttribute($attribute, $subject, TokenInterface $token): bool
     {
         /** @var Property $property */
         $property = $subject;
