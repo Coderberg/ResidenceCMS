@@ -1,6 +1,6 @@
 <?php
 
-$finder = PhpCsFixer\Finder::create()
+$finder = (new PhpCsFixer\Finder())
     ->in(__DIR__)
     ->exclude('node_modules')
     ->exclude('config')
@@ -37,5 +37,5 @@ return (new PhpCsFixer\Config())
         'declare_strict_types' => true,
     ])
     ->setFinder($finder)
-    ->setCacheFile(__DIR__.'/var/.php_cs.cache')
+    ->setCacheFile(__DIR__.'/var/.php-cs-fixer.cache') // forward compatibility with 3.x line
 ;

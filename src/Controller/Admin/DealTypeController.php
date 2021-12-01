@@ -20,14 +20,14 @@ final class DealTypeController extends BaseController
     /**
      * @Route("/admin/deal_type", name="admin_deal_type")
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        $repository = $this->getDoctrine()->getRepository(DealType::class);
+        $repository = $this->doctrine->getRepository(DealType::class);
 
         $dealTypes = $repository->findAll();
 
         return $this->render('admin/deal_type/index.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'dealTypes' => $dealTypes,
         ]);
     }
@@ -56,7 +56,7 @@ final class DealTypeController extends BaseController
         }
 
         return $this->render('admin/deal_type/new.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'deal_type' => $dealType,
             'form' => $form->createView(),
         ]);
@@ -78,7 +78,7 @@ final class DealTypeController extends BaseController
         }
 
         return $this->render('admin/deal_type/edit.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'form' => $form->createView(),
         ]);
     }

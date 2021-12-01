@@ -20,12 +20,12 @@ final class DistrictController extends BaseController
     /**
      * @Route("/admin/locations/district", name="admin_district")
      */
-    public function index(CityRepository $repository): Response
+    public function index(Request $request, CityRepository $repository): Response
     {
         $cities = $repository->findAll();
 
         return $this->render('admin/district/index.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'cities' => $cities,
         ]);
     }
@@ -42,7 +42,7 @@ final class DistrictController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $em = $this->doctrine->getManager();
             $em->persist($district);
             $em->flush();
 
@@ -58,7 +58,7 @@ final class DistrictController extends BaseController
         }
 
         return $this->render('admin/district/new.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'district' => $district,
             'form' => $form->createView(),
         ]);
@@ -74,14 +74,14 @@ final class DistrictController extends BaseController
         $form = $this->createForm(DistrictType::class, $district);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->doctrine->getManager()->flush();
             $this->addFlash('success', 'message.updated');
 
             return $this->redirectToRoute('admin_district');
         }
 
         return $this->render('admin/district/edit.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'form' => $form->createView(),
         ]);
     }
@@ -98,7 +98,7 @@ final class DistrictController extends BaseController
             return $this->redirectToRoute('admin_district');
         }
 
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->doctrine->getManager();
         $em->remove($district);
         $em->flush();
         $this->addFlash('success', 'message.deleted');

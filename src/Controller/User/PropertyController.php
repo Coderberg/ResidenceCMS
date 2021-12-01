@@ -28,7 +28,7 @@ final class PropertyController extends BaseController
 
         return $this->render('user/property/index.html.twig', [
             'properties' => $properties,
-            'site' => $this->site(),
+            'site' => $this->site($request),
         ]);
     }
 
@@ -85,7 +85,7 @@ final class PropertyController extends BaseController
         return $this->render('user/property/new.html.twig', [
             'property' => $property,
             'form' => $form->createView(),
-            'site' => $this->site(),
+            'site' => $this->site($request),
         ]);
     }
 
@@ -108,7 +108,7 @@ final class PropertyController extends BaseController
 
         return $this->render('user/property/edit.html.twig', [
             'form' => $form->createView(),
-            'site' => $this->site(),
+            'site' => $this->site($request),
         ]);
     }
 }

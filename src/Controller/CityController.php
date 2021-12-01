@@ -19,7 +19,7 @@ final class CityController extends BaseController
     {
         $searchParams = $service->getSearchParams($request, $city);
         $properties = $service->getProperties($searchParams);
-        $siteOptions = $service->decorateOptions($this->site(), $city);
+        $siteOptions = $service->decorateOptions($this->site($request), $city);
 
         return $this->render('property/index.html.twig',
             [

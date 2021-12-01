@@ -8,7 +8,7 @@ use App\Entity\Property;
 
 final class SimilarRepository extends PropertyRepository
 {
-    const NUM_ITEMS = 6;
+    public const NUM_ITEMS = 6;
 
     public function findSimilarProperties(Property $property): array
     {

@@ -25,7 +25,7 @@ final class PageController extends BaseController
         $pages = $repository->findLatest($request);
 
         return $this->render('admin/page/index.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'pages' => $pages,
         ]);
     }
@@ -46,7 +46,7 @@ final class PageController extends BaseController
         }
 
         return $this->render('admin/page/new.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'page' => $page,
             'form' => $form->createView(),
         ]);
@@ -63,14 +63,14 @@ final class PageController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->doctrine->getManager()->flush();
             $this->addFlash('success', 'message.updated');
 
             return $this->redirectToRoute('page', ['slug' => $page->getSlug()]);
         }
 
         return $this->render('admin/page/edit.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'form' => $form->createView(),
         ]);
     }

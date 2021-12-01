@@ -20,7 +20,7 @@ final class AppExtension extends AbstractExtension
         $this->translator = $translator;
     }
 
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter('page', [$this, 'showPageNumber']),

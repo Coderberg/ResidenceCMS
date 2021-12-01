@@ -22,6 +22,9 @@ class AddAgentFieldSubscriber implements EventSubscriberInterface
         $this->security = $security;
     }
 
+    /**
+     * @return string[]
+     */
     public static function getSubscribedEvents()
     {
         return [FormEvents::POST_SET_DATA => 'onAgentNotSelected'];

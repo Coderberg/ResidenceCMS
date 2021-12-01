@@ -21,12 +21,12 @@ final class CityController extends BaseController
     /**
      * @Route("/admin/locations/city", name="admin_city")
      */
-    public function index(CityRepository $repository): Response
+    public function index(Request $request, CityRepository $repository): Response
     {
         $cities = $repository->findAll();
 
         return $this->render('admin/city/index.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'cities' => $cities,
         ]);
     }
@@ -55,7 +55,7 @@ final class CityController extends BaseController
         }
 
         return $this->render('admin/city/new.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'city' => $city,
             'form' => $form->createView(),
         ]);
@@ -78,7 +78,7 @@ final class CityController extends BaseController
         }
 
         return $this->render('admin/city/edit.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'form' => $form->createView(),
         ]);
     }

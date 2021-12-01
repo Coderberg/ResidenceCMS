@@ -20,13 +20,16 @@ final class PropertyVoter extends Voter
         $this->security = $security;
     }
 
-    protected function supports($attribute, $subject)
+    /**
+     * @param string $attribute
+     */
+    protected function supports($attribute, $subject): bool
     {
         return \in_array($attribute, ['PROPERTY_EDIT', 'PROPERTY_VIEW'], true)
             && $subject instanceof Property;
     }
 
-    protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
+    protected function voteOnAttribute($attribute, $subject, TokenInterface $token): bool
     {
         /** @var Property $property */
         $property = $subject;

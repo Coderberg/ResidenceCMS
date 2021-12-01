@@ -11,7 +11,10 @@ use Symfony\Component\Form\FormEvents;
 
 class AddMetroFieldSubscriber implements EventSubscriberInterface
 {
-    public static function getSubscribedEvents()
+    /**
+     * @return string[]
+     */
+    public static function getSubscribedEvents(): array
     {
         return [FormEvents::POST_SET_DATA => 'onCitySelected'];
     }

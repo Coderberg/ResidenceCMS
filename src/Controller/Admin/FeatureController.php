@@ -20,10 +20,10 @@ final class FeatureController extends BaseController
     /**
      * @Route("/admin/feature", name="admin_feature")
      */
-    public function index(FeatureRepository $repository): Response
+    public function index(Request $request, FeatureRepository $repository): Response
     {
         return $this->render('admin/feature/index.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'features' => $repository->findAll(),
         ]);
     }
@@ -40,7 +40,7 @@ final class FeatureController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $em = $this->doctrine->getManager();
             $em->persist($feature);
             $em->flush();
 
@@ -56,7 +56,7 @@ final class FeatureController extends BaseController
         }
 
         return $this->render('admin/feature/new.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'feature' => $feature,
             'form' => $form->createView(),
         ]);
@@ -72,14 +72,14 @@ final class FeatureController extends BaseController
         $form = $this->createForm(FeatureType::class, $feature);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->doctrine->getManager()->flush();
             $this->addFlash('success', 'message.updated');
 
             return $this->redirectToRoute('admin_feature');
         }
 
         return $this->render('admin/feature/edit.html.twig', [
-            'site' => $this->site(),
+            'site' => $this->site($request),
             'form' => $form->createView(),
         ]);
     }
@@ -96,7 +96,7 @@ final class FeatureController extends BaseController
             return $this->redirectToRoute('admin_feature');
         }
 
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->doctrine->getManager();
         $em->remove($feature);
         $em->flush();
         $this->addFlash('success', 'message.deleted');

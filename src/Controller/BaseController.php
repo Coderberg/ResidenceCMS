@@ -10,7 +10,9 @@ use App\Entity\DealType;
 use App\Entity\Feature;
 use App\Entity\Menu;
 use App\Repository\SettingsRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 
 abstract class BaseController extends AbstractController
 {
@@ -19,17 +21,21 @@ abstract class BaseController extends AbstractController
      */
     private $settingsRepository;
 
-    public function __construct(SettingsRepository $settingsRepository)
+    /**
+     * @var ManagerRegistry
+     */
+    protected $doctrine;
+
+    public function __construct(SettingsRepository $settingsRepository, ManagerRegistry $doctrine)
     {
         $this->settingsRepository = $settingsRepository;
+        $this->doctrine = $doctrine;
     }
 
-    private function menu(): array
+    private function menu(Request $request): array
     {
-        $request = $this->get('request_stack')->getCurrentRequest();
-
         return [
-            'menu' => $this->getDoctrine()->getRepository(Menu::class)
+            'menu' => $this->doctrine->getRepository(Menu::class)
                 ->findBy([
                     'locale' => $request->getLocale(),
                 ]),
@@ -39,19 +45,19 @@ abstract class BaseController extends AbstractController
     private function searchFields(): array
     {
         // Get city
-        $cities = $this->getDoctrine()
+        $cities = $this->doctrine
             ->getRepository(City::class)->findAll();
 
         // Get categories
-        $categories = $this->getDoctrine()
+        $categories = $this->doctrine
             ->getRepository(Category::class)->findAll();
 
         // Get deal types
-        $dealTypes = $this->getDoctrine()
+        $dealTypes = $this->doctrine
             ->getRepository(DealType::class)->findAll();
 
         // Get features
-        $features = $this->getDoctrine()
+        $features = $this->doctrine
             ->getRepository(Feature::class)->findAll();
 
         return [
@@ -62,13 +68,13 @@ abstract class BaseController extends AbstractController
         ];
     }
 
-    public function site(): array
+    public function site(Request $request): array
     {
         $settings = $this->settingsRepository->findAllAsArray();
 
         $fields = $this->searchFields();
 
-        $menu = $this->menu();
+        $menu = $this->menu($request);
 
         return array_merge($settings, $fields, $menu);
     }
