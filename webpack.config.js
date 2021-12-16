@@ -17,7 +17,7 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
      */
-    .addEntry('js/app', './assets/js/app.js')
+    .addEntry('js/app', './assets/app.js')
     .addEntry('js/admin', './assets/js/admin.js')
     .addEntry('js/ekko-lightbox', './assets/js/ekko-lightbox.js')
     .addEntry('js/map', './assets/js/map.js')
@@ -62,13 +62,13 @@ Encore
     //.enableReactPreset()
     //.addEntry('admin', './assets/js/admin.js')
 
-    .addStyleEntry('css/app', ['./assets/scss/app.scss'])
-    .addStyleEntry('css/admin', ['./assets/scss/admin.scss'])
-    .addStyleEntry('css/ekko-lightbox', ['./assets/scss/ekko-lightbox.scss'])
-    .addStyleEntry('css/city', ['./assets/scss/city.scss'])
-    .addStyleEntry('css/detail', ['./assets/scss/detail.scss'])
-    .addStyleEntry('css/photo', ['./assets/scss/photo.scss'])
-    .addStyleEntry('css/select2', ['./assets/scss/select2.scss'])
+    .addStyleEntry('css/app', ['./assets/styles/app.scss'])
+    .addStyleEntry('css/admin', ['./assets/styles/admin.scss'])
+    .addStyleEntry('css/ekko-lightbox', ['./assets/styles/ekko-lightbox.scss'])
+    .addStyleEntry('css/city', ['./assets/styles/city.scss'])
+    .addStyleEntry('css/detail', ['./assets/styles/detail.scss'])
+    .addStyleEntry('css/photo', ['./assets/styles/photo.scss'])
+    .addStyleEntry('css/select2', ['./assets/styles/select2.scss'])
     //.enableIntegrityHashes()
     .configureBabel(null, {
         useBuiltIns: 'usage',
