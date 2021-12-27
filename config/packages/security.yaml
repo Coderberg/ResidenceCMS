@@ -21,6 +21,8 @@ security:
 
         main:
             lazy: true
+            login_throttling:
+                max_attempts: 5
 
             # This allows the user to login by submitting a username and password
             # Reference: https://symfony.com/doc/current/security/form_login_setup.html
