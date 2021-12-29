@@ -1,4 +1,10 @@
 {
+    "composer/package-versions-deprecated": {
+        "version": "1.11.99.4"
+    },
+    "composer/pcre": {
+        "version": "1.0.0"
+    },
     "composer/semver": {
         "version": "3.2.6"
     },
@@ -412,6 +418,18 @@
     "symfony/intl": {
         "version": "v5.4.0"
     },
+    "symfony/lock": {
+        "version": "5.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "5.2",
+            "ref": "a1c8800e40ae735206bb14586fdd6c4630a51b8d"
+        },
+        "files": [
+            "config/packages/lock.yaml"
+        ]
+    },
     "symfony/mailer": {
         "version": "5.4",
         "recipe": {
@@ -533,6 +551,9 @@
         "version": "v5.4.0"
     },
     "symfony/proxy-manager-bridge": {
+        "version": "v5.4.0"
+    },
+    "symfony/rate-limiter": {
         "version": "v5.4.0"
     },
     "symfony/redis-messenger": {

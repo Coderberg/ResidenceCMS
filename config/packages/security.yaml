@@ -1,13 +1,7 @@
 security:
-    # a new authentication system is available since Symfony 5.1 to make
-    # Symfony security more extensible and easier to understand
-    # https://symfony.com/doc/current/security.html
     enable_authenticator_manager: true
-
+    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
-        # Our user class and the algorithm we'll use to encode passwords
-        # 'auto' means to let Symfony choose the best possible password hasher (Argon2 or Bcrypt)
-        # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
@@ -27,6 +21,8 @@ security:
 
         main:
             lazy: true
+            login_throttling:
+                max_attempts: 5
 
             # This allows the user to login by submitting a username and password
             # Reference: https://symfony.com/doc/current/security/form_login_setup.html
