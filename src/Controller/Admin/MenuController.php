@@ -92,7 +92,7 @@ final class MenuController extends BaseController
      */
     public function sort(Request $request, MenuRepository $repository): JsonResponse
     {
-        $items = $request->request->get('items');
+        $items = $request->request->all('items');
         $repository->reorderItems((array) $items);
 
         return new JsonResponse(['status' => 'ok']);
