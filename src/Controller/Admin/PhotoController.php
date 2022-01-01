@@ -70,9 +70,9 @@ final class PhotoController extends BaseController
      */
     public function sort(Request $request, Property $property): Response
     {
-        $ids = $request->request->get('ids');
+        $ids = $request->request->all('ids');
         $repository = $this->doctrine->getRepository(Photo::class);
-        $repository->reorderPhotos($property, (array) $ids);
+        $repository->reorderPhotos($property, $ids);
 
         return new JsonResponse(['status' => 'ok']);
     }
