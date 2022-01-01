@@ -13,7 +13,7 @@ class UserTransformerTest extends WebTestCase
 {
     private const TEST_PASSWORD = 'My.Test@password';
 
-    public function testTransform()
+    public function testTransform(): void
     {
         [$transformer, $passwordHasher] = $this->getDependencies();
 

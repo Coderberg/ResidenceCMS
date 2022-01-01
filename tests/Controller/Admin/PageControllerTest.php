@@ -24,7 +24,7 @@ final class PageControllerTest extends WebTestCase
     /**
      * This test changes the database contents by creating a new Page.
      */
-    public function testAdminNewPage()
+    public function testAdminNewPage(): void
     {
         $client = static::createClient([], self::SERVER);
         $crawler = $client->request('GET', '/en/admin/page/new');
@@ -61,7 +61,7 @@ final class PageControllerTest extends WebTestCase
     /**
      * This test changes the database contents by editing a Page.
      */
-    public function testAdminEditPage()
+    public function testAdminEditPage(): void
     {
         $client = static::createClient([], self::SERVER);
 
@@ -92,7 +92,7 @@ final class PageControllerTest extends WebTestCase
     /**
      * This test changes the database contents by deleting a test Page.
      */
-    public function testAdminDeletePage()
+    public function testAdminDeletePage(): void
     {
         $client = static::createClient([], self::SERVER);
 

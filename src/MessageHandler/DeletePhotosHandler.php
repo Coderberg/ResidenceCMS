@@ -20,7 +20,7 @@ class DeletePhotosHandler implements MessageHandlerInterface
         $this->fileUploader = $fileUploader;
     }
 
-    public function __invoke(DeletePhotos $deletePhotos)
+    public function __invoke(DeletePhotos $deletePhotos): void
     {
         $photos = $deletePhotos->getProperty()->getPhotos();
 

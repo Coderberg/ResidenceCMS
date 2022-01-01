@@ -22,7 +22,7 @@ final class MetroControllerTest extends WebTestCase
     /**
      * This test changes the database contents by creating a new Metro station.
      */
-    public function testAdminNewStation()
+    public function testAdminNewStation(): void
     {
         $client = static::createClient([], self::SERVER);
 
@@ -48,7 +48,7 @@ final class MetroControllerTest extends WebTestCase
     /**
      * This test changes the database contents by editing a Metro station.
      */
-    public function testAdminEditStation()
+    public function testAdminEditStation(): void
     {
         $client = static::createClient([], self::SERVER);
 
@@ -78,7 +78,7 @@ final class MetroControllerTest extends WebTestCase
     /**
      * This test changes the database contents by deleting a test Metro station.
      */
-    public function testAdminDeleteStation()
+    public function testAdminDeleteStation(): void
     {
         $client = static::createClient([], self::SERVER);
 

@@ -30,7 +30,7 @@ final class SendFeedbackHandler implements MessageHandlerInterface
         $this->translator = $translator;
     }
 
-    public function __invoke(SendFeedback $sendFeedback)
+    public function __invoke(SendFeedback $sendFeedback): void
     {
         /** @var FeedbackDto $feedback */
         $feedback = $sendFeedback->getFeedback();

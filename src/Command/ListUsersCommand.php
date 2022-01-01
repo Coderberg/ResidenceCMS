@@ -28,7 +28,7 @@ final class ListUsersCommand extends Command
         $this->users = $users;
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setDescription('Lists all the existing users')

@@ -22,7 +22,7 @@ final class NeighborhoodControllerTest extends WebTestCase
     /**
      * This test changes the database contents by creating a new Neighborhood.
      */
-    public function testAdminNewNeighborhood()
+    public function testAdminNewNeighborhood(): void
     {
         $client = static::createClient([], self::SERVER);
         $crawler = $client->request('GET', '/en/admin/locations/neighborhood/new');
@@ -47,7 +47,7 @@ final class NeighborhoodControllerTest extends WebTestCase
     /**
      * This test changes the database contents by editing an Neighborhood.
      */
-    public function testAdminEditNeighborhood()
+    public function testAdminEditNeighborhood(): void
     {
         $client = static::createClient([], self::SERVER);
 
@@ -77,7 +77,7 @@ final class NeighborhoodControllerTest extends WebTestCase
     /**
      * This test changes the database contents by deleting a test Neighborhood.
      */
-    public function testAdminDeleteNeighborhood()
+    public function testAdminDeleteNeighborhood(): void
     {
         $client = static::createClient([], self::SERVER);
 

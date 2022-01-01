@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class ResettingControllerTest extends WebTestCase
 {
-    public function testPasswordReset()
+    public function testPasswordReset(): void
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/en/password/reset');
@@ -35,7 +35,7 @@ final class ResettingControllerTest extends WebTestCase
         $this->assertSelectorTextContains('.alert-success', 'We have e-mailed your password reset link!');
     }
 
-    public function testChangePassword()
+    public function testChangePassword(): void
     {
         $client = static::createClient();
         $client->followRedirects(true);
@@ -56,7 +56,7 @@ final class ResettingControllerTest extends WebTestCase
         $this->assertSelectorTextContains('.alert-success', 'Password has been changed successfully');
     }
 
-    public function testLogin()
+    public function testLogin(): void
     {
         $client = static::createClient([], [
             'PHP_AUTH_USER' => 'admin',

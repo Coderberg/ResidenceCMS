@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class PropertyControllerTest extends WebTestCase
 {
-    public function testIndex()
+    public function testIndex(): void
     {
         $client = $this->createClient();
         $client->followRedirects(true);
@@ -22,7 +22,7 @@ final class PropertyControllerTest extends WebTestCase
             ->text());
     }
 
-    public function testProperty()
+    public function testProperty(): void
     {
         $client = static::createClient();
         // the service container is always available via the test client
@@ -48,7 +48,7 @@ final class PropertyControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
     }
 
-    public function testSearch()
+    public function testSearch(): void
     {
         $client = static::createClient();
         $repository = $client->getContainer()->get('doctrine')
@@ -72,7 +72,7 @@ final class PropertyControllerTest extends WebTestCase
         $this->assertCount(4, $crawler->filter('.property-box-img'));
     }
 
-    public function testSearchFilter()
+    public function testSearchFilter(): void
     {
         $client = static::createClient();
         $repository = $client->getContainer()->get('doctrine')

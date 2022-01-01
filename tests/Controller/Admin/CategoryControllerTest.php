@@ -22,7 +22,7 @@ final class CategoryControllerTest extends WebTestCase
     /**
      * This test changes the database contents by creating a new Category.
      */
-    public function testAdminNewCategory()
+    public function testAdminNewCategory(): void
     {
         $client = static::createClient([], self::SERVER);
         $crawler = $client->request('GET', '/en/admin/category/new');
@@ -47,7 +47,7 @@ final class CategoryControllerTest extends WebTestCase
     /**
      * This test changes the database contents by editing a Category.
      */
-    public function testAdminEditCategory()
+    public function testAdminEditCategory(): void
     {
         $client = static::createClient([], self::SERVER);
 
@@ -77,7 +77,7 @@ final class CategoryControllerTest extends WebTestCase
     /**
      * This test changes the database contents by deleting a test Category.
      */
-    public function testAdminDeleteCategory()
+    public function testAdminDeleteCategory(): void
     {
         $client = static::createClient([], self::SERVER);
 

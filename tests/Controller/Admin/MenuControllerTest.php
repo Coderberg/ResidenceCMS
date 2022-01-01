@@ -51,7 +51,7 @@ final class MenuControllerTest extends WebTestCase
     /**
      * This test changes the database contents by editing a Menu Item.
      */
-    public function testAdminEditItem()
+    public function testAdminEditItem(): void
     {
         $client = static::createClient([], self::SERVER);
 
@@ -82,7 +82,7 @@ final class MenuControllerTest extends WebTestCase
     /**
      * This test changes the database contents by deleting a test Item.
      */
-    public function testAdminDeleteItem()
+    public function testAdminDeleteItem(): void
     {
         $client = static::createClient([], self::SERVER);
 

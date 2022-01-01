@@ -37,7 +37,7 @@ final class SendResetPasswordLinkHandler implements MessageHandlerInterface
         $this->router = $router;
     }
 
-    public function __invoke(SendResetPasswordLink $sendResetPasswordLink)
+    public function __invoke(SendResetPasswordLink $sendResetPasswordLink): void
     {
         /** @var User $user */
         $user = $sendResetPasswordLink->getUser();

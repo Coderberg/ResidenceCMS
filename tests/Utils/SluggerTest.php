@@ -18,7 +18,7 @@ class SluggerTest extends TestCase
     /**
      * @dataProvider getSlugs
      */
-    public function testSlugify(string $string, string $slug, string $slugIntl)
+    public function testSlugify(string $string, string $slug, string $slugIntl): void
     {
         if (\function_exists('transliterator_transliterate')) {
             $this->assertSame($slugIntl, Slugger::slugify($string));

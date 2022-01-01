@@ -22,7 +22,7 @@ final class CityControllerTest extends WebTestCase
     /**
      * This test changes the database contents by creating a new City.
      */
-    public function testAdminNewCity()
+    public function testAdminNewCity(): void
     {
         $client = static::createClient([], self::SERVER);
 
@@ -53,7 +53,7 @@ final class CityControllerTest extends WebTestCase
     /**
      * This test changes the database contents by editing a city.
      */
-    public function testAdminEditCity()
+    public function testAdminEditCity(): void
     {
         $client = static::createClient([], self::SERVER);
 
@@ -88,7 +88,7 @@ final class CityControllerTest extends WebTestCase
     /**
      * This test changes the database contents by deleting a test city.
      */
-    public function testAdminDeleteCity()
+    public function testAdminDeleteCity(): void
     {
         $client = static::createClient([], self::SERVER);
 

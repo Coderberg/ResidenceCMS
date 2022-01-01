@@ -13,7 +13,7 @@ final class DashboardControllerTest extends WebTestCase
         'PHP_AUTH_PW' => 'admin',
     ];
 
-    public function testAdminDashboard()
+    public function testAdminDashboard(): void
     {
         $client = static::createClient([], self::SERVER);
         $client->request('GET', '/en/admin');

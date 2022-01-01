@@ -16,7 +16,7 @@ final class SettingsControllerTest extends WebTestCase
         'PHP_AUTH_PW' => 'admin',
     ];
 
-    public function testAdminEditSettings()
+    public function testAdminEditSettings(): void
     {
         $client = static::createClient([], self::SERVER);
 
@@ -37,7 +37,7 @@ final class SettingsControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
     }
 
-    public function testPublicSettings()
+    public function testPublicSettings(): void
     {
         $client = static::createClient();
 
@@ -63,7 +63,7 @@ final class SettingsControllerTest extends WebTestCase
             ->text());
     }
 
-    public function testChangeBackSettings()
+    public function testChangeBackSettings(): void
     {
         $client = static::createClient([], self::SERVER);
 
@@ -84,7 +84,7 @@ final class SettingsControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
     }
 
-    public function testChangedBackSettings()
+    public function testChangedBackSettings(): void
     {
         $client = static::createClient();
 
@@ -109,7 +109,7 @@ final class SettingsControllerTest extends WebTestCase
             ->text());
     }
 
-    public function testUploadHeaderImage()
+    public function testUploadHeaderImage(): void
     {
         $client = static::createClient([], self::SERVER);
 
@@ -124,7 +124,7 @@ final class SettingsControllerTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isSuccessful(), 'response status is 2xx');
     }
 
-    public function testUploadLogoImage()
+    public function testUploadLogoImage(): void
     {
         $client = static::createClient([], self::SERVER);
 
@@ -139,7 +139,7 @@ final class SettingsControllerTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isSuccessful(), 'response status is 2xx');
     }
 
-    public function testDeleteHeaderImage()
+    public function testDeleteHeaderImage(): void
     {
         $client = static::createClient([], self::SERVER);
 
@@ -150,7 +150,7 @@ final class SettingsControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
     }
 
-    public function testDeleteLogoImage()
+    public function testDeleteLogoImage(): void
     {
         $client = static::createClient([], self::SERVER);
 
@@ -161,7 +161,7 @@ final class SettingsControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
     }
 
-    public function testDeletedHeaderImage()
+    public function testDeletedHeaderImage(): void
     {
         $client = static::createClient();
 
@@ -171,7 +171,7 @@ final class SettingsControllerTest extends WebTestCase
             ])->getSettingValue());
     }
 
-    public function testDeletedLogoImage()
+    public function testDeletedLogoImage(): void
     {
         $client = static::createClient();
 

@@ -16,7 +16,7 @@ final class PhotoControllerTest extends WebTestCase
         'PHP_AUTH_PW' => 'user',
     ];
 
-    public function testEditingForbidden()
+    public function testEditingForbidden(): void
     {
         $client = static::createClient([], self::USER);
 
@@ -32,7 +32,7 @@ final class PhotoControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(403);
     }
 
-    public function testUploadPhoto()
+    public function testUploadPhoto(): void
     {
         $client = static::createClient([], self::USER);
 
@@ -53,7 +53,7 @@ final class PhotoControllerTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isSuccessful(), 'response status is 2xx');
     }
 
-    public function testDeletePhoto()
+    public function testDeletePhoto(): void
     {
         $client = static::createClient([], self::USER);
 

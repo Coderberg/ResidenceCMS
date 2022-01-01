@@ -24,7 +24,7 @@ final class PropertyControllerTest extends WebTestCase
     /**
      * This test changes the database contents by creating a new Property.
      */
-    public function testAdminNewProperty()
+    public function testAdminNewProperty(): void
     {
         $client = static::createClient([], self::SERVER);
 
@@ -55,7 +55,7 @@ final class PropertyControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
     }
 
-    public function testAdminEditPhoto()
+    public function testAdminEditPhoto(): void
     {
         $client = static::createClient([], self::SERVER);
 
@@ -74,7 +74,7 @@ final class PropertyControllerTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isSuccessful(), 'response status is 2xx');
     }
 
-    public function testAdminEditProperty()
+    public function testAdminEditProperty(): void
     {
         $client = static::createClient([], self::SERVER);
 
@@ -116,7 +116,7 @@ final class PropertyControllerTest extends WebTestCase
         $this->assertStringContainsString('South Beach', $crawler->html());
     }
 
-    public function testAdminDeletePhoto()
+    public function testAdminDeletePhoto(): void
     {
         $client = static::createClient([], self::SERVER);
 
@@ -134,7 +134,7 @@ final class PropertyControllerTest extends WebTestCase
     /*
      * This test changes the database contents by deleting a test Property.
      */
-    public function testAdminDeleteProperty()
+    public function testAdminDeleteProperty(): void
     {
         $client = static::createClient([], self::SERVER);
 

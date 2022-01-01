@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 final class RequestToArrayTransformerTest extends TestCase
 {
-    public function testTransform()
+    public function testTransform(): void
     {
         $request = new Request();
         $request->query->set('city', 3);
