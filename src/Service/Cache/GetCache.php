@@ -34,9 +34,7 @@ trait GetCache
     {
         $this->persistentObjectName = $class;
 
-        $count = $this->cache->get($key, function () {
-            return $this->countItems();
-        });
+        $count = $this->cache->get($key, fn () => $this->countItems());
 
         return (int) $count;
     }
