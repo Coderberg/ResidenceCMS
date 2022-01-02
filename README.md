@@ -68,6 +68,6 @@ ResidenceCMS is a fast and lightweight Property Management System on top of [Sym
 - [How to run Residence CMS in Docker Containers][4]
 
 [1]: https://symfony.com/
-[2]: https://symfony.com/doc/current/reference/requirements.html
+[2]: https://symfony.com/doc/current/setup.html#technical-requirements
 [3]: https://getcomposer.org/doc/03-cli.md#create-project
 [4]: https://github.com/Coderberg/ResidenceCMS/blob/master/docs/docker.md
