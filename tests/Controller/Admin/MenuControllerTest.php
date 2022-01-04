@@ -80,6 +80,38 @@ final class MenuControllerTest extends WebTestCase
     }
 
     /**
+     * This test changes the database contents by sorting Menu Items.
+     */
+    public function testAdminSortItems()
+    {
+        $client = static::createClient([], self::SERVER);
+        $items = $client->getContainer()->get('doctrine')
+            ->getRepository(Menu::class)
+            ->findItems();
+
+        $itemsArray = array_map(function ($item) {
+            return $item->getId();
+        }, $items);
+
+        $client->request('POST', '/en/admin/menu/sort', [
+            'items' => array_reverse($itemsArray),
+        ]);
+
+        $client->request('POST', '/en/admin/menu/sort', [
+            'items' => $itemsArray,
+        ]);
+
+        $this->assertResponseIsSuccessful();
+        $this->assertTrue(
+            $client->getResponse()->headers->contains(
+                'Content-Type',
+                'application/json'
+            ),
+            'the "Content-Type" header is "application/json"'
+        );
+    }
+
+    /**
      * This test changes the database contents by deleting a test Item.
      */
     public function testAdminDeleteItem(): void

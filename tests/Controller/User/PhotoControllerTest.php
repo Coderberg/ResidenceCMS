@@ -53,6 +53,35 @@ final class PhotoControllerTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isSuccessful(), 'response status is 2xx');
     }
 
+    public function testSorting(): void
+    {
+        $client = self::createClient([], self::USER);
+        $property = $client->getContainer()->get('doctrine')
+            ->getRepository(Property::class)
+            ->findOneBy(['slug' => 'interesting-two-bedroom-apartment-for-sale']);
+
+        $itemsArray = $property->getPhotos()->map(function ($item) {
+            return $item->getId();
+        })->getValues();
+
+        $client->request('POST', '/en/user/photo/'.$property->getId().'/sort', [
+            'ids' => array_reverse($itemsArray),
+        ]);
+
+        $client->request('POST', '/en/user/photo/'.$property->getId().'/sort', [
+            'ids' => $itemsArray,
+        ]);
+
+        $this->assertResponseIsSuccessful();
+        $this->assertTrue(
+            $client->getResponse()->headers->contains(
+                'Content-Type',
+                'application/json'
+            ),
+            'the "Content-Type" header is "application/json"'
+        );
+    }
+
     public function testDeletePhoto(): void
     {
         $client = static::createClient([], self::USER);
