@@ -85,6 +85,8 @@ final class MenuControllerTest extends WebTestCase
     public function testAdminSortItems()
     {
         $client = static::createClient([], self::SERVER);
+        $crawler = $client->request('GET', '/en/admin/menu');
+        $token = $crawler->filter('#menu')->attr('data-token');
         $items = $client->getContainer()->get('doctrine')
             ->getRepository(Menu::class)
             ->findItems();
@@ -94,10 +96,12 @@ final class MenuControllerTest extends WebTestCase
         }, $items);
 
         $client->request('POST', '/en/admin/menu/sort', [
+            'csrf-token' => $token,
             'items' => array_reverse($itemsArray),
         ]);
 
         $client->request('POST', '/en/admin/menu/sort', [
+            'csrf-token' => $token,
             'items' => $itemsArray,
         ]);
 

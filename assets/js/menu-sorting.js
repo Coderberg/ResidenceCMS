@@ -1,6 +1,6 @@
 'use strict';
 
-function changeButtons() {
+const changeButtons = () => {
     $('.js-down-one')
         .removeClass('js-down-one')
         .addClass('js-up-one')
@@ -10,10 +10,11 @@ function changeButtons() {
         .removeClass('js-up-one')
         .addClass('js-down-one')
         .html('<i class="fas fa-arrow-down"></i> Down one');
-}
+};
 
-function sendRequest() {
+const sendRequest = () => {
     let item = $('.js-move');
+    let token = $('#menu').attr('data-token');
 
     if (item.length > 1) {
         let items = [];
@@ -25,10 +26,10 @@ function sendRequest() {
         $.ajax({
             method: 'POST',
             url: '/en/admin/menu/sort',
-            data: { items: items }
+            data: {'csrf-token': token, items: items}
         });
     }
-}
+};
 
 $(document).ready(function () {
     $('body').on('click', '.js-move', function () {

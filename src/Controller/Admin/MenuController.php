@@ -92,6 +92,10 @@ final class MenuController extends BaseController
      */
     public function sort(Request $request, MenuRepository $repository): JsonResponse
     {
+        if (!$this->isCsrfTokenValid('csrf-token', $request->request->get('csrf-token'))) {
+            return new JsonResponse(['status' => 'fail'], 401);
+        }
+
         $items = $request->request->all('items');
         $repository->reorderItems($items);
 
