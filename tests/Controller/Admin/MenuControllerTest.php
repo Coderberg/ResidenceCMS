@@ -82,7 +82,7 @@ final class MenuControllerTest extends WebTestCase
     /**
      * This test changes the database contents by sorting Menu Items.
      */
-    public function testAdminSortItems()
+    public function testAdminSortItems(): void
     {
         $client = static::createClient([], self::SERVER);
         $crawler = $client->request('GET', '/en/admin/menu');
@@ -91,9 +91,7 @@ final class MenuControllerTest extends WebTestCase
             ->getRepository(Menu::class)
             ->findItems();
 
-        $itemsArray = array_map(function ($item) {
-            return $item->getId();
-        }, $items);
+        $itemsArray = array_map(fn ($item) => $item->getId(), $items);
 
         $client->request('POST', '/en/admin/menu/sort', [
             'csrf-token' => $token,

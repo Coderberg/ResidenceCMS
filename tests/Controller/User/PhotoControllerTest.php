@@ -60,9 +60,7 @@ final class PhotoControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['slug' => 'interesting-two-bedroom-apartment-for-sale']);
 
-        $itemsArray = $property->getPhotos()->map(function ($item) {
-            return $item->getId();
-        })->getValues();
+        $itemsArray = $property->getPhotos()->map(fn ($item) => $item->getId())->getValues();
 
         $client->request('POST', '/en/user/photo/'.$property->getId().'/sort', [
             'ids' => array_reverse($itemsArray),
