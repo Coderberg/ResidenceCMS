@@ -23,6 +23,10 @@ final class PhotoController extends BaseController
      */
     public function upload(Property $property, Request $request, FileUploader $fileUploader): Response
     {
+        if (!$this->isCsrfTokenValid('csrf-token', $request->request->get('csrf-token'))) {
+            return new JsonResponse(['status' => 'fail'], 401);
+        }
+
         /** @var UploadedFile $uploadedFile */
         $uploadedFile = $request->files->get('file');
         $violations = $fileUploader->validate($uploadedFile);
@@ -32,7 +36,7 @@ final class PhotoController extends BaseController
             $violation = $violations[0];
             $this->addFlash('danger', $violation->getMessage());
 
-            return new JsonResponse(['status' => 'error']);
+            return new JsonResponse(['status' => 'fail'], 422);
         }
 
         $fileName = $fileUploader->upload($uploadedFile);
