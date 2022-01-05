@@ -12,17 +12,6 @@ env:
   fail-fast: true
 
 jobs:
-  php-cs-fixer:
-    name: PHP-CS-Fixer
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Checkout code"
-        uses: actions/checkout@v2
-
-      - name: PHP-CS-Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga
-        with:
-          args: --diff --dry-run
 
   linters:
     name: Linters
@@ -60,6 +49,10 @@ jobs:
       - name: Install PHPUnit
         id: install
         run: vendor/bin/simple-phpunit install
+
+      - name: PHP-CS-Fixer
+        if: always() && steps.install.outcome == 'success'
+        run: vendor/bin/php-cs-fixer fix --diff --dry-run
 
       - name: Lint YAML files
         if: always() && steps.install.outcome == 'success'
