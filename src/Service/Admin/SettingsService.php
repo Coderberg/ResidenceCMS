@@ -54,11 +54,15 @@ final class SettingsService extends AbstractService
      */
     public function uploadImage(string $type, Request $request): Response
     {
+        if (!$this->isCsrfTokenValid('csrf-token', $request->request->get('csrf-token'))) {
+            return new JsonResponse(['status' => 'fail'], 419);
+        }
+
         /** @var UploadedFile $uploadedFile */
         $uploadedFile = $request->files->get('file');
 
         if (!$this->isImageValid($uploadedFile)) {
-            return new JsonResponse(['status' => 'error']);
+            return new JsonResponse(['status' => 'fail'], 422);
         }
 
         $fileName = $this->fileUploader->upload($uploadedFile);
