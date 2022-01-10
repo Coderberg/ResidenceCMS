@@ -25,7 +25,7 @@ final class PhotoController extends BaseController
     public function upload(Property $property, Request $request, FileUploader $fileUploader): Response
     {
         if (!$this->isCsrfTokenValid('csrf-token', $request->request->get('csrf-token'))) {
-            return new JsonResponse(['status' => 'fail'], 401);
+            return new JsonResponse(['status' => 'fail'], 419);
         }
 
         /** @var UploadedFile $uploadedFile */
@@ -77,6 +77,10 @@ final class PhotoController extends BaseController
      */
     public function sort(Request $request, Property $property): Response
     {
+        if (!$this->isCsrfTokenValid('csrf-token', $request->request->get('csrf-token'))) {
+            return new JsonResponse(['status' => 'fail'], 419);
+        }
+
         $ids = $request->request->all('ids');
         $repository = $this->doctrine->getRepository(Photo::class);
         $repository->reorderPhotos($property, $ids);
