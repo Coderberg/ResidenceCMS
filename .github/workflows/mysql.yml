@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       mysql:
-        image: mysql:latest
+        image: mysql:5.7
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: false
           MYSQL_ROOT_PASSWORD: symfony
@@ -52,10 +52,8 @@ jobs:
         run: |
           php bin/console app:install
         env:
-          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports[3306] }}/symfony
+          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports[3306] }}/symfony?serverVersion=5.7
       - name: Create .env.test.local
-        run: echo "DATABASE_URL=mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports[3306] }}/symfony" > .env.test.local
+        run: echo "DATABASE_URL=mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports[3306] }}/symfony?serverVersion=5.7" > .env.test.local
       - name: Run Tests
         run: php bin/phpunit --coverage-text
-      - name: Security Check
-        uses: symfonycorp/security-checker-action@v2

@@ -57,5 +57,3 @@ jobs:
         run: echo "DATABASE_URL=mysql://mariadb:mariadb@127.0.0.1:${{ job.services.mariadb.ports[3306] }}/mariadb?serverVersion=mariadb-10.6.4" > .env.test.local
       - name: Run Tests
         run: php bin/phpunit --coverage-text
-      - name: Security Check
-        uses: symfonycorp/security-checker-action@v2
