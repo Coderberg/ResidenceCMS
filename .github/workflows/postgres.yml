@@ -53,5 +53,3 @@ jobs:
         run: echo "DATABASE_URL=postgres://postgres:postgres@127.0.0.1:${{ job.services.postgres.ports[5432] }}/postgres?charset=UTF-8" > .env.test.local
       - name: Run Tests
         run: php bin/phpunit --coverage-text
-      - name: Security Check
-        uses: symfonycorp/security-checker-action@v2

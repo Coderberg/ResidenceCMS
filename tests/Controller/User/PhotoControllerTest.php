@@ -60,13 +60,18 @@ final class PhotoControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['slug' => 'interesting-two-bedroom-apartment-for-sale']);
 
+        $crawler = $client->request('GET', '/en/user/photo/'.$property->getId().'/edit');
+        $token = $crawler->filter('form')->attr('data-token');
+
         $itemsArray = $property->getPhotos()->map(fn ($item) => $item->getId())->getValues();
 
         $client->request('POST', '/en/user/photo/'.$property->getId().'/sort', [
+            'csrf-token' => $token,
             'ids' => array_reverse($itemsArray),
         ]);
 
         $client->request('POST', '/en/user/photo/'.$property->getId().'/sort', [
+            'csrf-token' => $token,
             'ids' => $itemsArray,
         ]);
 

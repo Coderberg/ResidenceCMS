@@ -52,7 +52,7 @@ $(document).ready(function () {
                 $.ajax({
                     type: 'POST',
                     url: ajaxUrl,
-                    data: { ids: ids }
+                    data: {'csrf-token': token, ids: ids }
                 }).done(function () {
                     window.location.reload();
                 });
