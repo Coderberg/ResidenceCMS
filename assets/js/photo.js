@@ -8,11 +8,15 @@ Dropzone.autoDiscover = false;
 $(document).ready(function () {
     let $form = $('.js-photo-dropzone');
     let ajaxUrl = $form.attr('action').replace('upload', 'sort');
+    let token = $form.attr('data-token');
 
     if ($form.length) {
         $form.dropzone({
             url: $form.attr('action'),
             acceptedFiles: 'image/*',
+            sending: function(file, xhr, formData){
+                formData.append('csrf_token', token);
+            },
             queuecomplete: function () {
                 setTimeout(function () {
                     window.location.reload();
@@ -48,7 +52,7 @@ $(document).ready(function () {
                 $.ajax({
                     type: 'POST',
                     url: ajaxUrl,
-                    data: { ids: ids }
+                    data: {'csrf_token': token, ids: ids }
                 }).done(function () {
                     window.location.reload();
                 });

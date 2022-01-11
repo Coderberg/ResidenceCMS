@@ -10,7 +10,6 @@ use App\Form\Type\MenuType;
 use App\Repository\MenuRepository;
 use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -83,19 +82,6 @@ final class MenuController extends BaseController
             'site' => $this->site($request),
             'form' => $form->createView(),
         ]);
-    }
-
-    /**
-     * Sort menu items.
-     *
-     * @Route("/admin/menu/sort",methods={"POST"}, name="admin_menu_sort")
-     */
-    public function sort(Request $request, MenuRepository $repository): JsonResponse
-    {
-        $items = $request->request->get('items');
-        $repository->reorderItems((array) $items);
-
-        return new JsonResponse(['status' => 'ok']);
     }
 
     /**

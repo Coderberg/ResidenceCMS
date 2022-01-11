@@ -27,7 +27,7 @@
     "js/menu-sorting": {
       "js": [
         "/build/runtime.8c994506.js",
-        "/build/js/menu-sorting.c4e0113a.js"
+        "/build/js/menu-sorting.afaa7e77.js"
       ]
     },
     "js/select2": {
@@ -39,7 +39,7 @@
     "js/settings": {
       "js": [
         "/build/runtime.8c994506.js",
-        "/build/js/settings.38791856.js"
+        "/build/js/settings.a38c86e9.js"
       ]
     },
     "js/slugger": {
@@ -57,7 +57,7 @@
     "js/photo": {
       "js": [
         "/build/runtime.8c994506.js",
-        "/build/js/photo.cba1d333.js"
+        "/build/js/photo.d38e19f4.js"
       ]
     },
     "js/page": {

@@ -72,14 +72,16 @@
                     <br>
                     {% if property.state == 'published' %}
 
-                        <a href="{{ path('user_property_unpublish', {id: property.id, token: csrf_token('update')}) }}"
+                        <a href="{{ path('user_property_update',
+                            {id: property.id, state: 'private', csrf_token: csrf_token('csrf_token')}) }}"
                            class="btn btn-outline-secondary mt-3">
                             <i class="fas fa-eye-slash"></i> {{ 'action.unpublish'|trans }}
                         </a>
 
                     {% elseif property.state == 'private' %}
 
-                        <a href="{{ path('user_property_publish', {id: property.id, token: csrf_token('update')}) }}"
+                        <a href="{{ path('user_property_update',
+                            {id: property.id, state: 'published', csrf_token: csrf_token('csrf_token')}) }}"
                            class="btn btn-outline-secondary mt-3">
                             <i class="far fa-share-square"></i> {{ 'action.publish'|trans }}
                         </a>

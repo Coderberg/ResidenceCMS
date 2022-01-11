@@ -63,8 +63,8 @@ final class PropertyControllerTest extends WebTestCase
             ->getRepository(Property::class)
             ->findOneBy(['author' => $user]);
 
-        $client->request('GET', sprintf('/en/user/property/%d/unpublish', $property->getId()));
-        $this->assertResponseStatusCodeSame(403);
+        $client->request('GET', sprintf('/en/user/property/%d/update?state=private', $property->getId()));
+        $this->assertResponseStatusCodeSame(419);
 
         $client->request('GET', sprintf('/en/user/property/%d/edit', $property->getId()));
         $this->assertResponseStatusCodeSame(403);

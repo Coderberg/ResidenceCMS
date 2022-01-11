@@ -76,28 +76,6 @@ final class SettingsController extends AbstractController
     }
 
     /**
-     * @Route("/admin/setting/upload_header_image", methods={"POST"}, name="admin_setting_upload_header_image")
-     *
-     * @throws \Exception
-     */
-    public function uploadHeaderImage(Request $request): Response
-    {
-        // Upload custom header image
-        return $this->service->uploadImage('header_image', $request);
-    }
-
-    /**
-     * @Route("/admin/setting/upload_logo_image", methods={"POST"}, name="admin_setting_upload_logo_image")
-     *
-     * @throws \Exception
-     */
-    public function uploadLogoImage(Request $request): Response
-    {
-        // Upload custom header image
-        return $this->service->uploadImage('logo_image', $request);
-    }
-
-    /**
      * @Route("/admin/setting/delete_header_image", methods={"POST"}, name="admin_setting_delete_header_image")
      */
     public function deleteHeaderImage(Request $request): Response

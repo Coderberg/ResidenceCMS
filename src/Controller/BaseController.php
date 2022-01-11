@@ -38,7 +38,7 @@ abstract class BaseController extends AbstractController
             'menu' => $this->doctrine->getRepository(Menu::class)
                 ->findBy([
                     'locale' => $request->getLocale(),
-                ]),
+                ], ['sort_order' => 'ASC']),
         ];
     }
 

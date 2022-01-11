@@ -53,6 +53,46 @@ final class PhotoControllerTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isSuccessful(), 'response status is 2xx');
     }
 
+    public function testSorting()
+    {
+        $client = self::createClient([], self::USER);
+        $property = $client->getContainer()->get('doctrine')
+            ->getRepository(Property::class)
+            ->findOneBy(['slug' => 'interesting-two-bedroom-apartment-for-sale']);
+
+        $crawler = $client->request('GET', '/en/user/photo/'.$property->getId().'/edit');
+        $token = $crawler->filter('form')->attr('data-token');
+
+        $itemsArray = $property->getPhotos()->map(function ($item) {
+            return $item->getId();
+        })->getValues();
+
+        $uri = '/en/user/photo/'.$property->getId().'/sort';
+        $client->request('POST', $uri, [
+            'ids' => array_reverse($itemsArray),
+        ]);
+        $this->assertResponseStatusCodeSame(419);
+
+        $client->request('POST', $uri, [
+            'csrf_token' => $token,
+            'ids' => array_reverse($itemsArray),
+        ]);
+
+        $client->request('POST', $uri, [
+            'csrf_token' => $token,
+            'ids' => $itemsArray,
+        ]);
+
+        $this->assertResponseIsSuccessful();
+        $this->assertTrue(
+            $client->getResponse()->headers->contains(
+                'Content-Type',
+                'application/json'
+            ),
+            'the "Content-Type" header is "application/json"'
+        );
+    }
+
     public function testDeletePhoto()
     {
         $client = static::createClient([], self::USER);
