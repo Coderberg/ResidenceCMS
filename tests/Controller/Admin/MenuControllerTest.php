@@ -95,18 +95,19 @@ final class MenuControllerTest extends WebTestCase
             return $item->getId();
         }, $items);
 
-        $client->request('POST', '/en/admin/menu/sort', [
+        $uri = '/en/admin/menu/sort';
+        $client->request('POST', $uri, [
             'csrf-token' => $token,
             'items' => array_reverse($itemsArray),
         ]);
         $this->assertResponseStatusCodeSame(419);
 
-        $client->request('POST', '/en/admin/menu/sort', [
+        $client->request('POST', $uri, [
             'csrf_token' => $token,
             'items' => array_reverse($itemsArray),
         ]);
 
-        $client->request('POST', '/en/admin/menu/sort', [
+        $client->request('POST', $uri, [
             'csrf_token' => $token,
             'items' => $itemsArray,
         ]);

@@ -31,10 +31,9 @@ final class AjaxSubscriber implements EventSubscriberInterface
             $controller = $controller[0];
         }
 
-        if ($controller instanceof AjaxController) {
-            if (!$this->isCsrfTokenValid($this->getToken($event))) {
-                throw new TokenNotFoundException('Sorry, your session has expired. Please refresh and try again.');
-            }
+        if ($controller instanceof AjaxController
+            && !$this->isCsrfTokenValid($this->getToken($event))) {
+            throw new TokenNotFoundException('Sorry, your session has expired. Please refresh and try again.');
         }
     }
 
