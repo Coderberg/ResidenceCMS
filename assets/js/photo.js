@@ -15,7 +15,7 @@ $(document).ready(function () {
             url: $form.attr('action'),
             acceptedFiles: 'image/*',
             sending: function(file, xhr, formData){
-                formData.append('csrf-token', token);
+                formData.append('csrf_token', token);
             },
             queuecomplete: function () {
                 setTimeout(function () {
@@ -52,7 +52,7 @@ $(document).ready(function () {
                 $.ajax({
                     type: 'POST',
                     url: ajaxUrl,
-                    data: {'csrf-token': token, ids: ids }
+                    data: {'csrf_token': token, ids: ids }
                 }).done(function () {
                     window.location.reload();
                 });

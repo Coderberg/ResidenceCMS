@@ -68,12 +68,17 @@ final class PhotoControllerTest extends WebTestCase
         })->getValues();
 
         $client->request('POST', '/en/user/photo/'.$property->getId().'/sort', [
-            'csrf-token' => $token,
+            'ids' => array_reverse($itemsArray),
+        ]);
+        $this->assertResponseStatusCodeSame(419);
+
+        $client->request('POST', '/en/user/photo/'.$property->getId().'/sort', [
+            'csrf_token' => $token,
             'ids' => array_reverse($itemsArray),
         ]);
 
         $client->request('POST', '/en/user/photo/'.$property->getId().'/sort', [
-            'csrf-token' => $token,
+            'csrf_token' => $token,
             'ids' => $itemsArray,
         ]);
 

@@ -10,7 +10,7 @@ $(document).ready(function () {
             url: $form.attr('action'),
             acceptedFiles: 'image/*',
             sending: function(file, xhr, formData){
-                formData.append('csrf-token', token);
+                formData.append('csrf_token', token);
             },
             queuecomplete: function () {
                 setTimeout(function () {
