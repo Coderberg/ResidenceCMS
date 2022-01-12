@@ -24,7 +24,7 @@ final class AjaxSubscriber implements EventSubscriberInterface
         $this->tokenManager = $tokenManager;
     }
 
-    public function onKernelController(ControllerEvent $event)
+    public function onKernelController(ControllerEvent $event): void
     {
         $controller = $event->getController();
         if (\is_array($controller)) {
