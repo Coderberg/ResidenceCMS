@@ -23,7 +23,7 @@ final class FeatureControllerTest extends WebTestCase
      */
     public function testAdminNewFeature(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/en/admin/feature/new');
 
@@ -47,7 +47,7 @@ final class FeatureControllerTest extends WebTestCase
      */
     public function testAdminEditFeature(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $feature = $client->getContainer()->get('doctrine')
             ->getRepository(Feature::class)
@@ -77,7 +77,7 @@ final class FeatureControllerTest extends WebTestCase
      */
     public function testAdminDeleteFeature(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $feature = $client->getContainer()->get('doctrine')
             ->getRepository(Feature::class)->findOneBy([

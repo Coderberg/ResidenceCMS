@@ -15,20 +15,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class SendResetPasswordLinkHandler implements MessageHandlerInterface
 {
-    /**
-     * @var Mailer
-     */
-    private $mailer;
-
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
-
-    /**
-     * @var UrlGeneratorInterface
-     */
-    private $router;
+    private Mailer $mailer;
+    private TranslatorInterface $translator;
+    private UrlGeneratorInterface $router;
 
     public function __construct(Mailer $mailer, TranslatorInterface $translator, UrlGeneratorInterface $router)
     {

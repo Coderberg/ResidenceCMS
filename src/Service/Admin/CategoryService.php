@@ -12,10 +12,7 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 final class CategoryService extends AbstractService
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $em;
+    private EntityManagerInterface $em;
 
     public function __construct(
         CsrfTokenManagerInterface $tokenManager,

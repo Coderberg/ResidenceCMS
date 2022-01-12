@@ -24,7 +24,7 @@ final class DistrictControllerTest extends WebTestCase
      */
     public function testAdminNewDistrict(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
         $crawler = $client->request('GET', '/en/admin/locations/district/new');
 
         $form = $crawler->selectButton('Create district')->form([
@@ -49,7 +49,7 @@ final class DistrictControllerTest extends WebTestCase
      */
     public function testAdminEditDistrict(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $district = $client->getContainer()->get('doctrine')
             ->getRepository(District::class)
@@ -79,7 +79,7 @@ final class DistrictControllerTest extends WebTestCase
      */
     public function testAdminDeleteDistrict(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/en/admin/locations/district');
 

@@ -12,20 +12,9 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 final class PropertyService
 {
-    /**
-     * @var UserPropertyRepository
-     */
-    private $repository;
-
-    /**
-     * @var RequestToArrayTransformer
-     */
-    private $transformer;
-
-    /**
-     * @var TokenStorageInterface
-     */
-    private $tokenStorage;
+    private UserPropertyRepository $repository;
+    private RequestToArrayTransformer $transformer;
+    private TokenStorageInterface $tokenStorage;
 
     public function __construct(
         UserPropertyRepository $repository,

@@ -10,7 +10,7 @@ use Symfony\Component\Validator\ConstraintValidator;
 
 final class RegisteredUserValidator extends ConstraintValidator
 {
-    private $userRepository;
+    private UserRepository $userRepository;
 
     public function __construct(UserRepository $repository)
     {

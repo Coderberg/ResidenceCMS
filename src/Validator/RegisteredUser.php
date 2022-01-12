@@ -11,8 +11,5 @@ use Symfony\Component\Validator\Constraint;
  */
 class RegisteredUser extends Constraint
 {
-    /**
-     * @var string
-     */
-    public $message = 'user_not_found';
+    public string $message = 'user_not_found';
 }

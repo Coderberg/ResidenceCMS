@@ -8,7 +8,7 @@ use App\Dto\FeedbackDto;
 
 final class SendFeedback
 {
-    private $feedback;
+    private FeedbackDto $feedback;
 
     public function __construct(FeedbackDto $feedback)
     {

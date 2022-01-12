@@ -12,15 +12,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 final class CityService
 {
-    /**
-     * @var RequestToArrayTransformer
-     */
-    private $transformer;
-
-    /**
-     * @var FilterRepository
-     */
-    private $repository;
+    private RequestToArrayTransformer $transformer;
+    private FilterRepository $repository;
 
     public function __construct(RequestToArrayTransformer $transformer, FilterRepository $repository)
     {

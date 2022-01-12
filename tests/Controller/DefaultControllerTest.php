@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller;
 
+use Generator;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -14,7 +15,7 @@ final class DefaultControllerTest extends WebTestCase
      */
     public function testPublicUrls(string $url): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         $client->request('GET', $url);
         $this->assertResponseIsSuccessful(sprintf('The %s public URL loads correctly.', $url));
     }
@@ -24,7 +25,7 @@ final class DefaultControllerTest extends WebTestCase
      */
     public function testSecureUrls(string $url): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         $client->request('GET', $url);
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_FOUND, $response->getStatusCode());
@@ -37,12 +38,12 @@ final class DefaultControllerTest extends WebTestCase
 
     public function test404(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         $client->request('GET', '/en/wrong-url');
         $this->assertTrue($client->getResponse()->isNotFound());
     }
 
-    public function getPublicUrls()
+    public function getPublicUrls(): Generator
     {
         yield ['/en/'];
         yield ['/en/?page=2'];
@@ -54,7 +55,7 @@ final class DefaultControllerTest extends WebTestCase
         yield ['/en/?city=0&deal_type=0&category=0&page=2'];
     }
 
-    public function getSecureUrls()
+    public function getSecureUrls(): Generator
     {
         yield ['/en/admin'];
         yield ['/en/admin/property'];

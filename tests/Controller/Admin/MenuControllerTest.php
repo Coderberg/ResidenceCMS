@@ -25,7 +25,7 @@ final class MenuControllerTest extends WebTestCase
      */
     public function testAdminNewItem(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/en/admin/menu/new');
 
@@ -53,7 +53,7 @@ final class MenuControllerTest extends WebTestCase
      */
     public function testAdminEditItem(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $item = $client->getContainer()->get('doctrine')
             ->getRepository(Menu::class)
@@ -84,7 +84,7 @@ final class MenuControllerTest extends WebTestCase
      */
     public function testAdminSortItems(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
         $crawler = $client->request('GET', '/en/admin/menu');
         $token = $crawler->filter('#menu')->attr('data-token');
         $items = $client->getContainer()->get('doctrine')
@@ -125,7 +125,7 @@ final class MenuControllerTest extends WebTestCase
      */
     public function testAdminDeleteItem(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $item = $client->getContainer()->get('doctrine')
             ->getRepository(Menu::class)->findOneBy([

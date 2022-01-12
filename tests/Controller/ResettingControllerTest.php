@@ -11,7 +11,7 @@ final class ResettingControllerTest extends WebTestCase
 {
     public function testPasswordReset(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         $crawler = $client->request('GET', '/en/password/reset');
 
         $this->assertResponseIsSuccessful();
@@ -37,7 +37,7 @@ final class ResettingControllerTest extends WebTestCase
 
     public function testChangePassword(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         $client->followRedirects(true);
 
         $user = $client->getContainer()->get('doctrine')
@@ -58,7 +58,7 @@ final class ResettingControllerTest extends WebTestCase
 
     public function testLogin(): void
     {
-        $client = static::createClient([], [
+        $client = self::createClient([], [
             'PHP_AUTH_USER' => 'admin',
             'PHP_AUTH_PW' => 'admin',
         ]);

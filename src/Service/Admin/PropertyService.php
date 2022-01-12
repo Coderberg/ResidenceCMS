@@ -15,20 +15,9 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 final class PropertyService extends AbstractService
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $em;
-
-    /**
-     * @var MessageBusInterface
-     */
-    private $messageBus;
-
-    /**
-     * @var Slugger
-     */
-    private $slugger;
+    private EntityManagerInterface $em;
+    private MessageBusInterface $messageBus;
+    private Slugger $slugger;
 
     public function __construct(
         CsrfTokenManagerInterface $tokenManager,

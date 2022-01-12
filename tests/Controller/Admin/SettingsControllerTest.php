@@ -18,7 +18,7 @@ final class SettingsControllerTest extends WebTestCase
 
     public function testAdminEditSettings(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $title = $client->getContainer()->get('doctrine')
             ->getRepository(Settings::class)->findOneBy(['setting_name' => 'title'])->getSettingValue();
@@ -39,7 +39,7 @@ final class SettingsControllerTest extends WebTestCase
 
     public function testPublicSettings(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $crawler = $client->request('GET', '/en/');
 
@@ -65,7 +65,7 @@ final class SettingsControllerTest extends WebTestCase
 
     public function testChangeBackSettings(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $title = $client->getContainer()->get('doctrine')
                 ->getRepository(Settings::class)->findOneBy(['setting_name' => 'title'])->getSettingValue();
@@ -86,7 +86,7 @@ final class SettingsControllerTest extends WebTestCase
 
     public function testChangedBackSettings(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $crawler = $client->request('GET', '/en/');
 
@@ -111,7 +111,7 @@ final class SettingsControllerTest extends WebTestCase
 
     public function testUploadHeaderImage(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/en/admin/setting/header');
         $this->assertSelectorTextContains('html', 'Header settings');
@@ -126,7 +126,7 @@ final class SettingsControllerTest extends WebTestCase
 
     public function testUploadLogoImage(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/en/admin/setting/header');
         $this->assertSelectorTextContains('html', 'Header settings');
@@ -141,7 +141,7 @@ final class SettingsControllerTest extends WebTestCase
 
     public function testDeleteHeaderImage(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/en/admin/setting/header');
         $this->assertSelectorExists('.remove-header_image');
@@ -152,7 +152,7 @@ final class SettingsControllerTest extends WebTestCase
 
     public function testDeleteLogoImage(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/en/admin/setting/header');
         $this->assertSelectorExists('.remove-logo_image');
@@ -163,7 +163,7 @@ final class SettingsControllerTest extends WebTestCase
 
     public function testDeletedHeaderImage(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $this->assertEmpty($client->getContainer()->get('doctrine')
             ->getRepository(Settings::class)->findOneBy([
@@ -173,7 +173,7 @@ final class SettingsControllerTest extends WebTestCase
 
     public function testDeletedLogoImage(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $this->assertEmpty($client->getContainer()->get('doctrine')
             ->getRepository(Settings::class)->findOneBy([

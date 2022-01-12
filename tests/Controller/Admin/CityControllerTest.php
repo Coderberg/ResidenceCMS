@@ -24,7 +24,7 @@ final class CityControllerTest extends WebTestCase
      */
     public function testAdminNewCity(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/en/admin/locations/city/new');
 
@@ -55,7 +55,7 @@ final class CityControllerTest extends WebTestCase
      */
     public function testAdminEditCity(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $city = $client->getContainer()
             ->get('doctrine')->getRepository(City::class)
@@ -90,7 +90,7 @@ final class CityControllerTest extends WebTestCase
      */
     public function testAdminDeleteCity(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $city = $client->getContainer()->get('doctrine')
             ->getRepository(City::class)->findOneBy([

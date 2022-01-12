@@ -24,7 +24,7 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testProperty(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         // the service container is always available via the test client
         $property = $client->getContainer()
             ->get('doctrine')
@@ -50,7 +50,7 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testSearch(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         $repository = $client->getContainer()->get('doctrine')
             ->getRepository(City::class);
 
@@ -74,7 +74,7 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testSearchFilter(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         $repository = $client->getContainer()->get('doctrine')
             ->getRepository(Settings::class);
 

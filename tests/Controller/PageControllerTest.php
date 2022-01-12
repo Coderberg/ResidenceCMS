@@ -12,7 +12,7 @@ final class PageControllerTest extends WebTestCase
 {
     public function testPage(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         // the service container is always available via the test client
         $page = $client->getContainer()
             ->get('doctrine')
@@ -27,7 +27,7 @@ final class PageControllerTest extends WebTestCase
 
     public function testContactPage(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         $page = $client->getContainer()
             ->get('doctrine')
             ->getRepository(Page::class)

@@ -14,15 +14,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class SendFeedbackHandler implements MessageHandlerInterface
 {
-    /**
-     * @var Mailer
-     */
-    private $mailer;
-
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
+    private Mailer $mailer;
+    private TranslatorInterface $translator;
 
     public function __construct(Mailer $mailer, TranslatorInterface $translator)
     {

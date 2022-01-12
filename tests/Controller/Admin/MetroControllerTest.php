@@ -24,7 +24,7 @@ final class MetroControllerTest extends WebTestCase
      */
     public function testAdminNewStation(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/en/admin/locations/metro/new');
 
@@ -50,7 +50,7 @@ final class MetroControllerTest extends WebTestCase
      */
     public function testAdminEditStation(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $station = $client->getContainer()->get('doctrine')
             ->getRepository(Metro::class)
@@ -80,7 +80,7 @@ final class MetroControllerTest extends WebTestCase
      */
     public function testAdminDeleteStation(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $station = $client->getContainer()->get('doctrine')
             ->getRepository(Metro::class)->findOneBy([

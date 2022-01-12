@@ -24,7 +24,7 @@ final class CategoryControllerTest extends WebTestCase
      */
     public function testAdminNewCategory(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
         $crawler = $client->request('GET', '/en/admin/category/new');
 
         $form = $crawler->selectButton('Create category')->form([
@@ -49,7 +49,7 @@ final class CategoryControllerTest extends WebTestCase
      */
     public function testAdminEditCategory(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $category = $client->getContainer()->get('doctrine')
             ->getRepository(Category::class)
@@ -79,7 +79,7 @@ final class CategoryControllerTest extends WebTestCase
      */
     public function testAdminDeleteCategory(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $category = $client->getContainer()->get('doctrine')
             ->getRepository(Category::class)->findOneBy([

@@ -13,12 +13,8 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 final class UserService extends AbstractService
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $em;
-
-    private $transformer;
+    private EntityManagerInterface $em;
+    private UserTransformer $transformer;
 
     public function __construct(
         CsrfTokenManagerInterface $tokenManager,

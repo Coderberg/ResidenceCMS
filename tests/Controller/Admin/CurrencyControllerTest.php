@@ -23,7 +23,7 @@ final class CurrencyControllerTest extends WebTestCase
      */
     public function testAdminNewCurrency(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/en/admin/currency/new');
 
@@ -48,7 +48,7 @@ final class CurrencyControllerTest extends WebTestCase
      */
     public function testAdminEditCurrency(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $currency = $client->getContainer()->get('doctrine')
             ->getRepository(Currency::class)
@@ -79,7 +79,7 @@ final class CurrencyControllerTest extends WebTestCase
      */
     public function testAdminDeleteCurrency(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $currency = $client->getContainer()->get('doctrine')
             ->getRepository(Currency::class)->findOneBy([

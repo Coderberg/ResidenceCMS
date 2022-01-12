@@ -22,7 +22,7 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testIndex(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
 
         $crawler = $client->request('GET', '/en/user/property');
         $this->assertResponseIsSuccessful(sprintf('The %s public URL loads correctly.', '/user/account'));
@@ -35,7 +35,7 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testUnpublish(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
         $crawler = $client->request('GET', '/en/user/property');
         $link = $crawler->filter('.btn-outline-secondary')->first()->link();
         $client->request('GET', $link->getUri());
@@ -53,7 +53,7 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testEditingForbidden(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
 
         $user = $client->getContainer()->get('doctrine')
             ->getRepository(User::class)
@@ -72,7 +72,7 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testPublish(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
         $crawler = $client->request('GET', '/en/user/property?state=unpublished');
         $link = $crawler->filter('.btn-outline-secondary')->first()->link();
         $client->request('GET', $link->getUri());
@@ -90,7 +90,7 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testNewProperty(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
 
         $crawler = $client->request('GET', '/en/user/property/new');
 
@@ -120,7 +120,7 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testAEditPhoto(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
@@ -139,7 +139,7 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testEditProperty(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
@@ -165,7 +165,7 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testDeleteProperty(): void
     {
-        $client = static::createClient([], [
+        $client = self::createClient([], [
             'PHP_AUTH_USER' => 'admin',
             'PHP_AUTH_PW' => 'admin',
         ]);

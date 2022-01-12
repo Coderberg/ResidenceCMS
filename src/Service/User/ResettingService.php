@@ -16,20 +16,9 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 final class ResettingService extends AbstractService
 {
-    /**
-     * @var ResettingRepository
-     */
-    private $repository;
-
-    /**
-     * @var MessageBusInterface
-     */
-    private $messageBus;
-
-    /**
-     * @var TokenGenerator
-     */
-    private $generator;
+    private ResettingRepository $repository;
+    private MessageBusInterface $messageBus;
+    private TokenGenerator $generator;
 
     public function __construct(
         CsrfTokenManagerInterface $tokenManager,

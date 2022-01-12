@@ -20,15 +20,8 @@ use Symfony\Component\Validator\Validation;
 
 final class FileUploader
 {
-    /**
-     * @var string
-     */
-    private $targetDirectory;
-
-    /**
-     * @var Filesystem
-     */
-    private $fileSystem;
+    private string $targetDirectory;
+    private Filesystem $fileSystem;
 
     public function __construct(string $targetDirectory)
     {

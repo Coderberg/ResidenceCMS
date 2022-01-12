@@ -12,10 +12,7 @@ use Symfony\Component\Security\Core\Security;
 
 class AddAgentFieldSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var Security
-     */
-    private $security;
+    private Security $security;
 
     public function __construct(Security $security)
     {

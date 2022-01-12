@@ -16,10 +16,7 @@ use Symfony\Component\Validator\ConstraintViolation;
 
 abstract class AbstractPhotoController extends AbstractController
 {
-    /**
-     * @var ManagerRegistry
-     */
-    protected $doctrine;
+    protected ManagerRegistry $doctrine;
 
     public function __construct(ManagerRegistry $doctrine)
     {

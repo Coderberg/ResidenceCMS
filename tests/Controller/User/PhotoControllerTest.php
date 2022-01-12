@@ -18,7 +18,7 @@ final class PhotoControllerTest extends WebTestCase
 
     public function testEditingForbidden(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
 
         $user = $client->getContainer()->get('doctrine')
             ->getRepository(User::class)
@@ -34,7 +34,7 @@ final class PhotoControllerTest extends WebTestCase
 
     public function testUploadPhoto(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
@@ -93,7 +93,7 @@ final class PhotoControllerTest extends WebTestCase
 
     public function testDeletePhoto(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)

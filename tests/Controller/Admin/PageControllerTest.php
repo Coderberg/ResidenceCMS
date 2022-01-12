@@ -26,7 +26,7 @@ final class PageControllerTest extends WebTestCase
      */
     public function testAdminNewPage(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
         $crawler = $client->request('GET', '/en/admin/page/new');
 
         $form = $crawler->selectButton('Create page')->form([
@@ -63,7 +63,7 @@ final class PageControllerTest extends WebTestCase
      */
     public function testAdminEditPage(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $page = $client->getContainer()->get('doctrine')
             ->getRepository(Page::class)
@@ -94,7 +94,7 @@ final class PageControllerTest extends WebTestCase
      */
     public function testAdminDeletePage(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $page = $client->getContainer()->get('doctrine')
             ->getRepository(Page::class)->findOneBy([

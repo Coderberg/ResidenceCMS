@@ -8,10 +8,7 @@ use App\Entity\Property;
 
 class DeletePhotos
 {
-    /**
-     * @var Property
-     */
-    private $property;
+    private Property $property;
 
     public function __construct(Property $property)
     {

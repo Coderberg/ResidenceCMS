@@ -26,7 +26,7 @@ final class PropertyControllerTest extends WebTestCase
      */
     public function testAdminNewProperty(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/en/admin/property/new');
 
@@ -57,7 +57,7 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testAdminEditPhoto(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
@@ -76,7 +76,7 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testAdminEditProperty(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
@@ -118,7 +118,7 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testAdminDeletePhoto(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
@@ -136,7 +136,7 @@ final class PropertyControllerTest extends WebTestCase
      */
     public function testAdminDeleteProperty(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
