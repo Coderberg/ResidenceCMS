@@ -93,13 +93,20 @@ final class MenuControllerTest extends WebTestCase
 
         $itemsArray = array_map(fn ($item) => $item->getId(), $items);
 
-        $client->request('POST', '/en/admin/menu/sort', [
+        $uri = '/en/admin/menu/sort';
+        $client->request('POST', $uri, [
             'csrf-token' => $token,
             'items' => array_reverse($itemsArray),
         ]);
+        $this->assertResponseStatusCodeSame(419);
 
-        $client->request('POST', '/en/admin/menu/sort', [
-            'csrf-token' => $token,
+        $client->request('POST', $uri, [
+            'csrf_token' => $token,
+            'items' => array_reverse($itemsArray),
+        ]);
+
+        $client->request('POST', $uri, [
+            'csrf_token' => $token,
             'items' => $itemsArray,
         ]);
 

@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Validator\ConstraintViolation;
 
@@ -52,12 +51,8 @@ final class SettingsService extends AbstractService
      *
      * @throws \Exception
      */
-    public function uploadImage(string $type, Request $request): Response
+    public function uploadImage(string $type, Request $request): JsonResponse
     {
-        if (!$this->isCsrfTokenValid('csrf-token', $request->request->get('csrf-token'))) {
-            return new JsonResponse(['status' => 'fail'], 419);
-        }
-
         /** @var UploadedFile $uploadedFile */
         $uploadedFile = $request->files->get('file');
 

@@ -28,11 +28,11 @@
 
                     <form action="{{ path('user_photo_upload', {id: property_id}) }}" method="POST"
                           enctype="multipart/form-data"
-                          data-token="{{ csrf_token('csrf-token') }}"
+                          data-token="{{ csrf_token('csrf_token') }}"
                           class="dropzone js-photo-dropzone">
                         <div class="fallback">
                             <input name="file" type="file" accept="image/*" multiple/>
-                            <input name="csrf-token" type="hidden" value="{{ csrf_token('csrf-token') }}" />
+                            <input name="csrf_token" type="hidden" value="{{ csrf_token('csrf_token') }}" />
                         </div>
                     </form>
 
