@@ -25,7 +25,7 @@ final class MenuControllerTest extends WebTestCase
      */
     public function testAdminNewItem(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/en/admin/menu/new');
 
@@ -51,9 +51,9 @@ final class MenuControllerTest extends WebTestCase
     /**
      * This test changes the database contents by editing a Menu Item.
      */
-    public function testAdminEditItem()
+    public function testAdminEditItem(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $item = $client->getContainer()->get('doctrine')
             ->getRepository(Menu::class)
@@ -82,18 +82,16 @@ final class MenuControllerTest extends WebTestCase
     /**
      * This test changes the database contents by sorting Menu Items.
      */
-    public function testAdminSortItems()
+    public function testAdminSortItems(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
         $crawler = $client->request('GET', '/en/admin/menu');
         $token = $crawler->filter('#menu')->attr('data-token');
         $items = $client->getContainer()->get('doctrine')
             ->getRepository(Menu::class)
             ->findItems();
 
-        $itemsArray = array_map(function ($item) {
-            return $item->getId();
-        }, $items);
+        $itemsArray = array_map(fn ($item) => $item->getId(), $items);
 
         $uri = '/en/admin/menu/sort';
         $client->request('POST', $uri, [
@@ -125,9 +123,9 @@ final class MenuControllerTest extends WebTestCase
     /**
      * This test changes the database contents by deleting a test Item.
      */
-    public function testAdminDeleteItem()
+    public function testAdminDeleteItem(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $item = $client->getContainer()->get('doctrine')
             ->getRepository(Menu::class)->findOneBy([

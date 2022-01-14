@@ -21,9 +21,9 @@ final class FeatureControllerTest extends WebTestCase
     /**
      * This test changes the database contents by creating a new Feature.
      */
-    public function testAdminNewFeature()
+    public function testAdminNewFeature(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/en/admin/feature/new');
 
@@ -45,9 +45,9 @@ final class FeatureControllerTest extends WebTestCase
     /**
      * This test changes the database contents by editing a Feature.
      */
-    public function testAdminEditFeature()
+    public function testAdminEditFeature(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $feature = $client->getContainer()->get('doctrine')
             ->getRepository(Feature::class)
@@ -75,9 +75,9 @@ final class FeatureControllerTest extends WebTestCase
     /**
      * This test changes the database contents by deleting a test Feature.
      */
-    public function testAdminDeleteFeature()
+    public function testAdminDeleteFeature(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $feature = $client->getContainer()->get('doctrine')
             ->getRepository(Feature::class)->findOneBy([

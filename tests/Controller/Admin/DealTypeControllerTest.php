@@ -22,9 +22,9 @@ final class DealTypeControllerTest extends WebTestCase
     /**
      * This test changes the database contents by creating a new Deal Type.
      */
-    public function testAdminNewDealType()
+    public function testAdminNewDealType(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/en/admin/deal_type/new');
 
@@ -48,9 +48,9 @@ final class DealTypeControllerTest extends WebTestCase
     /**
      * This test changes the database contents by editing a Deal Type.
      */
-    public function testAdminEditDealType()
+    public function testAdminEditDealType(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $dealType = $client->getContainer()->get('doctrine')
             ->getRepository(DealType::class)
@@ -78,9 +78,9 @@ final class DealTypeControllerTest extends WebTestCase
     /**
      * This test changes the database contents by deleting a test Deal Type.
      */
-    public function testAdminDeleteDealType()
+    public function testAdminDeleteDealType(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $dealType = $client->getContainer()->get('doctrine')
             ->getRepository(DealType::class)->findOneBy([

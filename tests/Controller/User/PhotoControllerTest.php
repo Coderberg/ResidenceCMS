@@ -16,9 +16,9 @@ final class PhotoControllerTest extends WebTestCase
         'PHP_AUTH_PW' => 'user',
     ];
 
-    public function testEditingForbidden()
+    public function testEditingForbidden(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
 
         $user = $client->getContainer()->get('doctrine')
             ->getRepository(User::class)
@@ -32,9 +32,9 @@ final class PhotoControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(403);
     }
 
-    public function testUploadPhoto()
+    public function testUploadPhoto(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
@@ -53,7 +53,7 @@ final class PhotoControllerTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isSuccessful(), 'response status is 2xx');
     }
 
-    public function testSorting()
+    public function testSorting(): void
     {
         $client = self::createClient([], self::USER);
         $property = $client->getContainer()->get('doctrine')
@@ -63,9 +63,7 @@ final class PhotoControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/en/user/photo/'.$property->getId().'/edit');
         $token = $crawler->filter('form')->attr('data-token');
 
-        $itemsArray = $property->getPhotos()->map(function ($item) {
-            return $item->getId();
-        })->getValues();
+        $itemsArray = $property->getPhotos()->map(fn ($item) => $item->getId())->getValues();
 
         $uri = '/en/user/photo/'.$property->getId().'/sort';
         $client->request('POST', $uri, [
@@ -93,9 +91,9 @@ final class PhotoControllerTest extends WebTestCase
         );
     }
 
-    public function testDeletePhoto()
+    public function testDeletePhoto(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)

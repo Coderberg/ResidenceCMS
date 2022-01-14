@@ -18,9 +18,9 @@ final class UserControllerTest extends WebTestCase
     /**
      * This test changes the database contents by creating a new User.
      */
-    public function testAdminNewUser()
+    public function testAdminNewUser(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
         $crawler = $client->request('GET', '/en/admin/user/new');
 
         $form = $crawler->selectButton('Create user')->form([
@@ -43,9 +43,9 @@ final class UserControllerTest extends WebTestCase
         $this->assertSame('test', $user->getUsername());
     }
 
-    public function testUserPermissions()
+    public function testUserPermissions(): void
     {
-        $client = static::createClient([], [
+        $client = self::createClient([], [
             'PHP_AUTH_USER' => 'test',
             'PHP_AUTH_PW' => 'test',
         ]);
@@ -60,9 +60,9 @@ final class UserControllerTest extends WebTestCase
     /**
      * This test changes the database contents by editing a User.
      */
-    public function testAdminEditUser()
+    public function testAdminEditUser(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $user = $client->getContainer()->get('doctrine')
             ->getRepository(User::class)
@@ -89,9 +89,9 @@ final class UserControllerTest extends WebTestCase
         $this->assertSame('edited', $editedUser->getUsername());
     }
 
-    public function testAdminPermissions()
+    public function testAdminPermissions(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $client->request('GET', '/en/user/property');
         $this->assertResponseIsSuccessful();
@@ -103,9 +103,9 @@ final class UserControllerTest extends WebTestCase
     /**
      * This test changes the database contents by deleting a test User.
      */
-    public function testAdminDeleteUser()
+    public function testAdminDeleteUser(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $user = $client->getContainer()->get('doctrine')
             ->getRepository(User::class)->findOneBy([

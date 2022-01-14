@@ -16,15 +16,8 @@ use Symfony\Component\Validator\ConstraintViolation;
 
 final class SettingsService extends AbstractService
 {
-    /**
-     * @var SettingsRepository
-     */
-    private $repository;
-
-    /**
-     * @var FileUploader
-     */
-    private $fileUploader;
+    private SettingsRepository $repository;
+    private FileUploader $fileUploader;
 
     public function __construct(
         CsrfTokenManagerInterface $tokenManager,

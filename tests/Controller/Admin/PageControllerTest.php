@@ -24,9 +24,9 @@ final class PageControllerTest extends WebTestCase
     /**
      * This test changes the database contents by creating a new Page.
      */
-    public function testAdminNewPage()
+    public function testAdminNewPage(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
         $crawler = $client->request('GET', '/en/admin/page/new');
 
         $form = $crawler->selectButton('Create page')->form([
@@ -61,9 +61,9 @@ final class PageControllerTest extends WebTestCase
     /**
      * This test changes the database contents by editing a Page.
      */
-    public function testAdminEditPage()
+    public function testAdminEditPage(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $page = $client->getContainer()->get('doctrine')
             ->getRepository(Page::class)
@@ -92,9 +92,9 @@ final class PageControllerTest extends WebTestCase
     /**
      * This test changes the database contents by deleting a test Page.
      */
-    public function testAdminDeletePage()
+    public function testAdminDeletePage(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $page = $client->getContainer()->get('doctrine')
             ->getRepository(Page::class)->findOneBy([

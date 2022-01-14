@@ -10,7 +10,7 @@ use Symfony\Component\Console\Tester\CommandTester;
 
 final class ListUsersCommandTest extends KernelTestCase
 {
-    public function testExecute()
+    public function testExecute(): void
     {
         $kernel = self::createKernel();
         $application = new Application($kernel);

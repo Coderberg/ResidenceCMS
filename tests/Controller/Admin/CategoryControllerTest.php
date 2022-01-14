@@ -22,9 +22,9 @@ final class CategoryControllerTest extends WebTestCase
     /**
      * This test changes the database contents by creating a new Category.
      */
-    public function testAdminNewCategory()
+    public function testAdminNewCategory(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
         $crawler = $client->request('GET', '/en/admin/category/new');
 
         $form = $crawler->selectButton('Create category')->form([
@@ -47,9 +47,9 @@ final class CategoryControllerTest extends WebTestCase
     /**
      * This test changes the database contents by editing a Category.
      */
-    public function testAdminEditCategory()
+    public function testAdminEditCategory(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $category = $client->getContainer()->get('doctrine')
             ->getRepository(Category::class)
@@ -77,9 +77,9 @@ final class CategoryControllerTest extends WebTestCase
     /**
      * This test changes the database contents by deleting a test Category.
      */
-    public function testAdminDeleteCategory()
+    public function testAdminDeleteCategory(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $category = $client->getContainer()->get('doctrine')
             ->getRepository(Category::class)->findOneBy([

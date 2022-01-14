@@ -9,20 +9,9 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 trait GetCache
 {
-    /**
-     * @var FilesystemAdapter
-     */
-    private $cache;
-
-    /**
-     * @var ManagerRegistry
-     */
-    private $doctrine;
-
-    /**
-     * @var string
-     */
-    private $persistentObjectName;
+    private FilesystemAdapter $cache;
+    private ManagerRegistry $doctrine;
+    private string $persistentObjectName;
 
     public function __construct(ManagerRegistry $doctrine)
     {
@@ -34,9 +23,7 @@ trait GetCache
     {
         $this->persistentObjectName = $class;
 
-        $count = $this->cache->get($key, function () {
-            return $this->countItems();
-        });
+        $count = $this->cache->get($key, fn () => $this->countItems());
 
         return (int) $count;
     }

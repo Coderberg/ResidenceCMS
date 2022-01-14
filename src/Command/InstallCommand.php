@@ -13,7 +13,7 @@ final class InstallCommand extends Command
 {
     protected static $defaultName = 'app:install';
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setDescription('Install the application');
     }

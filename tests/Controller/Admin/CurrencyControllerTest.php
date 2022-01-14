@@ -21,9 +21,9 @@ final class CurrencyControllerTest extends WebTestCase
     /**
      * This test changes the database contents by creating a new Currency.
      */
-    public function testAdminNewCurrency()
+    public function testAdminNewCurrency(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/en/admin/currency/new');
 
@@ -46,9 +46,9 @@ final class CurrencyControllerTest extends WebTestCase
     /**
      * This test changes the database contents by editing a Currency.
      */
-    public function testAdminEditCurrency()
+    public function testAdminEditCurrency(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $currency = $client->getContainer()->get('doctrine')
             ->getRepository(Currency::class)
@@ -77,9 +77,9 @@ final class CurrencyControllerTest extends WebTestCase
     /**
      * This test changes the database contents by deleting a test Currency.
      */
-    public function testAdminDeleteCurrency()
+    public function testAdminDeleteCurrency(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $currency = $client->getContainer()->get('doctrine')
             ->getRepository(Currency::class)->findOneBy([

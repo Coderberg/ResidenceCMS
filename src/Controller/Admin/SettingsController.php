@@ -15,15 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class SettingsController extends AbstractController
 {
-    /**
-     * @var SettingsRepository
-     */
-    private $repository;
-
-    /**
-     * @var SettingsService
-     */
-    private $service;
+    private SettingsRepository $repository;
+    private SettingsService $service;
 
     public function __construct(SettingsRepository $repository, SettingsService $service)
     {

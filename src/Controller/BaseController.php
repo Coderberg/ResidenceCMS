@@ -16,15 +16,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 abstract class BaseController extends AbstractController
 {
-    /**
-     * @var SettingsRepository
-     */
-    private $settingsRepository;
+    private SettingsRepository $settingsRepository;
 
-    /**
-     * @var ManagerRegistry
-     */
-    protected $doctrine;
+    protected ManagerRegistry $doctrine;
 
     public function __construct(SettingsRepository $settingsRepository, ManagerRegistry $doctrine)
     {

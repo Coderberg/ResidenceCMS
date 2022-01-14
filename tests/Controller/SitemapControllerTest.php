@@ -8,23 +8,23 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class SitemapControllerTest extends WebTestCase
 {
-    public function testSitemap()
+    public function testSitemap(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         $client->request('GET', '/en/sitemap.xml');
         $this->assertResponseHeaderSame('Content-Type', 'text/xml; charset=UTF-8');
     }
 
-    public function testCitiesSitemap()
+    public function testCitiesSitemap(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         $client->request('GET', '/en/sitemap/cities.xml');
         $this->assertResponseHeaderSame('Content-Type', 'text/xml; charset=UTF-8');
     }
 
-    public function testPropertiesSitemap()
+    public function testPropertiesSitemap(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         $client->request('GET', '/en/sitemap/properties.xml');
         $this->assertResponseHeaderSame('Content-Type', 'text/xml; charset=UTF-8');
     }

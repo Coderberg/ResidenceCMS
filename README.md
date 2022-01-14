@@ -1,24 +1,22 @@
-![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Coderberg/ResidenceCMS/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Coderberg/ResidenceCMS/?branch=master) [![Build Status](https://app.travis-ci.com/Coderberg/ResidenceCMS.svg?branch=master)](https://app.travis-ci.com/github/Coderberg/ResidenceCMS) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Coderberg_ResidenceCMS&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=Coderberg_ResidenceCMS) [![StyleCI](https://github.styleci.io/repos/148062622/shield?branch=master)](https://github.styleci.io/repos/148062622?branch=master)
+![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Coderberg/ResidenceCMS/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Coderberg/ResidenceCMS/?branch=master) [![Testing with MySQL](https://github.com/Coderberg/ResidenceCMS/actions/workflows/mysql.yml/badge.svg)](https://github.com/Coderberg/ResidenceCMS/actions/workflows/mysql.yml) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Coderberg_ResidenceCMS&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=Coderberg_ResidenceCMS) [![StyleCI](https://github.styleci.io/repos/148062622/shield?branch=master)](https://github.styleci.io/repos/148062622?branch=master)
 
-ResidenceCMS is a fast and lightweight Property Management System on top of [Symfony 5][1].
-
-The user interface is built with [Bootstrap 4][2].
+ResidenceCMS is a fast and lightweight Property Management System on top of [Symfony 6][1].
 
 ![GitHub](https://raw.githubusercontent.com/Coderberg/ResidenceCMS/master/docs/images/screenshot.png)
 
 ## Requirements
 
-- PHP >= 7.3;
+- PHP 8.0.2 or higher;
 - PDO PHP Extension;
 - GD PHP extension
 - MySQL >= 5.7;
-- And the [usual Symfony application requirements][3].
+- And the [usual Symfony application requirements][2].
 
 ## Installation
 
 1. Install Composer (see http://getcomposer.org/download)
 
-2. Create new project via [Composer][4]
+2. Create new project via [Composer][3]
 
    ```
    $ composer create-project coderberg/residence-cms mywebsite.loc
@@ -67,10 +65,9 @@ The user interface is built with [Bootstrap 4][2].
    ```
 
 ## Additional documentation
-- [How to run Residence CMS in Docker Containers][5]
+- [How to run Residence CMS in Docker Containers][4]
 
 [1]: https://symfony.com/
-[2]: https://getbootstrap.com
-[3]: https://symfony.com/doc/current/reference/requirements.html
-[4]: https://getcomposer.org/doc/03-cli.md#create-project
-[5]: https://github.com/Coderberg/ResidenceCMS/blob/master/docs/docker.md
+[2]: https://symfony.com/doc/current/setup.html#technical-requirements
+[3]: https://getcomposer.org/doc/03-cli.md#create-project
+[4]: https://github.com/Coderberg/ResidenceCMS/blob/master/docs/docker.md

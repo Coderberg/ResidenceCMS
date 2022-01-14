@@ -22,9 +22,9 @@ final class DistrictControllerTest extends WebTestCase
     /**
      * This test changes the database contents by creating a new District.
      */
-    public function testAdminNewDistrict()
+    public function testAdminNewDistrict(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
         $crawler = $client->request('GET', '/en/admin/locations/district/new');
 
         $form = $crawler->selectButton('Create district')->form([
@@ -47,9 +47,9 @@ final class DistrictControllerTest extends WebTestCase
     /**
      * This test changes the database contents by editing an District.
      */
-    public function testAdminEditDistrict()
+    public function testAdminEditDistrict(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $district = $client->getContainer()->get('doctrine')
             ->getRepository(District::class)
@@ -77,9 +77,9 @@ final class DistrictControllerTest extends WebTestCase
     /**
      * This test changes the database contents by deleting a test District.
      */
-    public function testAdminDeleteDistrict()
+    public function testAdminDeleteDistrict(): void
     {
-        $client = static::createClient([], self::SERVER);
+        $client = self::createClient([], self::SERVER);
 
         $crawler = $client->request('GET', '/en/admin/locations/district');
 

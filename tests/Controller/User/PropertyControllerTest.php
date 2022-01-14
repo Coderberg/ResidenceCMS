@@ -20,9 +20,9 @@ final class PropertyControllerTest extends WebTestCase
         'PHP_AUTH_PW' => 'user',
     ];
 
-    public function testIndex()
+    public function testIndex(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
 
         $crawler = $client->request('GET', '/en/user/property');
         $this->assertResponseIsSuccessful(sprintf('The %s public URL loads correctly.', '/user/account'));
@@ -33,9 +33,9 @@ final class PropertyControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(403);
     }
 
-    public function testUnpublish()
+    public function testUnpublish(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
         $crawler = $client->request('GET', '/en/user/property');
         $link = $crawler->filter('.btn-outline-secondary')->first()->link();
         $client->request('GET', $link->getUri());
@@ -51,9 +51,9 @@ final class PropertyControllerTest extends WebTestCase
         );
     }
 
-    public function testEditingForbidden()
+    public function testEditingForbidden(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
 
         $user = $client->getContainer()->get('doctrine')
             ->getRepository(User::class)
@@ -70,9 +70,9 @@ final class PropertyControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(403);
     }
 
-    public function testPublish()
+    public function testPublish(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
         $crawler = $client->request('GET', '/en/user/property?state=unpublished');
         $link = $crawler->filter('.btn-outline-secondary')->first()->link();
         $client->request('GET', $link->getUri());
@@ -88,9 +88,9 @@ final class PropertyControllerTest extends WebTestCase
         );
     }
 
-    public function testNewProperty()
+    public function testNewProperty(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
 
         $crawler = $client->request('GET', '/en/user/property/new');
 
@@ -118,9 +118,9 @@ final class PropertyControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
     }
 
-    public function testAEditPhoto()
+    public function testAEditPhoto(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
@@ -137,9 +137,9 @@ final class PropertyControllerTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isSuccessful(), 'response status is 2xx');
     }
 
-    public function testEditProperty()
+    public function testEditProperty(): void
     {
-        $client = static::createClient([], self::USER);
+        $client = self::createClient([], self::USER);
 
         $property = $client->getContainer()->get('doctrine')
             ->getRepository(Property::class)
@@ -163,9 +163,9 @@ final class PropertyControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
     }
 
-    public function testDeleteProperty()
+    public function testDeleteProperty(): void
     {
-        $client = static::createClient([], [
+        $client = self::createClient([], [
             'PHP_AUTH_USER' => 'admin',
             'PHP_AUTH_PW' => 'admin',
         ]);

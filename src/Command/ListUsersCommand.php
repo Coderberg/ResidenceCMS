@@ -17,10 +17,7 @@ final class ListUsersCommand extends Command
 {
     protected static $defaultName = 'app:list-users';
 
-    /**
-     * @var UserRepository
-     */
-    private $users;
+    private UserRepository $users;
 
     public function __construct(UserRepository $users)
     {
@@ -28,7 +25,7 @@ final class ListUsersCommand extends Command
         $this->users = $users;
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setDescription('Lists all the existing users')
