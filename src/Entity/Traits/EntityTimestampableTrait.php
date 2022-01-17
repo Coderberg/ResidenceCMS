@@ -11,12 +11,12 @@ trait EntityTimestampableTrait
     /**
      * @ORM\Column(type="datetime", nullable=true, options={"default"="CURRENT_TIMESTAMP"})
      */
-    private $createdAt;
+    private ?\DateTimeInterface $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true, options={"default"="CURRENT_TIMESTAMP"})
      */
-    private $updatedAt;
+    private ?\DateTimeInterface $updatedAt;
 
     public function getCreatedAt(): ?\DateTimeInterface
     {

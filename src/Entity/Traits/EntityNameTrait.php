@@ -11,12 +11,12 @@ trait EntityNameTrait
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private ?string $name;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $slug;
+    private ?string $slug;
 
     public function getName(): ?string
     {

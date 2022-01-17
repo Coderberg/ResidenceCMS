@@ -26,43 +26,43 @@ class Page
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $title;
+    private ?string $title;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $description;
+    private ?string $description;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $slug;
+    private ?string $slug;
 
     /**
      * @ORM\Column(type="string", length=2, options={"default":"en"})
      */
-    private $locale;
+    private string $locale;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $content;
+    private ?string $content;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $show_in_menu;
+    private ?bool $show_in_menu;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $add_contact_form;
+    private ?bool $add_contact_form;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Email()
      */
-    private $contact_email_address;
+    private ?string $contact_email_address;
 
     public function getTitle(): ?string
     {

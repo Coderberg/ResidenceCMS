@@ -18,12 +18,12 @@ class Profile
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $full_name;
+    private ?string $full_name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $phone;
+    private ?string $phone;
 
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="profile", cascade={"persist", "remove"})

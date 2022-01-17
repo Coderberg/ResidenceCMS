@@ -11,12 +11,12 @@ trait EntityMetaTrait
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $meta_title;
+    private ?string $meta_title;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $meta_description;
+    private ?string $meta_description;
 
     public function getMetaTitle(): ?string
     {

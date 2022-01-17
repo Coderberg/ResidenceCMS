@@ -19,12 +19,12 @@ class Settings
     /**
      * @ORM\Column(type="string", length=191, unique=true)
      */
-    private $setting_name;
+    private ?string $setting_name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $setting_value;
+    private ?string $setting_value;
 
     public function getSettingName(): ?string
     {

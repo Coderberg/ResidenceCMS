@@ -25,32 +25,32 @@ class Menu
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $title;
+    private ?string $title;
 
     /**
      * @ORM\Column(type="string", length=2)
      */
-    private $locale;
+    private string $locale;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
      */
-    private $sort_order;
+    private ?int $sort_order;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $url;
+    private ?string $url;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $nofollow;
+    private ?bool $nofollow;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $new_tab;
+    private ?bool $new_tab;
 
     public function getTitle(): ?string
     {

@@ -37,7 +37,7 @@ final class UserTransformer
     private function setEncodedPassword(User $user): User
     {
         $password = $user->getPassword();
-        $user->setPassword($this->passwordHasher->hashPassword($user, $password));
+        $user->setPassword($this->passwordHasher->hashPassword($user, (string) $password));
 
         return $user;
     }
