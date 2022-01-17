@@ -9,14 +9,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 final class FeedbackDto
 {
     /**
-     * @var string|null
      * @Assert\NotBlank()
      * @Assert\Length(min="2", max="100")
      */
     private ?string $from_name;
 
     /**
-     * @var string|null
      * @Assert\NotBlank()
      * @Assert\Email()
      * @Assert\Length(min="6")
@@ -24,20 +22,15 @@ final class FeedbackDto
     private ?string $from_email;
 
     /**
-     * @var string|null
      * @Assert\NotBlank()
      * @Assert\Email()
      * @Assert\Length(min="6")
      */
     private ?string $to_email;
 
-    /**
-     * @var string|null
-     */
     private ?string $subject;
 
     /**
-     * @var string|null
      * @Assert\NotBlank()
      * @Assert\Length(min="14")
      */
