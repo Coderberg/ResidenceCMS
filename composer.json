@@ -51,7 +51,7 @@
         "twig/extra-bundle": "^3.3",
         "twig/intl-extra": "^3.3",
         "twig/string-extra": "^3.3",
-        "twig/twig": "^2.12|^3.0",
+        "twig/twig": "^v3.3.8",
         "voku/portable-ascii": "^1.5"
     },
     "require-dev": {
