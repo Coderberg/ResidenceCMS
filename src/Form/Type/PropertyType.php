@@ -132,7 +132,6 @@ final class PropertyType extends AbstractType
                 'multiple' => true,
                 'required' => false,
                 'label' => 'label.features',
-                //'expanded' => true
             ])
             ->add('property_description', PropertyDescriptionType::class);
 
