@@ -39,17 +39,17 @@ trait EntityLocationTrait
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $address;
+    private ?string $address;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $latitude;
+    private ?string $latitude;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $longitude;
+    private ?string $longitude;
 
     public function getCity(): ?City
     {

@@ -19,7 +19,7 @@ class Feature
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private ?string $name;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Property", mappedBy="features")
@@ -29,7 +29,7 @@ class Feature
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $icon;
+    private ?string $icon;
 
     public function __construct()
     {

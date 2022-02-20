@@ -48,7 +48,7 @@ class City
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $title;
+    private ?string $title;
 
     public function __construct()
     {

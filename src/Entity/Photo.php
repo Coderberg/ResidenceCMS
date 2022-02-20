@@ -31,7 +31,7 @@ class Photo
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $sort_order;
+    private ?int $sort_order;
 
     public function getProperty(): ?Property
     {
@@ -50,7 +50,7 @@ class Photo
         return $this->photo;
     }
 
-    public function setPhoto(string $photo)
+    public function setPhoto(string $photo): static
     {
         $this->photo = $photo;
 

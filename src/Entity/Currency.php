@@ -17,22 +17,22 @@ class Currency
     /**
      * @ORM\Column(type="string", length=32)
      */
-    private $currency_title;
+    private ?string $currency_title;
 
     /**
      * @ORM\Column(type="string", length=3)
      */
-    private $code;
+    private ?string $code;
 
     /**
      * @ORM\Column(type="string", length=12, nullable=true)
      */
-    private $symbol_left;
+    private ?string $symbol_left;
 
     /**
      * @ORM\Column(type="string", length=12, nullable=true)
      */
-    private $symbol_right;
+    private ?string $symbol_right;
 
     public function getCurrencyTitle(): ?string
     {

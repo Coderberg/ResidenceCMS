@@ -9,39 +9,32 @@ use Symfony\Component\Validator\Constraints as Assert;
 final class FeedbackDto
 {
     /**
-     * @var string|null
      * @Assert\NotBlank()
      * @Assert\Length(min="2", max="100")
      */
-    private $from_name;
+    private ?string $from_name;
 
     /**
-     * @var string|null
      * @Assert\NotBlank()
      * @Assert\Email()
      * @Assert\Length(min="6")
      */
-    private $from_email;
+    private ?string $from_email;
 
     /**
-     * @var string|null
      * @Assert\NotBlank()
      * @Assert\Email()
      * @Assert\Length(min="6")
      */
-    private $to_email;
+    private ?string $to_email;
+
+    private ?string $subject;
 
     /**
-     * @var string|null
-     */
-    private $subject;
-
-    /**
-     * @var string|null
      * @Assert\NotBlank()
      * @Assert\Length(min="14")
      */
-    private $message;
+    private ?string $message;
 
     public function getFromName(): ?string
     {
