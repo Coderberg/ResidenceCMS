@@ -14,7 +14,7 @@ $(document).ready(function () {
         $form.dropzone({
             url: $form.attr('action'),
             acceptedFiles: 'image/*',
-            sending: function(file, xhr, formData){
+            sending: function (file, xhr, formData) {
                 formData.append('csrf_token', token);
             },
             queuecomplete: function () {
@@ -52,7 +52,7 @@ $(document).ready(function () {
                 $.ajax({
                     type: 'POST',
                     url: ajaxUrl,
-                    data: {'csrf_token': token, ids: ids }
+                    data: { csrf_token: token, ids: ids }
                 }).done(function () {
                     window.location.reload();
                 });

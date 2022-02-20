@@ -26,7 +26,7 @@ const sendRequest = () => {
         $.ajax({
             method: 'POST',
             url: '/en/admin/menu/sort',
-            data: {'csrf_token': token, items: items}
+            data: { csrf_token: token, items: items }
         });
     }
 };
