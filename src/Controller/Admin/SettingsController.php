@@ -53,7 +53,7 @@ final class SettingsController extends AbstractController
     }
 
     /**
-     * @Route("/admin/setting/header", name="admin_header_settings")
+     * @Route("/admin/settings/header", name="admin_header_settings")
      */
     public function changeHeaderImage(Request $request): Response
     {

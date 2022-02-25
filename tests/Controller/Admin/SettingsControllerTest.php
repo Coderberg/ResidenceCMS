@@ -113,7 +113,7 @@ final class SettingsControllerTest extends WebTestCase
     {
         $client = static::createClient([], self::SERVER);
 
-        $crawler = $client->request('GET', '/en/admin/setting/header');
+        $crawler = $client->request('GET', '/en/admin/settings/header');
         $this->assertSelectorTextContains('html', 'Header settings');
 
         $image = __DIR__.'/../../../public/uploads/images/full/demo/1.jpeg';
@@ -128,7 +128,7 @@ final class SettingsControllerTest extends WebTestCase
     {
         $client = static::createClient([], self::SERVER);
 
-        $crawler = $client->request('GET', '/en/admin/setting/header');
+        $crawler = $client->request('GET', '/en/admin/settings/header');
         $this->assertSelectorTextContains('html', 'Header settings');
 
         $image = __DIR__.'/../../../public/images/logo-square.png';
@@ -143,7 +143,7 @@ final class SettingsControllerTest extends WebTestCase
     {
         $client = static::createClient([], self::SERVER);
 
-        $crawler = $client->request('GET', '/en/admin/setting/header');
+        $crawler = $client->request('GET', '/en/admin/settings/header');
         $this->assertSelectorExists('.remove-header_image');
         $client->submit($crawler->filter('#delete-form-header_image')->form());
 
@@ -154,7 +154,7 @@ final class SettingsControllerTest extends WebTestCase
     {
         $client = static::createClient([], self::SERVER);
 
-        $crawler = $client->request('GET', '/en/admin/setting/header');
+        $crawler = $client->request('GET', '/en/admin/settings/header');
         $this->assertSelectorExists('.remove-logo_image');
         $client->submit($crawler->filter('#delete-form-logo_image')->form());
 

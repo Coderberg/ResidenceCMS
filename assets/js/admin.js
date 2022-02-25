@@ -7,11 +7,10 @@ $(document).ready(() => {
 
     $('.sidebar .nav-item').each(function () {
         let sidebarLink = $('a', this).attr('href');
-        if (currentUrl.includes(sidebarLink)) {
-            $(this).addClass('active');
-        } else if (
-            sidebarLink.includes('locations') &&
-            currentUrl.includes('locations')
+        if (
+            currentUrl.includes(sidebarLink) ||
+            (sidebarLink.includes('locations') &&
+                currentUrl.includes('locations'))
         ) {
             $(this).addClass('active');
         }
