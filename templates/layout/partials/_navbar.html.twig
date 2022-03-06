@@ -24,9 +24,14 @@
 
             {% for item in site.menu %}
 
+                {% if ('https://' not in item.url) %}
+                    {% set url = '/' ~ item.locale ~ item.url %}
+                {% else %}
+                    {% set url = item.url %}
+                {% endif %}
+
                 <li class="nav-item">
-                    <a class="nav-link"
-                       href="/{{ item.locale }}{{ item.url }}"
+                    <a class="nav-link" href="{{ url }}"
                         {% if item.nofollow == true %} rel="nofollow" {% endif %}
                         {% if item.newTab == true %} target="_blank" {% endif %}
                     >

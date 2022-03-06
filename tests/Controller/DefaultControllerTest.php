@@ -35,6 +35,22 @@ final class DefaultControllerTest extends WebTestCase
         );
     }
 
+    /**
+     * @dataProvider getMenuItems
+     */
+    public function testMenuItems(string $url)
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/');
+        $link = $crawler->filter(sprintf('a[href="%s"]', $url))->link();
+        $urlFound = $link->getUri();
+        if (false === mb_strpos($url, 'https://')) {
+            $this->assertSame('http://localhost'.$url, $urlFound);
+        } else {
+            $this->assertSame($url, $urlFound);
+        }
+    }
+
     public function test404()
     {
         $client = static::createClient();
@@ -42,7 +58,7 @@ final class DefaultControllerTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isNotFound());
     }
 
-    public function getPublicUrls()
+    public function getPublicUrls(): \Generator
     {
         yield ['/en/'];
         yield ['/en/?page=2'];
@@ -54,7 +70,7 @@ final class DefaultControllerTest extends WebTestCase
         yield ['/en/?city=0&deal_type=0&category=0&page=2'];
     }
 
-    public function getSecureUrls()
+    public function getSecureUrls(): \Generator
     {
         yield ['/en/admin'];
         yield ['/en/admin/property'];
@@ -62,5 +78,13 @@ final class DefaultControllerTest extends WebTestCase
         yield ['/en/admin/property/1/edit'];
         yield ['/en/admin/settings'];
         yield ['/en/user/property'];
+    }
+
+    public function getMenuItems(): \Generator
+    {
+        yield ['/en/'];
+        yield ['/en/info/about-us'];
+        yield ['/en/info/contact'];
+        yield ['https://github.com/Coderberg/ResidenceCMS'];
     }
 }
