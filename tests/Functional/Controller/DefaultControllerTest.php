@@ -36,6 +36,22 @@ final class DefaultControllerTest extends WebTestCase
         );
     }
 
+    /**
+     * @dataProvider getMenuItems
+     */
+    public function testMenuItems(string $url): void
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/');
+        $link = $crawler->filter(sprintf('a[href="%s"]', $url))->link();
+        $urlFound = $link->getUri();
+        if (false === mb_strpos($url, 'https://')) {
+            $this->assertSame('http://localhost'.$url, $urlFound);
+        } else {
+            $this->assertSame($url, $urlFound);
+        }
+    }
+
     public function test404(): void
     {
         $client = self::createClient();
@@ -63,5 +79,13 @@ final class DefaultControllerTest extends WebTestCase
         yield ['/en/admin/property/1/edit'];
         yield ['/en/admin/settings'];
         yield ['/en/user/property'];
+    }
+
+    public function getMenuItems(): Generator
+    {
+        yield ['/en/'];
+        yield ['/en/info/about-us'];
+        yield ['/en/info/contact'];
+        yield ['https://github.com/Coderberg/ResidenceCMS'];
     }
 }
