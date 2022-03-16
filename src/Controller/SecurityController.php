@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Form\Type\LoginFormType;
+use Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,22 +26,22 @@ final class SecurityController extends BaseController
             return $this->redirectToRoute('user_property');
         }
 
+        $form = $this->createForm(LoginFormType::class);
+
         return $this->render('security/login.html.twig', [
             'site' => $this->site($request),
-            // last username entered by the user (if any)
-            'last_username' => $helper->getLastUsername(),
-            // last authentication error (if any)
             'error' => $helper->getLastAuthenticationError(),
+            'form' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/logout", name="security_logout")
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function logout(): void
     {
-        throw new \Exception('This should never be reached!');
+        throw new Exception('This should never be reached!');
     }
 }

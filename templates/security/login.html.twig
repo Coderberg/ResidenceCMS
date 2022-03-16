@@ -17,68 +17,48 @@
         </div>
     {% endif %}
 
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-header">{{ 'title.login'|trans }}</div>
                 <div class="card-body">
-                    <form action="{{ path('security_login') }}" method="post">
 
-                        <div class="form-group row">
-                            <label for="username" class="col-sm-4 col-form-label text-md-right">
-                                {{ 'label.username'|trans }}
+                    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+                    {{ form_start(form) }}
+                    {{ form_row(form.username) }}
+                    {{ form_row(form.password) }}
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <input type="checkbox" class="" id="remember_me" name="_remember_me"
+                                   checked/>
+
+                            <label for="remember_me">
+                                {{ 'label.remember_me'|trans }}
                             </label>
-                            <div class="col-md-6">
-
-                                <input type="text" id="username" name="_username" value="{{ last_username }}"
-                                       required="required" autofocus="autofocus" class="form-control"/>
-
-                            </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">
-                                {{ 'label.password'|trans }}
-                            </label>
-                            <div class="col-md-6">
+                    </div>
 
-                                <input type="password" id="password" name="_password" required="required"
-                                       class="form-control"/>
-                            </div>
+                    <div class="form-group row mb-0">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary">
+                                {{ 'action.sign_in'|trans }}
+                            </button>
+
+                            <a class="btn btn-link" href="{{ path('password_reset') }}">
+                                {{ 'action.forgot_password'|trans }}
+                            </a>
                         </div>
+                    </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-6">
-                                <input type="checkbox" class="" id="remember_me" name="_remember_me"
-                                       checked/>
+                    {{ form_end(form) }}
 
-                                <label for="remember_me">
-                                    {{ 'label.remember_me'|trans }}
-                                </label>
-                            </div>
-                        </div>
-
-                        <input type="hidden" name="_target_path" value="{{ app.request.get('redirect_to') }}"/>
-                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ 'action.sign_in'|trans }}
-                                </button>
-
-                                <a class="btn btn-link" href="{{ path('password_reset') }}">
-                                    {{ 'action.forgot_password'|trans }}
-                                </a>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
     </div>
-
-    <br><br>
-
 
 {% endblock %}
