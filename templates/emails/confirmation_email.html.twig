@@ -1,0 +1,8 @@
+{% set expiresAt = expiresAtMessageKey | trans(expiresAtMessageData, 'VerifyEmailBundle') %}
+
+{{
+'confirmation.email.message' | trans({
+    '%signedUrl%': signedUrl,
+    '%expiresAt%': expiresAt
+}) | raw
+}}

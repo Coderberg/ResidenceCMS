@@ -65,6 +65,6 @@ final class PropertyVoter extends Voter
             return true;
         }
 
-        return $user === $property->getAuthor();
+        return $user === $property->getAuthor() && $user->isVerified();
     }
 }

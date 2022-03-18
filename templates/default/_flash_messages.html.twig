@@ -10,3 +10,11 @@
         </div>
     {% endfor %}
 {% endfor %}
+
+{% if app.user %}
+    {% if not app.user.isVerified %}
+        <div class="alert alert-dismissible alert-warning mt-2" role="alert">
+            {{ 'message.confirm_email'|trans }}
+        </div>
+    {% endif %}
+{% endif %}

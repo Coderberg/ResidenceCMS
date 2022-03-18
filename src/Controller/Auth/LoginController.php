@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Controller\Auth;
 
+use App\Controller\BaseController;
 use App\Form\Type\LoginFormType;
 use Exception;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-final class SecurityController extends BaseController
+final class LoginController extends BaseController
 {
     /**
      * @Route("/login", name="security_login")
@@ -28,7 +29,7 @@ final class SecurityController extends BaseController
 
         $form = $this->createForm(LoginFormType::class);
 
-        return $this->render('security/login.html.twig', [
+        return $this->render('auth/login.html.twig', [
             'site' => $this->site($request),
             'error' => $helper->getLastAuthenticationError(),
             'form' => $form->createView(),

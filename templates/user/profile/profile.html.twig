@@ -1,6 +1,6 @@
 {% extends 'layout/base.html.twig' %}
 
-{% block title %}{{ 'title.my_properties'|trans }}{% endblock %}
+{% block title %}{{ 'title.my_profile'|trans }}{% endblock %}
 
 {% block body %}
 
@@ -10,13 +10,29 @@
 
             <div class="row">
                 <div class="col-sm-12 mb-3">
-                    <h3>{{ 'title.my_properties'|trans }} (<span
-                            class="js-counter">{{ properties.getTotalItemCount }}</span>)</h3>
+                    <h3>{{ 'title.my_profile'|trans }}</h3>
                 </div>
             </div>
 
-            <!-- Properties -->
-            {{ include('user/property/partials/_properties.html.twig') }}
+            <div class="card full-xs">
+
+                <div class="card-body">
+
+                    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+                    {{ form_start(form) }}
+                    {{ form_row(form.full_name) }}
+                    {{ form_row(form.phone) }}
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">
+                            {{ 'action.save' | trans }}
+                        </button>
+                    </div>
+                    {{ form_end(form) }}
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
         </div>
 
         <div class="col-md-4">
@@ -39,9 +55,6 @@
         </a>
 
     {% endif %}
-
-    {{ knp_pagination_render(properties) }}
-
 {% endblock %}
 
 {% block javascripts %}

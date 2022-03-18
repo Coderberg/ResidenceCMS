@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
         <body>
@@ -44,11 +44,19 @@
             </trans-unit>
             <trans-unit id="menu.login">
                 <source>menu.login</source>
-                <target>Login</target>
+                <target>Log in</target>
+            </trans-unit>
+            <trans-unit id="menu.register">
+                <source>menu.register</source>
+                <target>Register</target>
+            </trans-unit>
+            <trans-unit id="menu.profile">
+                <source>menu.profile</source>
+                <target>My Profile</target>
             </trans-unit>
             <trans-unit id="menu.logout">
                 <source>menu.logout</source>
-                <target>Logout</target>
+                <target>Log Out</target>
             </trans-unit>
 
             <trans-unit id="yes">
@@ -201,6 +209,18 @@
                 <source>message.emailed_reset_link</source>
                 <target>We have e-mailed your password reset link!</target>
             </trans-unit>
+            <trans-unit id="message.email_verified">
+                <source>message.email_verified</source>
+                <target>Your email address has been verified.</target>
+            </trans-unit>
+            <trans-unit id="message.confirm_email">
+                <source>message.confirm_email</source>
+                <target>
+                    To use your account, you need to confirm your email address.
+                    Check your email and locate the confirmation email.
+                    Follow the steps in the email to confirm your email address.
+                </target>
+            </trans-unit>
 
             <trans-unit id="widget.contact_information">
                 <source>widget.contact_information</source>
@@ -274,6 +294,10 @@
             <trans-unit id="action.sign_in">
                 <source>action.sign_in</source>
                 <target>Sign in</target>
+            </trans-unit>
+            <trans-unit id="action.register">
+                <source>action.register</source>
+                <target>Create account</target>
             </trans-unit>
             <trans-unit id="action.forgot_password">
                 <source>action.forgot_password</source>
@@ -366,6 +390,10 @@
                 <target>Are you sure you want to delete this user?</target>
             </trans-unit>
 
+            <trans-unit id="title.my_profile">
+                <source>title.my_profile</source>
+                <target>My profile</target>
+            </trans-unit>
             <trans-unit id="title.my_properties">
                 <source>title.my_properties</source>
                 <target>My properties</target>
@@ -377,6 +405,10 @@
             <trans-unit id="title.login">
                 <source>title.login</source>
                 <target>Secure Sign in</target>
+            </trans-unit>
+            <trans-unit id="title.register">
+                <source>title.register</source>
+                <target>Register</target>
             </trans-unit>
             <trans-unit id="title.reset_password">
                 <source>title.reset_password</source>
@@ -614,6 +646,14 @@
             <trans-unit id="label.email">
                 <source>label.email</source>
                 <target>Email</target>
+            </trans-unit>
+            <trans-unit id="label.email_verified">
+                <source>label.email_verified</source>
+                <target>Email Verified</target>
+            </trans-unit>
+            <trans-unit id="label.agree">
+                <source>label.agree</source>
+                <target>I agree to the terms and conditions.</target>
             </trans-unit>
             <trans-unit id="label.password">
                 <source>label.password</source>
@@ -1007,6 +1047,25 @@
                     Hello %username%!
                     To reset your password - please visit %confirmationUrl%
                     Regards, the Team.
+                </target>
+            </trans-unit>
+            <trans-unit id="confirmation.email.subject">
+                <source>confirmation.email.subject</source>
+                <target>Please Confirm your Email</target>
+            </trans-unit>
+            <trans-unit id="confirmation.email.message">
+                <source>confirmation.email.message</source>
+                <target>
+                    Hello!
+                    Please confirm your email address by clicking the following link:
+                    %signedUrl%
+
+                    If you're having trouble clicking the link, copy and paste the URL into your web browser.
+
+                    This link will expire in %expiresAt%.
+
+                    If you did not create an account, no further action is required.
+                    Cheers!
                 </target>
             </trans-unit>
         </body>
