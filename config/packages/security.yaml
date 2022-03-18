@@ -35,6 +35,7 @@ security:
                 # Reference: https://symfony.com/doc/current/reference/configuration/security.html#username-parameter
                 username_parameter: login_form[username]
                 password_parameter: login_form[password]
+                csrf_parameter: login_form[_csrf_token]
                 # Secure the login form against CSRF
                 # Reference: https://symfony.com/doc/current/security/csrf.html
                 enable_csrf: true

@@ -29,8 +29,6 @@
                     {{ form_row(form.username) }}
                     {{ form_row(form.password) }}
 
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
-
                     <div class="form-group row">
                         <div class="col-md-12">
                             <input type="checkbox" class="" id="remember_me" name="_remember_me"
