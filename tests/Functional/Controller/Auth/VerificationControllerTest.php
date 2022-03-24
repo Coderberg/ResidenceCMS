@@ -42,6 +42,10 @@ final class VerificationControllerTest extends WebTestCase
         $this->assertSelectorTextContains('.alert-warning', 'you need to confirm your email address');
         $this->assertFalse($user->isVerified());
 
+        // Make sure an unverified user cannot add new properties
+        $this->client->request('GET', '/en/user/property/new');
+        $this->assertResponseRedirects('/en/user/property');
+
         // Generate link
         $url = $this->generateEmailConfirmationLink($user);
         $this->client->request('GET', $url);

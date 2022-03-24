@@ -39,6 +39,9 @@ final class PropertyController extends BaseController
          * @var User $user
          */
         $user = $this->getUser();
+        if (!$user->isVerified()) {
+            return $this->redirectToRoute('user_property');
+        }
         $property = new Property();
         $property->setAuthor($user);
         $form = $this->createForm(PropertyType::class, $property);
