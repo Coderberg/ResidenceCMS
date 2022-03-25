@@ -47,6 +47,7 @@ final class AppFixtures extends Fixture
             ['show_filter_by_bedrooms', '0'],
             ['show_filter_by_guests', '0'],
             ['show_language_selector', '1'],
+            ['anyone_can_register', '0'],
         ];
     }
 }

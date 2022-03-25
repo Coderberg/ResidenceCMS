@@ -197,6 +197,10 @@
                 <source>message.was_sent</source>
                 <target>Your message was sent successfully. Thanks.</target>
             </trans-unit>
+            <trans-unit id="message.registration_suspended">
+                <source>message.registration_suspended</source>
+                <target>Registration of new users has been temporarily suspended.</target>
+            </trans-unit>
             <trans-unit id="message.token_expired">
                 <source>message.token_expired</source>
                 <target>Sorry, your token has expired. Please try again.</target>
@@ -578,6 +582,10 @@
             <trans-unit id="label.settings.show_language_selector">
                 <source>label.settings.show_language_selector</source>
                 <target>Show language selector</target>
+            </trans-unit>
+            <trans-unit id="label.settings.anyone_can_register">
+                <source>label.settings.anyone_can_register</source>
+                <target>Anyone can register</target>
             </trans-unit>
             <trans-unit id="label.settings.currency">
                 <source>label.settings.currency</source>

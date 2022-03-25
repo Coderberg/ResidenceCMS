@@ -9,8 +9,11 @@ use App\Entity\Profile;
 use App\Entity\User;
 use App\Form\Type\RegistrationFormType;
 use App\Message\SendEmailConfirmationLink;
+use App\Repository\SettingsRepository;
 use App\Service\Admin\UserService;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,32 +21,52 @@ use Symfony\Component\Security\Core\Security;
 
 final class RegisterController extends BaseController
 {
-    #[Route('/register', name: 'register')]
-    public function register(
-        Request $request,
+    private Security $security;
+    private MessageBusInterface $messageBus;
+    private UserService $service;
+    private array $settings;
+
+    public function __construct(
         Security $security,
         MessageBusInterface $messageBus,
-        UserService $service): Response
+        UserService $service,
+        SettingsRepository $settingsRepository,
+        ManagerRegistry $doctrine,
+        RequestStack $requestStack
+    ) {
+        parent::__construct($settingsRepository, $doctrine);
+        $this->security = $security;
+        $this->messageBus = $messageBus;
+        $this->service = $service;
+        $this->settings = $this->site($requestStack->getCurrentRequest());
+    }
+
+    #[Route('/register', name: 'register')]
+    public function register(Request $request): Response
     {
-        // if user is already logged in, don't display the registration form again
-        if ($security->isGranted('ROLE_USER')) {
+        if ($this->security->isGranted('ROLE_USER')) {
             return $this->redirectToRoute('user_property');
+        } elseif ('1' !== $this->settings['anyone_can_register']) {
+            $this->addFlash('danger', 'message.registration_suspended');
+
+            return $this->redirectToRoute('property');
         }
+
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setProfile(new Profile());
-            $service->create($user);
-            $messageBus->dispatch(new SendEmailConfirmationLink($user));
+            $this->service->create($user);
+            $this->messageBus->dispatch(new SendEmailConfirmationLink($user));
 
             return $this->redirectToRoute('security_login');
         }
 
         return $this->render('auth/register.html.twig', [
             'registrationForm' => $form->createView(),
-            'site' => $this->site($request),
+            'site' => $this->settings,
         ]);
     }
 }

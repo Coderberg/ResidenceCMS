@@ -197,6 +197,10 @@
                 <source>message.was_sent</source>
                 <target>Ваше сообщение было успешно отправлено. Спасибо.</target>
             </trans-unit>
+            <trans-unit id="message.registration_suspended">
+                <source>message.registration_suspended</source>
+                <target>Регистрация новых пользователей временно приостановлена.</target>
+            </trans-unit>
             <trans-unit id="message.token_expired">
                 <source>message.token_expired</source>
                 <target>Срок действия вашего токена истёк. Попробуйте заново.</target>
@@ -578,6 +582,10 @@
             <trans-unit id="label.settings.show_language_selector">
                 <source>label.settings.show_language_selector</source>
                 <target>Отображать выбор языка</target>
+            </trans-unit>
+            <trans-unit id="label.settings.anyone_can_register">
+                <source>label.settings.anyone_can_register</source>
+                <target>Любой может зарегистрироваться</target>
             </trans-unit>
             <trans-unit id="label.settings.currency">
                 <source>label.settings.currency</source>
