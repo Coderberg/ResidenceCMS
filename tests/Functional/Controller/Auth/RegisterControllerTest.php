@@ -54,7 +54,7 @@ final class RegisterControllerTest extends WebTestCase
         ]);
         $client->submit($form);
         $this->assertEmailCount(1);
-        $this->assertResponseRedirects('/en/login');
+        $this->assertResponseRedirects('/en/user/property');
         $user = $this->findUser($client);
         $this->assertSame(self::USER['PHP_AUTH_PW'], $user->getEmail());
         $this->assertFalse($user->isVerified());

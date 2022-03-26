@@ -10,6 +10,7 @@ use App\Entity\User;
 use App\Form\Type\RegistrationFormType;
 use App\Message\SendEmailConfirmationLink;
 use App\Repository\SettingsRepository;
+use App\Security\RegistrationFormAuthenticator;
 use App\Service\Admin\UserService;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,27 +19,34 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 final class RegisterController extends BaseController
 {
-    private Security $security;
     private MessageBusInterface $messageBus;
+    private RegistrationFormAuthenticator $authenticator;
+    private Security $security;
+    private UserAuthenticatorInterface $userAuthenticator;
     private UserService $service;
     private array $settings;
 
     public function __construct(
-        Security $security,
-        MessageBusInterface $messageBus,
-        UserService $service,
-        SettingsRepository $settingsRepository,
         ManagerRegistry $doctrine,
-        RequestStack $requestStack
+        MessageBusInterface $messageBus,
+        RegistrationFormAuthenticator $authenticator,
+        RequestStack $requestStack,
+        Security $security,
+        SettingsRepository $settingsRepository,
+        UserAuthenticatorInterface $userAuthenticator,
+        UserService $service
     ) {
         parent::__construct($settingsRepository, $doctrine);
-        $this->security = $security;
+        $this->authenticator = $authenticator;
         $this->messageBus = $messageBus;
+        $this->security = $security;
         $this->service = $service;
         $this->settings = $this->site($requestStack->getCurrentRequest());
+        $this->userAuthenticator = $userAuthenticator;
     }
 
     #[Route('/register', name: 'register')]
@@ -61,12 +69,21 @@ final class RegisterController extends BaseController
             $this->service->create($user);
             $this->messageBus->dispatch(new SendEmailConfirmationLink($user));
 
-            return $this->redirectToRoute('security_login');
+            return $this->authenticate($user, $request);
         }
 
         return $this->render('auth/register.html.twig', [
             'registrationForm' => $form->createView(),
             'site' => $this->settings,
         ]);
+    }
+
+    private function authenticate(User $user, Request $request): Response
+    {
+        return $this->userAuthenticator->authenticateUser(
+            $user,
+            $this->authenticator,
+            $request
+        );
     }
 }
