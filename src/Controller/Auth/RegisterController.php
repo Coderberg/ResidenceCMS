@@ -50,7 +50,7 @@ final class RegisterController extends BaseController
     }
 
     #[Route('/register', name: 'register')]
-    public function register(Request $request): Response
+    public function register(Request $request): ?Response
     {
         if ($this->security->isGranted('ROLE_USER')) {
             return $this->redirectToRoute('user_property');
@@ -78,7 +78,7 @@ final class RegisterController extends BaseController
         ]);
     }
 
-    private function authenticate(User $user, Request $request): Response
+    private function authenticate(User $user, Request $request): ?Response
     {
         return $this->userAuthenticator->authenticateUser(
             $user,

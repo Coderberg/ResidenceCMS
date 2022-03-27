@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\User;
 
 use App\Controller\BaseController;
+use App\Entity\User;
 use App\Form\Type\ProfileType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +17,9 @@ final class ProfileController extends BaseController
     #[Route('/user/profile', name: 'user_profile')]
     public function profile(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $profile = $this->getUser()->getProfile();
+        /** @var User $user */
+        $user = $this->getUser();
+        $profile = $user->getProfile();
         $form = $this->createForm(ProfileType::class, $profile);
         $form->handleRequest($request);
 
