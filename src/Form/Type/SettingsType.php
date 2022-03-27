@@ -82,6 +82,14 @@ final class SettingsType extends AbstractType
                     'label' => 'label.settings.show_language_selector',
                 ]
             )
+            ->add('anyone_can_register', ChoiceType::class, [
+                    'choices' => [
+                        'option.off' => '0',
+                        'option.on' => '1',
+                    ],
+                    'label' => 'label.settings.anyone_can_register',
+                ]
+            )
             ->add('ymaps_key', null, [
                 'required' => false,
                 'label' => 'label.settings.ymaps_key',

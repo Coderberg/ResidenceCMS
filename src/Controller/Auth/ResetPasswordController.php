@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\User;
+namespace App\Controller\Auth;
 
 use App\Controller\BaseController;
 use App\Entity\User;
 use App\Form\Type\PasswordType;
 use App\Form\Type\UserEmailType;
 use App\Repository\ResettingRepository;
-use App\Service\User\ResettingService;
+use App\Service\Auth\ResettingService;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class ResettingController extends BaseController
+final class ResetPasswordController extends BaseController
 {
     /**
      * @Route("/password/reset", methods={"GET|POST"}, name="password_reset")
@@ -29,7 +29,7 @@ final class ResettingController extends BaseController
             $service->sendResetPasswordLink($request);
         }
 
-        return $this->render('user/resetting/password_reset.html.twig', [
+        return $this->render('auth/passwords/password_reset.html.twig', [
             'site' => $this->site($request),
             'form' => $form->createView(),
         ]);
@@ -63,7 +63,7 @@ final class ResettingController extends BaseController
             return $this->redirectToRoute('security_login');
         }
 
-        return $this->render('user/resetting/password_change.html.twig', [
+        return $this->render('auth/passwords/password_change.html.twig', [
             'site' => $this->site($request),
             'form' => $form->createView(),
         ]);

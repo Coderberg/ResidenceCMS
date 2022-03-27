@@ -32,6 +32,7 @@ final class UserFixtures extends Fixture
                     ->setFullName($fullName)
                     ->setPhone($phone)
             );
+            $user->setEmailVerifiedAt(new \DateTime('now'));
             $user = $this->transformer->transform($user);
             $manager->persist($user);
             $this->addReference($username, $user);

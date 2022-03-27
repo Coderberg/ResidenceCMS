@@ -9,6 +9,7 @@ use App\Entity\User;
 use App\Form\Type\UserType;
 use App\Repository\UserRepository;
 use App\Service\Admin\UserService;
+use App\Utils\UserFormDataSelector;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -34,7 +35,7 @@ final class UserController extends BaseController
     /**
      * @Route("/admin/user/new", name="admin_user_new")
      */
-    public function new(Request $request, UserService $service): Response
+    public function new(Request $request, UserService $service, UserFormDataSelector $selector): Response
     {
         $user = new User();
 
@@ -43,6 +44,8 @@ final class UserController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $emailVerifiedAt = $selector->getEmailVerifiedAt($form);
+            $user->setEmailVerifiedAt($emailVerifiedAt);
             $service->create($user);
 
             /** @var ClickableInterface $button */
@@ -66,11 +69,16 @@ final class UserController extends BaseController
      *
      * @Route("/admin/user/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_user_edit")
      */
-    public function edit(Request $request, User $user, UserService $service): Response
+    public function edit(Request $request, User $user, UserService $service, UserFormDataSelector $selector): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($user->isVerified() !== $selector->getEmailVerified($form)) {
+                $emailVerifiedAt = $selector->getEmailVerifiedAt($form);
+                $user->setEmailVerifiedAt($emailVerifiedAt);
+            }
+
             $service->update($user);
 
             return $this->redirectToRoute('admin_user');

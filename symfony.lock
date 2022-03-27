@@ -1,4 +1,7 @@
 {
+    "composer/package-versions-deprecated": {
+        "version": "1.11.99.5"
+    },
     "composer/pcre": {
         "version": "1.0.0"
     },
@@ -676,6 +679,9 @@
     },
     "symfony/yaml": {
         "version": "v6.0.2"
+    },
+    "symfonycasts/verify-email-bundle": {
+        "version": "v1.10.0"
     },
     "theseer/tokenizer": {
         "version": "1.2.1"

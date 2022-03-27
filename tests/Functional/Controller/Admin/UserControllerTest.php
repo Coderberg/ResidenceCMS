@@ -28,6 +28,7 @@ final class UserControllerTest extends WebTestCase
             'user[username]' => 'test',
             'user[profile][phone]' => 'test',
             'user[email]' => 'test@test.com',
+            'user[email_verified]' => true,
             'user[password]' => 'test',
         ]);
         $client->submit($form);
@@ -41,6 +42,7 @@ final class UserControllerTest extends WebTestCase
         $this->assertNotNull($user);
         $this->assertSame('test', $user->getProfile()->getFullName());
         $this->assertSame('test', $user->getUsername());
+        $this->assertNotNull($user->getEmailVerifiedAt());
     }
 
     public function testUserPermissions(): void
@@ -75,6 +77,7 @@ final class UserControllerTest extends WebTestCase
         $form = $crawler->selectButton('Save changes')->form([
             'user[roles]' => ['ROLE_ADMIN'],
             'user[username]' => 'edited',
+            'user[email_verified]' => false,
             'user[password]' => 'test',
         ]);
 
@@ -87,6 +90,7 @@ final class UserControllerTest extends WebTestCase
             ]);
 
         $this->assertSame('edited', $editedUser->getUsername());
+        $this->assertNull($editedUser->getEmailVerifiedAt());
     }
 
     public function testAdminPermissions(): void

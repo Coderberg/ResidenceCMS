@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="ru" datatype="plaintext" original="file.ext">
         <body>
@@ -45,6 +45,14 @@
             <trans-unit id="menu.login">
                 <source>menu.login</source>
                 <target>Войти</target>
+            </trans-unit>
+            <trans-unit id="menu.register">
+                <source>menu.register</source>
+                <target>Зарегистрироваться</target>
+            </trans-unit>
+            <trans-unit id="menu.profile">
+                <source>menu.profile</source>
+                <target>Мой профиль</target>
             </trans-unit>
             <trans-unit id="menu.logout">
                 <source>menu.logout</source>
@@ -189,6 +197,10 @@
                 <source>message.was_sent</source>
                 <target>Ваше сообщение было успешно отправлено. Спасибо.</target>
             </trans-unit>
+            <trans-unit id="message.registration_suspended">
+                <source>message.registration_suspended</source>
+                <target>Регистрация новых пользователей временно приостановлена.</target>
+            </trans-unit>
             <trans-unit id="message.token_expired">
                 <source>message.token_expired</source>
                 <target>Срок действия вашего токена истёк. Попробуйте заново.</target>
@@ -200,6 +212,18 @@
             <trans-unit id="message.emailed_reset_link">
                 <source>message.emailed_reset_link</source>
                 <target>Мы отправили на вашу электронную почту ссылку для сброса пароля!</target>
+            </trans-unit>
+            <trans-unit id="message.email_verified">
+                <source>message.email_verified</source>
+                <target>Ваш адрес электронной почты успешно подтверждён.</target>
+            </trans-unit>
+            <trans-unit id="message.confirm_email">
+                <source>message.confirm_email</source>
+                <target>
+                    Чтобы использовать свою учетную запись, вам необходимо подтвердить свой адрес электронной почты.
+                    Проверьте свою электронную почту и найдите письмо с подтверждением.
+                    Следуйте инструкциям в письме, чтобы подтвердить свой адрес электронной почты.
+                </target>
             </trans-unit>
 
             <trans-unit id="widget.contact_information">
@@ -274,6 +298,10 @@
             <trans-unit id="action.sign_in">
                 <source>action.sign_in</source>
                 <target>Войти</target>
+            </trans-unit>
+            <trans-unit id="action.register">
+                <source>action.register</source>
+                <target>Создать аккаунт</target>
             </trans-unit>
             <trans-unit id="action.forgot_password">
                 <source>action.forgot_password</source>
@@ -366,6 +394,10 @@
                 <target>Вы уверены, что хотите удалить этого пользователя?</target>
             </trans-unit>
 
+            <trans-unit id="title.my_profile">
+                <source>title.my_profile</source>
+                <target>Мой профиль</target>
+            </trans-unit>
             <trans-unit id="title.my_properties">
                 <source>title.my_properties</source>
                 <target>Мои объекты</target>
@@ -377,6 +409,10 @@
             <trans-unit id="title.login">
                 <source>title.login</source>
                 <target>Вход в систему</target>
+            </trans-unit>
+            <trans-unit id="title.register">
+                <source>title.register</source>
+                <target>Регистрация аккаунта</target>
             </trans-unit>
             <trans-unit id="title.reset_password">
                 <source>title.reset_password</source>
@@ -547,6 +583,10 @@
                 <source>label.settings.show_language_selector</source>
                 <target>Отображать выбор языка</target>
             </trans-unit>
+            <trans-unit id="label.settings.anyone_can_register">
+                <source>label.settings.anyone_can_register</source>
+                <target>Любой может зарегистрироваться</target>
+            </trans-unit>
             <trans-unit id="label.settings.currency">
                 <source>label.settings.currency</source>
                 <target>Валюта</target>
@@ -614,6 +654,14 @@
             <trans-unit id="label.email">
                 <source>label.email</source>
                 <target>Email</target>
+            </trans-unit>
+            <trans-unit id="label.email_verified">
+                <source>label.email_verified</source>
+                <target>Электронная почта проверена</target>
+            </trans-unit>
+            <trans-unit id="label.agree">
+                <source>label.agree</source>
+                <target>Я согласен с условиями пользования.</target>
             </trans-unit>
             <trans-unit id="label.password">
                 <source>label.password</source>
@@ -1007,6 +1055,25 @@
                     Приветствуем, %username%!
                     Для сброса пароля, пожалуйста, пройдите по ссылке %confirmationUrl%
                     С наилучшими пожеланиями, команда сайта.
+                </target>
+            </trans-unit>
+            <trans-unit id="confirmation.email.subject">
+                <source>confirmation.email.subject</source>
+                <target>Пожалуйста, подтвердите свою электронную почту</target>
+            </trans-unit>
+            <trans-unit id="confirmation.email.message">
+                <source>confirmation.email.message</source>
+                <target>
+                    Здравствуйте!
+                    Пожалуйста, подтвердите свой адрес электронной почты, нажав на следующую ссылку:
+                    %signedUrl%
+
+                    Если вам не удаётся перейти по ссылке, скопируйте и вставьте URL-адрес в свой веб-браузер.
+
+                    Срок действия этой ссылки истекает через %expiresAt%.
+
+                    Если вы не создавали учетную запись, дальнейшие действия не требуются.
+                    С наилучшими пожеланиями, команда сайта.!
                 </target>
             </trans-unit>
         </body>

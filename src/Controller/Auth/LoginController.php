@@ -2,15 +2,18 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Controller\Auth;
 
+use App\Controller\BaseController;
+use App\Form\Type\LoginFormType;
+use Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-final class SecurityController extends BaseController
+final class LoginController extends BaseController
 {
     /**
      * @Route("/login", name="security_login")
@@ -24,22 +27,22 @@ final class SecurityController extends BaseController
             return $this->redirectToRoute('user_property');
         }
 
-        return $this->render('security/login.html.twig', [
+        $form = $this->createForm(LoginFormType::class);
+
+        return $this->render('auth/login.html.twig', [
             'site' => $this->site($request),
-            // last username entered by the user (if any)
-            'last_username' => $helper->getLastUsername(),
-            // last authentication error (if any)
             'error' => $helper->getLastAuthenticationError(),
+            'form' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/logout", name="security_logout")
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function logout(): void
     {
-        throw new \Exception('This should never be reached!');
+        throw new Exception('This should never be reached!');
     }
 }

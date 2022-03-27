@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service\User;
+namespace App\Service\Auth;
 
 use App\Entity\User;
 use App\Message\SendResetPasswordLink;

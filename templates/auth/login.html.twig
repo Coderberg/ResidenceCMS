@@ -1,0 +1,62 @@
+{% extends 'layout/base.html.twig' %}
+
+{% block title %}{{ 'title.login' | trans }}{% endblock %}
+
+{% block body %}
+
+    <br>
+
+    {% if error %}
+        <div class="alert alert-dismissible alert-danger">
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+            {{ error.messageKey|trans(error.messageData, 'security') }}
+        </div>
+    {% endif %}
+
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">{{ 'title.login'|trans }}</div>
+                <div class="card-body">
+
+                    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+                    {{ form_start(form) }}
+                    {{ form_row(form.username) }}
+                    {{ form_row(form.password) }}
+
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <input type="checkbox" class="" id="remember_me" name="_remember_me"
+                                   checked/>
+
+                            <label for="remember_me">
+                                {{ 'label.remember_me'|trans }}
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-0">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary">
+                                {{ 'action.sign_in'|trans }}
+                            </button>
+
+                            <a class="btn btn-link" href="{{ path('password_reset') }}">
+                                {{ 'action.forgot_password'|trans }}
+                            </a>
+                        </div>
+                    </div>
+
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

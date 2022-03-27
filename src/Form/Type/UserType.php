@@ -12,6 +12,7 @@ namespace App\Form\Type;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -43,6 +44,15 @@ final class UserType extends AbstractType
             ->add('email', null, [
                 'label' => 'label.email',
             ])
+            ->add(
+                'email_verified', CheckboxType::class, [
+                    'label' => 'label.email_verified',
+                    'label_attr' => ['class' => 'switch-custom'],
+                    'mapped' => false,
+                    'required' => false,
+                    'data' => null !== $options['data']->getEmailVerifiedAt(),
+                ]
+            )
             ->add('password', PasswordType::class, [
                 'label' => 'label.password',
             ]);

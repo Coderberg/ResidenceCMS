@@ -77,6 +77,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $profile;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $emailVerifiedAt = null;
+
     public function __construct()
     {
         $this->properties = new ArrayCollection();
@@ -252,6 +257,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         $this->profile = $profile;
+
+        return $this;
+    }
+
+    public function isVerified(): bool
+    {
+        return null !== $this->emailVerifiedAt;
+    }
+
+    public function getEmailVerifiedAt(): ?\DateTime
+    {
+        return $this->emailVerifiedAt;
+    }
+
+    public function setEmailVerifiedAt(?\DateTime $dateTime): self
+    {
+        $this->emailVerifiedAt = $dateTime;
 
         return $this;
     }

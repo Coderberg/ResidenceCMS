@@ -6,6 +6,10 @@
                 <source>password.mismatch</source>
                 <target>The entered passwords don't match.</target>
             </trans-unit>
+            <trans-unit id="agree_terms">
+                <source>agree_terms</source>
+                <target>You should agree to our terms.</target>
+            </trans-unit>
             <trans-unit id="user_not_found">
                 <source>user_not_found</source>
                 <target>We can't find a user with that e-mail address.</target>
