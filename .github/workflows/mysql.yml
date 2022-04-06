@@ -53,7 +53,7 @@ jobs:
           php bin/console app:install
         env:
           DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports[3306] }}/symfony?serverVersion=5.7
-      - name: Create .env.test.local
-        run: echo "DATABASE_URL=mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports[3306] }}/symfony?serverVersion=5.7" > .env.test.local
       - name: Run Tests
+        env:
+          DATABASE_URL: postgres://postgres:postgres@127.0.0.1:${{ job.services.postgres.ports[5432] }}/postgres?charset=UTF-8
         run: php bin/phpunit --coverage-text
