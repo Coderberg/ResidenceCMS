@@ -55,5 +55,5 @@ jobs:
           DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports[3306] }}/symfony?serverVersion=5.7
       - name: Run Tests
         env:
-          DATABASE_URL: postgres://postgres:postgres@127.0.0.1:${{ job.services.postgres.ports[5432] }}/postgres?charset=UTF-8
+          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports[3306] }}/symfony?serverVersion=5.7
         run: php bin/phpunit --coverage-text
