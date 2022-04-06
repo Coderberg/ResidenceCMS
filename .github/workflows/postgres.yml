@@ -57,5 +57,9 @@ jobs:
           PANTHER_CHROME_DRIVER_BINARY: "/usr/bin/chromedriver"
           PANTHER_NO_SANDBOX: "1"
         run: |
+          curl -sL https://deb.nodesource.com/setup_17.x | bash
+          apt-get install -y nodejs
+          npm install -g -s --no-progress yarn
+          yarn install
           vendor/bin/bdi detect drivers
           php bin/phpunit --coverage-text
