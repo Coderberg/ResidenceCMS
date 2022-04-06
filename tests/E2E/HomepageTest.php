@@ -13,6 +13,6 @@ final class HomepageTest extends PantherTestCase
         $client = static::createPantherClient();
         $crawler = $client->request('GET', '/');
 
-        $this->assertSelectorTextContains('h1', 'Popular Listing');
+        $this->assertSelectorTextContains('html', 'Popular Listing');
     }
 }

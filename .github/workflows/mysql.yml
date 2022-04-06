@@ -56,4 +56,4 @@ jobs:
       - name: Create .env.test.local
         run: echo "DATABASE_URL=mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports[3306] }}/symfony?serverVersion=5.7" > .env.test.local
       - name: Run Tests
-        run: php bin/phpunit --testsuite=main --coverage-text
+        run: php bin/phpunit --coverage-text
