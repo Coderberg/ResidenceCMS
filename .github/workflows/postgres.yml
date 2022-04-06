@@ -52,14 +52,4 @@ jobs:
       - name: Create .env.test.local
         run: echo "DATABASE_URL=postgres://postgres:postgres@127.0.0.1:${{ job.services.postgres.ports[5432] }}/postgres?charset=UTF-8" > .env.test.local
       - name: Run Tests
-        env:
-          PANTHER_CHROME_ARGUMENTS: "--disable-dev-shm-usage"
-          PANTHER_CHROME_DRIVER_BINARY: "/usr/bin/chromedriver"
-          PANTHER_NO_SANDBOX: "1"
-        run: |
-          curl -sL https://deb.nodesource.com/setup_17.x | bash
-          apt-get install -y nodejs
-          npm install -g -s --no-progress yarn
-          yarn install
-          vendor/bin/bdi detect drivers
-          php bin/phpunit --coverage-text
+        run: php bin/phpunit --testsuite=main --coverage-text

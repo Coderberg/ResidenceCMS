@@ -56,8 +56,4 @@ jobs:
       - name: Create .env.test.local
         run: echo "DATABASE_URL=mysql://mariadb:mariadb@127.0.0.1:${{ job.services.mariadb.ports[3306] }}/mariadb?serverVersion=mariadb-10.6.4" > .env.test.local
       - name: Run Tests
-        env:
-          PANTHER_CHROME_ARGUMENTS: "--disable-dev-shm-usage"
-          PANTHER_CHROME_DRIVER_BINARY: "/usr/bin/chromedriver"
-          PANTHER_NO_SANDBOX: "1"
-        run: php bin/phpunit --coverage-text
+        run: php bin/phpunit --testsuite=main --coverage-text
