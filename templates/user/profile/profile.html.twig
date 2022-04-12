@@ -37,7 +37,8 @@
 
         <div class="col-md-4">
             <!-- Sidebar -->
-            {{ include('user/property/partials/_sidebar.html.twig') }}
+            {{ include('user/common/_sidebar.html.twig') }}
+            {{ include('user/common/_change_password.html.twig') }}
         </div>
 
     </div>
@@ -60,5 +61,6 @@
 {% block javascripts %}
 
     {{ encore_entry_script_tags('js/user') }}
+    {{ encore_entry_script_tags('js/password') }}
 
 {% endblock %}

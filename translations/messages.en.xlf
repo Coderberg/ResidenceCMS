@@ -54,6 +54,10 @@
                 <source>menu.profile</source>
                 <target>My Profile</target>
             </trans-unit>
+            <trans-unit id="menu.password">
+                <source>menu.password</source>
+                <target>Change Password</target>
+            </trans-unit>
             <trans-unit id="menu.logout">
                 <source>menu.logout</source>
                 <target>Log Out</target>
@@ -957,6 +961,35 @@
             <trans-unit id="option.latest">
                 <source>option.latest</source>
                 <target>Latest</target>
+            </trans-unit>
+
+            <trans-unit id="password.change">
+                <source>password.change</source>
+                <target>Change Password</target>
+            </trans-unit>
+            <trans-unit id="password.length">
+                <source>password.length</source>
+                <target>10 Characters Minimum</target>
+            </trans-unit>
+            <trans-unit id="password.uppercase">
+                <source>password.uppercase</source>
+                <target>Uppercase Letters</target>
+            </trans-unit>
+            <trans-unit id="password.lowercase">
+                <source>password.lowercase</source>
+                <target>Lowercase Letters</target>
+            </trans-unit>
+            <trans-unit id="password.numbers">
+                <source>password.numbers</source>
+                <target>Numbers</target>
+            </trans-unit>
+            <trans-unit id="password.match">
+                <source>password.match</source>
+                <target>Passwords Match</target>
+            </trans-unit>
+            <trans-unit id="password.progress">
+                <source>password.progress</source>
+                <target>Changing Password...</target>
             </trans-unit>
 
             <trans-unit id="placeholder.map_center_example">

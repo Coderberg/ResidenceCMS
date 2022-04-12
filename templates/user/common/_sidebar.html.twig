@@ -14,6 +14,9 @@
     <a href="{{ path('user_profile') }}" class="list-group-item list-group-item-action">
         <i class="far fa-address-card"></i> {{ 'menu.profile'|trans }}
     </a>
+    <a href="#" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#changePassword">
+        <i class="fas fa-key"></i> {{ 'menu.password'|trans }}
+    </a>
     <a href="{{ path('security_logout') }}" class="list-group-item list-group-item-action">
         <i class="fas fa-sign-out-alt"></i> {{ 'menu.logout'|trans }}
     </a>

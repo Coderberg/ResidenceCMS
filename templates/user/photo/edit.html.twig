@@ -32,7 +32,7 @@
                           class="dropzone js-photo-dropzone">
                         <div class="fallback">
                             <input name="file" type="file" accept="image/*" multiple/>
-                            <input name="csrf_token" type="hidden" value="{{ csrf_token('csrf_token') }}" />
+                            <input name="csrf_token" type="hidden" value="{{ csrf_token('csrf_token') }}"/>
                         </div>
                     </form>
 
@@ -86,7 +86,8 @@
 
         <div class="col-md-4">
             <!-- Sidebar -->
-            {{ include('user/property/partials/_sidebar.html.twig') }}
+            {{ include('user/common/_sidebar.html.twig') }}
+            {{ include('user/common/_change_password.html.twig') }}
         </div>
 
     </div>
@@ -95,5 +96,6 @@
 {% block javascripts %}
 
     {{ encore_entry_script_tags('js/photo') }}
+    {{ encore_entry_script_tags('js/password') }}
 
 {% endblock %}

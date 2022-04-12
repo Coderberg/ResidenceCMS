@@ -28,7 +28,8 @@ Encore
     .addEntry('js/city', './assets/js/city.js')
     .addEntry('js/photo', './assets/js/photo.js')
     .addEntry('js/page', './assets/js/page.js')
-    .addEntry('js/user', './assets/js/user.js')
+    .addEntry('js/user', './assets/js/user/user.js')
+    .addEntry('js/password', './assets/js/user/password/password.js')
 
     // will require an extra script tag for runtime.js
     // but, you probably want this, unless you're building a single-page app
