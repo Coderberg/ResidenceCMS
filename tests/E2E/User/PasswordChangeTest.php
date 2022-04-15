@@ -6,16 +6,22 @@ namespace App\Tests\E2E\User;
 
 use App\Entity\User;
 use App\Tests\E2E\AuthHelper;
+use Facebook\WebDriver\Exception\NoSuchElementException;
+use Facebook\WebDriver\Exception\TimeoutException;
 use Symfony\Component\Panther\PantherTestCase;
 
 final class PasswordChangeTest extends PantherTestCase
 {
     use AuthHelper;
 
+    /**
+     * @throws NoSuchElementException
+     * @throws TimeoutException
+     */
     public function testPasswordChange(): void
     {
         // Log In as a User
-        $client = static::createPantherClient();
+        $client = self::createPantherClient();
         $this->login($client, 'user', 'user');
         $client->waitFor('[data-target="#changePassword"]');
 

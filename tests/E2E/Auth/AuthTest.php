@@ -5,15 +5,21 @@ declare(strict_types=1);
 namespace App\Tests\E2E\Auth;
 
 use App\Tests\E2E\AuthHelper;
+use Facebook\WebDriver\Exception\NoSuchElementException;
+use Facebook\WebDriver\Exception\TimeoutException;
 use Symfony\Component\Panther\PantherTestCase;
 
 final class AuthTest extends PantherTestCase
 {
     use AuthHelper;
 
+    /**
+     * @throws NoSuchElementException
+     * @throws TimeoutException
+     */
     public function testLoginAsUserWithWrongPassword(): void
     {
-        $client = static::createPantherClient();
+        $client = self::createPantherClient();
         $this->login($client, 'user', 'wrong');
         $client->waitFor('.alert-danger');
         $this->assertSelectorTextContains('.alert-danger', 'Invalid credentials');
@@ -21,7 +27,7 @@ final class AuthTest extends PantherTestCase
 
     public function testLoginAsUser(): void
     {
-        $client = static::createPantherClient();
+        $client = self::createPantherClient();
         $crawler = $this->login($client, 'user', 'user');
 
         $this->assertSelectorTextContains('h3', 'My properties');
@@ -32,9 +38,13 @@ final class AuthTest extends PantherTestCase
         $this->assertSelectorTextContains('.h3', 'Popular Listing');
     }
 
+    /**
+     * @throws NoSuchElementException
+     * @throws TimeoutException
+     */
     public function testLoginAsAdmin(): void
     {
-        $client = static::createPantherClient();
+        $client = self::createPantherClient();
         $this->login($client, 'admin', 'admin');
 
         $client->waitFor('.fa-users-cog');
