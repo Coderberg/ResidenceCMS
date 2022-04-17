@@ -27,9 +27,9 @@
         $(this).val($(this).val().trim());
         $('.alert', '#changePassword').text('').hide();
 
-        const uppercase = new RegExp('[A-ZА-Я]+');
-        const lowercase = new RegExp('[a-zа-я]+');
-        const numbers = new RegExp('[0-9]+');
+        const uppercase = /[A-ZА-Я]+/;
+        const lowercase = /[a-zа-я]+/;
+        const numbers = /[0-9]+/;
         let $password2 = $('#password2');
         let password1 = $('#password1').val();
         let password2 = $password2.val();
