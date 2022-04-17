@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller;
 
 use App\Entity\Page;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 final class PageControllerTest extends WebTestCase
 {
+    use WebTestHelper;
+
     public function testPage(): void
     {
         $client = self::createClient();
-        // the service container is always available via the test client
-        $page = $client->getContainer()
-            ->get('doctrine')
-            ->getRepository(Page::class)
+        $page = $this->getRepository($client, Page::class)
             ->findOneBy([
                 'add_contact_form' => 0,
             ]);
@@ -28,9 +28,7 @@ final class PageControllerTest extends WebTestCase
     public function testContactPage(): void
     {
         $client = self::createClient();
-        $page = $client->getContainer()
-            ->get('doctrine')
-            ->getRepository(Page::class)
+        $page = $this->getRepository($client, Page::class)
             ->findOneBy([
                 'add_contact_form' => 1,
             ]);

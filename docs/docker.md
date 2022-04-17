@@ -12,6 +12,7 @@ $ git clone https://github.com/Coderberg/ResidenceCMS.git symfony
 ```
 $ echo -e '
 DATABASE_URL=mysql://symfony:symfony@db/symfony?serverVersion=5.7\r
+LOCK_DSN=flock\r
 LANGUAGE_CODE=en' > ./symfony/.env.local
 
 $ echo -e "\

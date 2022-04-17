@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller\Auth;
 
 use App\Entity\User;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
 final class VerificationControllerTest extends WebTestCase
 {
+    use WebTestHelper;
+
     protected function setUp(): void
     {
-        $this->client = $client = self::createClient([], [
-            'PHP_AUTH_USER' => 'user',
-            'PHP_AUTH_PW' => 'user',
-        ]);
+        $this->client = $client = $this->authAsUser($this);
         $this->entityManager = $client->getContainer()
             ->get('doctrine')
             ->getManager();
@@ -25,7 +25,7 @@ final class VerificationControllerTest extends WebTestCase
 
     public function testVerifyUserEmail(): void
     {
-        $user = $this->getUser();
+        $user = $this->getUser($this->client, 'user');
 
         // Reset verification
         $user->setEmailVerifiedAt(null);
@@ -53,15 +53,8 @@ final class VerificationControllerTest extends WebTestCase
 
         // Make sure the user is verified
         $this->assertSelectorTextContains('.alert-success', 'Your email address has been verified');
-        $user = $this->getUser();
+        $user = $this->getUser($this->client, 'user');
         $this->assertTrue($user->isVerified());
-    }
-
-    private function getUser(): User
-    {
-        return $this->entityManager
-            ->getRepository(User::class)
-            ->findOneBy(['username' => 'user']);
     }
 
     private function generateEmailConfirmationLink(User $user): string

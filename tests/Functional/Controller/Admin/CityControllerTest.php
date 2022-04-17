@@ -5,15 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller\Admin;
 
 use App\Entity\City;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 final class CityControllerTest extends WebTestCase
 {
-    private const SERVER = [
-        'PHP_AUTH_USER' => 'admin',
-        'PHP_AUTH_PW' => 'admin',
-    ];
+    use WebTestHelper;
 
     private const NAME = 'Test';
     private const SLUG = 'test';
@@ -24,7 +22,7 @@ final class CityControllerTest extends WebTestCase
      */
     public function testAdminNewCity(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
         $crawler = $client->request('GET', '/en/admin/locations/city/new');
 
@@ -38,8 +36,8 @@ final class CityControllerTest extends WebTestCase
         $client->submit($form);
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
-        $city = $client->getContainer()->get('doctrine')
-            ->getRepository(City::class)->findOneBy([
+        $city = $this->getRepository($client, City::class)
+            ->findOneBy([
                 'slug' => self::SLUG,
             ]);
 
@@ -55,10 +53,9 @@ final class CityControllerTest extends WebTestCase
      */
     public function testAdminEditCity(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $city = $client->getContainer()
-            ->get('doctrine')->getRepository(City::class)
+        $city = $this->getRepository($client, City::class)
             ->findOneBy([
                 'slug' => self::SLUG,
             ])->getId();
@@ -75,8 +72,8 @@ final class CityControllerTest extends WebTestCase
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $editedCity = $client->getContainer()->get('doctrine')
-            ->getRepository(City::class)->findOneBy([
+        $editedCity = $this->getRepository($client, City::class)
+            ->findOneBy([
                 'id' => $city,
             ]);
 
@@ -90,10 +87,10 @@ final class CityControllerTest extends WebTestCase
      */
     public function testAdminDeleteCity(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $city = $client->getContainer()->get('doctrine')
-            ->getRepository(City::class)->findOneBy([
+        $city = $this->getRepository($client, City::class)
+            ->findOneBy([
                 'slug' => self::SLUG,
             ])->getId();
 
@@ -101,8 +98,8 @@ final class CityControllerTest extends WebTestCase
         $client->submit($crawler->filter('#delete-form-'.$city)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $this->assertNull($client->getContainer()->get('doctrine')
-            ->getRepository(City::class)->findOneBy([
+        $this->assertNull($this->getRepository($client, City::class)
+            ->findOneBy([
                 'slug' => self::SLUG,
             ]));
     }

@@ -6,15 +6,13 @@ namespace App\Tests\Functional\Controller\Admin;
 
 use App\Entity\Menu;
 use App\Entity\Page;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 final class PageControllerTest extends WebTestCase
 {
-    private const SERVER = [
-        'PHP_AUTH_USER' => 'admin',
-        'PHP_AUTH_PW' => 'admin',
-    ];
+    use WebTestHelper;
 
     private const TITLE = 'Test';
     private const SLUG = 'test';
@@ -26,7 +24,7 @@ final class PageControllerTest extends WebTestCase
      */
     public function testAdminNewPage(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
         $crawler = $client->request('GET', '/en/admin/page/new');
 
         $form = $crawler->selectButton('Create page')->form([
@@ -40,8 +38,8 @@ final class PageControllerTest extends WebTestCase
         $client->submit($form);
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
-        $page = $client->getContainer()->get('doctrine')
-            ->getRepository(Page::class)->findOneBy([
+        $page = $this->getRepository($client, Page::class)
+            ->findOneBy([
                 'slug' => self::SLUG,
                 'locale' => self::LOCALE,
             ]);
@@ -50,8 +48,8 @@ final class PageControllerTest extends WebTestCase
         $this->assertSame(self::TITLE, $page->getTitle());
         $this->assertSame(self::SLUG, $page->getSlug());
 
-        $menu = $client->getContainer()->get('doctrine')
-            ->getRepository(Menu::class)->findOneBy([
+        $menu = $this->getRepository($client, Menu::class)
+            ->findOneBy([
                 'title' => self::TITLE,
             ]);
 
@@ -63,10 +61,9 @@ final class PageControllerTest extends WebTestCase
      */
     public function testAdminEditPage(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $page = $client->getContainer()->get('doctrine')
-            ->getRepository(Page::class)
+        $page = $this->getRepository($client, Page::class)
             ->findOneBy([
                 'slug' => self::SLUG,
                 'locale' => self::LOCALE,
@@ -81,8 +78,8 @@ final class PageControllerTest extends WebTestCase
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $editedPage = $client->getContainer()->get('doctrine')
-            ->getRepository(Page::class)->findOneBy([
+        $editedPage = $this->getRepository($client, Page::class)
+            ->findOneBy([
                 'id' => $page,
             ]);
 
@@ -94,10 +91,9 @@ final class PageControllerTest extends WebTestCase
      */
     public function testAdminDeletePage(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $page = $client->getContainer()->get('doctrine')
-            ->getRepository(Page::class)->findOneBy([
+        $page = $this->getRepository($client, Page::class)->findOneBy([
                 'slug' => self::SLUG,
                 'locale' => self::LOCALE,
             ])->getId();
@@ -107,14 +103,12 @@ final class PageControllerTest extends WebTestCase
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $this->assertNull($client->getContainer()->get('doctrine')
-            ->getRepository(Page::class)->findOneBy([
+        $this->assertNull($this->getRepository($client, Page::class)->findOneBy([
                 'slug' => self::SLUG,
                 'locale' => self::LOCALE,
             ]));
 
-        $this->assertNull($client->getContainer()->get('doctrine')
-            ->getRepository(Menu::class)->findOneBy([
+        $this->assertNull($this->getRepository($client, Menu::class)->findOneBy([
                 'title' => self::TITLE,
             ]));
     }

@@ -1,16 +1,5 @@
-'use strict';
-
-$(document).ready(function () {
-    let currentUrl = window.location.href;
-
-    // Sidebar
-    if (currentUrl.indexOf('profile') !== -1) {
-        $('.list-group-item-action:eq(2)').addClass('active');
-    } else if (currentUrl.indexOf('unpublished') !== -1) {
-        $('.list-group-item-action:eq(1)').addClass('active');
-    } else {
-        $('.list-group-item-action:eq(0)').addClass('active');
-    }
+(function ($) {
+    'use strict';
 
     // Properties
     $('.btn-outline-secondary').click(function (e) {
@@ -36,4 +25,4 @@ $(document).ready(function () {
         counter = counter - 1;
         $counter.text(counter);
     }
-});
+})($);

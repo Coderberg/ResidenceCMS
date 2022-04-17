@@ -5,27 +5,21 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller\User;
 
 use App\Entity\Property;
-use App\Entity\User;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 final class PhotoControllerTest extends WebTestCase
 {
-    private const USER = [
-        'PHP_AUTH_USER' => 'user',
-        'PHP_AUTH_PW' => 'user',
-    ];
+    use WebTestHelper;
 
     public function testEditingForbidden(): void
     {
-        $client = self::createClient([], self::USER);
+        $client = $this->authAsUser($this);
 
-        $user = $client->getContainer()->get('doctrine')
-            ->getRepository(User::class)
-            ->findOneBy(['username' => 'admin']);
+        $user = $this->getUser($client, 'admin');
 
-        $property = $client->getContainer()->get('doctrine')
-            ->getRepository(Property::class)
+        $property = $this->getRepository($client, Property::class)
             ->findOneBy(['author' => $user]);
 
         $client->request('GET', sprintf('/en/user/photo/%d/edit', $property->getId()));
@@ -34,10 +28,9 @@ final class PhotoControllerTest extends WebTestCase
 
     public function testUploadPhoto(): void
     {
-        $client = self::createClient([], self::USER);
+        $client = $this->authAsUser($this);
 
-        $property = $client->getContainer()->get('doctrine')
-            ->getRepository(Property::class)
+        $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'furnished-renovated-2-bedroom-2-bathroom-flat']);
 
         $crawler = $client->request('GET', sprintf('/en/user/photo/%d/edit', $property->getId()));
@@ -55,9 +48,8 @@ final class PhotoControllerTest extends WebTestCase
 
     public function testSorting(): void
     {
-        $client = self::createClient([], self::USER);
-        $property = $client->getContainer()->get('doctrine')
-            ->getRepository(Property::class)
+        $client = $this->authAsUser($this);
+        $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'interesting-two-bedroom-apartment-for-sale']);
 
         $crawler = $client->request('GET', '/en/user/photo/'.$property->getId().'/edit');
@@ -93,10 +85,9 @@ final class PhotoControllerTest extends WebTestCase
 
     public function testDeletePhoto(): void
     {
-        $client = self::createClient([], self::USER);
+        $client = $this->authAsUser($this);
 
-        $property = $client->getContainer()->get('doctrine')
-            ->getRepository(Property::class)
+        $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'furnished-renovated-2-bedroom-2-bathroom-flat']);
 
         $crawler = $client->request('GET', sprintf('/en/user/photo/%d/edit', $property->getId()));

@@ -54,6 +54,10 @@
                 <source>menu.profile</source>
                 <target>Мой профиль</target>
             </trans-unit>
+            <trans-unit id="menu.password">
+                <source>menu.password</source>
+                <target>Изменить пароль</target>
+            </trans-unit>
             <trans-unit id="menu.logout">
                 <source>menu.logout</source>
                 <target>Выйти</target>
@@ -957,6 +961,35 @@
             <trans-unit id="option.latest">
                 <source>option.latest</source>
                 <target>Дата добавления</target>
+            </trans-unit>
+
+            <trans-unit id="password.change">
+                <source>password.change</source>
+                <target>Изменить пароль</target>
+            </trans-unit>
+            <trans-unit id="password.length">
+                <source>password.length</source>
+                <target>Минимум 10 символов</target>
+            </trans-unit>
+            <trans-unit id="password.uppercase">
+                <source>password.uppercase</source>
+                <target>Заглавные буквы</target>
+            </trans-unit>
+            <trans-unit id="password.lowercase">
+                <source>password.lowercase</source>
+                <target>Строчные буквы</target>
+            </trans-unit>
+            <trans-unit id="password.numbers">
+                <source>password.numbers</source>
+                <target>Цифры</target>
+            </trans-unit>
+            <trans-unit id="password.match">
+                <source>password.match</source>
+                <target>Пароли совпадают</target>
+            </trans-unit>
+            <trans-unit id="password.progress">
+                <source>password.progress</source>
+                <target>Изменение пароля...</target>
             </trans-unit>
 
             <trans-unit id="placeholder.map_center_example">

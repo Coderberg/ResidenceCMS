@@ -5,15 +5,12 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller\User;
 
 use App\Entity\Profile;
-use App\Entity\User;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class ProfileControllerTest extends WebTestCase
 {
-    private const USER = [
-        'PHP_AUTH_USER' => 'user',
-        'PHP_AUTH_PW' => 'user',
-    ];
+    use WebTestHelper;
 
     private const TEST_DATA = [
         'name' => 'Kristina R Maxwell',
@@ -22,7 +19,7 @@ final class ProfileControllerTest extends WebTestCase
 
     public function testEditProfile(): void
     {
-        $client = self::createClient([], self::USER);
+        $client = $this->authAsUser($this);
 
         $crawler = $client->request('GET', '/en/user/profile');
         $this->assertResponseIsSuccessful();
@@ -37,9 +34,7 @@ final class ProfileControllerTest extends WebTestCase
         $this->assertSelectorTextContains('.alert-success', 'Updated successfully');
 
         /** @var Profile $profile */
-        $profile = $client->getContainer()->get('doctrine')
-            ->getRepository(User::class)
-            ->findOneBy(['username' => 'user'])
+        $profile = $this->getUser($client, 'user')
             ->getProfile();
 
         $this->assertSame($profile->getFullName(), self::TEST_DATA['name']);

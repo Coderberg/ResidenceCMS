@@ -55,7 +55,7 @@ install:
 
 script:
   - php bin/console app:install
-  - php bin/phpunit
+  - php bin/phpunit --testsuite=main
   # this checks that the source code follows the Symfony Code Syntax rules
   - ./vendor/bin/php-cs-fixer fix --diff --dry-run -v
   # this checks that the YAML config files contain no syntax errors

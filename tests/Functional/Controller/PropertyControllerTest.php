@@ -7,10 +7,13 @@ namespace App\Tests\Functional\Controller;
 use App\Entity\City;
 use App\Entity\Property;
 use App\Entity\Settings;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class PropertyControllerTest extends WebTestCase
 {
+    use WebTestHelper;
+
     public function testIndex(): void
     {
         $client = $this->createClient();
@@ -25,10 +28,7 @@ final class PropertyControllerTest extends WebTestCase
     public function testProperty(): void
     {
         $client = self::createClient();
-        // the service container is always available via the test client
-        $property = $client->getContainer()
-            ->get('doctrine')
-            ->getRepository(Property::class)
+        $property = $this->getRepository($client, Property::class)
             ->findOneBy([
                 'state' => 'published',
             ]);
@@ -51,8 +51,7 @@ final class PropertyControllerTest extends WebTestCase
     public function testSearch(): void
     {
         $client = self::createClient();
-        $repository = $client->getContainer()->get('doctrine')
-            ->getRepository(City::class);
+        $repository = $this->getRepository($client, City::class);
 
         $city = $repository->findOneBy(['slug' => 'miami'])->getId();
 
@@ -75,8 +74,7 @@ final class PropertyControllerTest extends WebTestCase
     public function testSearchFilter(): void
     {
         $client = self::createClient();
-        $repository = $client->getContainer()->get('doctrine')
-            ->getRepository(Settings::class);
+        $repository = $this->getRepository($client, Settings::class);
 
         // Expects 3 fields in the filter on Homepage
         $crawler = $client->request('GET', '/en/');

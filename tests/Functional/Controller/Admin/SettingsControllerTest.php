@@ -6,22 +6,20 @@ namespace App\Tests\Functional\Controller\Admin;
 
 use App\Entity\Property;
 use App\Entity\Settings;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 final class SettingsControllerTest extends WebTestCase
 {
-    private const SERVER = [
-        'PHP_AUTH_USER' => 'admin',
-        'PHP_AUTH_PW' => 'admin',
-    ];
+    use WebTestHelper;
 
     public function testAdminEditSettings(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $title = $client->getContainer()->get('doctrine')
-            ->getRepository(Settings::class)->findOneBy(['setting_name' => 'title'])->getSettingValue();
+        $title = $this->getRepository($client, Settings::class)
+            ->findOneBy(['setting_name' => 'title'])->getSettingValue();
 
         $crawler = $client->request('GET', '/en/admin/settings');
 
@@ -51,8 +49,7 @@ final class SettingsControllerTest extends WebTestCase
         $this->assertSelectorExists('.fixed-top');
         $this->assertSelectorExists('.body');
 
-        $property = $client->getContainer()->get('doctrine')
-            ->getRepository(Property::class)
+        $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'bright-and-cheerful-alcove-studio']);
 
         $crawler = $client->request('GET',
@@ -65,20 +62,20 @@ final class SettingsControllerTest extends WebTestCase
 
     public function testChangeBackSettings(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $title = $client->getContainer()->get('doctrine')
-                ->getRepository(Settings::class)->findOneBy(['setting_name' => 'title'])->getSettingValue();
+        $title = $this->getRepository($client, Settings::class)
+            ->findOneBy(['setting_name' => 'title'])->getSettingValue();
 
         $crawler = $client->request('GET', '/en/admin/settings');
 
         $form = $crawler->selectButton('Save changes')->form([
-                'settings[title]' => mb_substr($title, 0, -13),
-                'settings[custom_footer_text]' => 'All Rights Reserved.',
-                'settings[fixed_top_navbar]' => '0',
-                'settings[show_similar_properties]' => '0',
-                'settings[items_per_page]' => '6',
-            ]);
+            'settings[title]' => mb_substr($title, 0, -13),
+            'settings[custom_footer_text]' => 'All Rights Reserved.',
+            'settings[fixed_top_navbar]' => '0',
+            'settings[show_similar_properties]' => '0',
+            'settings[items_per_page]' => '6',
+        ]);
 
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
@@ -97,8 +94,7 @@ final class SettingsControllerTest extends WebTestCase
         $this->assertSelectorNotExists('.fixed-top');
         $this->assertSelectorNotExists('.body');
 
-        $property = $client->getContainer()->get('doctrine')
-            ->getRepository(Property::class)
+        $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'bright-and-cheerful-alcove-studio']);
 
         $crawler = $client->request('GET',
@@ -111,7 +107,7 @@ final class SettingsControllerTest extends WebTestCase
 
     public function testUploadHeaderImage(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
         $crawler = $client->request('GET', '/en/admin/settings/header');
         $this->assertSelectorTextContains('html', 'Header settings');
@@ -126,7 +122,7 @@ final class SettingsControllerTest extends WebTestCase
 
     public function testUploadLogoImage(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
         $crawler = $client->request('GET', '/en/admin/settings/header');
         $this->assertSelectorTextContains('html', 'Header settings');
@@ -141,7 +137,7 @@ final class SettingsControllerTest extends WebTestCase
 
     public function testDeleteHeaderImage(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
         $crawler = $client->request('GET', '/en/admin/settings/header');
         $this->assertSelectorExists('.remove-header_image');
@@ -152,7 +148,7 @@ final class SettingsControllerTest extends WebTestCase
 
     public function testDeleteLogoImage(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
         $crawler = $client->request('GET', '/en/admin/settings/header');
         $this->assertSelectorExists('.remove-logo_image');
@@ -165,8 +161,8 @@ final class SettingsControllerTest extends WebTestCase
     {
         $client = self::createClient();
 
-        $this->assertEmpty($client->getContainer()->get('doctrine')
-            ->getRepository(Settings::class)->findOneBy([
+        $this->assertEmpty($this->getRepository($client, Settings::class)
+            ->findOneBy([
                 'setting_name' => 'header_image',
             ])->getSettingValue());
     }
@@ -175,8 +171,7 @@ final class SettingsControllerTest extends WebTestCase
     {
         $client = self::createClient();
 
-        $this->assertEmpty($client->getContainer()->get('doctrine')
-            ->getRepository(Settings::class)->findOneBy([
+        $this->assertEmpty($this->getRepository($client, Settings::class)->findOneBy([
                 'setting_name' => 'logo_image',
             ])->getSettingValue());
     }

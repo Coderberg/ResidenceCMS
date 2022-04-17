@@ -69,7 +69,13 @@
     "js/user": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/user.5160c810.js"
+        "/build/js/user.1c304e5e.js"
+      ]
+    },
+    "js/password": {
+      "js": [
+        "/build/runtime.9a71ee5d.js",
+        "/build/js/password.35b6c662.js"
       ]
     },
     "css/app": {
@@ -77,7 +83,7 @@
         "/build/runtime.9a71ee5d.js"
       ],
       "css": [
-        "/build/css/app.36542df1.css"
+        "/build/css/app.8ec8707c.css"
       ]
     },
     "css/admin": {

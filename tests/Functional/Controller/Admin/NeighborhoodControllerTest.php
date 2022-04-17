@@ -5,15 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller\Admin;
 
 use App\Entity\Neighborhood;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 final class NeighborhoodControllerTest extends WebTestCase
 {
-    private const SERVER = [
-        'PHP_AUTH_USER' => 'admin',
-        'PHP_AUTH_PW' => 'admin',
-    ];
+    use WebTestHelper;
 
     private const NAME = 'Test';
     private const SLUG = 'test';
@@ -24,7 +22,7 @@ final class NeighborhoodControllerTest extends WebTestCase
      */
     public function testAdminNewNeighborhood(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
         $crawler = $client->request('GET', '/en/admin/locations/neighborhood/new');
 
         $form = $crawler->selectButton('Create neighborhood')->form([
@@ -34,8 +32,8 @@ final class NeighborhoodControllerTest extends WebTestCase
         $client->submit($form);
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
-        $neighborhood = $client->getContainer()->get('doctrine')
-            ->getRepository(Neighborhood::class)->findOneBy([
+        $neighborhood = $this->getRepository($client, Neighborhood::class)
+            ->findOneBy([
                 'slug' => self::SLUG,
             ]);
 
@@ -49,10 +47,9 @@ final class NeighborhoodControllerTest extends WebTestCase
      */
     public function testAdminEditNeighborhood(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $neighborhood = $client->getContainer()->get('doctrine')
-            ->getRepository(Neighborhood::class)
+        $neighborhood = $this->getRepository($client, Neighborhood::class)
             ->findOneBy([
                 'slug' => self::SLUG,
             ])->getId();
@@ -66,8 +63,8 @@ final class NeighborhoodControllerTest extends WebTestCase
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $editedNeighborhood = $client->getContainer()->get('doctrine')
-            ->getRepository(Neighborhood::class)->findOneBy([
+        $editedNeighborhood = $this->getRepository($client, Neighborhood::class)
+            ->findOneBy([
                 'id' => $neighborhood,
             ]);
 
@@ -79,10 +76,10 @@ final class NeighborhoodControllerTest extends WebTestCase
      */
     public function testAdminDeleteNeighborhood(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $neighborhood = $client->getContainer()->get('doctrine')
-            ->getRepository(Neighborhood::class)->findOneBy([
+        $neighborhood = $this->getRepository($client, Neighborhood::class)
+            ->findOneBy([
                 'slug' => self::SLUG,
             ])->getId();
 
@@ -90,8 +87,7 @@ final class NeighborhoodControllerTest extends WebTestCase
         $client->submit($crawler->filter('#delete-neighborhood-'.$neighborhood)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $this->assertNull($client->getContainer()->get('doctrine')
-            ->getRepository(Neighborhood::class)->findOneBy([
+        $this->assertNull($this->getRepository($client, Neighborhood::class)->findOneBy([
                 'slug' => self::SLUG,
             ]));
     }
