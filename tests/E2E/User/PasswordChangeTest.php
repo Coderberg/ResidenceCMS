@@ -15,6 +15,8 @@ final class PasswordChangeTest extends PantherTestCase
     use PantherTestHelper;
     use WebTestHelper;
 
+    private const TEMP_PASSWORD = '123changePassword';
+
     /**
      * @throws NoSuchElementException
      * @throws TimeoutException
@@ -32,13 +34,13 @@ final class PasswordChangeTest extends PantherTestCase
 
         // Fill password
         $crawler->filter('#passwordForm')->form([
-            'password1' => '123changePassword',
+            'password1' => self::TEMP_PASSWORD,
         ]);
 
         $crawler = $client->waitForEnabled('#password2');
         $crawler->filter('#passwordForm')->form([
-            'password1' => '123changePassword',
-            'password2' => '123changePassword',
+            'password1' => self::TEMP_PASSWORD,
+            'password2' => self::TEMP_PASSWORD,
         ]);
 
         // Submit the form

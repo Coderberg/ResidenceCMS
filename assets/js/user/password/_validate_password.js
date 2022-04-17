@@ -29,7 +29,7 @@
 
         const uppercase = /[A-ZА-Я]+/;
         const lowercase = /[a-zа-я]+/;
-        const numbers = /[0-9]+/;
+        const numbers = /\d+/;
         let $password2 = $('#password2');
         let password1 = $('#password1').val();
         let password2 = $password2.val();

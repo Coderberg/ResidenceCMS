@@ -12,12 +12,13 @@ final class PasswordControllerTest extends WebTestCase
 {
     use WebTestHelper;
 
-    private const tempPassword = 'TestPassword123';
+    private const TEMP_PASSWORD = 'TestPassword123';
+    private const ENDPOINT = '/en/user/password';
 
     public function testPasswordChangeWithoutToken(): void
     {
         $client = $this->authAsUser($this);
-        $client->request('POST', '/en/user/password', []);
+        $client->request('POST', self::ENDPOINT, []);
         $this->assertResponseStatusCodeSame(419);
         $this->isJson();
     }
@@ -28,18 +29,18 @@ final class PasswordControllerTest extends WebTestCase
         $token = $this->getToken($client);
 
         // Try too short password
-        $client->request('POST', '/en/user/password', [
-            'password1' => mb_substr(self::tempPassword, 0, -6),
-            'password2' => self::tempPassword,
+        $client->request('POST', self::ENDPOINT, [
+            'password1' => mb_substr(self::TEMP_PASSWORD, 0, -6),
+            'password2' => self::TEMP_PASSWORD,
             'csrf_token' => $token,
         ]);
         $this->isJson();
         $this->assertResponseIsUnprocessable();
 
         // Try mismatched passwords
-        $client->request('POST', '/en/user/password', [
-            'password1' => self::tempPassword,
-            'password2' => mb_substr(self::tempPassword, 0, -6),
+        $client->request('POST', self::ENDPOINT, [
+            'password1' => self::TEMP_PASSWORD,
+            'password2' => mb_substr(self::TEMP_PASSWORD, 0, -6),
             'csrf_token' => $token,
         ]);
         $this->isJson();
@@ -51,9 +52,9 @@ final class PasswordControllerTest extends WebTestCase
         $client = $this->authAsUser($this);
         $token = $this->getToken($client);
         $this->assertNotEmpty($token);
-        $client->request('POST', '/en/user/password', [
-            'password1' => self::tempPassword,
-            'password2' => self::tempPassword,
+        $client->request('POST', self::ENDPOINT, [
+            'password1' => self::TEMP_PASSWORD,
+            'password2' => self::TEMP_PASSWORD,
             'csrf_token' => $token,
         ]);
         $this->isJson();
