@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Controller\Auth;
 
-use App\Entity\User;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class ResettingControllerTest extends WebTestCase
 {
+    use WebTestHelper;
+
     public function testPasswordReset(): void
     {
         $client = self::createClient();
@@ -38,10 +40,9 @@ final class ResettingControllerTest extends WebTestCase
     public function testChangePassword(): void
     {
         $client = self::createClient();
-        $client->followRedirects(true);
+        $client->followRedirects();
 
-        $user = $client->getContainer()->get('doctrine')
-            ->getRepository(User::class)->findOneBy(['username' => 'admin']);
+        $user = $this->getUser($client, 'admin');
 
         $crawler = $client->request('GET', sprintf('/en/password/reset/%s', $user->getConfirmationToken()));
         $this->assertResponseIsSuccessful();
@@ -58,16 +59,12 @@ final class ResettingControllerTest extends WebTestCase
 
     public function testLogin(): void
     {
-        $client = self::createClient([], [
-            'PHP_AUTH_USER' => 'admin',
-            'PHP_AUTH_PW' => 'admin',
-        ]);
+        $client = $this->authAsAdmin($this);
 
         $client->request('GET', '/en/admin');
         $this->assertSelectorTextContains('.navbar-brand', 'Dashboard');
 
-        $user = $client->getContainer()->get('doctrine')
-            ->getRepository(User::class)->findOneBy(['username' => 'admin']);
+        $user = $this->getUser($client, 'admin');
 
         $this->assertNull($user->getConfirmationToken());
         $this->assertNull($user->getPasswordRequestedAt());

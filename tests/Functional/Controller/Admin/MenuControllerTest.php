@@ -5,15 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller\Admin;
 
 use App\Entity\Menu;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 final class MenuControllerTest extends WebTestCase
 {
-    private const SERVER = [
-        'PHP_AUTH_USER' => 'admin',
-        'PHP_AUTH_PW' => 'admin',
-    ];
+    use WebTestHelper;
 
     private const TITLE = 'Custom Menu Item';
     private const URL = '/?custom-link';
@@ -25,7 +23,7 @@ final class MenuControllerTest extends WebTestCase
      */
     public function testAdminNewItem(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
         $crawler = $client->request('GET', '/en/admin/menu/new');
 
@@ -37,8 +35,8 @@ final class MenuControllerTest extends WebTestCase
         $client->submit($form);
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
-        $item = $client->getContainer()->get('doctrine')
-            ->getRepository(Menu::class)->findOneBy([
+        $item = $this->getRepository($client, Menu::class)
+            ->findOneBy([
                 'url' => self::URL,
                 'locale' => self::LOCALE,
             ]);
@@ -53,10 +51,9 @@ final class MenuControllerTest extends WebTestCase
      */
     public function testAdminEditItem(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $item = $client->getContainer()->get('doctrine')
-            ->getRepository(Menu::class)
+        $item = $this->getRepository($client, Menu::class)
             ->findOneBy([
                 'url' => self::URL,
                 'locale' => self::LOCALE,
@@ -71,8 +68,8 @@ final class MenuControllerTest extends WebTestCase
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $editedItem = $client->getContainer()->get('doctrine')
-            ->getRepository(Menu::class)->findOneBy([
+        $editedItem = $this->getRepository($client, Menu::class)
+            ->findOneBy([
                 'id' => $item,
             ]);
 
@@ -84,11 +81,10 @@ final class MenuControllerTest extends WebTestCase
      */
     public function testAdminSortItems(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
         $crawler = $client->request('GET', '/en/admin/menu');
         $token = $crawler->filter('#menu')->attr('data-token');
-        $items = $client->getContainer()->get('doctrine')
-            ->getRepository(Menu::class)
+        $items = $this->getRepository($client, Menu::class)
             ->findItems();
 
         $itemsArray = array_map(fn ($item) => $item->getId(), $items);
@@ -125,10 +121,10 @@ final class MenuControllerTest extends WebTestCase
      */
     public function testAdminDeleteItem(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $item = $client->getContainer()->get('doctrine')
-            ->getRepository(Menu::class)->findOneBy([
+        $item = $this->getRepository($client, Menu::class)
+            ->findOneBy([
                 'url' => self::URL,
             ])->getId();
 
@@ -136,8 +132,7 @@ final class MenuControllerTest extends WebTestCase
         $client->submit($crawler->filter('#delete-form-'.$item)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $this->assertNull($client->getContainer()->get('doctrine')
-            ->getRepository(Menu::class)->findOneBy([
+        $this->assertNull($this->getRepository($client, Menu::class)->findOneBy([
                 'url' => self::URL,
             ]));
     }

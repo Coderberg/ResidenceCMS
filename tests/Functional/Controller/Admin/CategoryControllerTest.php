@@ -5,15 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller\Admin;
 
 use App\Entity\Category;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 final class CategoryControllerTest extends WebTestCase
 {
-    private const SERVER = [
-        'PHP_AUTH_USER' => 'admin',
-        'PHP_AUTH_PW' => 'admin',
-    ];
+    use WebTestHelper;
 
     private const NAME = 'Test';
     private const SLUG = 'test';
@@ -24,7 +22,7 @@ final class CategoryControllerTest extends WebTestCase
      */
     public function testAdminNewCategory(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
         $crawler = $client->request('GET', '/en/admin/category/new');
 
         $form = $crawler->selectButton('Create category')->form([
@@ -34,8 +32,8 @@ final class CategoryControllerTest extends WebTestCase
         $client->submit($form);
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
-        $category = $client->getContainer()->get('doctrine')
-            ->getRepository(Category::class)->findOneBy([
+        $category = $this->getRepository($client, Category::class)
+            ->findOneBy([
                 'slug' => self::SLUG,
             ]);
 
@@ -49,10 +47,9 @@ final class CategoryControllerTest extends WebTestCase
      */
     public function testAdminEditCategory(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $category = $client->getContainer()->get('doctrine')
-            ->getRepository(Category::class)
+        $category = $this->getRepository($client, Category::class)
             ->findOneBy([
                 'slug' => self::SLUG,
             ])->getId();
@@ -66,8 +63,8 @@ final class CategoryControllerTest extends WebTestCase
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $editedCategory = $client->getContainer()->get('doctrine')
-            ->getRepository(Category::class)->findOneBy([
+        $editedCategory = $this->getRepository($client, Category::class)
+            ->findOneBy([
                 'id' => $category,
             ]);
 
@@ -79,10 +76,10 @@ final class CategoryControllerTest extends WebTestCase
      */
     public function testAdminDeleteCategory(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $category = $client->getContainer()->get('doctrine')
-            ->getRepository(Category::class)->findOneBy([
+        $category = $this->getRepository($client, Category::class)
+            ->findOneBy([
                 'slug' => self::SLUG,
             ])->getId();
 
@@ -90,8 +87,8 @@ final class CategoryControllerTest extends WebTestCase
         $client->submit($crawler->filter('#delete-form-'.$category)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $this->assertNull($client->getContainer()->get('doctrine')
-            ->getRepository(Category::class)->findOneBy([
+        $this->assertNull($this->getRepository($client, Category::class)
+            ->findOneBy([
                 'slug' => self::SLUG,
             ]));
     }

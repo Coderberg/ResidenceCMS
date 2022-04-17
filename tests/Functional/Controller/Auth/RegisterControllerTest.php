@@ -4,19 +4,16 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Controller\Auth;
 
-use App\Entity\User;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class RegisterControllerTest extends WebTestCase
 {
+    use WebTestHelper;
+
     private const USER = [
         'PHP_AUTH_USER' => 'Tester',
         'PHP_AUTH_PW' => 'tester@test.org',
-    ];
-
-    private const ADMIN_CREDENTIALS = [
-        'PHP_AUTH_USER' => 'admin',
-        'PHP_AUTH_PW' => 'admin',
     ];
 
     // Make sure users are not allowed to create new accounts
@@ -31,7 +28,7 @@ final class RegisterControllerTest extends WebTestCase
 
     public function testAdminUpdateSettings(): void
     {
-        $client = self::createClient([], self::ADMIN_CREDENTIALS);
+        $client = $this->authAsAdmin($this);
         $crawler = $client->request('GET', '/en/admin/settings');
         $form = $crawler->selectButton('Save changes')->form([
             'settings[anyone_can_register]' => '1',
@@ -55,7 +52,7 @@ final class RegisterControllerTest extends WebTestCase
         $client->submit($form);
         $this->assertEmailCount(1);
         $this->assertResponseRedirects('/en/user/property');
-        $user = $this->findUser($client);
+        $user = $this->getUser($client, self::USER['PHP_AUTH_USER']);
         $this->assertSame(self::USER['PHP_AUTH_PW'], $user->getEmail());
         $this->assertFalse($user->isVerified());
     }
@@ -63,7 +60,7 @@ final class RegisterControllerTest extends WebTestCase
     // Try logging in as the newly created user
     public function testLogin(): void
     {
-        $client = self::createClient([], self::USER);
+        $client = $this->authAsUser($this);
         $client->request('GET', '/en/user/profile');
         $this->assertSelectorTextContains('h3', 'My profile');
     }
@@ -71,8 +68,8 @@ final class RegisterControllerTest extends WebTestCase
     // Try to remove this user from the database
     public function testDeleteUser(): void
     {
-        $client = self::createClient([], self::ADMIN_CREDENTIALS);
-        $user = $this->findUser($client)->getId();
+        $client = $this->authAsAdmin($this);
+        $user = $this->getUser($client, self::USER['PHP_AUTH_USER'])->getId();
         $crawler = $client->request('GET', '/en/admin/user');
         $client->submit($crawler->filter('#delete-form-'.$user)->form());
         $this->assertResponseRedirects('/en/admin/user');
@@ -80,19 +77,12 @@ final class RegisterControllerTest extends WebTestCase
 
     public function testChangeSettingsBack(): void
     {
-        $client = self::createClient([], self::ADMIN_CREDENTIALS);
+        $client = $this->authAsAdmin($this);
         $crawler = $client->request('GET', '/en/admin/settings');
         $form = $crawler->selectButton('Save changes')->form([
             'settings[anyone_can_register]' => '0',
         ]);
         $client->submit($form);
         $this->assertResponseRedirects('/en/admin/settings');
-    }
-
-    private function findUser($client): User
-    {
-        return $client->getContainer()->get('doctrine')
-            ->getRepository(User::class)
-            ->findOneBy(['username' => self::USER['PHP_AUTH_USER']]);
     }
 }

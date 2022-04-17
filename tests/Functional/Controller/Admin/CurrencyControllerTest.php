@@ -5,15 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller\Admin;
 
 use App\Entity\Currency;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 final class CurrencyControllerTest extends WebTestCase
 {
-    private const SERVER = [
-        'PHP_AUTH_USER' => 'admin',
-        'PHP_AUTH_PW' => 'admin',
-    ];
+    use WebTestHelper;
 
     private const CURRENCY = 'NEW';
     private const EDITED = 'EDT';
@@ -23,7 +21,7 @@ final class CurrencyControllerTest extends WebTestCase
      */
     public function testAdminNewCurrency(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
         $crawler = $client->request('GET', '/en/admin/currency/new');
 
@@ -34,8 +32,8 @@ final class CurrencyControllerTest extends WebTestCase
         $client->submit($form);
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
-        $currency = $client->getContainer()->get('doctrine')
-            ->getRepository(Currency::class)->findOneBy([
+        $currency = $this->getRepository($client, Currency::class)
+            ->findOneBy([
                 'code' => self::CURRENCY,
             ]);
 
@@ -48,10 +46,9 @@ final class CurrencyControllerTest extends WebTestCase
      */
     public function testAdminEditCurrency(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $currency = $client->getContainer()->get('doctrine')
-            ->getRepository(Currency::class)
+        $currency = $this->getRepository($client, Currency::class)
             ->findOneBy([
                 'code' => self::CURRENCY,
             ])->getId();
@@ -66,8 +63,8 @@ final class CurrencyControllerTest extends WebTestCase
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $editedCurrency = $client->getContainer()->get('doctrine')
-            ->getRepository(Currency::class)->findOneBy([
+        $editedCurrency = $this->getRepository($client, Currency::class)
+            ->findOneBy([
                 'id' => $currency,
             ]);
 
@@ -79,10 +76,10 @@ final class CurrencyControllerTest extends WebTestCase
      */
     public function testAdminDeleteCurrency(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $currency = $client->getContainer()->get('doctrine')
-            ->getRepository(Currency::class)->findOneBy([
+        $currency = $this->getRepository($client, Currency::class)
+            ->findOneBy([
                 'code' => self::EDITED,
             ])->getId();
 
@@ -90,8 +87,7 @@ final class CurrencyControllerTest extends WebTestCase
         $client->submit($crawler->filter('#delete-form-'.$currency)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $this->assertNull($client->getContainer()->get('doctrine')
-            ->getRepository(Currency::class)->findOneBy([
+        $this->assertNull($this->getRepository($client, Currency::class)->findOneBy([
                 'code' => self::EDITED,
             ]));
     }

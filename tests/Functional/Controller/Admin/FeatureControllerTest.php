@@ -5,15 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller\Admin;
 
 use App\Entity\Feature;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 final class FeatureControllerTest extends WebTestCase
 {
-    private const SERVER = [
-        'PHP_AUTH_USER' => 'admin',
-        'PHP_AUTH_PW' => 'admin',
-    ];
+    use WebTestHelper;
 
     private const FEATURE = 'New feature';
     private const EDITED = 'Edited feature';
@@ -23,7 +21,7 @@ final class FeatureControllerTest extends WebTestCase
      */
     public function testAdminNewFeature(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
         $crawler = $client->request('GET', '/en/admin/feature/new');
 
@@ -33,8 +31,7 @@ final class FeatureControllerTest extends WebTestCase
         $client->submit($form);
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
-        $feature = $client->getContainer()->get('doctrine')
-            ->getRepository(Feature::class)->findOneBy([
+        $feature = $this->getRepository($client, Feature::class)->findOneBy([
                 'name' => self::FEATURE,
             ]);
 
@@ -47,10 +44,9 @@ final class FeatureControllerTest extends WebTestCase
      */
     public function testAdminEditFeature(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $feature = $client->getContainer()->get('doctrine')
-            ->getRepository(Feature::class)
+        $feature = $this->getRepository($client, Feature::class)
             ->findOneBy([
                 'name' => self::FEATURE,
             ])->getId();
@@ -64,8 +60,7 @@ final class FeatureControllerTest extends WebTestCase
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $editedFeature = $client->getContainer()->get('doctrine')
-            ->getRepository(Feature::class)->findOneBy([
+        $editedFeature = $this->getRepository($client, Feature::class)->findOneBy([
                 'id' => $feature,
             ]);
 
@@ -77,10 +72,9 @@ final class FeatureControllerTest extends WebTestCase
      */
     public function testAdminDeleteFeature(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $feature = $client->getContainer()->get('doctrine')
-            ->getRepository(Feature::class)->findOneBy([
+        $feature = $this->getRepository($client, Feature::class)->findOneBy([
                 'name' => self::EDITED,
             ])->getId();
 
@@ -88,8 +82,7 @@ final class FeatureControllerTest extends WebTestCase
         $client->submit($crawler->filter('#delete-form-'.$feature)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $this->assertNull($client->getContainer()->get('doctrine')
-            ->getRepository(Feature::class)->findOneBy([
+        $this->assertNull($this->getRepository($client, Feature::class)->findOneBy([
                 'name' => self::EDITED,
             ]));
     }

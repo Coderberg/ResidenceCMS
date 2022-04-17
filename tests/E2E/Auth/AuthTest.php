@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Tests\E2E\Auth;
 
-use App\Tests\E2E\AuthHelper;
+use App\Tests\Helper\PantherTestHelper;
 use Facebook\WebDriver\Exception\NoSuchElementException;
 use Facebook\WebDriver\Exception\TimeoutException;
 use Symfony\Component\Panther\PantherTestCase;
 
 final class AuthTest extends PantherTestCase
 {
-    use AuthHelper;
+    use PantherTestHelper;
 
     /**
      * @throws NoSuchElementException

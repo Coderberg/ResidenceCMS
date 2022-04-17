@@ -5,15 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller\Admin;
 
 use App\Entity\DealType;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 final class DealTypeControllerTest extends WebTestCase
 {
-    private const SERVER = [
-        'PHP_AUTH_USER' => 'admin',
-        'PHP_AUTH_PW' => 'admin',
-    ];
+    use WebTestHelper;
 
     private const NAME = 'Test';
     private const SLUG = 'test';
@@ -24,7 +22,7 @@ final class DealTypeControllerTest extends WebTestCase
      */
     public function testAdminNewDealType(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
         $crawler = $client->request('GET', '/en/admin/deal_type/new');
 
@@ -35,8 +33,8 @@ final class DealTypeControllerTest extends WebTestCase
         $client->submit($form);
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
-        $dealType = $client->getContainer()->get('doctrine')
-            ->getRepository(DealType::class)->findOneBy([
+        $dealType = $this->getRepository($client, DealType::class)
+            ->findOneBy([
                 'slug' => self::SLUG,
             ]);
 
@@ -50,10 +48,9 @@ final class DealTypeControllerTest extends WebTestCase
      */
     public function testAdminEditDealType(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $dealType = $client->getContainer()->get('doctrine')
-            ->getRepository(DealType::class)
+        $dealType = $this->getRepository($client, DealType::class)
             ->findOneBy([
                 'slug' => self::SLUG,
             ])->getId();
@@ -67,8 +64,8 @@ final class DealTypeControllerTest extends WebTestCase
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $editedDealType = $client->getContainer()->get('doctrine')
-            ->getRepository(DealType::class)->findOneBy([
+        $editedDealType = $this->getRepository($client, DealType::class)
+            ->findOneBy([
                 'id' => $dealType,
             ]);
 
@@ -80,10 +77,10 @@ final class DealTypeControllerTest extends WebTestCase
      */
     public function testAdminDeleteDealType(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $dealType = $client->getContainer()->get('doctrine')
-            ->getRepository(DealType::class)->findOneBy([
+        $dealType = $this->getRepository($client, DealType::class)
+            ->findOneBy([
                 'slug' => self::SLUG,
             ])->getId();
 
@@ -91,8 +88,8 @@ final class DealTypeControllerTest extends WebTestCase
         $client->submit($crawler->filter('#delete-form-'.$dealType)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $this->assertNull($client->getContainer()->get('doctrine')
-            ->getRepository(DealType::class)->findOneBy([
+        $this->assertNull($this->getRepository($client, DealType::class)
+            ->findOneBy([
                 'slug' => self::SLUG,
             ]));
     }

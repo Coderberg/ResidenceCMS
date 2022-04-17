@@ -9,21 +9,17 @@ use App\Entity\City;
 use App\Entity\DealType;
 use App\Entity\Property;
 use App\Entity\PropertyDescription;
-use App\Entity\User;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 final class PropertyControllerTest extends WebTestCase
 {
-    private const USER = [
-        'PHP_AUTH_USER' => 'user',
-        'PHP_AUTH_PW' => 'user',
-    ];
+    use WebTestHelper;
 
     public function testIndex(): void
     {
-        $client = self::createClient([], self::USER);
-
+        $client = $this->authAsUser($this);
         $crawler = $client->request('GET', '/en/user/property');
         $this->assertResponseIsSuccessful(sprintf('The %s public URL loads correctly.', '/user/account'));
         $this->assertCount(2, $crawler->filter('.property-box-img'));
@@ -35,7 +31,7 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testUnpublish(): void
     {
-        $client = self::createClient([], self::USER);
+        $client = $this->authAsUser($this);
         $crawler = $client->request('GET', '/en/user/property');
         $link = $crawler->filter('.btn-outline-secondary')->first()->link();
         $client->request('GET', $link->getUri());
@@ -53,14 +49,10 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testEditingForbidden(): void
     {
-        $client = self::createClient([], self::USER);
+        $client = $this->authAsUser($this);
 
-        $user = $client->getContainer()->get('doctrine')
-            ->getRepository(User::class)
-            ->findOneBy(['username' => 'admin']);
-
-        $property = $client->getContainer()->get('doctrine')
-            ->getRepository(Property::class)
+        $user = $this->getUser($client, 'admin');
+        $property = $this->getRepository($client, Property::class)
             ->findOneBy(['author' => $user]);
 
         $client->request('GET', sprintf('/en/user/property/%d/update?state=private', $property->getId()));
@@ -72,7 +64,7 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testPublish(): void
     {
-        $client = self::createClient([], self::USER);
+        $client = $this->authAsUser($this);
         $crawler = $client->request('GET', '/en/user/property?state=unpublished');
         $link = $crawler->filter('.btn-outline-secondary')->first()->link();
         $client->request('GET', $link->getUri());
@@ -90,18 +82,18 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testNewProperty(): void
     {
-        $client = self::createClient([], self::USER);
+        $client = $this->authAsUser($this);
 
         $crawler = $client->request('GET', '/en/user/property/new');
 
-        $city = $client->getContainer()->get('doctrine')
-            ->getRepository(City::class)->findOneBy(['slug' => 'miami'])->getId();
+        $city = $this->getRepository($client, City::class)
+            ->findOneBy(['slug' => 'miami'])->getId();
 
-        $dealType = $client->getContainer()->get('doctrine')
-            ->getRepository(DealType::class)->findOneBy([])->getId();
+        $dealType = $this->getRepository($client, DealType::class)
+            ->findOneBy([])->getId();
 
-        $category = $client->getContainer()->get('doctrine')
-            ->getRepository(Category::class)->findOneBy([])->getId();
+        $category = $this->getRepository($client, Category::class)
+            ->findOneBy([])->getId();
 
         $form = $crawler->selectButton('Save changes')->form([
             'property[city]' => $city,
@@ -120,10 +112,9 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testEditPhoto(): void
     {
-        $client = self::createClient([], self::USER);
+        $client = $this->authAsUser($this);
 
-        $property = $client->getContainer()->get('doctrine')
-            ->getRepository(Property::class)
+        $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'added-by-user'])->getId();
 
         $crawler = $client->request('GET', '/en/user/photo/'.$property.'/edit');
@@ -139,10 +130,9 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testEditProperty(): void
     {
-        $client = self::createClient([], self::USER);
+        $client = $this->authAsUser($this);
 
-        $property = $client->getContainer()->get('doctrine')
-            ->getRepository(Property::class)
+        $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'added-by-user']);
 
         $crawler = $client->request('GET', sprintf('/en/user/property/%d/edit', $property->getId()));
@@ -155,8 +145,7 @@ final class PropertyControllerTest extends WebTestCase
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $editedProperty = $client->getContainer()->get('doctrine')
-            ->getRepository(PropertyDescription::class)
+        $editedProperty = $this->getRepository($client, PropertyDescription::class)
             ->findOneBy(['meta_title' => 'Custom Meta Title'])->getProperty();
 
         $client->request('GET', sprintf('/en/user/property/%d/edit', $editedProperty->getId()));
@@ -165,13 +154,9 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testDeleteProperty(): void
     {
-        $client = self::createClient([], [
-            'PHP_AUTH_USER' => 'admin',
-            'PHP_AUTH_PW' => 'admin',
-        ]);
+        $client = $this->authAsAdmin($this);
 
-        $property = $client->getContainer()->get('doctrine')
-            ->getRepository(Property::class)
+        $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'added-by-user'])->getId();
 
         $crawler = $client->request('GET', '/en/admin/property?sort_by=id');
@@ -179,8 +164,7 @@ final class PropertyControllerTest extends WebTestCase
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $this->assertNull($client->getContainer()->get('doctrine')
-            ->getRepository(Property::class)->findOneBy([
+        $this->assertNull($this->getRepository($client, Property::class)->findOneBy([
                 'slug' => 'test',
             ]));
     }

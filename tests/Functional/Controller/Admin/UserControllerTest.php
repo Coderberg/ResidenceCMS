@@ -5,22 +5,20 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller\Admin;
 
 use App\Entity\User;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 final class UserControllerTest extends WebTestCase
 {
-    private const SERVER = [
-        'PHP_AUTH_USER' => 'admin',
-        'PHP_AUTH_PW' => 'admin',
-    ];
+    use WebTestHelper;
 
     /**
      * This test changes the database contents by creating a new User.
      */
     public function testAdminNewUser(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
         $crawler = $client->request('GET', '/en/admin/user/new');
 
         $form = $crawler->selectButton('Create user')->form([
@@ -34,10 +32,7 @@ final class UserControllerTest extends WebTestCase
         $client->submit($form);
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
-        $user = $client->getContainer()->get('doctrine')
-            ->getRepository(User::class)->findOneBy([
-                'username' => 'test',
-            ]);
+        $user = $this->getUser($client, 'test');
 
         $this->assertNotNull($user);
         $this->assertSame('test', $user->getProfile()->getFullName());
@@ -64,13 +59,8 @@ final class UserControllerTest extends WebTestCase
      */
     public function testAdminEditUser(): void
     {
-        $client = self::createClient([], self::SERVER);
-
-        $user = $client->getContainer()->get('doctrine')
-            ->getRepository(User::class)
-            ->findOneBy([
-                'username' => 'test',
-            ])->getId();
+        $client = $this->authAsAdmin($this);
+        $user = $this->getUser($client, 'test')->getId();
 
         $crawler = $client->request('GET', '/en/admin/user/'.$user.'/edit');
 
@@ -84,8 +74,7 @@ final class UserControllerTest extends WebTestCase
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $editedUser = $client->getContainer()->get('doctrine')
-            ->getRepository(User::class)->findOneBy([
+        $editedUser = $this->getRepository($client, User::class)->findOneBy([
                 'id' => $user,
             ]);
 
@@ -95,7 +84,7 @@ final class UserControllerTest extends WebTestCase
 
     public function testAdminPermissions(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
         $client->request('GET', '/en/user/property');
         $this->assertResponseIsSuccessful();
@@ -109,20 +98,13 @@ final class UserControllerTest extends WebTestCase
      */
     public function testAdminDeleteUser(): void
     {
-        $client = self::createClient([], self::SERVER);
-
-        $user = $client->getContainer()->get('doctrine')
-            ->getRepository(User::class)->findOneBy([
-                'username' => 'edited',
-            ])->getId();
+        $client = $this->authAsAdmin($this);
+        $user = $this->getUser($client, 'edited')->getId();
 
         $crawler = $client->request('GET', '/en/admin/user');
         $client->submit($crawler->filter('#delete-form-'.$user)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $this->assertNull($client->getContainer()->get('doctrine')
-            ->getRepository(User::class)->findOneBy([
-                'username' => 'edited',
-            ]));
+        $this->assertNull($this->getUser($client, 'edited'));
     }
 }

@@ -2,14 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\E2E;
+namespace App\Tests\Helper;
 
-use Symfony\Bundle\FrameworkBundle\KernelBrowser;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Panther\Client as PantherClient;
 
-trait AuthHelper
+trait PantherTestHelper
 {
     public function login(PantherClient $client, string $username, string $password): Crawler
     {
@@ -25,13 +23,5 @@ trait AuthHelper
     public function logout(PantherClient $client): void
     {
         $client->request('GET', '/en/logout');
-    }
-
-    public function authAsAdmin(WebTestCase $testCase): KernelBrowser
-    {
-        return $testCase::createClient([], [
-            'PHP_AUTH_USER' => 'admin',
-            'PHP_AUTH_PW' => 'admin',
-        ]);
     }
 }

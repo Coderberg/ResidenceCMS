@@ -11,33 +11,31 @@ use App\Entity\Feature;
 use App\Entity\Metro;
 use App\Entity\Neighborhood;
 use App\Entity\Property;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 final class PropertyControllerTest extends WebTestCase
 {
-    private const SERVER = [
-        'PHP_AUTH_USER' => 'admin',
-        'PHP_AUTH_PW' => 'admin',
-    ];
+    use WebTestHelper;
 
     /**
      * This test changes the database contents by creating a new Property.
      */
     public function testAdminNewProperty(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
         $crawler = $client->request('GET', '/en/admin/property/new');
 
-        $city = $client->getContainer()->get('doctrine')
-            ->getRepository(City::class)->findOneBy(['slug' => 'miami'])->getId();
+        $city = $this->getRepository($client, City::class)
+            ->findOneBy(['slug' => 'miami'])->getId();
 
-        $dealType = $client->getContainer()->get('doctrine')
-            ->getRepository(DealType::class)->findOneBy([])->getId();
+        $dealType = $this->getRepository($client, DealType::class)
+            ->findOneBy([])->getId();
 
-        $category = $client->getContainer()->get('doctrine')
-            ->getRepository(Category::class)->findOneBy([])->getId();
+        $category = $this->getRepository($client, Category::class)
+            ->findOneBy([])->getId();
 
         $form = $crawler->selectButton('Create property')->form([
             'property[city]' => $city,
@@ -57,10 +55,9 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testAdminEditPhoto(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $property = $client->getContainer()->get('doctrine')
-            ->getRepository(Property::class)
+        $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'test'])->getId();
 
         $crawler = $client->request('GET', '/en/admin/photo/'.$property.'/edit');
@@ -76,20 +73,19 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testAdminEditProperty(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $property = $client->getContainer()->get('doctrine')
-            ->getRepository(Property::class)
+        $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'test']);
 
-        $neighborhood = $client->getContainer()->get('doctrine')
-            ->getRepository(Neighborhood::class)->findOneBy(['slug' => 'south-beach'])->getId();
+        $neighborhood = $this->getRepository($client, Neighborhood::class)
+            ->findOneBy(['slug' => 'south-beach'])->getId();
 
-        $metroStation = $client->getContainer()->get('doctrine')
-            ->getRepository(Metro::class)->findOneBy(['slug' => 'government-center'])->getId();
+        $metroStation = $this->getRepository($client, Metro::class)
+            ->findOneBy(['slug' => 'government-center'])->getId();
 
-        $feature = $client->getContainer()->get('doctrine')
-            ->getRepository(Feature::class)->findOneBy(['name' => 'Secure parking']);
+        $feature = $this->getRepository($client, Feature::class)
+            ->findOneBy(['name' => 'Secure parking']);
 
         $crawler = $client->request('GET', '/en/admin/property/'.$property->getId().'/edit');
 
@@ -118,10 +114,9 @@ final class PropertyControllerTest extends WebTestCase
 
     public function testAdminDeletePhoto(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $property = $client->getContainer()->get('doctrine')
-            ->getRepository(Property::class)
+        $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'test'])->getId();
 
         $crawler = $client->request('GET', '/en/admin/photo/'.$property.'/edit');
@@ -136,10 +131,9 @@ final class PropertyControllerTest extends WebTestCase
      */
     public function testAdminDeleteProperty(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $property = $client->getContainer()->get('doctrine')
-            ->getRepository(Property::class)
+        $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'test'])->getId();
 
         $crawler = $client->request('GET', '/en/admin/property?sort_by=id');
@@ -147,8 +141,7 @@ final class PropertyControllerTest extends WebTestCase
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $this->assertNull($client->getContainer()->get('doctrine')
-            ->getRepository(Property::class)->findOneBy([
+        $this->assertNull($this->getRepository($client, Property::class)->findOneBy([
                 'slug' => 'test',
             ]));
     }

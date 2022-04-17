@@ -5,15 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller\Admin;
 
 use App\Entity\Metro;
+use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 final class MetroControllerTest extends WebTestCase
 {
-    private const SERVER = [
-        'PHP_AUTH_USER' => 'admin',
-        'PHP_AUTH_PW' => 'admin',
-    ];
+    use WebTestHelper;
 
     private const NAME = 'Test';
     private const SLUG = 'test';
@@ -24,7 +22,7 @@ final class MetroControllerTest extends WebTestCase
      */
     public function testAdminNewStation(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
         $crawler = $client->request('GET', '/en/admin/locations/metro/new');
 
@@ -35,8 +33,7 @@ final class MetroControllerTest extends WebTestCase
         $client->submit($form);
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
-        $station = $client->getContainer()->get('doctrine')
-            ->getRepository(Metro::class)->findOneBy([
+        $station = $this->getRepository($client, Metro::class)->findOneBy([
                 'slug' => self::SLUG,
             ]);
 
@@ -50,10 +47,9 @@ final class MetroControllerTest extends WebTestCase
      */
     public function testAdminEditStation(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $station = $client->getContainer()->get('doctrine')
-            ->getRepository(Metro::class)
+        $station = $this->getRepository($client, Metro::class)
             ->findOneBy([
                 'slug' => self::SLUG,
             ])->getId();
@@ -67,8 +63,8 @@ final class MetroControllerTest extends WebTestCase
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $editedStation = $client->getContainer()->get('doctrine')
-            ->getRepository(Metro::class)->findOneBy([
+        $editedStation = $this->getRepository($client, Metro::class)
+            ->findOneBy([
                 'id' => $station,
             ]);
 
@@ -80,10 +76,10 @@ final class MetroControllerTest extends WebTestCase
      */
     public function testAdminDeleteStation(): void
     {
-        $client = self::createClient([], self::SERVER);
+        $client = $this->authAsAdmin($this);
 
-        $station = $client->getContainer()->get('doctrine')
-            ->getRepository(Metro::class)->findOneBy([
+        $station = $this->getRepository($client, Metro::class)
+            ->findOneBy([
                 'slug' => self::SLUG,
             ])->getId();
 
@@ -91,8 +87,7 @@ final class MetroControllerTest extends WebTestCase
         $client->submit($crawler->filter('#delete-metro-'.$station)->form());
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
-        $this->assertNull($client->getContainer()->get('doctrine')
-            ->getRepository(Metro::class)->findOneBy([
+        $this->assertNull($this->getRepository($client, Metro::class)->findOneBy([
                 'slug' => self::SLUG,
             ]));
     }
