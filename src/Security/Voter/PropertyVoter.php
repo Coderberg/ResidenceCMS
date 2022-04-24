@@ -34,15 +34,11 @@ final class PropertyVoter extends Voter
         /** @var Property $property */
         $property = $subject;
 
-        switch ($attribute) {
-            case 'PROPERTY_VIEW':
-                return $this->canView($property, $token);
-
-            case 'PROPERTY_EDIT':
-                return $this->canEdit($property, $token);
-        }
-
-        throw new LogicException('This code should not be reached!');
+        return match ($attribute) {
+            'PROPERTY_VIEW' => $this->canView($property, $token),
+            'PROPERTY_EDIT' => $this->canEdit($property, $token),
+            default => throw new LogicException('This code should not be reached!'),
+        };
     }
 
     private function canView(Property $property, TokenInterface $token): bool
