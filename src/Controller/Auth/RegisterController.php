@@ -21,7 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
-final class RegisterController extends BaseController
+final class RegisterController extends BaseController implements AuthController
 {
     private MessageBusInterface $messageBus;
     private RegistrationFormAuthenticator $authenticator;

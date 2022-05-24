@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
-final class VerificationController extends AbstractController
+final class VerificationController extends AbstractController implements AuthController
 {
     private EmailVerifier $emailVerifier;
 

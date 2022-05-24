@@ -1,0 +1,23 @@
+{% extends "layout/base.html.twig" %}
+
+{% block title %}429 Too Many Requests{% endblock %}
+
+{% block stylesheets %}
+
+    <style>
+        h1 {
+            font-size: 6rem !important;
+        }
+    </style>
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="jumbotron text-center">
+        <h1>429&nbsp;</h1>
+        <p class="lead">Too Many Requests</p>
+        <p><a class="btn btn-lg btn-success" href="{{ path('property') }}" role="button">Go to Homepage</a></p>
+    </div>
+
+{% endblock %}

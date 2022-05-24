@@ -1,6 +1,6 @@
 framework:
   rate_limiter:
-    password_reset_page:
+    auth:
       policy: 'fixed_window'
       limit: 5
       interval: '100 seconds'

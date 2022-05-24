@@ -13,26 +13,20 @@ use App\Service\Auth\ResettingService;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class ResetPasswordController extends BaseController
+final class ResetPasswordController extends BaseController implements AuthController
 {
     /**
      * @Route("/password/reset", methods={"GET|POST"}, name="password_reset")
      */
-    public function passwordReset(ResettingService $service, Request $request, RateLimiterFactory $passwordResetPageLimiter): Response
+    public function passwordReset(ResettingService $service, Request $request): Response
     {
-        $limiter = $passwordResetPageLimiter->create($request->getClientIp());
         $form = $this->createForm(UserEmailType::class, []);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $service->sendResetPasswordLink($request);
-        } elseif ($form->isSubmitted() && false === $limiter->consume(1)->isAccepted()) {
-            // Don't allow too many invalid requests
-            throw new TooManyRequestsHttpException();
         }
 
         return $this->render('auth/passwords/password_reset.html.twig', [
