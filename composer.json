@@ -6,7 +6,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": "^8.0",
+        "php": "^8.1",
         "ext-ctype": "*",
         "ext-gd": "*",
         "composer/package-versions-deprecated": "^1.11",
@@ -71,7 +71,7 @@
     },
     "config": {
         "platform": {
-            "php": "8.0.2"
+            "php": "8.1"
         },
         "optimize-autoloader": true,
         "preferred-install": {
@@ -121,7 +121,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "6.0.*"
+            "require": "6.1.*"
         }
     }
 }
