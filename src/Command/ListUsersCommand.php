@@ -6,6 +6,7 @@ namespace App\Command;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -13,10 +14,12 @@ use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+#[AsCommand(
+    name: 'app:list-users',
+    description: 'Lists all the existing users',
+)]
 final class ListUsersCommand extends Command
 {
-    protected static $defaultName = 'app:list-users';
-
     private UserRepository $users;
 
     public function __construct(UserRepository $users)
@@ -27,9 +30,7 @@ final class ListUsersCommand extends Command
 
     protected function configure(): void
     {
-        $this
-            ->setDescription('Lists all the existing users')
-            ->addOption(
+        $this->addOption(
                 'limit',
                 null,
                 InputOption::VALUE_OPTIONAL,
