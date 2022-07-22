@@ -7,6 +7,7 @@ namespace App\MessageHandler;
 use App\Entity\User;
 use App\Mailer\Mailer;
 use App\Message\SendEmailConfirmationLink;
+use App\Service\Cache\UserDataCache;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 use Symfony\Component\Mime\Address;
@@ -17,6 +18,8 @@ use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
 final class SendEmailConfirmationLinkHandler implements MessageHandlerInterface
 {
+    use UserDataCache;
+
     private VerifyEmailHelperInterface $verifyEmailHelper;
     private Mailer $mailer;
     private UrlGeneratorInterface $router;
@@ -39,6 +42,7 @@ final class SendEmailConfirmationLinkHandler implements MessageHandlerInterface
         $user = $sendEmailConfirmationLink->getUser();
         $email = $this->buildEmail($user);
         $this->mailer->send($email);
+        $this->setConfirmationSentAt($user);
     }
 
     private function getSender(): Address

@@ -19,6 +19,7 @@ Encore
      */
     .addEntry('js/app', './assets/app.js')
     .addEntry('js/admin', './assets/js/admin.js')
+    .addEntry('js/auth', './assets/js/auth/auth.js')
     .addEntry('js/ekko-lightbox', './assets/js/ekko-lightbox.js')
     .addEntry('js/map', './assets/js/map.js')
     .addEntry('js/menu-sorting', './assets/js/menu-sorting.js')

@@ -60,6 +60,9 @@
 
 <!-- Scripts -->
 {{ encore_entry_script_tags('js/app') }}
+{% if app.user %}
+    {{ encore_entry_script_tags('js/auth') }}
+{% endif %}
 
 {% block javascripts %}{% endblock %}
 
