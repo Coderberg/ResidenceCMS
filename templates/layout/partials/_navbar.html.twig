@@ -24,7 +24,9 @@
 
             {% for item in site.menu %}
 
-                {% if ('https://' not in item.url) %}
+                {% if (item.url == '/' and locale == item.locale) %}
+                    {% set url = '/' %}
+                {% elseif ('https://' not in item.url) %}
                     {% set url = '/' ~ item.locale ~ item.url %}
                 {% else %}
                     {% set url = item.url %}

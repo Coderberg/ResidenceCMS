@@ -1090,6 +1090,14 @@
                     Regards, the Team.
                 </target>
             </trans-unit>
+            <trans-unit id="confirmation.email.resend">
+                <source>confirmation.email.resend</source>
+                <target>Resend Verification Link</target>
+            </trans-unit>
+            <trans-unit id="confirmation.email.success">
+                <source>confirmation.email.success</source>
+                <target>Verification email has been sent to</target>
+            </trans-unit>
             <trans-unit id="confirmation.email.subject">
                 <source>confirmation.email.subject</source>
                 <target>Please Confirm your Email</target>

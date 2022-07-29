@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\EventSubscriber;
 
 use App\Controller\AjaxController;
+use App\Controller\Auth\AuthController;
+use App\Middleware\ThrottleRequests;
 use App\Middleware\VerifyCsrfToken;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\ControllerEvent;
@@ -12,11 +14,13 @@ use Symfony\Component\HttpKernel\KernelEvents;
 
 final class ControllerSubscriber implements EventSubscriberInterface
 {
-    private VerifyCsrfToken $middleware;
+    private VerifyCsrfToken $verifyCsrfToken;
+    private ThrottleRequests $throttleRequests;
 
-    public function __construct(VerifyCsrfToken $middleware)
+    public function __construct(VerifyCsrfToken $verifyCsrfToken, ThrottleRequests $throttleRequests)
     {
-        $this->middleware = $middleware;
+        $this->verifyCsrfToken = $verifyCsrfToken;
+        $this->throttleRequests = $throttleRequests;
     }
 
     public function onKernelController(ControllerEvent $event): void
@@ -27,7 +31,9 @@ final class ControllerSubscriber implements EventSubscriberInterface
         }
 
         if ($controller instanceof AjaxController) {
-            $this->middleware->handle($event->getRequest());
+            $this->verifyCsrfToken->handle($event->getRequest());
+        } elseif ($controller instanceof AuthController) {
+            $this->throttleRequests->handle($event->getRequest());
         }
     }
 

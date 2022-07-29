@@ -3,6 +3,7 @@ twig:
     globals:
         app_version: '%app_version%'
         locales: '%app_locales%'
+        locale: '%locale%'
 
 when@test:
     twig:

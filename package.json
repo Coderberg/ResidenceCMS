@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.3",
+        "bootbox": "^5.5.3",
         "bootstrap": "^4.6.0",
         "dropzone": "^5.9.2",
         "ekko-lightbox": "^5.3.0",

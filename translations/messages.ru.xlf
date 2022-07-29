@@ -1090,6 +1090,14 @@
                     С наилучшими пожеланиями, команда сайта.
                 </target>
             </trans-unit>
+            <trans-unit id="confirmation.email.resend">
+                <source>confirmation.email.resend</source>
+                <target>Повторно отправить ссылку</target>
+            </trans-unit>
+            <trans-unit id="confirmation.email.success">
+                <source>confirmation.email.success</source>
+                <target>Письмо с подтверждением отправлено на</target>
+            </trans-unit>
             <trans-unit id="confirmation.email.subject">
                 <source>confirmation.email.subject</source>
                 <target>Пожалуйста, подтвердите свою электронную почту</target>
