@@ -12,13 +12,10 @@ use Symfony\Component\HttpFoundation\Request;
 
 final class CityService
 {
-    private RequestToArrayTransformer $transformer;
-    private FilterRepository $repository;
-
-    public function __construct(RequestToArrayTransformer $transformer, FilterRepository $repository)
+    public function __construct(
+        private RequestToArrayTransformer $transformer,
+        private FilterRepository $repository)
     {
-        $this->transformer = $transformer;
-        $this->repository = $repository;
     }
 
     public function getSearchParams(Request $request, City $city): array

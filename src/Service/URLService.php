@@ -11,11 +11,8 @@ use Symfony\Component\Routing\RouterInterface;
 
 final class URLService
 {
-    private RouterInterface $router;
-
-    public function __construct(RouterInterface $router)
+    public function __construct(private RouterInterface $router)
     {
-        $this->router = $router;
     }
 
     // Check slugs.

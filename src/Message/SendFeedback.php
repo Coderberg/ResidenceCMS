@@ -8,11 +8,8 @@ use App\Dto\FeedbackDto;
 
 final class SendFeedback
 {
-    private FeedbackDto $feedback;
-
-    public function __construct(FeedbackDto $feedback)
+    public function __construct(private FeedbackDto $feedback)
     {
-        $this->feedback = $feedback;
     }
 
     public function getFeedback(): FeedbackDto
