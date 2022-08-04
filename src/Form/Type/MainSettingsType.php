@@ -14,7 +14,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\Range;
 
-final class SettingsType extends AbstractType
+final class MainSettingsType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -89,22 +89,7 @@ final class SettingsType extends AbstractType
                     ],
                     'label' => 'label.settings.anyone_can_register',
                 ]
-            )
-            ->add('ymaps_key', null, [
-                'required' => false,
-                'label' => 'label.settings.ymaps_key',
-            ])
-            ->add('map_center', null, [
-                'attr' => [
-                    'placeholder' => 'placeholder.map_center_example',
-                ],
-                'required' => false,
-                'label' => 'label.settings.map_center',
-            ])
-            ->add('map_zoom', null, [
-                'label' => 'label.settings.map_zoom',
-                'constraints' => [new Range(['min' => 0, 'max' => 19])],
-            ]);
+            );
     }
 
     /**

@@ -2,44 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Admin;
+namespace App\Controller\Admin\Settings;
 
 use App\Form\Type\FilterSettingsType;
-use App\Form\Type\SettingsType;
-use App\Repository\SettingsRepository;
-use App\Service\Admin\SettingsService;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class SettingsController extends AbstractController
+final class HeaderSettingsController extends AbstractSettingsController
 {
-    public function __construct(private SettingsRepository $repository, private SettingsService $service)
-    {
-    }
-
-    /**
-     * @Route("/admin/settings", name="admin_settings")
-     */
-    public function settings(Request $request): Response
-    {
-        $settings = $this->repository->findAllAsArray();
-
-        $form = $this->createForm(SettingsType::class, $settings);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->service->updateSettings($form->getNormData());
-
-            return $this->redirectToRoute('admin_settings');
-        }
-
-        return $this->render('admin/settings/settings.html.twig', [
-            'site' => $settings,
-            'form' => $form->createView(),
-        ]);
-    }
-
     /**
      * @Route("/admin/settings/header", name="admin_header_settings")
      */

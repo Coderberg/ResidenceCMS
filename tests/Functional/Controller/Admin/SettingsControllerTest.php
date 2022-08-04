@@ -24,11 +24,11 @@ final class SettingsControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/en/admin/settings');
 
         $form = $crawler->selectButton('Save changes')->form([
-            'settings[title]' => $title.' - Test title',
-            'settings[fixed_top_navbar]' => '1',
-            'settings[show_similar_properties]' => '1',
-            'settings[items_per_page]' => '3',
-            'settings[custom_footer_text]' => 'Edited text',
+            'main_settings[title]' => $title.' - Test title',
+            'main_settings[fixed_top_navbar]' => '1',
+            'main_settings[show_similar_properties]' => '1',
+            'main_settings[items_per_page]' => '3',
+            'main_settings[custom_footer_text]' => 'Edited text',
         ]);
 
         $client->submit($form);
@@ -70,11 +70,11 @@ final class SettingsControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/en/admin/settings');
 
         $form = $crawler->selectButton('Save changes')->form([
-            'settings[title]' => mb_substr($title, 0, -13),
-            'settings[custom_footer_text]' => 'All Rights Reserved.',
-            'settings[fixed_top_navbar]' => '0',
-            'settings[show_similar_properties]' => '0',
-            'settings[items_per_page]' => '6',
+            'main_settings[title]' => mb_substr($title, 0, -13),
+            'main_settings[custom_footer_text]' => 'All Rights Reserved.',
+            'main_settings[fixed_top_navbar]' => '0',
+            'main_settings[show_similar_properties]' => '0',
+            'main_settings[items_per_page]' => '6',
         ]);
 
         $client->submit($form);

@@ -542,6 +542,10 @@
                 <source>title.settings.header_settings</source>
                 <target>Настройки шапки</target>
             </trans-unit>
+            <trans-unit id="title.settings.map_settings">
+                <source>title.settings.map_settings</source>
+                <target>Настройки карты</target>
+            </trans-unit>
             <trans-unit id="title.settings.logo_image_label">
                 <source>title.settings.logo_image_label</source>
                 <target>Логотип сайта</target>
