@@ -4,23 +4,7 @@
 
 {% block body %}
 
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link" href="{{ path('admin_settings') }}">
-                <i class="fas fa-edit text-danger"></i> {{ 'title.settings' | trans }}
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ path('admin_header_settings') }}">
-                <i class="fas fa-image text-danger"></i> {{ 'title.settings.header_settings' | trans }}
-            </a>
-        </li>
-        <li class="nav-item">
-            <span class="nav-link active">
-                <i class="fas fa-map-marker-alt text-danger"></i> {{ 'title.settings.map_settings' | trans }}
-            </span>
-        </li>
-    </ul>
+    {{ include('admin/settings/partials/_nav_tabs.html.twig') }}
 
     <div class="card mb-3">
         <div class="card-body">
