@@ -16,9 +16,7 @@ final class MapSettingsController extends AbstractSettingsController
      */
     public function mapSettings(Request $request): Response
     {
-        $settings = $this->repository->findAllAsArray();
-
-        $form = $this->createForm(MapSettingsType::class, $settings);
+        $form = $this->createForm(MapSettingsType::class, $this->settings);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->service->updateSettings($form->getNormData());
@@ -27,7 +25,7 @@ final class MapSettingsController extends AbstractSettingsController
         }
 
         return $this->render('admin/settings/map_settings.html.twig', [
-            'site' => $settings,
+            'site' => $this->settings,
             'form' => $form->createView(),
         ]);
     }

@@ -16,9 +16,7 @@ final class MainSettingsController extends AbstractSettingsController
      */
     public function settings(Request $request): Response
     {
-        $settings = $this->repository->findAllAsArray();
-
-        $form = $this->createForm(MainSettingsType::class, $settings);
+        $form = $this->createForm(MainSettingsType::class, $this->settings);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->service->updateSettings($form->getNormData());
@@ -27,7 +25,7 @@ final class MainSettingsController extends AbstractSettingsController
         }
 
         return $this->render('admin/settings/main_settings.html.twig', [
-            'site' => $settings,
+            'site' => $this->settings,
             'form' => $form->createView(),
         ]);
     }

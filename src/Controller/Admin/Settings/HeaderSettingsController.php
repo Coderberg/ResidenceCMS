@@ -16,7 +16,7 @@ final class HeaderSettingsController extends AbstractSettingsController
      */
     public function changeHeaderImage(Request $request): Response
     {
-        $settings = $this->repository->findAllAsArray();
+        $settings = $this->settings;
 
         $form = $this->createForm(FilterSettingsType::class, $settings);
         $form->handleRequest($request);
