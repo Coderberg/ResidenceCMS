@@ -31,12 +31,12 @@ final class ListUsersCommand extends Command
     protected function configure(): void
     {
         $this->addOption(
-                'limit',
-                null,
-                InputOption::VALUE_OPTIONAL,
-                'Limits the number of users listed',
-                50
-            )
+            'limit',
+            null,
+            InputOption::VALUE_OPTIONAL,
+            'Limits the number of users listed',
+            50
+        )
         ;
     }
 

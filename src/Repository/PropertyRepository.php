@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Entity\Property;
+use App\Entity\Settings;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
@@ -59,7 +60,7 @@ class PropertyRepository extends ServiceEntityRepository
 
     private function findLimit(): int
     {
-        $repository = $this->getEntityManager()->getRepository('App:Settings');
+        $repository = $this->getEntityManager()->getRepository(Settings::class);
         $limit = $repository->findOneBy(['setting_name' => 'items_per_page']);
 
         return (int) $limit->getSettingValue();

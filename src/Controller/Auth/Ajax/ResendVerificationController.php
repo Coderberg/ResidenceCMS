@@ -57,8 +57,8 @@ final class ResendVerificationController extends AbstractController implements A
         $sentAt = $this->getConfirmationSentAt($user);
 
         if ($sentAt instanceof \DateTimeInterface) {
-            return ((int) (date_diff(new \DateTime('now'), $sentAt)
-                ->format('%i'))) > 60;
+            return ((int) date_diff(new \DateTime('now'), $sentAt)
+                ->format('%i')) > 60;
         }
 
         return true;

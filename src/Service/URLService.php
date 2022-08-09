@@ -41,7 +41,7 @@ final class URLService
     // Check referer host.
     public function isRefererFromCurrentHost(Request $request): bool
     {
-        if (preg_match('/'.$request->getHost().'/', ($request->server->getHeaders()['REFERER']) ?? '')) {
+        if (preg_match('/'.$request->getHost().'/', $request->server->getHeaders()['REFERER'] ?? '')) {
             return true;
         }
 

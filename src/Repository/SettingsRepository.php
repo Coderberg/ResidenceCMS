@@ -63,7 +63,7 @@ final class SettingsRepository extends ServiceEntityRepository
     {
         foreach ($settings as $setting_name => $setting_value) {
             if ('currency' === $setting_name) {
-                $this->updateSetting('currency_id', (string) ($setting_value->getId()));
+                $this->updateSetting('currency_id', (string) $setting_value->getId());
             } else {
                 $this->updateSetting($setting_name, (string) $setting_value);
             }

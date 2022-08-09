@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Entity\Property;
+use App\Entity\Settings;
 
 final class SimilarRepository extends PropertyRepository
 {
@@ -37,14 +38,14 @@ final class SimilarRepository extends PropertyRepository
     {
         $qb = $this->createQueryBuilder('p')
             ->where("p.state = 'published'")
-            ->andWhere('p.id != '.(int) ($property->getId()))
-            ->andWhere('p.deal_type = '.(int) ($property->getDealType()->getId()))
-            ->andWhere('p.category = '.(int) ($property->getCategory()->getId()));
+            ->andWhere('p.id != '.(int) $property->getId())
+            ->andWhere('p.deal_type = '.(int) $property->getDealType()->getId())
+            ->andWhere('p.category = '.(int) $property->getCategory()->getId());
 
         if ('neighborhood' === $area) {
-            $qb->andWhere('p.neighborhood = '.(int) ($property->getNeighborhood()->getId()));
+            $qb->andWhere('p.neighborhood = '.(int) $property->getNeighborhood()->getId());
         } else {
-            $qb->andWhere('p.district = '.(int) ($property->getDistrict()->getId()));
+            $qb->andWhere('p.district = '.(int) $property->getDistrict()->getId());
         }
 
         return $qb->getQuery()->setMaxResults(self::NUM_ITEMS)->getResult();
@@ -52,7 +53,7 @@ final class SimilarRepository extends PropertyRepository
 
     private function isModuleEnabled(): bool
     {
-        $repository = $this->getEntityManager()->getRepository('App:Settings');
+        $repository = $this->getEntityManager()->getRepository(Settings::class);
         $state = $repository->findOneBy(['setting_name' => 'show_similar_properties']);
 
         return '1' === $state->getSettingValue();

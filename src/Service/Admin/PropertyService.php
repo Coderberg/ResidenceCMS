@@ -41,7 +41,7 @@ final class PropertyService extends AbstractService
         $property->setCreatedAt(new \DateTime('now'));
         $property->setUpdatedAt(new \DateTime('now'));
         $property->setState('published');
-        $property->setPriorityNumber((int) ($property->getPriorityNumber()));
+        $property->setPriorityNumber((int) $property->getPriorityNumber());
         $this->save($property);
         $this->clearCache('properties_count');
         $this->addFlash('success', 'message.created');
@@ -52,7 +52,7 @@ final class PropertyService extends AbstractService
         $slug = $this->slugger->slugify($property->getPropertyDescription()->getTitle() ?? 'property');
         $property->setSlug($slug);
         $property->setUpdatedAt(new \DateTime('now'));
-        $property->setPriorityNumber((int) ($property->getPriorityNumber()));
+        $property->setPriorityNumber((int) $property->getPriorityNumber());
         $this->em->flush();
         $this->addFlash('success', 'message.updated');
     }
