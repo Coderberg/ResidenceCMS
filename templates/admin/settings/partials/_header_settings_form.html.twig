@@ -8,7 +8,7 @@
           class="dropzone js-photo-dropzone">
         <div class="fallback">
             <input name="file" type="file" accept="image/*"/>
-            <input name="csrf_token" type="hidden" value="{{ csrf_token('csrf_token') }}" />
+            <input name="csrf_token" type="hidden" value="{{ csrf_token('csrf_token') }}"/>
         </div>
     </form>
 
@@ -27,8 +27,12 @@
 
                         <input type="hidden" name="token" value="{{ csrf_token('delete') }}"/>
 
-                        <button type="submit" class="btn btn-danger btn-sm remove-{{ formType }}"
-                                onclick="if(confirm('{{ 'confirmation.delete_photo' | trans }}')){ return true }else{ return false }">
+                        <button type="submit"
+                                data-type="delete"
+                                class="btn btn-danger btn-sm remove-{{ formType }}"
+                                data-message="{{ 'confirmation.delete_photo' | trans }}"
+                                data-confirmation-text="{{ 'action.delete' | trans }}"
+                                data-cancellation-text="{{ 'action.cancel' | trans }}">
                             {{ 'action.delete' | trans }}
                         </button>
                     </form>

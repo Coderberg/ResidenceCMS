@@ -4,8 +4,11 @@
     <input type="hidden" name="token" value="{{ csrf_token('delete') }}"/>
 
     <button class="btn btn-danger btn-sm remove"
-            onclick="if(confirm('{{ 'confirmation.delete_photo' | trans }}')){ return true }else{ return false }">
-         {{ 'action.delete' | trans }}
+            data-type="delete"
+            data-message="{{ 'confirmation.delete_item' | trans }}"
+            data-confirmation-text="{{ 'action.delete' | trans }}"
+            data-cancellation-text="{{ 'action.cancel' | trans }}">
+        {{ 'action.delete' | trans }}
     </button>
 
 </form>

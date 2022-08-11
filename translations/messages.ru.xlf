@@ -335,6 +335,10 @@
                 <source>action.unpublish</source>
                 <target>Снять с публикации</target>
             </trans-unit>
+            <trans-unit id="action.cancel">
+                <source>action.cancel</source>
+                <target>Отменить</target>
+            </trans-unit>
 
             <trans-unit id="table.link_text">
                 <source>table.link_text</source>
