@@ -99,10 +99,10 @@ final class PropertyControllerTest extends WebTestCase
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
         $crawler = $client->request('GET', sprintf(
-                '/en/%s/%s/%d',
-                $property->getCity()->getSlug(),
-                $property->getSlug(),
-                $property->getId())
+            '/en/%s/%s/%d',
+            $property->getCity()->getSlug(),
+            $property->getSlug(),
+            $property->getId())
         );
 
         $this->assertCount(1, $crawler->filter('.fa-parking'));

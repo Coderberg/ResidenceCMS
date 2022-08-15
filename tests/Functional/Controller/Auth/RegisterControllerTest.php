@@ -31,7 +31,7 @@ final class RegisterControllerTest extends WebTestCase
         $client = $this->authAsAdmin($this);
         $crawler = $client->request('GET', '/en/admin/settings');
         $form = $crawler->selectButton('Save changes')->form([
-            'settings[anyone_can_register]' => '1',
+            'main_settings[anyone_can_register]' => '1',
         ]);
         $client->submit($form);
         $this->assertResponseRedirects();
@@ -80,7 +80,7 @@ final class RegisterControllerTest extends WebTestCase
         $client = $this->authAsAdmin($this);
         $crawler = $client->request('GET', '/en/admin/settings');
         $form = $crawler->selectButton('Save changes')->form([
-            'settings[anyone_can_register]' => '0',
+            'main_settings[anyone_can_register]' => '0',
         ]);
         $client->submit($form);
         $this->assertResponseRedirects('/en/admin/settings');

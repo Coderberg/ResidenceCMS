@@ -1,6 +1,7 @@
 'use strict';
 
 import Cookies from 'js-cookie/src/js.cookie';
+import '../common/_delete_button';
 
 $(document).ready(() => {
     let currentUrl = window.location.href;

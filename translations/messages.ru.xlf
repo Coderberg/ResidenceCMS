@@ -335,6 +335,10 @@
                 <source>action.unpublish</source>
                 <target>Снять с публикации</target>
             </trans-unit>
+            <trans-unit id="action.cancel">
+                <source>action.cancel</source>
+                <target>Отменить</target>
+            </trans-unit>
 
             <trans-unit id="table.link_text">
                 <source>table.link_text</source>
@@ -541,6 +545,10 @@
             <trans-unit id="title.settings.header_settings">
                 <source>title.settings.header_settings</source>
                 <target>Настройки шапки</target>
+            </trans-unit>
+            <trans-unit id="title.settings.map_settings">
+                <source>title.settings.map_settings</source>
+                <target>Настройки карты</target>
             </trans-unit>
             <trans-unit id="title.settings.logo_image_label">
                 <source>title.settings.logo_image_label</source>

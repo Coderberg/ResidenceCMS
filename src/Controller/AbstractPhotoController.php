@@ -16,11 +16,8 @@ use Symfony\Component\Validator\ConstraintViolation;
 
 abstract class AbstractPhotoController extends AbstractController
 {
-    protected ManagerRegistry $doctrine;
-
-    public function __construct(ManagerRegistry $doctrine)
+    public function __construct(protected ManagerRegistry $doctrine)
     {
-        $this->doctrine = $doctrine;
     }
 
     protected function uploadPhoto(Property $property, Request $request, FileUploader $fileUploader): JsonResponse

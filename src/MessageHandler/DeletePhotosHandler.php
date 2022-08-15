@@ -10,11 +10,8 @@ use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
 class DeletePhotosHandler implements MessageHandlerInterface
 {
-    private FileUploader $fileUploader;
-
-    public function __construct(FileUploader $fileUploader)
+    public function __construct(private FileUploader $fileUploader)
     {
-        $this->fileUploader = $fileUploader;
     }
 
     public function __invoke(DeletePhotos $deletePhotos): void

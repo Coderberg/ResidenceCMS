@@ -15,18 +15,11 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final class PasswordService
 {
-    private UserService $service;
-    private TokenStorageInterface $tokenStorage;
-    private ValidatorInterface $validator;
-
     public function __construct(
-        UserService $service,
-        TokenStorageInterface $tokenStorage,
-        ValidatorInterface $validator
+        private UserService $service,
+        private TokenStorageInterface $tokenStorage,
+        private ValidatorInterface $validator
     ) {
-        $this->service = $service;
-        $this->tokenStorage = $tokenStorage;
-        $this->validator = $validator;
     }
 
     /**

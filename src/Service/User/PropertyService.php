@@ -12,18 +12,11 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 final class PropertyService
 {
-    private UserPropertyRepository $repository;
-    private RequestToArrayTransformer $transformer;
-    private TokenStorageInterface $tokenStorage;
-
     public function __construct(
-        UserPropertyRepository $repository,
-        RequestToArrayTransformer $transformer,
-        TokenStorageInterface $tokenStorage
+        private UserPropertyRepository $repository,
+        private RequestToArrayTransformer $transformer,
+        private TokenStorageInterface $tokenStorage
     ) {
-        $this->repository = $repository;
-        $this->transformer = $transformer;
-        $this->tokenStorage = $tokenStorage;
     }
 
     public function getUserProperties(Request $request): PaginationInterface

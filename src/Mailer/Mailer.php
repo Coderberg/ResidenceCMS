@@ -10,11 +10,8 @@ use Symfony\Component\Mime\Email;
 
 final class Mailer
 {
-    private MailerInterface $mailer;
-
-    public function __construct(MailerInterface $mailer)
+    public function __construct(private MailerInterface $mailer)
     {
-        $this->mailer = $mailer;
     }
 
     /**

@@ -12,11 +12,8 @@ use Doctrine\Persistence\ObjectManager;
 
 final class UserFixtures extends Fixture
 {
-    private $transformer;
-
-    public function __construct(UserTransformer $transformer)
+    public function __construct(private UserTransformer $transformer)
     {
-        $this->transformer = $transformer;
     }
 
     public function load(ObjectManager $manager): void

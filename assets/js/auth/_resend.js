@@ -1,5 +1,3 @@
-import bootbox from 'bootbox';
-
 (function ($, bootbox) {
     'use strict';
 

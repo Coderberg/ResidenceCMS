@@ -16,14 +16,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 abstract class BaseController extends AbstractController
 {
-    private SettingsRepository $settingsRepository;
-
-    protected ManagerRegistry $doctrine;
-
-    public function __construct(SettingsRepository $settingsRepository, ManagerRegistry $doctrine)
+    public function __construct(private SettingsRepository $settingsRepository, protected ManagerRegistry $doctrine)
     {
-        $this->settingsRepository = $settingsRepository;
-        $this->doctrine = $doctrine;
     }
 
     private function menu(Request $request): array

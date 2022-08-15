@@ -1,0 +1,30 @@
+{% set currentPath = path(app.request.attributes.get('_route')) %}
+{% set mapClass = '' %}
+{% set headerClass = '' %}
+{% set mainClass = '' %}
+
+{% if '/map' in currentPath %}
+    {% set mapClass = 'active' %}
+{% elseif '/header' in currentPath %}
+    {% set headerClass = 'active' %}
+{% else %}
+    {% set mainClass = 'active' %}
+{% endif %}
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link {{ mainClass }}" href="{{ path('admin_settings') }}">
+            <i class="fas fa-edit text-danger"></i> {{ 'title.settings' | trans }}
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{ headerClass }}" href="{{ path('admin_header_settings') }}">
+            <i class="fas fa-image text-danger"></i> {{ 'title.settings.header_settings' | trans }}
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{ mapClass }}" href="{{ path('admin_map_settings') }}">
+            <i class="fas fa-map-marker-alt text-danger"></i> {{ 'title.settings.map_settings' | trans }}
+        </a>
+    </li>
+</ul>

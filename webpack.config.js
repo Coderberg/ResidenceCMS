@@ -18,13 +18,13 @@ Encore
      * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
      */
     .addEntry('js/app', './assets/app.js')
-    .addEntry('js/admin', './assets/js/admin.js')
+    .addEntry('js/admin', './assets/js/admin/admin.js')
     .addEntry('js/auth', './assets/js/auth/auth.js')
     .addEntry('js/ekko-lightbox', './assets/js/ekko-lightbox.js')
     .addEntry('js/map', './assets/js/map.js')
-    .addEntry('js/menu-sorting', './assets/js/menu-sorting.js')
+    .addEntry('js/menu-sorting', './assets/js/admin/menu-sorting.js')
     .addEntry('js/select2', './assets/js/select2.js')
-    .addEntry('js/settings', './assets/js/settings.js')
+    .addEntry('js/settings', './assets/js/admin/settings.js')
     .addEntry('js/slugger', './assets/js/slugger.js')
     .addEntry('js/city', './assets/js/city.js')
     .addEntry('js/photo', './assets/js/photo.js')

@@ -6,7 +6,7 @@ ResidenceCMS is a fast and lightweight Property Management System on top of [Sym
 
 ## Requirements
 
-- PHP 8.0.2 or higher;
+- PHP 8.1;
 - PDO PHP Extension;
 - GD PHP extension
 - MySQL >= 5.7;

@@ -16,7 +16,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
     public function load(ObjectManager $manager): void
     {
         foreach ($this->getPropertyData() as [$author, $dealType, $category, $bedrooms, $guests, $city, $district,
-                 $neighborhood, $metro, $title, $address, $latitude, $longitude, $price, $priceType, ]) {
+            $neighborhood, $metro, $title, $address, $latitude, $longitude, $price, $priceType, ]) {
             $property = new Property();
             $property->setAuthor($author);
             $property->setDealType($dealType);

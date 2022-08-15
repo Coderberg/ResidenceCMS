@@ -4,18 +4,7 @@
 
 {% block body %}
 
-    <ul class="nav nav-tabs">
-        <li class="nav-item active">
-            <span class="nav-link active">
-                <i class="fas fa-edit text-danger"></i> {{ 'title.settings' | trans }}
-            </span>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ path('admin_header_settings') }}">
-                <i class="fas fa-image text-danger"></i> {{ 'title.settings.header_settings' | trans }}
-            </a>
-        </li>
-    </ul>
+    {{ include('admin/settings/partials/_nav_tabs.html.twig') }}
 
     <div class="card mb-3">
         <div class="card-body">
@@ -74,52 +63,6 @@
                     {{ form_row(form.anyone_can_register) }}
                 </div>
             </div>
-            <hr>
-
-
-            <!-- Yandex.Maps JavaScript API key -->
-            <div class="form-group">
-                {{ form_label(form.ymaps_key) }}
-                <div class="input-group mb-2 mr-sm-2">
-
-                    <div class="input-group-prepend">
-                        <div class="input-group-text"><i class="fas fa-key"></i></div>
-                    </div>
-
-                    {{ form_widget(form.ymaps_key) }}
-                </div>
-            </div>
-
-            <!-- Map center -->
-            <div class="form-group">
-                {{ form_label(form.map_center) }}
-                <div class="input-group mb-2 mr-sm-2">
-
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                    </div>
-
-                    {{ form_widget(form.map_center) }}
-                </div>
-            </div>
-
-            <!-- Zoom level -->
-            <div class="form-group">
-                {{ form_label(form.map_zoom) }}
-                <div class="input-group mb-2 mr-sm-2">
-
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fas fa-search"></i>
-                        </div>
-                    </div>
-
-                    {{ form_widget(form.map_zoom) }}
-                </div>
-            </div>
-
 
             <div class="form-group">
 

@@ -3,19 +3,19 @@
     "js/app": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/app.9985eef6.js"
+        "/build/js/app.d20beb80.js"
       ]
     },
     "js/admin": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/admin.2b47fbe4.js"
+        "/build/js/admin.03f4542b.js"
       ]
     },
     "js/auth": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/auth.8dc0fc54.js"
+        "/build/js/auth.4d57e456.js"
       ]
     },
     "js/ekko-lightbox": {
@@ -33,7 +33,7 @@
     "js/menu-sorting": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/menu-sorting.afaa7e77.js"
+        "/build/js/menu-sorting.f965557a.js"
       ]
     },
     "js/select2": {
@@ -45,7 +45,7 @@
     "js/settings": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/settings.9c3df6bb.js"
+        "/build/js/settings.afd6e9d7.js"
       ]
     },
     "js/slugger": {
@@ -75,7 +75,7 @@
     "js/user": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/user.1c304e5e.js"
+        "/build/js/user.93c965bc.js"
       ]
     },
     "js/password": {

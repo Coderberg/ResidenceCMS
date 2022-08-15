@@ -23,30 +23,20 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 final class RegisterController extends BaseController implements AuthController
 {
-    private MessageBusInterface $messageBus;
-    private RegistrationFormAuthenticator $authenticator;
-    private Security $security;
-    private UserAuthenticatorInterface $userAuthenticator;
-    private UserService $service;
     private array $settings;
 
     public function __construct(
+        private MessageBusInterface $messageBus,
+        private RegistrationFormAuthenticator $authenticator,
+        private Security $security,
+        private UserAuthenticatorInterface $userAuthenticator,
+        private UserService $service,
         ManagerRegistry $doctrine,
-        MessageBusInterface $messageBus,
-        RegistrationFormAuthenticator $authenticator,
         RequestStack $requestStack,
-        Security $security,
-        SettingsRepository $settingsRepository,
-        UserAuthenticatorInterface $userAuthenticator,
-        UserService $service
+        SettingsRepository $settingsRepository
     ) {
         parent::__construct($settingsRepository, $doctrine);
-        $this->authenticator = $authenticator;
-        $this->messageBus = $messageBus;
-        $this->security = $security;
-        $this->service = $service;
         $this->settings = $this->site($requestStack->getCurrentRequest());
-        $this->userAuthenticator = $userAuthenticator;
     }
 
     #[Route('/register', name: 'register')]

@@ -11,11 +11,8 @@ use Symfony\Component\Routing\RouterInterface;
 
 final class URLService
 {
-    private RouterInterface $router;
-
-    public function __construct(RouterInterface $router)
+    public function __construct(private RouterInterface $router)
     {
-        $this->router = $router;
     }
 
     // Check slugs.
@@ -44,7 +41,7 @@ final class URLService
     // Check referer host.
     public function isRefererFromCurrentHost(Request $request): bool
     {
-        if (preg_match('/'.$request->getHost().'/', ($request->server->getHeaders()['REFERER']) ?? '')) {
+        if (preg_match('/'.$request->getHost().'/', $request->server->getHeaders()['REFERER'] ?? '')) {
             return true;
         }
 
