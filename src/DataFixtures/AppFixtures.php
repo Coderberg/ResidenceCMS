@@ -12,7 +12,7 @@ final class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        foreach ($this->getData() as [$setting_name, $setting_value]) {
+        foreach (self::getData() as [$setting_name, $setting_value]) {
             $setting = new Settings();
             $setting->setSettingName($setting_name);
             $setting->setSettingValue($setting_value);
@@ -21,7 +21,7 @@ final class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function getData(): array
+    public static function getData(): array
     {
         return [
             // $data = [$setting_name, $setting_value];
@@ -48,6 +48,7 @@ final class AppFixtures extends Fixture
             ['show_filter_by_guests', '0'],
             ['show_language_selector', '1'],
             ['anyone_can_register', '0'],
+            ['allow_html', '1'],
         ];
     }
 }

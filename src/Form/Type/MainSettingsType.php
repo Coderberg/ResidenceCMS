@@ -89,6 +89,14 @@ final class MainSettingsType extends AbstractType
                     ],
                     'label' => 'label.settings.anyone_can_register',
                 ]
+            )
+            ->add('allow_html', ChoiceType::class, [
+                    'choices' => [
+                        'option.off' => '0',
+                        'option.on' => '1',
+                    ],
+                    'label' => 'label.settings.allow_html',
+                ]
             );
     }
 

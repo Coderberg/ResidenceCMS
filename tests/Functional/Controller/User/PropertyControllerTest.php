@@ -83,6 +83,7 @@ final class PropertyControllerTest extends WebTestCase
     public function testNewProperty(): void
     {
         $client = $this->authAsUser($this);
+        $this->updateSettings($client, ['allow_html' => '0']);
 
         $crawler = $client->request('GET', '/en/user/property/new');
 
@@ -102,12 +103,12 @@ final class PropertyControllerTest extends WebTestCase
             'property[property_description][title]' => 'added by user',
             'property[property_description][meta_description]' => 'test',
             'property[address]' => 'test',
-            'property[property_description][content]' => 'test',
+            'property[property_description][content]' => '<h1>Lorem</h1> <p>ipsum <strong>dolor</strong> sit</p> amet',
         ]);
 
         $client->submit($form);
 
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertResponseRedirects(null, 302);
     }
 
     public function testEditPhoto(): void
@@ -132,8 +133,13 @@ final class PropertyControllerTest extends WebTestCase
     {
         $client = $this->authAsUser($this);
 
+        /**
+         * @var Property $property
+         */
         $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'added-by-user']);
+
+        $this->assertSame('Lorem ipsum dolor sit amet', $property->getPropertyDescription()->getContent());
 
         $crawler = $client->request('GET', sprintf('/en/user/property/%d/edit', $property->getId()));
         $this->assertResponseIsSuccessful();
@@ -143,7 +149,7 @@ final class PropertyControllerTest extends WebTestCase
         ]);
 
         $client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertResponseRedirects(sprintf('/en/user/photo/%d/edit', $property->getId()), 302);
 
         $editedProperty = $this->getRepository($client, PropertyDescription::class)
             ->findOneBy(['meta_title' => 'Custom Meta Title'])->getProperty();
@@ -167,5 +173,7 @@ final class PropertyControllerTest extends WebTestCase
         $this->assertNull($this->getRepository($client, Property::class)->findOneBy([
                 'slug' => 'test',
             ]));
+
+        $this->resetSettings($client);
     }
 }

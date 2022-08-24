@@ -599,6 +599,10 @@
                 <source>label.settings.anyone_can_register</source>
                 <target>Anyone can register</target>
             </trans-unit>
+            <trans-unit id="label.settings.allow_html">
+                <source>label.settings.allow_html</source>
+                <target>Allow users to use HTML</target>
+            </trans-unit>
             <trans-unit id="label.settings.currency">
                 <source>label.settings.currency</source>
                 <target>Currency</target>

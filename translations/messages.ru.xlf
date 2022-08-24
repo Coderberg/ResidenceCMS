@@ -599,6 +599,10 @@
                 <source>label.settings.anyone_can_register</source>
                 <target>Любой может зарегистрироваться</target>
             </trans-unit>
+            <trans-unit id="label.settings.allow_html">
+                <source>label.settings.allow_html</source>
+                <target>Разрешить пользователям использовать HTML</target>
+            </trans-unit>
             <trans-unit id="label.settings.currency">
                 <source>label.settings.currency</source>
                 <target>Валюта</target>

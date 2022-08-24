@@ -8,7 +8,6 @@ use App\Controller\BaseController;
 use App\Entity\Property;
 use App\Entity\User;
 use App\Form\Type\PropertyType;
-use App\Service\Admin\PropertyService as AdminPropertyService;
 use App\Service\User\PropertyService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,7 +32,7 @@ final class PropertyController extends BaseController
     /**
      * @Route("/user/property/new", name="user_property_new")
      */
-    public function new(Request $request, AdminPropertyService $service): Response
+    public function new(Request $request, PropertyService $service): Response
     {
         /**
          * @var User $user
@@ -42,12 +41,14 @@ final class PropertyController extends BaseController
         if (!$user->isVerified()) {
             return $this->redirectToRoute('user_property');
         }
+        $isHtmlAllowed = $this->isGranted('USE_HTML');
         $property = new Property();
         $property->setAuthor($user);
         $form = $this->createForm(PropertyType::class, $property);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $property = $service->sanitizeHtml($property, $isHtmlAllowed);
             $service->create($property);
 
             return $this->redirectToRoute('user_photo_edit', ['id' => $property->getId()]);
@@ -57,6 +58,7 @@ final class PropertyController extends BaseController
             'property' => $property,
             'form' => $form->createView(),
             'site' => $this->site($request),
+            'isHtmlAllowed' => $isHtmlAllowed,
         ]);
     }
 
@@ -66,12 +68,15 @@ final class PropertyController extends BaseController
      * @Route("/user/property/{id<\d+>}/edit",methods={"GET", "POST"}, name="user_property_edit")
      * @IsGranted("PROPERTY_EDIT", subject="property", message="You cannot change this property.")
      */
-    public function edit(Request $request, Property $property, AdminPropertyService $service): Response
+    public function edit(Request $request, Property $property, PropertyService $service): Response
     {
+        $isHtmlAllowed = $this->isGranted('USE_HTML');
+        $property = $service->contentToPlainText($property, $isHtmlAllowed);
         $form = $this->createForm(PropertyType::class, $property);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $property = $service->contentToHtml($property, $isHtmlAllowed);
             $service->update($property);
 
             return $this->redirectToRoute('user_photo_edit', ['id' => $property->getId()]);
@@ -80,6 +85,7 @@ final class PropertyController extends BaseController
         return $this->render('user/property/edit.html.twig', [
             'form' => $form->createView(),
             'site' => $this->site($request),
+            'isHtmlAllowed' => $isHtmlAllowed,
         ]);
     }
 }

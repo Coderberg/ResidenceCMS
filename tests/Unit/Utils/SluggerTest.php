@@ -27,7 +27,7 @@ final class SluggerTest extends TestCase
         }
     }
 
-    public function getSlugs(): \Generator
+    private function getSlugs(): \Generator
     {
         yield ['Lorem Ipsum', 'lorem-ipsum', 'lorem-ipsum'];
         yield ['Lorem Ipsum!', 'lorem-ipsum', 'lorem-ipsum'];

@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Tests\Helper;
 
+use App\DataFixtures\AppFixtures;
+use App\Entity\Settings;
 use App\Entity\User;
+use App\Repository\SettingsRepository;
 use Doctrine\Persistence\ObjectRepository;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -52,5 +55,28 @@ trait WebTestHelper
         ]);
 
         return $client->submit($form);
+    }
+
+    public function updateSettings(KernelBrowser $client, array $settings): void
+    {
+        /**
+         * @var SettingsRepository $repository
+         */
+        $repository = $this->getRepository($client, Settings::class);
+
+        foreach ($settings as $key => $value) {
+            $repository->updateSetting($key, $value);
+        }
+    }
+
+    public function resetSettings(KernelBrowser $client): void
+    {
+        $settings = [];
+
+        foreach (AppFixtures::getData() as [$key, $value]) {
+            $settings[$key] = $value;
+        }
+
+        $this->updateSettings($client, $settings);
     }
 }

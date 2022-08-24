@@ -60,30 +60,10 @@ final class MainSettingsControllerTest extends WebTestCase
             ->text());
     }
 
-    public function testChangeBackSettings(): void
-    {
-        $client = $this->authAsAdmin($this);
-
-        $title = $this->getRepository($client, Settings::class)
-            ->findOneBy(['setting_name' => 'title'])->getSettingValue();
-
-        $crawler = $client->request('GET', '/en/admin/settings');
-
-        $form = $crawler->selectButton('Save changes')->form([
-            'main_settings[title]' => mb_substr($title, 0, -13),
-            'main_settings[custom_footer_text]' => 'All Rights Reserved.',
-            'main_settings[fixed_top_navbar]' => '0',
-            'main_settings[show_similar_properties]' => '0',
-            'main_settings[items_per_page]' => '6',
-        ]);
-
-        $client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
-    }
-
     public function testChangedBackSettings(): void
     {
         $client = self::createClient();
+        $this->resetSettings($client);
 
         $crawler = $client->request('GET', '/en/');
 
