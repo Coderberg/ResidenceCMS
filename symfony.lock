@@ -157,9 +157,6 @@
     "phar-io/version": {
         "version": "3.1.0"
     },
-    "php-cs-fixer/diff": {
-        "version": "v2.0.2"
-    },
     "php-webdriver/webdriver": {
         "version": "1.12.0"
     },
@@ -171,9 +168,6 @@
     },
     "phpdocumentor/type-resolver": {
         "version": "1.5.1"
-    },
-    "phpspec/prophecy": {
-        "version": "v1.15.0"
     },
     "phpunit/php-code-coverage": {
         "version": "9.2.10"
