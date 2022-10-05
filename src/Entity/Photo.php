@@ -23,7 +23,6 @@ class Photo
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
      * @Assert\File(mimeTypes={ "image/*" })
      */
     private $photo;
