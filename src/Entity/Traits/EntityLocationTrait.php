@@ -12,43 +12,29 @@ use Doctrine\ORM\Mapping as ORM;
 
 trait EntityLocationTrait
 {
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\City", inversedBy="properties")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    #[ORM\ManyToOne(targetEntity: 'App\Entity\City', inversedBy: 'properties')]
+    #[ORM\JoinColumn(nullable: false)]
     private $city;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\District", inversedBy="properties")
-     * @ORM\JoinColumn(nullable=true)
-     */
+    #[ORM\ManyToOne(targetEntity: 'App\Entity\District', inversedBy: 'properties')]
+    #[ORM\JoinColumn(nullable: true)]
     private $district;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Neighborhood", inversedBy="properties")
-     * @ORM\JoinColumn(nullable=true)
-     */
+    #[ORM\ManyToOne(targetEntity: 'App\Entity\Neighborhood', inversedBy: 'properties')]
+    #[ORM\JoinColumn(nullable: true)]
     private $neighborhood;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Metro", inversedBy="properties")
-     * @ORM\JoinColumn(nullable=true)
-     */
+    #[ORM\ManyToOne(targetEntity: 'App\Entity\Metro', inversedBy: 'properties')]
+    #[ORM\JoinColumn(nullable: true)]
     private $metro_station;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private ?string $address;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $latitude;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $longitude;
 
     public function getCity(): ?City

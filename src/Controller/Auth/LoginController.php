@@ -15,9 +15,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 final class LoginController extends BaseController
 {
-    /**
-     * @Route("/login", name="security_login")
-     */
+    #[Route(path: '/login', name: 'security_login')]
     public function login(Request $request, Security $security, AuthenticationUtils $helper): Response
     {
         // if user is already logged in, don't display the login page again
@@ -37,10 +35,9 @@ final class LoginController extends BaseController
     }
 
     /**
-     * @Route("/logout", name="security_logout")
-     *
      * @throws Exception
      */
+    #[Route(path: '/logout', name: 'security_logout')]
     public function logout(): void
     {
         throw new Exception('This should never be reached!');

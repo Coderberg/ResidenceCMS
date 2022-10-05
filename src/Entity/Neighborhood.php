@@ -11,24 +11,18 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\NeighborhoodRepository")
- * @UniqueEntity("slug")
- */
+#[ORM\Entity(repositoryClass: 'App\Repository\NeighborhoodRepository')]
+#[UniqueEntity('slug')]
 class Neighborhood
 {
     use EntityIdTrait;
     use EntityNameTrait;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="neighborhood")
-     */
+    #[ORM\OneToMany(targetEntity: 'App\Entity\Property', mappedBy: 'neighborhood')]
     private $properties;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\City", inversedBy="neighborhoods")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    #[ORM\ManyToOne(targetEntity: 'App\Entity\City', inversedBy: 'neighborhoods')]
+    #[ORM\JoinColumn(nullable: false)]
     private $city;
 
     public function __construct()

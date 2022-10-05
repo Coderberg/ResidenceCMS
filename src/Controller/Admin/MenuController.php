@@ -16,9 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class MenuController extends BaseController
 {
-    /**
-     * @Route("/admin/menu", name="admin_menu")
-     */
+    #[Route(path: '/admin/menu', name: 'admin_menu')]
     public function index(Request $request, MenuRepository $repository): Response
     {
         return $this->render('admin/menu/index.html.twig', [
@@ -27,9 +25,7 @@ final class MenuController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/admin/menu/new", name="admin_menu_new")
-     */
+    #[Route(path: '/admin/menu/new', name: 'admin_menu_new')]
     public function new(Request $request): Response
     {
         $menu = new Menu();
@@ -63,9 +59,8 @@ final class MenuController extends BaseController
 
     /**
      * Displays a form to edit an existing menu item.
-     *
-     * @Route("/admin/menu/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_menu_edit")
      */
+    #[Route(path: '/admin/menu/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_menu_edit')]
     public function edit(Request $request, Menu $menu): Response
     {
         $form = $this->createForm(MenuType::class, $menu);
@@ -86,9 +81,8 @@ final class MenuController extends BaseController
 
     /**
      * Deletes a menu item.
-     *
-     * @Route("/admin/menu/{id<\d+>}/delete", methods={"GET", "POST"}, name="admin_menu_delete")
      */
+    #[Route(path: '/admin/menu/{id<\d+>}/delete', methods: ['GET', 'POST'], name: 'admin_menu_delete')]
     public function delete(Request $request, Menu $menu): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {

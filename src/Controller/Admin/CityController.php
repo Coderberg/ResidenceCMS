@@ -18,9 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class CityController extends BaseController
 {
-    /**
-     * @Route("/admin/locations/city", name="admin_city")
-     */
+    #[Route(path: '/admin/locations/city', name: 'admin_city')]
     public function index(Request $request, CityRepository $repository): Response
     {
         $cities = $repository->findAll();
@@ -31,9 +29,7 @@ final class CityController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/admin/locations/city/new", name="admin_city_new")
-     */
+    #[Route(path: '/admin/locations/city/new', name: 'admin_city_new')]
     public function new(Request $request, CityService $service): Response
     {
         $city = new City();
@@ -63,9 +59,8 @@ final class CityController extends BaseController
 
     /**
      * Displays a form to edit an existing City entity.
-     *
-     * @Route("/admin/locations/city/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_city_edit")
      */
+    #[Route(path: '/admin/locations/city/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_city_edit')]
     public function edit(Request $request, City $city, CityService $service): Response
     {
         $form = $this->createForm(CityType::class, $city);
@@ -85,10 +80,9 @@ final class CityController extends BaseController
 
     /**
      * Deletes a City entity.
-     *
-     * @Route("/city/{id<\d+>}/delete", methods={"POST"}, name="admin_city_delete")
-     * @IsGranted("ROLE_ADMIN")
      */
+    #[Route(path: '/city/{id<\d+>}/delete', methods: ['POST'], name: 'admin_city_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, City $city, CityService $service): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {

@@ -18,9 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class CategoryController extends BaseController
 {
-    /**
-     * @Route("/admin/category", name="admin_category")
-     */
+    #[Route(path: '/admin/category', name: 'admin_category')]
     public function index(Request $request, CategoryRepository $repository): Response
     {
         $categories = $repository->findAll();
@@ -31,9 +29,7 @@ final class CategoryController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/admin/category/new", name="admin_category_new")
-     */
+    #[Route(path: '/admin/category/new', name: 'admin_category_new')]
     public function new(Request $request, CategoryService $service): Response
     {
         $category = new Category();
@@ -63,9 +59,8 @@ final class CategoryController extends BaseController
 
     /**
      * Displays a form to edit an existing Category entity.
-     *
-     * @Route("/admin/category/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_category_edit")
      */
+    #[Route(path: '/admin/category/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_category_edit')]
     public function edit(Request $request, Category $category, CategoryService $service): Response
     {
         $form = $this->createForm(CategoryType::class, $category);
@@ -84,10 +79,9 @@ final class CategoryController extends BaseController
 
     /**
      * Deletes a Category entity.
-     *
-     * @Route("/category/{id<\d+>}/delete", methods={"POST"}, name="admin_category_delete")
-     * @IsGranted("ROLE_ADMIN")
      */
+    #[Route(path: '/category/{id<\d+>}/delete', methods: ['POST'], name: 'admin_category_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Category $category, CategoryService $service): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {

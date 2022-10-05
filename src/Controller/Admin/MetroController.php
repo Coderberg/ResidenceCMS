@@ -17,9 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class MetroController extends BaseController
 {
-    /**
-     * @Route("/admin/locations/metro", name="admin_metro")
-     */
+    #[Route(path: '/admin/locations/metro', name: 'admin_metro')]
     public function index(Request $request, CityRepository $repository): Response
     {
         $cities = $repository->findAll();
@@ -30,9 +28,7 @@ final class MetroController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/admin/locations/metro/new", name="admin_metro_new")
-     */
+    #[Route(path: '/admin/locations/metro/new', name: 'admin_metro_new')]
     public function new(Request $request): Response
     {
         $metro = new Metro();
@@ -66,9 +62,8 @@ final class MetroController extends BaseController
 
     /**
      * Displays a form to edit an existing Metro entity.
-     *
-     * @Route("/admin/locations/metro/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_metro_edit")
      */
+    #[Route(path: '/admin/locations/metro/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_metro_edit')]
     public function edit(Request $request, Metro $metro): Response
     {
         $form = $this->createForm(MetroType::class, $metro);
@@ -88,10 +83,9 @@ final class MetroController extends BaseController
 
     /**
      * Deletes a Metro entity.
-     *
-     * @Route("/metro/{id<\d+>}/delete", methods={"POST"}, name="admin_metro_delete")
-     * @IsGranted("ROLE_ADMIN")
      */
+    #[Route(path: '/metro/{id<\d+>}/delete', methods: ['POST'], name: 'admin_metro_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Metro $metro): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {

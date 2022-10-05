@@ -17,9 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class PropertyController extends BaseController
 {
-    /**
-     * @Route("/admin/property", defaults={"page": "1"}, methods={"GET"}, name="admin_property")
-     */
+    #[Route(path: '/admin/property', defaults: ['page' => 1], methods: ['GET'], name: 'admin_property')]
     public function index(Request $request, FilterRepository $repository, RequestToArrayTransformer $transformer): Response
     {
         $searchParams = $transformer->transform($request);
@@ -32,9 +30,7 @@ final class PropertyController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/admin/property/new", name="admin_property_new")
-     */
+    #[Route(path: '/admin/property/new', name: 'admin_property_new')]
     public function new(Request $request, PropertyService $service): Response
     {
         $property = new Property();
@@ -56,9 +52,8 @@ final class PropertyController extends BaseController
 
     /**
      * Displays a form to edit an existing Property entity.
-     *
-     * @Route("/admin/property/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_property_edit")
      */
+    #[Route(path: '/admin/property/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_property_edit')]
     public function edit(Request $request, Property $property, PropertyService $service): Response
     {
         $form = $this->createForm(PropertyType::class, $property);
@@ -78,10 +73,9 @@ final class PropertyController extends BaseController
 
     /**
      * Deletes a Property entity.
-     *
-     * @Route("/property/{id<\d+>}/delete", methods={"POST"}, name="admin_property_delete")
-     * @IsGranted("ROLE_ADMIN")
      */
+    #[Route(path: '/property/{id<\d+>}/delete', methods: ['POST'], name: 'admin_property_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Property $property, PropertyService $service): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {

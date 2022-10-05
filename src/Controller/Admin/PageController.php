@@ -16,9 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class PageController extends BaseController
 {
-    /**
-     * @Route("/admin/page", defaults={"page": "1"}, methods={"GET"}, name="admin_page")
-     */
+    #[Route(path: '/admin/page', defaults: ['page' => 1], methods: ['GET'], name: 'admin_page')]
     public function index(Request $request, PageRepository $repository): Response
     {
         // Get pages
@@ -30,9 +28,7 @@ final class PageController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/admin/page/new", name="admin_page_new")
-     */
+    #[Route(path: '/admin/page/new', name: 'admin_page_new')]
     public function new(Request $request, PageService $pageService): Response
     {
         $page = new Page();
@@ -54,9 +50,8 @@ final class PageController extends BaseController
 
     /**
      * Displays a form to edit an existing Page entity.
-     *
-     * @Route("/admin/page/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_page_edit")
      */
+    #[Route(path: '/admin/page/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_page_edit')]
     public function edit(Request $request, Page $page): Response
     {
         $form = $this->createForm(PageType::class, $page);
@@ -77,10 +72,9 @@ final class PageController extends BaseController
 
     /**
      * Deletes a Page entity.
-     *
-     * @Route("/page/{id<\d+>}/delete", methods={"POST"}, name="admin_page_delete")
-     * @IsGranted("ROLE_ADMIN")
      */
+    #[Route(path: '/page/{id<\d+>}/delete', methods: ['POST'], name: 'admin_page_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Page $page, PageService $pageService): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {

@@ -17,9 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class PropertyController extends BaseController
 {
-    /**
-     * @Route("/", defaults={"page": "1"}, methods={"GET"}, name="property")
-     */
+    #[Route(path: '/', defaults: ['page' => 1], methods: ['GET'], name: 'property')]
     public function search(Request $request, FilterRepository $repository, RequestToArrayTransformer $transformer): Response
     {
         $searchParams = $transformer->transform($request);
@@ -34,9 +32,7 @@ final class PropertyController extends BaseController
         );
     }
 
-    /**
-     * @Route("/map", methods={"GET"}, name="map_view")
-     */
+    #[Route(path: '/map', methods: ['GET'], name: 'map_view')]
     public function mapView(Request $request, PropertyRepository $repository): Response
     {
         return $this->render('property/map.html.twig',
@@ -47,10 +43,8 @@ final class PropertyController extends BaseController
         );
     }
 
-    /**
-     * @Route("/{citySlug}/{slug}/{id<\d+>}", methods={"GET"}, name="property_show")
-     * @IsGranted("PROPERTY_VIEW", subject="property", message="Properties can only be shown to their owners.")
-     */
+    #[Route(path: '/{citySlug}/{slug}/{id<\d+>}', methods: ['GET'], name: 'property_show')]
+    #[IsGranted('PROPERTY_VIEW', subject: 'property', message: 'Properties can only be shown to their owners.')]
     public function propertyShow(Request $request, URLService $url, Property $property, SimilarRepository $repository): Response
     {
         if (!$url->isCanonical($property, $request)) {

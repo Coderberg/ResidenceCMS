@@ -17,9 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class CurrencyController extends BaseController
 {
-    /**
-     * @Route("/admin/currency", name="admin_currency")
-     */
+    #[Route(path: '/admin/currency', name: 'admin_currency')]
     public function index(Request $request, CurrencyRepository $repository): Response
     {
         return $this->render('admin/currency/index.html.twig', [
@@ -28,9 +26,7 @@ final class CurrencyController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/admin/currency/new", name="admin_currency_new")
-     */
+    #[Route(path: '/admin/currency/new', name: 'admin_currency_new')]
     public function new(Request $request): Response
     {
         $currency = new Currency();
@@ -64,9 +60,8 @@ final class CurrencyController extends BaseController
 
     /**
      * Displays a form to edit an existing Currency entity.
-     *
-     * @Route("/admin/currency/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_currency_edit")
      */
+    #[Route(path: '/admin/currency/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_currency_edit')]
     public function edit(Request $request, Currency $currency): Response
     {
         $form = $this->createForm(CurrencyType::class, $currency);
@@ -86,10 +81,9 @@ final class CurrencyController extends BaseController
 
     /**
      * Deletes a Currency entity.
-     *
-     * @Route("/currency/{id<\d+>}/delete", methods={"POST"}, name="admin_currency_delete")
-     * @IsGranted("ROLE_ADMIN")
      */
+    #[Route(path: '/currency/{id<\d+>}/delete', methods: ['POST'], name: 'admin_currency_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Currency $currency): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {

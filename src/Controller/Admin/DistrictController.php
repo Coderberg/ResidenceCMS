@@ -17,9 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class DistrictController extends BaseController
 {
-    /**
-     * @Route("/admin/locations/district", name="admin_district")
-     */
+    #[Route(path: '/admin/locations/district', name: 'admin_district')]
     public function index(Request $request, CityRepository $repository): Response
     {
         $cities = $repository->findAll();
@@ -30,9 +28,7 @@ final class DistrictController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/admin/locations/district/new", name="admin_district_new")
-     */
+    #[Route(path: '/admin/locations/district/new', name: 'admin_district_new')]
     public function new(Request $request): Response
     {
         $district = new District();
@@ -66,9 +62,8 @@ final class DistrictController extends BaseController
 
     /**
      * Displays a form to edit an existing District entity.
-     *
-     * @Route("/admin/locations/district/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_district_edit")
      */
+    #[Route(path: '/admin/locations/district/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_district_edit')]
     public function edit(Request $request, District $district): Response
     {
         $form = $this->createForm(DistrictType::class, $district);
@@ -88,10 +83,9 @@ final class DistrictController extends BaseController
 
     /**
      * Deletes a District entity.
-     *
-     * @Route("/district/{id<\d+>}/delete", methods={"POST"}, name="admin_district_delete")
-     * @IsGranted("ROLE_ADMIN")
      */
+    #[Route(path: '/district/{id<\d+>}/delete', methods: ['POST'], name: 'admin_district_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, District $district): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {

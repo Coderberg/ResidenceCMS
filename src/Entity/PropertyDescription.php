@@ -9,28 +9,20 @@ use App\Entity\Traits\EntityMetaTrait;
 use App\Repository\PropertyDescriptionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=PropertyDescriptionRepository::class)
- */
+#[ORM\Entity(repositoryClass: PropertyDescriptionRepository::class)]
 class PropertyDescription
 {
     use EntityIdTrait;
     use EntityMetaTrait;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $title;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
+    #[ORM\Column(type: 'text', nullable: true)]
     private ?string $content;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Property::class, inversedBy="propertyDescription", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
+    #[ORM\OneToOne(targetEntity: Property::class, inversedBy: 'propertyDescription', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
     private $property;
 
     public function getTitle(): ?string

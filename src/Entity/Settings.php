@@ -8,22 +8,16 @@ use App\Entity\Traits\EntityIdTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\SettingsRepository")
- * @UniqueEntity("setting_name")
- */
+#[ORM\Entity(repositoryClass: 'App\Repository\SettingsRepository')]
+#[UniqueEntity('setting_name')]
 class Settings
 {
     use EntityIdTrait;
 
-    /**
-     * @ORM\Column(type="string", length=191, unique=true)
-     */
+    #[ORM\Column(type: 'string', length: 191, unique: true)]
     private ?string $setting_name;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
+    #[ORM\Column(type: 'text', nullable: true)]
     private ?string $setting_value;
 
     public function getSettingName(): ?string

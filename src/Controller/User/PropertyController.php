@@ -16,9 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class PropertyController extends BaseController
 {
-    /**
-     * @Route("/user/property", defaults={"page": "1"}, methods={"GET"}, name="user_property")
-     */
+    #[Route(path: '/user/property', defaults: ['page' => 1], methods: ['GET'], name: 'user_property')]
     public function index(Request $request, PropertyService $service): Response
     {
         $properties = $service->getUserProperties($request);
@@ -29,9 +27,7 @@ final class PropertyController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/user/property/new", name="user_property_new")
-     */
+    #[Route(path: '/user/property/new', name: 'user_property_new')]
     public function new(Request $request, PropertyService $service): Response
     {
         /**
@@ -64,10 +60,9 @@ final class PropertyController extends BaseController
 
     /**
      * Displays a form to edit an existing Property entity.
-     *
-     * @Route("/user/property/{id<\d+>}/edit",methods={"GET", "POST"}, name="user_property_edit")
-     * @IsGranted("PROPERTY_EDIT", subject="property", message="You cannot change this property.")
      */
+    #[Route(path: '/user/property/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'user_property_edit')]
+    #[IsGranted('PROPERTY_EDIT', subject: 'property', message: 'You cannot change this property.')]
     public function edit(Request $request, Property $property, PropertyService $service): Response
     {
         $isHtmlAllowed = $this->isGranted('USE_HTML');

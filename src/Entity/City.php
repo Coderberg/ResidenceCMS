@@ -12,42 +12,30 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\CityRepository")
- * @UniqueEntity("slug")
- */
+#[ORM\Entity(repositoryClass: 'App\Repository\CityRepository')]
+#[UniqueEntity('slug')]
 class City
 {
     use EntityIdTrait;
     use EntityMetaTrait;
     use EntityNameTrait;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="city")
-     */
+    #[ORM\OneToMany(targetEntity: 'App\Entity\Property', mappedBy: 'city')]
     private $properties;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\District", mappedBy="city")
-     * @ORM\OrderBy({"name" = "ASC"})
-     */
+    #[ORM\OneToMany(targetEntity: 'App\Entity\District', mappedBy: 'city')]
+    #[ORM\OrderBy(['name' => 'ASC'])]
     private $districts;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Neighborhood", mappedBy="city")
-     * @ORM\OrderBy({"name" = "ASC"})
-     */
+    #[ORM\OneToMany(targetEntity: 'App\Entity\Neighborhood', mappedBy: 'city')]
+    #[ORM\OrderBy(['name' => 'ASC'])]
     private $neighborhoods;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Metro", mappedBy="city", orphanRemoval=true)
-     * @ORM\OrderBy({"name" = "ASC"})
-     */
+    #[ORM\OneToMany(targetEntity: 'App\Entity\Metro', mappedBy: 'city', orphanRemoval: true)]
+    #[ORM\OrderBy(['name' => 'ASC'])]
     private $metro_stations;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $title;
 
     public function __construct()

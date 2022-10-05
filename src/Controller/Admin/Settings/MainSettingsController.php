@@ -11,9 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class MainSettingsController extends AbstractSettingsController
 {
-    /**
-     * @Route("/admin/settings", name="admin_settings")
-     */
+    #[Route(path: '/admin/settings', name: 'admin_settings')]
     public function settings(Request $request): Response
     {
         $form = $this->createForm(MainSettingsType::class, $this->settings);

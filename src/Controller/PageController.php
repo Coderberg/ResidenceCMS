@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Dto\FeedbackDto;
-use App\Entity\Page;
 use App\Form\Type\FeedbackType;
 use App\Message\SendFeedback;
 use App\Repository\PageRepository;
@@ -16,9 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class PageController extends BaseController
 {
-    /**
-     * @Route("/info/{slug}", methods={"GET|POST"}, name="page")
-     */
+    #[Route(path: '/info/{slug}', methods: ['GET|POST'], name: 'page')]
     public function pageShow(Request $request, MessageBusInterface $messageBus, PageRepository $pageRepository): Response
     {
         $slug = $request->attributes->get('slug');

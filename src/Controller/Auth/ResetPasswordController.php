@@ -17,9 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class ResetPasswordController extends BaseController implements AuthController
 {
-    /**
-     * @Route("/password/reset", methods={"GET|POST"}, name="password_reset")
-     */
+    #[Route(path: '/password/reset', methods: ['GET|POST'], name: 'password_reset')]
     public function passwordReset(ResettingService $service, Request $request): Response
     {
         $form = $this->createForm(UserEmailType::class, []);
@@ -35,9 +33,7 @@ final class ResetPasswordController extends BaseController implements AuthContro
         ]);
     }
 
-    /**
-     * @Route("/password/reset/{token}", methods={"GET|POST"}, name="password_reset_confirm")
-     */
+    #[Route(path: '/password/reset/{token}', methods: ['GET|POST'], name: 'password_reset_confirm')]
     public function passwordResetConfirm(ResettingRepository $repository, Request $request, string $token): Response
     {
         /** @var User $user */

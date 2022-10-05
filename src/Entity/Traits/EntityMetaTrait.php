@@ -8,14 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 trait EntityMetaTrait
 {
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $meta_title;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $meta_description;
 
     public function getMetaTitle(): ?string

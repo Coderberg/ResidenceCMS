@@ -11,18 +11,14 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
- * @UniqueEntity("slug")
- */
+#[ORM\Entity(repositoryClass: 'App\Repository\CategoryRepository')]
+#[UniqueEntity('slug')]
 class Category
 {
     use EntityIdTrait;
     use EntityNameTrait;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="category")
-     */
+    #[ORM\OneToMany(targetEntity: 'App\Entity\Property', mappedBy: 'category')]
     private $properties;
 
     public function __construct()

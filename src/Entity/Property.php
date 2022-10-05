@@ -11,97 +11,63 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\PropertyRepository")
- */
+#[ORM\Entity(repositoryClass: 'App\Repository\PropertyRepository')]
 class Property
 {
     use EntityIdTrait;
     use EntityLocationTrait;
     use EntityTimestampableTrait;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="properties")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    #[ORM\ManyToOne(targetEntity: 'App\Entity\User', inversedBy: 'properties')]
+    #[ORM\JoinColumn(nullable: false)]
     private $author;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\DealType", inversedBy="properties")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    #[ORM\ManyToOne(targetEntity: 'App\Entity\DealType', inversedBy: 'properties')]
+    #[ORM\JoinColumn(nullable: false)]
     private $deal_type;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="properties")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    #[ORM\ManyToOne(targetEntity: 'App\Entity\Category', inversedBy: 'properties')]
+    #[ORM\JoinColumn(nullable: false)]
     private $category;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $slug;
 
-    /**
-     * @ORM\Column(type="smallint", nullable=true)
-     */
+    #[ORM\Column(type: 'smallint', nullable: true)]
     private $bathrooms_number;
 
-    /**
-     * @ORM\Column(type="smallint", nullable=true)
-     */
+    #[ORM\Column(type: 'smallint', nullable: true)]
     private $bedrooms_number;
 
-    /**
-     * @ORM\Column(type="smallint", nullable=true)
-     */
+    #[ORM\Column(type: 'smallint', nullable: true)]
     private $max_guests;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
     private $show_map;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $price;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $price_type;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
     private $available_now;
 
-    /**
-     * @ORM\Column(type="string", length=255, options={"default": "pending"})
-     */
+    #[ORM\Column(type: 'string', length: 255, options: ['default' => 'pending'])]
     private $state = 'published';
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Photo", mappedBy="property", orphanRemoval=true)
-     * @ORM\OrderBy({"sort_order" = "ASC"})
-     */
+    #[ORM\OneToMany(targetEntity: 'App\Entity\Photo', mappedBy: 'property', orphanRemoval: true)]
+    #[ORM\OrderBy(['sort_order' => 'ASC'])]
     private $photos;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Feature", inversedBy="properties")
-     */
+    #[ORM\ManyToMany(targetEntity: 'App\Entity\Feature', inversedBy: 'properties')]
     private $features;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Column(type: 'integer')]
     private $priority_number;
 
-    /**
-     * @ORM\OneToOne(targetEntity=PropertyDescription::class, mappedBy="property", cascade={"persist", "remove"})
-     */
+    #[ORM\OneToOne(targetEntity: PropertyDescription::class, mappedBy: 'property', cascade: ['persist', 'remove'])]
     private $propertyDescription;
 
     public function __construct()
