@@ -63,7 +63,7 @@ final class DistrictController extends BaseController
     /**
      * Displays a form to edit an existing District entity.
      */
-    #[Route(path: '/admin/locations/district/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_district_edit')]
+    #[Route(path: '/admin/locations/district/{id<\d+>}/edit', name: 'admin_district_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, District $district): Response
     {
         $form = $this->createForm(DistrictType::class, $district);
@@ -84,7 +84,7 @@ final class DistrictController extends BaseController
     /**
      * Deletes a District entity.
      */
-    #[Route(path: '/district/{id<\d+>}/delete', methods: ['POST'], name: 'admin_district_delete')]
+    #[Route(path: '/district/{id<\d+>}/delete', name: 'admin_district_delete', methods: ['POST'])]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, District $district): Response
     {

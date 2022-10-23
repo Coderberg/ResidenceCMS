@@ -18,7 +18,7 @@ class Neighborhood
     use EntityIdTrait;
     use EntityNameTrait;
 
-    #[ORM\OneToMany(targetEntity: 'App\Entity\Property', mappedBy: 'neighborhood')]
+    #[ORM\OneToMany(mappedBy: 'neighborhood', targetEntity: 'App\Entity\Property')]
     private $properties;
 
     #[ORM\ManyToOne(targetEntity: 'App\Entity\City', inversedBy: 'neighborhoods')]

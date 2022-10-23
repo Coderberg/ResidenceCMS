@@ -18,7 +18,7 @@ class DealType
     use EntityIdTrait;
     use EntityNameTrait;
 
-    #[ORM\OneToMany(targetEntity: 'App\Entity\Property', mappedBy: 'deal_type')]
+    #[ORM\OneToMany(mappedBy: 'deal_type', targetEntity: 'App\Entity\Property')]
     private $properties;
 
     public function __construct()

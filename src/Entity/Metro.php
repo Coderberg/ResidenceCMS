@@ -22,7 +22,7 @@ class Metro
     #[ORM\JoinColumn(nullable: false)]
     private $city;
 
-    #[ORM\OneToMany(targetEntity: 'App\Entity\Property', mappedBy: 'metro_station')]
+    #[ORM\OneToMany(mappedBy: 'metro_station', targetEntity: 'App\Entity\Property')]
     private $properties;
 
     public function __construct()

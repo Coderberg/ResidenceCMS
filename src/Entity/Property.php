@@ -57,7 +57,7 @@ class Property
     #[ORM\Column(type: 'string', length: 255, options: ['default' => 'pending'])]
     private $state = 'published';
 
-    #[ORM\OneToMany(targetEntity: 'App\Entity\Photo', mappedBy: 'property', orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'property', targetEntity: 'App\Entity\Photo', orphanRemoval: true)]
     #[ORM\OrderBy(['sort_order' => 'ASC'])]
     private $photos;
 
@@ -67,7 +67,7 @@ class Property
     #[ORM\Column(type: 'integer')]
     private $priority_number;
 
-    #[ORM\OneToOne(targetEntity: PropertyDescription::class, mappedBy: 'property', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'property', targetEntity: PropertyDescription::class, cascade: ['persist', 'remove'])]
     private $propertyDescription;
 
     public function __construct()

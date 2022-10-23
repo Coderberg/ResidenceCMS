@@ -60,7 +60,7 @@ final class CityController extends BaseController
     /**
      * Displays a form to edit an existing City entity.
      */
-    #[Route(path: '/admin/locations/city/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_city_edit')]
+    #[Route(path: '/admin/locations/city/{id<\d+>}/edit', name: 'admin_city_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, City $city, CityService $service): Response
     {
         $form = $this->createForm(CityType::class, $city);
@@ -81,7 +81,7 @@ final class CityController extends BaseController
     /**
      * Deletes a City entity.
      */
-    #[Route(path: '/city/{id<\d+>}/delete', methods: ['POST'], name: 'admin_city_delete')]
+    #[Route(path: '/city/{id<\d+>}/delete', name: 'admin_city_delete', methods: ['POST'])]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, City $city, CityService $service): Response
     {

@@ -63,7 +63,7 @@ final class MetroController extends BaseController
     /**
      * Displays a form to edit an existing Metro entity.
      */
-    #[Route(path: '/admin/locations/metro/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_metro_edit')]
+    #[Route(path: '/admin/locations/metro/{id<\d+>}/edit', name: 'admin_metro_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Metro $metro): Response
     {
         $form = $this->createForm(MetroType::class, $metro);
@@ -84,7 +84,7 @@ final class MetroController extends BaseController
     /**
      * Deletes a Metro entity.
      */
-    #[Route(path: '/metro/{id<\d+>}/delete', methods: ['POST'], name: 'admin_metro_delete')]
+    #[Route(path: '/metro/{id<\d+>}/delete', name: 'admin_metro_delete', methods: ['POST'])]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Metro $metro): Response
     {

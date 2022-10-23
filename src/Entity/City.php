@@ -20,18 +20,18 @@ class City
     use EntityMetaTrait;
     use EntityNameTrait;
 
-    #[ORM\OneToMany(targetEntity: 'App\Entity\Property', mappedBy: 'city')]
+    #[ORM\OneToMany(mappedBy: 'city', targetEntity: 'App\Entity\Property')]
     private $properties;
 
-    #[ORM\OneToMany(targetEntity: 'App\Entity\District', mappedBy: 'city')]
+    #[ORM\OneToMany(mappedBy: 'city', targetEntity: 'App\Entity\District')]
     #[ORM\OrderBy(['name' => 'ASC'])]
     private $districts;
 
-    #[ORM\OneToMany(targetEntity: 'App\Entity\Neighborhood', mappedBy: 'city')]
+    #[ORM\OneToMany(mappedBy: 'city', targetEntity: 'App\Entity\Neighborhood')]
     #[ORM\OrderBy(['name' => 'ASC'])]
     private $neighborhoods;
 
-    #[ORM\OneToMany(targetEntity: 'App\Entity\Metro', mappedBy: 'city', orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'city', targetEntity: 'App\Entity\Metro', orphanRemoval: true)]
     #[ORM\OrderBy(['name' => 'ASC'])]
     private $metro_stations;
 

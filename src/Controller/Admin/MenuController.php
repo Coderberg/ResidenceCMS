@@ -60,7 +60,7 @@ final class MenuController extends BaseController
     /**
      * Displays a form to edit an existing menu item.
      */
-    #[Route(path: '/admin/menu/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_menu_edit')]
+    #[Route(path: '/admin/menu/{id<\d+>}/edit', name: 'admin_menu_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Menu $menu): Response
     {
         $form = $this->createForm(MenuType::class, $menu);
@@ -82,7 +82,7 @@ final class MenuController extends BaseController
     /**
      * Deletes a menu item.
      */
-    #[Route(path: '/admin/menu/{id<\d+>}/delete', methods: ['GET', 'POST'], name: 'admin_menu_delete')]
+    #[Route(path: '/admin/menu/{id<\d+>}/delete', name: 'admin_menu_delete', methods: ['GET', 'POST'])]
     public function delete(Request $request, Menu $menu): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {

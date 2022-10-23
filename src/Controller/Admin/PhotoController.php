@@ -30,7 +30,7 @@ final class PhotoController extends BaseController
     /**
      * Deletes a Photo entity.
      */
-    #[Route(path: '/property/{property_id<\d+>}/photo/{id<\d+>}/delete', methods: ['POST'], name: 'admin_photo_delete')]
+    #[Route(path: '/property/{property_id<\d+>}/photo/{id<\d+>}/delete', name: 'admin_photo_delete', methods: ['POST'])]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Photo $photo, FileUploader $fileUploader): Response
     {

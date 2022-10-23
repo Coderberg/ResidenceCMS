@@ -61,7 +61,7 @@ final class CurrencyController extends BaseController
     /**
      * Displays a form to edit an existing Currency entity.
      */
-    #[Route(path: '/admin/currency/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_currency_edit')]
+    #[Route(path: '/admin/currency/{id<\d+>}/edit', name: 'admin_currency_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Currency $currency): Response
     {
         $form = $this->createForm(CurrencyType::class, $currency);
@@ -82,7 +82,7 @@ final class CurrencyController extends BaseController
     /**
      * Deletes a Currency entity.
      */
-    #[Route(path: '/currency/{id<\d+>}/delete', methods: ['POST'], name: 'admin_currency_delete')]
+    #[Route(path: '/currency/{id<\d+>}/delete', name: 'admin_currency_delete', methods: ['POST'])]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Currency $currency): Response
     {

@@ -51,7 +51,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'json')]
     private $roles = [];
 
-    #[ORM\OneToMany(targetEntity: 'App\Entity\Property', mappedBy: 'author')]
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: 'App\Entity\Property')]
     private $properties;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
@@ -60,7 +60,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'datetime', nullable: true)]
     private $password_requested_at;
 
-    #[ORM\OneToOne(targetEntity: Profile::class, mappedBy: 'user', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'user', targetEntity: Profile::class, cascade: ['persist', 'remove'])]
     private $profile;
 
     #[ORM\Column(type: 'datetime', nullable: true)]

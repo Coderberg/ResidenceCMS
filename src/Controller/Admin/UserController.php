@@ -63,7 +63,7 @@ final class UserController extends BaseController
     /**
      * Displays a form to edit an existing User entity.
      */
-    #[Route(path: '/admin/user/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_user_edit')]
+    #[Route(path: '/admin/user/{id<\d+>}/edit', name: 'admin_user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, UserService $service, UserFormDataSelector $selector): Response
     {
         $form = $this->createForm(UserType::class, $user);
@@ -88,7 +88,7 @@ final class UserController extends BaseController
     /**
      * Deletes an User entity.
      */
-    #[Route(path: '/user/{id<\d+>}/delete', methods: ['POST'], name: 'admin_user_delete')]
+    #[Route(path: '/user/{id<\d+>}/delete', name: 'admin_user_delete', methods: ['POST'])]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, User $user, UserService $service): Response
     {

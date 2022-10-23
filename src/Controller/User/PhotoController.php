@@ -31,7 +31,7 @@ final class PhotoController extends BaseController
     /**
      * Deletes a Photo entity.
      */
-    #[Route(path: '/user/photo/{id<\d+>}/delete', methods: ['POST'], name: 'user_photo_delete')]
+    #[Route(path: '/user/photo/{id<\d+>}/delete', name: 'user_photo_delete', methods: ['POST'])]
     public function delete(Request $request, Photo $photo, FileUploader $fileUploader): Response
     {
         $property = $photo->getProperty();

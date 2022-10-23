@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class CityController extends BaseController
 {
-    #[Route(path: '/city/{slug}', defaults: ['page' => 1], methods: ['GET'], name: 'city')]
+    #[Route(path: '/city/{slug}', name: 'city', defaults: ['page' => 1], methods: ['GET'])]
     public function index(Request $request, City $city, CityService $service): Response
     {
         $searchParams = $service->getSearchParams($request, $city);

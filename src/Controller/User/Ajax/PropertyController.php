@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class PropertyController extends AbstractController implements AjaxController
 {
-    #[Route(path: '/user/property/{id<\d+>}/update', methods: ['GET'], name: 'user_property_update')]
+    #[Route(path: '/user/property/{id<\d+>}/update', name: 'user_property_update', methods: ['GET'])]
     #[IsGranted('PROPERTY_EDIT', subject: 'property', message: 'You cannot change this property.')]
     public function update(Request $request, Property $property, UserPropertyRepository $repository): JsonResponse
     {

@@ -18,7 +18,7 @@ class Category
     use EntityIdTrait;
     use EntityNameTrait;
 
-    #[ORM\OneToMany(targetEntity: 'App\Entity\Property', mappedBy: 'category')]
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: 'App\Entity\Property')]
     private $properties;
 
     public function __construct()

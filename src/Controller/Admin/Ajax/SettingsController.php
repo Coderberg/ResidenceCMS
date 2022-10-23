@@ -20,7 +20,7 @@ final class SettingsController extends AbstractController implements AjaxControl
     /**
      * @throws \Exception
      */
-    #[Route(path: '/admin/setting/upload_header_image', methods: ['POST'], name: 'admin_setting_upload_header_image')]
+    #[Route(path: '/admin/setting/upload_header_image', name: 'admin_setting_upload_header_image', methods: ['POST'])]
     public function uploadHeaderImage(Request $request): JsonResponse
     {
         // Upload custom header image
@@ -30,7 +30,7 @@ final class SettingsController extends AbstractController implements AjaxControl
     /**
      * @throws \Exception
      */
-    #[Route(path: '/admin/setting/upload_logo_image', methods: ['POST'], name: 'admin_setting_upload_logo_image')]
+    #[Route(path: '/admin/setting/upload_logo_image', name: 'admin_setting_upload_logo_image', methods: ['POST'])]
     public function uploadLogoImage(Request $request): JsonResponse
     {
         // Upload custom logo image

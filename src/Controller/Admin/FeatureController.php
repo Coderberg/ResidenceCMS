@@ -61,7 +61,7 @@ final class FeatureController extends BaseController
     /**
      * Displays a form to edit an existing Feature entity.
      */
-    #[Route(path: '/admin/feature/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_feature_edit')]
+    #[Route(path: '/admin/feature/{id<\d+>}/edit', name: 'admin_feature_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Feature $feature): Response
     {
         $form = $this->createForm(FeatureType::class, $feature);
@@ -82,7 +82,7 @@ final class FeatureController extends BaseController
     /**
      * Deletes a Feature entity.
      */
-    #[Route(path: '/feature/{id<\d+>}/delete', methods: ['POST'], name: 'admin_feature_delete')]
+    #[Route(path: '/feature/{id<\d+>}/delete', name: 'admin_feature_delete', methods: ['POST'])]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Feature $feature): Response
     {
