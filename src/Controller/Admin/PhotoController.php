@@ -15,9 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class PhotoController extends BaseController
 {
-    /**
-     * @Route("/admin/photo/{id<\d+>}/edit", name="admin_photo_edit")
-     */
+    #[Route(path: '/admin/photo/{id<\d+>}/edit', name: 'admin_photo_edit')]
     public function edit(Request $request, Property $property): Response
     {
         $photos = $property->getPhotos();
@@ -31,10 +29,9 @@ final class PhotoController extends BaseController
 
     /**
      * Deletes a Photo entity.
-     *
-     * @Route("/property/{property_id<\d+>}/photo/{id<\d+>}/delete", methods={"POST"}, name="admin_photo_delete")
-     * @IsGranted("ROLE_ADMIN")
      */
+    #[Route(path: '/property/{property_id<\d+>}/photo/{id<\d+>}/delete', methods: ['POST'], name: 'admin_photo_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Photo $photo, FileUploader $fileUploader): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {

@@ -11,9 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class MapSettingsController extends AbstractSettingsController
 {
-    /**
-     * @Route("/admin/settings/map", name="admin_map_settings")
-     */
+    #[Route(path: '/admin/settings/map', name: 'admin_map_settings')]
     public function mapSettings(Request $request): Response
     {
         $form = $this->createForm(MapSettingsType::class, $this->settings);

@@ -15,10 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class PhotoController extends BaseController
 {
-    /**
-     * @Route("/user/photo/{id<\d+>}/edit", name="user_photo_edit")
-     * @IsGranted("PROPERTY_EDIT", subject="property", message="You cannot change this property.")
-     */
+    #[Route(path: '/user/photo/{id<\d+>}/edit', name: 'user_photo_edit')]
+    #[IsGranted('PROPERTY_EDIT', subject: 'property', message: 'You cannot change this property.')]
     public function edit(Request $request, Property $property): Response
     {
         $photos = $property->getPhotos();
@@ -32,9 +30,8 @@ final class PhotoController extends BaseController
 
     /**
      * Deletes a Photo entity.
-     *
-     * @Route("/user/photo/{id<\d+>}/delete", methods={"POST"}, name="user_photo_delete")
      */
+    #[Route(path: '/user/photo/{id<\d+>}/delete', methods: ['POST'], name: 'user_photo_delete')]
     public function delete(Request $request, Photo $photo, FileUploader $fileUploader): Response
     {
         $property = $photo->getProperty();

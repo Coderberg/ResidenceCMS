@@ -12,17 +12,15 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class SitemapController extends AbstractController
 {
-    /**
-     * @Route("/sitemap.xml", name="sitemap", defaults={"_format"="xml"})
-     */
+    private const DEFAULTS = ['_format' => 'xml'];
+
+    #[Route(path: '/sitemap.xml', name: 'sitemap', defaults: self::DEFAULTS)]
     public function siteMap(): Response
     {
         return $this->render('sitemap/sitemap.xml.twig', []);
     }
 
-    /**
-     * @Route("/sitemap/cities.xml", name="cities_sitemap", defaults={"_format"="xml"})
-     */
+    #[Route(path: '/sitemap/cities.xml', name: 'cities_sitemap', defaults: self::DEFAULTS)]
     public function cities(CityRepository $cityRepository): Response
     {
         $cities = $cityRepository->findAll();
@@ -32,9 +30,7 @@ final class SitemapController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/sitemap/properties.xml", name="properties_sitemap", defaults={"_format"="xml"})
-     */
+    #[Route(path: '/sitemap/properties.xml', name: 'properties_sitemap', defaults: self::DEFAULTS)]
     public function properties(PropertyRepository $propertyRepository): Response
     {
         $properties = $propertyRepository->findAllPublished();

@@ -17,9 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class FeatureController extends BaseController
 {
-    /**
-     * @Route("/admin/feature", name="admin_feature")
-     */
+    #[Route(path: '/admin/feature', name: 'admin_feature')]
     public function index(Request $request, FeatureRepository $repository): Response
     {
         return $this->render('admin/feature/index.html.twig', [
@@ -28,9 +26,7 @@ final class FeatureController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/admin/feature/new", name="admin_feature_new")
-     */
+    #[Route(path: '/admin/feature/new', name: 'admin_feature_new')]
     public function new(Request $request): Response
     {
         $feature = new Feature();
@@ -64,9 +60,8 @@ final class FeatureController extends BaseController
 
     /**
      * Displays a form to edit an existing Feature entity.
-     *
-     * @Route("/admin/feature/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_feature_edit")
      */
+    #[Route(path: '/admin/feature/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_feature_edit')]
     public function edit(Request $request, Feature $feature): Response
     {
         $form = $this->createForm(FeatureType::class, $feature);
@@ -86,10 +81,9 @@ final class FeatureController extends BaseController
 
     /**
      * Deletes a Feature entity.
-     *
-     * @Route("/feature/{id<\d+>}/delete", methods={"POST"}, name="admin_feature_delete")
-     * @IsGranted("ROLE_ADMIN")
      */
+    #[Route(path: '/feature/{id<\d+>}/delete', methods: ['POST'], name: 'admin_feature_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Feature $feature): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {

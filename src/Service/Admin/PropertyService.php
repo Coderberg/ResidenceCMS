@@ -13,23 +13,16 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
-final class PropertyService extends AbstractService
+class PropertyService extends AbstractService
 {
-    private EntityManagerInterface $em;
-    private MessageBusInterface $messageBus;
-    private Slugger $slugger;
-
     public function __construct(
         CsrfTokenManagerInterface $tokenManager,
         RequestStack $requestStack,
-        EntityManagerInterface $entityManager,
-        MessageBusInterface $messageBus,
-        Slugger $slugger
+        private EntityManagerInterface $em,
+        private MessageBusInterface $messageBus,
+        private Slugger $slugger
     ) {
         parent::__construct($tokenManager, $requestStack);
-        $this->em = $entityManager;
-        $this->messageBus = $messageBus;
-        $this->slugger = $slugger;
     }
 
     public function create(Property $property): void

@@ -9,26 +9,18 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\FeatureRepository")
- */
+#[ORM\Entity(repositoryClass: 'App\Repository\FeatureRepository')]
 class Feature
 {
     use EntityIdTrait;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private ?string $name;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Property", mappedBy="features")
-     */
+    #[ORM\ManyToMany(targetEntity: 'App\Entity\Property', mappedBy: 'features')]
     private $properties;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
+    #[ORM\Column(type: 'text', nullable: true)]
     private ?string $icon;
 
     public function __construct()

@@ -9,59 +9,37 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\PageRepository")
- * @UniqueEntity({"slug", "locale"})
- * @ORM\Table(
- *    uniqueConstraints={
- *        @ORM\UniqueConstraint(name="slug_locale_unique_key",
- *            columns={"slug", "locale"})
- *    }
- * )
- */
+#[ORM\Table]
+#[ORM\UniqueConstraint(name: 'slug_locale_unique_key', columns: ['slug', 'locale'])]
+#[ORM\Entity(repositoryClass: 'App\Repository\PageRepository')]
+#[UniqueEntity(['slug', 'locale'])]
 class Page
 {
     use EntityIdTrait;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private ?string $title;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private ?string $description;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private ?string $slug;
 
-    /**
-     * @ORM\Column(type="string", length=2, options={"default":"en"})
-     */
+    #[ORM\Column(type: 'string', length: 2, options: ['default' => 'en'])]
     private string $locale;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
+    #[ORM\Column(type: 'text', nullable: true)]
     private ?string $content;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
+    #[ORM\Column(type: 'boolean')]
     private ?bool $show_in_menu;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
+    #[ORM\Column(type: 'boolean')]
     private ?bool $add_contact_form;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Email()
-     */
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Assert\Email]
     private ?string $contact_email_address;
 
     public function getTitle(): ?string

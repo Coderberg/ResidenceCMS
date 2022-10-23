@@ -11,9 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class HeaderSettingsController extends AbstractSettingsController
 {
-    /**
-     * @Route("/admin/settings/header", name="admin_header_settings")
-     */
+    #[Route(path: '/admin/settings/header', name: 'admin_header_settings')]
     public function changeHeaderImage(Request $request): Response
     {
         $settings = $this->settings;
@@ -34,9 +32,7 @@ final class HeaderSettingsController extends AbstractSettingsController
         ]);
     }
 
-    /**
-     * @Route("/admin/setting/delete_header_image", methods={"POST"}, name="admin_setting_delete_header_image")
-     */
+    #[Route(path: '/admin/setting/delete_header_image', methods: ['POST'], name: 'admin_setting_delete_header_image')]
     public function deleteHeaderImage(Request $request): Response
     {
         // Reset a header image to the default image.
@@ -45,9 +41,7 @@ final class HeaderSettingsController extends AbstractSettingsController
         return $this->redirectToRoute('admin_header_settings');
     }
 
-    /**
-     * @Route("/admin/setting/delete_logo_image", methods={"POST"}, name="admin_setting_delete_logo_image")
-     */
+    #[Route(path: '/admin/setting/delete_logo_image', methods: ['POST'], name: 'admin_setting_delete_logo_image')]
     public function deleteLogoImage(Request $request): Response
     {
         // Reset a header image to the default image.

@@ -8,48 +8,30 @@ use App\Entity\Traits\EntityIdTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\MenuRepository")
- * @UniqueEntity({"url", "locale"})
- * @ORM\Table(
- *    uniqueConstraints={
- *        @ORM\UniqueConstraint(name="url_locale_unique_key",
- *            columns={"url", "locale"})
- *    }
- * )
- */
+#[ORM\Table]
+#[ORM\UniqueConstraint(name: 'url_locale_unique_key', columns: ['url', 'locale'])]
+#[ORM\Entity(repositoryClass: 'App\Repository\MenuRepository')]
+#[UniqueEntity(['url', 'locale'])]
 class Menu
 {
     use EntityIdTrait;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private ?string $title;
 
-    /**
-     * @ORM\Column(type="string", length=2)
-     */
+    #[ORM\Column(type: 'string', length: 2)]
     private string $locale;
 
-    /**
-     * @ORM\Column(type="smallint", nullable=true)
-     */
+    #[ORM\Column(type: 'smallint', nullable: true)]
     private ?int $sort_order;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private ?string $url;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
     private ?bool $nofollow;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
+    #[ORM\Column(type: 'boolean', nullable: true)]
     private ?bool $new_tab;
 
     public function getTitle(): ?string

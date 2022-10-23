@@ -73,16 +73,6 @@ final class RegisterControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/en/admin/user');
         $client->submit($crawler->filter('#delete-form-'.$user)->form());
         $this->assertResponseRedirects('/en/admin/user');
-    }
-
-    public function testChangeSettingsBack(): void
-    {
-        $client = $this->authAsAdmin($this);
-        $crawler = $client->request('GET', '/en/admin/settings');
-        $form = $crawler->selectButton('Save changes')->form([
-            'main_settings[anyone_can_register]' => '0',
-        ]);
-        $client->submit($form);
-        $this->assertResponseRedirects('/en/admin/settings');
+        $this->resetSettings($client);
     }
 }

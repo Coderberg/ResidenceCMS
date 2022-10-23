@@ -11,18 +11,14 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\DealTypeRepository")
- * @UniqueEntity("slug")
- */
+#[ORM\Entity(repositoryClass: 'App\Repository\DealTypeRepository')]
+#[UniqueEntity('slug')]
 class DealType
 {
     use EntityIdTrait;
     use EntityNameTrait;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="deal_type")
-     */
+    #[ORM\OneToMany(targetEntity: 'App\Entity\Property', mappedBy: 'deal_type')]
     private $properties;
 
     public function __construct()

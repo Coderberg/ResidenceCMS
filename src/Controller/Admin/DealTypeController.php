@@ -17,9 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class DealTypeController extends BaseController
 {
-    /**
-     * @Route("/admin/deal_type", name="admin_deal_type")
-     */
+    #[Route(path: '/admin/deal_type', name: 'admin_deal_type')]
     public function index(Request $request): Response
     {
         $repository = $this->doctrine->getRepository(DealType::class);
@@ -32,9 +30,7 @@ final class DealTypeController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/admin/deal_type/new", name="admin_deal_type_new")
-     */
+    #[Route(path: '/admin/deal_type/new', name: 'admin_deal_type_new')]
     public function new(Request $request, DealTypeService $service): Response
     {
         $dealType = new DealType();
@@ -64,9 +60,8 @@ final class DealTypeController extends BaseController
 
     /**
      * Displays a form to edit an existing DealType entity.
-     *
-     * @Route("/admin/deal_type/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_deal_type_edit")
      */
+    #[Route(path: '/admin/deal_type/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_deal_type_edit')]
     public function edit(Request $request, DealType $dealType, DealTypeService $service): Response
     {
         $form = $this->createForm(DealTypeType::class, $dealType);
@@ -85,10 +80,9 @@ final class DealTypeController extends BaseController
 
     /**
      * Deletes a DealType entity.
-     *
-     * @Route("/deal_type/{id<\d+>}/delete", methods={"POST"}, name="admin_deal_type_delete")
-     * @IsGranted("ROLE_ADMIN")
      */
+    #[Route(path: '/deal_type/{id<\d+>}/delete', methods: ['POST'], name: 'admin_deal_type_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, DealType $dealType, DealTypeService $service): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {

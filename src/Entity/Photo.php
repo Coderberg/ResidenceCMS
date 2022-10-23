@@ -8,29 +8,20 @@ use App\Entity\Traits\EntityIdTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\PhotoRepository")
- */
+#[ORM\Entity(repositoryClass: 'App\Repository\PhotoRepository')]
 class Photo
 {
     use EntityIdTrait;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="photos")
-     * @ORM\JoinColumn(nullable=true)
-     */
+    #[ORM\ManyToOne(targetEntity: 'App\Entity\Property', inversedBy: 'photos')]
+    #[ORM\JoinColumn(nullable: true)]
     private $property;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     *
-     * @Assert\File(mimeTypes={ "image/*" })
-     */
+    #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\File(mimeTypes: ['image/*'])]
     private $photo;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
+    #[ORM\Column(type: 'integer', nullable: true)]
     private ?int $sort_order;
 
     public function getProperty(): ?Property

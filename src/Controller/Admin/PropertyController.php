@@ -17,11 +17,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class PropertyController extends BaseController
 {
-    /**
-     * @Route("/admin/property", defaults={"page": "1"}, methods={"GET"}, name="admin_property")
-     */
-    public function index(Request $request, FilterRepository $repository, RequestToArrayTransformer $transformer): Response
-    {
+    #[Route(path: '/admin/property', name: 'admin_property', defaults: ['page' => 1], methods: ['GET'])]
+    public function index(
+        Request $request,
+        FilterRepository $repository,
+        RequestToArrayTransformer $transformer
+    ): Response {
         $searchParams = $transformer->transform($request);
         $properties = $repository->findByFilter($searchParams);
 
@@ -32,9 +33,7 @@ final class PropertyController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/admin/property/new", name="admin_property_new")
-     */
+    #[Route(path: '/admin/property/new', name: 'admin_property_new')]
     public function new(Request $request, PropertyService $service): Response
     {
         $property = new Property();
@@ -56,9 +55,8 @@ final class PropertyController extends BaseController
 
     /**
      * Displays a form to edit an existing Property entity.
-     *
-     * @Route("/admin/property/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_property_edit")
      */
+    #[Route(path: '/admin/property/{id<\d+>}/edit', name: 'admin_property_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Property $property, PropertyService $service): Response
     {
         $form = $this->createForm(PropertyType::class, $property);
@@ -78,10 +76,9 @@ final class PropertyController extends BaseController
 
     /**
      * Deletes a Property entity.
-     *
-     * @Route("/property/{id<\d+>}/delete", methods={"POST"}, name="admin_property_delete")
-     * @IsGranted("ROLE_ADMIN")
      */
+    #[Route(path: '/property/{id<\d+>}/delete', name: 'admin_property_delete', methods: ['POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Property $property, PropertyService $service): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {

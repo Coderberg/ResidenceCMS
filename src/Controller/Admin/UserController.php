@@ -19,9 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class UserController extends BaseController
 {
-    /**
-     * @Route("/admin/user", name="admin_user")
-     */
+    #[Route(path: '/admin/user', name: 'admin_user')]
     public function index(Request $request, UserRepository $repository): Response
     {
         $users = $repository->findAll();
@@ -32,9 +30,7 @@ final class UserController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/admin/user/new", name="admin_user_new")
-     */
+    #[Route(path: '/admin/user/new', name: 'admin_user_new')]
     public function new(Request $request, UserService $service, UserFormDataSelector $selector): Response
     {
         $user = new User();
@@ -66,9 +62,8 @@ final class UserController extends BaseController
 
     /**
      * Displays a form to edit an existing User entity.
-     *
-     * @Route("/admin/user/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_user_edit")
      */
+    #[Route(path: '/admin/user/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_user_edit')]
     public function edit(Request $request, User $user, UserService $service, UserFormDataSelector $selector): Response
     {
         $form = $this->createForm(UserType::class, $user);
@@ -92,10 +87,9 @@ final class UserController extends BaseController
 
     /**
      * Deletes an User entity.
-     *
-     * @Route("/user/{id<\d+>}/delete", methods={"POST"}, name="admin_user_delete")
-     * @IsGranted("ROLE_ADMIN")
      */
+    #[Route(path: '/user/{id<\d+>}/delete', methods: ['POST'], name: 'admin_user_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, User $user, UserService $service): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {

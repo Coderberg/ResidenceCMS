@@ -17,9 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class NeighborhoodController extends BaseController
 {
-    /**
-     * @Route("/admin/locations/neighborhood", name="admin_neighborhood")
-     */
+    #[Route(path: '/admin/locations/neighborhood', name: 'admin_neighborhood')]
     public function index(Request $request, CityRepository $repository): Response
     {
         $cities = $repository->findAll();
@@ -30,9 +28,7 @@ final class NeighborhoodController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/admin/locations/neighborhood/new", name="admin_neighborhood_new")
-     */
+    #[Route(path: '/admin/locations/neighborhood/new', name: 'admin_neighborhood_new')]
     public function new(Request $request): Response
     {
         $neighborhood = new Neighborhood();
@@ -66,9 +62,12 @@ final class NeighborhoodController extends BaseController
 
     /**
      * Displays a form to edit an existing Neighborhood entity.
-     *
-     * @Route("/admin/locations/neighborhood/{id<\d+>}/edit",methods={"GET", "POST"}, name="admin_neighborhood_edit")
      */
+    #[Route(
+        path: '/admin/locations/neighborhood/{id<\d+>}/edit',
+        name: 'admin_neighborhood_edit',
+        methods: ['GET', 'POST']
+    )]
     public function edit(Request $request, Neighborhood $neighborhood): Response
     {
         $form = $this->createForm(NeighborhoodType::class, $neighborhood);
@@ -88,10 +87,9 @@ final class NeighborhoodController extends BaseController
 
     /**
      * Deletes a Neighborhood entity.
-     *
-     * @Route("/neighborhood/{id<\d+>}/delete", methods={"POST"}, name="admin_neighborhood_delete")
-     * @IsGranted("ROLE_ADMIN")
      */
+    #[Route(path: '/neighborhood/{id<\d+>}/delete', name: 'admin_neighborhood_delete', methods: ['POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Neighborhood $neighborhood): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {

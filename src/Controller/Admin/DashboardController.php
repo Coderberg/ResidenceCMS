@@ -12,9 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class DashboardController extends BaseController
 {
-    /**
-     * @Route("/admin", name="admin_dashboard")
-     */
+    #[Route(path: '/admin', name: 'admin_dashboard')]
     public function index(Request $request, DashboardService $service): Response
     {
         $properties = $service->countProperties();

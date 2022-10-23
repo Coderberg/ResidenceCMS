@@ -8,14 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 trait EntityNameTrait
 {
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private ?string $name;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private ?string $slug;
 
     public function getName(): ?string

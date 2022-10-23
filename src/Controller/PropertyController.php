@@ -17,11 +17,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class PropertyController extends BaseController
 {
-    /**
-     * @Route("/", defaults={"page": "1"}, methods={"GET"}, name="property")
-     */
-    public function search(Request $request, FilterRepository $repository, RequestToArrayTransformer $transformer): Response
-    {
+    #[Route(path: '/', name: 'property', defaults: ['page' => 1], methods: ['GET'])]
+    public function search(
+        Request $request,
+        FilterRepository $repository,
+        RequestToArrayTransformer $transformer
+    ): Response {
         $searchParams = $transformer->transform($request);
         $properties = $repository->findByFilter($searchParams);
 
@@ -34,9 +35,7 @@ final class PropertyController extends BaseController
         );
     }
 
-    /**
-     * @Route("/map", methods={"GET"}, name="map_view")
-     */
+    #[Route(path: '/map', name: 'map_view', methods: ['GET'])]
     public function mapView(Request $request, PropertyRepository $repository): Response
     {
         return $this->render('property/map.html.twig',
@@ -47,12 +46,18 @@ final class PropertyController extends BaseController
         );
     }
 
-    /**
-     * @Route("/{citySlug}/{slug}/{id<\d+>}", methods={"GET"}, name="property_show")
-     * @IsGranted("PROPERTY_VIEW", subject="property", message="Properties can only be shown to their owners.")
-     */
-    public function propertyShow(Request $request, URLService $url, Property $property, SimilarRepository $repository): Response
-    {
+    #[Route(path: '/{citySlug}/{slug}/{id<\d+>}', name: 'property_show', methods: ['GET'])]
+    #[IsGranted(
+        'PROPERTY_VIEW',
+        subject: 'property',
+        message: 'Properties can only be shown to their owners.'
+    )]
+    public function propertyShow(
+        Request $request,
+        URLService $url,
+        Property $property,
+        SimilarRepository $repository
+    ): Response {
         if (!$url->isCanonical($property, $request)) {
             return $this->redirect($url->generateCanonical($property), 301);
         } elseif ($url->isRefererFromCurrentHost($request)) {
