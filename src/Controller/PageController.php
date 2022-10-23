@@ -15,9 +15,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class PageController extends BaseController
 {
-    #[Route(path: '/info/{slug}', methods: ['GET|POST'], name: 'page')]
-    public function pageShow(Request $request, MessageBusInterface $messageBus, PageRepository $pageRepository): Response
-    {
+    #[Route(path: '/info/{slug}', name: 'page', methods: ['GET|POST'])]
+    public function pageShow(
+        Request $request,
+        MessageBusInterface $messageBus,
+        PageRepository $pageRepository
+    ): Response {
         $slug = $request->attributes->get('slug');
         $page = $pageRepository->findOneBy(['locale' => $request->getLocale(), 'slug' => $slug])
             ?? $pageRepository->findOneBy(['slug' => $slug]);

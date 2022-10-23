@@ -63,7 +63,11 @@ final class NeighborhoodController extends BaseController
     /**
      * Displays a form to edit an existing Neighborhood entity.
      */
-    #[Route(path: '/admin/locations/neighborhood/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_neighborhood_edit')]
+    #[Route(
+        path: '/admin/locations/neighborhood/{id<\d+>}/edit',
+        name: 'admin_neighborhood_edit',
+        methods: ['GET', 'POST']
+    )]
     public function edit(Request $request, Neighborhood $neighborhood): Response
     {
         $form = $this->createForm(NeighborhoodType::class, $neighborhood);
@@ -84,7 +88,7 @@ final class NeighborhoodController extends BaseController
     /**
      * Deletes a Neighborhood entity.
      */
-    #[Route(path: '/neighborhood/{id<\d+>}/delete', methods: ['POST'], name: 'admin_neighborhood_delete')]
+    #[Route(path: '/neighborhood/{id<\d+>}/delete', name: 'admin_neighborhood_delete', methods: ['POST'])]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Neighborhood $neighborhood): Response
     {
