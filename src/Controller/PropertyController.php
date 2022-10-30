@@ -26,7 +26,8 @@ final class PropertyController extends BaseController
         $searchParams = $transformer->transform($request);
         $properties = $repository->findByFilter($searchParams);
 
-        return $this->render('property/index.html.twig',
+        return $this->render(
+            'property/index.html.twig',
             [
                 'site' => $this->site($request),
                 'properties' => $properties,
@@ -38,7 +39,8 @@ final class PropertyController extends BaseController
     #[Route(path: '/map', name: 'map_view', methods: ['GET'])]
     public function mapView(Request $request, PropertyRepository $repository): Response
     {
-        return $this->render('property/map.html.twig',
+        return $this->render(
+            'property/map.html.twig',
             [
                 'site' => $this->site($request),
                 'properties' => $repository->findAllPublished(),
@@ -61,16 +63,17 @@ final class PropertyController extends BaseController
         if (!$url->isCanonical($property, $request)) {
             return $this->redirect($url->generateCanonical($property), 301);
         } elseif ($url->isRefererFromCurrentHost($request)) {
-            $show_back_button = true;
+            $showBackButton = true;
         }
 
-        return $this->render('property/show.html.twig',
+        return $this->render(
+            'property/show.html.twig',
             [
                 'site' => $this->site($request),
                 'property' => $property,
                 'properties' => $repository->findSimilarProperties($property),
                 'number_of_photos' => \count($property->getPhotos()),
-                'show_back_button' => $show_back_button ?? false,
+                'show_back_button' => $showBackButton ?? false,
             ]
         );
     }

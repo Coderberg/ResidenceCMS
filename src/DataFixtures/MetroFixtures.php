@@ -27,11 +27,10 @@ final class MetroFixtures extends Fixture implements DependentFixtureInterface
     private function getMetroData(): array
     {
         return [
-            // $metroData = [$city, $name, $slug];
-           [$this->getReference('Miami'), 'Government Center', 'government-center'],
-           [$this->getReference('Miami'), 'Allapattah', 'allapattah'],
-           [$this->getReference('Miami'), 'Brickell', 'brickell'],
-           [$this->getReference('Miami'), 'Culmer', 'culmer'],
+            [$this->getReference('Miami'), 'Government Center', 'government-center'],
+            [$this->getReference('Miami'), 'Allapattah', 'allapattah'],
+            [$this->getReference('Miami'), 'Brickell', 'brickell'],
+            [$this->getReference('Miami'), 'Culmer', 'culmer'],
         ];
     }
 

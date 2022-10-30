@@ -28,7 +28,6 @@ final class CurrencyFixtures extends Fixture
     private function getCurrencyData(): array
     {
         return [
-            // $currencyData = [$currencyTitle, $code, $symbolLeft, $symbolRight];
             ['US Dollar', 'USD', '$', ''],
             ['Euro', 'EUR', '', '€'],
             ['Pound Sterling', 'GBP', '£', ''],
