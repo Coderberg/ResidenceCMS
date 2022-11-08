@@ -20,20 +20,13 @@ class Neighborhood
     use EntityNameTrait;
     use PropertyTrait;
 
-    #[ORM\OneToMany(mappedBy: 'neighborhood', targetEntity: 'App\Entity\Property')]
-    private $properties;
-
     #[ORM\ManyToOne(targetEntity: 'App\Entity\City', inversedBy: 'neighborhoods')]
     #[ORM\JoinColumn(nullable: false)]
     private ?City $city;
 
-    public function addProperty(Property $property): self
-    {
-        return $this->attachProperty($property, 'setNeighborhood');
-    }
+    #[ORM\OneToMany(mappedBy: 'neighborhood', targetEntity: 'App\Entity\Property')]
+    private $properties;
 
-    public function removeProperty(Property $property): self
-    {
-        return $this->detachProperty($property, 'getNeighborhood', 'setNeighborhood');
-    }
+    public const GETTER = 'getNeighborhood';
+    public const SETTER = 'setNeighborhood';
 }

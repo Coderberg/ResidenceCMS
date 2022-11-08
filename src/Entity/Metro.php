@@ -27,13 +27,6 @@ class Metro
     #[ORM\OneToMany(mappedBy: 'metro_station', targetEntity: 'App\Entity\Property')]
     private $properties;
 
-    public function addProperty(Property $property): self
-    {
-        return $this->attachProperty($property, 'setMetroStation');
-    }
-
-    public function removeProperty(Property $property): self
-    {
-        return $this->detachProperty($property, 'getMetroStation', 'setMetroStation');
-    }
+    public const GETTER = 'getMetroStation';
+    public const SETTER = 'setMetroStation';
 }

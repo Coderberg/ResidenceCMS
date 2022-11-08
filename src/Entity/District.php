@@ -20,20 +20,13 @@ class District
     use EntityNameTrait;
     use PropertyTrait;
 
-    #[ORM\OneToMany(mappedBy: 'district', targetEntity: 'App\Entity\Property')]
-    private $properties;
-
     #[ORM\ManyToOne(targetEntity: 'App\Entity\City', inversedBy: 'districts')]
     #[ORM\JoinColumn(nullable: false)]
     private ?City $city;
 
-    public function addProperty(Property $property): self
-    {
-        return $this->attachProperty($property, 'setDistrict');
-    }
+    #[ORM\OneToMany(mappedBy: 'district', targetEntity: 'App\Entity\Property')]
+    private $properties;
 
-    public function removeProperty(Property $property): self
-    {
-        return $this->detachProperty($property, 'getDistrict', 'setDistrict');
-    }
+    public const GETTER = 'getDistrict';
+    public const SETTER = 'setDistrict';
 }

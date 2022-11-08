@@ -22,8 +22,11 @@ trait PropertyTrait
            return $this->properties;
        }
 
-       protected function attachProperty(Property $property, callable $setter): self
+       protected function addProperty(Property $property): self
        {
+           /* callable $setter */
+           $setter = self::SETTER;
+
            if (!$this->properties->contains($property)) {
                $this->properties[] = $property;
                $property->$setter($this);
@@ -32,8 +35,14 @@ trait PropertyTrait
            return $this;
        }
 
-       protected function detachProperty(Property $property, callable $getter, callable $setter): self
+       protected function removeProperty(Property $property): self
        {
+           /* callable $setter */
+           $setter = self::SETTER;
+
+           /* callable $getter */
+           $getter = self::GETTER;
+
            if ($this->properties->contains($property)) {
                $this->properties->removeElement($property);
                // set the owning side to null (unless already changed)
