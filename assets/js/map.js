@@ -2,8 +2,8 @@
 ymaps.ready(init);
 
 const $map = $('#map');
-const latitude = $map.attr('data-latitude');
-const longitude = $map.attr('data-longitude');
+const latitude = $map.data('latitude');
+const longitude = $map.data('longitude');
 const hintContent = $map.attr('data-hintContent');
 const balloonContent = $map.attr('data-balloonContent');
 

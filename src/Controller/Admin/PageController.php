@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class PageController extends BaseController
 {
-    #[Route(path: '/admin/page', defaults: ['page' => 1], methods: ['GET'], name: 'admin_page')]
+    #[Route(path: '/admin/page', name: 'admin_page', defaults: ['page' => 1], methods: ['GET'])]
     public function index(Request $request, PageRepository $repository): Response
     {
         // Get pages
@@ -51,7 +51,7 @@ final class PageController extends BaseController
     /**
      * Displays a form to edit an existing Page entity.
      */
-    #[Route(path: '/admin/page/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_page_edit')]
+    #[Route(path: '/admin/page/{id<\d+>}/edit', name: 'admin_page_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Page $page): Response
     {
         $form = $this->createForm(PageType::class, $page);
@@ -73,7 +73,7 @@ final class PageController extends BaseController
     /**
      * Deletes a Page entity.
      */
-    #[Route(path: '/page/{id<\d+>}/delete', methods: ['POST'], name: 'admin_page_delete')]
+    #[Route(path: '/page/{id<\d+>}/delete', name: 'admin_page_delete', methods: ['POST'])]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Page $page, PageService $pageService): Response
     {

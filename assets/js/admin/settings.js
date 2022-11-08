@@ -4,7 +4,7 @@ Dropzone.autoDiscover = false;
 
 $(document).ready(function () {
     const configureDropzone = ($form) => {
-        let token = $form.attr('data-token');
+        const token = $form.data('token');
         if ($form.length) {
             $form.dropzone({
                 url: $form.attr('action'),

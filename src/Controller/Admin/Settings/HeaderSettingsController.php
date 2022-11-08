@@ -32,7 +32,7 @@ final class HeaderSettingsController extends AbstractSettingsController
         ]);
     }
 
-    #[Route(path: '/admin/setting/delete_header_image', methods: ['POST'], name: 'admin_setting_delete_header_image')]
+    #[Route(path: '/admin/setting/delete_header_image', name: 'admin_setting_delete_header_image', methods: ['POST'])]
     public function deleteHeaderImage(Request $request): Response
     {
         // Reset a header image to the default image.
@@ -41,7 +41,7 @@ final class HeaderSettingsController extends AbstractSettingsController
         return $this->redirectToRoute('admin_header_settings');
     }
 
-    #[Route(path: '/admin/setting/delete_logo_image', methods: ['POST'], name: 'admin_setting_delete_logo_image')]
+    #[Route(path: '/admin/setting/delete_logo_image', name: 'admin_setting_delete_logo_image', methods: ['POST'])]
     public function deleteLogoImage(Request $request): Response
     {
         // Reset a header image to the default image.

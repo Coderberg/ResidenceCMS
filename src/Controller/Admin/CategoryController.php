@@ -60,7 +60,7 @@ final class CategoryController extends BaseController
     /**
      * Displays a form to edit an existing Category entity.
      */
-    #[Route(path: '/admin/category/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_category_edit')]
+    #[Route(path: '/admin/category/{id<\d+>}/edit', name: 'admin_category_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Category $category, CategoryService $service): Response
     {
         $form = $this->createForm(CategoryType::class, $category);
@@ -80,7 +80,7 @@ final class CategoryController extends BaseController
     /**
      * Deletes a Category entity.
      */
-    #[Route(path: '/category/{id<\d+>}/delete', methods: ['POST'], name: 'admin_category_delete')]
+    #[Route(path: '/category/{id<\d+>}/delete', name: 'admin_category_delete', methods: ['POST'])]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Category $category, CategoryService $service): Response
     {

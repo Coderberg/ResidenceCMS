@@ -19,7 +19,7 @@ class Profile
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $phone;
 
-    #[ORM\OneToOne(targetEntity: User::class, inversedBy: 'profile', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'profile', targetEntity: User::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 

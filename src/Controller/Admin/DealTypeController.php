@@ -61,7 +61,7 @@ final class DealTypeController extends BaseController
     /**
      * Displays a form to edit an existing DealType entity.
      */
-    #[Route(path: '/admin/deal_type/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'admin_deal_type_edit')]
+    #[Route(path: '/admin/deal_type/{id<\d+>}/edit', name: 'admin_deal_type_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, DealType $dealType, DealTypeService $service): Response
     {
         $form = $this->createForm(DealTypeType::class, $dealType);
@@ -81,7 +81,7 @@ final class DealTypeController extends BaseController
     /**
      * Deletes a DealType entity.
      */
-    #[Route(path: '/deal_type/{id<\d+>}/delete', methods: ['POST'], name: 'admin_deal_type_delete')]
+    #[Route(path: '/deal_type/{id<\d+>}/delete', name: 'admin_deal_type_delete', methods: ['POST'])]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, DealType $dealType, DealTypeService $service): Response
     {

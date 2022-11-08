@@ -40,7 +40,6 @@ final class UserFixtures extends Fixture
     private function getUserData(): array
     {
         return [
-            // $cityData = [$fullName, $username, $phone, $email, $roles];
             ['John Smith', 'admin', '0(0)99766899', 'admin@admin.com', ['ROLE_ADMIN', 'ROLE_USER']],
             ['Rhonda Jordan', 'user', '0(0)99766899', 'user@user.com', ['ROLE_USER']],
         ];

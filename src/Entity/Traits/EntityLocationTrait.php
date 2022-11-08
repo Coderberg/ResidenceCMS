@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Entity\Traits;
 
-use App\Entity\City;
 use App\Entity\District;
 use App\Entity\Metro;
 use App\Entity\Neighborhood;
@@ -12,21 +11,17 @@ use Doctrine\ORM\Mapping as ORM;
 
 trait EntityLocationTrait
 {
-    #[ORM\ManyToOne(targetEntity: 'App\Entity\City', inversedBy: 'properties')]
-    #[ORM\JoinColumn(nullable: false)]
-    private $city;
-
     #[ORM\ManyToOne(targetEntity: 'App\Entity\District', inversedBy: 'properties')]
     #[ORM\JoinColumn(nullable: true)]
-    private $district;
+    private ?District $district;
 
     #[ORM\ManyToOne(targetEntity: 'App\Entity\Neighborhood', inversedBy: 'properties')]
     #[ORM\JoinColumn(nullable: true)]
-    private $neighborhood;
+    private ?Neighborhood $neighborhood;
 
     #[ORM\ManyToOne(targetEntity: 'App\Entity\Metro', inversedBy: 'properties')]
     #[ORM\JoinColumn(nullable: true)]
-    private $metro_station;
+    private ?Metro $metro_station;
 
     #[ORM\Column(type: 'string', length: 255)]
     private ?string $address;
@@ -36,18 +31,6 @@ trait EntityLocationTrait
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $longitude;
-
-    public function getCity(): ?City
-    {
-        return $this->city;
-    }
-
-    public function setCity(?City $city): self
-    {
-        $this->city = $city;
-
-        return $this;
-    }
 
     public function getDistrict(): ?District
     {

@@ -26,7 +26,6 @@ final class PhotoFixtures extends Fixture implements DependentFixtureInterface
     private function getPhotoData(): array
     {
         return [
-            // $photoData = [$property, $priority, $file];
             [$this->getReference('bright-and-cheerful-alcove-studio'), 1, 'demo/1.jpeg'],
             [$this->getReference('bright-and-cheerful-alcove-studio'), 2, 'demo/2.jpeg'],
             [$this->getReference('modern-one-bedroom-apartment-in-miami'), 1, 'demo/3.jpeg'],

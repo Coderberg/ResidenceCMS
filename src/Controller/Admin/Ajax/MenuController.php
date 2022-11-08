@@ -16,7 +16,7 @@ final class MenuController extends AbstractController implements AjaxController
     /**
      * Sort menu items.
      */
-    #[Route(path: '/admin/menu/sort', methods: ['POST'], name: 'admin_menu_sort')]
+    #[Route(path: '/admin/menu/sort', name: 'admin_menu_sort', methods: ['POST'])]
     public function sort(Request $request, MenuRepository $repository): JsonResponse
     {
         $items = $request->request->all('items');

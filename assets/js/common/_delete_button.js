@@ -5,13 +5,9 @@
     $('[data-type="delete"]').click(function (e) {
         e.preventDefault();
         const $form = $(this).closest('form');
-        const message = $(this).attr('data-message');
-        const confirmationText = $(this).attr(
-            'data-confirmation-text'
-        );
-        const cancellationText = $(this).attr(
-            'data-cancellation-text'
-        );
+        const message = $(this).data('message');
+        const confirmationText = $(this).data('confirmation-text');
+        const cancellationText = $(this).data('cancellation-text');
 
         bootbox.confirm({
             message,

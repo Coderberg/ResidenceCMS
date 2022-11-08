@@ -8,7 +8,7 @@
         $.ajax({
             url: '/en/auth/should_link_be_visible',
             type: 'GET',
-            data: { csrf_token: link.attr('data-token') },
+            data: { csrf_token: link.data('token') },
             success: function (response) {
                 if (response.display === true) {
                     link.show();
@@ -19,9 +19,9 @@
 
     const resend = () => {
         $.ajax({
-            url: link.attr('data-path'),
+            url: link.data('path'),
             type: 'POST',
-            data: { csrf_token: link.attr('data-token') },
+            data: { csrf_token: link.data('token') },
             success: function (response) {
                 link.hide();
                 bootbox.alert(response.message);

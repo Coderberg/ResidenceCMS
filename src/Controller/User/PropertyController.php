@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class PropertyController extends BaseController
 {
-    #[Route(path: '/user/property', defaults: ['page' => 1], methods: ['GET'], name: 'user_property')]
+    #[Route(path: '/user/property', name: 'user_property', defaults: ['page' => 1], methods: ['GET'])]
     public function index(Request $request, PropertyService $service): Response
     {
         $properties = $service->getUserProperties($request);

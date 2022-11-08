@@ -25,7 +25,6 @@ final class DealTypeFixtures extends Fixture
     private function getDealTypeData(): array
     {
         return [
-            // $dealTypeData = [$slug, $name];
             ['rent', 'Rent'],
             ['sale', 'Sale'],
         ];

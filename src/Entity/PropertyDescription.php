@@ -21,7 +21,7 @@ class PropertyDescription
     #[ORM\Column(type: 'text', nullable: true)]
     private ?string $content;
 
-    #[ORM\OneToOne(targetEntity: Property::class, inversedBy: 'propertyDescription', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'propertyDescription', targetEntity: Property::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private $property;
 

@@ -14,8 +14,8 @@ final class CityService
 {
     public function __construct(
         private RequestToArrayTransformer $transformer,
-        private FilterRepository $repository)
-    {
+        private FilterRepository $repository
+    ) {
     }
 
     public function getSearchParams(Request $request, City $city): array

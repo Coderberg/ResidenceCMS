@@ -14,7 +14,7 @@ use Throwable;
 
 final class PasswordController extends AbstractController implements AjaxController
 {
-    #[Route(path: '/user/password', methods: ['POST'], name: 'user_password')]
+    #[Route(path: '/user/password', name: 'user_password', methods: ['POST'])]
     public function update(Request $request, PasswordService $service): JsonResponse
     {
         try {

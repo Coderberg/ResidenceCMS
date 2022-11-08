@@ -13,8 +13,8 @@ const changeButtons = () => {
 };
 
 const sendRequest = () => {
-    let item = $('.js-move');
-    let token = $('#menu').attr('data-token');
+    const item = $('.js-move');
+    const token = $('#menu').data('token');
 
     if (item.length > 1) {
         let items = [];

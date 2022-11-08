@@ -23,7 +23,7 @@ final class PhotoController extends AbstractPhotoController implements AjaxContr
     /**
      * Sort photos.
      */
-    #[Route(path: '/admin/photo/{id<\d+>}/sort', methods: ['POST'], name: 'admin_photo_sort')]
+    #[Route(path: '/admin/photo/{id<\d+>}/sort', name: 'admin_photo_sort', methods: ['POST'])]
     public function sort(Request $request, Property $property): JsonResponse
     {
         return $this->sortPhotos($request, $property);
