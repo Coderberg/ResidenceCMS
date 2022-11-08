@@ -24,9 +24,7 @@ class District
     #[ORM\JoinColumn(nullable: false)]
     private ?City $city;
 
-    #[ORM\OneToMany(mappedBy: 'district', targetEntity: 'App\Entity\Property')]
-    private $properties;
-
+    public const MAPPED_BY = 'district';
     public const GETTER = 'getDistrict';
     public const SETTER = 'setDistrict';
 }

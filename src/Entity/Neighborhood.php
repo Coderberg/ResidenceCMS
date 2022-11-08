@@ -24,9 +24,7 @@ class Neighborhood
     #[ORM\JoinColumn(nullable: false)]
     private ?City $city;
 
-    #[ORM\OneToMany(mappedBy: 'neighborhood', targetEntity: 'App\Entity\Property')]
-    private $properties;
-
+    public const MAPPED_BY = 'neighborhood';
     public const GETTER = 'getNeighborhood';
     public const SETTER = 'setNeighborhood';
 }

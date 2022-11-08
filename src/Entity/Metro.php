@@ -24,9 +24,7 @@ class Metro
     #[ORM\JoinColumn(nullable: false)]
     private ?City $city;
 
-    #[ORM\OneToMany(mappedBy: 'metro_station', targetEntity: 'App\Entity\Property')]
-    private $properties;
-
+    public const MAPPED_BY = 'metro_station';
     public const GETTER = 'getMetroStation';
     public const SETTER = 'setMetroStation';
 }
