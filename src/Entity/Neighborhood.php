@@ -20,11 +20,8 @@ class Neighborhood
     use EntityNameTrait;
     use PropertyTrait;
 
-    #[ORM\ManyToOne(targetEntity: 'App\Entity\City', inversedBy: 'neighborhoods')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?City $city;
-
     public const MAPPED_BY = 'neighborhood';
+    public const INVERSED_BY = 'neighborhoods';
     public const GETTER = 'getNeighborhood';
     public const SETTER = 'setNeighborhood';
 }

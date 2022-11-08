@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Entity\Traits\CityTrait;
 use App\Entity\Traits\EntityIdTrait;
 use App\Entity\Traits\EntityLocationTrait;
 use App\Entity\Traits\EntityTimestampableTrait;
@@ -14,9 +15,12 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: 'App\Repository\PropertyRepository')]
 class Property
 {
+    use CityTrait;
     use EntityIdTrait;
     use EntityLocationTrait;
     use EntityTimestampableTrait;
+
+    public const INVERSED_BY = 'properties';
 
     #[ORM\ManyToOne(targetEntity: 'App\Entity\User', inversedBy: 'properties')]
     #[ORM\JoinColumn(nullable: false)]

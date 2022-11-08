@@ -11,12 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 trait EntityLocationTrait
 {
-    use CityTrait;
-
-    #[ORM\ManyToOne(targetEntity: 'App\Entity\City', inversedBy: 'properties')]
-    #[ORM\JoinColumn(nullable: false)]
-    private $city;
-
     #[ORM\ManyToOne(targetEntity: 'App\Entity\District', inversedBy: 'properties')]
     #[ORM\JoinColumn(nullable: true)]
     private ?District $district;

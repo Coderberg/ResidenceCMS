@@ -20,11 +20,8 @@ class Metro
     use EntityNameTrait;
     use PropertyTrait;
 
-    #[ORM\ManyToOne(targetEntity: 'App\Entity\City', inversedBy: 'metro_stations')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?City $city;
-
     public const MAPPED_BY = 'metro_station';
+    public const INVERSED_BY = 'metro_stations';
     public const GETTER = 'getMetroStation';
     public const SETTER = 'setMetroStation';
 }

@@ -20,11 +20,8 @@ class District
     use EntityNameTrait;
     use PropertyTrait;
 
-    #[ORM\ManyToOne(targetEntity: 'App\Entity\City', inversedBy: 'districts')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?City $city;
-
     public const MAPPED_BY = 'district';
+    public const INVERSED_BY = 'districts';
     public const GETTER = 'getDistrict';
     public const SETTER = 'setDistrict';
 }

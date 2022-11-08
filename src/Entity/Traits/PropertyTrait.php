@@ -6,19 +6,20 @@ namespace App\Entity\Traits;
 
 use App\Entity\Property;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 trait PropertyTrait
 {
     #[ORM\OneToMany(mappedBy: self::MAPPED_BY, targetEntity: 'App\Entity\Property')]
-    private $properties;
+    private Collection $properties;
 
     public function __construct()
     {
         $this->properties = new ArrayCollection();
     }
 
-    protected function getProperties()
+    protected function getProperties(): Collection
     {
         return $this->properties;
     }
