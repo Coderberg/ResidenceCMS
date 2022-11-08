@@ -8,7 +8,7 @@ Dropzone.autoDiscover = false;
 $(document).ready(function () {
     let $form = $('.js-photo-dropzone');
     let ajaxUrl = $form.attr('action').replace('upload', 'sort');
-    let token = $form.attr('data-token');
+    let token = $form.data('token');
 
     if ($form.length) {
         $form.dropzone({
@@ -28,7 +28,7 @@ $(document).ready(function () {
     let $btnReorder = $('.btn-reorder');
 
     $btnReorder.on('click', function () {
-        $(this).html($(this).attr('data-save'));
+        $(this).html($(this).data('save'));
         $('.reorder-ul').sortable({ tolerance: 'pointer' });
         $('.reorder-help').slideDown('slow');
         $('.single-img').css('cursor', 'move');
@@ -40,7 +40,7 @@ $(document).ready(function () {
                 $(this)
                     .html(
                         '<i class="fas fa-spin fa-spinner"></i> ' +
-                            $(this).attr('data-processing')
+                            $(this).data('processing')
                     )
                     .prop('disabled', true);
 

@@ -10,7 +10,7 @@
         let token = $('[name="password_token"]').val();
         $(this)
             .attr('disabled', true)
-            .text($button.attr('data-progress-text'));
+            .text($button.data('progress-text'));
         $.ajax({
             method: 'POST',
             url: $('#passwordForm').attr('action'),
@@ -38,7 +38,7 @@
         $('#password1').val('');
         $('#password2').val('').attr('disabled', true);
         $button
-            .text($button.attr('data-default-text'))
+            .text($button.data('default-text'))
             .attr('disabled', true);
         $alert.text('').hide();
         $('.fa-check', '#changePassword')

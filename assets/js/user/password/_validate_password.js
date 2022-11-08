@@ -54,6 +54,6 @@
 
         $button
             .attr('disabled', !isPasswordMatch(password1, password2))
-            .text($button.attr('data-default-text'));
+            .text($button.data('default-text'));
     });
 })($);
