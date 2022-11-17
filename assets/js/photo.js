@@ -38,11 +38,11 @@ $(document).ready(function () {
             if (!$('i', this).length) {
                 $('.reorder-ul').sortable('destroy');
                 $(this)
-                .html(
-                    '<i class="fas fa-spin fa-spinner"></i> ' +
-                    $(this).data('processing')
+                    .html(
+                        '<i class="fas fa-spin fa-spinner"></i> ' +
+                            $(this).data('processing')
                     )
-                .prop('disabled', true);
+                    .prop('disabled', true);
 
                 let ids = [];
                 $('.reorder-ul li').each(function () {
@@ -54,12 +54,12 @@ $(document).ready(function () {
                     url: ajaxUrl,
                     data: { csrf_token: token, ids: ids }
                 })
-                .done(function () {
-                    window.location.reload();
-                })
-                .fail(function() {
-                  console.log("An error has occurred");
-              });
+                    .done(function () {
+                        window.location.reload();
+                    })
+                    .fail(function () {
+                        bootbox.alert('An error has occurred');
+                    });
             }
         });
     });
