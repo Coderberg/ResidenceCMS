@@ -7,6 +7,7 @@ namespace App\Entity\Traits;
 use App\Entity\District;
 use App\Entity\Metro;
 use App\Entity\Neighborhood;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 trait EntityLocationTrait
@@ -23,13 +24,13 @@ trait EntityLocationTrait
     #[ORM\JoinColumn(nullable: true)]
     private ?Metro $metro_station;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: Types::STRING, length: 255)]
     private ?string $address;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
     private ?string $latitude;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
     private ?string $longitude;
 
     public function getDistrict(): ?District

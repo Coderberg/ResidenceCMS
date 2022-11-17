@@ -10,6 +10,7 @@ use App\Entity\Traits\EntityLocationTrait;
 use App\Entity\Traits\EntityTimestampableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: 'App\Repository\PropertyRepository')]
@@ -34,31 +35,31 @@ class Property
     #[ORM\JoinColumn(nullable: false)]
     private $category;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
     private $slug;
 
-    #[ORM\Column(type: 'smallint', nullable: true)]
+    #[ORM\Column(type: Types::SMALLINT, nullable: true)]
     private $bathrooms_number;
 
-    #[ORM\Column(type: 'smallint', nullable: true)]
+    #[ORM\Column(type: Types::SMALLINT, nullable: true)]
     private $bedrooms_number;
 
-    #[ORM\Column(type: 'smallint', nullable: true)]
+    #[ORM\Column(type: Types::SMALLINT, nullable: true)]
     private $max_guests;
 
-    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[ORM\Column(type: Types::BOOLEAN, nullable: true)]
     private $show_map;
 
-    #[ORM\Column(type: 'integer', nullable: true)]
+    #[ORM\Column(type: Types::INTEGER, nullable: true)]
     private $price;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
     private $price_type;
 
-    #[ORM\Column(type: 'boolean', nullable: true)]
+    #[ORM\Column(type: Types::BOOLEAN, nullable: true)]
     private $available_now;
 
-    #[ORM\Column(type: 'string', length: 255, options: ['default' => 'pending'])]
+    #[ORM\Column(type: Types::STRING, length: 255, options: ['default' => 'pending'])]
     private $state = 'published';
 
     #[ORM\OneToMany(mappedBy: 'property', targetEntity: 'App\Entity\Photo', orphanRemoval: true)]
@@ -68,7 +69,7 @@ class Property
     #[ORM\ManyToMany(targetEntity: 'App\Entity\Feature', inversedBy: 'properties')]
     private $features;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: Types::INTEGER)]
     private $priority_number;
 
     #[ORM\OneToOne(mappedBy: 'property', targetEntity: PropertyDescription::class, cascade: ['persist', 'remove'])]

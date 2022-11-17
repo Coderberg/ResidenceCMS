@@ -7,6 +7,7 @@ namespace App\Entity;
 use App\Entity\Traits\EntityIdTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -30,40 +31,38 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string
      */
-    #[ORM\Column(type: 'string', unique: true)]
+    #[ORM\Column(type: Types::STRING, unique: true)]
     #[Assert\NotBlank]
     #[Assert\Length(min: 2, max: 50)]
     private $username;
     /**
      * @var string
      */
-    #[ORM\Column(type: 'string', unique: true)]
+    #[ORM\Column(type: Types::STRING, unique: true)]
     #[Assert\Email]
     private $email;
     /**
      * @var string
      */
-    #[ORM\Column(type: 'string')]
+    #[ORM\Column(type: Types::STRING)]
     private $password;
-    /**
-     * @var array
-     */
-    #[ORM\Column(type: 'json')]
-    private $roles = [];
+
+    #[ORM\Column(type: Types::JSON)]
+    private array $roles = [];
 
     #[ORM\OneToMany(mappedBy: 'author', targetEntity: 'App\Entity\Property')]
     private $properties;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
     private $confirmation_token;
 
-    #[ORM\Column(type: 'datetime', nullable: true)]
+    #[ORM\Column(type: Types::DATETIMETZ_MUTABLE, nullable: true)]
     private $password_requested_at;
 
     #[ORM\OneToOne(mappedBy: 'user', targetEntity: Profile::class, cascade: ['persist', 'remove'])]
-    private $profile;
+    private ?Profile $profile;
 
-    #[ORM\Column(type: 'datetime', nullable: true)]
+    #[ORM\Column(type: Types::DATETIMETZ_MUTABLE, nullable: true)]
     private $emailVerifiedAt = null;
 
     public function __construct()
@@ -127,8 +126,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Returns the salt that was originally used to encode the password.
-     *
-     * {@inheritdoc}
      */
     public function getSalt(): ?string
     {
@@ -140,8 +137,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Removes sensitive data from the user.
-     *
-     * {@inheritdoc}
      */
     public function eraseCredentials(): void
     {
@@ -149,18 +144,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function __serialize(): array
     {
         // add $this->salt too if you don't use Bcrypt or Argon2i
         return [$this->id, $this->username, $this->password];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function __unserialize(array $data): void
     {
         // add $this->salt too if you don't use Bcrypt or Argon2i

@@ -7,6 +7,7 @@ namespace App\Entity;
 use App\Entity\Traits\EntityIdTrait;
 use App\Entity\Traits\EntityMetaTrait;
 use App\Repository\PropertyDescriptionRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PropertyDescriptionRepository::class)]
@@ -15,10 +16,10 @@ class PropertyDescription
     use EntityIdTrait;
     use EntityMetaTrait;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
     private ?string $title;
 
-    #[ORM\Column(type: 'text', nullable: true)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $content;
 
     #[ORM\OneToOne(inversedBy: 'propertyDescription', targetEntity: Property::class, cascade: ['persist', 'remove'])]
