@@ -6,9 +6,10 @@ namespace App\MessageHandler;
 
 use App\Message\DeletePhotos;
 use App\Service\FileUploader;
-use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
-class DeletePhotosHandler implements MessageHandlerInterface
+#[AsMessageHandler]
+final class DeletePhotosHandler
 {
     public function __construct(private FileUploader $fileUploader)
     {
