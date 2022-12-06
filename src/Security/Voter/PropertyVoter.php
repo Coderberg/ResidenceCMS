@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Security\Voter;
 
 use App\Entity\Property;
-use LogicException;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\Security;
@@ -34,7 +33,7 @@ final class PropertyVoter extends Voter
         return match ($attribute) {
             'PROPERTY_VIEW' => $this->canView($property, $token),
             'PROPERTY_EDIT' => $this->canEdit($property, $token),
-            default => throw new LogicException('This code should not be reached!'),
+            default => throw new \LogicException('This code should not be reached!'),
         };
     }
 

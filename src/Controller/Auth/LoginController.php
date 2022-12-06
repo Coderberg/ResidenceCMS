@@ -6,7 +6,6 @@ namespace App\Controller\Auth;
 
 use App\Controller\BaseController;
 use App\Form\Type\LoginFormType;
-use Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,11 +34,11 @@ final class LoginController extends BaseController
     }
 
     /**
-     * @throws Exception
+     * @throws \Exception
      */
     #[Route(path: '/logout', name: 'security_logout')]
     public function logout(): void
     {
-        throw new Exception('This should never be reached!');
+        throw new \Exception('This should never be reached!');
     }
 }
