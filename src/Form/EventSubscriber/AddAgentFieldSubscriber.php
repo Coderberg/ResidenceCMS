@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Form\EventSubscriber;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Security\Core\Security;
 
 class AddAgentFieldSubscriber implements EventSubscriberInterface
 {
