@@ -8,12 +8,13 @@ use App\Entity\User;
 use App\Mailer\Mailer;
 use App\Message\SendResetPasswordLink;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-final class SendResetPasswordLinkHandler implements MessageHandlerInterface
+#[AsMessageHandler]
+final class SendResetPasswordLinkHandler
 {
     public function __construct(private Mailer $mailer, private TranslatorInterface $translator, private UrlGeneratorInterface $router)
     {

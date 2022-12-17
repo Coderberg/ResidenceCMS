@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Entity\Traits\EntityIdTrait;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: 'App\Repository\CurrencyRepository')]
@@ -12,16 +13,16 @@ class Currency
 {
     use EntityIdTrait;
 
-    #[ORM\Column(type: 'string', length: 32)]
+    #[ORM\Column(type: Types::STRING, length: 32)]
     private ?string $currency_title;
 
-    #[ORM\Column(type: 'string', length: 3)]
+    #[ORM\Column(type: Types::STRING, length: 3)]
     private ?string $code;
 
-    #[ORM\Column(type: 'string', length: 12, nullable: true)]
+    #[ORM\Column(type: Types::STRING, length: 12, nullable: true)]
     private ?string $symbol_left;
 
-    #[ORM\Column(type: 'string', length: 12, nullable: true)]
+    #[ORM\Column(type: Types::STRING, length: 12, nullable: true)]
     private ?string $symbol_right;
 
     public function getCurrencyTitle(): ?string

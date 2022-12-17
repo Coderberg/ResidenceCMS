@@ -6,7 +6,6 @@ namespace App\Service\User;
 
 use App\Entity\User;
 use App\Service\Admin\UserService;
-use Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -23,14 +22,14 @@ final class PasswordService
     }
 
     /**
-     * @throws Exception
+     * @throws \Exception
      */
     public function update(Request $request): void
     {
         $violations = $this->findViolations($request);
 
         if (\count($violations) > 0) {
-            throw new Exception($violations[0]->getMessage());
+            throw new \Exception($violations[0]->getMessage());
         }
 
         /*** @var $user User */

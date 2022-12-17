@@ -7,11 +7,13 @@ namespace App\Repository;
 use App\Entity\Property;
 use App\Entity\Settings;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Bundle\SecurityBundle\Security;
 
 /**
  * @method Property|null find($id, $lockMode = null, $lockVersion = null)
@@ -21,21 +23,12 @@ use Symfony\Component\Security\Core\Security;
  */
 class PropertyRepository extends ServiceEntityRepository
 {
-    /**
-     * @var PaginatorInterface
-     */
-    private $paginator;
-
-    /**
-     * @var Security
-     */
-    protected $security;
-
-    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator, Security $security)
+    public function __construct(
+        ManagerRegistry $registry,
+        private PaginatorInterface $paginator,
+        protected Security $security)
     {
         parent::__construct($registry, Property::class);
-        $this->paginator = $paginator;
-        $this->security = $security;
     }
 
     public function findAllPublished(): array
@@ -48,6 +41,10 @@ class PropertyRepository extends ServiceEntityRepository
         return $query->execute();
     }
 
+    /**
+     * @throws NonUniqueResultException
+     * @throws NoResultException
+     */
     public function countAll(): int
     {
         $count = $this->createQueryBuilder('p')

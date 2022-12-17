@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Controller;
 
-use Generator;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -59,7 +58,7 @@ final class DefaultControllerTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isNotFound());
     }
 
-    public function getPublicUrls(): Generator
+    public function getPublicUrls(): \Generator
     {
         yield ['/en/'];
         yield ['/en/?page=2'];
@@ -71,7 +70,7 @@ final class DefaultControllerTest extends WebTestCase
         yield ['/en/?city=0&deal_type=0&category=0&page=2'];
     }
 
-    public function getSecureUrls(): Generator
+    public function getSecureUrls(): \Generator
     {
         yield ['/en/admin'];
         yield ['/en/admin/property'];
@@ -81,7 +80,7 @@ final class DefaultControllerTest extends WebTestCase
         yield ['/en/user/property'];
     }
 
-    public function getMenuItems(): Generator
+    public function getMenuItems(): \Generator
     {
         yield ['/en/'];
         yield ['/en/info/about-us'];

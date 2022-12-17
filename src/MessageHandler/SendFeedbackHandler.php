@@ -7,12 +7,13 @@ namespace App\MessageHandler;
 use App\Dto\FeedbackDto;
 use App\Mailer\Mailer;
 use App\Message\SendFeedback;
-use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-final class SendFeedbackHandler implements MessageHandlerInterface
+#[AsMessageHandler]
+final class SendFeedbackHandler
 {
     public function __construct(private Mailer $mailer, private TranslatorInterface $translator)
     {

@@ -27,23 +27,17 @@ use App\Form\EventSubscriber\UpdateDistrictFieldSubscriber;
 use App\Form\EventSubscriber\UpdateMetroFieldSubscriber;
 use App\Form\EventSubscriber\UpdateNeighborhoodFieldSubscriber;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Security\Core\Security;
 
 final class PropertyType extends AbstractType
 {
-    /**
-     * @var Security
-     */
-    private $security;
-
-    public function __construct(Security $security)
+    public function __construct(private Security $security)
     {
-        $this->security = $security;
     }
 
     /**

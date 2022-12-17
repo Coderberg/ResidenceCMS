@@ -10,7 +10,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Throwable;
 
 final class PasswordController extends AbstractController implements AjaxController
 {
@@ -21,7 +20,7 @@ final class PasswordController extends AbstractController implements AjaxControl
             $service->update($request);
 
             return new JsonResponse([]);
-        } catch (Throwable $e) {
+        } catch (\Throwable $e) {
             return new JsonResponse([
                 'message' => $e->getMessage(),
             ], 422);

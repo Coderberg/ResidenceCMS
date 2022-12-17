@@ -3,7 +3,7 @@
     "js/app": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/app.d20beb80.js"
+        "/build/js/app.36911f3f.js"
       ]
     },
     "js/admin": {
@@ -39,7 +39,7 @@
     "js/select2": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/select2.8f373d96.js"
+        "/build/js/select2.fd3458ee.js"
       ]
     },
     "js/settings": {
@@ -63,7 +63,7 @@
     "js/photo": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/photo.eabc5610.js"
+        "/build/js/photo.ce050cfd.js"
       ]
     },
     "js/page": {
@@ -89,7 +89,7 @@
         "/build/runtime.9a71ee5d.js"
       ],
       "css": [
-        "/build/css/app.8ec8707c.css"
+        "/build/css/app.66361058.css"
       ]
     },
     "css/admin": {

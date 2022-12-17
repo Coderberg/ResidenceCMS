@@ -9,14 +9,15 @@ use App\Mailer\Mailer;
 use App\Message\SendEmailConfirmationLink;
 use App\Service\Cache\UserDataCache;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Model\VerifyEmailSignatureComponents;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
-final class SendEmailConfirmationLinkHandler implements MessageHandlerInterface
+#[AsMessageHandler]
+final class SendEmailConfirmationLinkHandler
 {
     use UserDataCache;
 

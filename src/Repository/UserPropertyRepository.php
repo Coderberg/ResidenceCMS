@@ -6,7 +6,6 @@ namespace App\Repository;
 
 use App\Entity\Property;
 use Knp\Component\Pager\Pagination\PaginationInterface;
-use Throwable;
 
 final class UserPropertyRepository extends PropertyRepository
 {
@@ -36,7 +35,7 @@ final class UserPropertyRepository extends PropertyRepository
             $em->flush();
 
             return true;
-        } catch (Throwable $e) {
+        } catch (\Throwable $e) {
             return false;
         }
     }
