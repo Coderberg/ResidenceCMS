@@ -7,11 +7,11 @@ namespace App\Controller\User\Ajax;
 use App\Controller\AjaxController;
 use App\Entity\Property;
 use App\Repository\UserPropertyRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class PropertyController extends AbstractController implements AjaxController
 {

@@ -8,10 +8,10 @@ use App\Controller\AbstractPhotoController;
 use App\Controller\AjaxController;
 use App\Entity\Property;
 use App\Service\FileUploader;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class PhotoController extends AbstractPhotoController implements AjaxController
 {
