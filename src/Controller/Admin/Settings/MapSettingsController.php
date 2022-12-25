@@ -24,7 +24,7 @@ final class MapSettingsController extends AbstractSettingsController
 
         return $this->render('admin/settings/map_settings.html.twig', [
             'site' => $this->settings,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 }

@@ -28,7 +28,7 @@ final class HeaderSettingsController extends AbstractSettingsController
             'site' => $settings,
             'header_image' => $settings['header_image'],
             'logo_image' => $settings['logo_image'],
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

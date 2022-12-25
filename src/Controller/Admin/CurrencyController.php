@@ -54,7 +54,7 @@ final class CurrencyController extends BaseController
         return $this->render('admin/currency/new.html.twig', [
             'site' => $this->site($request),
             'currency' => $currency,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
@@ -75,7 +75,7 @@ final class CurrencyController extends BaseController
 
         return $this->render('admin/currency/edit.html.twig', [
             'site' => $this->site($request),
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

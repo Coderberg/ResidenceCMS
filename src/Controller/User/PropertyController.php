@@ -52,7 +52,7 @@ final class PropertyController extends BaseController
 
         return $this->render('user/property/new.html.twig', [
             'property' => $property,
-            'form' => $form->createView(),
+            'form' => $form,
             'site' => $this->site($request),
             'isHtmlAllowed' => $isHtmlAllowed,
         ]);
@@ -78,7 +78,7 @@ final class PropertyController extends BaseController
         }
 
         return $this->render('user/property/edit.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
             'site' => $this->site($request),
             'isHtmlAllowed' => $isHtmlAllowed,
         ]);

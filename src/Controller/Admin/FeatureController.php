@@ -54,7 +54,7 @@ final class FeatureController extends BaseController
         return $this->render('admin/feature/new.html.twig', [
             'site' => $this->site($request),
             'feature' => $feature,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
@@ -75,7 +75,7 @@ final class FeatureController extends BaseController
 
         return $this->render('admin/feature/edit.html.twig', [
             'site' => $this->site($request),
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

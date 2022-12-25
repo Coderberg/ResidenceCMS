@@ -54,7 +54,7 @@ final class DealTypeController extends BaseController
         return $this->render('admin/deal_type/new.html.twig', [
             'site' => $this->site($request),
             'deal_type' => $dealType,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
@@ -74,7 +74,7 @@ final class DealTypeController extends BaseController
 
         return $this->render('admin/deal_type/edit.html.twig', [
             'site' => $this->site($request),
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

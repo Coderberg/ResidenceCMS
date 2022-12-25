@@ -44,7 +44,7 @@ final class PageController extends BaseController
             [
                 'site' => $this->site($request),
                 'page' => $page,
-                'form' => (!empty($form) ? $form->createView() : []),
+                'form' => (!empty($form) ? $form : []),
             ]
         );
     }

@@ -56,7 +56,7 @@ final class NeighborhoodController extends BaseController
         return $this->render('admin/neighborhood/new.html.twig', [
             'site' => $this->site($request),
             'neighborhood' => $neighborhood,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
@@ -81,7 +81,7 @@ final class NeighborhoodController extends BaseController
 
         return $this->render('admin/neighborhood/edit.html.twig', [
             'site' => $this->site($request),
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

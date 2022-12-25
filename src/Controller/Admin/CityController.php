@@ -53,7 +53,7 @@ final class CityController extends BaseController
         return $this->render('admin/city/new.html.twig', [
             'site' => $this->site($request),
             'city' => $city,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
@@ -74,7 +74,7 @@ final class CityController extends BaseController
 
         return $this->render('admin/city/edit.html.twig', [
             'site' => $this->site($request),
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

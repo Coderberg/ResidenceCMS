@@ -44,7 +44,7 @@ final class PageController extends BaseController
         return $this->render('admin/page/new.html.twig', [
             'site' => $this->site($request),
             'page' => $page,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
@@ -66,7 +66,7 @@ final class PageController extends BaseController
 
         return $this->render('admin/page/edit.html.twig', [
             'site' => $this->site($request),
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

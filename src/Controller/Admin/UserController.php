@@ -56,7 +56,7 @@ final class UserController extends BaseController
         return $this->render('admin/user/new.html.twig', [
             'site' => $this->site($request),
             'user' => $user,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
@@ -81,7 +81,7 @@ final class UserController extends BaseController
 
         return $this->render('admin/user/edit.html.twig', [
             'site' => $this->site($request),
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

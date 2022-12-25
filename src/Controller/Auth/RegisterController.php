@@ -63,7 +63,7 @@ final class RegisterController extends BaseController implements AuthController
         }
 
         return $this->render('auth/register.html.twig', [
-            'registrationForm' => $form->createView(),
+            'registrationForm' => $form,
             'site' => $this->settings,
         ]);
     }

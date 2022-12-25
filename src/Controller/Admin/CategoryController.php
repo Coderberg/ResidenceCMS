@@ -53,7 +53,7 @@ final class CategoryController extends BaseController
         return $this->render('admin/category/new.html.twig', [
             'site' => $this->site($request),
             'category' => $category,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
@@ -73,7 +73,7 @@ final class CategoryController extends BaseController
 
         return $this->render('admin/category/edit.html.twig', [
             'site' => $this->site($request),
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

@@ -53,7 +53,7 @@ final class MenuController extends BaseController
         return $this->render('admin/menu/new.html.twig', [
             'site' => $this->site($request),
             'menu' => $menu,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
@@ -75,7 +75,7 @@ final class MenuController extends BaseController
 
         return $this->render('admin/menu/edit.html.twig', [
             'site' => $this->site($request),
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

@@ -56,7 +56,7 @@ final class DistrictController extends BaseController
         return $this->render('admin/district/new.html.twig', [
             'site' => $this->site($request),
             'district' => $district,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
@@ -77,7 +77,7 @@ final class DistrictController extends BaseController
 
         return $this->render('admin/district/edit.html.twig', [
             'site' => $this->site($request),
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

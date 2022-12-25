@@ -56,7 +56,7 @@ final class MetroController extends BaseController
         return $this->render('admin/metro/new.html.twig', [
             'site' => $this->site($request),
             'metro' => $metro,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
@@ -77,7 +77,7 @@ final class MetroController extends BaseController
 
         return $this->render('admin/metro/edit.html.twig', [
             'site' => $this->site($request),
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
