@@ -6,12 +6,19 @@ namespace App\Tests\Functional\Controller\Auth;
 
 use App\Entity\User;
 use App\Tests\Helper\WebTestHelper;
+use Doctrine\Persistence\ObjectManager;
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelper;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
 final class VerificationControllerTest extends WebTestCase
 {
     use WebTestHelper;
+
+    private KernelBrowser $client;
+    private ?ObjectManager $entityManager;
+    private VerifyEmailHelper $helper;
 
     protected function setUp(): void
     {
