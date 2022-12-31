@@ -29,7 +29,7 @@ final class LoginController extends BaseController
         return $this->render('auth/login.html.twig', [
             'site' => $this->site($request),
             'error' => $helper->getLastAuthenticationError(),
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

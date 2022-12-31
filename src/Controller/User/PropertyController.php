@@ -9,10 +9,10 @@ use App\Entity\Property;
 use App\Entity\User;
 use App\Form\Type\PropertyType;
 use App\Service\User\PropertyService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class PropertyController extends BaseController
 {
@@ -52,7 +52,7 @@ final class PropertyController extends BaseController
 
         return $this->render('user/property/new.html.twig', [
             'property' => $property,
-            'form' => $form->createView(),
+            'form' => $form,
             'site' => $this->site($request),
             'isHtmlAllowed' => $isHtmlAllowed,
         ]);
@@ -78,7 +78,7 @@ final class PropertyController extends BaseController
         }
 
         return $this->render('user/property/edit.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
             'site' => $this->site($request),
             'isHtmlAllowed' => $isHtmlAllowed,
         ]);

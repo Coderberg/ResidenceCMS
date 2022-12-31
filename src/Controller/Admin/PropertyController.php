@@ -10,10 +10,10 @@ use App\Form\Type\PropertyType;
 use App\Repository\FilterRepository;
 use App\Service\Admin\PropertyService;
 use App\Transformer\RequestToArrayTransformer;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class PropertyController extends BaseController
 {
@@ -49,7 +49,7 @@ final class PropertyController extends BaseController
         return $this->render('admin/property/new.html.twig', [
             'site' => $this->site($request),
             'property' => $property,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
@@ -70,7 +70,7 @@ final class PropertyController extends BaseController
 
         return $this->render('admin/property/edit.html.twig', [
             'site' => $this->site($request),
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

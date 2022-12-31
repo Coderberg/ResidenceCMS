@@ -24,7 +24,7 @@ final class MainSettingsController extends AbstractSettingsController
 
         return $this->render('admin/settings/main_settings.html.twig', [
             'site' => $this->settings,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 }

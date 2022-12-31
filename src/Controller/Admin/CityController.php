@@ -9,12 +9,12 @@ use App\Entity\City;
 use App\Form\Type\CityType;
 use App\Repository\CityRepository;
 use App\Service\Admin\CityService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class CityController extends BaseController
 {
@@ -53,7 +53,7 @@ final class CityController extends BaseController
         return $this->render('admin/city/new.html.twig', [
             'site' => $this->site($request),
             'city' => $city,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
@@ -74,7 +74,7 @@ final class CityController extends BaseController
 
         return $this->render('admin/city/edit.html.twig', [
             'site' => $this->site($request),
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

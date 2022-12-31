@@ -9,12 +9,12 @@ use App\Entity\Category;
 use App\Form\Type\CategoryType;
 use App\Repository\CategoryRepository;
 use App\Service\Admin\CategoryService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class CategoryController extends BaseController
 {
@@ -53,7 +53,7 @@ final class CategoryController extends BaseController
         return $this->render('admin/category/new.html.twig', [
             'site' => $this->site($request),
             'category' => $category,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
@@ -73,7 +73,7 @@ final class CategoryController extends BaseController
 
         return $this->render('admin/category/edit.html.twig', [
             'site' => $this->site($request),
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

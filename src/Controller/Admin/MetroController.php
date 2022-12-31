@@ -8,12 +8,12 @@ use App\Controller\BaseController;
 use App\Entity\Metro;
 use App\Form\Type\MetroType;
 use App\Repository\CityRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class MetroController extends BaseController
 {
@@ -56,7 +56,7 @@ final class MetroController extends BaseController
         return $this->render('admin/metro/new.html.twig', [
             'site' => $this->site($request),
             'metro' => $metro,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
@@ -77,7 +77,7 @@ final class MetroController extends BaseController
 
         return $this->render('admin/metro/edit.html.twig', [
             'site' => $this->site($request),
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

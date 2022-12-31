@@ -8,12 +8,12 @@ use App\Controller\BaseController;
 use App\Entity\Currency;
 use App\Form\Type\CurrencyType;
 use App\Repository\CurrencyRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class CurrencyController extends BaseController
 {
@@ -54,7 +54,7 @@ final class CurrencyController extends BaseController
         return $this->render('admin/currency/new.html.twig', [
             'site' => $this->site($request),
             'currency' => $currency,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
@@ -75,7 +75,7 @@ final class CurrencyController extends BaseController
 
         return $this->render('admin/currency/edit.html.twig', [
             'site' => $this->site($request),
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
