@@ -3,7 +3,7 @@
     "js/app": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/app.36911f3f.js"
+        "/build/js/app.1053ee59.js"
       ]
     },
     "js/admin": {
@@ -39,13 +39,13 @@
     "js/select2": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/select2.fd3458ee.js"
+        "/build/js/select2.e4b99976.js"
       ]
     },
     "js/settings": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/settings.fb55a353.js"
+        "/build/js/settings.2162af0d.js"
       ]
     },
     "js/slugger": {
@@ -63,7 +63,7 @@
     "js/photo": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/photo.ce050cfd.js"
+        "/build/js/photo.452a0a9f.js"
       ]
     },
     "js/page": {
