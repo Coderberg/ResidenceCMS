@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Auth\Ajax;
+namespace App\Controller\Ajax\Auth;
 
-use App\Controller\AjaxController;
+use App\Controller\Ajax\AjaxController;
 use App\Entity\User;
 use App\Message\SendEmailConfirmationLink;
 use App\Service\Cache\UserDataCache;
