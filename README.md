@@ -41,7 +41,7 @@ ResidenceCMS is a fast and lightweight Property Management System on top of [Sym
     $ php bin/console app:install
     ```
 
-7. Go to http://mywebsite.loc/admin and log in.
+7. Go to http://mywebsite.loc/en/admin and log in.
 
    ```
    login: admin
