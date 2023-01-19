@@ -46,6 +46,18 @@
                 <source>menu.login</source>
                 <target>Вход</target>
             </trans-unit>
+            <trans-unit id="menu.register">
+                <source>menu.register</source>
+                <target>Регистрация</target>
+            </trans-unit>
+            <trans-unit id="menu.profile">
+                <source>menu.profile</source>
+                <target>Моят профил</target>
+            </trans-unit>
+            <trans-unit id="menu.password">
+                <source>menu.password</source>
+                <target>Смяна на паролата</target>
+            </trans-unit>
             <trans-unit id="menu.sign_up">
                 <source>menu.sign_up</source>
                 <target>Регистрация</target>
@@ -289,7 +301,7 @@
             </trans-unit>
             <trans-unit id="action.send_reset_link">
                 <source>action.send_reset_link</source>
-                <target>Send Password Reset Link</target>
+                <target>Изпрати връзка за възстановяване на паролата</target>
             </trans-unit>
             <trans-unit id="action.add_menu_item">
                 <source>action.add_menu_item</source>
@@ -374,6 +386,14 @@
                 <target>Сигурни ли сте, че искате да изтриете този потребител?</target>
             </trans-unit>
 
+            <trans-unit id="title.menu">
+                <source>title.menu</source>
+                <target>Меню</target>
+            </trans-unit>
+            <trans-unit id="title.my_profile">
+                <source>title.my_profile</source>
+                <target>Моят профил</target>
+            </trans-unit>
             <trans-unit id="title.my_properties">
                 <source>title.my_properties</source>
                 <target>Моите имоти</target>
@@ -388,7 +408,7 @@
             </trans-unit>
             <trans-unit id="title.reset_password">
                 <source>title.reset_password</source>
-                <target>Ресет на паролата</target>
+                <target>Възстановяване на паролата</target>
             </trans-unit>
             <trans-unit id="title.set_new_pass">
                 <source>title.set_new_pass</source>
@@ -509,6 +529,10 @@
             <trans-unit id="title.settings.header_settings">
                 <source>title.settings.header_settings</source>
                 <target>Настройки на заглавката</target>
+            </trans-unit>
+            <trans-unit id="title.settings.map_settings">
+                <source>title.settings.map_settings</source>
+                <target>Настройки на картата</target>
             </trans-unit>
             <trans-unit id="title.settings.logo_image_label">
                 <source>title.settings.logo_image_label</source>
@@ -701,7 +725,7 @@
             </trans-unit>
             <trans-unit id="label.priority_number">
                 <source>label.priority_number</source>
-                <target>Listing priority number</target>
+                <target>Приоритетен номер в списъка</target>
             </trans-unit>
             <trans-unit id="label.priority_number.help">
                 <source>label.priority_number.help</source>
@@ -918,6 +942,35 @@
                 <target>Последни</target>
             </trans-unit>
 
+            <trans-unit id="password.change">
+                <source>password.change</source>
+                <target>Смяна на паролата</target>
+            </trans-unit>
+            <trans-unit id="password.length">
+                <source>password.length</source>
+                <target>Минимум 10 символа</target>
+            </trans-unit>
+            <trans-unit id="password.uppercase">
+                <source>password.uppercase</source>
+                <target>Главни букви</target>
+            </trans-unit>
+            <trans-unit id="password.lowercase">
+                <source>password.lowercase</source>
+                <target>Малки букви</target>
+            </trans-unit>
+            <trans-unit id="password.numbers">
+                <source>password.numbers</source>
+                <target>Цифри</target>
+            </trans-unit>
+            <trans-unit id="password.match">
+                <source>password.match</source>
+                <target>Съвпадение на паролата</target>
+            </trans-unit>
+            <trans-unit id="password.progress">
+                <source>password.progress</source>
+                <target>Смяна на паролата...</target>
+            </trans-unit>
+
             <trans-unit id="placeholder.map_center_example">
                 <source>placeholder.map_center_example</source>
                 <target>например 43.2093004,27.903251 за Варна</target>
@@ -973,7 +1026,7 @@
             </trans-unit>
             <trans-unit id="property.available_now">
                 <source>property.available_now</source>
-                <target>Available now</target>
+                <target>Достъпни сега</target>
             </trans-unit>
             <trans-unit id="property.price">
                 <source>property.price</source>
@@ -1006,13 +1059,13 @@
             </trans-unit>
             <trans-unit id="resetting.email.subject">
                 <source>resetting.email.subject</source>
-                <target>Ресетни парола</target>
+                <target>Възстановяване на парола</target>
             </trans-unit>
             <trans-unit id="resetting.email.message">
                 <source>resetting.email.message</source>
                 <target>
                     Здравейте, %username%!
-                    За да ресетнете паролата си, моля посетете %confirmationUrl%
+                    За да възстановите паролата си, моля посетете %confirmationUrl%
                     С най-добри пожелания, Екипът.
                 </target>
             </trans-unit>

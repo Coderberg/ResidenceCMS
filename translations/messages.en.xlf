@@ -402,6 +402,10 @@
                 <target>Are you sure you want to delete this user?</target>
             </trans-unit>
 
+            <trans-unit id="title.menu">
+                <source>title.menu</source>
+                <target>Menu</target>
+            </trans-unit>
             <trans-unit id="title.my_profile">
                 <source>title.my_profile</source>
                 <target>My profile</target>
