@@ -402,6 +402,10 @@
                 <target>Вы уверены, что хотите удалить этого пользователя?</target>
             </trans-unit>
 
+            <trans-unit id="title.menu">
+                <source>title.menu</source>
+                <target>Меню</target>
+            </trans-unit>
             <trans-unit id="title.my_profile">
                 <source>title.my_profile</source>
                 <target>Мой профиль</target>
