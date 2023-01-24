@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\User\Ajax;
+namespace App\Controller\Ajax\User;
 
-use App\Controller\AjaxController;
+use App\Controller\Ajax\AjaxController;
 use App\Service\User\PasswordService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;

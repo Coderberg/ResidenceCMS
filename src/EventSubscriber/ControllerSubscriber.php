@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\EventSubscriber;
 
-use App\Controller\AjaxController;
+use App\Controller\Ajax\AjaxController;
 use App\Controller\Auth\AuthController;
 use App\Middleware\ThrottleRequests;
 use App\Middleware\VerifyCsrfToken;

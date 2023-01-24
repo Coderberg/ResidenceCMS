@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Admin\Ajax;
+namespace App\Controller\Ajax\Admin;
 
-use App\Controller\AjaxController;
+use App\Controller\Ajax\AjaxController;
 use App\Repository\MenuRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;

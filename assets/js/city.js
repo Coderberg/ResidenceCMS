@@ -1,44 +1,51 @@
-'use strict';
+(function ($) {
+    'use strict';
 
-$(document).ready(function () {
-    let $city = $('#property_city');
-    let $title = $('#property_title');
-    let $description = $('#property_meta_description');
-    let $address = $('#property_address');
-    let $content = $('#property_content');
-    let $state = $('#property_state');
+    const renderOptions = (item) =>
+        `<option value="${item.id}">${item.name}</option>`;
 
-    $city.change(function () {
-        let $form = $(this).closest('form');
-        let data = getPropertyData();
+    const removeOptions = (selectIds) => {
+        $.each(selectIds, function (index, selectId) {
+            $(selectId + ' option').each(function () {
+                if ($(this).val() !== '') {
+                    $(this).remove();
+                }
+            });
+        });
+    };
 
-        $.ajax({
-            url: $form.attr('action'),
-            type: $form.attr('method'),
-            data: data,
-            success: function (html) {
-                $('#property_district').replaceWith(
-                    $(html).find('#property_district')
-                );
-                $('#property_neighborhood').replaceWith(
-                    $(html).find('#property_neighborhood')
-                );
-                $('#property_metro_station').replaceWith(
-                    $(html).find('#property_metro_station')
-                );
-            }
+    const clearOptions = () =>
+        removeOptions([
+            '#property_district',
+            '#property_neighborhood',
+            '#property_metro_station'
+        ]);
+
+    $('body').on('change', '#property_city', function () {
+        clearOptions();
+        let cityId = $(this).val();
+        const token = $('#property_form').data('token');
+        const url =
+            '/en/city/' + cityId + '.json?csrf_token=' + token;
+
+        if ('' === cityId) {
+            return;
+        }
+
+        $.get(url).done((data) => {
+            let { districts, neighborhoods, metro_stations } = data;
+
+            districts = districts.map((item) => renderOptions(item));
+            neighborhoods = neighborhoods.map((item) =>
+                renderOptions(item)
+            );
+            metro_stations = metro_stations.map((item) =>
+                renderOptions(item)
+            );
+
+            $('#property_district').append(districts);
+            $('#property_neighborhood').append(neighborhoods);
+            $('#property_metro_station').append(metro_stations);
         });
     });
-
-    function getPropertyData() {
-        let data = {};
-        data[$city.attr('name')] = $city.val();
-        data[$title.attr('name')] = $title.val();
-        data[$description.attr('name')] = $description.val();
-        data[$address.attr('name')] = $address.val();
-        data[$content.attr('name')] = $content.val();
-        data[$state.attr('name')] = $state.val();
-
-        return data;
-    }
-});
+})(window.jQuery);

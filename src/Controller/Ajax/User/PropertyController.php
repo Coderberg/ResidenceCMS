@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\User\Ajax;
+namespace App\Controller\Ajax\User;
 
-use App\Controller\AjaxController;
+use App\Controller\Ajax\AjaxController;
 use App\Entity\Property;
 use App\Repository\UserPropertyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
