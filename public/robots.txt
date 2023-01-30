@@ -4,3 +4,4 @@
 User-agent: *
 Disallow: /*/login
 Disallow: /*/admin
+Disallow: /*/password
