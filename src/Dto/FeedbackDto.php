@@ -10,23 +10,23 @@ final class FeedbackDto
 {
     #[Assert\NotBlank]
     #[Assert\Length(min: 2, max: 100)]
-    private ?string $from_name;
+    private ?string $from_name = null;
 
     #[Assert\NotBlank]
     #[Assert\Email]
     #[Assert\Length(min: 6)]
-    private ?string $from_email;
+    private ?string $from_email = null;
 
     #[Assert\NotBlank]
     #[Assert\Email]
     #[Assert\Length(min: 6)]
-    private ?string $to_email;
+    private ?string $to_email = null;
 
-    private ?string $subject;
+    private ?string $subject = null;
 
     #[Assert\NotBlank]
     #[Assert\Length(min: 14)]
-    private ?string $message;
+    private ?string $message = null;
 
     public function getFromName(): ?string
     {

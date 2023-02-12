@@ -20,12 +20,9 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 )]
 final class ListUsersCommand extends Command
 {
-    private UserRepository $users;
-
-    public function __construct(UserRepository $users)
+    public function __construct(private readonly UserRepository $users)
     {
         parent::__construct();
-        $this->users = $users;
     }
 
     protected function configure(): void
@@ -46,15 +43,13 @@ final class ListUsersCommand extends Command
 
         $allUsers = $this->users->findBy([], ['id' => 'DESC'], $limit);
 
-        $usersAsPlainArrays = array_map(function (User $user) {
-            return [
-                $user->getId(),
-                $user->getProfile()->getFullName(),
-                $user->getUsername(),
-                $user->getEmail(),
-                implode(', ', $user->getRoles()),
-            ];
-        }, $allUsers);
+        $usersAsPlainArrays = array_map(fn (User $user) => [
+            $user->getId(),
+            $user->getProfile()->getFullName(),
+            $user->getUsername(),
+            $user->getEmail(),
+            implode(', ', $user->getRoles()),
+        ], $allUsers);
 
         $bufferedOutput = new BufferedOutput();
         $io = new SymfonyStyle($input, $bufferedOutput);
