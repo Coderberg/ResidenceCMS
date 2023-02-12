@@ -11,7 +11,7 @@ use Symfony\Component\Security\Csrf\Exception\TokenNotFoundException;
 
 final class VerifyCsrfToken
 {
-    public function __construct(private CsrfTokenManagerInterface $tokenManager)
+    public function __construct(private readonly CsrfTokenManagerInterface $tokenManager)
     {
     }
 

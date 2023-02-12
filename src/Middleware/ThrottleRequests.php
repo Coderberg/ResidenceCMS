@@ -10,7 +10,7 @@ use Symfony\Component\RateLimiter\RateLimiterFactory;
 
 final class ThrottleRequests
 {
-    public function __construct(private RateLimiterFactory $authLimiter)
+    public function __construct(private readonly RateLimiterFactory $authLimiter)
     {
     }
 
@@ -20,7 +20,7 @@ final class ThrottleRequests
             $request->getClientIp().$request->getPathInfo().$request->getMethod()
         );
 
-        if (false === $limiter->consume(1)->isAccepted()) {
+        if (!$limiter->consume(1)->isAccepted()) {
             throw new TooManyRequestsHttpException();
         }
     }
