@@ -49,7 +49,8 @@ final class ListUsersCommand extends Command
             $user->getUsername(),
             $user->getEmail(),
             implode(', ', $user->getRoles()),
-        ], $allUsers);
+        ],
+            $allUsers);
 
         $bufferedOutput = new BufferedOutput();
         $io = new SymfonyStyle($input, $bufferedOutput);

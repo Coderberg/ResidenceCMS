@@ -19,7 +19,7 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 
 final class RegistrationFormAuthenticator extends AbstractAuthenticator
 {
-    public function __construct(private UrlGeneratorInterface $urlGenerator)
+    public function __construct(private readonly UrlGeneratorInterface $urlGenerator)
     {
     }
 
