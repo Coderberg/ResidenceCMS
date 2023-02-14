@@ -27,6 +27,7 @@ final class LoginController extends BaseController
         $form = $this->createForm(LoginFormType::class);
 
         return $this->render('auth/login.html.twig', [
+            'robots' => 'noindex',
             'site' => $this->site($request),
             'error' => $helper->getLastAuthenticationError(),
             'form' => $form,

@@ -13,7 +13,7 @@ final class UserVoter extends Voter
 {
     public const USE_HTML = 'USE_HTML';
 
-    public function __construct(private SettingsRepository $repository)
+    public function __construct(private readonly SettingsRepository $repository)
     {
     }
 

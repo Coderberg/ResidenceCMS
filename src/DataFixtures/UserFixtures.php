@@ -12,7 +12,7 @@ use Doctrine\Persistence\ObjectManager;
 
 final class UserFixtures extends Fixture
 {
-    public function __construct(private UserTransformer $transformer)
+    public function __construct(private readonly UserTransformer $transformer)
     {
     }
 

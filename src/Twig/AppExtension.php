@@ -10,14 +10,14 @@ use Twig\TwigFilter;
 
 final class AppExtension extends AbstractExtension
 {
-    public function __construct(private TranslatorInterface $translator)
+    public function __construct(private readonly TranslatorInterface $translator)
     {
     }
 
     public function getFilters(): array
     {
         return [
-            new TwigFilter('page', [$this, 'showPageNumber']),
+            new TwigFilter('page', $this->showPageNumber(...)),
         ];
     }
 

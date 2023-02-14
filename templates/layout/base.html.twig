@@ -34,6 +34,10 @@
     <!-- Color the status bar on mobile devices -->
     <meta name="theme-color" content="#ffffff">
 
+    {% if robots is defined and robots == 'noindex' %}
+        <meta name="robots" content="noindex, follow"/>
+    {% endif %}
+
     <!-- Styles -->
     {{ encore_entry_link_tags('css/app') }}
     {% block stylesheets %}{% endblock %}

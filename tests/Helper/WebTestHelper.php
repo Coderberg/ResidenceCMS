@@ -17,18 +17,21 @@ trait WebTestHelper
 {
     public function authAsAdmin(WebTestCase $testCase): KernelBrowser
     {
-        return $testCase::createClient([], [
-            'PHP_AUTH_USER' => 'admin',
-            'PHP_AUTH_PW' => 'admin',
-        ]);
+        return $this->authAs($testCase, 'admin');
     }
 
     public function authAsUser(WebTestCase $testCase): KernelBrowser
     {
-        return $testCase::createClient([], [
-            'PHP_AUTH_USER' => 'user',
-            'PHP_AUTH_PW' => 'user',
-        ]);
+        return $this->authAs($testCase, 'user');
+    }
+
+    private function authAs(WebTestCase $testCase, string $username): KernelBrowser
+    {
+        $client = $testCase::createClient();
+        $user = $this->getUser($client, $username);
+
+        // simulate $user being logged in
+        return $client->loginUser($user);
     }
 
     public function getRepository(KernelBrowser $client, string $entity): ObjectRepository

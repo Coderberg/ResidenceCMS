@@ -28,6 +28,7 @@ final class ResetPasswordController extends BaseController implements AuthContro
         }
 
         return $this->render('auth/passwords/password_reset.html.twig', [
+            'robots' => 'noindex',
             'site' => $this->site($request),
             'form' => $form->createView(),
         ]);
@@ -60,6 +61,7 @@ final class ResetPasswordController extends BaseController implements AuthContro
         }
 
         return $this->render('auth/passwords/password_change.html.twig', [
+            'robots' => 'noindex',
             'site' => $this->site($request),
             'form' => $form->createView(),
         ]);

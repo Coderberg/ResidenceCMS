@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 final class PropertyVoter extends Voter
 {
-    public function __construct(private Security $security)
+    public function __construct(private readonly Security $security)
     {
     }
 
