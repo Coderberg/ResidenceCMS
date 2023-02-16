@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Form\EventSubscriber;
 
+use App\Entity\Neighborhood;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
@@ -28,7 +29,7 @@ class UpdateNeighborhoodFieldSubscriber implements EventSubscriberInterface
             $neighborhoods = $form->getData()->getNeighborhoods();
 
             $form->getParent()->add('neighborhood', EntityType::class, [
-                'class' => 'App\Entity\Neighborhood',
+                'class' => Neighborhood::class,
                 'placeholder' => 'placeholder.select_neighborhood',
                 'choice_label' => 'name',
                 'attr' => [

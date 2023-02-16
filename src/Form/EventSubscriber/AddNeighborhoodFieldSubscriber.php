@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Form\EventSubscriber;
 
+use App\Entity\Neighborhood;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
@@ -27,7 +28,7 @@ class AddNeighborhoodFieldSubscriber implements EventSubscriberInterface
 
         if ($city) {
             $form->add('neighborhood', EntityType::class, [
-                'class' => 'App\Entity\Neighborhood',
+                'class' => Neighborhood::class,
                 'placeholder' => 'placeholder.select_neighborhood',
                 'choice_label' => 'name',
                 'attr' => [

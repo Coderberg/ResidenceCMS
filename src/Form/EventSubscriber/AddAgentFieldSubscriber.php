@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Form\EventSubscriber;
 
+use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -12,7 +13,7 @@ use Symfony\Component\Form\FormEvents;
 
 class AddAgentFieldSubscriber implements EventSubscriberInterface
 {
-    public function __construct(private Security $security)
+    public function __construct(private readonly Security $security)
     {
     }
 
@@ -32,7 +33,7 @@ class AddAgentFieldSubscriber implements EventSubscriberInterface
 
         if (!$agent) {
             $form->add('author', EntityType::class, [
-                'class' => 'App\Entity\User',
+                'class' => User::class,
                 'choice_label' => 'profile.full_name',
                 'attr' => [
                     'class' => 'form-control',

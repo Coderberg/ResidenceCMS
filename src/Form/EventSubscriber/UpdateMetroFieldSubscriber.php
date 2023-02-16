@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Form\EventSubscriber;
 
+use App\Entity\Metro;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
@@ -28,7 +29,7 @@ class UpdateMetroFieldSubscriber implements EventSubscriberInterface
             $stations = $form->getData()->getMetroStations();
 
             $form->getParent()->add('metro_station', EntityType::class, [
-                'class' => 'App\Entity\Metro',
+                'class' => Metro::class,
                 'placeholder' => 'placeholder.select_metro_station',
                 'choice_label' => 'name',
                 'attr' => [

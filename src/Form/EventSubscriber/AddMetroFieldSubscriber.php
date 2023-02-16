@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Form\EventSubscriber;
 
+use App\Entity\Metro;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
@@ -27,7 +28,7 @@ class AddMetroFieldSubscriber implements EventSubscriberInterface
 
         if ($city) {
             $form->add('metro_station', EntityType::class, [
-                'class' => 'App\Entity\Metro',
+                'class' => Metro::class,
                 'placeholder' => 'placeholder.select_metro_station',
                 'choice_label' => 'name',
                 'attr' => [
