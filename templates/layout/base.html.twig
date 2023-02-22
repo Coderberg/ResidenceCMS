@@ -56,11 +56,11 @@
 
 </div>
 
-<div class="container text-muted">
+<footer class="container text-muted">
     <p>© {{ "now" | date("Y") }} <a class="text-muted" href="{{ path('property') }}">{{ site.name }}</a>.
         {{ site.custom_footer_text | raw }}
     </p>
-</div>
+</footer>
 
 <!-- Scripts -->
 {{ encore_entry_script_tags('js/app') }}

@@ -242,9 +242,17 @@
                 <source>widget.phone</source>
                 <target>Phone</target>
             </trans-unit>
+            <trans-unit id="widget.call">
+                <source>widget.call</source>
+                <target>Call us</target>
+            </trans-unit>
             <trans-unit id="widget.email">
                 <source>widget.email</source>
                 <target>Email</target>
+            </trans-unit>
+            <trans-unit id="widget.email_us">
+                <source>widget.email_us</source>
+                <target>Email us</target>
             </trans-unit>
             <trans-unit id="widget.search">
                 <source>widget.search</source>

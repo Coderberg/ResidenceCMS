@@ -26,7 +26,9 @@
             <div class="col-auto">
                 <h4>{{ 'widget.phone' | trans }}</h4>
 
-                <p><a href="tel:{{ property.author.profile.phone }}">{{ property.author.profile.phone }}</a></p>
+                <p><a href="tel:{{ property.author.profile.phone }}" title="{{ 'widget.call' | trans }}" id="phone">
+                        {{ property.author.profile.phone }}
+                    </a></p>
             </div>
         </div>
     </div>
@@ -41,7 +43,9 @@
             <div class="col-auto">
                 <h4>{{ 'widget.email' | trans }}</h4>
 
-                <p><a href="mailto:{{ property.author.email }}">{{ property.author.email }}</a></p>
+                <p><a href="mailto:{{ property.author.email }}" title="{{ 'widget.email_us' | trans }}" id="email">
+                        {{ property.author.email }}
+                    </a></p>
             </div>
         </div>
     </div>
