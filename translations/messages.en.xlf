@@ -607,6 +607,10 @@
                 <source>label.settings.show_language_selector</source>
                 <target>Show language selector</target>
             </trans-unit>
+            <trans-unit id="label.settings.show_bottom_bar">
+                <source>label.settings.show_bottom_bar</source>
+                <target>Show bottom bar</target>
+            </trans-unit>
             <trans-unit id="label.settings.anyone_can_register">
                 <source>label.settings.anyone_can_register</source>
                 <target>Anyone can register</target>

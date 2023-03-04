@@ -49,6 +49,7 @@ final class AppFixtures extends Fixture
             ['show_language_selector', '1'],
             ['anyone_can_register', '0'],
             ['allow_html', '1'],
+            ['show_bottom_bar', '1'],
         ];
     }
 }

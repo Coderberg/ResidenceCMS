@@ -83,6 +83,11 @@ final class MainSettingsType extends AbstractType
                     'label' => 'label.settings.anyone_can_register',
                 ]
             )
+            ->add('show_bottom_bar', ChoiceType::class, [
+                    'choices' => self::CHOICES,
+                    'label' => 'label.settings.show_bottom_bar',
+                ]
+            )
             ->add('allow_html', ChoiceType::class, [
                     'choices' => self::CHOICES,
                     'label' => 'label.settings.allow_html',

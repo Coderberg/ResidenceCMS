@@ -7,7 +7,10 @@
 
     {{ encore_entry_link_tags('css/detail') }}
     {{ encore_entry_link_tags('css/ekko-lightbox') }}
-    {{ encore_entry_link_tags('css/bottom-bar') }}
+
+    {% if site.show_bottom_bar == '1' %}
+        {{ encore_entry_link_tags('css/bottom-bar') }}
+    {% endif %}
 
 {% endblock %}
 
@@ -98,6 +101,8 @@
 
     {% endif %}
 
-    {{ encore_entry_script_tags('js/bottom-bar') }}
+    {% if site.show_bottom_bar == '1' %}
+        {{ encore_entry_script_tags('js/bottom-bar') }}
+    {% endif %}
 
 {% endblock %}
