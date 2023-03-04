@@ -81,12 +81,6 @@
 {% block javascripts %}
 
     {{ encore_entry_script_tags('js/ekko-lightbox') }}
-    <script>
-        $(document).on('click', '[data-toggle="lightbox"]', function (event) {
-            event.preventDefault();
-            $(this).ekkoLightbox();
-        });
-    </script>
 
     {% if property.showMap == true and property.latitude != '' and property.longitude != '' %}
 
