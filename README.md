@@ -58,7 +58,13 @@ ResidenceCMS is a fast and lightweight Property Management System on top of [Sym
    DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
    ```
 
-2. Execute this command to run tests:
+2. Install the ChromeDriver:
+
+   ```
+   vendor/bin/bdi detect drivers
+   ```
+
+3. Execute this command to run tests:
 
    ```
    php bin/phpunit
