@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Form\EventSubscriber;
 
+use App\Entity\District;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
@@ -28,7 +29,7 @@ class UpdateDistrictFieldSubscriber implements EventSubscriberInterface
             $districts = $form->getData()->getDistricts();
 
             $form->getParent()->add('district', EntityType::class, [
-                'class' => 'App\Entity\District',
+                'class' => District::class,
                 'placeholder' => 'placeholder.select_district',
                 'choice_label' => 'name',
                 'attr' => [

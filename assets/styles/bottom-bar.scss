@@ -1,0 +1,44 @@
+.bottom-bar {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  footer {
+    margin-bottom: 70px;
+  }
+  .bottom-bar {
+    display: block !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgb(0 0 0 / 30%);
+  }
+  .bottom-bar a {
+    width: 50%;
+    float: left;
+    text-align: center;
+    font-size: 15px;
+    line-height: 3.2em;
+    display: inline-block;
+    z-index: 100;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  a.btn-right {
+    background-color: #007bff;
+  }
+  a.btn-right, a.btn-right:active, a.btn-right:focus, a.btn-right:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}

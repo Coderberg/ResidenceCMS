@@ -36,7 +36,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class PropertyType extends AbstractType
 {
-    public function __construct(private Security $security)
+    public function __construct(private readonly Security $security)
     {
     }
 

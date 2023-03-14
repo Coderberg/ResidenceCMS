@@ -13,11 +13,8 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 final class LoginFormType extends AbstractType
 {
-    private AuthenticationUtils $helper;
-
-    public function __construct(AuthenticationUtils $helper)
+    public function __construct(private readonly AuthenticationUtils $helper)
     {
-        $this->helper = $helper;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void

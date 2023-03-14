@@ -242,9 +242,17 @@
                 <source>widget.phone</source>
                 <target>Телефон</target>
             </trans-unit>
+            <trans-unit id="widget.call">
+                <source>widget.call</source>
+                <target>Позвонить</target>
+            </trans-unit>
             <trans-unit id="widget.email">
                 <source>widget.email</source>
                 <target>Email</target>
+            </trans-unit>
+            <trans-unit id="widget.email_us">
+                <source>widget.email_us</source>
+                <target>Написать</target>
             </trans-unit>
             <trans-unit id="widget.search">
                 <source>widget.search</source>
@@ -598,6 +606,10 @@
             <trans-unit id="label.settings.show_language_selector">
                 <source>label.settings.show_language_selector</source>
                 <target>Отображать выбор языка</target>
+            </trans-unit>
+            <trans-unit id="label.settings.show_bottom_bar">
+                <source>label.settings.show_bottom_bar</source>
+                <target>Отображать нижнюю панель</target>
             </trans-unit>
             <trans-unit id="label.settings.anyone_can_register">
                 <source>label.settings.anyone_can_register</source>

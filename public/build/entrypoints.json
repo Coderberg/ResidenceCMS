@@ -21,7 +21,7 @@
     "js/ekko-lightbox": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/ekko-lightbox.1a972d2c.js"
+        "/build/js/ekko-lightbox.c0d2386c.js"
       ]
     },
     "js/map": {
@@ -84,6 +84,12 @@
         "/build/js/password.a4f1763f.js"
       ]
     },
+    "js/bottom-bar": {
+      "js": [
+        "/build/runtime.9a71ee5d.js",
+        "/build/js/bottom-bar.8f444bd6.js"
+      ]
+    },
     "css/app": {
       "js": [
         "/build/runtime.9a71ee5d.js"
@@ -138,6 +144,14 @@
       ],
       "css": [
         "/build/css/select2.3f146cf8.css"
+      ]
+    },
+    "css/bottom-bar": {
+      "js": [
+        "/build/runtime.9a71ee5d.js"
+      ],
+      "css": [
+        "/build/css/bottom-bar.38e93f4e.css"
       ]
     }
   }

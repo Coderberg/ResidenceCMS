@@ -8,6 +8,10 @@
     {{ encore_entry_link_tags('css/detail') }}
     {{ encore_entry_link_tags('css/ekko-lightbox') }}
 
+    {% if site.show_bottom_bar == '1' %}
+        {{ encore_entry_link_tags('css/bottom-bar') }}
+    {% endif %}
+
 {% endblock %}
 
 {% block header %}{% endblock %}
@@ -80,12 +84,6 @@
 {% block javascripts %}
 
     {{ encore_entry_script_tags('js/ekko-lightbox') }}
-    <script>
-        $(document).on('click', '[data-toggle="lightbox"]', function (event) {
-            event.preventDefault();
-            $(this).ekkoLightbox();
-        });
-    </script>
 
     {% if property.showMap == true and property.latitude != '' and property.longitude != '' %}
 
@@ -101,6 +99,10 @@
 
         {{ encore_entry_script_tags('js/map') }}
 
+    {% endif %}
+
+    {% if site.show_bottom_bar == '1' %}
+        {{ encore_entry_script_tags('js/bottom-bar') }}
     {% endif %}
 
 {% endblock %}
