@@ -1,15 +1,10 @@
-risky: true
-
-version: 7
-
-preset: symfony
-
-tab-width: 4
-
-use-tabs: false
-
-finder:
-  name:
-    - "*.php"
-  not-path:
-    - "migrations"
+php:
+  risky: true
+  version: 8.1
+  preset: symfony
+  tab-width: 4
+  use-tabs: false
+  finder:
+    name: "*.php"
+    not-path:
+      - "migrations"
