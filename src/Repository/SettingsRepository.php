@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use App\Entity\Currency;
 use App\Entity\Settings;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -16,15 +17,9 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 final class SettingsRepository extends ServiceEntityRepository
 {
-    /**
-     * @var CurrencyRepository
-     */
-    private $currency;
-
-    public function __construct(ManagerRegistry $registry, CurrencyRepository $currency)
+    public function __construct(ManagerRegistry $registry, private readonly CurrencyRepository $currency)
     {
         parent::__construct($registry, Settings::class);
-        $this->currency = $currency;
     }
 
     public function findAllAsArray(): array
@@ -37,7 +32,7 @@ final class SettingsRepository extends ServiceEntityRepository
                 $settingsArray[$setting->getSettingName()] = $setting->getSettingValue();
             } else {
                 $currency = $this->currency->find((int) $setting->getSettingValue());
-                if (!$currency) {
+                if (!$currency instanceof Currency) {
                     $currency = $this->currency->findOneBy(['code' => 'USD']);
                 }
                 $settingsArray['currency'] = $currency;

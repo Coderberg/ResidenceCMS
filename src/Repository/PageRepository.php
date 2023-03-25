@@ -7,6 +7,8 @@ namespace App\Repository;
 use App\Entity\Page;
 use App\Entity\Settings;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\Pagination\PaginationInterface;
@@ -21,17 +23,15 @@ use Symfony\Component\HttpFoundation\Request;
  */
 final class PageRepository extends ServiceEntityRepository
 {
-    /**
-     * @var PaginatorInterface
-     */
-    private $paginator;
-
-    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator)
+    public function __construct(ManagerRegistry $registry, private readonly PaginatorInterface $paginator)
     {
         parent::__construct($registry, Page::class);
-        $this->paginator = $paginator;
     }
 
+    /**
+     * @throws NonUniqueResultException
+     * @throws NoResultException
+     */
     public function countAll(): int
     {
         $count = $this->createQueryBuilder('p')

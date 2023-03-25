@@ -35,7 +35,7 @@ final class UserPropertyRepository extends PropertyRepository
             $em->flush();
 
             return true;
-        } catch (\Throwable $e) {
+        } catch (\Throwable) {
             return false;
         }
     }

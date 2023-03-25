@@ -28,7 +28,7 @@ final class PhotoRepository extends ServiceEntityRepository
 
         foreach ($ids as $id) {
             $this->createQueryBuilder('i')
-                ->update('App\Entity\Photo', 'p')
+                ->update(Photo::class, 'p')
                 ->set('p.sort_order', $i)
                 ->where('p.id = ?1')
                 ->andWhere('p.property = ?2')
