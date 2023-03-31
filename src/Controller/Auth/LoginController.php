@@ -38,7 +38,7 @@ final class LoginController extends BaseController
      * @throws \Exception
      */
     #[Route(path: '/logout', name: 'security_logout')]
-    public function logout(): void
+    public function logout(): never
     {
         throw new \Exception('This should never be reached!');
     }
