@@ -14,12 +14,10 @@ abstract class AbstractService
 {
     use ClearCache;
 
-    private SessionInterface $session;
-    private CsrfTokenManagerInterface $tokenManager;
+    private readonly SessionInterface $session;
 
-    public function __construct(CsrfTokenManagerInterface $tokenManager, RequestStack $requestStack)
+    public function __construct(private readonly CsrfTokenManagerInterface $tokenManager, RequestStack $requestStack)
     {
-        $this->tokenManager = $tokenManager;
         $this->session = $requestStack->getSession();
     }
 

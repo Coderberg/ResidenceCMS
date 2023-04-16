@@ -13,8 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 final class CityService
 {
     public function __construct(
-        private RequestToArrayTransformer $transformer,
-        private FilterRepository $repository
+        private readonly RequestToArrayTransformer $transformer,
+        private readonly FilterRepository $repository
     ) {
     }
 

@@ -16,18 +16,13 @@ use Symfony\Component\Validator\ConstraintViolation;
 
 final class SettingsService extends AbstractService
 {
-    private SettingsRepository $repository;
-    private FileUploader $fileUploader;
-
     public function __construct(
         CsrfTokenManagerInterface $tokenManager,
         RequestStack $requestStack,
-        SettingsRepository $repository,
-        FileUploader $fileUploader
+        private readonly SettingsRepository $repository,
+        private readonly FileUploader $fileUploader
     ) {
         parent::__construct($tokenManager, $requestStack);
-        $this->repository = $repository;
-        $this->fileUploader = $fileUploader;
     }
 
     /**

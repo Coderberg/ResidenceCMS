@@ -12,15 +12,12 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 final class CategoryService extends AbstractService
 {
-    private EntityManagerInterface $em;
-
     public function __construct(
         CsrfTokenManagerInterface $tokenManager,
         RequestStack $requestStack,
-        EntityManagerInterface $entityManager
+        private readonly EntityManagerInterface $em
     ) {
         parent::__construct($tokenManager, $requestStack);
-        $this->em = $entityManager;
     }
 
     public function create(Category $category): void

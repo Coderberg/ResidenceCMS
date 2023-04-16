@@ -13,8 +13,8 @@ use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 final class EmailVerifier
 {
     public function __construct(
-        private VerifyEmailHelperInterface $verifyEmailHelper,
-        private EntityManagerInterface $entityManager)
+        private readonly VerifyEmailHelperInterface $verifyEmailHelper,
+        private readonly EntityManagerInterface $entityManager)
     {
     }
 

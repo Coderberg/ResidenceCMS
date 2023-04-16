@@ -15,9 +15,9 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 final class PasswordService
 {
     public function __construct(
-        private UserService $service,
-        private TokenStorageInterface $tokenStorage,
-        private ValidatorInterface $validator
+        private readonly UserService $service,
+        private readonly TokenStorageInterface $tokenStorage,
+        private readonly ValidatorInterface $validator
     ) {
     }
 
