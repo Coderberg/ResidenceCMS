@@ -1,0 +1,67 @@
+{% extends 'layout/base.html.twig' %}
+
+{% block title %}{{ 'title.security'|trans }}{% endblock %}
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('css/security') }}
+    {% endblock %}
+
+{% block body %}
+
+    <div class="row mt-4 mb-4">
+
+        <div class="col-md-8">
+
+            <div class="row">
+                <div class="col-sm-12 mb-3">
+                    <h3>{{ 'title.security'|trans }}</h3>
+                </div>
+            </div>
+
+            <div class="card full-xs">
+
+                <div class="card-body">
+
+                    <div class="row security-buttons">
+
+                        <div class="col-6 text-center">
+                            <a href="#"
+                               data-toggle="modal"
+                               class="btn btn-block bg-light"
+                               data-target="#changePassword">
+                                <i class="fas fa-key fa-4x"></i> <br>{{ 'menu.password'|trans }}
+                            </a>
+                        </div>
+
+                        <div class="col-6 text-center">
+                            <a href="#"
+                               id="setUpAuthenticatorButton"
+                               data-toggle="modal"
+                               class="btn btn-block bg-light"
+                               data-target="#setUpAuthenticator">
+                                <i class="fas fa-lock fa-4x"></i> <br>{{ 'menu.google_auth'|trans }}
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        {{ include('user/common/_sidebar.html.twig') }}
+
+    </div>
+
+    {{ include('user/common/_floating_action_button.html.twig') }}
+    {{ include('user/security/_change_password.html.twig') }}
+    {{ include('user/security/_google_authenticator.html.twig') }}
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ encore_entry_script_tags('js/user') }}
+    {{ encore_entry_script_tags('js/password') }}
+    {{ encore_entry_script_tags('js/google_authenticator') }}
+
+{% endblock %}

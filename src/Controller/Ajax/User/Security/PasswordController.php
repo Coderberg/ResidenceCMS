@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Ajax\User;
+namespace App\Controller\Ajax\User\Security;
 
 use App\Controller\Ajax\AjaxController;
 use App\Service\User\PasswordService;

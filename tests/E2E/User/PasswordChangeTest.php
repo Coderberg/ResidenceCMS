@@ -26,6 +26,7 @@ final class PasswordChangeTest extends PantherTestCase
         // Log In as a User
         $client = self::createPantherClient();
         $this->login($client, 'user', 'user');
+        $client->clickLink('Security');
         $client->waitFor('[data-target="#changePassword"]');
 
         // Open the modal window

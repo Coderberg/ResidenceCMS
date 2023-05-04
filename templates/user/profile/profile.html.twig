@@ -35,32 +35,16 @@
             </div>
         </div>
 
-        <div class="col-md-4">
-            <!-- Sidebar -->
-            {{ include('user/common/_sidebar.html.twig') }}
-            {{ include('user/common/_change_password.html.twig') }}
-        </div>
+        {{ include('user/common/_sidebar.html.twig') }}
 
     </div>
 
-    {% if is_granted('ROLE_ADMIN') %}
+    {{ include('user/common/_floating_action_button.html.twig') }}
 
-        <a href="{{ url('admin_property_new') }}" class="btn btn-primary float">
-            <i class="fas fa-plus float-icon"></i>
-        </a>
-
-    {% elseif app.user.isVerified %}
-
-        <a href="{{ url('user_property_new') }}" class="btn btn-primary float">
-            <i class="fas fa-plus float-icon"></i>
-        </a>
-
-    {% endif %}
 {% endblock %}
 
 {% block javascripts %}
 
     {{ encore_entry_script_tags('js/user') }}
-    {{ encore_entry_script_tags('js/password') }}
 
 {% endblock %}
