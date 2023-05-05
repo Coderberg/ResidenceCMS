@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace App\Validator;
 
+use App\Entity\User;
 use App\Repository\UserRepository;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
 final class RegisteredUserValidator extends ConstraintValidator
 {
-    public function __construct(private UserRepository $userRepository)
+    public function __construct(private readonly UserRepository $userRepository)
     {
     }
 
@@ -24,7 +25,7 @@ final class RegisteredUserValidator extends ConstraintValidator
 
         $existingUser = $this->userRepository->findOneBy(['email' => $value]);
 
-        if (null === $existingUser) {
+        if (!$existingUser instanceof User) {
             $this->context->buildViolation($constraint->message)
                 ->addViolation();
         }

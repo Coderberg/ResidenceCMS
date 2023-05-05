@@ -18,9 +18,9 @@ class PropertyService extends AbstractService
     public function __construct(
         CsrfTokenManagerInterface $tokenManager,
         RequestStack $requestStack,
-        private EntityManagerInterface $em,
-        private MessageBusInterface $messageBus,
-        private Slugger $slugger
+        private readonly EntityManagerInterface $em,
+        private readonly MessageBusInterface $messageBus,
+        private readonly Slugger $slugger
     ) {
         parent::__construct($tokenManager, $requestStack);
     }

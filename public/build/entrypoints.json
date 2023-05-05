@@ -75,13 +75,19 @@
     "js/user": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/user.051ef9ab.js"
+        "/build/js/user.fa1131dc.js"
       ]
     },
     "js/password": {
       "js": [
         "/build/runtime.9a71ee5d.js",
         "/build/js/password.a4f1763f.js"
+      ]
+    },
+    "js/google_authenticator": {
+      "js": [
+        "/build/runtime.9a71ee5d.js",
+        "/build/js/google_authenticator.0889962e.js"
       ]
     },
     "js/bottom-bar": {
@@ -152,6 +158,14 @@
       ],
       "css": [
         "/build/css/bottom-bar.38e93f4e.css"
+      ]
+    },
+    "css/security": {
+      "js": [
+        "/build/runtime.9a71ee5d.js"
+      ],
+      "css": [
+        "/build/css/security.64e38d75.css"
       ]
     }
   }

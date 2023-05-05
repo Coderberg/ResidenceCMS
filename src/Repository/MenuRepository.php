@@ -32,7 +32,7 @@ final class MenuRepository extends ServiceEntityRepository
 
         foreach ($items as $item) {
             $this->createQueryBuilder('i')
-                ->update('App\Entity\Menu', 'm')
+                ->update(Menu::class, 'm')
                 ->set('m.sort_order', $i)
                 ->where('m.id = ?1')
                 ->setParameter(1, $item)

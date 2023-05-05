@@ -25,7 +25,7 @@ class PropertyRepository extends ServiceEntityRepository
 {
     public function __construct(
         ManagerRegistry $registry,
-        private PaginatorInterface $paginator,
+        private readonly PaginatorInterface $paginator,
         protected Security $security)
     {
         parent::__construct($registry, Property::class);

@@ -8,10 +8,11 @@ use App\Entity\Traits\CityTrait;
 use App\Entity\Traits\EntityIdTrait;
 use App\Entity\Traits\EntityNameTrait;
 use App\Entity\Traits\PropertyTrait;
+use App\Repository\DistrictRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
-#[ORM\Entity(repositoryClass: 'App\Repository\DistrictRepository')]
+#[ORM\Entity(repositoryClass: DistrictRepository::class)]
 #[UniqueEntity('slug')]
 class District
 {
@@ -20,8 +21,8 @@ class District
     use EntityNameTrait;
     use PropertyTrait;
 
-    public const MAPPED_BY = 'district';
-    public const INVERSED_BY = 'districts';
-    public const GETTER = 'getDistrict';
-    public const SETTER = 'setDistrict';
+    final public const MAPPED_BY = 'district';
+    final public const INVERSED_BY = 'districts';
+    final public const GETTER = 'getDistrict';
+    final public const SETTER = 'setDistrict';
 }

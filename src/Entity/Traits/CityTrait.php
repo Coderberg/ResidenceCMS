@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 trait CityTrait
 {
-    #[ORM\ManyToOne(targetEntity: 'App\Entity\City', inversedBy: self::INVERSED_BY)]
+    #[ORM\ManyToOne(targetEntity: City::class, inversedBy: self::INVERSED_BY)]
     #[ORM\JoinColumn(nullable: false)]
     private $city;
 

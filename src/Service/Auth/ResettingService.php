@@ -16,21 +16,14 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 final class ResettingService extends AbstractService
 {
-    private ResettingRepository $repository;
-    private MessageBusInterface $messageBus;
-    private TokenGenerator $generator;
-
     public function __construct(
         CsrfTokenManagerInterface $tokenManager,
         RequestStack $requestStack,
-        ResettingRepository $repository,
-        MessageBusInterface $messageBus,
-        TokenGenerator $generator
+        private readonly ResettingRepository $repository,
+        private readonly MessageBusInterface $messageBus,
+        private readonly TokenGenerator $generator
     ) {
         parent::__construct($tokenManager, $requestStack);
-        $this->repository = $repository;
-        $this->messageBus = $messageBus;
-        $this->generator = $generator;
     }
 
     public function sendResetPasswordLink(Request $request): void

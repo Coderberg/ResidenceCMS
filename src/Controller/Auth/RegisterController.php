@@ -23,14 +23,14 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 final class RegisterController extends BaseController implements AuthController
 {
-    private array $settings;
+    private readonly array $settings;
 
     public function __construct(
-        private MessageBusInterface $messageBus,
-        private RegistrationFormAuthenticator $authenticator,
-        private Security $security,
-        private UserAuthenticatorInterface $userAuthenticator,
-        private UserService $service,
+        private readonly MessageBusInterface $messageBus,
+        private readonly RegistrationFormAuthenticator $authenticator,
+        private readonly Security $security,
+        private readonly UserAuthenticatorInterface $userAuthenticator,
+        private readonly UserService $service,
         ManagerRegistry $doctrine,
         RequestStack $requestStack,
         SettingsRepository $settingsRepository

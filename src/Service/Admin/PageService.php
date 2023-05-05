@@ -13,15 +13,12 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 final class PageService extends AbstractService
 {
-    private EntityManagerInterface $em;
-
     public function __construct(
         CsrfTokenManagerInterface $tokenManager,
         RequestStack $requestStack,
-        EntityManagerInterface $entityManager
+        private readonly EntityManagerInterface $em
     ) {
         parent::__construct($tokenManager, $requestStack);
-        $this->em = $entityManager;
     }
 
     public function create(Page $page): void
@@ -62,7 +59,7 @@ final class PageService extends AbstractService
 
         // Delete a menu item
         $menu = $this->em->getRepository(Menu::class)->findOneBy(['url' => '/info/'.($page->getSlug() ?? '')]);
-        if ($menu) {
+        if (null !== $menu) {
             $this->remove($menu);
         }
     }

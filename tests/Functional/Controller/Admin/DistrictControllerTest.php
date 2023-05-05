@@ -5,34 +5,25 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller\Admin;
 
 use App\Entity\District;
-use App\Tests\Helper\WebTestHelper;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-final class DistrictControllerTest extends WebTestCase
+final class DistrictControllerTest extends AbstractLocationControllerTest
 {
-    use WebTestHelper;
-
-    private const NAME = 'Test';
-    private const SLUG = 'test';
-    private const EDITED_NAME = 'Edited';
-
     /**
      * This test changes the database contents by creating a new District.
      */
     public function testAdminNewDistrict(): void
     {
-        $client = $this->authAsAdmin($this);
-        $crawler = $client->request('GET', '/en/admin/locations/district/new');
+        $crawler = $this->client->request('GET', '/en/admin/locations/district/new');
 
         $form = $crawler->selectButton('Create district')->form([
             'district[name]' => self::NAME,
             'district[slug]' => self::SLUG,
         ]);
-        $client->submit($form);
+        $this->client->submit($form);
 
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
-        $district = $this->getRepository($client, District::class)->findOneBy([
+        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
+        $district = $this->getRepository($this->client, District::class)->findOneBy([
                 'slug' => self::SLUG,
             ]);
 
@@ -46,23 +37,21 @@ final class DistrictControllerTest extends WebTestCase
      */
     public function testAdminEditDistrict(): void
     {
-        $client = $this->authAsAdmin($this);
-
-        $district = $this->getRepository($client, District::class)
+        $district = $this->getRepository($this->client, District::class)
             ->findOneBy([
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/en/admin/locations/district/'.$district.'/edit');
+        $crawler = $this->client->request('GET', '/en/admin/locations/district/'.$district.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'district[name]' => self::EDITED_NAME,
         ]);
 
-        $client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->client->submit($form);
+        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
 
-        $editedDistrict = $this->getRepository($client, District::class)
+        $editedDistrict = $this->getRepository($this->client, District::class)
             ->findOneBy([
                 'id' => $district,
             ]);
@@ -75,19 +64,17 @@ final class DistrictControllerTest extends WebTestCase
      */
     public function testAdminDeleteDistrict(): void
     {
-        $client = $this->authAsAdmin($this);
+        $crawler = $this->client->request('GET', '/en/admin/locations/district');
 
-        $crawler = $client->request('GET', '/en/admin/locations/district');
-
-        $district = $this->getRepository($client, District::class)
+        $district = $this->getRepository($this->client, District::class)
             ->findOneBy([
                 'slug' => self::SLUG,
             ])->getId();
 
-        $client->submit($crawler->filter('#delete-district-'.$district)->form());
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->client->submit($crawler->filter('#delete-district-'.$district)->form());
+        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
 
-        $this->assertNull($this->getRepository($client, District::class)
+        $this->assertNull($this->getRepository($this->client, District::class)
             ->findOneBy([
                 'slug' => self::SLUG,
             ]));

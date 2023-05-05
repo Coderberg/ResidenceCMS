@@ -26,10 +26,10 @@ final class PropertyService extends Service
         EntityManagerInterface $em,
         MessageBusInterface $messageBus,
         Slugger $slugger,
-        private PropertyTransformer $propertyTransformer,
-        private UserPropertyRepository $repository,
-        private RequestToArrayTransformer $transformer,
-        private TokenStorageInterface $tokenStorage
+        private readonly PropertyTransformer $propertyTransformer,
+        private readonly UserPropertyRepository $repository,
+        private readonly RequestToArrayTransformer $transformer,
+        private readonly TokenStorageInterface $tokenStorage
     ) {
         parent::__construct($tokenManager, $requestStack, $em, $messageBus, $slugger);
     }

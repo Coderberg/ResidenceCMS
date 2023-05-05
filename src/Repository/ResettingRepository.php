@@ -10,12 +10,9 @@ use Doctrine\Persistence\ManagerRegistry;
 
 final class ResettingRepository extends UserRepository
 {
-    private $transformer;
-
-    public function __construct(ManagerRegistry $registry, UserTransformer $transformer)
+    public function __construct(ManagerRegistry $registry, private readonly UserTransformer $transformer)
     {
         parent::__construct($registry);
-        $this->transformer = $transformer;
     }
 
     public function setPassword(User $user, string $plainPassword): void

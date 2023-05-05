@@ -84,11 +84,7 @@
 
         </div>
 
-        <div class="col-md-4">
-            <!-- Sidebar -->
-            {{ include('user/common/_sidebar.html.twig') }}
-            {{ include('user/common/_change_password.html.twig') }}
-        </div>
+        {{ include('user/common/_sidebar.html.twig') }}
 
     </div>
 {% endblock %}
@@ -96,7 +92,6 @@
 {% block javascripts %}
 
     {{ encore_entry_script_tags('js/photo') }}
-    {{ encore_entry_script_tags('js/password') }}
     {{ encore_entry_script_tags('js/user') }}
 
 {% endblock %}

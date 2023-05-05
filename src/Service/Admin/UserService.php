@@ -13,18 +13,13 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 final class UserService extends AbstractService
 {
-    private EntityManagerInterface $em;
-    private UserTransformer $transformer;
-
     public function __construct(
         CsrfTokenManagerInterface $tokenManager,
         RequestStack $requestStack,
-        EntityManagerInterface $entityManager,
-        UserTransformer $transformer
+        private readonly EntityManagerInterface $em,
+        private readonly UserTransformer $transformer
     ) {
         parent::__construct($tokenManager, $requestStack);
-        $this->em = $entityManager;
-        $this->transformer = $transformer;
     }
 
     public function create(User $user): void

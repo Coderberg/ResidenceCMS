@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Entity\Traits\EntityIdTrait;
+use App\Repository\MenuRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Table]
 #[ORM\UniqueConstraint(name: 'url_locale_unique_key', columns: ['url', 'locale'])]
-#[ORM\Entity(repositoryClass: 'App\Repository\MenuRepository')]
+#[ORM\Entity(repositoryClass: MenuRepository::class)]
 #[UniqueEntity(['url', 'locale'])]
 class Menu
 {

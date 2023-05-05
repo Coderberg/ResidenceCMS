@@ -21,15 +21,12 @@ final class SendEmailConfirmationLinkHandler
 {
     use UserDataCache;
 
-    private VerifyEmailHelperInterface $verifyEmailHelper;
-
     public function __construct(
-        VerifyEmailHelperInterface $helper,
-        private Mailer $mailer,
-        private UrlGeneratorInterface $router,
-        private TranslatorInterface $translator
+        private readonly VerifyEmailHelperInterface $verifyEmailHelper,
+        private readonly Mailer $mailer,
+        private readonly UrlGeneratorInterface $router,
+        private readonly TranslatorInterface $translator
     ) {
-        $this->verifyEmailHelper = $helper;
     }
 
     public function __invoke(SendEmailConfirmationLink $sendEmailConfirmationLink): void

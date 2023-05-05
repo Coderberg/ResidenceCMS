@@ -1,23 +1,25 @@
-<div class="row">
-    <div class="col-sm-12 mb-3">
-        <h3>{{ 'title.menu'|trans }}</h3>
+<div class="col-md-4">
+    <div class="row">
+        <div class="col-sm-12 mb-3">
+            <h3>{{ 'title.menu'|trans }}</h3>
+        </div>
     </div>
-</div>
 
-<div class="list-group">
-    <a href="{{ path('user_property') }}" class="list-group-item list-group-item-action">
-        <i class="fas fa-home"></i> {{ 'menu.my_properties'|trans }}
-    </a>
-    <a href="{{ path('user_property', {'state': 'unpublished'}) }}" class="list-group-item list-group-item-action">
-        <i class="fas fa-eye-slash"></i> {{ 'menu.unpublished'|trans }}
-    </a>
-    <a href="{{ path('user_profile') }}" class="list-group-item list-group-item-action">
-        <i class="far fa-address-card"></i> {{ 'menu.profile'|trans }}
-    </a>
-    <a href="#" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#changePassword">
-        <i class="fas fa-key"></i> {{ 'menu.password'|trans }}
-    </a>
-    <a href="{{ path('security_logout') }}" class="list-group-item list-group-item-action">
-        <i class="fas fa-sign-out-alt"></i> {{ 'menu.logout'|trans }}
-    </a>
+    <div class="list-group">
+        <a href="{{ path('user_property') }}" class="list-group-item list-group-item-action">
+            <i class="fas fa-home"></i> {{ 'menu.my_properties'|trans }}
+        </a>
+        <a href="{{ path('user_property', {'state': 'unpublished'}) }}" class="list-group-item list-group-item-action">
+            <i class="fas fa-eye-slash"></i> {{ 'menu.unpublished'|trans }}
+        </a>
+        <a href="{{ path('user_profile') }}" class="list-group-item list-group-item-action">
+            <i class="far fa-address-card"></i> {{ 'menu.profile'|trans }}
+        </a>
+        <a href="{{ path('user_security') }}" class="list-group-item list-group-item-action">
+            <i class="fas fa-shield-alt"></i> {{ 'menu.security'|trans }}
+        </a>
+        <a href="{{ path('security_logout') }}" class="list-group-item list-group-item-action">
+            <i class="fas fa-sign-out-alt"></i> {{ 'menu.logout'|trans }}
+        </a>
+    </div>
 </div>

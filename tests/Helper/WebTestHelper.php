@@ -12,6 +12,7 @@ use Doctrine\Persistence\ObjectRepository;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DomCrawler\Crawler;
+use Symfony\Component\HttpFoundation\Response;
 
 trait WebTestHelper
 {
@@ -81,5 +82,12 @@ trait WebTestHelper
         }
 
         $this->updateSettings($client, $settings);
+    }
+
+    private function assertContainsWords(Response $response, array $words): void
+    {
+        foreach ($words as $word) {
+            $this->assertStringContainsString($word, (string) $response->getContent());
+        }
     }
 }

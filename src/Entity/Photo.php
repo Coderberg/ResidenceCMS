@@ -5,16 +5,17 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Entity\Traits\EntityIdTrait;
+use App\Repository\PhotoRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity(repositoryClass: 'App\Repository\PhotoRepository')]
+#[ORM\Entity(repositoryClass: PhotoRepository::class)]
 class Photo
 {
     use EntityIdTrait;
 
-    #[ORM\ManyToOne(targetEntity: 'App\Entity\Property', inversedBy: 'photos')]
+    #[ORM\ManyToOne(targetEntity: Property::class, inversedBy: 'photos')]
     #[ORM\JoinColumn(nullable: true)]
     private $property;
 

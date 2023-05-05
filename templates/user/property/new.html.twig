@@ -141,11 +141,7 @@
 
         </div>
 
-        <div class="col-md-4">
-            <!-- Sidebar -->
-            {{ include('user/common/_sidebar.html.twig') }}
-            {{ include('user/common/_change_password.html.twig') }}
-        </div>
+        {{ include('user/common/_sidebar.html.twig') }}
 
     </div>
 {% endblock %}
@@ -154,7 +150,6 @@
 
     {{ encore_entry_script_tags('js/city') }}
     {{ encore_entry_script_tags('js/select2') }}
-    {{ encore_entry_script_tags('js/password') }}
 
     {% if isHtmlAllowed == true %}
         <script src="{{ asset('libs/summernote/0.8.20/summernote-bs4.min.js') }}"></script>

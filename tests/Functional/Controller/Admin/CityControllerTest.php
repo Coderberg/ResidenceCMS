@@ -5,26 +5,16 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller\Admin;
 
 use App\Entity\City;
-use App\Tests\Helper\WebTestHelper;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-final class CityControllerTest extends WebTestCase
+final class CityControllerTest extends AbstractLocationControllerTest
 {
-    use WebTestHelper;
-
-    private const NAME = 'Test';
-    private const SLUG = 'test';
-    private const EDITED_NAME = 'Edited';
-
     /**
      * This test changes the database contents by creating a new City.
      */
     public function testAdminNewCity(): void
     {
-        $client = $this->authAsAdmin($this);
-
-        $crawler = $client->request('GET', '/en/admin/locations/city/new');
+        $crawler = $this->client->request('GET', '/en/admin/locations/city/new');
 
         $form = $crawler->selectButton('Create city')->form([
             'city[name]' => self::NAME,
@@ -33,10 +23,10 @@ final class CityControllerTest extends WebTestCase
             'city[meta_title]' => 'Custom Meta Title',
             'city[meta_description]' => 'Custom Meta Description',
         ]);
-        $client->submit($form);
+        $this->client->submit($form);
 
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
-        $city = $this->getRepository($client, City::class)
+        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
+        $city = $this->getRepository($this->client, City::class)
             ->findOneBy([
                 'slug' => self::SLUG,
             ]);
@@ -53,14 +43,12 @@ final class CityControllerTest extends WebTestCase
      */
     public function testAdminEditCity(): void
     {
-        $client = $this->authAsAdmin($this);
-
-        $city = $this->getRepository($client, City::class)
+        $city = $this->getRepository($this->client, City::class)
             ->findOneBy([
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/en/admin/locations/city/'.$city.'/edit');
+        $crawler = $this->client->request('GET', '/en/admin/locations/city/'.$city.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'city[name]' => self::EDITED_NAME,
@@ -69,10 +57,10 @@ final class CityControllerTest extends WebTestCase
             'city[meta_description]' => 'Edited Meta Description',
         ]);
 
-        $client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->client->submit($form);
+        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
 
-        $editedCity = $this->getRepository($client, City::class)
+        $editedCity = $this->getRepository($this->client, City::class)
             ->findOneBy([
                 'id' => $city,
             ]);
@@ -87,18 +75,16 @@ final class CityControllerTest extends WebTestCase
      */
     public function testAdminDeleteCity(): void
     {
-        $client = $this->authAsAdmin($this);
-
-        $city = $this->getRepository($client, City::class)
+        $city = $this->getRepository($this->client, City::class)
             ->findOneBy([
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/en/admin/locations/city');
-        $client->submit($crawler->filter('#delete-form-'.$city)->form());
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $crawler = $this->client->request('GET', '/en/admin/locations/city');
+        $this->client->submit($crawler->filter('#delete-form-'.$city)->form());
+        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
 
-        $this->assertNull($this->getRepository($client, City::class)
+        $this->assertNull($this->getRepository($this->client, City::class)
             ->findOneBy([
                 'slug' => self::SLUG,
             ]));

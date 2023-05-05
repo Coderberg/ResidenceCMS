@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Entity\Traits\EntityIdTrait;
+use App\Repository\FeatureRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: 'App\Repository\FeatureRepository')]
+#[ORM\Entity(repositoryClass: FeatureRepository::class)]
 class Feature
 {
     use EntityIdTrait;
@@ -18,7 +19,7 @@ class Feature
     #[ORM\Column(type: Types::STRING, length: 255)]
     private ?string $name;
 
-    #[ORM\ManyToMany(targetEntity: 'App\Entity\Property', mappedBy: 'features')]
+    #[ORM\ManyToMany(targetEntity: Property::class, mappedBy: 'features')]
     private $properties;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]

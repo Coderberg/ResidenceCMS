@@ -54,9 +54,17 @@
                 <source>menu.profile</source>
                 <target>My Profile</target>
             </trans-unit>
+            <trans-unit id="menu.security">
+                <source>menu.security</source>
+                <target>Security</target>
+            </trans-unit>
             <trans-unit id="menu.password">
                 <source>menu.password</source>
                 <target>Change Password</target>
+            </trans-unit>
+            <trans-unit id="menu.google_auth">
+                <source>menu.google_auth</source>
+                <target>Set up Google Authenticator</target>
             </trans-unit>
             <trans-unit id="menu.logout">
                 <source>menu.logout</source>
@@ -417,6 +425,10 @@
             <trans-unit id="title.my_profile">
                 <source>title.my_profile</source>
                 <target>My profile</target>
+            </trans-unit>
+            <trans-unit id="title.security">
+                <source>title.security</source>
+                <target>Security</target>
             </trans-unit>
             <trans-unit id="title.my_properties">
                 <source>title.my_properties</source>
@@ -1100,6 +1112,59 @@
             <trans-unit id="processing">
                 <source>processing</source>
                 <target>Please wait...</target>
+            </trans-unit>
+
+            <trans-unit id="2fa.google_authenticator_code">
+                <source>2fa.google_authenticator_code</source>
+                <target>Google Authenticator code</target>
+            </trans-unit>
+            <trans-unit id="2fa.google_authenticator_code_label">
+                <source>2fa.google_authenticator_code_label</source>
+                <target>Enter the 6-digit code from Google Authenticator</target>
+            </trans-unit>
+            <trans-unit id="2fa.buttons.authenticate">
+                <source>2fa.buttons.authenticate</source>
+                <target>Authenticate</target>
+            </trans-unit>
+            <trans-unit id="2fa.buttons.enable">
+                <source>2fa.buttons.enable</source>
+                <target>Enable two-factor authentication</target>
+            </trans-unit>
+            <trans-unit id="2fa.buttons.disable">
+                <source>2fa.buttons.disable</source>
+                <target>Disable</target>
+            </trans-unit>
+            <trans-unit id="2fa.messages.scan">
+                <source>2fa.messages.scan</source>
+                <target>Please scan the QR code or enter the private key into the App first, then enter the verification code displayed on the Google Authenticator App into the field below.</target>
+            </trans-unit>
+            <trans-unit id="2fa.messages.enabled">
+                <source>2fa.messages.enabled</source>
+                <target>Two-Factor authentication successfully enabled</target>
+            </trans-unit>
+            <trans-unit id="2fa.messages.disabled">
+                <source>2fa.messages.disabled</source>
+                <target>Two-Factor authentication successfully disabled</target>
+            </trans-unit>
+            <trans-unit id="2fa.messages.active">
+                <source>2fa.messages.active</source>
+                <target>Two-factor authentication is active.</target>
+            </trans-unit>
+            <trans-unit id="2fa.errors.secret_is_already_set">
+                <source>2fa.errors.secret_is_already_set</source>
+                <target>The secret is already set</target>
+            </trans-unit>
+            <trans-unit id="2fa.errors.cannot_enable_ga">
+                <source>2fa.errors.cannot_enable_ga</source>
+                <target>Cannot enable Google Authenticator</target>
+            </trans-unit>
+            <trans-unit id="2fa.errors.cannot_disable_ga">
+                <source>2fa.errors.cannot_disable_ga</source>
+                <target>Cannot enable Google Authenticator</target>
+            </trans-unit>
+            <trans-unit id="2fa.errors.incorrect_ga_code">
+                <source>2fa.errors.incorrect_ga_code</source>
+                <target>The Google Authenticator code is incorrect or has expired</target>
             </trans-unit>
 
             <trans-unit id="email.new_message">

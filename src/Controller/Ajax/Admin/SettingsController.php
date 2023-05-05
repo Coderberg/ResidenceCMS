@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class SettingsController extends AbstractController implements AjaxController
 {
-    public function __construct(private SettingsService $service)
+    public function __construct(private readonly SettingsService $service)
     {
     }
 

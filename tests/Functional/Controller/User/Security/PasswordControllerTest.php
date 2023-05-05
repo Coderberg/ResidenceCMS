@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Controller\User;
+namespace App\Tests\Functional\Controller\User\Security;
 
 use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
@@ -63,7 +63,7 @@ final class PasswordControllerTest extends WebTestCase
 
     private function getToken(KernelBrowser $client): string
     {
-        $crawler = $client->request('GET', '/en/user/property');
+        $crawler = $client->request('GET', '/en/user/security');
 
         return $crawler->filter('[name="password_token"]')->attr('value');
     }
