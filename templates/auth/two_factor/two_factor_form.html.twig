@@ -11,7 +11,7 @@
                 <div class="card-header">{{ '2fa.google_authenticator_code'|trans }}</div>
                 <div class="card-body">
 
-                    <form class="form" action="{{ path('2fa_login_check') }}" method="post">
+                    <form class="form" action="{{ path('2fa_login_check') }}" id="otp" method="post">
 
                         <input type="hidden" name="_csrf_security_token" value="{{ csrf_token('two_factor') }}">
 

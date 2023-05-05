@@ -15,6 +15,10 @@ final class GoogleAuthenticatorTest extends PantherTestCase
     use PantherTestHelper;
     use WebTestHelper;
 
+    private const WRONG_ONE_TIME_PASSWORD = '123456';
+
+    private static string $secret = 'initial';
+
     /**
      * @throws NoSuchElementException
      * @throws TimeoutException
@@ -33,9 +37,11 @@ final class GoogleAuthenticatorTest extends PantherTestCase
         $secret = $crawler->filter('#generatedSecret')->text();
         $this->assertSame(52, \strlen($secret));
 
+        self::$secret = $secret;
+
         // Enter wrong one time password
         $crawler->filter('#generate_google_auth_secret')->form([
-            'authentication_code' => '123456',
+            'authentication_code' => self::WRONG_ONE_TIME_PASSWORD,
         ]);
         $crawler->filter('#enable2fa')->click();
         $client->waitForVisibility('#twoFactorAuthErrorMessage');
@@ -55,6 +61,10 @@ final class GoogleAuthenticatorTest extends PantherTestCase
         ]);
         $crawler->filter('#enable2fa')->click();
         $client->waitForVisibility('.alert-success');
+
+        // Log Out
+        $this->logout($client);
+        $this->assertSelectorTextContains('.h3', 'Popular Listing');
     }
 
     /**
@@ -64,6 +74,42 @@ final class GoogleAuthenticatorTest extends PantherTestCase
     public function testDisableAuthenticator(): void
     {
         $client = self::createPantherClient();
+
+        // Try to log in
+        $client->clickLink('Log in');
+        $crawler = $client->waitForVisibility('[name="login_form"]');
+
+        // Enter credentials
+        $crawler->filter('[name="login_form"]')->form([
+            'login_form[username]' => 'user',
+            'login_form[password]' => 'user',
+        ]);
+        $crawler->filter('.btn-primary')->click();
+
+        // Try wrong one time password
+        $crawler = $client->waitFor('#_auth_code');
+        $crawler->filter('#otp')->form([
+            '_auth_code' => self::WRONG_ONE_TIME_PASSWORD,
+        ]);
+        $crawler->filter('.btn-primary')->click();
+        $this->assertSelectorTextContains('.card-header', 'Google Authenticator code');
+
+        // Generate correct one time password
+        $ga = new \PHPGangsta_GoogleAuthenticator();
+        $oneTimePassword = $ga->getCode(self::$secret);
+
+        $crawler = $client->waitForVisibility('#otp');
+
+        // Enter valid one time password
+        $crawler->filter('#otp')->form([
+            '_auth_code' => $oneTimePassword,
+        ]);
+
+        $crawler->filter('.btn-primary')->click();
+        $client->waitFor('h3');
+        $this->assertSelectorTextContains('h3', 'My properties');
+
+        // Go to the Security page and disable Google Authenticator
         $client->clickLink('Security');
 
         // Open the modal window
