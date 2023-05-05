@@ -45,7 +45,7 @@ final class GoogleAuthenticatorControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $response = $client->getResponse();
         $this->assertJson($response->getContent());
-        $this->assertTrue(\strlen($response->getContent()) > 2000 && \strlen($response->getContent()) < 3100);
+        $this->assertTrue(mb_strlen($response->getContent()) > 2000 && mb_strlen($response->getContent()) < 3100);
         $this->assertContainsWords($response, ['secret', 'qr_code', 'data:image', 'png;base64']);
     }
 

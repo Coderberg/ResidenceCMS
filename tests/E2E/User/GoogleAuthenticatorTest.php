@@ -35,7 +35,7 @@ final class GoogleAuthenticatorTest extends PantherTestCase
         $client->clickLink('Set up Google Authenticator');
         $crawler = $client->waitForVisibility('#generatedSecret');
         $secret = $crawler->filter('#generatedSecret')->text();
-        $this->assertSame(52, \strlen($secret));
+        $this->assertSame(52, mb_strlen($secret));
 
         self::$secret = $secret;
 
