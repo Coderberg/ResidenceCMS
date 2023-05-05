@@ -18,8 +18,10 @@ abstract class BaseController extends AbstractController
 {
     use MenuTrait;
 
-    public function __construct(private readonly SettingsRepository $settingsRepository, protected ManagerRegistry $doctrine)
-    {
+    public function __construct(
+        private readonly SettingsRepository $settingsRepository,
+        protected ManagerRegistry $doctrine
+    ) {
     }
 
     private function searchFields(): array
