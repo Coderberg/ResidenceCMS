@@ -2,5 +2,5 @@ framework:
   rate_limiter:
     auth:
       policy: 'fixed_window'
-      limit: 5
+      limit: 6
       interval: '100 seconds'
