@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Mailer\Mailer;
 use App\Message\SendResetPasswordLink;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -23,12 +24,13 @@ final class SendResetPasswordLinkHandler
     ) {
     }
 
+    /**
+     * @throws TransportExceptionInterface
+     */
     public function __invoke(SendResetPasswordLink $sendResetPasswordLink): void
     {
-        /** @var User $user */
         $user = $sendResetPasswordLink->getUser();
 
-        /** @var TemplatedEmail $email */
         $email = $this->buildEmail($user);
 
         $this->mailer->send($email);
