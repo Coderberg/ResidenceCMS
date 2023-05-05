@@ -15,7 +15,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 
 final class ControllerSubscriber implements EventSubscriberInterface
 {
-    public function __construct(private VerifyCsrfToken $verifyCsrfToken, private ThrottleRequests $throttleRequests)
+    public function __construct(private readonly VerifyCsrfToken $verifyCsrfToken, private readonly ThrottleRequests $throttleRequests)
     {
     }
 

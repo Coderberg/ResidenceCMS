@@ -8,10 +8,11 @@ use App\Entity\Traits\CityTrait;
 use App\Entity\Traits\EntityIdTrait;
 use App\Entity\Traits\EntityNameTrait;
 use App\Entity\Traits\PropertyTrait;
+use App\Repository\MetroRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
-#[ORM\Entity(repositoryClass: 'App\Repository\MetroRepository')]
+#[ORM\Entity(repositoryClass: MetroRepository::class)]
 #[UniqueEntity('slug')]
 class Metro
 {
@@ -20,8 +21,8 @@ class Metro
     use EntityNameTrait;
     use PropertyTrait;
 
-    public const MAPPED_BY = 'metro_station';
-    public const INVERSED_BY = 'metro_stations';
-    public const GETTER = 'getMetroStation';
-    public const SETTER = 'setMetroStation';
+    final public const MAPPED_BY = 'metro_station';
+    final public const INVERSED_BY = 'metro_stations';
+    final public const GETTER = 'getMetroStation';
+    final public const SETTER = 'setMetroStation';
 }

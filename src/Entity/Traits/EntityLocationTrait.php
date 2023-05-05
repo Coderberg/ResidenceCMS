@@ -12,15 +12,15 @@ use Doctrine\ORM\Mapping as ORM;
 
 trait EntityLocationTrait
 {
-    #[ORM\ManyToOne(targetEntity: 'App\Entity\District', inversedBy: 'properties')]
+    #[ORM\ManyToOne(targetEntity: District::class, inversedBy: 'properties')]
     #[ORM\JoinColumn(nullable: true)]
     private ?District $district;
 
-    #[ORM\ManyToOne(targetEntity: 'App\Entity\Neighborhood', inversedBy: 'properties')]
+    #[ORM\ManyToOne(targetEntity: Neighborhood::class, inversedBy: 'properties')]
     #[ORM\JoinColumn(nullable: true)]
     private ?Neighborhood $neighborhood;
 
-    #[ORM\ManyToOne(targetEntity: 'App\Entity\Metro', inversedBy: 'properties')]
+    #[ORM\ManyToOne(targetEntity: Metro::class, inversedBy: 'properties')]
     #[ORM\JoinColumn(nullable: true)]
     private ?Metro $metro_station;
 

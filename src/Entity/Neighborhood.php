@@ -8,10 +8,11 @@ use App\Entity\Traits\CityTrait;
 use App\Entity\Traits\EntityIdTrait;
 use App\Entity\Traits\EntityNameTrait;
 use App\Entity\Traits\PropertyTrait;
+use App\Repository\NeighborhoodRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
-#[ORM\Entity(repositoryClass: 'App\Repository\NeighborhoodRepository')]
+#[ORM\Entity(repositoryClass: NeighborhoodRepository::class)]
 #[UniqueEntity('slug')]
 class Neighborhood
 {
@@ -20,8 +21,8 @@ class Neighborhood
     use EntityNameTrait;
     use PropertyTrait;
 
-    public const MAPPED_BY = 'neighborhood';
-    public const INVERSED_BY = 'neighborhoods';
-    public const GETTER = 'getNeighborhood';
-    public const SETTER = 'setNeighborhood';
+    final public const MAPPED_BY = 'neighborhood';
+    final public const INVERSED_BY = 'neighborhoods';
+    final public const GETTER = 'getNeighborhood';
+    final public const SETTER = 'setNeighborhood';
 }

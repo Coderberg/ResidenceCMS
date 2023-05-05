@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 trait PropertyTrait
 {
-    #[ORM\OneToMany(mappedBy: self::MAPPED_BY, targetEntity: 'App\Entity\Property')]
+    #[ORM\OneToMany(mappedBy: self::MAPPED_BY, targetEntity: Property::class)]
     private Collection $properties;
 
     public function __construct()

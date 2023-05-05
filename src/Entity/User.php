@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use App\Entity\Traits\EntityIdTrait;
 use App\Entity\Traits\TwoFactorTrait;
+use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -17,7 +18,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Table(name: 'users')]
-#[ORM\Entity(repositoryClass: 'App\Repository\UserRepository')]
+#[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity('email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFactorInterface
 {
@@ -26,11 +27,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     /**
      * Requests older than this many seconds will be considered expired.
      */
-    public const RETRY_TTL = 3600;
+    final public const RETRY_TTL = 3600;
     /**
      * Maximum time that the confirmation token will be valid.
      */
-    public const TOKEN_TTL = 43200;
+    final public const TOKEN_TTL = 43200;
 
     /**
      * @var string
@@ -54,7 +55,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     #[ORM\Column(type: Types::JSON)]
     private array $roles = [];
 
-    #[ORM\OneToMany(mappedBy: 'author', targetEntity: 'App\Entity\Property')]
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Property::class)]
     private $properties;
 
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
