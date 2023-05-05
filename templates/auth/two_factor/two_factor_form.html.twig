@@ -1,0 +1,51 @@
+{% extends 'layout/base.html.twig' %}
+
+{% block title %}{{ 'title.login' | trans }}{% endblock %}
+
+{% block body %}
+
+    <br>
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">{{ '2fa.google_authenticator_code'|trans }}</div>
+                <div class="card-body">
+
+                    <form class="form" action="{{ path('2fa_login_check') }}" id="otp" method="post">
+
+                        <input type="hidden" name="_csrf_security_token" value="{{ csrf_token('two_factor') }}">
+
+                        <div class="form-group">
+                            <label for="_auth_code" class="required">
+                                {{ '2fa.google_authenticator_code_label'|trans }}
+                            </label>
+                            <input type="text"
+                                   id="_auth_code"
+                                   name="_auth_code"
+                                   required="required"
+                                   autocomplete="one-time-code"
+                                   autofocus
+                                   maxlength="6"
+                                   class="form-control"/>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ '2fa.buttons.authenticate'|trans }}
+                                </button>
+
+                                <a class="btn btn-link" href="{{ path('security_logout') }}">
+                                    {{ 'action.cancel'|trans }}
+                                </a>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

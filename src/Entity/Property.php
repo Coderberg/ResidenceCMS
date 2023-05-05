@@ -8,12 +8,13 @@ use App\Entity\Traits\CityTrait;
 use App\Entity\Traits\EntityIdTrait;
 use App\Entity\Traits\EntityLocationTrait;
 use App\Entity\Traits\EntityTimestampableTrait;
+use App\Repository\PropertyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: 'App\Repository\PropertyRepository')]
+#[ORM\Entity(repositoryClass: PropertyRepository::class)]
 class Property
 {
     use CityTrait;
@@ -21,17 +22,17 @@ class Property
     use EntityLocationTrait;
     use EntityTimestampableTrait;
 
-    public const INVERSED_BY = 'properties';
+    final public const INVERSED_BY = 'properties';
 
-    #[ORM\ManyToOne(targetEntity: 'App\Entity\User', inversedBy: 'properties')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'properties')]
     #[ORM\JoinColumn(nullable: false)]
     private $author;
 
-    #[ORM\ManyToOne(targetEntity: 'App\Entity\DealType', inversedBy: 'properties')]
+    #[ORM\ManyToOne(targetEntity: DealType::class, inversedBy: 'properties')]
     #[ORM\JoinColumn(nullable: false)]
     private $deal_type;
 
-    #[ORM\ManyToOne(targetEntity: 'App\Entity\Category', inversedBy: 'properties')]
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'properties')]
     #[ORM\JoinColumn(nullable: false)]
     private $category;
 
@@ -60,13 +61,13 @@ class Property
     private $available_now;
 
     #[ORM\Column(type: Types::STRING, length: 255, options: ['default' => 'pending'])]
-    private $state = 'published';
+    private string $state = 'published';
 
-    #[ORM\OneToMany(mappedBy: 'property', targetEntity: 'App\Entity\Photo', orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'property', targetEntity: Photo::class, orphanRemoval: true)]
     #[ORM\OrderBy(['sort_order' => 'ASC'])]
     private $photos;
 
-    #[ORM\ManyToMany(targetEntity: 'App\Entity\Feature', inversedBy: 'properties')]
+    #[ORM\ManyToMany(targetEntity: Feature::class, inversedBy: 'properties')]
     private $features;
 
     #[ORM\Column(type: Types::INTEGER)]

@@ -7,10 +7,11 @@ namespace App\Entity;
 use App\Entity\Traits\EntityIdTrait;
 use App\Entity\Traits\EntityNameTrait;
 use App\Entity\Traits\PropertyTrait;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
-#[ORM\Entity(repositoryClass: 'App\Repository\CategoryRepository')]
+#[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[UniqueEntity('slug')]
 class Category
 {
@@ -18,5 +19,5 @@ class Category
     use EntityNameTrait;
     use PropertyTrait;
 
-    public const MAPPED_BY = 'category';
+    final public const MAPPED_BY = 'category';
 }

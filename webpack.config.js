@@ -31,6 +31,7 @@ Encore
     .addEntry('js/page', './assets/js/page.js')
     .addEntry('js/user', './assets/js/user/user.js')
     .addEntry('js/password', './assets/js/user/password/password.js')
+    .addEntry('js/google_authenticator', './assets/js/user/two_factor/google_authenticator.js')
     .addEntry('js/bottom-bar', './assets/js/bottom-bar.js')
 
     // will require an extra script tag for runtime.js
@@ -73,6 +74,7 @@ Encore
     .addStyleEntry('css/photo', ['./assets/styles/photo.scss'])
     .addStyleEntry('css/select2', ['./assets/styles/select2.scss'])
     .addStyleEntry('css/bottom-bar', ['./assets/styles/bottom-bar.scss'])
+    .addStyleEntry('css/security', ['./assets/styles/user/security.scss'])
     //.enableIntegrityHashes()
     .configureBabel(null, {
         useBuiltIns: 'usage',

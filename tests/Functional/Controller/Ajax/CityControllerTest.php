@@ -7,7 +7,6 @@ namespace App\Tests\Functional\Controller\Ajax;
 use App\Entity\City;
 use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\HttpFoundation\Response;
 
 final class CityControllerTest extends WebTestCase
 {
@@ -47,12 +46,5 @@ final class CityControllerTest extends WebTestCase
         );
 
         $this->assertContainsWords($response, ['Miami', 'South Beach', 'Allapattah']);
-    }
-
-    private function assertContainsWords(Response $response, array $words): void
-    {
-        foreach ($words as $word) {
-            $this->assertStringContainsString($word, (string) $response->getContent());
-        }
     }
 }

@@ -54,9 +54,17 @@
                 <source>menu.profile</source>
                 <target>Мой профиль</target>
             </trans-unit>
+            <trans-unit id="menu.security">
+                <source>menu.security</source>
+                <target>Безопасность</target>
+            </trans-unit>
             <trans-unit id="menu.password">
                 <source>menu.password</source>
                 <target>Изменить пароль</target>
+            </trans-unit>
+            <trans-unit id="menu.google_auth">
+                <source>menu.google_auth</source>
+                <target>Настроить Google Authenticator</target>
             </trans-unit>
             <trans-unit id="menu.logout">
                 <source>menu.logout</source>
@@ -417,6 +425,10 @@
             <trans-unit id="title.my_profile">
                 <source>title.my_profile</source>
                 <target>Мой профиль</target>
+            </trans-unit>
+            <trans-unit id="title.security">
+                <source>title.security</source>
+                <target>Безопасность</target>
             </trans-unit>
             <trans-unit id="title.my_properties">
                 <source>title.my_properties</source>
@@ -1100,6 +1112,59 @@
             <trans-unit id="processing">
                 <source>processing</source>
                 <target>Подождите...</target>
+            </trans-unit>
+
+            <trans-unit id="2fa.google_authenticator_code">
+                <source>2fa.google_authenticator_code</source>
+                <target>Код из Google Authenticator</target>
+            </trans-unit>
+            <trans-unit id="2fa.google_authenticator_code_label">
+                <source>2fa.google_authenticator_code_label</source>
+                <target>Введите 6-значный код из приложения Google Authenticator</target>
+            </trans-unit>
+            <trans-unit id="2fa.buttons.authenticate">
+                <source>2fa.buttons.authenticate</source>
+                <target>Войти</target>
+            </trans-unit>
+            <trans-unit id="2fa.buttons.enable">
+                <source>2fa.buttons.enable</source>
+                <target>Включить двухфакторную аутентификацию</target>
+            </trans-unit>
+            <trans-unit id="2fa.buttons.disable">
+                <source>2fa.buttons.disable</source>
+                <target>Отключить</target>
+            </trans-unit>
+            <trans-unit id="2fa.messages.scan">
+                <source>2fa.messages.scan</source>
+                <target>Сначала отсканируйте QR-код или введите закрытый ключ в приложение, а затем введите код подтверждения, отображаемый в приложении Google Authenticator, в поле ниже.</target>
+            </trans-unit>
+            <trans-unit id="2fa.messages.enabled">
+                <source>2fa.messages.enabled</source>
+                <target>Двухфакторная аутентификация успешно включена</target>
+            </trans-unit>
+            <trans-unit id="2fa.messages.disabled">
+                <source>2fa.messages.disabled</source>
+                <target>Двухфакторная аутентификация успешно отключена</target>
+            </trans-unit>
+            <trans-unit id="2fa.messages.active">
+                <source>2fa.messages.active</source>
+                <target>Двухфакторная аутентификация активна.</target>
+            </trans-unit>
+            <trans-unit id="2fa.errors.secret_is_already_set">
+                <source>2fa.errors.secret_is_already_set</source>
+                <target>Секрет уже установлен</target>
+            </trans-unit>
+            <trans-unit id="2fa.errors.cannot_enable_ga">
+                <source>2fa.errors.cannot_enable_ga</source>
+                <target>Не удается включить Google Authenticator</target>
+            </trans-unit>
+            <trans-unit id="2fa.errors.cannot_disable_ga">
+                <source>2fa.errors.cannot_disable_ga</source>
+                <target>Не удается отключить Google Authenticator</target>
+            </trans-unit>
+            <trans-unit id="2fa.errors.incorrect_ga_code">
+                <source>2fa.errors.incorrect_ga_code</source>
+                <target>Код Google Authenticator неверен или срок его действия истек</target>
             </trans-unit>
 
             <trans-unit id="email.new_message">

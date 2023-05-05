@@ -1,0 +1,13 @@
+{% if is_granted('ROLE_ADMIN') %}
+
+    <a href="{{ url('admin_property_new') }}" class="btn btn-primary float">
+        <i class="fas fa-plus float-icon"></i>
+    </a>
+
+{% elseif app.user.isVerified %}
+
+    <a href="{{ url('user_property_new') }}" class="btn btn-primary float">
+        <i class="fas fa-plus float-icon"></i>
+    </a>
+
+{% endif %}
