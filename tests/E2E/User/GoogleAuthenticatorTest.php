@@ -15,7 +15,7 @@ final class GoogleAuthenticatorTest extends PantherTestCase
     use PantherTestHelper;
     use WebTestHelper;
 
-    private const WRONG_ONE_TIME_PASSWORD = '123456';
+    private const PRIMARY_BUTTON = '.btn-primary';
 
     private static string $secret = 'initial';
 
@@ -41,7 +41,7 @@ final class GoogleAuthenticatorTest extends PantherTestCase
 
         // Enter wrong one time password
         $crawler->filter('#generate_google_auth_secret')->form([
-            'authentication_code' => self::WRONG_ONE_TIME_PASSWORD,
+            'authentication_code' => random_int(100000, 999999),
         ]);
         $crawler->filter('#enable2fa')->click();
         $client->waitForVisibility('#twoFactorAuthErrorMessage');
@@ -84,14 +84,14 @@ final class GoogleAuthenticatorTest extends PantherTestCase
             'login_form[username]' => 'user',
             'login_form[password]' => 'user',
         ]);
-        $crawler->filter('.btn-primary')->click();
+        $crawler->filter(self::PRIMARY_BUTTON)->click();
 
         // Try wrong one time password
         $crawler = $client->waitFor('#_auth_code');
         $crawler->filter('#otp')->form([
-            '_auth_code' => self::WRONG_ONE_TIME_PASSWORD,
+            '_auth_code' => random_int(100000, 999999),
         ]);
-        $crawler->filter('.btn-primary')->click();
+        $crawler->filter(self::PRIMARY_BUTTON)->click();
         $this->assertSelectorTextContains('.card-header', 'Google Authenticator code');
 
         // Generate correct one time password
@@ -105,7 +105,7 @@ final class GoogleAuthenticatorTest extends PantherTestCase
             '_auth_code' => $oneTimePassword,
         ]);
 
-        $crawler->filter('.btn-primary')->click();
+        $crawler->filter(self::PRIMARY_BUTTON)->click();
         $client->waitFor('h3');
         $this->assertSelectorTextContains('h3', 'My properties');
 

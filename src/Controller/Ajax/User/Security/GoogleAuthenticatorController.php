@@ -15,11 +15,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 final class GoogleAuthenticatorController extends AbstractController implements AjaxController
 {
+    private const ENDPOINT = '/user/google_authenticator_code';
+
     public function __construct(private readonly GoogleAuthenticatorService $service)
     {
     }
 
-    #[Route(path: '/user/google_authenticator_code', name: 'get_auth_code', methods: ['GET'])]
+    #[Route(path: self::ENDPOINT, name: 'get_auth_code', methods: ['GET'])]
     public function getAuthCode(): JsonResponse
     {
         try {
@@ -34,7 +36,7 @@ final class GoogleAuthenticatorController extends AbstractController implements 
         }
     }
 
-    #[Route(path: '/user/google_authenticator_code', name: 'set_auth_code', methods: ['PUT'])]
+    #[Route(path: self::ENDPOINT, name: 'set_auth_code', methods: ['PUT'])]
     public function setAuthCode(Request $request): JsonResponse
     {
         try {
@@ -53,7 +55,7 @@ final class GoogleAuthenticatorController extends AbstractController implements 
         }
     }
 
-    #[Route(path: '/user/google_authenticator_code', name: 'delete_auth_code', methods: ['DELETE'])]
+    #[Route(path: self::ENDPOINT, name: 'delete_auth_code', methods: ['DELETE'])]
     public function deleteAuthCode(): JsonResponse
     {
         try {
