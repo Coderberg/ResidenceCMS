@@ -4,7 +4,7 @@
 ```
 $ git clone https://github.com/eko/docker-symfony.git
 $ cd docker-symfony
-$ git checkout 42dde18
+$ git checkout 62c9592
 $ git clone https://github.com/Coderberg/ResidenceCMS.git symfony
 ```
 
@@ -28,7 +28,7 @@ DATABASE_URL=mysql://symfony:symfony@db/symfony\r\
 3. Run containers
 ```
 $ docker-compose up -d
-$ docker exec -it php-fpm /bin/sh
+$ docker exec -it docker-symfony-php-1 /bin/sh
 ```
 
 4. Install app
@@ -37,7 +37,7 @@ $ docker exec -it php-fpm /bin/sh
 # php bin/console app:install
 # find ./public/uploads -type d -print | xargs chmod 777
 
-# php bin/phpunit
+# php bin/phpunit --testsuite=main
 ```
 
 5. Go to http://symfony.localhost
