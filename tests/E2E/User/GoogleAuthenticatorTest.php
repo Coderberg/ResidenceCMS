@@ -8,6 +8,7 @@ use App\Tests\Helper\PantherTestHelper;
 use App\Tests\Helper\WebTestHelper;
 use Facebook\WebDriver\Exception\NoSuchElementException;
 use Facebook\WebDriver\Exception\TimeoutException;
+use PHPGangsta\GoogleAuthenticator;
 use Symfony\Component\Panther\PantherTestCase;
 
 final class GoogleAuthenticatorTest extends PantherTestCase
@@ -52,7 +53,7 @@ final class GoogleAuthenticatorTest extends PantherTestCase
         );
 
         // Generate correct one time password
-        $ga = new \PHPGangsta_GoogleAuthenticator();
+        $ga = new GoogleAuthenticator();
         $oneTimePassword = $ga->getCode($secret);
 
         // Enter correct one time password
@@ -95,7 +96,7 @@ final class GoogleAuthenticatorTest extends PantherTestCase
         $this->assertSelectorTextContains('.card-header', 'Google Authenticator code');
 
         // Generate correct one time password
-        $ga = new \PHPGangsta_GoogleAuthenticator();
+        $ga = new GoogleAuthenticator();
         $oneTimePassword = $ga->getCode(self::$secret);
 
         $crawler = $client->waitForVisibility('#otp');

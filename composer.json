@@ -59,10 +59,10 @@
         "voku/portable-ascii": "^1.6"
     },
     "require-dev": {
+        "coderberg/google-authenticator": "^1.0",
         "dbrekelmans/bdi": "^1.0",
         "doctrine/doctrine-fixtures-bundle": "^3.4",
         "friendsofphp/php-cs-fixer": "^3.2",
-        "phpgangsta/googleauthenticator": "dev-master",
         "phpunit/phpunit": "^9.5",
         "rector/rector": "^0.14.5",
         "symfony/browser-kit": "^6.2",
