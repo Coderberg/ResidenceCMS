@@ -6,7 +6,7 @@ namespace App\Tests\Functional\Controller\User\Security;
 
 use App\Entity\User;
 use App\Tests\Helper\WebTestHelper;
-use PHPGangsta\GoogleAuthenticator;
+use Coderberg\GoogleAuthenticator;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

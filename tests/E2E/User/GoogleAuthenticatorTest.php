@@ -6,9 +6,9 @@ namespace App\Tests\E2E\User;
 
 use App\Tests\Helper\PantherTestHelper;
 use App\Tests\Helper\WebTestHelper;
+use Coderberg\GoogleAuthenticator;
 use Facebook\WebDriver\Exception\NoSuchElementException;
 use Facebook\WebDriver\Exception\TimeoutException;
-use PHPGangsta\GoogleAuthenticator;
 use Symfony\Component\Panther\PantherTestCase;
 
 final class GoogleAuthenticatorTest extends PantherTestCase

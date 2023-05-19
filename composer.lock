@@ -8607,30 +8607,31 @@
     "packages-dev": [
         {
             "name": "coderberg/google-authenticator",
-            "version": "v1.0.1",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Coderberg/GoogleAuthenticator.git",
-                "reference": "f253b1a3cedf371b63dc402eca13670fd688db74"
+                "reference": "ad3880b36dc0acede01bb4329a7370374185ad41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Coderberg/GoogleAuthenticator/zipball/f253b1a3cedf371b63dc402eca13670fd688db74",
-                "reference": "f253b1a3cedf371b63dc402eca13670fd688db74",
+                "url": "https://api.github.com/repos/Coderberg/GoogleAuthenticator/zipball/ad3880b36dc0acede01bb4329a7370374185ad41",
+                "reference": "ad3880b36dc0acede01bb4329a7370374185ad41",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.0"
+                "php": ">=8.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.19",
-                "phpunit/phpunit": "*"
+                "friendsofphp/php-cs-fixer": "^3.16",
+                "phpunit/phpunit": "^9.6",
+                "rector/rector": "^0.16.0"
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "PHPGangsta/GoogleAuthenticator.php"
-                ]
+                "psr-4": {
+                    "Coderberg\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -8640,7 +8641,7 @@
                 {
                     "name": "Michael Kliewe",
                     "email": "info@phpgangsta.de",
-                    "homepage": "http://www.phpgangsta.de/",
+                    "homepage": "https://www.phpgangsta.de/",
                     "role": "Developer"
                 }
             ],
@@ -8654,7 +8655,7 @@
                 "issues": "https://github.com/PHPGangsta/GoogleAuthenticator/issues",
                 "source": "https://github.com/PHPGangsta/GoogleAuthenticator"
             },
-            "time": "2023-05-18T13:42:23+00:00"
+            "time": "2023-05-19T08:39:54+00:00"
         },
         {
             "name": "composer/pcre",
