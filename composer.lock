@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "37c4d31d561984cbd1cb487857e37afb",
+    "content-hash": "8ee6db0f879611dce469fc55977ecc91",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -8607,16 +8607,16 @@
     "packages-dev": [
         {
             "name": "coderberg/google-authenticator",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Coderberg/GoogleAuthenticator.git",
-                "reference": "ad3880b36dc0acede01bb4329a7370374185ad41"
+                "reference": "83664406c0809a9ac0b07df4d619b7d65b3c9845"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Coderberg/GoogleAuthenticator/zipball/ad3880b36dc0acede01bb4329a7370374185ad41",
-                "reference": "ad3880b36dc0acede01bb4329a7370374185ad41",
+                "url": "https://api.github.com/repos/Coderberg/GoogleAuthenticator/zipball/83664406c0809a9ac0b07df4d619b7d65b3c9845",
+                "reference": "83664406c0809a9ac0b07df4d619b7d65b3c9845",
                 "shasum": ""
             },
             "require": {
@@ -8624,6 +8624,7 @@
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.16",
+                "phpstan/phpstan": "^1.10",
                 "phpunit/phpunit": "^9.6",
                 "rector/rector": "^0.16.0"
             },
@@ -8655,7 +8656,7 @@
                 "issues": "https://github.com/PHPGangsta/GoogleAuthenticator/issues",
                 "source": "https://github.com/PHPGangsta/GoogleAuthenticator"
             },
-            "time": "2023-05-19T08:39:54+00:00"
+            "time": "2023-05-22T14:24:39+00:00"
         },
         {
             "name": "composer/pcre",
