@@ -68,7 +68,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     private ?Profile $profile;
 
     #[ORM\Column(type: Types::DATETIMETZ_MUTABLE, nullable: true)]
-    private $emailVerifiedAt = null;
+    private $emailVerifiedAt;
 
     public function __construct()
     {
@@ -218,8 +218,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
      */
     public function isPasswordRequestNonExpired(int $ttl): bool
     {
-        return $this->getPasswordRequestedAt() instanceof \DateTime &&
-            $this->getPasswordRequestedAt()->getTimestamp() + $ttl > time();
+        return $this->getPasswordRequestedAt() instanceof \DateTime
+            && $this->getPasswordRequestedAt()->getTimestamp() + $ttl > time();
     }
 
     public function getProfile(): ?Profile
