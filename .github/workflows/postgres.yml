@@ -52,4 +52,4 @@ jobs:
       - name: Run Tests
         env:
           DATABASE_URL: postgres://postgres:postgres@127.0.0.1:${{ job.services.postgres.ports[5432] }}/postgres?charset=UTF-8
-        run: php bin/phpunit --coverage-text
+        run: php bin/phpunit --testsuite=main

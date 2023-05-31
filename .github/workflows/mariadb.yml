@@ -57,4 +57,4 @@ jobs:
         env:
           PANTHER_NO_SANDBOX: "1"
           DATABASE_URL: mysql://mariadb:mariadb@127.0.0.1:${{ job.services.mariadb.ports[3306] }}/mariadb?serverVersion=mariadb-10.6.4
-        run: php bin/phpunit --coverage-text
+        run: php bin/phpunit --testsuite=main
