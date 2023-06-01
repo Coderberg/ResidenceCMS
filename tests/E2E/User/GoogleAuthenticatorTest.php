@@ -20,6 +20,8 @@ final class GoogleAuthenticatorTest extends PantherTestCase
 
     private const PRIMARY_BUTTON = '.btn-primary';
 
+    private const HOMEPAGE_TITLE = 'Popular Listing';
+
     private static string $secret = 'initial';
 
     /**
@@ -46,7 +48,7 @@ final class GoogleAuthenticatorTest extends PantherTestCase
 
         // Log Out
         $this->logout($client);
-        $this->assertSelectorTextContains('.h3', 'Popular Listing');
+        $this->assertSelectorTextContains('.h3', self::HOMEPAGE_TITLE);
     }
 
     /**
@@ -67,7 +69,7 @@ final class GoogleAuthenticatorTest extends PantherTestCase
 
         // Log Out
         $this->logout($client);
-        $this->assertSelectorTextContains('.h3', 'Popular Listing');
+        $this->assertSelectorTextContains('.h3', self::HOMEPAGE_TITLE);
     }
 
     /**
@@ -121,7 +123,7 @@ final class GoogleAuthenticatorTest extends PantherTestCase
 
         // Log Out
         $this->logout($client);
-        $this->assertSelectorTextContains('.h3', 'Popular Listing');
+        $this->assertSelectorTextContains('.h3', self::HOMEPAGE_TITLE);
     }
 
     /**

@@ -20,7 +20,3 @@ if (isset($_ENV['BOOTSTRAP_CLEAR_CACHE_ENV'])) {
         __DIR__
     ));
 }
-
-if ($_SERVER['APP_DEBUG']) {
-    umask(0);
-}
