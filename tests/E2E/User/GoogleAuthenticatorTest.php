@@ -58,13 +58,9 @@ final class GoogleAuthenticatorTest extends PantherTestCase
         $client = self::createPantherClient();
         $crawler = $this->readSecret($client);
 
-        // Generate correct one time password
-        $ga = new GoogleAuthenticator();
-        $oneTimePassword = $ga->getCode(self::$secret);
-
         // Enter correct one time password
         $crawler->filter('#generate_google_auth_secret')->form([
-            'authentication_code' => $oneTimePassword,
+            'authentication_code' => $this->generateOneTimePassword(),
         ]);
         $crawler->filter('#enable2fa')->click();
         $client->waitForVisibility('.alert-success');
@@ -102,15 +98,11 @@ final class GoogleAuthenticatorTest extends PantherTestCase
         $crawler->filter(self::PRIMARY_BUTTON)->click();
         $this->assertSelectorTextContains('.card-header', 'Google Authenticator code');
 
-        // Generate correct one time password
-        $ga = new GoogleAuthenticator();
-        $oneTimePassword = $ga->getCode(self::$secret);
-
         $crawler = $client->waitForVisibility('#otp');
 
         // Enter valid one time password
         $crawler->filter('#otp')->form([
-            '_auth_code' => $oneTimePassword,
+            '_auth_code' => $this->generateOneTimePassword(),
         ]);
 
         $crawler->filter(self::PRIMARY_BUTTON)->click();
@@ -152,5 +144,16 @@ final class GoogleAuthenticatorTest extends PantherTestCase
         self::$secret = $secret;
 
         return $crawler;
+    }
+
+    private function generateOneTimePassword(): string
+    {
+        $ga = new GoogleAuthenticator();
+
+        $oneTimePassword = $ga->getCode(self::$secret);
+
+        $this->assertSame(6, mb_strlen($oneTimePassword));
+
+        return $oneTimePassword;
     }
 }
