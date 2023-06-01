@@ -95,4 +95,4 @@ when@test:
                 http_basic: ~
                 lazy: true
                 login_throttling:
-                    max_attempts: 20
+                    max_attempts: 30
