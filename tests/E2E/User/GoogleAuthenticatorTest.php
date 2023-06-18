@@ -6,8 +6,11 @@ namespace App\Tests\E2E\User;
 
 use App\Tests\Helper\PantherTestHelper;
 use App\Tests\Helper\WebTestHelper;
+use Coderberg\GoogleAuthenticator;
 use Facebook\WebDriver\Exception\NoSuchElementException;
 use Facebook\WebDriver\Exception\TimeoutException;
+use Symfony\Component\Panther\Client;
+use Symfony\Component\Panther\DomCrawler\Crawler;
 use Symfony\Component\Panther\PantherTestCase;
 
 final class GoogleAuthenticatorTest extends PantherTestCase
@@ -17,27 +20,19 @@ final class GoogleAuthenticatorTest extends PantherTestCase
 
     private const PRIMARY_BUTTON = '.btn-primary';
 
+    private const HOMEPAGE_TITLE = 'Popular Listing';
+
     private static string $secret = 'initial';
 
     /**
      * @throws NoSuchElementException
      * @throws TimeoutException
+     * @throws \Exception
      */
-    public function testSetUpAuthenticator(): void
+    public function testSetUpAuthenticatorWithWrongOneTimePassword(): void
     {
-        // Log In as a User
         $client = self::createPantherClient();
-        $this->login($client, 'user', 'user');
-        $client->clickLink('Security');
-        $client->waitFor('[data-target="#setUpAuthenticator"]');
-
-        // Open the modal window
-        $client->clickLink('Set up Google Authenticator');
-        $crawler = $client->waitForVisibility('#generatedSecret');
-        $secret = $crawler->filter('#generatedSecret')->text();
-        $this->assertSame(52, mb_strlen($secret));
-
-        self::$secret = $secret;
+        $crawler = $this->readSecret($client);
 
         // Enter wrong one time password
         $crawler->filter('#generate_google_auth_secret')->form([
@@ -51,25 +46,36 @@ final class GoogleAuthenticatorTest extends PantherTestCase
             $crawler->filter('#twoFactorAuthErrorMessage')->text()
         );
 
-        // Generate correct one time password
-        $ga = new \PHPGangsta_GoogleAuthenticator();
-        $oneTimePassword = $ga->getCode($secret);
+        // Log Out
+        $this->logout($client);
+        $this->assertSelectorTextContains('.h3', self::HOMEPAGE_TITLE);
+    }
+
+    /**
+     * @throws NoSuchElementException
+     * @throws TimeoutException
+     */
+    public function testSetUpAuthenticator(): void
+    {
+        $client = self::createPantherClient();
+        $crawler = $this->readSecret($client);
 
         // Enter correct one time password
         $crawler->filter('#generate_google_auth_secret')->form([
-            'authentication_code' => $oneTimePassword,
+            'authentication_code' => $this->generateOneTimePassword(),
         ]);
         $crawler->filter('#enable2fa')->click();
         $client->waitForVisibility('.alert-success');
 
         // Log Out
         $this->logout($client);
-        $this->assertSelectorTextContains('.h3', 'Popular Listing');
+        $this->assertSelectorTextContains('.h3', self::HOMEPAGE_TITLE);
     }
 
     /**
      * @throws NoSuchElementException
      * @throws TimeoutException
+     * @throws \Exception
      */
     public function testDisableAuthenticator(): void
     {
@@ -94,15 +100,11 @@ final class GoogleAuthenticatorTest extends PantherTestCase
         $crawler->filter(self::PRIMARY_BUTTON)->click();
         $this->assertSelectorTextContains('.card-header', 'Google Authenticator code');
 
-        // Generate correct one time password
-        $ga = new \PHPGangsta_GoogleAuthenticator();
-        $oneTimePassword = $ga->getCode(self::$secret);
-
         $crawler = $client->waitForVisibility('#otp');
 
         // Enter valid one time password
         $crawler->filter('#otp')->form([
-            '_auth_code' => $oneTimePassword,
+            '_auth_code' => $this->generateOneTimePassword(),
         ]);
 
         $crawler->filter(self::PRIMARY_BUTTON)->click();
@@ -121,6 +123,39 @@ final class GoogleAuthenticatorTest extends PantherTestCase
 
         // Log Out
         $this->logout($client);
-        $this->assertSelectorTextContains('.h3', 'Popular Listing');
+        $this->assertSelectorTextContains('.h3', self::HOMEPAGE_TITLE);
+    }
+
+    /**
+     * @throws NoSuchElementException
+     * @throws TimeoutException
+     */
+    private function readSecret(Client $client): Crawler
+    {
+        // Log In as a User
+        $this->login($client, 'user', 'user');
+        $client->clickLink('Security');
+        $client->waitFor('[data-target="#setUpAuthenticator"]');
+
+        // Open the modal window
+        $client->clickLink('Set up Google Authenticator');
+        $crawler = $client->waitForVisibility('#generatedSecret');
+        $secret = $crawler->filter('#generatedSecret')->text();
+        $this->assertSame(52, mb_strlen($secret));
+
+        self::$secret = $secret;
+
+        return $crawler;
+    }
+
+    private function generateOneTimePassword(): string
+    {
+        $ga = new GoogleAuthenticator();
+
+        $oneTimePassword = $ga->getCode(self::$secret);
+
+        $this->assertSame(6, mb_strlen($oneTimePassword));
+
+        return $oneTimePassword;
     }
 }

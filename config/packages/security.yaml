@@ -93,3 +93,6 @@ when@test:
         firewalls:
             main:
                 http_basic: ~
+                lazy: true
+                login_throttling:
+                    max_attempts: 30

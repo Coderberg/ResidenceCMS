@@ -1,0 +1,7 @@
+framework:
+  rate_limiter:
+    auth:
+      policy: 'fixed_window'
+      limit: 30
+      interval: '100 seconds'
+      cache_pool: 'cache.rate_limiter'

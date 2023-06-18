@@ -6,6 +6,7 @@ namespace App\Tests\Functional\Controller\User\Security;
 
 use App\Entity\User;
 use App\Tests\Helper\WebTestHelper;
+use Coderberg\GoogleAuthenticator;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -86,7 +87,7 @@ final class GoogleAuthenticatorControllerTest extends WebTestCase
 
         $user->setGoogleAuthenticatorSecret(self::SECRET);
 
-        $ga = new \PHPGangsta_GoogleAuthenticator();
+        $ga = new GoogleAuthenticator();
         $oneTimePassword = $ga->getCode(self::SECRET);
 
         $client->request('PUT', self::ENDPOINT, [
