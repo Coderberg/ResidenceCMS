@@ -7,7 +7,6 @@ namespace App\Repository;
 use App\Entity\City;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
-use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -25,7 +24,6 @@ final class CityRepository extends ServiceEntityRepository
 
     /**
      * @throws NonUniqueResultException
-     * @throws NoResultException
      */
     public function countAll(): int
     {
