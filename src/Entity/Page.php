@@ -20,29 +20,29 @@ class Page
     use EntityIdTrait;
 
     #[ORM\Column(type: Types::STRING, length: 255)]
-    private ?string $title;
+    private ?string $title = null;
 
     #[ORM\Column(type: Types::STRING, length: 255)]
-    private ?string $description;
+    private ?string $description = null;
 
     #[ORM\Column(type: Types::STRING, length: 255)]
-    private ?string $slug;
+    private ?string $slug = null;
 
     #[ORM\Column(type: Types::STRING, length: 2, options: ['default' => 'en'])]
     private string $locale;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $content;
+    private ?string $content = null;
 
     #[ORM\Column(type: Types::BOOLEAN)]
-    private ?bool $show_in_menu;
+    private ?bool $show_in_menu = null;
 
     #[ORM\Column(type: Types::BOOLEAN)]
-    private ?bool $add_contact_form;
+    private ?bool $add_contact_form = null;
 
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
     #[Assert\Email]
-    private ?string $contact_email_address;
+    private ?string $contact_email_address = null;
 
     public function getTitle(): ?string
     {

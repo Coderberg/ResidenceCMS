@@ -17,10 +17,10 @@ class PropertyDescription
     use EntityMetaTrait;
 
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
-    private ?string $title;
+    private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $content;
+    private ?string $content = null;
 
     #[ORM\OneToOne(inversedBy: 'propertyDescription', targetEntity: Property::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]

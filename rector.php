@@ -13,6 +13,7 @@ return function (RectorConfig $rectorConfig): void {
     $rectorConfig->sets([
         DoctrineSetList::ANNOTATIONS_TO_ATTRIBUTES,
         SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES,
+        SymfonySetList::SYMFONY_62,
         SensiolabsSetList::FRAMEWORK_EXTRA_61,
         LevelSetList::UP_TO_PHP_81,
         SetList::CODE_QUALITY,

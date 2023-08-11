@@ -19,22 +19,22 @@ class Menu
     use EntityIdTrait;
 
     #[ORM\Column(type: Types::STRING, length: 255)]
-    private ?string $title;
+    private ?string $title = null;
 
     #[ORM\Column(type: Types::STRING, length: 2)]
     private string $locale;
 
     #[ORM\Column(type: Types::SMALLINT, nullable: true)]
-    private ?int $sort_order;
+    private ?int $sort_order = null;
 
     #[ORM\Column(type: Types::STRING, length: 255)]
-    private ?string $url;
+    private ?string $url = null;
 
     #[ORM\Column(type: Types::BOOLEAN, nullable: true)]
-    private ?bool $nofollow;
+    private ?bool $nofollow = null;
 
     #[ORM\Column(type: Types::BOOLEAN, nullable: true)]
-    private ?bool $new_tab;
+    private ?bool $new_tab = null;
 
     public function getTitle(): ?string
     {

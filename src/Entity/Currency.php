@@ -15,16 +15,16 @@ class Currency
     use EntityIdTrait;
 
     #[ORM\Column(type: Types::STRING, length: 32)]
-    private ?string $currency_title;
+    private ?string $currency_title = null;
 
     #[ORM\Column(type: Types::STRING, length: 3)]
-    private ?string $code;
+    private ?string $code = null;
 
     #[ORM\Column(type: Types::STRING, length: 12, nullable: true)]
-    private ?string $symbol_left;
+    private ?string $symbol_left = null;
 
     #[ORM\Column(type: Types::STRING, length: 12, nullable: true)]
-    private ?string $symbol_right;
+    private ?string $symbol_right = null;
 
     public function getCurrencyTitle(): ?string
     {

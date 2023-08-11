@@ -38,7 +38,7 @@ class City
     private $metro_stations;
 
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
-    private ?string $title;
+    private ?string $title = null;
 
     public function __construct()
     {

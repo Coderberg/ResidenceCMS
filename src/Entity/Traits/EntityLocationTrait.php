@@ -14,24 +14,24 @@ trait EntityLocationTrait
 {
     #[ORM\ManyToOne(targetEntity: District::class, inversedBy: 'properties')]
     #[ORM\JoinColumn(nullable: true)]
-    private ?District $district;
+    private ?District $district = null;
 
     #[ORM\ManyToOne(targetEntity: Neighborhood::class, inversedBy: 'properties')]
     #[ORM\JoinColumn(nullable: true)]
-    private ?Neighborhood $neighborhood;
+    private ?Neighborhood $neighborhood = null;
 
     #[ORM\ManyToOne(targetEntity: Metro::class, inversedBy: 'properties')]
     #[ORM\JoinColumn(nullable: true)]
-    private ?Metro $metro_station;
+    private ?Metro $metro_station = null;
 
     #[ORM\Column(type: Types::STRING, length: 255)]
-    private ?string $address;
+    private ?string $address = null;
 
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
-    private ?string $latitude;
+    private ?string $latitude = null;
 
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
-    private ?string $longitude;
+    private ?string $longitude = null;
 
     public function getDistrict(): ?District
     {

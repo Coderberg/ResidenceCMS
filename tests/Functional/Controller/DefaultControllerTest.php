@@ -40,7 +40,7 @@ final class DefaultControllerTest extends WebTestCase
      */
     public function testMenuItems(string $url): void
     {
-        $client = static::createClient();
+        $client = DefaultControllerTest::createClient();
         $crawler = $client->request('GET', '/');
         $link = $crawler->filter(sprintf('a[href="%s"]', $url))->link();
         $urlFound = $link->getUri();
