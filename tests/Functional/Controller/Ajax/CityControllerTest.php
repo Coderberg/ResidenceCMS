@@ -18,7 +18,7 @@ final class CityControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/en/user/property/new');
 
         // Find CSRF token
-        $token = $crawler->filter('#property_form')->first()->attr('data-token');
+        $token = $this->getCsrfToken($crawler);
 
         // Find city ID
         $city = $this->getRepository($client, City::class)

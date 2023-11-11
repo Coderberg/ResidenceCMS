@@ -90,4 +90,9 @@ trait WebTestHelper
             $this->assertStringContainsString($word, (string) $response->getContent());
         }
     }
+
+    private function getCsrfToken(Crawler $crawler): ?string
+    {
+        return $crawler->filter('meta[name="csrf-token"]')->eq(0)->attr('content');
+    }
 }

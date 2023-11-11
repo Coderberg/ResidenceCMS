@@ -10,7 +10,6 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
-use Symfony\Component\DomCrawler\Crawler;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelper;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
@@ -61,7 +60,8 @@ final class ResendVerificationControllerTest extends WebTestCase
 
     public function testShouldLinkBeVisible(): void
     {
-        $token = $this->findResendLink()->attr('data-token');
+        $crawler = $this->client->request('GET', '/en/user/property');
+        $token = $this->getCsrfToken($crawler);
         $this->client->request('POST', '/en/auth/should_link_be_visible', [
             'csrf_token' => $token,
         ]);
@@ -75,8 +75,9 @@ final class ResendVerificationControllerTest extends WebTestCase
 
     public function testResendEmail(): void
     {
-        $token = $this->findResendLink()->attr('data-token');
-        $url = $this->findResendLink()->attr('data-path');
+        $crawler = $this->client->request('GET', '/en/user/property');
+        $token = $this->getCsrfToken($crawler);
+        $url = $crawler->filter('#resend')->attr('data-path');
 
         $this->client->request('POST', $url, [
             'csrf_token' => $token,
@@ -101,13 +102,6 @@ final class ResendVerificationControllerTest extends WebTestCase
         // Make sure the user is verified
         $this->assertSelectorTextContains('.alert-success', 'Your email address has been verified');
         $this->assertTrue($this->user->isVerified());
-    }
-
-    private function findResendLink(): Crawler
-    {
-        $crawler = $this->client->request('GET', '/en/user/property');
-
-        return $crawler->filter('#resend');
     }
 
     private function generateEmailConfirmationLink(User $user): string

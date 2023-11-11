@@ -3,7 +3,7 @@
     "js/app": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/app.1053ee59.js"
+        "/build/js/app.1f371307.js"
       ]
     },
     "js/admin": {
@@ -15,7 +15,7 @@
     "js/auth": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/auth.3ae01896.js"
+        "/build/js/auth.b695faba.js"
       ]
     },
     "js/ekko-lightbox": {
@@ -33,7 +33,7 @@
     "js/menu-sorting": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/menu-sorting.91d373b6.js"
+        "/build/js/menu-sorting.cb6d1a01.js"
       ]
     },
     "js/select2": {
@@ -57,7 +57,7 @@
     "js/city": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/city.0d36870f.js"
+        "/build/js/city.90911748.js"
       ]
     },
     "js/photo": {
@@ -81,13 +81,13 @@
     "js/password": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/password.a4f1763f.js"
+        "/build/js/password.b825ce4f.js"
       ]
     },
     "js/google_authenticator": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/google_authenticator.0889962e.js"
+        "/build/js/google_authenticator.bd28f87e.js"
       ]
     },
     "js/bottom-bar": {

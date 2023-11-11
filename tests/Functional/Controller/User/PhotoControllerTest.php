@@ -53,7 +53,7 @@ final class PhotoControllerTest extends WebTestCase
             ->findOneBy(['slug' => 'interesting-two-bedroom-apartment-for-sale']);
 
         $crawler = $client->request('GET', '/en/user/photo/'.$property->getId().'/edit');
-        $token = $crawler->filter('form')->attr('data-token');
+        $token = $this->getCsrfToken($crawler);
 
         $itemsArray = $property->getPhotos()->map(fn ($item) => $item->getId())->getValues();
 
