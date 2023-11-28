@@ -11,7 +11,7 @@ final class ConfirmPasswordValidator extends ConstraintValidator
 {
     public function validate($value, Constraint $constraint): void
     {
-        /* @var $constraint ConfirmPassword */
+        /** @var ConfirmPassword $constraint  */
 
         if (null === $value || '' === $value) {
             return;

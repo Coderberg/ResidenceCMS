@@ -20,4 +20,6 @@ class DealType
     use PropertyTrait;
 
     final public const MAPPED_BY = 'deal_type';
+    final public const GETTER = 'getDealType';
+    final public const SETTER = 'setDealType';
 }

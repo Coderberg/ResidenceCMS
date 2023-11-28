@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service\User;
 
 use App\Entity\Property;
+use App\Entity\User;
 use App\Repository\UserPropertyRepository;
 use App\Service\Admin\PropertyService as Service;
 use App\Transformer\PropertyTransformer;
@@ -37,7 +38,9 @@ final class PropertyService extends Service
     public function getUserProperties(Request $request): PaginationInterface
     {
         $searchParams = $this->transformer->transform($request);
-        $searchParams['user'] = $this->tokenStorage->getToken()->getUser()->getId();
+        /** @var User $user */
+        $user = $this->tokenStorage->getToken()->getUser();
+        $searchParams['user'] = $user->getId();
 
         return $this->repository->findByUser($searchParams);
     }

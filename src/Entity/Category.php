@@ -20,4 +20,6 @@ class Category
     use PropertyTrait;
 
     final public const MAPPED_BY = 'category';
+    final public const GETTER = 'getCategory';
+    final public const SETTER = 'setCategory';
 }

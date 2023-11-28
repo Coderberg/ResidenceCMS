@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\User;
 
+use App\Entity\User;
 use App\Service\AbstractService;
 use Doctrine\ORM\EntityManagerInterface;
 use Endroid\QrCode\Builder\Builder;
@@ -11,7 +12,6 @@ use Endroid\QrCode\Encoding\Encoding;
 use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
-use Scheb\TwoFactorBundle\Model\Google\TwoFactorInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -33,7 +33,7 @@ final class GoogleAuthenticatorService extends AbstractService
      *
      * @return string[]
      */
-    public function generateSecret(TwoFactorInterface $user): array
+    public function generateSecret(User $user): array
     {
         if ($user->isGoogleAuthenticatorEnabled()) {
             throw new \LogicException($this->translator->trans('2fa.errors.secret_is_already_set'));
@@ -54,7 +54,7 @@ final class GoogleAuthenticatorService extends AbstractService
     /**
      * @throws \Exception
      */
-    public function setSecret(TwoFactorInterface $user, ?string $secret, ?string $authenticationCode): void
+    public function setSecret(User $user, ?string $secret, ?string $authenticationCode): void
     {
         if (!$authenticationCode || !$secret) {
             throw new \Exception($this->translator->trans('2fa.errors.cannot_enable_ga'));
@@ -70,7 +70,7 @@ final class GoogleAuthenticatorService extends AbstractService
         $this->addFlash('success', '2fa.messages.enabled');
     }
 
-    public function deleteSecret(TwoFactorInterface $user): void
+    public function deleteSecret(User $user): void
     {
         $user->setGoogleAuthenticatorSecret(null);
         $this->entityManager->flush();
