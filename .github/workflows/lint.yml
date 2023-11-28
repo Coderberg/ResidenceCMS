@@ -54,6 +54,10 @@ jobs:
         if: always() && steps.install.outcome == 'success'
         run: vendor/bin/php-cs-fixer fix --diff --dry-run
 
+      - name: PHPStan
+        if: always() && steps.install.outcome == 'success'
+        run: vendor/bin/phpstan analyse
+
       - name: Rector
         if: always() && steps.install.outcome == 'success'
         run: vendor/bin/rector process src --clear-cache --dry-run
