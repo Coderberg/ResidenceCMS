@@ -8,7 +8,6 @@
         $.ajax({
             url: '/en/auth/should_link_be_visible',
             type: 'GET',
-            data: { csrf_token: link.data('token') },
             success: function (response) {
                 if (response.display === true) {
                     link.show();
@@ -21,7 +20,6 @@
         $.ajax({
             url: link.data('path'),
             type: 'POST',
-            data: { csrf_token: link.data('token') },
             success: function (response) {
                 link.hide();
                 bootbox.alert(response.message);

@@ -1,0 +1,7 @@
+parameters:
+    level: 2
+    paths:
+        - bin/
+        - config/
+        - public/
+        - src/

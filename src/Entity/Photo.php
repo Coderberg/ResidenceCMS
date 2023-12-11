@@ -24,7 +24,7 @@ class Photo
     private $photo;
 
     #[ORM\Column(type: Types::INTEGER, nullable: true)]
-    private ?int $sort_order;
+    private ?int $sort_order = null;
 
     public function getProperty(): ?Property
     {

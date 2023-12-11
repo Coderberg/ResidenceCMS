@@ -4,6 +4,14 @@ declare(strict_types=1);
 
 namespace App\Service\Cache;
 
+use App\Repository\CategoryRepository;
+use App\Repository\CityRepository;
+use App\Repository\DealTypeRepository;
+use App\Repository\PageRepository;
+use App\Repository\PropertyRepository;
+use App\Repository\UserRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
@@ -28,10 +36,15 @@ trait GetCache
         return (int) $count;
     }
 
+    /**
+     * @throws NonUniqueResultException
+     * @throws NoResultException
+     */
     private function countItems(): int
     {
-        return (int) $this->doctrine
-            ->getRepository($this->persistentObjectName)
-            ->countAll();
+        /** @var PropertyRepository|CityRepository|DealTypeRepository|CategoryRepository|PageRepository|UserRepository $repository */
+        $repository = $this->doctrine->getRepository($this->persistentObjectName);
+
+        return $repository->countAll();
     }
 }

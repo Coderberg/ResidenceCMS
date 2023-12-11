@@ -45,7 +45,7 @@ final class SettingsRepository extends ServiceEntityRepository
     public function updateSetting(string $setting_name, ?string $setting_value = ''): void
     {
         $this->createQueryBuilder('i')
-            ->update('App:Settings', 's')
+            ->update(Settings::class, 's')
             ->set('s.setting_value', '?1')
             ->where('s.setting_name = ?2')
             ->setParameter(1, $setting_value)

@@ -29,7 +29,7 @@ final class VerifyCsrfToken
 
     private function getToken(Request $request)
     {
-        return $request->query->get('csrf_token')
+        return $request->headers->get('x-csrf-token')
             ?? $request->get('csrf_token');
     }
 }

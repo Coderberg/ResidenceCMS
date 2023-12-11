@@ -9,10 +9,9 @@ use Symfony\Component\Validator\ConstraintValidator;
 
 final class ConfirmPasswordValidator extends ConstraintValidator
 {
+    /** @param ConfirmPassword $constraint */
     public function validate($value, Constraint $constraint): void
     {
-        /* @var $constraint ConfirmPassword */
-
         if (null === $value || '' === $value) {
             return;
         }

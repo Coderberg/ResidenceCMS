@@ -2,7 +2,6 @@
     'use strict';
 
     const $form = $('#generate_google_auth_secret');
-    const token = $('[name="auth_token"]').val();
     const $secret = $('[name="generatedSecret"]');
     const $authentication_code = $('[name="authentication_code"]');
 
@@ -11,8 +10,7 @@
         if ($form.data('generate-new-secret') === true) {
             $.ajax({
                 method: 'GET',
-                url: '/en/user/google_authenticator_code',
-                data: { csrf_token: token }
+                url: '/en/user/google_authenticator_code'
             }).done(function (response) {
                 const { secret, qr_code } = response;
                 const image = new Image();
@@ -39,7 +37,6 @@
             method: 'PUT',
             url: $form.attr('action'),
             data: {
-                csrf_token: token,
                 secret: $secret.val(),
                 authentication_code: authentication_code
             }
@@ -56,8 +53,7 @@
     $('#disable2fa').click(function () {
         $.ajax({
             method: 'DELETE',
-            url: $form.attr('action'),
-            data: { csrf_token: token }
+            url: $form.attr('action')
         })
             .done(function () {
                 location.reload();

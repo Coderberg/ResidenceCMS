@@ -17,13 +17,13 @@ class Feature
     use EntityIdTrait;
 
     #[ORM\Column(type: Types::STRING, length: 255)]
-    private ?string $name;
+    private ?string $name = null;
 
     #[ORM\ManyToMany(targetEntity: Property::class, mappedBy: 'features')]
     private $properties;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $icon;
+    private ?string $icon = null;
 
     public function __construct()
     {

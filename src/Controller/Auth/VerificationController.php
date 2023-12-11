@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Auth;
 
+use App\Entity\User;
 use App\Service\Auth\EmailVerifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +26,9 @@ final class VerificationController extends AbstractController implements AuthCon
 
         // validate email confirmation link, sets User::isVerified=true and persists
         try {
-            $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
+            /** @var User $user */
+            $user = $this->getUser();
+            $this->emailVerifier->handleEmailConfirmation($request, $user);
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('danger', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
 

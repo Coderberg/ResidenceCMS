@@ -10,10 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
 trait EntityMetaTrait
 {
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
-    private ?string $meta_title;
+    private ?string $meta_title = null;
 
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
-    private ?string $meta_description;
+    private ?string $meta_description = null;
 
     public function getMetaTitle(): ?string
     {

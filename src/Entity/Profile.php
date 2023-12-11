@@ -15,10 +15,10 @@ class Profile
     use EntityIdTrait;
 
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
-    private ?string $full_name;
+    private ?string $full_name = null;
 
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
-    private ?string $phone;
+    private ?string $phone = null;
 
     #[ORM\OneToOne(inversedBy: 'profile', targetEntity: User::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]

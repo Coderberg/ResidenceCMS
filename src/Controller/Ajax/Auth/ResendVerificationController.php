@@ -22,7 +22,7 @@ final class ResendVerificationController extends AbstractController implements A
     public function shouldLinkBeVisible(): JsonResponse
     {
         /**
-         * @var $user User
+         * @var User $user
          */
         $user = $this->getUser();
 
@@ -33,7 +33,7 @@ final class ResendVerificationController extends AbstractController implements A
     public function resendEmail(MessageBusInterface $messageBus, TranslatorInterface $translator): JsonResponse
     {
         /**
-         * @var $user User
+         * @var User $user
          */
         $user = $this->getUser();
 

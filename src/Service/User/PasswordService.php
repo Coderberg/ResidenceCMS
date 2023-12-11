@@ -32,7 +32,7 @@ final class PasswordService
             throw new \Exception($violations[0]->getMessage());
         }
 
-        /*** @var $user User */
+        /** @var User $user * */
         $user = $this->tokenStorage->getToken()->getUser();
         $user->setPassword($request->get('password1'));
         $this->service->update($user);

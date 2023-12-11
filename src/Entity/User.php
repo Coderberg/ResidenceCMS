@@ -40,17 +40,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     #[Assert\NotBlank]
     #[Assert\Length(min: 2, max: 50)]
     private $username;
-    /**
-     * @var string
-     */
     #[ORM\Column(type: Types::STRING, unique: true)]
     #[Assert\Email]
-    private $email;
-    /**
-     * @var string
-     */
+    private ?string $email = null;
     #[ORM\Column(type: Types::STRING)]
-    private $password;
+    private ?string $password = null;
 
     #[ORM\Column(type: Types::JSON)]
     private array $roles = [];
@@ -65,7 +59,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     private $password_requested_at;
 
     #[ORM\OneToOne(mappedBy: 'user', targetEntity: Profile::class, cascade: ['persist', 'remove'])]
-    private ?Profile $profile;
+    private ?Profile $profile = null;
 
     #[ORM\Column(type: Types::DATETIMETZ_MUTABLE, nullable: true)]
     private $emailVerifiedAt;

@@ -24,9 +24,8 @@
     $('body').on('change', '#property_city', function () {
         clearOptions();
         let cityId = $(this).val();
-        const token = $('#property_form').data('token');
-        const url =
-            '/en/city/' + cityId + '.json?csrf_token=' + token;
+
+        const url = '/en/city/' + cityId + '.json';
 
         if ('' === cityId) {
             return;

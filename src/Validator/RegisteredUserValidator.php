@@ -15,10 +15,9 @@ final class RegisteredUserValidator extends ConstraintValidator
     {
     }
 
+    /** @param RegisteredUser $constraint */
     public function validate($value, Constraint $constraint): void
     {
-        /* @var $constraint RegisteredUser */
-
         if (null === $value || '' === $value) {
             return;
         }

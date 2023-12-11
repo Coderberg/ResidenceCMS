@@ -26,7 +26,7 @@ trait PropertyTrait
 
     protected function addProperty(Property $property): self
     {
-        /* callable $setter */
+        /* @var callable $setter */
         $setter = self::SETTER;
 
         if (!$this->properties->contains($property)) {
@@ -39,10 +39,10 @@ trait PropertyTrait
 
     protected function removeProperty(Property $property): self
     {
-        /* callable $setter */
+        /* @var callable $setter */
         $setter = self::SETTER;
 
-        /* callable $getter */
+        /* @var callable $getter */
         $getter = self::GETTER;
 
         if ($this->properties->contains($property)) {

@@ -83,7 +83,7 @@ final class MenuControllerTest extends WebTestCase
     {
         $client = $this->authAsAdmin($this);
         $crawler = $client->request('GET', '/en/admin/menu');
-        $token = $crawler->filter('#menu')->attr('data-token');
+        $token = $this->getCsrfToken($crawler);
         $items = $this->getRepository($client, Menu::class)
             ->findItems();
 
@@ -133,7 +133,7 @@ final class MenuControllerTest extends WebTestCase
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
         $this->assertNull($this->getRepository($client, Menu::class)->findOneBy([
-                'url' => self::URL,
-            ]));
+            'url' => self::URL,
+        ]));
     }
 }

@@ -7,7 +7,6 @@
 
     // Send request
     $button.click(function () {
-        let token = $('[name="password_token"]').val();
         $(this)
             .attr('disabled', true)
             .text($button.data('progress-text'));
@@ -15,7 +14,6 @@
             method: 'POST',
             url: $('#passwordForm').attr('action'),
             data: {
-                csrf_token: token,
                 password1: $('#password1').val(),
                 password2: $('#password2').val()
             }

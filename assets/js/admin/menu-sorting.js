@@ -14,7 +14,6 @@ const changeButtons = () => {
 
 const sendRequest = () => {
     const item = $('.js-move');
-    const token = $('#menu').data('token');
 
     if (item.length > 1) {
         let items = [];
@@ -26,7 +25,7 @@ const sendRequest = () => {
         $.ajax({
             method: 'POST',
             url: '/en/admin/menu/sort',
-            data: { csrf_token: token, items: items }
+            data: { items: items }
         });
     }
 };
