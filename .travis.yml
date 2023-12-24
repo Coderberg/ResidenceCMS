@@ -18,7 +18,7 @@ env:
 matrix:
   fast_finish: true
   include:
-    - php: 8.1
+    - php: 8.2
 
 before_install:
   - '[[ -z $SYMFONY ]] || composer config extra.symfony.require "$SYMFONY"'
