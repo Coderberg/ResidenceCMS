@@ -10,7 +10,7 @@ use App\Entity\Property;
 use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 final class PhotoController extends AbstractPhotoController implements AjaxController
 {
