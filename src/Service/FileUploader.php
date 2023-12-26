@@ -18,11 +18,11 @@ use Symfony\Component\String\ByteString;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validation;
 
-final class FileUploader
+final readonly class FileUploader
 {
-    private readonly Filesystem $fileSystem;
+    private Filesystem $fileSystem;
 
-    public function __construct(private readonly string $targetDirectory)
+    public function __construct(private string $targetDirectory)
     {
         $this->fileSystem = new Filesystem();
     }

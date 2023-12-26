@@ -111,7 +111,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     {
         $roles = $this->roles;
         // guarantees that a user always has at least one role for security
-        if (empty($roles)) {
+        if ([] === $roles) {
             $roles[] = 'ROLE_USER';
         }
 

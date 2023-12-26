@@ -17,17 +17,17 @@ final class SimilarRepository extends PropertyRepository
             return [];
         }
 
-        if (null !== $property->getNeighborhood()) {
+        if ($property->getNeighborhood() instanceof \App\Entity\Neighborhood) {
             // Find in a small area
             $result = $this->findByArea($property, 'neighborhood');
 
-            if (empty($result) && $property->getDistrict()) {
+            if ([] === $result && $property->getDistrict()) {
                 // Find in a larger area
                 $result = $this->findByArea($property);
             }
 
             return $result;
-        } elseif (null !== $property->getDistrict()) {
+        } elseif ($property->getDistrict() instanceof \App\Entity\District) {
             return $this->findByArea($property);
         }
 

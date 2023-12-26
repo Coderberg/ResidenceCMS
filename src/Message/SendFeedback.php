@@ -6,9 +6,9 @@ namespace App\Message;
 
 use App\Dto\FeedbackDto;
 
-final class SendFeedback
+final readonly class SendFeedback
 {
-    public function __construct(private readonly FeedbackDto $feedback)
+    public function __construct(private FeedbackDto $feedback)
     {
     }
 

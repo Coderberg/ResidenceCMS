@@ -13,9 +13,9 @@ return function (RectorConfig $rectorConfig): void {
     $rectorConfig->sets([
         DoctrineSetList::ANNOTATIONS_TO_ATTRIBUTES,
         SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES,
-        SymfonySetList::SYMFONY_62,
-        SensiolabsSetList::FRAMEWORK_EXTRA_61,
-        LevelSetList::UP_TO_PHP_81,
+        SymfonySetList::SYMFONY_64,
+        SensiolabsSetList::ANNOTATIONS_TO_ATTRIBUTES,
+        LevelSetList::UP_TO_PHP_82,
         SetList::CODE_QUALITY,
     ]);
 };

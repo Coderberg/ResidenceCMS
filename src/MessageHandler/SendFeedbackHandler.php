@@ -13,9 +13,9 @@ use Symfony\Component\Mime\Email;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[AsMessageHandler]
-final class SendFeedbackHandler
+final readonly class SendFeedbackHandler
 {
-    public function __construct(private readonly Mailer $mailer, private readonly TranslatorInterface $translator)
+    public function __construct(private Mailer $mailer, private TranslatorInterface $translator)
     {
     }
 

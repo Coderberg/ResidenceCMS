@@ -8,11 +8,11 @@ use Scheb\TwoFactorBundle\Model\Google\TwoFactorInterface;
 use Scheb\TwoFactorBundle\Security\TwoFactor\Provider\Google\GoogleAuthenticatorInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-final class GoogleAuthenticatorAdapter implements GoogleAuthenticatorInterface
+final readonly class GoogleAuthenticatorAdapter implements GoogleAuthenticatorInterface
 {
     public function __construct(
-        private readonly GoogleAuthenticatorInterface $authenticator,
-        private readonly RequestStack $requestStack
+        private GoogleAuthenticatorInterface $authenticator,
+        private RequestStack $requestStack
     ) {
     }
 

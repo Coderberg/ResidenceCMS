@@ -12,12 +12,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-final class PasswordService
+final readonly class PasswordService
 {
     public function __construct(
-        private readonly UserService $service,
-        private readonly TokenStorageInterface $tokenStorage,
-        private readonly ValidatorInterface $validator
+        private UserService $service,
+        private TokenStorageInterface $tokenStorage,
+        private ValidatorInterface $validator
     ) {
     }
 

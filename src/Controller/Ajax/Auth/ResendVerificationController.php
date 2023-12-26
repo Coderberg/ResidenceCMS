@@ -50,7 +50,7 @@ final class ResendVerificationController extends AbstractController implements A
 
     private function isSendingAllowed(User $user): bool
     {
-        if (null !== $user->getEmailVerifiedAt()) {
+        if ($user->getEmailVerifiedAt() instanceof \DateTime) {
             return false;
         }
 

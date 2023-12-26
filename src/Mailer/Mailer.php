@@ -8,9 +8,9 @@ use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 
-final class Mailer
+final readonly class Mailer
 {
-    public function __construct(private readonly MailerInterface $mailer)
+    public function __construct(private MailerInterface $mailer)
     {
     }
 
