@@ -12,6 +12,7 @@ namespace App\Service;
 
 use App\Validator\PhotoRequirements;
 use Gregwar\Image\Image;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\ByteString;
@@ -22,8 +23,10 @@ final readonly class FileUploader
 {
     private Filesystem $fileSystem;
 
-    public function __construct(private string $targetDirectory)
-    {
+    public function __construct(
+        #[Autowire('%images_directory%')]
+        private string $targetDirectory
+    ) {
         $this->fileSystem = new Filesystem();
     }
 
