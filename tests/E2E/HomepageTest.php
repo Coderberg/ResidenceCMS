@@ -10,7 +10,7 @@ final class HomepageTest extends PantherTestCase
 {
     public function testHomepage(): void
     {
-        $client = static::createPantherClient();
+        $client = self::createPantherClient();
 
         // Page 1
         $crawler = $client->request('GET', '/');

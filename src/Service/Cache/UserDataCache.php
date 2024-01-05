@@ -5,10 +5,14 @@ declare(strict_types=1);
 namespace App\Service\Cache;
 
 use App\Entity\User;
+use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 trait UserDataCache
 {
+    /**
+     * @throws InvalidArgumentException
+     */
     public function setConfirmationSentAt(User $user): void
     {
         $key = $this->getKey($user);
@@ -19,6 +23,9 @@ trait UserDataCache
         $cache->save($sentAt);
     }
 
+    /**
+     * @throws InvalidArgumentException
+     */
     public function getConfirmationSentAt(User $user): ?\DateTimeInterface
     {
         $key = $this->getKey($user);

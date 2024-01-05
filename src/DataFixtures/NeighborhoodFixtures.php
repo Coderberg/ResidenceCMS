@@ -35,7 +35,7 @@ final class NeighborhoodFixtures extends Fixture implements DependentFixtureInte
         ];
     }
 
-    public function getDependencies()
+    public function getDependencies(): array
     {
         return [
             CityFixtures::class,

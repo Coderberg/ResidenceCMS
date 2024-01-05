@@ -13,6 +13,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ManagerRegistry;
+use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 trait GetCache
@@ -27,6 +28,9 @@ trait GetCache
         $this->doctrine = $doctrine;
     }
 
+    /**
+     * @throws InvalidArgumentException
+     */
     public function getCount(string $key, string $class): int
     {
         $this->persistentObjectName = $class;

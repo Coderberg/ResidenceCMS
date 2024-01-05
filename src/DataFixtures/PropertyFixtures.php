@@ -187,7 +187,7 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
                 nisi ut aliquid ex ea commodi consequatur.</p>';
     }
 
-    public function getDependencies()
+    public function getDependencies(): array
     {
         return [
             CategoryFixtures::class,

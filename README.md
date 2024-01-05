@@ -27,7 +27,7 @@ ResidenceCMS is a fast and lightweight Property Management System on top of [Sym
    $ cd mywebsite.loc
    ```
 
-4. After installing you should configure your web server's document / web root to be the ```public``` directory.
+4. After installing, you should configure your web server's document / web root to be the ```public``` directory.
 
 5. Create ```.env.local``` from ```.env``` file and fill in your database credentials
 

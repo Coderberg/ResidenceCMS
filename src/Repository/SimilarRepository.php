@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use App\Entity\District;
+use App\Entity\Neighborhood;
 use App\Entity\Property;
 use App\Entity\Settings;
 
@@ -17,7 +19,7 @@ final class SimilarRepository extends PropertyRepository
             return [];
         }
 
-        if ($property->getNeighborhood() instanceof \App\Entity\Neighborhood) {
+        if ($property->getNeighborhood() instanceof Neighborhood) {
             // Find in a small area
             $result = $this->findByArea($property, 'neighborhood');
 
@@ -27,7 +29,7 @@ final class SimilarRepository extends PropertyRepository
             }
 
             return $result;
-        } elseif ($property->getDistrict() instanceof \App\Entity\District) {
+        } elseif ($property->getDistrict() instanceof District) {
             return $this->findByArea($property);
         }
 

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\MessageHandler;
 
-use App\Dto\FeedbackDto;
 use App\Mailer\Mailer;
 use App\Message\SendFeedback;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
@@ -21,7 +20,6 @@ final readonly class SendFeedbackHandler
 
     public function __invoke(SendFeedback $sendFeedback): void
     {
-        /** @var FeedbackDto $feedback */
         $feedback = $sendFeedback->getFeedback();
 
         $subject = $this->translator->trans('email.new_message');

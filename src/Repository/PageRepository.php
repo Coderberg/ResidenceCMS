@@ -8,6 +8,7 @@ use App\Entity\Page;
 use App\Entity\Settings;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\Pagination\PaginationInterface;
@@ -29,6 +30,7 @@ final class PageRepository extends ServiceEntityRepository
 
     /**
      * @throws NonUniqueResultException
+     * @throws NoResultException
      */
     public function countAll(): int
     {
