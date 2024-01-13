@@ -10,11 +10,11 @@ use App\Transformer\RequestToArrayTransformer;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-final class CityService
+final readonly class CityService
 {
     public function __construct(
-        private readonly RequestToArrayTransformer $transformer,
-        private readonly FilterRepository $repository
+        private RequestToArrayTransformer $transformer,
+        private FilterRepository $repository
     ) {
     }
 

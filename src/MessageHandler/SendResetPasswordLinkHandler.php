@@ -15,12 +15,12 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[AsMessageHandler]
-final class SendResetPasswordLinkHandler
+final readonly class SendResetPasswordLinkHandler
 {
     public function __construct(
-        private readonly Mailer $mailer,
-        private readonly TranslatorInterface $translator,
-        private readonly UrlGeneratorInterface $router
+        private Mailer $mailer,
+        private TranslatorInterface $translator,
+        private UrlGeneratorInterface $router
     ) {
     }
 

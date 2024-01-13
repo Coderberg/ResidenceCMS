@@ -9,9 +9,9 @@ use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Csrf\Exception\TokenNotFoundException;
 
-final class VerifyCsrfToken
+final readonly class VerifyCsrfToken
 {
-    public function __construct(private readonly CsrfTokenManagerInterface $tokenManager)
+    public function __construct(private CsrfTokenManagerInterface $tokenManager)
     {
     }
 

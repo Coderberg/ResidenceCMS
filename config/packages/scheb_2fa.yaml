@@ -9,7 +9,7 @@ scheb_two_factor:
     #server_name: server_name      # Server name used in QR code
     issuer: issuer_placeholder     # Issuer name used in QR code
     digits: 6                      # Number of digits in authentication code
-    window: 1                      # Depends on the version of Spomky-Labs/otphp used:
+    leeway: 1                      # Depends on the version of Spomky-Labs/otphp used:
                                    # Until v10: How many codes before/after the current one would be accepted
                                    # From v11: Acceptable time drift in seconds
     template: auth/two_factor/two_factor_form.html.twig   # Template used to render the authentication form

@@ -7,9 +7,9 @@ namespace App\Transformer;
 use App\Entity\User;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-final class UserTransformer
+final readonly class UserTransformer
 {
-    public function __construct(private readonly UserPasswordHasherInterface $passwordHasher)
+    public function __construct(private UserPasswordHasherInterface $passwordHasher)
     {
     }
 

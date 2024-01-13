@@ -9,6 +9,7 @@ use App\Mailer\Mailer;
 use App\Message\SendEmailConfirmationLink;
 use App\Service\Cache\UserDataCache;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -17,18 +18,21 @@ use SymfonyCasts\Bundle\VerifyEmail\Model\VerifyEmailSignatureComponents;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
 #[AsMessageHandler]
-final class SendEmailConfirmationLinkHandler
+final readonly class SendEmailConfirmationLinkHandler
 {
     use UserDataCache;
 
     public function __construct(
-        private readonly VerifyEmailHelperInterface $verifyEmailHelper,
-        private readonly Mailer $mailer,
-        private readonly UrlGeneratorInterface $router,
-        private readonly TranslatorInterface $translator
+        private VerifyEmailHelperInterface $verifyEmailHelper,
+        private Mailer $mailer,
+        private UrlGeneratorInterface $router,
+        private TranslatorInterface $translator
     ) {
     }
 
+    /**
+     * @throws TransportExceptionInterface
+     */
     public function __invoke(SendEmailConfirmationLink $sendEmailConfirmationLink): void
     {
         $user = $sendEmailConfirmationLink->getUser();

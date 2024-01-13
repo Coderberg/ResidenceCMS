@@ -9,9 +9,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 
-final class URLService
+final readonly class URLService
 {
-    public function __construct(private readonly RouterInterface $router)
+    public function __construct(private RouterInterface $router)
     {
     }
 

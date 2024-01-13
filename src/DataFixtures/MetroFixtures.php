@@ -34,7 +34,7 @@ final class MetroFixtures extends Fixture implements DependentFixtureInterface
         ];
     }
 
-    public function getDependencies()
+    public function getDependencies(): array
     {
         return [
             CityFixtures::class,

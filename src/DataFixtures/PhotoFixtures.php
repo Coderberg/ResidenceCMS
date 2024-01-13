@@ -45,7 +45,7 @@ final class PhotoFixtures extends Fixture implements DependentFixtureInterface
         ];
     }
 
-    public function getDependencies()
+    public function getDependencies(): array
     {
         return [
             PropertyFixtures::class,

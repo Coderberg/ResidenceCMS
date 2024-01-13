@@ -9,9 +9,9 @@ use App\Service\FileUploader;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
-final class DeletePhotosHandler
+final readonly class DeletePhotosHandler
 {
-    public function __construct(private readonly FileUploader $fileUploader)
+    public function __construct(private FileUploader $fileUploader)
     {
     }
 

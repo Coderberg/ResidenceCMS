@@ -1,6 +1,6 @@
 controllers:
     resource: ../../src/Controller/
-    type: annotation
+    type: attribute
     prefix: /{_locale}
     requirements:
         _locale: '%app_locales%'
@@ -9,4 +9,4 @@ controllers:
 
 kernel:
     resource: ../../src/Kernel.php
-    type: annotation
+    type: attribute

@@ -11,7 +11,7 @@ use App\Service\Cache\UserDataCache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Messenger\MessageBusInterface;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class ResendVerificationController extends AbstractController implements AjaxController
@@ -50,7 +50,7 @@ final class ResendVerificationController extends AbstractController implements A
 
     private function isSendingAllowed(User $user): bool
     {
-        if (null !== $user->getEmailVerifiedAt()) {
+        if ($user->getEmailVerifiedAt() instanceof \DateTime) {
             return false;
         }
 

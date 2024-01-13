@@ -8,9 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
 
-final class ThrottleRequests
+final readonly class ThrottleRequests
 {
-    public function __construct(private readonly RateLimiterFactory $authLimiter)
+    public function __construct(private RateLimiterFactory $authLimiter)
     {
     }
 

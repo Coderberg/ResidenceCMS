@@ -98,7 +98,7 @@ final class SettingsService extends AbstractService
         // Delete file from folder
         $this->fileUploader->remove($filename);
         // Delete from db
-        $this->repository->updateSetting($type, '');
+        $this->repository->updateSetting($type);
         // Add flash message
         $this->addFlash('success', 'message.deleted');
     }

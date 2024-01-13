@@ -1,12 +1,12 @@
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Coderberg/ResidenceCMS/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Coderberg/ResidenceCMS/?branch=master) [![Testing with MySQL](https://github.com/Coderberg/ResidenceCMS/actions/workflows/mysql.yml/badge.svg)](https://github.com/Coderberg/ResidenceCMS/actions/workflows/mysql.yml) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Coderberg_ResidenceCMS&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=Coderberg_ResidenceCMS) [![StyleCI](https://github.styleci.io/repos/148062622/shield?branch=master)](https://github.styleci.io/repos/148062622?branch=master)
 
-ResidenceCMS is a fast and lightweight Property Management System on top of [Symfony 6][1].
+ResidenceCMS is a fast and lightweight Property Management System on top of [Symfony 7][1].
 
 ![GitHub](https://raw.githubusercontent.com/Coderberg/ResidenceCMS/master/docs/images/screenshot.png)
 
 ## Requirements
 
-- PHP 8.1.0 or higher;
+- PHP 8.2.0 or higher;
 - PDO PHP Extension;
 - GD PHP extension
 - MySQL >= 5.7;
@@ -27,7 +27,7 @@ ResidenceCMS is a fast and lightweight Property Management System on top of [Sym
    $ cd mywebsite.loc
    ```
 
-4. After installing you should configure your web server's document / web root to be the ```public``` directory.
+4. After installing, you should configure your web server's document / web root to be the ```public``` directory.
 
 5. Create ```.env.local``` from ```.env``` file and fill in your database credentials
 

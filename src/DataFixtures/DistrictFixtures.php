@@ -31,7 +31,7 @@ final class DistrictFixtures extends Fixture implements DependentFixtureInterfac
         ];
     }
 
-    public function getDependencies()
+    public function getDependencies(): array
     {
         return [
             CityFixtures::class,

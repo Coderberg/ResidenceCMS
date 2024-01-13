@@ -13,11 +13,11 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
-final class ControllerSubscriber implements EventSubscriberInterface
+final readonly class ControllerSubscriber implements EventSubscriberInterface
 {
     public function __construct(
-        private readonly VerifyCsrfToken $verifyCsrfToken,
-        private readonly ThrottleRequests $throttleRequests
+        private VerifyCsrfToken $verifyCsrfToken,
+        private ThrottleRequests $throttleRequests
     ) {
     }
 
