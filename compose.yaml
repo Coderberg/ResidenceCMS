@@ -55,7 +55,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    restart: always
+    restart: unless-stopped
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3306
