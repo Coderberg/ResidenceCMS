@@ -22,7 +22,7 @@
                 location.reload();
             })
             .fail(function (data) {
-                const message = JSON.parse(data.responseText).message;
+                const {message} = JSON.parse(data.responseText);
                 $alert.text(message).slideDown();
             });
     });

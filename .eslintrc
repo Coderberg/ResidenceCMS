@@ -8,18 +8,6 @@
     "sourceType": "module"
   },
   "rules": {
-    "linebreak-style": ["off", "unix"],
-    "no-console": "error",
-    "quotes": ["error", "single"],
-    "semi": ["error", "always"],
-    "no-var": "error",
-    "eqeqeq": ["error", "always"],
-    "object-curly-spacing": "off",
-    "no-const-assign": "error",
-    "newline-before-return": "error",
-    "no-unreachable": "error",
-    "no-extra-semi": "error",
-    "no-unexpected-multiline": "error",
     "comma-dangle": [
       "error",
       {
@@ -29,6 +17,22 @@
         "exports": "never",
         "functions": "never"
       }
-    ]
+    ],
+    "eqeqeq": ["error", "always"],
+    "linebreak-style": ["off", "unix"],
+    "newline-before-return": "error",
+    "no-console": "error",
+    "no-const-assign": "error",
+    "no-extra-semi": "error",
+    "no-lonely-if": "error",
+    "no-unexpected-multiline": "error",
+    "no-unused-vars": "error",
+    "no-unreachable": "error",
+    "no-var": "error",
+    "object-curly-spacing": "off",
+    "operator-assignment": "error",
+    "prefer-destructuring": "error",
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"]
   }
 }
