@@ -1,0 +1,1213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="hu" datatype="plaintext" original="file.ext">
+        <body>
+			<trans-unit id="menu.back">
+				<source>menu.back</source>
+				<target>Vissza</target>
+			</trans-unit>
+			<trans-unit id="menu.homepage">
+				<source>menu.homepage</source>
+				<target>Főoldal</target>
+			</trans-unit>
+			<trans-unit id="menu.catalog">
+				<source>menu.catalog</source>
+				<target>Katalógus</target>
+			</trans-unit>
+			<trans-unit id="menu.add_new">
+				<source>menu.add_new</source>
+				<target>Új hozzáadása</target>
+			</trans-unit>
+			<trans-unit id="menu.settings">
+				<source>menu.settings</source>
+				<target>Beállítások</target>
+			</trans-unit>
+			<trans-unit id="menu.my_properties">
+				<source>menu.my_properties</source>
+				<target>Saját tulajdonok</target>
+			</trans-unit>
+			<trans-unit id="menu.unpublished">
+				<source>menu.unpublished</source>
+				<target>Publikálatlan</target>
+			</trans-unit>
+			<trans-unit id="menu.admin">
+				<source>menu.admin</source>
+				<target>Adminisztráció</target>
+			</trans-unit>
+			<trans-unit id="menu.account">
+				<source>menu.account</source>
+				<target>Fiók</target>
+			</trans-unit>
+			<trans-unit id="menu.edit_profile">
+				<source>menu.edit_profile</source>
+				<target>Profil szerkesztése</target>
+			</trans-unit>
+			<trans-unit id="menu.login">
+				<source>menu.login</source>
+				<target>Bejelentkezés</target>
+			</trans-unit>
+			<trans-unit id="menu.register">
+				<source>menu.register</source>
+				<target>Regisztráció</target>
+			</trans-unit>
+			<trans-unit id="menu.profile">
+				<source>menu.profile</source>
+				<target>Saját profilom</target>
+			</trans-unit>
+			<trans-unit id="menu.security">
+				<source>menu.security</source>
+				<target>Biztonság</target>
+			</trans-unit>
+			<trans-unit id="menu.password">
+				<source>menu.password</source>
+				<target>Jelszó megváltoztatása</target>
+			</trans-unit>
+			<trans-unit id="menu.google_auth">
+				<source>menu.google_auth</source>
+				<target>Google Authenticator beállítása</target>
+			</trans-unit>
+			<trans-unit id="menu.logout">
+				<source>menu.logout</source>
+				<target>Kijelentkezés</target>
+			</trans-unit>
+
+			<trans-unit id="yes">
+				<source>yes</source>
+				<target>Igen</target>
+			</trans-unit>
+			<trans-unit id="no_items_found">
+				<source>no_items_found</source>
+				<target>Nincs találat.</target>
+			</trans-unit>
+			<trans-unit id="view_details">
+				<source>view_details</source>
+				<target>Részletek megtekintése</target>
+			</trans-unit>
+			<trans-unit id="show_on_map">
+				<source>show_on_map</source>
+				<target>Mutatás a térképen</target>
+			</trans-unit>
+
+			<trans-unit id="dashboard">
+				<source>dashboard</source>
+				<target>Irányítópult</target>
+			</trans-unit>
+			<trans-unit id="properties">
+				<source>properties</source>
+				<target>Tulajdonságok</target>
+			</trans-unit>
+			<trans-unit id="locations">
+				<source>locations</source>
+				<target>Helyek</target>
+			</trans-unit>
+			<trans-unit id="cities">
+				<source>cities</source>
+				<target>Városok</target>
+			</trans-unit>
+			<trans-unit id="neighborhoods">
+				<source>neighborhoods</source>
+				<target>Környékek</target>
+			</trans-unit>
+			<trans-unit id="districts">
+				<source>districts</source>
+				<target>Kerületek</target>
+			</trans-unit>
+			<trans-unit id="metro_stations">
+				<source>metro_stations</source>
+				<target>Metróállomások</target>
+			</trans-unit>
+			<trans-unit id="deal_types">
+				<source>deal_types</source>
+				<target>Ügylet típusok</target>
+			</trans-unit>
+            <trans-unit id="categories">
+				<source>categories</source>
+				<target>Kategóriák</target>
+			</trans-unit>
+			<trans-unit id="features">
+				<source>features</source>
+				<target>Jellemzők</target>
+			</trans-unit>
+			<trans-unit id="currencies">
+				<source>currencies</source>
+				<target>Pénznemek</target>
+			</trans-unit>
+			<trans-unit id="pages">
+				<source>pages</source>
+				<target>Oldalak</target>
+			</trans-unit>
+			<trans-unit id="users">
+				<source>users</source>
+				<target>Felhasználók</target>
+			</trans-unit>
+			<trans-unit id="menu">
+				<source>menu</source>
+				<target>Menü</target>
+			</trans-unit>
+			<trans-unit id="property">
+				<source>property</source>
+				<target>Tulajdon</target>
+			</trans-unit>
+			<trans-unit id="city">
+				<source>city</source>
+				<target>Város</target>
+			</trans-unit>
+			<trans-unit id="neighborhood">
+				<source>neighborhood</source>
+				<target>Környék</target>
+			</trans-unit>
+			<trans-unit id="district">
+				<source>district</source>
+				<target>Kerület</target>
+			</trans-unit>
+			<trans-unit id="metro_station">
+				<source>metro_station</source>
+				<target>Metróállomás</target>
+			</trans-unit>
+			<trans-unit id="deal_type">
+				<source>deal_type</source>
+				<target>Ügylet Típus</target>
+			</trans-unit>
+			<trans-unit id="category">
+				<source>category</source>
+				<target>Kategória</target>
+			</trans-unit>
+			<trans-unit id="feature">
+				<source>feature</source>
+				<target>Jellemző</target>
+			</trans-unit>
+			<trans-unit id="page">
+				<source>page</source>
+				<target>Oldal</target>
+			</trans-unit>
+			<trans-unit id="user">
+				<source>user</source>
+				<target>Felhasználó</target>
+			</trans-unit>
+			<trans-unit id="photo">
+				<source>photo</source>
+				<target>Fotó</target>
+			</trans-unit>
+
+            <trans-unit id="message.created">
+				<source>message.created</source>
+				<target>Sikeresen létrehozva</target>
+			</trans-unit>
+			<trans-unit id="message.updated">
+				<source>message.updated</source>
+				<target>Sikeresen frissítve</target>
+			</trans-unit>
+			<trans-unit id="message.deleted">
+				<source>message.deleted</source>
+				<target>Sikeresen törölve</target>
+			</trans-unit>
+			<trans-unit id="message.uploaded">
+				<source>message.uploaded</source>
+				<target>Fotó sikeresen feltöltve</target>
+			</trans-unit>
+			<trans-unit id="message.was_sent">
+				<source>message.was_sent</source>
+				<target>Az üzeneted sikeresen elküldtük. Köszönjük.</target>
+			</trans-unit>
+			<trans-unit id="message.registration_suspended">
+				<source>message.registration_suspended</source>
+				<target>Az új felhasználók regisztrációja ideiglenesen felfüggesztve lett.</target>
+			</trans-unit>
+			<trans-unit id="message.token_expired">
+				<source>message.token_expired</source>
+				<target>Sajnáljuk, a tokened lejárt. Kérjük, próbáld újra.</target>
+			</trans-unit>
+			<trans-unit id="message.password_has_been_reset">
+				<source>message.password_has_been_reset</source>
+				<target>A jelszavad sikeresen megváltoztatva. Most már bejelentkezhetsz az új jelszóval.</target>
+			</trans-unit>
+			<trans-unit id="message.emailed_reset_link">
+				<source>message.emailed_reset_link</source>
+				<target>Elküldtük e-mailben a jelszavad visszaállításához szükséges linket!</target>
+			</trans-unit>
+			<trans-unit id="message.email_verified">
+				<source>message.email_verified</source>
+				<target>Email címed sikeresen megerősítve.</target>
+			</trans-unit>
+			<trans-unit id="message.confirm_email">
+				<source>message.confirm_email</source>
+				<target>
+					Az accountod használatához megerősítésre van szükség az email címedre.
+					Ellenőrizd az email fiókodat és keresd meg a megerősítő emailt.
+					Kövesd az emailben található utasításokat a cím megerősítéséhez.
+				</target>
+			</trans-unit>
+
+			<trans-unit id="widget.contact_information">
+				<source>widget.contact_information</source>
+				<target>Kapcsolatfelvételi információk</target>
+			</trans-unit>
+			<trans-unit id="widget.agent">
+				<source>widget.agent</source>
+				<target>Ügynök</target>
+			</trans-unit>
+			<trans-unit id="widget.phone">
+				<source>widget.phone</source>
+				<target>Telefon</target>
+			</trans-unit>
+			<trans-unit id="widget.call">
+				<source>widget.call</source>
+				<target>Hívj minket</target>
+			</trans-unit>
+			<trans-unit id="widget.email">
+				<source>widget.email</source>
+				<target>Email</target>
+			</trans-unit>
+            <trans-unit id="widget.email_us">
+				<source>widget.email_us</source>
+				<target>Küldj nekünk e-mailt</target>
+			</trans-unit>
+			<trans-unit id="widget.search">
+				<source>widget.search</source>
+				<target>Keresés</target>
+			</trans-unit>
+			<trans-unit id="widget.all_cities">
+				<source>widget.all_cities</source>
+				<target>Minden város</target>
+			</trans-unit>
+			<trans-unit id="widget.all_deal_types">
+				<source>widget.all_deal_types</source>
+				<target>Minden ügylet típus</target>
+			</trans-unit>
+			<trans-unit id="widget.all_categories">
+				<source>widget.all_categories</source>
+				<target>Minden kategória</target>
+			</trans-unit>
+			<trans-unit id="widget.all_features">
+				<source>widget.all_features</source>
+				<target>Minden jellemző</target>
+			</trans-unit>
+
+			<trans-unit id="action.search">
+				<source>action.search</source>
+				<target>Keresés</target>
+			</trans-unit>
+			<trans-unit id="action.save">
+				<source>action.save</source>
+				<target>Változtatások mentése</target>
+			</trans-unit>
+			<trans-unit id="action.edit">
+				<source>action.edit</source>
+				<target>Szerkesztés</target>
+			</trans-unit>
+			<trans-unit id="action.finish_editing">
+				<source>action.finish_editing</source>
+				<target>Szerkesztés befejezése</target>
+			</trans-unit>
+			<trans-unit id="action.edit_photos">
+				<source>action.edit_photos</source>
+				<target>Fotók szerkesztése</target>
+			</trans-unit>
+			<trans-unit id="action.reorder_photos">
+				<source>action.reorder_photos</source>
+				<target>Fotók újrarendezése</target>
+			</trans-unit>
+			<trans-unit id="action.save_reordering">
+				<source>action.save_reordering</source>
+				<target>Újrarendezés mentése</target>
+			</trans-unit>
+			<trans-unit id="action.delete">
+				<source>action.delete</source>
+				<target>Törlés</target>
+			</trans-unit>
+			<trans-unit id="action.sign_in">
+				<source>action.sign_in</source>
+				<target>Bejelentkezés</target>
+			</trans-unit>
+			<trans-unit id="action.register">
+				<source>action.register</source>
+				<target>Fiók létrehozása</target>
+			</trans-unit>
+			<trans-unit id="action.forgot_password">
+				<source>action.forgot_password</source>
+				<target>Elfelejtett jelszó?</target>
+			</trans-unit>
+			<trans-unit id="action.send_reset_link">
+				<source>action.send_reset_link</source>
+				<target>Jelszó visszaállítás link elküldése</target>
+			</trans-unit>
+			<trans-unit id="action.add_menu_item">
+				<source>action.add_menu_item</source>
+				<target>Menüelem hozzáadása</target>
+			</trans-unit>
+			<trans-unit id="action.submit">
+				<source>action.submit</source>
+				<target>Elküldés</target>
+			</trans-unit>
+			<trans-unit id="action.continue">
+				<source>action.continue</source>
+				<target>Folytatás</target>
+			</trans-unit>
+			<trans-unit id="action.publish">
+				<source>action.publish</source>
+				<target>Közzététel</target>
+			</trans-unit>
+			<trans-unit id="action.unpublish">
+				<source>action.unpublish</source>
+				<target>Publikálás visszavonása</target>
+			</trans-unit>
+			<trans-unit id="action.cancel">
+				<source>action.cancel</source>
+				<target>Mégse</target>
+			</trans-unit>
+
+			<trans-unit id="table.link_text">
+				<source>table.link_text</source>
+				<target>Link szöveg</target>
+			</trans-unit>
+			<trans-unit id="table.url">
+				<source>table.url</source>
+				<target>URL</target>
+			</trans-unit>
+			<trans-unit id="table.move">
+				<source>table.move</source>
+				<target>Mozgatás</target>
+			</trans-unit>
+			<trans-unit id="table.city_name">
+				<source>table.city_name</source>
+				<target>Város neve</target>
+			</trans-unit>
+			<trans-unit id="table.deal_type">
+				<source>table.deal_type</source>
+				<target>Ügylet Típus</target>
+			</trans-unit>
+			<trans-unit id="table.category_name">
+				<source>table.category_name</source>
+				<target>Kategória neve</target>
+			</trans-unit>
+			<trans-unit id="table.currency_title">
+				<source>table.currency_title</source>
+				<target>Pénznem címe</target>
+			</trans-unit>
+			<trans-unit id="table.code">
+				<source>table.code</source>
+				<target>Kód</target>
+			</trans-unit>
+			<trans-unit id="table.username">
+				<source>table.username</source>
+				<target>Felhasználónév</target>
+			</trans-unit>
+			<trans-unit id="table.email">
+				<source>table.email</source>
+				<target>Email</target>
+			</trans-unit>
+			<trans-unit id="table.slug">
+				<source>table.slug</source>
+				<target>Slug</target>
+			</trans-unit>
+			<trans-unit id="table.action">
+				<source>table.action</source>
+				<target>Művelet</target>
+			</trans-unit>
+
+			<trans-unit id="confirmation.delete_item">
+				<source>confirmation.delete_item</source>
+				<target>Biztosan törölni szeretné ezt az elemet?</target>
+			</trans-unit>
+			<trans-unit id="confirmation.delete_photo">
+				<source>confirmation.delete_photo</source>
+				<target>Biztosan törölni szeretné ezt a fotót?</target>
+			</trans-unit>
+			<trans-unit id="confirmation.delete_user">
+				<source>confirmation.delete_user</source>
+				<target>Biztosan törölni szeretné ezt a felhasználót?</target>
+			</trans-unit>
+
+			<trans-unit id="title.menu">
+				<source>title.menu</source>
+				<target>Menü</target>
+			</trans-unit>
+			<trans-unit id="title.my_profile">
+				<source>title.my_profile</source>
+				<target>Saját profilom</target>
+			</trans-unit>
+			<trans-unit id="title.security">
+				<source>title.security</source>
+				<target>Biztonság</target>
+			</trans-unit>
+			<trans-unit id="title.my_properties">
+				<source>title.my_properties</source>
+				<target>Saját tulajdonságaim</target>
+			</trans-unit>
+			<trans-unit id="title.properties_on_map">
+				<source>title.properties_on_map</source>
+				<target>Az összes tulajdonság a térképen</target>
+			</trans-unit>
+			<trans-unit id="title.login">
+				<source>title.login</source>
+				<target>Biztonságos bejelentkezés</target>
+			</trans-unit>
+			<trans-unit id="title.register">
+				<source>title.register</source>
+				<target>Regisztráció</target>
+			</trans-unit>
+			<trans-unit id="title.reset_password">
+				<source>title.reset_password</source>
+				<target>Jelszó visszaállítása</target>
+			</trans-unit>
+			<trans-unit id="title.set_new_pass">
+				<source>title.set_new_pass</source>
+				<target>Új jelszó beállítása</target>
+			</trans-unit>
+			<trans-unit id="title.pages">
+				<source>title.pages</source>
+				<target>Oldalak</target>
+			</trans-unit>
+			<trans-unit id="title.latest_properties">
+				<source>title.latest_properties</source>
+				<target>Legújabb tulajdonságok</target>
+			</trans-unit>
+			<trans-unit id="title.add_page">
+				<source>title.add_page</source>
+				<target>Oldal hozzáadása</target>
+			</trans-unit>
+			<trans-unit id="title.edit_page">
+				<source>title.edit_page</source>
+				<target>Oldal szerkesztése</target>
+			</trans-unit>
+			<trans-unit id="title.add_property">
+				<source>title.add_property</source>
+				<target>Tulajdonság hozzáadása</target>
+			</trans-unit>
+			<trans-unit id="title.edit_property">
+				<source>title.edit_property</source>
+				<target>Tulajdonság szerkesztése</target>
+			</trans-unit>
+			<trans-unit id="title.add_city">
+				<source>title.add_city</source>
+				<target>Város hozzáadása</target>
+			</trans-unit>
+			<trans-unit id="title.edit_city">
+				<source>title.edit_city</source>
+				<target>Város szerkesztése</target>
+			</trans-unit>
+			<trans-unit id="title.add_neighborhood">
+				<source>title.add_neighborhood</source>
+				<target>Környék hozzáadása</target>
+			</trans-unit>
+			<trans-unit id="title.add_district">
+				<source>title.add_district</source>
+				<target>Kerület hozzáadása</target>
+			</trans-unit>
+			<trans-unit id="title.add_metro_station">
+				<source>title.add_metro_station</source>
+				<target>Metró állomás hozzáadása</target>
+			</trans-unit>
+			<trans-unit id="title.edit_neighborhood">
+				<source>title.edit_neighborhood</source>
+				<target>Környék szerkesztése</target>
+			</trans-unit>
+			<trans-unit id="title.edit_district">
+				<source>title.edit_district</source>
+				<target>Kerület szerkesztése</target>
+			</trans-unit>
+			<trans-unit id="title.edit_metro_station">
+				<source>title.edit_metro_station</source>
+				<target>Metró állomás szerkesztése</target>
+			</trans-unit>
+			<trans-unit id="title.add_deal_type">
+				<source>title.add_deal_type</source>
+				<target>Új ügylet típus hozzáadása</target>
+			</trans-unit>
+			<trans-unit id="title.edit_deal_type">
+				<source>title.edit_deal_type</source>
+				<target>Ügylet típus szerkesztése</target>
+			</trans-unit>
+			<trans-unit id="title.add_category">
+				<source>title.add_category</source>
+				<target>Új kategória hozzáadása</target>
+			</trans-unit>
+			<trans-unit id="title.edit_category">
+				<source>title.edit_category</source>
+				<target>Kategória szerkesztése</target>
+			</trans-unit>
+			<trans-unit id="title.add_feature">
+				<source>title.add_feature</source>
+				<target>Új jellemző hozzáadása</target>
+			</trans-unit>
+			<trans-unit id="title.edit_feature">
+				<source>title.edit_feature</source>
+				<target>Jellemző szerkesztése</target>
+			</trans-unit>
+			<trans-unit id="title.add_currency">
+				<source>title.add_currency</source>
+				<target>Új pénznem hozzáadása</target>
+			</trans-unit>
+			<trans-unit id="title.edit_currency">
+				<source>title.edit_currency</source>
+				<target>Pénznem szerkesztése</target>
+			</trans-unit>
+			<trans-unit id="title.add_user">
+				<source>title.add_user</source>
+				<target>Új felhasználó hozzáadása</target>
+			</trans-unit>
+			<trans-unit id="title.edit_user">
+				<source>title.edit_user</source>
+				<target>Felhasználó szerkesztése</target>
+			</trans-unit>
+			<trans-unit id="title.add_menu_item">
+				<source>title.add_menu_item</source>
+				<target>Menüelem hozzáadása</target>
+			</trans-unit>
+			<trans-unit id="title.edit_menu_item">
+				<source>title.edit_menu_item</source>
+				<target>Menüelem szerkesztése</target>
+			</trans-unit>
+			<trans-unit id="title.upload_photos">
+				<source>title.upload_photos</source>
+				<target>Fotók feltöltése</target>
+			</trans-unit>
+			<trans-unit id="title.settings">
+				<source>title.settings</source>
+				<target>Beállítások</target>
+			</trans-unit>
+			<trans-unit id="title.settings.header_settings">
+				<source>title.settings.header_settings</source>
+				<target>Fejléc beállítások</target>
+			</trans-unit>
+			<trans-unit id="title.settings.map_settings">
+				<source>title.settings.map_settings</source>
+				<target>Térkép beállítások</target>
+			</trans-unit>
+			<trans-unit id="title.settings.logo_image_label">
+				<source>title.settings.logo_image_label</source>
+				<target>Webhely logója</target>
+			</trans-unit>
+			<trans-unit id="title.settings.header_image_label">
+				<source>title.settings.header_image_label</source>
+				<target>Fejléc képe</target>
+			</trans-unit>
+
+			<trans-unit id="label.remember_me">
+				<source>label.remember_me</source>
+				<target>Tartsa bejelentkezve</target>
+			</trans-unit>
+			<trans-unit id="label.settings.name">
+				<source>label.settings.name</source>
+				<target>Webhely neve</target>
+			</trans-unit>
+			<trans-unit id="label.settings.title">
+				<source>label.settings.title</source>
+				<target>Webhely címe</target>
+			</trans-unit>
+			<trans-unit id="label.meta_title">
+				<source>label.meta_title</source>
+				<target>Meta Cím</target>
+			</trans-unit>
+			<trans-unit id="label.meta_description">
+				<source>label.meta_description</source>
+				<target>Meta Leírás</target>
+			</trans-unit>
+			<trans-unit id="label.settings.code">
+				<source>label.settings.code</source>
+				<target>Egyedi kód a fejlécben (Google Analytics stb.)</target>
+			</trans-unit>
+			<trans-unit id="label.settings.custom_footer_text">
+				<source>label.settings.custom_footer_text</source>
+				<target>Egyedi lábléc szövege</target>
+			</trans-unit>
+			<trans-unit id="label.settings.limit">
+				<source>label.settings.limit</source>
+				<target>Oldalankénti elemek száma</target>
+			</trans-unit>
+			<trans-unit id="label.settings.show_language_selector">
+				<source>label.settings.show_language_selector</source>
+				<target>Nyelvválasztó megjelenítése</target>
+			</trans-unit>
+			<trans-unit id="label.settings.show_bottom_bar">
+				<source>label.settings.show_bottom_bar</source>
+				<target>Alsó sáv megjelenítése</target>
+			</trans-unit>
+			<trans-unit id="label.settings.anyone_can_register">
+				<source>label.settings.anyone_can_register</source>
+				<target>Bárki regisztrálhat</target>
+			</trans-unit>
+			<trans-unit id="label.settings.allow_html">
+				<source>label.settings.allow_html</source>
+				<target>HTML használatának engedélyezése a felhasználóknak</target>
+			</trans-unit>
+			<trans-unit id="label.settings.currency">
+				<source>label.settings.currency</source>
+				<target>Pénznem</target>
+			</trans-unit>
+			<trans-unit id="label.settings.fixed_top_navbar">
+				<source>label.settings.fixed_top_navbar</source>
+				<target>Rögzített felső navigációs sáv</target>
+			</trans-unit>
+			<trans-unit id="label.settings.show_similar_properties">
+				<source>label.settings.show_similar_properties</source>
+				<target>Hasonló tulajdonságok megjelenítése</target>
+			</trans-unit>
+			<trans-unit id="label.settings.ymaps_key">
+				<source>label.settings.ymaps_key</source>
+				<target>Yandex.Maps JavaScript API kulcs</target>
+			</trans-unit>
+			<trans-unit id="label.settings.map_center">
+				<source>label.settings.map_center</source>
+				<target>Térkép középpontja</target>
+			</trans-unit>
+			<trans-unit id="label.settings.map_zoom">
+				<source>label.settings.map_zoom</source>
+				<target>Nagyítási szint. Elfogadható értékek: 0-tól (az egész világ) 19-ig</target>
+			</trans-unit>
+			<trans-unit id="label.settings.show_filter_by_city">
+				<source>label.settings.show_filter_by_city</source>
+				<target>Város szűrő megjelenítése</target>
+			</trans-unit>
+			<trans-unit id="label.settings.show_filter_by_deal_type">
+				<source>label.settings.show_filter_by_deal_type</source>
+				<target>Ügylet típus szűrő megjelenítése</target>
+			</trans-unit>
+			<trans-unit id="label.settings.show_filter_by_category">
+				<source>label.settings.show_filter_by_category</source>
+				<target>Kategória szűrő megjelenítése</target>
+			</trans-unit>
+			<trans-unit id="label.settings.show_filter_by_bedrooms">
+				<source>label.settings.show_filter_by_bedrooms</source>
+				<target>Hálószoba szűrő megjelenítése</target>
+			</trans-unit>
+			<trans-unit id="label.settings.show_filter_by_guests">
+				<source>label.settings.show_filter_by_guests</source>
+				<target>Vendég szűrő megjelenítése</target>
+			</trans-unit>
+			<trans-unit id="label.settings.show_filter_by_features">
+				<source>label.settings.show_filter_by_features</source>
+				<target>Jellemző szűrő megjelenítése</target>
+			</trans-unit>
+			<trans-unit id="label.roles.admin">
+				<source>label.roles.admin</source>
+				<target>Adminisztrátor jogok</target>
+			</trans-unit>
+			<trans-unit id="label.full_name">
+				<source>label.full_name</source>
+				<target>Teljes név</target>
+			</trans-unit>
+			<trans-unit id="label.username">
+				<source>label.username</source>
+				<target>Felhasználónév</target>
+			</trans-unit>
+			<trans-unit id="label.phone">
+				<source>label.phone</source>
+				<target>Telefonszám</target>
+			</trans-unit>
+			<trans-unit id="label.email">
+				<source>label.email</source>
+				<target>Email</target>
+			</trans-unit>
+			<trans-unit id="label.email_verified">
+				<source>label.email_verified</source>
+				<target>Email ellenőrizve</target>
+			</trans-unit>
+			<trans-unit id="label.agree">
+				<source>label.agree</source>
+				<target>Elfogadom a felhasználási feltételeket.</target>
+			</trans-unit>
+			<trans-unit id="label.password">
+				<source>label.password</source>
+				<target>Jelszó</target>
+			</trans-unit>
+			<trans-unit id="label.new_password">
+				<source>label.new_password</source>
+				<target>Új jelszó</target>
+			</trans-unit>
+			<trans-unit id="label.confirm_password">
+				<source>label.confirm_password</source>
+				<target>Új jelszó megerősítése</target>
+			</trans-unit>
+			<trans-unit id="label.name">
+				<source>label.name</source>
+				<target>Név</target>
+			</trans-unit>
+			<trans-unit id="label.slug">
+				<source>label.slug</source>
+				<target>Slug</target>
+			</trans-unit>
+			<trans-unit id="label.currency_title">
+				<source>label.currency_title</source>
+				<target>Pénznem címe</target>
+			</trans-unit>
+			<trans-unit id="label.code">
+				<source>label.code</source>
+				<target>Kód</target>
+			</trans-unit>
+			<trans-unit id="label.symbol_left">
+				<source>label.symbol_left</source>
+				<target>Bal oldali jel</target>
+			</trans-unit>
+			<trans-unit id="label.symbol_right">
+				<source>label.symbol_right</source>
+				<target>Jobb oldali jel</target>
+			</trans-unit>
+			<trans-unit id="label.photo">
+				<source>label.photo</source>
+				<target>Fotó</target>
+			</trans-unit>
+            <trans-unit id="label.city">
+				<source>label.city</source>
+				<target>Város</target>
+			</trans-unit>
+			<trans-unit id="label.neighborhood">
+				<source>label.neighborhood</source>
+				<target>Környék</target>
+			</trans-unit>
+			<trans-unit id="label.district">
+				<source>label.district</source>
+				<target>Kerület</target>
+			</trans-unit>
+			<trans-unit id="label.neighborhood_name">
+				<source>label.neighborhood_name</source>
+				<target>Környék neve</target>
+			</trans-unit>
+			<trans-unit id="label.district_name">
+				<source>label.district_name</source>
+				<target>Kerület neve</target>
+			</trans-unit>
+			<trans-unit id="label.metro_station_name">
+				<source>label.metro_station_name</source>
+				<target>Metroállomás neve</target>
+			</trans-unit>
+			<trans-unit id="label.deal_type">
+				<source>label.deal_type</source>
+				<target>Ügylet típusa</target>
+			</trans-unit>
+			<trans-unit id="label.category">
+				<source>label.category</source>
+				<target>Kategória</target>
+			</trans-unit>
+			<trans-unit id="label.features">
+				<source>label.features</source>
+				<target>Jellemzők</target>
+			</trans-unit>
+			<trans-unit id="label.priority_number">
+				<source>label.priority_number</source>
+				<target>Hirdetés prioritási száma</target>
+			</trans-unit>
+			<trans-unit id="label.priority_number.help">
+				<source>label.priority_number.help</source>
+				<target>Az alapértelmezett prioritás nulla; az alapértelmezett relativitásához a prioritás magasabb lehet (pozitív számok) vagy alacsonyabb (negatív számok).</target>
+			</trans-unit>
+			<trans-unit id="label.agent">
+				<source>label.agent</source>
+				<target>Ügynök</target>
+			</trans-unit>
+			<trans-unit id="label.moderation_status">
+				<source>label.moderation_status</source>
+				<target>Moderációs állapot</target>
+			</trans-unit>
+			<trans-unit id="option.published">
+				<source>option.published</source>
+				<target>Megjelent</target>
+			</trans-unit>
+			<trans-unit id="option.private">
+				<source>option.private</source>
+				<target>Privát</target>
+			</trans-unit>
+			<trans-unit id="option.pending">
+				<source>option.pending</source>
+				<target>Függőben lévő felülvizsgálat</target>
+			</trans-unit>
+			<trans-unit id="option.rejected">
+				<source>option.rejected</source>
+				<target>Visszautasított</target>
+			</trans-unit>
+			<trans-unit id="option.all">
+				<source>option.all</source>
+				<target>Összes</target>
+			</trans-unit>
+			<trans-unit id="label.feature">
+				<source>label.feature</source>
+				<target>Jellemző neve</target>
+			</trans-unit>
+			<trans-unit id="label.custom_icon">
+				<source>label.custom_icon</source>
+				<target>Egyedi ikon (opcionális)</target>
+			</trans-unit>
+			<trans-unit id="label.bathrooms_number">
+				<source>label.bathrooms_number</source>
+				<target>Fürdőszobák száma</target>
+			</trans-unit>
+			<trans-unit id="label.bedrooms_number">
+				<source>label.bedrooms_number</source>
+				<target>Hálószobák száma</target>
+			</trans-unit>
+			<trans-unit id="label.max_guests">
+				<source>label.max_guests</source>
+				<target>Max. vendégek</target>
+			</trans-unit>
+			<trans-unit id="label.guests">
+				<source>label.guests</source>
+				<target>Vendégek</target>
+			</trans-unit>
+			<trans-unit id="label.title">
+				<source>label.title</source>
+				<target>Cím</target>
+			</trans-unit>
+			<trans-unit id="label.link_text">
+				<source>label.link_text</source>
+				<target>Hivatkozás szövege</target>
+			</trans-unit>
+			<trans-unit id="label.url">
+				<source>label.url</source>
+				<target>URL</target>
+			</trans-unit>
+			<trans-unit id="label.locale">
+				<source>label.locale</source>
+				<target>Nyelv</target>
+			</trans-unit>
+			<trans-unit id="label.new_tab">
+				<source>label.new_tab</source>
+				<target>Új lapon megnyitás</target>
+			</trans-unit>
+			<trans-unit id="label.nofollow">
+				<source>label.nofollow</source>
+				<target>Nofollow</target>
+			</trans-unit>
+			<trans-unit id="label.description">
+				<source>label.description</source>
+				<target>Leírás</target>
+			</trans-unit>
+			<trans-unit id="label.address">
+				<source>label.address</source>
+				<target>Cím</target>
+			</trans-unit>
+			<trans-unit id="label.latitude">
+				<source>label.latitude</source>
+				<target>Szélességi fok</target>
+			</trans-unit>
+			<trans-unit id="label.longitude">
+				<source>label.longitude</source>
+				<target>Hosszúsági fok</target>
+			</trans-unit>
+			<trans-unit id="label.show_map">
+				<source>label.show_map</source>
+				<target>Térkép megjelenítése</target>
+			</trans-unit>
+			<trans-unit id="label.price">
+				<source>label.price</source>
+				<target>Ár</target>
+			</trans-unit>
+			<trans-unit id="label.price_type">
+				<source>label.price_type</source>
+				<target>Ár típusa</target>
+			</trans-unit>
+			<trans-unit id="label.available_now">
+				<source>label.available_now</source>
+				<target>Most elérhető</target>
+			</trans-unit>
+			<trans-unit id="label.content">
+				<source>label.content</source>
+				<target>Tartalom</target>
+			</trans-unit>
+			<trans-unit id="label.show_in_menu">
+				<source>label.show_in_menu</source>
+				<target>Megjelenítés a menüben</target>
+			</trans-unit>
+			<trans-unit id="label.add_contact_form">
+				<source>label.add_contact_form</source>
+				<target>Kapcsolatfelvételi űrlap hozzáadása</target>
+			</trans-unit>
+			<trans-unit id="label.contact_email_address">
+				<source>label.contact_email_address</source>
+				<target>Kapcsolati e-mail cím</target>
+			</trans-unit>
+			<trans-unit id="label.message">
+				<source>label.message</source>
+				<target>Üzenet</target>
+			</trans-unit>
+			<trans-unit id="label.create_category">
+				<source>label.create_category</source>
+				<target>Kategória létrehozása</target>
+			</trans-unit>
+			<trans-unit id="label.create_currency">
+				<source>label.create_currency</source>
+				<target>Pénznem létrehozása</target>
+			</trans-unit>
+			<trans-unit id="label.create_feature">
+				<source>label.create_feature</source>
+				<target>Jellemző létrehozása</target>
+			</trans-unit>
+			<trans-unit id="label.create_deal_type">
+				<source>label.create_deal_type</source>
+				<target>Ügylet típusának létrehozása</target>
+			</trans-unit>
+			<trans-unit id="label.create_city">
+				<source>label.create_city</source>
+				<target>Város létrehozása</target>
+			</trans-unit>
+			<trans-unit id="label.create_neighborhood">
+				<source>label.create_neighborhood</source>
+				<target>Környék létrehozása</target>
+			</trans-unit>
+			<trans-unit id="label.create_district">
+				<source>label.create_district</source>
+				<target>Kerület létrehozása</target>
+			</trans-unit>
+			<trans-unit id="label.create_metro_station">
+				<source>label.create_metro_station</source>
+				<target>Metroállomás létrehozása</target>
+			</trans-unit>
+			<trans-unit id="label.create_page">
+				<source>label.create_page</source>
+				<target>Oldal létrehozása</target>
+			</trans-unit>
+			<trans-unit id="label.create_property">
+				<source>label.create_property</source>
+				<target>Ingatlan létrehozása</target>
+			</trans-unit>
+			<trans-unit id="label.create_user">
+				<source>label.create_user</source>
+				<target>Felhasználó létrehozása</target>
+			</trans-unit>
+			<trans-unit id="label.save_and_create_new">
+				<source>label.save_and_create_new</source>
+				<target>Mentés és új létrehozása</target>
+			</trans-unit>
+			<trans-unit id="label.sort_by">
+				<source>label.sort_by</source>
+				<target>Rendezési sorrend</target>
+			</trans-unit>
+
+			<trans-unit id="option.on">
+				<source>option.on</source>
+				<target>Bekapcsolva</target>
+			</trans-unit>
+			<trans-unit id="option.off">
+				<source>option.off</source>
+				<target>Kikapcsolva</target>
+			</trans-unit>
+			<trans-unit id="option.any">
+				<source>option.any</source>
+				<target>Bármi</target>
+			</trans-unit>
+			<trans-unit id="option.bedroom">
+				<source>option.bedroom</source>
+				<target>hálószoba</target>
+			</trans-unit>
+			<trans-unit id="option.bedrooms">
+				<source>option.bedrooms</source>
+				<target>hálószobák</target>
+			</trans-unit>
+			<trans-unit id="option.priority">
+				<source>option.priority</source>
+				<target>Prioritás</target>
+			</trans-unit>
+			<trans-unit id="option.latest">
+				<source>option.latest</source>
+				<target>Legfrissebb</target>
+			</trans-unit>
+
+			<trans-unit id="password.change">
+				<source>password.change</source>
+				<target>Jelszó megváltoztatása</target>
+			</trans-unit>
+			<trans-unit id="password.length">
+				<source>password.length</source>
+				<target>Minimum 10 karakter</target>
+			</trans-unit>
+			<trans-unit id="password.uppercase">
+				<source>password.uppercase</source>
+				<target>Nagybetűk</target>
+			</trans-unit>
+			<trans-unit id="password.lowercase">
+				<source>password.lowercase</source>
+				<target>Kisbetűk</target>
+			</trans-unit>
+			<trans-unit id="password.numbers">
+				<source>password.numbers</source>
+				<target>Számok</target>
+			</trans-unit>
+			<trans-unit id="password.match">
+				<source>password.match</source>
+				<target>A jelszavak megegyeznek</target>
+			</trans-unit>
+			<trans-unit id="password.progress">
+				<source>password.progress</source>
+				<target>A jelszó változtatása...</target>
+			</trans-unit>
+
+			<trans-unit id="placeholder.map_center_example">
+				<source>placeholder.map_center_example</source>
+				<target>például 27.188534, -81.128735</target>
+			</trans-unit>
+			<trans-unit id="placeholder.select_city">
+				<source>placeholder.select_city</source>
+				<target>Válassz várost</target>
+			</trans-unit>
+			<trans-unit id="placeholder.select_neighborhood">
+				<source>placeholder.select_neighborhood</source>
+				<target>Válassz egy környéket</target>
+			</trans-unit>
+			<trans-unit id="placeholder.select_district">
+				<source>placeholder.select_district</source>
+				<target>Válassz egy kerületet</target>
+			</trans-unit>
+			<trans-unit id="placeholder.select_metro_station">
+				<source>placeholder.select_metro_station</source>
+				<target>Válassz egy metróállomást</target>
+			</trans-unit>
+			<trans-unit id="placeholder.enter_email">
+				<source>placeholder.enter_email</source>
+				<target>Írd be az e-mail címed</target>
+			</trans-unit>
+			<trans-unit id="placeholder.example_icon">
+				<source>placeholder.example_icon</source>
+				<target>például &lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt;</target>
+			</trans-unit>
+
+			<trans-unit id="property.location">
+				<source>property.location</source>
+				<target>Helyszín</target>
+			</trans-unit>
+			<trans-unit id="property.deal_type">
+				<source>property.deal_type</source>
+				<target>Ügylet típusa</target>
+			</trans-unit>
+			<trans-unit id="property.category">
+				<source>property.category</source>
+				<target>Kategória</target>
+			</trans-unit>
+			<trans-unit id="property.bathrooms">
+				<source>property.bathrooms</source>
+				<target>Fürdőszobák</target>
+			</trans-unit>
+			<trans-unit id="property.bedrooms">
+				<source>property.bedrooms</source>
+				<target>Hálószobák</target>
+			</trans-unit>
+			<trans-unit id="property.max_guests">
+				<source>property.max_guests</source>
+				<target>Max. vendégek</target>
+			</trans-unit>
+			<trans-unit id="property.available_now">
+				<source>property.available_now</source>
+				<target>Most elérhető</target>
+			</trans-unit>
+			<trans-unit id="property.price">
+				<source>property.price</source>
+				<target>Ár</target>
+			</trans-unit>
+			<trans-unit id="similar_properties">
+				<source>similar_properties</source>
+				<target>Hasonló ingatlanok</target>
+			</trans-unit>
+			<trans-unit id="all_rights_reserved">
+				<source>all_rights_reserved</source>
+				<target>Minden jog fenntartva</target>
+			</trans-unit>
+			<trans-unit id="drag_photos">
+				<source>drag_photos</source>
+				<target>Húzd a fényképeket átrendezéshez</target>
+			</trans-unit>
+			<trans-unit id="click_save_reordering">
+				<source>click_save_reordering</source>
+				<target>Kattints a „Rendelés mentése” gombra, ha elkészültél.</target>
+			</trans-unit>
+			<trans-unit id="processing">
+				<source>processing</source>
+				<target>Kérlek, várj...</target>
+			</trans-unit>
+
+			<trans-unit id="2fa.google_authenticator_code">
+				<source>2fa.google_authenticator_code</source>
+				<target>Google Hitelesítő kód</target>
+			</trans-unit>
+			<trans-unit id="2fa.google_authenticator_code_label">
+				<source>2fa.google_authenticator_code_label</source>
+				<target>Add meg a Google Hitelesítő alkalmazásból kapott 6 számjegyű kódot</target>
+			</trans-unit>
+			<trans-unit id="2fa.buttons.authenticate">
+				<source>2fa.buttons.authenticate</source>
+				<target>Hitelesítés</target>
+			</trans-unit>
+			<trans-unit id="2fa.buttons.enable">
+				<source>2fa.buttons.enable</source>
+				<target>Kétlépcsős hitelesítés engedélyezése</target>
+			</trans-unit>
+			<trans-unit id="2fa.buttons.disable">
+				<source>2fa.buttons.disable</source>
+				<target>Kikapcsolás</target>
+			</trans-unit>
+			<trans-unit id="2fa.messages.scan">
+				<source>2fa.messages.scan</source>
+				<target>Kérjük, először pásztázd be a QR-kódot vagy írd be a privát kulcsot az alkalmazásba, majd add meg a Google Hitelesítő alkalmazásban megjelenő ellenőrző kódot az alábbi mezőbe.</target>
+			</trans-unit>
+			<trans-unit id="2fa.messages.enabled">
+				<source>2fa.messages.enabled</source>
+				<target>A kétlépcsős hitelesítés sikeresen engedélyezve</target>
+			</trans-unit>
+			<trans-unit id="2fa.messages.disabled">
+				<source>2fa.messages.disabled</source>
+				<target>A kétlépcsős hitelesítés sikeresen kikapcsolva</target>
+			</trans-unit>
+			<trans-unit id="2fa.messages.active">
+				<source>2fa.messages.active</source>
+				<target>A kétlépcsős hitelesítés aktív.</target>
+			</trans-unit>
+			<trans-unit id="2fa.errors.secret_is_already_set">
+				<source>2fa.errors.secret_is_already_set</source>
+				<target>A titok már be van állítva</target>
+			</trans-unit>
+			<trans-unit id="2fa.errors.cannot_enable_ga">
+				<source>2fa.errors.cannot_enable_ga</source>
+				<target>Nem lehet engedélyezni a Google Hitelesítőt</target>
+			</trans-unit>
+			<trans-unit id="2fa.errors.cannot_disable_ga">
+				<source>2fa.errors.cannot_disable_ga</source>
+				<target>Nem lehet kikapcsolni a Google Hitelesítőt</target>
+			</trans-unit>
+			<trans-unit id="2fa.errors.incorrect_ga_code">
+				<source>2fa.errors.incorrect_ga_code</source>
+				<target>A Google Hitelesítő kód helytelen vagy lejárt</target>
+			</trans-unit>
+
+			<trans-unit id="email.new_message">
+				<source>email.new_message</source>
+				<target>Új üzenet a webhelyedről</target>
+			</trans-unit>
+			<trans-unit id="resetting.email.subject">
+				<source>resetting.email.subject</source>
+				<target>Jelszó visszaállítása</target>
+			</trans-unit>
+			<trans-unit id="resetting.email.message">
+				<source>resetting.email.message</source>
+				<target>
+					Helló %username%!
+					A jelszavad visszaállításához - kérjük, látogass el a következő oldalra: %confirmationUrl%
+					Üdvözlettel, a csapat.
+				</target>
+			</trans-unit>
+			<trans-unit id="confirmation.email.resend">
+				<source>confirmation.email.resend</source>
+				<target>Ellenőrző hivatkozás újraküldése</target>
+			</trans-unit>
+			<trans-unit id="confirmation.email.success">
+				<source>confirmation.email.success</source>
+				<target>Az ellenőrző e-mail elküldve erre a címre:</target>
+			</trans-unit>
+			<trans-unit id="confirmation.email.subject">
+				<source>confirmation.email.subject</source>
+				<target>Kérjük, erősítsd meg az e-mail címedet</target>
+			</trans-unit>
+			<trans-unit id="confirmation.email.message">
+				<source>confirmation.email.message</source>
+				<target>
+					Helló!
+					Kérjük, erősítsd meg az e-mail címedet a következő hivatkozásra kattintva:
+					%signedUrl%
+
+					Ha nem tudsz a hivatkozásra kattintani, másold és illeszd be az URL-t a webböngésződbe.
+
+					A hivatkozás lejár %expiresAt% időpontban.
+
+					Ha nem te hoztad létre a fiókot, további teendőd nincs.
+					Üdvözlettel!
+				</target>
+			</trans-unit>
+        </body>
+    </file>
+</xliff>
