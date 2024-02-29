@@ -34,7 +34,7 @@ final class PhotoController extends BaseController
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Photo $photo, FileUploader $fileUploader): Response
     {
-        if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
+        if (!$this->isCsrfTokenValid('delete', $request->getPayload()->get('token'))) {
             return $this->redirectToRoute(
                 'admin_photo_edit',
                 ['id' => $request->attributes->get('property_id')]

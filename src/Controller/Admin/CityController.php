@@ -85,7 +85,7 @@ final class CityController extends BaseController
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, City $city, CityService $service): Response
     {
-        if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
+        if (!$this->isCsrfTokenValid('delete', $request->getPayload()->get('token'))) {
             return $this->redirectToRoute('admin_city');
         }
         $service->remove($city);

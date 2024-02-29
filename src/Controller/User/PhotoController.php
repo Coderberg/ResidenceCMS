@@ -36,7 +36,7 @@ final class PhotoController extends BaseController
     {
         $property = $photo->getProperty();
 
-        if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
+        if (!$this->isCsrfTokenValid('delete', $request->getPayload()->get('token'))) {
             return $this->redirectToRoute(
                 'user_photo_edit',
                 ['id' => $property->getId()]

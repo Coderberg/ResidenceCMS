@@ -85,7 +85,7 @@ final class MenuController extends BaseController
     #[Route(path: '/admin/menu/{id<\d+>}/delete', name: 'admin_menu_delete', methods: ['GET', 'POST'])]
     public function delete(Request $request, Menu $menu): Response
     {
-        if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
+        if (!$this->isCsrfTokenValid('delete', $request->getPayload()->get('token'))) {
             return $this->redirectToRoute('admin_menu');
         }
 

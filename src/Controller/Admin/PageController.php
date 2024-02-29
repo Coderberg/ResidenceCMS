@@ -77,7 +77,7 @@ final class PageController extends BaseController
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Page $page, PageService $pageService): Response
     {
-        if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
+        if (!$this->isCsrfTokenValid('delete', $request->getPayload()->get('token'))) {
             return $this->redirectToRoute('admin_page');
         }
 
