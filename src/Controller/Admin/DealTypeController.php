@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Requirement\Requirement;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class DealTypeController extends BaseController
@@ -61,7 +62,12 @@ final class DealTypeController extends BaseController
     /**
      * Displays a form to edit an existing DealType entity.
      */
-    #[Route(path: '/admin/deal_type/{id<\d+>}/edit', name: 'admin_deal_type_edit', methods: ['GET', 'POST'])]
+    #[Route(
+        path: '/admin/deal_type/{id}/edit',
+        name: 'admin_deal_type_edit',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['GET', 'POST']
+    )]
     public function edit(Request $request, DealType $dealType, DealTypeService $service): Response
     {
         $form = $this->createForm(DealTypeType::class, $dealType);
@@ -81,7 +87,12 @@ final class DealTypeController extends BaseController
     /**
      * Deletes a DealType entity.
      */
-    #[Route(path: '/deal_type/{id<\d+>}/delete', name: 'admin_deal_type_delete', methods: ['POST'])]
+    #[Route(
+        path: '/deal_type/{id}/delete',
+        name: 'admin_deal_type_delete',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['POST']
+    )]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, DealType $dealType, DealTypeService $service): Response
     {

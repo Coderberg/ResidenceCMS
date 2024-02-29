@@ -11,10 +11,16 @@ use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Requirement\Requirement;
 
 final class PhotoController extends AbstractPhotoController implements AjaxController
 {
-    #[Route(path: '/admin/photo/{id<\d+>}/upload', name: 'admin_photo_upload', methods: ['POST'])]
+    #[Route(
+        path: '/admin/photo/{id}/upload',
+        name: 'admin_photo_upload',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['POST']
+    )]
     public function upload(Property $property, Request $request, FileUploader $fileUploader): JsonResponse
     {
         return $this->uploadPhoto($property, $request, $fileUploader);
@@ -23,7 +29,11 @@ final class PhotoController extends AbstractPhotoController implements AjaxContr
     /**
      * Sort photos.
      */
-    #[Route(path: '/admin/photo/{id<\d+>}/sort', name: 'admin_photo_sort', methods: ['POST'])]
+    #[Route(
+        path: '/admin/photo/{id}/sort',
+        name: 'admin_photo_sort',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['POST'])]
     public function sort(Request $request, Property $property): JsonResponse
     {
         return $this->sortPhotos($request, $property);

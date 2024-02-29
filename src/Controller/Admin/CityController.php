@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Requirement\Requirement;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class CityController extends BaseController
@@ -60,7 +61,12 @@ final class CityController extends BaseController
     /**
      * Displays a form to edit an existing City entity.
      */
-    #[Route(path: '/admin/locations/city/{id<\d+>}/edit', name: 'admin_city_edit', methods: ['GET', 'POST'])]
+    #[Route(
+        path: '/admin/locations/city/{id}/edit',
+        name: 'admin_city_edit',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['GET', 'POST']
+    )]
     public function edit(Request $request, City $city, CityService $service): Response
     {
         $form = $this->createForm(CityType::class, $city);
@@ -81,7 +87,12 @@ final class CityController extends BaseController
     /**
      * Deletes a City entity.
      */
-    #[Route(path: '/city/{id<\d+>}/delete', name: 'admin_city_delete', methods: ['POST'])]
+    #[Route(
+        path: '/city/{id}/delete',
+        name: 'admin_city_delete',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['POST']
+    )]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, City $city, CityService $service): Response
     {

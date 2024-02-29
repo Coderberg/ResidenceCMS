@@ -11,10 +11,16 @@ use App\Repository\NeighborhoodRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Requirement\Requirement;
 
 final class CityController extends AbstractController implements AjaxController
 {
-    #[Route(path: '/city/{id<\d+>}.json', name: 'city_json', methods: ['GET'])]
+    #[Route(
+        path: '/city/{id}.json',
+        name: 'city_json',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['GET']
+    )]
     public function show(
         City $city,
         MetroRepository $metroRepository,

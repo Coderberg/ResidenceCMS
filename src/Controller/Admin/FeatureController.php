@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Requirement\Requirement;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class FeatureController extends BaseController
@@ -61,7 +62,12 @@ final class FeatureController extends BaseController
     /**
      * Displays a form to edit an existing Feature entity.
      */
-    #[Route(path: '/admin/feature/{id<\d+>}/edit', name: 'admin_feature_edit', methods: ['GET', 'POST'])]
+    #[Route(
+        path: '/admin/feature/{id}/edit',
+        name: 'admin_feature_edit',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['GET', 'POST']
+    )]
     public function edit(Request $request, Feature $feature): Response
     {
         $form = $this->createForm(FeatureType::class, $feature);
@@ -82,7 +88,12 @@ final class FeatureController extends BaseController
     /**
      * Deletes a Feature entity.
      */
-    #[Route(path: '/feature/{id<\d+>}/delete', name: 'admin_feature_delete', methods: ['POST'])]
+    #[Route(
+        path: '/feature/{id}/delete',
+        name: 'admin_feature_delete',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['POST']
+    )]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Feature $feature): Response
     {

@@ -12,6 +12,7 @@ use App\Service\Admin\PageService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Requirement\Requirement;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class PageController extends BaseController
@@ -51,7 +52,12 @@ final class PageController extends BaseController
     /**
      * Displays a form to edit an existing Page entity.
      */
-    #[Route(path: '/admin/page/{id<\d+>}/edit', name: 'admin_page_edit', methods: ['GET', 'POST'])]
+    #[Route(
+        path: '/admin/page/{id}/edit',
+        name: 'admin_page_edit',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['GET', 'POST']
+    )]
     public function edit(Request $request, Page $page): Response
     {
         $form = $this->createForm(PageType::class, $page);
@@ -73,7 +79,12 @@ final class PageController extends BaseController
     /**
      * Deletes a Page entity.
      */
-    #[Route(path: '/page/{id<\d+>}/delete', name: 'admin_page_delete', methods: ['POST'])]
+    #[Route(
+        path: '/page/{id}/delete',
+        name: 'admin_page_delete',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['POST']
+    )]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Page $page, PageService $pageService): Response
     {

@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Requirement\Requirement;
 
 final class MenuController extends BaseController
 {
@@ -60,7 +61,12 @@ final class MenuController extends BaseController
     /**
      * Displays a form to edit an existing menu item.
      */
-    #[Route(path: '/admin/menu/{id<\d+>}/edit', name: 'admin_menu_edit', methods: ['GET', 'POST'])]
+    #[Route(
+        path: '/admin/menu/{id}/edit',
+        name: 'admin_menu_edit',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['GET', 'POST']
+    )]
     public function edit(Request $request, Menu $menu): Response
     {
         $form = $this->createForm(MenuType::class, $menu);
@@ -82,7 +88,12 @@ final class MenuController extends BaseController
     /**
      * Deletes a menu item.
      */
-    #[Route(path: '/admin/menu/{id<\d+>}/delete', name: 'admin_menu_delete', methods: ['GET', 'POST'])]
+    #[Route(
+        path: '/admin/menu/{id}/delete',
+        name: 'admin_menu_delete',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['GET', 'POST']
+    )]
     public function delete(Request $request, Menu $menu): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->getPayload()->get('token'))) {

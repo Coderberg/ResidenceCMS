@@ -12,6 +12,7 @@ use App\Service\User\PropertyService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Requirement\Requirement;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class PropertyController extends BaseController
@@ -61,7 +62,12 @@ final class PropertyController extends BaseController
     /**
      * Displays a form to edit an existing Property entity.
      */
-    #[Route(path: '/user/property/{id<\d+>}/edit', methods: ['GET', 'POST'], name: 'user_property_edit')]
+    #[Route(
+        path: '/user/property/{id}/edit',
+        name: 'user_property_edit',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['GET', 'POST']
+    )]
     #[IsGranted('PROPERTY_EDIT', subject: 'property', message: 'You cannot change this property.')]
     public function edit(Request $request, Property $property, PropertyService $service): Response
     {
