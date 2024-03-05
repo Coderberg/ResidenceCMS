@@ -5,9 +5,9 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     locale: 'en'
-    app_locales: 'en|ru|nl|bg'
+    app_locales: 'en|ru|nl|bg|hu'
     images_directory: '%kernel.project_dir%/public/uploads/images'
-    app_version: '2.9.0'
+    app_version: '2.10.0'
 
 services:
     # default configuration for services in *this* file

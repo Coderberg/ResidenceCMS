@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Requirement\Requirement;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class MetroController extends BaseController
@@ -63,7 +64,12 @@ final class MetroController extends BaseController
     /**
      * Displays a form to edit an existing Metro entity.
      */
-    #[Route(path: '/admin/locations/metro/{id<\d+>}/edit', name: 'admin_metro_edit', methods: ['GET', 'POST'])]
+    #[Route(
+        path: '/admin/locations/metro/{id}/edit',
+        name: 'admin_metro_edit',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['GET', 'POST']
+    )]
     public function edit(Request $request, Metro $metro): Response
     {
         $form = $this->createForm(MetroType::class, $metro);
@@ -84,11 +90,16 @@ final class MetroController extends BaseController
     /**
      * Deletes a Metro entity.
      */
-    #[Route(path: '/metro/{id<\d+>}/delete', name: 'admin_metro_delete', methods: ['POST'])]
+    #[Route(
+        path: '/metro/{id}/delete',
+        name: 'admin_metro_delete',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['POST']
+    )]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Metro $metro): Response
     {
-        if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
+        if (!$this->isCsrfTokenValid('delete', $request->getPayload()->get('token'))) {
             return $this->redirectToRoute('admin_metro');
         }
 

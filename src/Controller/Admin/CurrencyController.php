@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Requirement\Requirement;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class CurrencyController extends BaseController
@@ -61,7 +62,12 @@ final class CurrencyController extends BaseController
     /**
      * Displays a form to edit an existing Currency entity.
      */
-    #[Route(path: '/admin/currency/{id<\d+>}/edit', name: 'admin_currency_edit', methods: ['GET', 'POST'])]
+    #[Route(
+        path: '/admin/currency/{id}/edit',
+        name: 'admin_currency_edit',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['GET', 'POST']
+    )]
     public function edit(Request $request, Currency $currency): Response
     {
         $form = $this->createForm(CurrencyType::class, $currency);
@@ -82,11 +88,16 @@ final class CurrencyController extends BaseController
     /**
      * Deletes a Currency entity.
      */
-    #[Route(path: '/currency/{id<\d+>}/delete', name: 'admin_currency_delete', methods: ['POST'])]
+    #[Route(
+        path: '/currency/{id}/delete',
+        name: 'admin_currency_delete',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['POST']
+    )]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Currency $currency): Response
     {
-        if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
+        if (!$this->isCsrfTokenValid('delete', $request->getPayload()->get('token'))) {
             return $this->redirectToRoute('admin_currency');
         }
 

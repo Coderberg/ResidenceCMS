@@ -34,5 +34,6 @@ final class SluggerTest extends TestCase
         yield ['Русский текст', 'russkii-tekst', 'russkij-tekst'];
         yield [' Русский текст !!!', 'russkii-tekst', 'russkij-tekst'];
         yield ['Lorem Ipsum №69!', 'lorem-ipsum-69', 'lorem-ipsum-no69'];
+        yield ['Magyar nyelvű szöveg', 'magyar-nyelvu-szoveg', 'magyar-nyelvu-szoveg'];
     }
 }

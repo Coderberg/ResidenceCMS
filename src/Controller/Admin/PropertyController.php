@@ -13,6 +13,7 @@ use App\Transformer\RequestToArrayTransformer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Requirement\Requirement;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class PropertyController extends BaseController
@@ -56,7 +57,12 @@ final class PropertyController extends BaseController
     /**
      * Displays a form to edit an existing Property entity.
      */
-    #[Route(path: '/admin/property/{id<\d+>}/edit', name: 'admin_property_edit', methods: ['GET', 'POST'])]
+    #[Route(
+        path: '/admin/property/{id}/edit',
+        name: 'admin_property_edit',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['GET', 'POST']
+    )]
     public function edit(Request $request, Property $property, PropertyService $service): Response
     {
         $form = $this->createForm(PropertyType::class, $property);
@@ -77,11 +83,16 @@ final class PropertyController extends BaseController
     /**
      * Deletes a Property entity.
      */
-    #[Route(path: '/property/{id<\d+>}/delete', name: 'admin_property_delete', methods: ['POST'])]
+    #[Route(
+        path: '/property/{id}/delete',
+        name: 'admin_property_delete',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['POST']
+    )]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Property $property, PropertyService $service): Response
     {
-        if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
+        if (!$this->isCsrfTokenValid('delete', $request->getPayload()->get('token'))) {
             return $this->redirectToRoute('admin_property');
         }
 

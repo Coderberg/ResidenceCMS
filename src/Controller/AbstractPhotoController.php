@@ -51,7 +51,7 @@ abstract class AbstractPhotoController extends AbstractController
 
     protected function sortPhotos(Request $request, Property $property): JsonResponse
     {
-        $ids = $request->request->all('ids');
+        $ids = $request->getPayload()->all('ids');
         /** @var PhotoRepository $repository */
         $repository = $this->doctrine->getRepository(Photo::class);
         $repository->reorderPhotos($property, $ids);

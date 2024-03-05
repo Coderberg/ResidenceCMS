@@ -17,7 +17,7 @@ return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules([
         '@PHP80Migration:risky' => true,
-        '@PHP81Migration' => true,
+        '@PHP82Migration' => true,
         '@Symfony' => true,
         '@Symfony:risky' => true,
         'array_syntax' => ['syntax' => 'short'],

@@ -10,7 +10,7 @@ final class HtmlHelper
     {
         $text = preg_replace('#<br\s*/?>#i', "\n", $html);
 
-        return strip_tags($text);
+        return strip_tags((string) $text);
     }
 
     public static function text2Html(string $text): string

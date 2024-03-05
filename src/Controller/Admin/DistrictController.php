@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Requirement\Requirement;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class DistrictController extends BaseController
@@ -63,7 +64,12 @@ final class DistrictController extends BaseController
     /**
      * Displays a form to edit an existing District entity.
      */
-    #[Route(path: '/admin/locations/district/{id<\d+>}/edit', name: 'admin_district_edit', methods: ['GET', 'POST'])]
+    #[Route(
+        path: '/admin/locations/district/{id}/edit',
+        name: 'admin_district_edit',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['GET', 'POST']
+    )]
     public function edit(Request $request, District $district): Response
     {
         $form = $this->createForm(DistrictType::class, $district);
@@ -84,11 +90,16 @@ final class DistrictController extends BaseController
     /**
      * Deletes a District entity.
      */
-    #[Route(path: '/district/{id<\d+>}/delete', name: 'admin_district_delete', methods: ['POST'])]
+    #[Route(
+        path: '/district/{id}/delete',
+        name: 'admin_district_delete',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['POST']
+    )]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, District $district): Response
     {
-        if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
+        if (!$this->isCsrfTokenValid('delete', $request->getPayload()->get('token'))) {
             return $this->redirectToRoute('admin_district');
         }
 

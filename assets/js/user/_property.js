@@ -22,7 +22,7 @@
         let $counter = $('.js-counter');
         let counter = $counter.text();
         counter = Number.parseInt(counter);
-        counter = counter - 1;
+        counter -= 1;
         $counter.text(counter);
     }
 })($);

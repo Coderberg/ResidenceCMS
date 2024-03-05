@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Requirement\Requirement;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class UserController extends BaseController
@@ -63,7 +64,12 @@ final class UserController extends BaseController
     /**
      * Displays a form to edit an existing User entity.
      */
-    #[Route(path: '/admin/user/{id<\d+>}/edit', name: 'admin_user_edit', methods: ['GET', 'POST'])]
+    #[Route(
+        path: '/admin/user/{id}/edit',
+        name: 'admin_user_edit',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['GET', 'POST']
+    )]
     public function edit(Request $request, User $user, UserService $service, UserFormDataSelector $selector): Response
     {
         $form = $this->createForm(UserType::class, $user);
@@ -88,11 +94,16 @@ final class UserController extends BaseController
     /**
      * Deletes an User entity.
      */
-    #[Route(path: '/user/{id<\d+>}/delete', name: 'admin_user_delete', methods: ['POST'])]
+    #[Route(
+        path: '/user/{id}/delete',
+        name: 'admin_user_delete',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['POST']
+    )]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, User $user, UserService $service): Response
     {
-        if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
+        if (!$this->isCsrfTokenValid('delete', $request->getPayload()->get('token'))) {
             return $this->redirectToRoute('admin_user');
         }
 

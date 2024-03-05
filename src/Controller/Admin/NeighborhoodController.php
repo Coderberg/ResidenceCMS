@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Requirement\Requirement;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class NeighborhoodController extends BaseController
@@ -64,8 +65,9 @@ final class NeighborhoodController extends BaseController
      * Displays a form to edit an existing Neighborhood entity.
      */
     #[Route(
-        path: '/admin/locations/neighborhood/{id<\d+>}/edit',
+        path: '/admin/locations/neighborhood/{id}/edit',
         name: 'admin_neighborhood_edit',
+        requirements: ['id' => Requirement::POSITIVE_INT],
         methods: ['GET', 'POST']
     )]
     public function edit(Request $request, Neighborhood $neighborhood): Response
@@ -88,11 +90,16 @@ final class NeighborhoodController extends BaseController
     /**
      * Deletes a Neighborhood entity.
      */
-    #[Route(path: '/neighborhood/{id<\d+>}/delete', name: 'admin_neighborhood_delete', methods: ['POST'])]
+    #[Route(
+        path: '/neighborhood/{id}/delete',
+        name: 'admin_neighborhood_delete',
+        requirements: ['id' => Requirement::POSITIVE_INT],
+        methods: ['POST']
+    )]
     #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Neighborhood $neighborhood): Response
     {
-        if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
+        if (!$this->isCsrfTokenValid('delete', $request->getPayload()->get('token'))) {
             return $this->redirectToRoute('admin_neighborhood');
         }
 
