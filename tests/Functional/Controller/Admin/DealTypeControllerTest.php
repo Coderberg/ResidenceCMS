@@ -32,7 +32,11 @@ final class DealTypeControllerTest extends WebTestCase
         ]);
         $client->submit($form);
 
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
         $dealType = $this->getRepository($client, DealType::class)
             ->findOneBy([
                 'slug' => self::SLUG,
@@ -62,7 +66,11 @@ final class DealTypeControllerTest extends WebTestCase
         ]);
 
         $client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
 
         $editedDealType = $this->getRepository($client, DealType::class)
             ->findOneBy([
@@ -86,7 +94,11 @@ final class DealTypeControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/en/admin/deal_type');
         $client->submit($crawler->filter('#delete-form-'.$dealType)->form());
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
 
         $this->assertNull($this->getRepository($client, DealType::class)
             ->findOneBy([

@@ -11,6 +11,7 @@ use Scheb\TwoFactorBundle\Model\Google\TwoFactorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class GoogleAuthenticatorController extends AbstractController implements AjaxController
@@ -32,7 +33,7 @@ final class GoogleAuthenticatorController extends AbstractController implements 
         } catch (\Throwable $e) {
             return new JsonResponse([
                 'message' => $e->getMessage(),
-            ], 422);
+            ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
     }
 
@@ -51,7 +52,7 @@ final class GoogleAuthenticatorController extends AbstractController implements 
         } catch (\Throwable $exception) {
             return new JsonResponse([
                 'message' => $exception->getMessage(),
-            ], 422);
+            ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
     }
 

@@ -22,10 +22,14 @@ final class MetroControllerTest extends AbstractLocationControllerTest
         ]);
         $this->client->submit($form);
 
-        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $this->client->getResponse()->getStatusCode(),
+            $this->client->getResponse()->getContent()
+        );
         $station = $this->getRepository($this->client, Metro::class)->findOneBy([
-                'slug' => self::SLUG,
-            ]);
+            'slug' => self::SLUG,
+        ]);
 
         $this->assertNotNull($station);
         $this->assertSame(self::NAME, $station->getName());
@@ -49,7 +53,7 @@ final class MetroControllerTest extends AbstractLocationControllerTest
         ]);
 
         $this->client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
+        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode(), $this->client->getResponse()->getContent());
 
         $editedStation = $this->getRepository($this->client, Metro::class)
             ->findOneBy([
@@ -71,10 +75,10 @@ final class MetroControllerTest extends AbstractLocationControllerTest
 
         $crawler = $this->client->request('GET', '/en/admin/locations/metro');
         $this->client->submit($crawler->filter('#delete-metro-'.$station)->form());
-        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
+        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode(), $this->client->getResponse()->getContent());
 
         $this->assertNull($this->getRepository($this->client, Metro::class)->findOneBy([
-                'slug' => self::SLUG,
-            ]));
+            'slug' => self::SLUG,
+        ]));
     }
 }

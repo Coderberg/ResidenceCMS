@@ -10,6 +10,7 @@ use App\Message\SendEmailConfirmationLink;
 use App\Service\Cache\UserDataCache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -40,7 +41,10 @@ final class ResendVerificationController extends AbstractController implements A
         if ($this->isSendingAllowed($user)) {
             $messageBus->dispatch(new SendEmailConfirmationLink($user));
         } else {
-            return new JsonResponse(['message' => 'There is no need to resend this email'], 422);
+            return new JsonResponse(
+                ['message' => 'There is no need to resend this email'],
+                Response::HTTP_UNPROCESSABLE_ENTITY
+            );
         }
 
         $translated = $translator->trans('confirmation.email.success');

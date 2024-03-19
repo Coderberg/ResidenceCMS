@@ -67,7 +67,7 @@ final class PropertyController extends BaseController
         SimilarRepository $repository
     ): Response {
         if (!$url->isCanonical($property, $request)) {
-            return $this->redirect($url->generateCanonical($property), 301);
+            return $this->redirect($url->generateCanonical($property), Response::HTTP_MOVED_PERMANENTLY);
         } elseif ($url->isRefererFromCurrentHost($request)) {
             $showBackButton = true;
         }

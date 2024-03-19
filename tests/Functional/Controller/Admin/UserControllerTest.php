@@ -31,7 +31,11 @@ final class UserControllerTest extends WebTestCase
         ]);
         $client->submit($form);
 
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
         $user = $this->getUser($client, 'test');
 
         $this->assertNotNull($user);
@@ -72,11 +76,15 @@ final class UserControllerTest extends WebTestCase
         ]);
 
         $client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
 
         $editedUser = $this->getRepository($client, User::class)->findOneBy([
-                'id' => $user,
-            ]);
+            'id' => $user,
+        ]);
 
         $this->assertSame('edited', $editedUser->getUsername());
         $this->assertNull($editedUser->getEmailVerifiedAt());
@@ -103,7 +111,11 @@ final class UserControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/en/admin/user');
         $client->submit($crawler->filter('#delete-form-'.$user)->form());
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
 
         $this->assertNull($this->getUser($client, 'edited'));
     }

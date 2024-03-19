@@ -9,6 +9,7 @@ use App\Service\User\PasswordService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class PasswordController extends AbstractController implements AjaxController
@@ -23,7 +24,7 @@ final class PasswordController extends AbstractController implements AjaxControl
         } catch (\Throwable $e) {
             return new JsonResponse([
                 'message' => $e->getMessage(),
-            ], 422);
+            ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
     }
 }

@@ -53,7 +53,11 @@ final class HeaderSettingsControllerTest extends WebTestCase
         $this->assertSelectorExists('.remove-header_image');
         $client->submit($crawler->filter('#delete-form-header_image')->form());
 
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
     }
 
     public function testDeleteLogoImage(): void
@@ -64,7 +68,11 @@ final class HeaderSettingsControllerTest extends WebTestCase
         $this->assertSelectorExists('.remove-logo_image');
         $client->submit($crawler->filter('#delete-form-logo_image')->form());
 
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
     }
 
     public function testDeletedHeaderImage(): void
@@ -82,7 +90,7 @@ final class HeaderSettingsControllerTest extends WebTestCase
         $client = self::createClient();
 
         $this->assertEmpty($this->getRepository($client, Settings::class)->findOneBy([
-                'setting_name' => 'logo_image',
-            ])->getSettingValue());
+            'setting_name' => 'logo_image',
+        ])->getSettingValue());
     }
 }

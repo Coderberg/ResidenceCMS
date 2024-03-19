@@ -43,6 +43,10 @@ final class PageControllerTest extends WebTestCase
         ]);
         $client->submit($form);
         $this->assertEmailCount(1);
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
     }
 }

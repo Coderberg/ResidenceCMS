@@ -22,10 +22,14 @@ final class DistrictControllerTest extends AbstractLocationControllerTest
         ]);
         $this->client->submit($form);
 
-        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $this->client->getResponse()->getStatusCode(),
+            $this->client->getResponse()->getContent()
+        );
         $district = $this->getRepository($this->client, District::class)->findOneBy([
-                'slug' => self::SLUG,
-            ]);
+            'slug' => self::SLUG,
+        ]);
 
         $this->assertNotNull($district);
         $this->assertSame(self::NAME, $district->getName());
@@ -49,7 +53,11 @@ final class DistrictControllerTest extends AbstractLocationControllerTest
         ]);
 
         $this->client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $this->client->getResponse()->getStatusCode(),
+            $this->client->getResponse()->getContent()
+        );
 
         $editedDistrict = $this->getRepository($this->client, District::class)
             ->findOneBy([
@@ -72,7 +80,11 @@ final class DistrictControllerTest extends AbstractLocationControllerTest
             ])->getId();
 
         $this->client->submit($crawler->filter('#delete-district-'.$district)->form());
-        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $this->client->getResponse()->getStatusCode(),
+            $this->client->getResponse()->getContent()
+        );
 
         $this->assertNull($this->getRepository($this->client, District::class)
             ->findOneBy([

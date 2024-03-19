@@ -59,7 +59,7 @@ jobs:
 
       - name: Rector
         if: always() && steps.install.outcome == 'success'
-        run: vendor/bin/rector process src --clear-cache --dry-run
+        run: vendor/bin/rector process
 
       - name: Lint YAML files
         if: always() && steps.install.outcome == 'success'

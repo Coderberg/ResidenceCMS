@@ -27,7 +27,7 @@ final class DefaultControllerTest extends WebTestCase
         $client = self::createClient();
         $client->request('GET', $url);
         $response = $client->getResponse();
-        $this->assertSame(Response::HTTP_FOUND, $response->getStatusCode());
+        $this->assertSame(Response::HTTP_FOUND, $response->getStatusCode(), $response->getContent());
         $this->assertSame(
             'http://localhost/en/login',
             $response->getTargetUrl(),

@@ -31,7 +31,11 @@ final class CategoryControllerTest extends WebTestCase
         ]);
         $client->submit($form);
 
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
         $category = $this->getRepository($client, Category::class)
             ->findOneBy([
                 'slug' => self::SLUG,
@@ -61,7 +65,11 @@ final class CategoryControllerTest extends WebTestCase
         ]);
 
         $client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
 
         $editedCategory = $this->getRepository($client, Category::class)
             ->findOneBy([
@@ -85,7 +93,11 @@ final class CategoryControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/en/admin/category');
         $client->submit($crawler->filter('#delete-form-'.$category)->form());
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
 
         $this->assertNull($this->getRepository($client, Category::class)
             ->findOneBy([

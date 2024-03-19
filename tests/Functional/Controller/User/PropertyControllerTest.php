@@ -168,11 +168,15 @@ final class PropertyControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/en/admin/property?sort_by=id');
         $client->submit($crawler->filter('#delete-form-'.$property)->form());
 
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
 
         $this->assertNull($this->getRepository($client, Property::class)->findOneBy([
-                'slug' => 'test',
-            ]));
+            'slug' => 'test',
+        ]));
 
         $this->resetSettings($client);
     }
