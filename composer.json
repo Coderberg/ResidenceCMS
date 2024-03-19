@@ -108,6 +108,12 @@
         "symfony/polyfill-php80": "*"
     },
     "scripts": {
+        "php-cs-fixer": "php-cs-fixer fix",
+        "lint": [
+            "@php-cs-fixer",
+            "phpstan analyse",
+            "rector process"
+        ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
