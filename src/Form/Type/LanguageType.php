@@ -23,6 +23,7 @@ final class LanguageType extends AbstractType
                 'Nederlands' => 'nl',
                 'Български' => 'bg',
                 'Русский' => 'ru',
+                'Magyar' => 'hu',
             ],
             'label' => 'label.locale',
         ]);
