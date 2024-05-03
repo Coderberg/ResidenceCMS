@@ -7,7 +7,6 @@ namespace App\Service\Auth;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
-use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
 final readonly class EmailVerifier
@@ -18,12 +17,13 @@ final readonly class EmailVerifier
     {
     }
 
-    /**
-     * @throws VerifyEmailExceptionInterface
-     */
     public function handleEmailConfirmation(Request $request, User $user): void
     {
-        $this->verifyEmailHelper->validateEmailConfirmation($request->getUri(), (string) $user->getId(), $user->getEmail());
+        $this->verifyEmailHelper->validateEmailConfirmationFromRequest(
+            request: $request,
+            userId: (string) $user->getId(),
+            userEmail: $user->getEmail()
+        );
 
         $user->setEmailVerifiedAt(new \DateTime('now'));
 

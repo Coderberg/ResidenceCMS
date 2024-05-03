@@ -10,6 +10,7 @@ use App\Repository\UserPropertyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Requirement\Requirement;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -28,13 +29,13 @@ final class PropertyController extends AbstractController implements AjaxControl
         $state = $request->query->get('state');
 
         if (!\in_array($state, ['published', 'private'], true)) {
-            return new JsonResponse(['status' => 'fail'], 422);
+            return new JsonResponse(['status' => 'fail'], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         if ($repository->changeState($property, $state)) {
             return new JsonResponse(['status' => 'ok']);
         }
 
-        return new JsonResponse(['status' => 'fail'], 500);
+        return new JsonResponse(['status' => 'fail'], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 }

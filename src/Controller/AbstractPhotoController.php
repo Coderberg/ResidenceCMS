@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\ConstraintViolation;
 
 abstract class AbstractPhotoController extends AbstractController
@@ -32,7 +33,7 @@ abstract class AbstractPhotoController extends AbstractController
             $violation = $violations[0];
             $this->addFlash('danger', $violation->getMessage());
 
-            return new JsonResponse(['status' => 'fail'], 422);
+            return new JsonResponse(['status' => 'fail'], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         $fileName = $fileUploader->upload($uploadedFile);

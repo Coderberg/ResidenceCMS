@@ -32,7 +32,11 @@ final class MainSettingsControllerTest extends WebTestCase
         ]);
 
         $client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
     }
 
     public function testPublicSettings(): void

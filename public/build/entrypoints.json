@@ -81,7 +81,7 @@
     "js/password": {
       "js": [
         "/build/runtime.9a71ee5d.js",
-        "/build/js/password.b825ce4f.js"
+        "/build/js/password.77151b32.js"
       ]
     },
     "js/google_authenticator": {

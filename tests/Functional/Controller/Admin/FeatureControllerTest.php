@@ -30,10 +30,14 @@ final class FeatureControllerTest extends WebTestCase
         ]);
         $client->submit($form);
 
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
         $feature = $this->getRepository($client, Feature::class)->findOneBy([
-                'name' => self::FEATURE,
-            ]);
+            'name' => self::FEATURE,
+        ]);
 
         $this->assertNotNull($feature);
         $this->assertSame(self::FEATURE, $feature->getName());
@@ -58,11 +62,15 @@ final class FeatureControllerTest extends WebTestCase
         ]);
 
         $client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
 
         $editedFeature = $this->getRepository($client, Feature::class)->findOneBy([
-                'id' => $feature,
-            ]);
+            'id' => $feature,
+        ]);
 
         $this->assertSame(self::EDITED, $editedFeature->getName());
     }
@@ -75,15 +83,19 @@ final class FeatureControllerTest extends WebTestCase
         $client = $this->authAsAdmin($this);
 
         $feature = $this->getRepository($client, Feature::class)->findOneBy([
-                'name' => self::EDITED,
-            ])->getId();
+            'name' => self::EDITED,
+        ])->getId();
 
         $crawler = $client->request('GET', '/en/admin/feature');
         $client->submit($crawler->filter('#delete-form-'.$feature)->form());
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
 
         $this->assertNull($this->getRepository($client, Feature::class)->findOneBy([
-                'name' => self::EDITED,
-            ]));
+            'name' => self::EDITED,
+        ]));
     }
 }

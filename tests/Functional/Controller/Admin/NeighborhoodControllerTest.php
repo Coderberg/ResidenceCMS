@@ -22,7 +22,11 @@ final class NeighborhoodControllerTest extends AbstractLocationControllerTest
         ]);
         $this->client->submit($form);
 
-        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $this->client->getResponse()->getStatusCode(),
+            $this->client->getResponse()->getContent()
+        );
         $neighborhood = $this->getRepository($this->client, Neighborhood::class)
             ->findOneBy([
                 'slug' => self::SLUG,
@@ -50,7 +54,11 @@ final class NeighborhoodControllerTest extends AbstractLocationControllerTest
         ]);
 
         $this->client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $this->client->getResponse()->getStatusCode(),
+            $this->client->getResponse()->getContent()
+        );
 
         $editedNeighborhood = $this->getRepository($this->client, Neighborhood::class)
             ->findOneBy([
@@ -72,10 +80,14 @@ final class NeighborhoodControllerTest extends AbstractLocationControllerTest
 
         $crawler = $this->client->request('GET', '/en/admin/locations/neighborhood');
         $this->client->submit($crawler->filter('#delete-neighborhood-'.$neighborhood)->form());
-        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $this->client->getResponse()->getStatusCode(),
+            $this->client->getResponse()->getContent()
+        );
 
         $this->assertNull($this->getRepository($this->client, Neighborhood::class)->findOneBy([
-                'slug' => self::SLUG,
-            ]));
+            'slug' => self::SLUG,
+        ]));
     }
 }

@@ -94,6 +94,10 @@ final class PhotoControllerTest extends WebTestCase
 
         $form = $crawler->selectButton('Delete')->first()->form();
         $client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
     }
 }

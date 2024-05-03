@@ -64,7 +64,7 @@
         "doctrine/doctrine-fixtures-bundle": "^3.5",
         "friendsofphp/php-cs-fixer": "^3.42",
         "phpunit/phpunit": "^9.6",
-        "rector/rector": "^0.19",
+        "rector/rector": "^1.0",
         "symfony/browser-kit": "^7.0",
         "symfony/css-selector": "^7.0",
         "symfony/debug-bundle": "^7.0",
@@ -108,6 +108,12 @@
         "symfony/polyfill-php80": "*"
     },
     "scripts": {
+        "php-cs-fixer": "php-cs-fixer fix",
+        "lint": [
+            "@php-cs-fixer",
+            "phpstan analyse",
+            "rector process"
+        ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"

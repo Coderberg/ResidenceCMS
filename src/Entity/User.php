@@ -124,17 +124,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     }
 
     /**
-     * Returns the salt that was originally used to encode the password.
-     */
-    public function getSalt(): ?string
-    {
-        // See "Do you need to use a Salt?" at https://symfony.com/doc/current/cookbook/security/entity_provider.html
-        // we're using bcrypt in security.yml to encode the password, so
-        // the salt value is built-in and you don't have to generate one
-        return null;
-    }
-
-    /**
      * Removes sensitive data from the user.
      */
     public function eraseCredentials(): void
@@ -145,13 +134,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     public function __serialize(): array
     {
-        // add $this->salt too if you don't use Bcrypt or Argon2i
         return [$this->id, $this->username, $this->password];
     }
 
     public function __unserialize(array $data): void
     {
-        // add $this->salt too if you don't use Bcrypt or Argon2i
         [$this->id, $this->username, $this->password] = $data;
     }
 

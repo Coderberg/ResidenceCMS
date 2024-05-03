@@ -31,7 +31,11 @@ final class CurrencyControllerTest extends WebTestCase
         ]);
         $client->submit($form);
 
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
         $currency = $this->getRepository($client, Currency::class)
             ->findOneBy([
                 'code' => self::CURRENCY,
@@ -61,7 +65,11 @@ final class CurrencyControllerTest extends WebTestCase
         ]);
 
         $client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
 
         $editedCurrency = $this->getRepository($client, Currency::class)
             ->findOneBy([
@@ -85,10 +93,14 @@ final class CurrencyControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/en/admin/currency');
         $client->submit($crawler->filter('#delete-form-'.$currency)->form());
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
 
         $this->assertNull($this->getRepository($client, Currency::class)->findOneBy([
-                'code' => self::EDITED,
-            ]));
+            'code' => self::EDITED,
+        ]));
     }
 }

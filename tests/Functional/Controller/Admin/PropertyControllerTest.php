@@ -50,7 +50,11 @@ final class PropertyControllerTest extends WebTestCase
 
         $client->submit($form);
 
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
     }
 
     public function testAdminEditPhoto(): void
@@ -97,7 +101,12 @@ final class PropertyControllerTest extends WebTestCase
         ]);
 
         $client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
+
         $crawler = $client->request('GET', sprintf(
             '/en/%s/%s/%d',
             $property->getCity()->getSlug(),
@@ -123,7 +132,11 @@ final class PropertyControllerTest extends WebTestCase
 
         $form = $crawler->selectButton('Delete')->form();
         $client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
     }
 
     /*
@@ -139,10 +152,14 @@ final class PropertyControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/en/admin/property?sort_by=id');
         $client->submit($crawler->filter('#delete-form-'.$property)->form());
 
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
 
         $this->assertNull($this->getRepository($client, Property::class)->findOneBy([
-                'slug' => 'test',
-            ]));
+            'slug' => 'test',
+        ]));
     }
 }

@@ -25,7 +25,11 @@ final class CityControllerTest extends AbstractLocationControllerTest
         ]);
         $this->client->submit($form);
 
-        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $this->client->getResponse()->getStatusCode(),
+            $this->client->getResponse()->getContent()
+        );
         $city = $this->getRepository($this->client, City::class)
             ->findOneBy([
                 'slug' => self::SLUG,
@@ -58,7 +62,11 @@ final class CityControllerTest extends AbstractLocationControllerTest
         ]);
 
         $this->client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $this->client->getResponse()->getStatusCode(),
+            $this->client->getResponse()->getContent()
+        );
 
         $editedCity = $this->getRepository($this->client, City::class)
             ->findOneBy([
@@ -82,7 +90,11 @@ final class CityControllerTest extends AbstractLocationControllerTest
 
         $crawler = $this->client->request('GET', '/en/admin/locations/city');
         $this->client->submit($crawler->filter('#delete-form-'.$city)->form());
-        $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $this->client->getResponse()->getStatusCode(),
+            $this->client->getResponse()->getContent()
+        );
 
         $this->assertNull($this->getRepository($this->client, City::class)
             ->findOneBy([

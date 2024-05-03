@@ -37,7 +37,11 @@ final class PageControllerTest extends WebTestCase
         ]);
         $client->submit($form);
 
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
         $page = $this->getRepository($client, Page::class)
             ->findOneBy([
                 'slug' => self::SLUG,
@@ -76,7 +80,11 @@ final class PageControllerTest extends WebTestCase
         ]);
 
         $client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
 
         $editedPage = $this->getRepository($client, Page::class)
             ->findOneBy([
@@ -94,22 +102,26 @@ final class PageControllerTest extends WebTestCase
         $client = $this->authAsAdmin($this);
 
         $page = $this->getRepository($client, Page::class)->findOneBy([
-                'slug' => self::SLUG,
-                'locale' => self::LOCALE,
-            ])->getId();
+            'slug' => self::SLUG,
+            'locale' => self::LOCALE,
+        ])->getId();
 
         $crawler = $client->request('GET', '/en/admin/page');
         $client->submit($crawler->filter('#delete-form-'.$page)->form());
 
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
 
         $this->assertNull($this->getRepository($client, Page::class)->findOneBy([
-                'slug' => self::SLUG,
-                'locale' => self::LOCALE,
-            ]));
+            'slug' => self::SLUG,
+            'locale' => self::LOCALE,
+        ]));
 
         $this->assertNull($this->getRepository($client, Menu::class)->findOneBy([
-                'title' => self::TITLE,
-            ]));
+            'title' => self::TITLE,
+        ]));
     }
 }

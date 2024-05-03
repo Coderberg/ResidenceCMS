@@ -34,7 +34,11 @@ final class MenuControllerTest extends WebTestCase
         ]);
         $client->submit($form);
 
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
         $item = $this->getRepository($client, Menu::class)
             ->findOneBy([
                 'url' => self::URL,
@@ -66,7 +70,11 @@ final class MenuControllerTest extends WebTestCase
         ]);
 
         $client->submit($form);
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
 
         $editedItem = $this->getRepository($client, Menu::class)
             ->findOneBy([
@@ -130,7 +138,11 @@ final class MenuControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/en/admin/menu');
         $client->submit($crawler->filter('#delete-form-'.$item)->form());
-        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->assertSame(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
 
         $this->assertNull($this->getRepository($client, Menu::class)->findOneBy([
             'url' => self::URL,
