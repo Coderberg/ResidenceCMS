@@ -7,6 +7,7 @@ namespace App\Tests\Functional\Controller\Admin;
 use App\Entity\Feature;
 use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class FeatureControllerTest extends WebTestCase
@@ -23,7 +24,7 @@ final class FeatureControllerTest extends WebTestCase
     {
         $client = $this->authAsAdmin($this);
 
-        $crawler = $client->request('GET', '/en/admin/feature/new');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/feature/new');
 
         $form = $crawler->selectButton('Create feature')->form([
             'feature[name]' => self::FEATURE,
@@ -55,7 +56,7 @@ final class FeatureControllerTest extends WebTestCase
                 'name' => self::FEATURE,
             ])->getId();
 
-        $crawler = $client->request('GET', '/en/admin/feature/'.$feature.'/edit');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/feature/'.$feature.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'feature[name]' => self::EDITED,
@@ -86,7 +87,7 @@ final class FeatureControllerTest extends WebTestCase
             'name' => self::EDITED,
         ])->getId();
 
-        $crawler = $client->request('GET', '/en/admin/feature');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/feature');
         $client->submit($crawler->filter('#delete-form-'.$feature)->form());
         $this->assertSame(
             Response::HTTP_FOUND,

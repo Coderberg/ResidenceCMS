@@ -7,6 +7,7 @@ namespace App\Tests\Functional\Controller\Admin;
 use App\Entity\User;
 use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class UserControllerTest extends WebTestCase
@@ -19,7 +20,7 @@ final class UserControllerTest extends WebTestCase
     public function testAdminNewUser(): void
     {
         $client = $this->authAsAdmin($this);
-        $crawler = $client->request('GET', '/en/admin/user/new');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/user/new');
 
         $form = $crawler->selectButton('Create user')->form([
             'user[profile][full_name]' => 'test',
@@ -51,10 +52,10 @@ final class UserControllerTest extends WebTestCase
             'PHP_AUTH_PW' => 'test',
         ]);
 
-        $client->request('GET', '/en/user/property');
+        $client->request(Request::METHOD_GET, '/en/user/property');
         $this->assertResponseIsSuccessful();
 
-        $client->request('GET', '/en/admin');
+        $client->request(Request::METHOD_GET, '/en/admin');
         $this->assertResponseStatusCodeSame(403);
     }
 
@@ -66,7 +67,7 @@ final class UserControllerTest extends WebTestCase
         $client = $this->authAsAdmin($this);
         $user = $this->getUser($client, 'test')->getId();
 
-        $crawler = $client->request('GET', '/en/admin/user/'.$user.'/edit');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/user/'.$user.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'user[roles]' => ['ROLE_ADMIN'],
@@ -94,10 +95,10 @@ final class UserControllerTest extends WebTestCase
     {
         $client = $this->authAsAdmin($this);
 
-        $client->request('GET', '/en/user/property');
+        $client->request(Request::METHOD_GET, '/en/user/property');
         $this->assertResponseIsSuccessful();
 
-        $client->request('GET', '/en/admin');
+        $client->request(Request::METHOD_GET, '/en/admin');
         $this->assertResponseIsSuccessful();
     }
 
@@ -109,7 +110,7 @@ final class UserControllerTest extends WebTestCase
         $client = $this->authAsAdmin($this);
         $user = $this->getUser($client, 'edited')->getId();
 
-        $crawler = $client->request('GET', '/en/admin/user');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/user');
         $client->submit($crawler->filter('#delete-form-'.$user)->form());
         $this->assertSame(
             Response::HTTP_FOUND,

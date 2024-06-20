@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller\Admin;
 
 use App\Entity\Neighborhood;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class NeighborhoodControllerTest extends AbstractLocationControllerTest
@@ -14,7 +15,7 @@ final class NeighborhoodControllerTest extends AbstractLocationControllerTest
      */
     public function testAdminNewNeighborhood(): void
     {
-        $crawler = $this->client->request('GET', '/en/admin/locations/neighborhood/new');
+        $crawler = $this->client->request(Request::METHOD_GET, '/en/admin/locations/neighborhood/new');
 
         $form = $crawler->selectButton('Create neighborhood')->form([
             'neighborhood[name]' => self::NAME,
@@ -47,7 +48,7 @@ final class NeighborhoodControllerTest extends AbstractLocationControllerTest
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $this->client->request('GET', '/en/admin/locations/neighborhood/'.$neighborhood.'/edit');
+        $crawler = $this->client->request(Request::METHOD_GET, '/en/admin/locations/neighborhood/'.$neighborhood.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'neighborhood[name]' => self::EDITED_NAME,
@@ -78,7 +79,7 @@ final class NeighborhoodControllerTest extends AbstractLocationControllerTest
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $this->client->request('GET', '/en/admin/locations/neighborhood');
+        $crawler = $this->client->request(Request::METHOD_GET, '/en/admin/locations/neighborhood');
         $this->client->submit($crawler->filter('#delete-neighborhood-'.$neighborhood)->form());
         $this->assertSame(
             Response::HTTP_FOUND,

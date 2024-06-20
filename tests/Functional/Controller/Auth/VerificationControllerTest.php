@@ -40,7 +40,7 @@ final class VerificationControllerTest extends WebTestCase
         $this->entityManager->flush();
 
         // Use incorrect link
-        $this->client->request('GET', '/en/email/verify');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, '/en/email/verify');
         $this->assertResponseRedirects('/en/user/property');
         $this->client->followRedirect();
 
@@ -50,12 +50,12 @@ final class VerificationControllerTest extends WebTestCase
         $this->assertFalse($user->isVerified());
 
         // Make sure an unverified user cannot add new properties
-        $this->client->request('GET', '/en/user/property/new');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, '/en/user/property/new');
         $this->assertResponseRedirects('/en/user/property');
 
         // Generate link
         $url = $this->generateEmailConfirmationLink($user);
-        $this->client->request('GET', $url);
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, $url);
         $this->client->followRedirect();
 
         // Make sure the user is verified

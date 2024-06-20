@@ -6,6 +6,7 @@ namespace App\Tests\Functional\Controller\Auth;
 
 use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 
 final class RegisterControllerTest extends WebTestCase
 {
@@ -20,7 +21,7 @@ final class RegisterControllerTest extends WebTestCase
     public function testRegistrationSuspended(): void
     {
         $client = self::createClient();
-        $client->request('GET', '/en/register');
+        $client->request(Request::METHOD_GET, '/en/register');
         $this->assertResponseRedirects('/en/');
         $client->followRedirect();
         $this->assertSelectorTextContains('.alert-danger', 'temporarily suspended');
@@ -29,7 +30,7 @@ final class RegisterControllerTest extends WebTestCase
     public function testAdminUpdateSettings(): void
     {
         $client = $this->authAsAdmin($this);
-        $crawler = $client->request('GET', '/en/admin/settings');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/settings');
         $form = $crawler->selectButton('Save changes')->form([
             'main_settings[anyone_can_register]' => '1',
         ]);
@@ -40,7 +41,7 @@ final class RegisterControllerTest extends WebTestCase
     public function testRegister(): void
     {
         $client = self::createClient();
-        $crawler = $client->request('GET', '/en/register');
+        $crawler = $client->request(Request::METHOD_GET, '/en/register');
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.card-header', 'Register');
         $form = $crawler->selectButton('Create account')->form([
@@ -61,7 +62,7 @@ final class RegisterControllerTest extends WebTestCase
     public function testLogin(): void
     {
         $client = $this->authAsUser($this);
-        $client->request('GET', '/en/user/profile');
+        $client->request(Request::METHOD_GET, '/en/user/profile');
         $this->assertSelectorTextContains('h3', 'My profile');
     }
 
@@ -70,7 +71,7 @@ final class RegisterControllerTest extends WebTestCase
     {
         $client = $this->authAsAdmin($this);
         $user = $this->getUser($client, self::USER['PHP_AUTH_USER'])->getId();
-        $crawler = $client->request('GET', '/en/admin/user');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/user');
         $client->submit($crawler->filter('#delete-form-'.$user)->form());
         $this->assertResponseRedirects('/en/admin/user');
         $this->resetSettings($client);

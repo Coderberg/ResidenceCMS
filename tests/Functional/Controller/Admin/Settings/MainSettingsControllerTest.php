@@ -21,7 +21,7 @@ final class MainSettingsControllerTest extends WebTestCase
         $title = $this->getRepository($client, Settings::class)
             ->findOneBy(['setting_name' => 'title'])->getSettingValue();
 
-        $crawler = $client->request('GET', '/en/admin/settings');
+        $crawler = $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, '/en/admin/settings');
 
         $form = $crawler->selectButton('Save changes')->form([
             'main_settings[title]' => $title.' - Test title',
@@ -43,7 +43,7 @@ final class MainSettingsControllerTest extends WebTestCase
     {
         $client = self::createClient();
 
-        $crawler = $client->request('GET', '/en/');
+        $crawler = $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, '/en/');
 
         $this->assertStringContainsString('Test title', $crawler->html());
         $this->assertStringContainsString('Edited text', $crawler->html());
@@ -56,7 +56,7 @@ final class MainSettingsControllerTest extends WebTestCase
         $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'bright-and-cheerful-alcove-studio']);
 
-        $crawler = $client->request('GET',
+        $crawler = $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET,
             sprintf('/en/%s/%s/%d', $property->getCity()->getSlug(), $property->getSlug(), $property->getId())
         );
         // Check if similar properties are enabled
@@ -69,7 +69,7 @@ final class MainSettingsControllerTest extends WebTestCase
         $client = self::createClient();
         $this->resetSettings($client);
 
-        $crawler = $client->request('GET', '/en/');
+        $crawler = $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, '/en/');
 
         $this->assertStringNotContainsString('Test title', $crawler->html());
         $this->assertCount(6, $crawler->filter('.property-box-img'));
@@ -81,7 +81,7 @@ final class MainSettingsControllerTest extends WebTestCase
         $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'bright-and-cheerful-alcove-studio']);
 
-        $crawler = $client->request('GET',
+        $crawler = $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET,
             sprintf('/en/%s/%s/%d', $property->getCity()->getSlug(), $property->getSlug(), $property->getId())
         );
         // Check if similar properties are disabled

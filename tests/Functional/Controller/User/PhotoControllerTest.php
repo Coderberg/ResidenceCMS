@@ -7,6 +7,7 @@ namespace App\Tests\Functional\Controller\User;
 use App\Entity\Property;
 use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class PhotoControllerTest extends WebTestCase
@@ -22,7 +23,7 @@ final class PhotoControllerTest extends WebTestCase
         $property = $this->getRepository($client, Property::class)
             ->findOneBy(['author' => $user]);
 
-        $client->request('GET', sprintf('/en/user/photo/%d/edit', $property->getId()));
+        $client->request(Request::METHOD_GET, sprintf('/en/user/photo/%d/edit', $property->getId()));
         $this->assertResponseStatusCodeSame(403);
     }
 
@@ -33,7 +34,7 @@ final class PhotoControllerTest extends WebTestCase
         $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'furnished-renovated-2-bedroom-2-bathroom-flat']);
 
-        $crawler = $client->request('GET', sprintf('/en/user/photo/%d/edit', $property->getId()));
+        $crawler = $client->request(Request::METHOD_GET, sprintf('/en/user/photo/%d/edit', $property->getId()));
         $this->assertResponseIsSuccessful();
 
         $this->assertStringContainsString('Upload photos', $crawler->filter('h3')->text());
@@ -52,23 +53,23 @@ final class PhotoControllerTest extends WebTestCase
         $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'interesting-two-bedroom-apartment-for-sale']);
 
-        $crawler = $client->request('GET', '/en/user/photo/'.$property->getId().'/edit');
+        $crawler = $client->request(Request::METHOD_GET, '/en/user/photo/'.$property->getId().'/edit');
         $token = $this->getCsrfToken($crawler);
 
         $itemsArray = $property->getPhotos()->map(fn ($item) => $item->getId())->getValues();
 
         $uri = '/en/user/photo/'.$property->getId().'/sort';
-        $client->request('POST', $uri, [
+        $client->request(Request::METHOD_POST, $uri, [
             'ids' => array_reverse($itemsArray),
         ]);
         $this->assertResponseStatusCodeSame(419);
 
-        $client->request('POST', $uri, [
+        $client->request(Request::METHOD_POST, $uri, [
             'csrf_token' => $token,
             'ids' => array_reverse($itemsArray),
         ]);
 
-        $client->request('POST', $uri, [
+        $client->request(Request::METHOD_POST, $uri, [
             'csrf_token' => $token,
             'ids' => $itemsArray,
         ]);
@@ -90,7 +91,7 @@ final class PhotoControllerTest extends WebTestCase
         $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'furnished-renovated-2-bedroom-2-bathroom-flat']);
 
-        $crawler = $client->request('GET', sprintf('/en/user/photo/%d/edit', $property->getId()));
+        $crawler = $client->request(Request::METHOD_GET, sprintf('/en/user/photo/%d/edit', $property->getId()));
 
         $form = $crawler->selectButton('Delete')->first()->form();
         $client->submit($form);

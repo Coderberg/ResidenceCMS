@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller\Admin;
 
 use App\Entity\District;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class DistrictControllerTest extends AbstractLocationControllerTest
@@ -14,7 +15,7 @@ final class DistrictControllerTest extends AbstractLocationControllerTest
      */
     public function testAdminNewDistrict(): void
     {
-        $crawler = $this->client->request('GET', '/en/admin/locations/district/new');
+        $crawler = $this->client->request(Request::METHOD_GET, '/en/admin/locations/district/new');
 
         $form = $crawler->selectButton('Create district')->form([
             'district[name]' => self::NAME,
@@ -46,7 +47,7 @@ final class DistrictControllerTest extends AbstractLocationControllerTest
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $this->client->request('GET', '/en/admin/locations/district/'.$district.'/edit');
+        $crawler = $this->client->request(Request::METHOD_GET, '/en/admin/locations/district/'.$district.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'district[name]' => self::EDITED_NAME,
@@ -72,7 +73,7 @@ final class DistrictControllerTest extends AbstractLocationControllerTest
      */
     public function testAdminDeleteDistrict(): void
     {
-        $crawler = $this->client->request('GET', '/en/admin/locations/district');
+        $crawler = $this->client->request(Request::METHOD_GET, '/en/admin/locations/district');
 
         $district = $this->getRepository($this->client, District::class)
             ->findOneBy([

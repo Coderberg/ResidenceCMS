@@ -24,7 +24,7 @@ final class MapSettingsControllerTest extends WebTestCase
 
         $this->assertEmpty($initialKey);
 
-        $crawler = $client->request('GET', self::MAP_SETTINGS_PAGE);
+        $crawler = $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::MAP_SETTINGS_PAGE);
 
         $form = $crawler->selectButton('Save changes')->form([
             'map_settings[ymaps_key]' => self::TEST_KEY,

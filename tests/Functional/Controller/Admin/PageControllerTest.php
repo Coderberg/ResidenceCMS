@@ -8,6 +8,7 @@ use App\Entity\Menu;
 use App\Entity\Page;
 use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class PageControllerTest extends WebTestCase
@@ -25,7 +26,7 @@ final class PageControllerTest extends WebTestCase
     public function testAdminNewPage(): void
     {
         $client = $this->authAsAdmin($this);
-        $crawler = $client->request('GET', '/en/admin/page/new');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/page/new');
 
         $form = $crawler->selectButton('Create page')->form([
             'page[title]' => self::TITLE,
@@ -73,7 +74,7 @@ final class PageControllerTest extends WebTestCase
                 'locale' => self::LOCALE,
             ])->getId();
 
-        $crawler = $client->request('GET', '/en/admin/page/'.$page.'/edit');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/page/'.$page.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'page[title]' => self::EDITED_TITLE,
@@ -106,7 +107,7 @@ final class PageControllerTest extends WebTestCase
             'locale' => self::LOCALE,
         ])->getId();
 
-        $crawler = $client->request('GET', '/en/admin/page');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/page');
         $client->submit($crawler->filter('#delete-form-'.$page)->form());
 
         $this->assertSame(

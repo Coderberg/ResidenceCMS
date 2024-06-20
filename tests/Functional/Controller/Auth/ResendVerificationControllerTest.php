@@ -44,30 +44,30 @@ final class ResendVerificationControllerTest extends WebTestCase
         $this->entityManager->flush();
 
         // Make sure the user is not verified
-        $this->client->request('GET', '/en/user/property');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, '/en/user/property');
         $this->assertSelectorTextContains('.alert-warning', 'you need to confirm your email address');
         $this->assertFalse($this->user->isVerified());
     }
 
     public function testCsrfProtection(): void
     {
-        $this->client->request('GET', '/en/auth/should_link_be_visible', []);
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, '/en/auth/should_link_be_visible', []);
         $this->assertResponseStatusCodeSame(419);
 
-        $this->client->request('POST', '/en/auth/resend', []);
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_POST, '/en/auth/resend', []);
         $this->assertResponseStatusCodeSame(419);
     }
 
     public function testShouldLinkBeVisible(): void
     {
-        $crawler = $this->client->request('GET', '/en/user/property');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, '/en/user/property');
         $token = $this->getCsrfToken($crawler);
-        $this->client->request('POST', '/en/auth/should_link_be_visible', [
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_POST, '/en/auth/should_link_be_visible', [
             'csrf_token' => $token,
         ]);
         $this->assertResponseStatusCodeSame(405);
 
-        $this->client->request('GET', '/en/auth/should_link_be_visible', [
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, '/en/auth/should_link_be_visible', [
             'csrf_token' => $token,
         ]);
         $this->assertResponseIsSuccessful();
@@ -75,17 +75,17 @@ final class ResendVerificationControllerTest extends WebTestCase
 
     public function testResendEmail(): void
     {
-        $crawler = $this->client->request('GET', '/en/user/property');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, '/en/user/property');
         $token = $this->getCsrfToken($crawler);
         $url = $crawler->filter('#resend')->attr('data-path');
 
-        $this->client->request('POST', $url, [
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_POST, $url, [
             'csrf_token' => $token,
         ]);
         $this->assertResponseIsSuccessful();
         $this->assertEmailCount(1);
 
-        $this->client->request('POST', $url, [
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_POST, $url, [
             'csrf_token' => $token,
         ]);
         $this->assertResponseIsUnprocessable();
@@ -96,7 +96,7 @@ final class ResendVerificationControllerTest extends WebTestCase
     {
         // Generate link
         $url = $this->generateEmailConfirmationLink($this->user);
-        $this->client->request('GET', $url);
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, $url);
         $this->client->followRedirect();
 
         // Make sure the user is verified

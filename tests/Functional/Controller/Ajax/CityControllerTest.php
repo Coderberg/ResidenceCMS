@@ -7,6 +7,7 @@ namespace App\Tests\Functional\Controller\Ajax;
 use App\Entity\City;
 use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 
 final class CityControllerTest extends WebTestCase
 {
@@ -15,7 +16,7 @@ final class CityControllerTest extends WebTestCase
     public function testSomething(): void
     {
         $client = $this->authAsUser($this);
-        $crawler = $client->request('GET', '/en/user/property/new');
+        $crawler = $client->request(Request::METHOD_GET, '/en/user/property/new');
 
         // Find CSRF token
         $token = $this->getCsrfToken($crawler);
@@ -25,15 +26,15 @@ final class CityControllerTest extends WebTestCase
             ->findOneBy(['slug' => 'miami'])->getId();
 
         // Request without CSRF token
-        $client->request('GET', sprintf('/en/city/%s.json', $city));
+        $client->request(Request::METHOD_GET, sprintf('/en/city/%s.json', $city));
         $this->assertResponseStatusCodeSame(419);
 
         // Request with wrong city ID
-        $client->request('GET', sprintf('/en/city/%s.json?csrf_token=%s', 999, $token));
+        $client->request(Request::METHOD_GET, sprintf('/en/city/%s.json?csrf_token=%s', 999, $token));
         $this->assertResponseStatusCodeSame(404);
 
         // Request with CSRF token
-        $client->request('GET', sprintf('/en/city/%s.json?csrf_token=%s', $city, $token));
+        $client->request(Request::METHOD_GET, sprintf('/en/city/%s.json?csrf_token=%s', $city, $token));
         $this->assertResponseIsSuccessful();
 
         $response = $client->getResponse();

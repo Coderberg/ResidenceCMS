@@ -9,6 +9,7 @@ use App\Tests\Helper\WebTestHelper;
 use Coderberg\GoogleAuthenticator;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 
 final class GoogleAuthenticatorControllerTest extends WebTestCase
 {
@@ -22,15 +23,15 @@ final class GoogleAuthenticatorControllerTest extends WebTestCase
     {
         $client = $this->authAsUser($this);
 
-        $client->request('GET', self::ENDPOINT, []);
+        $client->request(Request::METHOD_GET, self::ENDPOINT, []);
         $this->assertResponseStatusCodeSame(419);
         $this->assertJson($client->getResponse()->getContent());
 
-        $client->request('PUT', self::ENDPOINT, []);
+        $client->request(Request::METHOD_PUT, self::ENDPOINT, []);
         $this->assertResponseStatusCodeSame(419);
         $this->assertJson($client->getResponse()->getContent());
 
-        $client->request('DELETE', self::ENDPOINT, []);
+        $client->request(Request::METHOD_DELETE, self::ENDPOINT, []);
         $this->assertResponseStatusCodeSame(419);
         $this->assertJson($client->getResponse()->getContent());
     }
@@ -40,7 +41,7 @@ final class GoogleAuthenticatorControllerTest extends WebTestCase
         $client = $this->authAsUser($this);
         $token = $this->getToken($client);
         $this->assertNotEmpty($token);
-        $client->request('GET', self::ENDPOINT, [
+        $client->request(Request::METHOD_GET, self::ENDPOINT, [
             'csrf_token' => $token,
         ]);
         $this->assertResponseIsSuccessful();
@@ -58,7 +59,7 @@ final class GoogleAuthenticatorControllerTest extends WebTestCase
         // Send empty data
         $client = $this->authAsUser($this);
         $token = $this->getToken($client);
-        $client->request('PUT', self::ENDPOINT, [
+        $client->request(Request::METHOD_PUT, self::ENDPOINT, [
             'csrf_token' => $token,
         ]);
         $this->assertResponseIsUnprocessable();
@@ -67,7 +68,7 @@ final class GoogleAuthenticatorControllerTest extends WebTestCase
         $this->assertContainsWords($response, ['Cannot enable Google Authenticator']);
 
         // Set wrong data
-        $client->request('PUT', self::ENDPOINT, [
+        $client->request(Request::METHOD_PUT, self::ENDPOINT, [
             'secret' => self::SECRET,
             'authentication_code' => random_int(100000, 999999),
             'csrf_token' => $token,
@@ -90,7 +91,7 @@ final class GoogleAuthenticatorControllerTest extends WebTestCase
         $ga = new GoogleAuthenticator();
         $oneTimePassword = $ga->getCode(self::SECRET);
 
-        $client->request('PUT', self::ENDPOINT, [
+        $client->request(Request::METHOD_PUT, self::ENDPOINT, [
             'secret' => self::SECRET,
             'authentication_code' => $oneTimePassword,
             'csrf_token' => $token,
@@ -110,7 +111,7 @@ final class GoogleAuthenticatorControllerTest extends WebTestCase
         $client = $this->authAsUser($this);
         $token = $this->getToken($client);
 
-        $client->request('DELETE', self::ENDPOINT, [
+        $client->request(Request::METHOD_DELETE, self::ENDPOINT, [
             'csrf_token' => $token,
         ]);
 
@@ -125,7 +126,7 @@ final class GoogleAuthenticatorControllerTest extends WebTestCase
 
     private function getToken(KernelBrowser $client): string
     {
-        $crawler = $client->request('GET', '/en/user/security');
+        $crawler = $client->request(Request::METHOD_GET, '/en/user/security');
 
         return $crawler->filter('[name="auth_token"]')->attr('value');
     }
