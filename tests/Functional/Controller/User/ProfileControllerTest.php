@@ -7,6 +7,7 @@ namespace App\Tests\Functional\Controller\User;
 use App\Entity\Profile;
 use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 
 final class ProfileControllerTest extends WebTestCase
 {
@@ -21,7 +22,7 @@ final class ProfileControllerTest extends WebTestCase
     {
         $client = $this->authAsUser($this);
 
-        $crawler = $client->request('GET', '/en/user/profile');
+        $crawler = $client->request(Request::METHOD_GET, '/en/user/profile');
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h3', 'My profile');
 

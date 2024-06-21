@@ -19,7 +19,7 @@ final class HeaderSettingsControllerTest extends WebTestCase
     {
         $client = $this->authAsAdmin($this);
 
-        $crawler = $client->request('GET', self::SETTINGS_PAGE_PATH);
+        $crawler = $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::SETTINGS_PAGE_PATH);
         $this->assertSelectorTextContains('html', 'Header settings');
 
         $image = __DIR__.'/../../../../../public/uploads/images/full/demo/1.jpeg';
@@ -34,7 +34,7 @@ final class HeaderSettingsControllerTest extends WebTestCase
     {
         $client = $this->authAsAdmin($this);
 
-        $crawler = $client->request('GET', self::SETTINGS_PAGE_PATH);
+        $crawler = $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::SETTINGS_PAGE_PATH);
         $this->assertSelectorTextContains('html', 'Header settings');
 
         $image = __DIR__.'/../../../../../public/images/logo-square.png';
@@ -49,7 +49,7 @@ final class HeaderSettingsControllerTest extends WebTestCase
     {
         $client = $this->authAsAdmin($this);
 
-        $crawler = $client->request('GET', self::SETTINGS_PAGE_PATH);
+        $crawler = $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::SETTINGS_PAGE_PATH);
         $this->assertSelectorExists('.remove-header_image');
         $client->submit($crawler->filter('#delete-form-header_image')->form());
 
@@ -64,7 +64,7 @@ final class HeaderSettingsControllerTest extends WebTestCase
     {
         $client = $this->authAsAdmin($this);
 
-        $crawler = $client->request('GET', self::SETTINGS_PAGE_PATH);
+        $crawler = $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::SETTINGS_PAGE_PATH);
         $this->assertSelectorExists('.remove-logo_image');
         $client->submit($crawler->filter('#delete-form-logo_image')->form());
 

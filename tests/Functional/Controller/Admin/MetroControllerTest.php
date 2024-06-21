@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller\Admin;
 
 use App\Entity\Metro;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class MetroControllerTest extends AbstractLocationControllerTest
@@ -14,7 +15,7 @@ final class MetroControllerTest extends AbstractLocationControllerTest
      */
     public function testAdminNewStation(): void
     {
-        $crawler = $this->client->request('GET', '/en/admin/locations/metro/new');
+        $crawler = $this->client->request(Request::METHOD_GET, '/en/admin/locations/metro/new');
 
         $form = $crawler->selectButton('Create metro station')->form([
             'metro[name]' => self::NAME,
@@ -46,7 +47,7 @@ final class MetroControllerTest extends AbstractLocationControllerTest
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $this->client->request('GET', '/en/admin/locations/metro/'.$station.'/edit');
+        $crawler = $this->client->request(Request::METHOD_GET, '/en/admin/locations/metro/'.$station.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'metro[name]' => self::EDITED_NAME,
@@ -73,7 +74,7 @@ final class MetroControllerTest extends AbstractLocationControllerTest
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $this->client->request('GET', '/en/admin/locations/metro');
+        $crawler = $this->client->request(Request::METHOD_GET, '/en/admin/locations/metro');
         $this->client->submit($crawler->filter('#delete-metro-'.$station)->form());
         $this->assertSame(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode(), $this->client->getResponse()->getContent());
 

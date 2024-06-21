@@ -7,6 +7,7 @@ namespace App\Tests\Functional\Controller\Admin;
 use App\Entity\Menu;
 use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class MenuControllerTest extends WebTestCase
@@ -25,7 +26,7 @@ final class MenuControllerTest extends WebTestCase
     {
         $client = $this->authAsAdmin($this);
 
-        $crawler = $client->request('GET', '/en/admin/menu/new');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/menu/new');
 
         $form = $crawler->selectButton('Save changes')->form([
             'menu[title]' => self::TITLE,
@@ -63,7 +64,7 @@ final class MenuControllerTest extends WebTestCase
                 'locale' => self::LOCALE,
             ])->getId();
 
-        $crawler = $client->request('GET', '/en/admin/menu/'.$item.'/edit');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/menu/'.$item.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'menu[title]' => self::EDITED_TITLE,
@@ -90,7 +91,7 @@ final class MenuControllerTest extends WebTestCase
     public function testAdminSortItems(): void
     {
         $client = $this->authAsAdmin($this);
-        $crawler = $client->request('GET', '/en/admin/menu');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/menu');
         $token = $this->getCsrfToken($crawler);
         $items = $this->getRepository($client, Menu::class)
             ->findItems();
@@ -98,18 +99,18 @@ final class MenuControllerTest extends WebTestCase
         $itemsArray = array_map(fn ($item) => $item->getId(), $items);
 
         $uri = '/en/admin/menu/sort';
-        $client->request('POST', $uri, [
+        $client->request(Request::METHOD_POST, $uri, [
             'csrf-token' => $token,
             'items' => array_reverse($itemsArray),
         ]);
         $this->assertResponseStatusCodeSame(419);
 
-        $client->request('POST', $uri, [
+        $client->request(Request::METHOD_POST, $uri, [
             'csrf_token' => $token,
             'items' => array_reverse($itemsArray),
         ]);
 
-        $client->request('POST', $uri, [
+        $client->request(Request::METHOD_POST, $uri, [
             'csrf_token' => $token,
             'items' => $itemsArray,
         ]);
@@ -136,7 +137,7 @@ final class MenuControllerTest extends WebTestCase
                 'url' => self::URL,
             ])->getId();
 
-        $crawler = $client->request('GET', '/en/admin/menu');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/menu');
         $client->submit($crawler->filter('#delete-form-'.$item)->form());
         $this->assertSame(
             Response::HTTP_FOUND,

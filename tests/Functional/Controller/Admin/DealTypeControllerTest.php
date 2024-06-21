@@ -7,6 +7,7 @@ namespace App\Tests\Functional\Controller\Admin;
 use App\Entity\DealType;
 use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class DealTypeControllerTest extends WebTestCase
@@ -24,7 +25,7 @@ final class DealTypeControllerTest extends WebTestCase
     {
         $client = $this->authAsAdmin($this);
 
-        $crawler = $client->request('GET', '/en/admin/deal_type/new');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/deal_type/new');
 
         $form = $crawler->selectButton('Create deal type')->form([
             'deal_type[name]' => self::NAME,
@@ -59,7 +60,7 @@ final class DealTypeControllerTest extends WebTestCase
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/en/admin/deal_type/'.$dealType.'/edit');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/deal_type/'.$dealType.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'deal_type[name]' => self::EDITED_NAME,
@@ -92,7 +93,7 @@ final class DealTypeControllerTest extends WebTestCase
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/en/admin/deal_type');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/deal_type');
         $client->submit($crawler->filter('#delete-form-'.$dealType)->form());
         $this->assertSame(
             Response::HTTP_FOUND,

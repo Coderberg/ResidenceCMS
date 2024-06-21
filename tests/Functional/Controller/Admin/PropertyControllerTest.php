@@ -13,6 +13,7 @@ use App\Entity\Neighborhood;
 use App\Entity\Property;
 use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class PropertyControllerTest extends WebTestCase
@@ -26,7 +27,7 @@ final class PropertyControllerTest extends WebTestCase
     {
         $client = $this->authAsAdmin($this);
 
-        $crawler = $client->request('GET', '/en/admin/property/new');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/property/new');
 
         $city = $this->getRepository($client, City::class)
             ->findOneBy(['slug' => 'miami'])->getId();
@@ -64,7 +65,7 @@ final class PropertyControllerTest extends WebTestCase
         $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'test'])->getId();
 
-        $crawler = $client->request('GET', '/en/admin/photo/'.$property.'/edit');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/photo/'.$property.'/edit');
         $this->assertSelectorTextContains('html', 'Upload photos');
 
         $photo = __DIR__.'/../../../../public/images/bg.jpg';
@@ -91,7 +92,7 @@ final class PropertyControllerTest extends WebTestCase
         $feature = $this->getRepository($client, Feature::class)
             ->findOneBy(['name' => 'Secure parking']);
 
-        $crawler = $client->request('GET', '/en/admin/property/'.$property->getId().'/edit');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/property/'.$property->getId().'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'property[property_description][meta_title]' => 'Custom Meta Title',
@@ -107,7 +108,7 @@ final class PropertyControllerTest extends WebTestCase
             $client->getResponse()->getContent()
         );
 
-        $crawler = $client->request('GET', sprintf(
+        $crawler = $client->request(Request::METHOD_GET, sprintf(
             '/en/%s/%s/%d',
             $property->getCity()->getSlug(),
             $property->getSlug(),
@@ -128,7 +129,7 @@ final class PropertyControllerTest extends WebTestCase
         $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'test'])->getId();
 
-        $crawler = $client->request('GET', '/en/admin/photo/'.$property.'/edit');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/photo/'.$property.'/edit');
 
         $form = $crawler->selectButton('Delete')->form();
         $client->submit($form);
@@ -149,7 +150,7 @@ final class PropertyControllerTest extends WebTestCase
         $property = $this->getRepository($client, Property::class)
             ->findOneBy(['slug' => 'test'])->getId();
 
-        $crawler = $client->request('GET', '/en/admin/property?sort_by=id');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/property?sort_by=id');
         $client->submit($crawler->filter('#delete-form-'.$property)->form());
 
         $this->assertSame(

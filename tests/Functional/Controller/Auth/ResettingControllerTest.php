@@ -6,6 +6,7 @@ namespace App\Tests\Functional\Controller\Auth;
 
 use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 
 final class ResettingControllerTest extends WebTestCase
 {
@@ -14,7 +15,7 @@ final class ResettingControllerTest extends WebTestCase
     public function testPasswordReset(): void
     {
         $client = self::createClient();
-        $crawler = $client->request('GET', '/en/password/reset');
+        $crawler = $client->request(Request::METHOD_GET, '/en/password/reset');
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.card-header', 'Reset Password');
@@ -44,7 +45,7 @@ final class ResettingControllerTest extends WebTestCase
 
         $user = $this->getUser($client, 'admin');
 
-        $crawler = $client->request('GET', sprintf('/en/password/reset/%s', $user->getConfirmationToken()));
+        $crawler = $client->request(Request::METHOD_GET, sprintf('/en/password/reset/%s', $user->getConfirmationToken()));
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.card-header', 'Set a new password');
 
@@ -61,7 +62,7 @@ final class ResettingControllerTest extends WebTestCase
     {
         $client = $this->authAsAdmin($this);
 
-        $client->request('GET', '/en/admin');
+        $client->request(Request::METHOD_GET, '/en/admin');
         $this->assertSelectorTextContains('.navbar-brand', 'Dashboard');
 
         $user = $this->getUser($client, 'admin');

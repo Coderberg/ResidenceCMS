@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class DefaultControllerTest extends WebTestCase
@@ -15,7 +16,7 @@ final class DefaultControllerTest extends WebTestCase
     public function testPublicUrls(string $url): void
     {
         $client = self::createClient();
-        $client->request('GET', $url);
+        $client->request(Request::METHOD_GET, $url);
         $this->assertResponseIsSuccessful(sprintf('The %s public URL loads correctly.', $url));
     }
 
@@ -25,7 +26,7 @@ final class DefaultControllerTest extends WebTestCase
     public function testSecureUrls(string $url): void
     {
         $client = self::createClient();
-        $client->request('GET', $url);
+        $client->request(Request::METHOD_GET, $url);
         $response = $client->getResponse();
         $this->assertSame(Response::HTTP_FOUND, $response->getStatusCode(), $response->getContent());
         $this->assertSame(
@@ -41,7 +42,7 @@ final class DefaultControllerTest extends WebTestCase
     public function testMenuItems(string $url): void
     {
         $client = self::createClient();
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request(Request::METHOD_GET, '/');
         $link = $crawler->filter(sprintf('a[href="%s"]', $url))->link();
         $urlFound = $link->getUri();
         if (false === mb_strpos($url, 'https://')) {
@@ -54,7 +55,7 @@ final class DefaultControllerTest extends WebTestCase
     public function test404(): void
     {
         $client = self::createClient();
-        $client->request('GET', '/en/wrong-url');
+        $client->request(Request::METHOD_GET, '/en/wrong-url');
         $this->assertTrue($client->getResponse()->isNotFound());
     }
 

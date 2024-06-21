@@ -17,4 +17,12 @@ final class HtmlHelper
     {
         return preg_replace("/\r\n|\r|\n/", '<br>', $text);
     }
+
+    public static function removeScriptsFromHtml(string $html): string
+    {
+        $sanitizedHtml = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $html);
+        $sanitizedHtml = preg_replace('# on\w+="[^"]*"#i', '', (string) $sanitizedHtml);
+
+        return preg_replace("# on\w+='[^']*'#i", '', (string) $sanitizedHtml);
+    }
 }

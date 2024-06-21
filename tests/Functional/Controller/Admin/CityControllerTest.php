@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller\Admin;
 
 use App\Entity\City;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class CityControllerTest extends AbstractLocationControllerTest
@@ -14,7 +15,7 @@ final class CityControllerTest extends AbstractLocationControllerTest
      */
     public function testAdminNewCity(): void
     {
-        $crawler = $this->client->request('GET', '/en/admin/locations/city/new');
+        $crawler = $this->client->request(Request::METHOD_GET, '/en/admin/locations/city/new');
 
         $form = $crawler->selectButton('Create city')->form([
             'city[name]' => self::NAME,
@@ -52,7 +53,7 @@ final class CityControllerTest extends AbstractLocationControllerTest
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $this->client->request('GET', '/en/admin/locations/city/'.$city.'/edit');
+        $crawler = $this->client->request(Request::METHOD_GET, '/en/admin/locations/city/'.$city.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'city[name]' => self::EDITED_NAME,
@@ -88,7 +89,7 @@ final class CityControllerTest extends AbstractLocationControllerTest
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $this->client->request('GET', '/en/admin/locations/city');
+        $crawler = $this->client->request(Request::METHOD_GET, '/en/admin/locations/city');
         $this->client->submit($crawler->filter('#delete-form-'.$city)->form());
         $this->assertSame(
             Response::HTTP_FOUND,

@@ -68,6 +68,8 @@ final class PropertyService extends Service
         if (!$isHtmlAllowed) {
             $property = $this->propertyTransformer->contentToPlainText($property);
             $property = $this->propertyTransformer->contentToHtml($property);
+        } else {
+            $property = $this->propertyTransformer->removeScriptsFromHtml($property);
         }
 
         return $property;

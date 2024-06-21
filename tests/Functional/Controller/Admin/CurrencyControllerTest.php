@@ -7,6 +7,7 @@ namespace App\Tests\Functional\Controller\Admin;
 use App\Entity\Currency;
 use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class CurrencyControllerTest extends WebTestCase
@@ -23,7 +24,7 @@ final class CurrencyControllerTest extends WebTestCase
     {
         $client = $this->authAsAdmin($this);
 
-        $crawler = $client->request('GET', '/en/admin/currency/new');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/currency/new');
 
         $form = $crawler->selectButton('Create currency')->form([
             'currency[currency_title]' => self::CURRENCY,
@@ -57,7 +58,7 @@ final class CurrencyControllerTest extends WebTestCase
                 'code' => self::CURRENCY,
             ])->getId();
 
-        $crawler = $client->request('GET', '/en/admin/currency/'.$currency.'/edit');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/currency/'.$currency.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'currency[currency_title]' => self::EDITED,
@@ -91,7 +92,7 @@ final class CurrencyControllerTest extends WebTestCase
                 'code' => self::EDITED,
             ])->getId();
 
-        $crawler = $client->request('GET', '/en/admin/currency');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/currency');
         $client->submit($crawler->filter('#delete-form-'.$currency)->form());
         $this->assertSame(
             Response::HTTP_FOUND,

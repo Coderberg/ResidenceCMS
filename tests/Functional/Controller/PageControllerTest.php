@@ -7,6 +7,7 @@ namespace App\Tests\Functional\Controller;
 use App\Entity\Page;
 use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class PageControllerTest extends WebTestCase
@@ -21,7 +22,7 @@ final class PageControllerTest extends WebTestCase
                 'add_contact_form' => 0,
             ]);
 
-        $client->request('GET', sprintf('/en/info/%s', $page->getSlug()));
+        $client->request(Request::METHOD_GET, sprintf('/en/info/%s', $page->getSlug()));
         $this->assertResponseIsSuccessful();
     }
 
@@ -33,7 +34,7 @@ final class PageControllerTest extends WebTestCase
                 'add_contact_form' => 1,
             ]);
 
-        $crawler = $client->request('GET', sprintf('/en/info/%s', $page->getSlug()));
+        $crawler = $client->request(Request::METHOD_GET, sprintf('/en/info/%s', $page->getSlug()));
         $this->assertResponseIsSuccessful();
 
         $form = $crawler->selectButton('Submit')->form([

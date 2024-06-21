@@ -7,6 +7,7 @@ namespace App\Tests\Functional\Controller\Admin;
 use App\Entity\Category;
 use App\Tests\Helper\WebTestHelper;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class CategoryControllerTest extends WebTestCase
@@ -23,7 +24,7 @@ final class CategoryControllerTest extends WebTestCase
     public function testAdminNewCategory(): void
     {
         $client = $this->authAsAdmin($this);
-        $crawler = $client->request('GET', '/en/admin/category/new');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/category/new');
 
         $form = $crawler->selectButton('Create category')->form([
             'category[name]' => self::NAME,
@@ -58,7 +59,7 @@ final class CategoryControllerTest extends WebTestCase
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/en/admin/category/'.$category.'/edit');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/category/'.$category.'/edit');
 
         $form = $crawler->selectButton('Save changes')->form([
             'category[name]' => self::EDITED_NAME,
@@ -91,7 +92,7 @@ final class CategoryControllerTest extends WebTestCase
                 'slug' => self::SLUG,
             ])->getId();
 
-        $crawler = $client->request('GET', '/en/admin/category');
+        $crawler = $client->request(Request::METHOD_GET, '/en/admin/category');
         $client->submit($crawler->filter('#delete-form-'.$category)->form());
         $this->assertSame(
             Response::HTTP_FOUND,
