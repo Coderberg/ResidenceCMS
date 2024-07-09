@@ -31,6 +31,6 @@ docker compose exec -T php bin/phpunit
 Additional services:
 
 - PhpMyAdmin http://localhost:8081
-- MailHog http://localhost:8025
+- Mailpit http://localhost:8025
 
 See more detailed documentation here https://github.com/dunglas/symfony-docker
