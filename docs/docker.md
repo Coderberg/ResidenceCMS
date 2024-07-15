@@ -6,10 +6,10 @@ git clone https://github.com/Coderberg/ResidenceCMS.git
 cd ResidenceCMS
 ```
 
-2. Create a `.env.local` file and update the `MAILER_DSN` variable to use MailHog
+2. Create a `.env.local` file and update the `MAILER_DSN` variable to use Mailpit
 ```shell
 cp .env .env.local
-sed -i 's/MAILER_DSN=.*/MAILER_DSN=smtp:\/\/mailhog:1025/' .env.local
+sed -i 's/MAILER_DSN=.*/MAILER_DSN=smtp:\/\/mailer:1025/' .env.local
 ```
 
 3. Build and run containers
