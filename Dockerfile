@@ -1,7 +1,7 @@
 #syntax=docker/dockerfile:1.4
 
 # Versions
-FROM dunglas/frankenphp:1-alpine AS frankenphp_upstream
+FROM dunglas/frankenphp:1-php8.3 AS frankenphp_upstream
 
 # The different stages of this Dockerfile are meant to be built into separate images
 # https://docs.docker.com/develop/develop-images/multistage-build/#stop-at-a-specific-build-stage
@@ -13,14 +13,16 @@ FROM frankenphp_upstream AS frankenphp_base
 
 WORKDIR /app
 
+VOLUME /app/var/
+
 # persistent / runtime deps
-# hadolint ignore=DL3018
-RUN apk add --no-cache \
-		acl \
-		file \
-		gettext \
-		git \
-	;
+# hadolint ignore=DL3008
+RUN apt-get update && apt-get install -y --no-install-recommends \
+	acl \
+	file \
+	gettext \
+	git \
+	&& rm -rf /var/lib/apt/lists/*
 
 RUN set -eux; \
 	install-php-extensions \
@@ -41,15 +43,16 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV PANTHER_NO_SANDBOX 1
 # Not mandatory, but recommended
 ENV PANTHER_CHROME_ARGUMENTS='--disable-dev-shm-usage'
-RUN apk add --no-cache chromium chromium-chromedriver
+RUN apt-get update && apt-get install -y --no-install-recommends chromium chromium-driver && rm -rf /var/lib/apt/lists/*
 
 # Firefox and geckodriver
-#ARG GECKODRIVER_VERSION=0.29.0
-#RUN apk add --no-cache firefox
-#RUN wget -q https://github.com/mozilla/geckodriver/releases/download/v$GECKODRIVER_VERSION/geckodriver-v$GECKODRIVER_VERSION-linux64.tar.gz; \
-#	tar -zxf geckodriver-v$GECKODRIVER_VERSION-linux64.tar.gz -C /usr/bin; \
-#	rm geckodriver-v$GECKODRIVER_VERSION-linux64.tar.gz
+#ARG GECKODRIVER_VERSION=0.34.0
+#RUN apt-get update && apt-get install -y --no-install-recommends firefox && rm -rf /var/lib/apt/lists/*
+#RUN wget -q https://github.com/mozilla/geckodriver/releases/download/v$GECKODRIVER_VERSION/geckodriver-v$GECKODRIVER_VERSION-aarch64.tar.gz; \
+#	tar -zxf geckodriver-v$GECKODRIVER_VERSION-aarch64.tar.gz -C /usr/bin; \
+#	rm geckodriver-v$GECKODRIVER_VERSION-aarch64.tar.gz
 ###< symfony/panther ###
+
 ###> doctrine/doctrine-bundle ###
 RUN install-php-extensions pdo_mysql
 ###< doctrine/doctrine-bundle ###
@@ -68,7 +71,6 @@ CMD [ "frankenphp", "run", "--config", "/etc/caddy/Caddyfile" ]
 FROM frankenphp_base AS frankenphp_dev
 
 ENV APP_ENV=dev XDEBUG_MODE=off
-VOLUME /app/var/
 
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 

@@ -6,10 +6,10 @@ git clone https://github.com/Coderberg/ResidenceCMS.git
 cd ResidenceCMS
 ```
 
-2. Create a `.env.local` file and update the `MAILER_DSN` variable to use MailHog
+2. Create a `.env.local` file and update the `MAILER_DSN` variable to use Mailpit
 ```shell
 cp .env .env.local
-sed -i 's/MAILER_DSN=.*/MAILER_DSN=smtp:\/\/mailhog:1025/' .env.local
+sed -i 's/MAILER_DSN=.*/MAILER_DSN=smtp:\/\/mailer:1025/' .env.local
 ```
 
 3. Build and run containers
@@ -31,6 +31,6 @@ docker compose exec -T php bin/phpunit
 Additional services:
 
 - PhpMyAdmin http://localhost:8081
-- MailHog http://localhost:8025
+- Mailpit http://localhost:8025
 
 See more detailed documentation here https://github.com/dunglas/symfony-docker
