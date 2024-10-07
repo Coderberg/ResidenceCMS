@@ -16,6 +16,6 @@ final class DashboardControllerTest extends WebTestCase
     {
         $client = $this->authAsAdmin($this);
         $client->request(Request::METHOD_GET, '/en/admin');
-        $this->assertResponseIsSuccessful(sprintf('The %s public URL loads correctly.', '/admin'));
+        $this->assertResponseIsSuccessful(\sprintf('The %s public URL loads correctly.', '/admin'));
     }
 }

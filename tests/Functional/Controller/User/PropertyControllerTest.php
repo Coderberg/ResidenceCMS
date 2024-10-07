@@ -22,7 +22,7 @@ final class PropertyControllerTest extends WebTestCase
     {
         $client = $this->authAsUser($this);
         $crawler = $client->request(Request::METHOD_GET, '/en/user/property');
-        $this->assertResponseIsSuccessful(sprintf('The %s public URL loads correctly.', '/user/account'));
+        $this->assertResponseIsSuccessful(\sprintf('The %s public URL loads correctly.', '/user/account'));
         $this->assertCount(2, $crawler->filter('.property-box-img'));
         $this->assertSelectorTextContains('html', 'My properties (2)');
 
@@ -56,10 +56,10 @@ final class PropertyControllerTest extends WebTestCase
         $property = $this->getRepository($client, Property::class)
             ->findOneBy(['author' => $user]);
 
-        $client->request(Request::METHOD_GET, sprintf('/en/user/property/%d/update?state=private', $property->getId()));
+        $client->request(Request::METHOD_GET, \sprintf('/en/user/property/%d/update?state=private', $property->getId()));
         $this->assertResponseStatusCodeSame(419);
 
-        $client->request(Request::METHOD_GET, sprintf('/en/user/property/%d/edit', $property->getId()));
+        $client->request(Request::METHOD_GET, \sprintf('/en/user/property/%d/edit', $property->getId()));
         $this->assertResponseStatusCodeSame(403);
     }
 
@@ -142,7 +142,7 @@ final class PropertyControllerTest extends WebTestCase
 
         $this->assertSame('Lorem ipsum dolor sit amet', $property->getPropertyDescription()->getContent());
 
-        $crawler = $client->request(Request::METHOD_GET, sprintf('/en/user/property/%d/edit', $property->getId()));
+        $crawler = $client->request(Request::METHOD_GET, \sprintf('/en/user/property/%d/edit', $property->getId()));
         $this->assertResponseIsSuccessful();
 
         $form = $crawler->selectButton('Save changes')->form([
@@ -150,12 +150,12 @@ final class PropertyControllerTest extends WebTestCase
         ]);
 
         $client->submit($form);
-        $this->assertResponseRedirects(sprintf('/en/user/photo/%d/edit', $property->getId()), 302);
+        $this->assertResponseRedirects(\sprintf('/en/user/photo/%d/edit', $property->getId()), 302);
 
         $editedProperty = $this->getRepository($client, PropertyDescription::class)
             ->findOneBy(['meta_title' => 'Custom Meta Title'])->getProperty();
 
-        $client->request(Request::METHOD_GET, sprintf('/en/user/property/%d/edit', $editedProperty->getId()));
+        $client->request(Request::METHOD_GET, \sprintf('/en/user/property/%d/edit', $editedProperty->getId()));
         $this->assertResponseIsSuccessful();
     }
 

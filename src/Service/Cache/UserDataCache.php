@@ -37,6 +37,6 @@ trait UserDataCache
 
     private function getKey(User $user): string
     {
-        return sprintf('user.%s.email_confirmation_link.sent_at', $user->getId());
+        return \sprintf('user.%s.email_confirmation_link.sent_at', $user->getId());
     }
 }

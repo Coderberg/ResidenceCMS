@@ -108,7 +108,7 @@ final class PropertyControllerTest extends WebTestCase
             $client->getResponse()->getContent()
         );
 
-        $crawler = $client->request(Request::METHOD_GET, sprintf(
+        $crawler = $client->request(Request::METHOD_GET, \sprintf(
             '/en/%s/%s/%d',
             $property->getCity()->getSlug(),
             $property->getSlug(),

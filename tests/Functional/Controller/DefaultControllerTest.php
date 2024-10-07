@@ -17,7 +17,7 @@ final class DefaultControllerTest extends WebTestCase
     {
         $client = self::createClient();
         $client->request(Request::METHOD_GET, $url);
-        $this->assertResponseIsSuccessful(sprintf('The %s public URL loads correctly.', $url));
+        $this->assertResponseIsSuccessful(\sprintf('The %s public URL loads correctly.', $url));
     }
 
     /**
@@ -32,7 +32,7 @@ final class DefaultControllerTest extends WebTestCase
         $this->assertSame(
             'http://localhost/en/login',
             $response->getTargetUrl(),
-            sprintf('The %s secure URL redirects to the login form.', $url)
+            \sprintf('The %s secure URL redirects to the login form.', $url)
         );
     }
 
@@ -43,7 +43,7 @@ final class DefaultControllerTest extends WebTestCase
     {
         $client = self::createClient();
         $crawler = $client->request(Request::METHOD_GET, '/');
-        $link = $crawler->filter(sprintf('a[href="%s"]', $url))->link();
+        $link = $crawler->filter(\sprintf('a[href="%s"]', $url))->link();
         $urlFound = $link->getUri();
         if (false === mb_strpos($url, 'https://')) {
             $this->assertSame('http://localhost'.$url, $urlFound);

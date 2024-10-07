@@ -17,7 +17,7 @@ final readonly class PasswordService
     public function __construct(
         private UserService $service,
         private TokenStorageInterface $tokenStorage,
-        private ValidatorInterface $validator
+        private ValidatorInterface $validator,
     ) {
     }
 

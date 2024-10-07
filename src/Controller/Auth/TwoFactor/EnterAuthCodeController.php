@@ -22,7 +22,7 @@ final class EnterAuthCodeController implements TwoFactorFormRendererInterface
     public function __construct(
         private readonly Environment $twigEnvironment,
         private readonly SettingsRepository $settingsRepository,
-        protected ManagerRegistry $doctrine
+        protected ManagerRegistry $doctrine,
     ) {
     }
 

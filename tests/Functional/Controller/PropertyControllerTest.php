@@ -34,7 +34,7 @@ final class PropertyControllerTest extends WebTestCase
                 'state' => 'published',
             ]);
 
-        $crawler = $client->request(Request::METHOD_GET, sprintf(
+        $crawler = $client->request(Request::METHOD_GET, \sprintf(
             '/en/%s/%s/%d',
             $property->getCity()->getSlug(),
             $property->getSlug(),
@@ -56,13 +56,13 @@ final class PropertyControllerTest extends WebTestCase
 
         $city = $repository->findOneBy(['slug' => 'miami'])->getId();
 
-        $crawler = $client->request(Request::METHOD_GET, sprintf('/en/?city=%d&bedrooms=0', $city));
+        $crawler = $client->request(Request::METHOD_GET, \sprintf('/en/?city=%d&bedrooms=0', $city));
         $this->assertCount(3, $crawler->filter('.property-box-img'));
 
-        $crawler = $client->request(Request::METHOD_GET, sprintf('/en/?city=%d&bedrooms=1', $city));
+        $crawler = $client->request(Request::METHOD_GET, \sprintf('/en/?city=%d&bedrooms=1', $city));
         $this->assertCount(1, $crawler->filter('.property-box-img'));
 
-        $crawler = $client->request(Request::METHOD_GET, sprintf('/en/?city=%d&bedrooms=3', $city));
+        $crawler = $client->request(Request::METHOD_GET, \sprintf('/en/?city=%d&bedrooms=3', $city));
         $this->assertCount(0, $crawler->filter('.property-box-img'));
 
         $crawler = $client->request(Request::METHOD_GET, '/en/?guests=6');

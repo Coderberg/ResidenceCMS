@@ -21,7 +21,7 @@ final class ResettingService extends AbstractService
         RequestStack $requestStack,
         private readonly ResettingRepository $repository,
         private readonly MessageBusInterface $messageBus,
-        private readonly TokenGenerator $generator
+        private readonly TokenGenerator $generator,
     ) {
         parent::__construct($tokenManager, $requestStack);
     }

@@ -30,7 +30,7 @@ final class PropertyService extends Service
         private readonly PropertyTransformer $propertyTransformer,
         private readonly UserPropertyRepository $repository,
         private readonly RequestToArrayTransformer $transformer,
-        private readonly TokenStorageInterface $tokenStorage
+        private readonly TokenStorageInterface $tokenStorage,
     ) {
         parent::__construct($tokenManager, $requestStack, $em, $messageBus, $slugger);
     }

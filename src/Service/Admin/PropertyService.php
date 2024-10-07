@@ -20,7 +20,7 @@ class PropertyService extends AbstractService
         RequestStack $requestStack,
         private readonly EntityManagerInterface $em,
         private readonly MessageBusInterface $messageBus,
-        private readonly Slugger $slugger
+        private readonly Slugger $slugger,
     ) {
         parent::__construct($tokenManager, $requestStack);
     }

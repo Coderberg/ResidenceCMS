@@ -17,7 +17,7 @@ final readonly class ControllerSubscriber implements EventSubscriberInterface
 {
     public function __construct(
         private VerifyCsrfToken $verifyCsrfToken,
-        private ThrottleRequests $throttleRequests
+        private ThrottleRequests $throttleRequests,
     ) {
     }
 

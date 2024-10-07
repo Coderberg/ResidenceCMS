@@ -33,7 +33,7 @@ final class RegisterController extends BaseController implements AuthController
         private readonly UserService $service,
         ManagerRegistry $doctrine,
         RequestStack $requestStack,
-        SettingsRepository $settingsRepository
+        SettingsRepository $settingsRepository,
     ) {
         parent::__construct($settingsRepository, $doctrine);
         $this->settings = $this->site($requestStack->getCurrentRequest());
