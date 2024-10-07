@@ -50,7 +50,7 @@ jobs:
         run: docker compose exec -T php bin/console -e test app:install
       -
         name: Run PHPUnit
-        run: docker compose exec -T php bin/phpunit
+        run: docker compose exec -T php bin/phpunit --testsuite=main
       -
         name: Doctrine Schema Validator
         run: docker compose exec -T php bin/console -e test doctrine:schema:validate
