@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       mariadb:
-        image: mariadb:11.4.3
+        image: mariadb:11.1.5
         ports:
           - 3306
         env:
@@ -52,9 +52,9 @@ jobs:
         run: |
           php bin/console app:install
         env:
-          DATABASE_URL: mysql://mariadb:mariadb@127.0.0.1:${{ job.services.mariadb.ports[3306] }}/mariadb?serverVersion=mariadb-11.4.3
+          DATABASE_URL: mysql://mariadb:mariadb@127.0.0.1:${{ job.services.mariadb.ports[3306] }}/mariadb?serverVersion=mariadb-11.1.5
       - name: Run Tests
         env:
           PANTHER_NO_SANDBOX: "1"
-          DATABASE_URL: mysql://mariadb:mariadb@127.0.0.1:${{ job.services.mariadb.ports[3306] }}/mariadb?serverVersion=mariadb-11.4.3
+          DATABASE_URL: mysql://mariadb:mariadb@127.0.0.1:${{ job.services.mariadb.ports[3306] }}/mariadb?serverVersion=mariadb-11.1.5
         run: php bin/phpunit --testsuite=main
