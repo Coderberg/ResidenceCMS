@@ -17,7 +17,7 @@ final class UserService extends AbstractService
         CsrfTokenManagerInterface $tokenManager,
         RequestStack $requestStack,
         private readonly EntityManagerInterface $em,
-        private readonly UserTransformer $transformer
+        private readonly UserTransformer $transformer,
     ) {
         parent::__construct($tokenManager, $requestStack);
     }

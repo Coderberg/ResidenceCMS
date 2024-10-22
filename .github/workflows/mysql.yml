@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       mysql:
-        image: mysql:5.7
+        image: mysql:8.0.39
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: false
           MYSQL_ROOT_PASSWORD: symfony
@@ -52,9 +52,9 @@ jobs:
         run: |
           php bin/console app:install
         env:
-          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports[3306] }}/symfony?serverVersion=5.7
+          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports[3306] }}/symfony?serverVersion=8.0.39
       - name: Run Tests
         env:
-          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports[3306] }}/symfony?serverVersion=5.7
+          DATABASE_URL: mysql://root:symfony@127.0.0.1:${{ job.services.mysql.ports[3306] }}/symfony?serverVersion=8.0.39
           PANTHER_APP_ENV: test
-        run: php bin/phpunit --coverage-text
+        run: php bin/phpunit --testsuite=main

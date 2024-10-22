@@ -23,7 +23,7 @@ final class GoogleAuthenticatorService extends AbstractService
         private readonly GoogleAuthenticatorAdapter $googleAuthenticator,
         private readonly TranslatorInterface $translator,
         CsrfTokenManagerInterface $tokenManager,
-        RequestStack $requestStack
+        RequestStack $requestStack,
     ) {
         parent::__construct($tokenManager, $requestStack);
     }

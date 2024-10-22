@@ -20,7 +20,7 @@ abstract class BaseController extends AbstractController
 
     public function __construct(
         private readonly SettingsRepository $settingsRepository,
-        protected ManagerRegistry $doctrine
+        protected ManagerRegistry $doctrine,
     ) {
     }
 

@@ -22,7 +22,7 @@ final class PropertyController extends BaseController
     public function search(
         Request $request,
         FilterRepository $repository,
-        RequestToArrayTransformer $transformer
+        RequestToArrayTransformer $transformer,
     ): Response {
         $searchParams = $transformer->transform($request);
         $properties = $repository->findByFilter($searchParams);
@@ -64,7 +64,7 @@ final class PropertyController extends BaseController
         Request $request,
         URLService $url,
         Property $property,
-        SimilarRepository $repository
+        SimilarRepository $repository,
     ): Response {
         if (!$url->isCanonical($property, $request)) {
             return $this->redirect($url->generateCanonical($property), Response::HTTP_MOVED_PERMANENTLY);

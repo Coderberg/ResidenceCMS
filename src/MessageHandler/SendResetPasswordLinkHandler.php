@@ -20,7 +20,7 @@ final readonly class SendResetPasswordLinkHandler
     public function __construct(
         private Mailer $mailer,
         private TranslatorInterface $translator,
-        private UrlGeneratorInterface $router
+        private UrlGeneratorInterface $router,
     ) {
     }
 

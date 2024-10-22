@@ -19,7 +19,7 @@ final class PageController extends BaseController
     public function pageShow(
         Request $request,
         MessageBusInterface $messageBus,
-        PageRepository $pageRepository
+        PageRepository $pageRepository,
     ): Response {
         $slug = $request->attributes->get('slug');
         $page = $pageRepository->findOneBy(['locale' => $request->getLocale(), 'slug' => $slug])

@@ -45,7 +45,7 @@ final class ResettingControllerTest extends WebTestCase
 
         $user = $this->getUser($client, 'admin');
 
-        $crawler = $client->request(Request::METHOD_GET, sprintf('/en/password/reset/%s', $user->getConfirmationToken()));
+        $crawler = $client->request(Request::METHOD_GET, \sprintf('/en/password/reset/%s', $user->getConfirmationToken()));
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.card-header', 'Set a new password');
 

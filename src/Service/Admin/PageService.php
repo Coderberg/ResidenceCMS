@@ -16,7 +16,7 @@ final class PageService extends AbstractService
     public function __construct(
         CsrfTokenManagerInterface $tokenManager,
         RequestStack $requestStack,
-        private readonly EntityManagerInterface $em
+        private readonly EntityManagerInterface $em,
     ) {
         parent::__construct($tokenManager, $requestStack);
     }

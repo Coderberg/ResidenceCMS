@@ -57,7 +57,7 @@ final class MainSettingsControllerTest extends WebTestCase
             ->findOneBy(['slug' => 'bright-and-cheerful-alcove-studio']);
 
         $crawler = $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET,
-            sprintf('/en/%s/%s/%d', $property->getCity()->getSlug(), $property->getSlug(), $property->getId())
+            \sprintf('/en/%s/%s/%d', $property->getCity()->getSlug(), $property->getSlug(), $property->getId())
         );
         // Check if similar properties are enabled
         $this->assertStringContainsString('Modern one-bedroom apartment in Miami', $crawler->filter('.card-title>a')
@@ -82,7 +82,7 @@ final class MainSettingsControllerTest extends WebTestCase
             ->findOneBy(['slug' => 'bright-and-cheerful-alcove-studio']);
 
         $crawler = $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET,
-            sprintf('/en/%s/%s/%d', $property->getCity()->getSlug(), $property->getSlug(), $property->getId())
+            \sprintf('/en/%s/%s/%d', $property->getCity()->getSlug(), $property->getSlug(), $property->getId())
         );
         // Check if similar properties are disabled
         $this->assertStringNotContainsString('Similar Properties', $crawler->filter('h4')

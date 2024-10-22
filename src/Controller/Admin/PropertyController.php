@@ -22,7 +22,7 @@ final class PropertyController extends BaseController
     public function index(
         Request $request,
         FilterRepository $repository,
-        RequestToArrayTransformer $transformer
+        RequestToArrayTransformer $transformer,
     ): Response {
         $searchParams = $transformer->transform($request);
         $properties = $repository->findByFilter($searchParams);

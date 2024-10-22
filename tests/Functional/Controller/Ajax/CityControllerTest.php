@@ -26,15 +26,15 @@ final class CityControllerTest extends WebTestCase
             ->findOneBy(['slug' => 'miami'])->getId();
 
         // Request without CSRF token
-        $client->request(Request::METHOD_GET, sprintf('/en/city/%s.json', $city));
+        $client->request(Request::METHOD_GET, \sprintf('/en/city/%s.json', $city));
         $this->assertResponseStatusCodeSame(419);
 
         // Request with wrong city ID
-        $client->request(Request::METHOD_GET, sprintf('/en/city/%s.json?csrf_token=%s', 999, $token));
+        $client->request(Request::METHOD_GET, \sprintf('/en/city/%s.json?csrf_token=%s', 999, $token));
         $this->assertResponseStatusCodeSame(404);
 
         // Request with CSRF token
-        $client->request(Request::METHOD_GET, sprintf('/en/city/%s.json?csrf_token=%s', $city, $token));
+        $client->request(Request::METHOD_GET, \sprintf('/en/city/%s.json?csrf_token=%s', $city, $token));
         $this->assertResponseIsSuccessful();
 
         $response = $client->getResponse();

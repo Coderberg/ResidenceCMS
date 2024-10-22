@@ -14,7 +14,7 @@ final readonly class CityService
 {
     public function __construct(
         private RequestToArrayTransformer $transformer,
-        private FilterRepository $repository
+        private FilterRepository $repository,
     ) {
     }
 

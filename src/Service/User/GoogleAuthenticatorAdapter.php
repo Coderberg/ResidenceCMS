@@ -12,7 +12,7 @@ final readonly class GoogleAuthenticatorAdapter implements GoogleAuthenticatorIn
 {
     public function __construct(
         private GoogleAuthenticatorInterface $authenticator,
-        private RequestStack $requestStack
+        private RequestStack $requestStack,
     ) {
     }
 

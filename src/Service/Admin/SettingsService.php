@@ -21,7 +21,7 @@ final class SettingsService extends AbstractService
         CsrfTokenManagerInterface $tokenManager,
         RequestStack $requestStack,
         private readonly SettingsRepository $repository,
-        private readonly FileUploader $fileUploader
+        private readonly FileUploader $fileUploader,
     ) {
         parent::__construct($tokenManager, $requestStack);
     }

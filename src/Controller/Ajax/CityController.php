@@ -37,7 +37,7 @@ final class CityController extends AbstractController implements AjaxController
 
     private function find(
         City $city,
-        DistrictRepository|MetroRepository|NeighborhoodRepository $repository
+        DistrictRepository|MetroRepository|NeighborhoodRepository $repository,
     ): array {
         return array_map(fn ($entity) => [
             'id' => $entity->getId(),

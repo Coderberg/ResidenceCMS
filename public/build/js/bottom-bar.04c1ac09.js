@@ -1,0 +1,1 @@
+(self.webpackChunk=self.webpackChunk||[]).push([[576],{68:()=>{!function(t){"use strict";const a=t("#phone"),e=t("#email");t("body").append(`<div class="bottom-bar">\n        <a class="btn-right" href="${a.attr("href")}">${a.attr("title")}</a>\n        <a class="btn-left" href="${e.attr("href")}">${e.attr("title")}</a>\n    </div>`)}(window.jQuery)}},t=>{var a;a=68,t(t.s=a)}]);

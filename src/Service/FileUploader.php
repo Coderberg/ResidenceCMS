@@ -25,7 +25,7 @@ final readonly class FileUploader
 
     public function __construct(
         #[Autowire('%images_directory%')]
-        private string $targetDirectory
+        private string $targetDirectory,
     ) {
         $this->fileSystem = new Filesystem();
     }

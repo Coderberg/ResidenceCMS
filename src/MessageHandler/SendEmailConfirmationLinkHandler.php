@@ -26,7 +26,7 @@ final readonly class SendEmailConfirmationLinkHandler
         private VerifyEmailHelperInterface $verifyEmailHelper,
         private Mailer $mailer,
         private UrlGeneratorInterface $router,
-        private TranslatorInterface $translator
+        private TranslatorInterface $translator,
     ) {
     }
 

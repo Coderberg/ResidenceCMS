@@ -14,7 +14,7 @@ abstract class AbstractSettingsController extends AbstractController
 
     public function __construct(
         protected SettingsRepository $repository,
-        protected SettingsService $service
+        protected SettingsService $service,
     ) {
         $this->settings = $this->repository->findAllAsArray();
     }
