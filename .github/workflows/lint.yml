@@ -48,11 +48,11 @@ jobs:
 
       - name: PHP-CS-Fixer
         if: always() && steps.install.outcome == 'success'
-        run: vendor/bin/php-cs-fixer fix --diff --dry-run --ansi
+        run: vendor/bin/php-cs-fixer fix --diff --dry-run
 
       - name: PHPStan
         if: always() && steps.install.outcome == 'success'
-        run: vendor/bin/phpstan analyse
+        run: vendor/bin/phpstan analyse --ansi
 
       - name: Rector
         if: always() && steps.install.outcome == 'success'
