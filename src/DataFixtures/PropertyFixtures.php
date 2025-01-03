@@ -4,8 +4,16 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
+use App\Entity\Category;
+use App\Entity\City;
+use App\Entity\DealType;
+use App\Entity\District;
+use App\Entity\Feature;
+use App\Entity\Metro;
+use App\Entity\Neighborhood;
 use App\Entity\Property;
 use App\Entity\PropertyDescription;
+use App\Entity\User;
 use App\Utils\Slugger;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -37,11 +45,11 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
             $property->setState('published');
             $property->setCreatedAt(new \DateTime('now'));
             $property->setUpdatedAt(new \DateTime('now'));
-            $property->addFeature($this->getReference('Air conditioning'));
-            $property->addFeature($this->getReference('Balcony'));
-            $property->addFeature($this->getReference('Fire Alarm'));
-            $property->addFeature($this->getReference('High Impact Doors'));
-            $property->addFeature($this->getReference('Secure parking'));
+            $property->addFeature($this->getReference('Air conditioning', Feature::class));
+            $property->addFeature($this->getReference('Balcony', Feature::class));
+            $property->addFeature($this->getReference('Fire Alarm', Feature::class));
+            $property->addFeature($this->getReference('High Impact Doors', Feature::class));
+            $property->addFeature($this->getReference('Secure parking', Feature::class));
             $property->setPriorityNumber(0);
             $property->setPropertyDescription((new PropertyDescription())
                 ->setTitle($title)
@@ -63,26 +71,26 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
                                 $latitude, $longitude, $price, $priceType];
             */
             [
-                $this->getReference('admin'),
-                $this->getReference('Sale'),
-                $this->getReference('Villa'),
+                $this->getReference('admin', User::class),
+                $this->getReference('Sale', DealType::class),
+                $this->getReference('Villa', Category::class),
                 5,
                 null,
-                $this->getReference('Tampa'),
-                $this->getReference('South Tampa'),
-                $this->getReference('Culbreath Isles'),
+                $this->getReference('Tampa', City::class),
+                $this->getReference('South Tampa', District::class),
+                $this->getReference('Culbreath Isles', Neighborhood::class),
                 null,
                 'Beautiful villa for sale in Tampa',
                 '4935 New Providence Ave, Tampa, FL',
                 '27.932255', '-82.533187', 1600, 'sq. foot',
             ],
             [
-                $this->getReference('admin'),
-                $this->getReference('Rent'),
-                $this->getReference('Penthouse'),
+                $this->getReference('admin', User::class),
+                $this->getReference('Rent', DealType::class),
+                $this->getReference('Penthouse', Category::class),
                 2,
                 5,
-                $this->getReference('Palm Beach'),
+                $this->getReference('Palm Beach', City::class),
                 null,
                 null,
                 null,
@@ -91,40 +99,40 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
                 '26.701320', '-80.033688', 2000, 'mo',
             ],
             [
-                $this->getReference('admin'),
-                $this->getReference('Rent'),
-                $this->getReference('Apartment'),
+                $this->getReference('admin', User::class),
+                $this->getReference('Rent', DealType::class),
+                $this->getReference('Apartment', Category::class),
                 null,
                 4,
-                $this->getReference('Miami'),
+                $this->getReference('Miami', City::class),
                 null,
-                $this->getReference('South Beach'),
+                $this->getReference('South Beach', Neighborhood::class),
                 null,
                 'Bright and Cheerful alcove studio',
                 '1451 Ocean Dr, Miami Beach, FL 33139',
                 '25.785107', '-80.129460', 200, 'day',
             ],
             [
-                $this->getReference('admin'),
-                $this->getReference('Rent'),
-                $this->getReference('Apartment'),
+                $this->getReference('admin', User::class),
+                $this->getReference('Rent', DealType::class),
+                $this->getReference('Apartment', Category::class),
                 1,
                 2,
-                $this->getReference('Miami'),
+                $this->getReference('Miami', City::class),
                 null,
-                $this->getReference('South Beach'),
+                $this->getReference('South Beach', Neighborhood::class),
                 null,
                 'Modern one-bedroom apartment in Miami',
                 '1451 Ocean Dr, Miami Beach, FL 33139',
                 '25.785107', '-80.129460', 250, 'day',
             ],
             [
-                $this->getReference('admin'),
-                $this->getReference('Rent'),
-                $this->getReference('Apartment'),
+                $this->getReference('admin', User::class),
+                $this->getReference('Rent', DealType::class),
+                $this->getReference('Apartment', Category::class),
                 1,
                 3,
-                $this->getReference('Palm Beach'),
+                $this->getReference('Palm Beach', City::class),
                 null,
                 null,
                 null,
@@ -133,28 +141,28 @@ final class PropertyFixtures extends Fixture implements DependentFixtureInterfac
                 '26.705007', '-80.033574', 180, 'day',
             ],
             [
-                $this->getReference('user'),
-                $this->getReference('Sale'),
-                $this->getReference('Apartment'),
+                $this->getReference('user', User::class),
+                $this->getReference('Sale', DealType::class),
+                $this->getReference('Apartment', Category::class),
                 2,
                 null,
-                $this->getReference('Miami'),
+                $this->getReference('Miami', City::class),
                 null,
-                $this->getReference('Downtown'),
-                $this->getReference('Government Center'),
+                $this->getReference('Downtown', Neighborhood::class),
+                $this->getReference('Government Center', Metro::class),
                 'Interesting two-bedroom apartment for sale',
                 '111 NE 2nd Ave, Miami, FL 33132',
                 '25.775565', '-80.190125', 190000, '',
             ],
             [
-                $this->getReference('user'),
-                $this->getReference('Rent'),
-                $this->getReference('Apartment'),
+                $this->getReference('user', User::class),
+                $this->getReference('Rent', DealType::class),
+                $this->getReference('Apartment', Category::class),
                 2,
                 6,
-                $this->getReference('Tampa'),
+                $this->getReference('Tampa', City::class),
                 null,
-                $this->getReference('Ballast Point'),
+                $this->getReference('Ballast Point', Neighborhood::class),
                 null,
                 'Furnished renovated 2-bedroom 2-bathroom flat',
                 '5411 Bayshore Blvd, Tampa, FL 33611',
