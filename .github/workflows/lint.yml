@@ -32,18 +32,15 @@ jobs:
           tools: composer:v2
 
       - name: "Set composer cache directory"
-        id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - name: "Cache composer"
-        uses: actions/cache@v4
+        id: cache-vendor
+        uses: actions/cache@v3
         with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-${{ matrix.php-version }}-composer-${{ hashFiles('composer.lock') }}
-          restore-keys: ${{ runner.os }}-${{ matrix.php-version }}-composer-
+          path: vendor
+          key: ${{ runner.os }}-vendor-${{ hashFiles('**/composer.lock') }}
 
       - name: "Composer install"
-        run: composer install --no-interaction --no-progress
+        if: steps.cache-vendor.outputs.cache-hit != 'true'
+        run: composer install --no-interaction --no-scripts --no-progress --prefer-dist
 
       - name: Install PHPUnit
         id: install
@@ -51,7 +48,7 @@ jobs:
 
       - name: PHP-CS-Fixer
         if: always() && steps.install.outcome == 'success'
-        run: vendor/bin/php-cs-fixer fix --diff --dry-run
+        run: vendor/bin/php-cs-fixer fix --diff --dry-run --ansi
 
       - name: PHPStan
         if: always() && steps.install.outcome == 'success'
@@ -59,36 +56,32 @@ jobs:
 
       - name: Rector
         if: always() && steps.install.outcome == 'success'
-        run: vendor/bin/rector process
+        run: vendor/bin/rector process --ansi
 
       - name: Lint YAML files
         if: always() && steps.install.outcome == 'success'
-        run: ./bin/console lint:yaml config --parse-tags
+        run: ./bin/console lint:yaml config --parse-tags --ansi
 
       - name: Lint Twig templates
         if: always() && steps.install.outcome == 'success'
-        run: ./bin/console lint:twig templates --env=prod
+        run: ./bin/console lint:twig templates --env=prod --ansi
 
       - name: Lint XLIFF translations
         if: always() && steps.install.outcome == 'success'
-        run: ./bin/console lint:xliff translations
+        run: ./bin/console lint:xliff translations --ansi
 
       - name: Lint Parameters and Services
         if: always() && steps.install.outcome == 'success'
-        run: ./bin/console lint:container --no-debug
+        run: ./bin/console lint:container --no-debug --ansi
 
       - name: Lint Doctrine entities
         if: always() && steps.install.outcome == 'success'
-        run: ./bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction
+        run: ./bin/console doctrine:schema:validate --skip-sync -vvv --no-interaction --ansi
 
       - name: Lint Composer config
         if: always() && steps.install.outcome == 'success'
-        run: composer validate --strict
-
-      - name: Download Symfony CLI
-        if: always() && steps.install.outcome == 'success'
-        run: wget https://get.symfony.com/cli/installer -O - | bash
+        run: composer validate --strict --ansi
 
       - name: Check if any dependencies are compromised
         if: always() && steps.install.outcome == 'success'
-        run: /home/runner/.symfony5/bin/symfony check:security
+        run: composer audit --ansi
