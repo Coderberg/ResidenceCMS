@@ -18,7 +18,12 @@ abstract class AbstractService
 
     public function __construct(private readonly CsrfTokenManagerInterface $tokenManager, RequestStack $requestStack)
     {
-        $this->session = $requestStack->getSession();
+        $session = $requestStack->getSession();
+
+        if (!$session instanceof FlashBagAwareSessionInterface) {
+            throw new \LogicException('Session must implement FlashBagAwareSessionInterface.');
+        }
+        $this->session = $session;
     }
 
     /**
