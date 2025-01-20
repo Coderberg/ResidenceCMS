@@ -19,10 +19,6 @@ final readonly class Mailer
      */
     public function send(Email $email): void
     {
-        try {
-            $this->mailer->send($email);
-        } catch (TransportExceptionInterface $e) {
-            throw $e;
-        }
+        $this->mailer->send($email);
     }
 }

@@ -17,7 +17,7 @@ final class SitemapController extends AbstractController
     #[Route(path: '/sitemap.xml', name: 'sitemap', defaults: self::DEFAULTS)]
     public function siteMap(): Response
     {
-        return $this->render('sitemap/sitemap.xml.twig', []);
+        return $this->render('sitemap/sitemap.xml.twig');
     }
 
     #[Route(path: '/sitemap/cities.xml', name: 'cities_sitemap', defaults: self::DEFAULTS)]
