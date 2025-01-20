@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
+use App\Entity\City;
 use App\Entity\District;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -27,7 +28,7 @@ final class DistrictFixtures extends Fixture implements DependentFixtureInterfac
     private function getDistrictData(): array
     {
         return [
-            [$this->getReference('Tampa'), 'South Tampa', 'south-tampa'],
+            [$this->getReference('Tampa', City::class), 'South Tampa', 'south-tampa'],
         ];
     }
 

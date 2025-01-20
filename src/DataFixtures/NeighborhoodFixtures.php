@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
+use App\Entity\City;
 use App\Entity\Neighborhood;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -28,10 +29,10 @@ final class NeighborhoodFixtures extends Fixture implements DependentFixtureInte
     {
         return [
             // $neighborhoodData = [$city, $name, $slug];
-            [$this->getReference('Miami'), 'South Beach', 'south-beach'],
-            [$this->getReference('Miami'), 'Downtown', 'downtown'],
-            [$this->getReference('Tampa'), 'Ballast Point', 'ballast-point'],
-            [$this->getReference('Tampa'), 'Culbreath Isles', 'culbreath-isles'],
+            [$this->getReference('Miami', City::class), 'South Beach', 'south-beach'],
+            [$this->getReference('Miami', City::class), 'Downtown', 'downtown'],
+            [$this->getReference('Tampa', City::class), 'Ballast Point', 'ballast-point'],
+            [$this->getReference('Tampa', City::class), 'Culbreath Isles', 'culbreath-isles'],
         ];
     }
 

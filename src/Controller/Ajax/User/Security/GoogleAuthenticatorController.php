@@ -7,7 +7,6 @@ namespace App\Controller\Ajax\User\Security;
 use App\Controller\Ajax\AjaxController;
 use App\Entity\User;
 use App\Service\User\GoogleAuthenticatorService;
-use Scheb\TwoFactorBundle\Model\Google\TwoFactorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,7 +25,7 @@ final class GoogleAuthenticatorController extends AbstractController implements 
     public function getAuthCode(): JsonResponse
     {
         try {
-            /** @var User|TwoFactorInterface $user */
+            /** @var User $user */
             $user = $this->getUser();
 
             return new JsonResponse($this->service->generateSecret($user));

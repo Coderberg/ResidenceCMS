@@ -10,6 +10,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 abstract class AbstractSettingsController extends AbstractController
 {
+    /**
+     * @var array<string, mixed>
+     */
     protected array $settings;
 
     public function __construct(

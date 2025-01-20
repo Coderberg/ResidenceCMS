@@ -14,6 +14,7 @@ $finder = (new PhpCsFixer\Finder())
 ;
 
 return (new PhpCsFixer\Config())
+    ->setParallelConfig(PhpCsFixer\Runner\Parallel\ParallelConfigFactory::detect())
     ->setRiskyAllowed(true)
     ->setRules([
         '@PHP80Migration:risky' => true,
@@ -37,5 +38,5 @@ return (new PhpCsFixer\Config())
         'declare_strict_types' => true,
     ])
     ->setFinder($finder)
-    ->setCacheFile(__DIR__.'/var/.php-cs-fixer.cache') // forward compatibility with 3.x line
+    ->setCacheFile(__DIR__.'/var/.php-cs-fixer.cache')
 ;
