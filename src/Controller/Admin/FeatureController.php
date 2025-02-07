@@ -8,8 +8,8 @@ use App\Controller\BaseController;
 use App\Entity\Feature;
 use App\Form\Type\FeatureType;
 use App\Repository\FeatureRepository;
-use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\SubmitButton;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -43,7 +43,7 @@ final class FeatureController extends BaseController
 
             $this->addFlash('success', 'message.created');
 
-            /** @var ClickableInterface $button */
+            /** @var SubmitButton $button */
             $button = $form->get('saveAndCreateNew');
             if ($button->isClicked()) {
                 return $this->redirectToRoute('admin_feature_new');

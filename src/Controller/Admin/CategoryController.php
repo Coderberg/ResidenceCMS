@@ -9,8 +9,8 @@ use App\Entity\Category;
 use App\Form\Type\CategoryType;
 use App\Repository\CategoryRepository;
 use App\Service\Admin\CategoryService;
-use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\SubmitButton;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -42,7 +42,7 @@ final class CategoryController extends BaseController
         if ($form->isSubmitted() && $form->isValid()) {
             $service->create($category);
 
-            /** @var ClickableInterface $button */
+            /** @var SubmitButton $button */
             $button = $form->get('saveAndCreateNew');
             if ($button->isClicked()) {
                 return $this->redirectToRoute('admin_category_new');

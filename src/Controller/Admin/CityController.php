@@ -9,8 +9,8 @@ use App\Entity\City;
 use App\Form\Type\CityType;
 use App\Repository\CityRepository;
 use App\Service\Admin\CityService;
-use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\SubmitButton;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -42,7 +42,7 @@ final class CityController extends BaseController
         if ($form->isSubmitted() && $form->isValid()) {
             $service->create($city);
 
-            /** @var ClickableInterface $button */
+            /** @var SubmitButton $button */
             $button = $form->get('saveAndCreateNew');
             if ($button->isClicked()) {
                 return $this->redirectToRoute('admin_city_new');
