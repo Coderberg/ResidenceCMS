@@ -51,15 +51,6 @@ services:
       - 3306:3306
 ###< doctrine/doctrine-bundle ###
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    restart: unless-stopped
-    environment:
-      PMA_HOST: mysql
-      PMA_PORT: 3306
-    ports:
-      - 8081:80
-
 volumes:
   caddy_data:
   caddy_config:
