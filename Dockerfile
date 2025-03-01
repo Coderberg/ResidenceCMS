@@ -42,7 +42,7 @@ ENV PHP_INI_SCAN_DIR=":$PHP_INI_DIR/app.conf.d"
 ###> recipes ###
 ###> symfony/panther ###
 # Chromium and ChromeDriver
-ENV PANTHER_NO_SANDBOX 1
+ENV PANTHER_NO_SANDBOX=1
 # Not mandatory, but recommended
 ENV PANTHER_CHROME_ARGUMENTS='--disable-dev-shm-usage'
 RUN apt-get update && apt-get install -y --no-install-recommends chromium chromium-driver && rm -rf /var/lib/apt/lists/*
