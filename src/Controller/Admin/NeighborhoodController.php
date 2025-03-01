@@ -8,8 +8,8 @@ use App\Controller\BaseController;
 use App\Entity\Neighborhood;
 use App\Form\Type\NeighborhoodType;
 use App\Repository\CityRepository;
-use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\SubmitButton;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -45,7 +45,7 @@ final class NeighborhoodController extends BaseController
 
             $this->addFlash('success', 'message.created');
 
-            /** @var ClickableInterface $button */
+            /** @var SubmitButton $button */
             $button = $form->get('saveAndCreateNew');
             if ($button->isClicked()) {
                 return $this->redirectToRoute('admin_neighborhood_new');

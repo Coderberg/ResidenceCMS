@@ -8,8 +8,8 @@ use App\Controller\BaseController;
 use App\Entity\DealType;
 use App\Form\Type\DealTypeType;
 use App\Service\Admin\DealTypeService;
-use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\SubmitButton;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -43,7 +43,7 @@ final class DealTypeController extends BaseController
         if ($form->isSubmitted() && $form->isValid()) {
             $service->create($dealType);
 
-            /** @var ClickableInterface $button */
+            /** @var SubmitButton $button */
             $button = $form->get('saveAndCreateNew');
             if ($button->isClicked()) {
                 return $this->redirectToRoute('admin_deal_type_new');

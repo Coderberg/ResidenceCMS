@@ -10,8 +10,8 @@ use App\Form\Type\UserType;
 use App\Repository\UserRepository;
 use App\Service\Admin\UserService;
 use App\Utils\UserFormDataSelector;
-use Symfony\Component\Form\ClickableInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\SubmitButton;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -45,7 +45,7 @@ final class UserController extends BaseController
             $user->setEmailVerifiedAt($emailVerifiedAt);
             $service->create($user);
 
-            /** @var ClickableInterface $button */
+            /** @var SubmitButton $button */
             $button = $form->get('saveAndCreateNew');
             if ($button->isClicked()) {
                 return $this->redirectToRoute('admin_user_new');
