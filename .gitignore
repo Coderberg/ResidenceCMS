@@ -1,5 +1,6 @@
 /drivers/
 /.idea/
+/.vscode
 /public/uploads/images/*/*.*
 
 ###> symfony/framework-bundle ###
