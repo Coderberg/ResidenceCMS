@@ -15,5 +15,8 @@ return RectorConfig::configure()
     ->withSets([
         LevelSetList::UP_TO_PHP_82,
         SymfonySetList::SYMFONY_CODE_QUALITY,
+        SymfonySetList::SYMFONY_71,
         SetList::CODE_QUALITY,
-    ]);
+    ])
+    ->withAttributesSets()
+    ->withComposerBased(twig: true, doctrine: true, phpunit: true);
