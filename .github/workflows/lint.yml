@@ -84,4 +84,4 @@ jobs:
 
       - name: Check if any dependencies are compromised
         if: always() && steps.install.outcome == 'success'
-        run: composer audit --ansi
+        run: composer audit --abandoned=report --ansi

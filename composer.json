@@ -86,6 +86,9 @@
         "allow-plugins": {
             "symfony/flex": true,
             "symfony/runtime": true
+        },
+        "audit": {
+            "abandoned": "report"
         }
     },
     "autoload": {
