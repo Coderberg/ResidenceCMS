@@ -40,13 +40,85 @@ final class PropertyController extends BaseController
     #[Route(path: '/map', name: 'map_view', methods: ['GET'])]
     public function mapView(Request $request, PropertyRepository $repository): Response
     {
+        $site = $this->site($request);
+        $currency = $site['currency'];
+        $markers = [];
+
+        foreach ($repository->findAllPublished() as $property) {
+            $latitude = $this->parseCoordinate($property->getLatitude());
+            $longitude = $this->parseCoordinate($property->getLongitude());
+
+            if (null === $latitude || null === $longitude) {
+                continue;
+            }
+
+            $markers[] = [
+                'lat' => $latitude,
+                'lng' => $longitude,
+                'price' => trim(\sprintf(
+                    '%s%s %s',
+                    $currency->getSymbolLeft() ?? '',
+                    (string) $property->getPrice(),
+                    $currency->getSymbolRight() ?? '',
+                )),
+                'category' => $property->getCategory()?->getName() ?? '',
+                'url' => $this->generateUrl('property_show', [
+                    'id' => $property->getId(),
+                    'citySlug' => $property->getCity()?->getSlug(),
+                    'slug' => $property->getSlug(),
+                ]),
+            ];
+        }
+
         return $this->render(
             'property/map.html.twig',
             [
-                'site' => $this->site($request),
-                'properties' => $repository->findAllPublished(),
+                'site' => $site,
+                'markers' => $markers,
+                'map_center' => $this->parseMapCenter($site['map_center'] ?? null),
+                'map_zoom' => (int) ($site['map_zoom'] ?? 7),
             ]
         );
+    }
+
+    private function parseCoordinate(?string $value): ?float
+    {
+        if (null === $value || '' === trim($value)) {
+            return null;
+        }
+
+        if (!preg_match('/^-?\d{1,3}(\.\d{1,15})?$/', trim($value))) {
+            return null;
+        }
+
+        return (float) $value;
+    }
+
+    /**
+     * @return array{0: float, 1: float}
+     */
+    private function parseMapCenter(?string $value): array
+    {
+        $default = [27.188534, -81.128735];
+
+        if (null === $value || '' === trim($value)) {
+            return $default;
+        }
+
+        $parts = array_map('trim', explode(',', $value, 2));
+
+        if (2 !== \count($parts)) {
+            return $default;
+        }
+
+        $latitude = $this->parseCoordinate($parts[0]);
+        $longitude = $this->parseCoordinate($parts[1]);
+
+        if (null === $latitude || null === $longitude) {
+            return $default;
+        }
+
+        return [$latitude, $longitude];
     }
 
     #[Route(

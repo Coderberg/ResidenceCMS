@@ -9,6 +9,7 @@ use App\Entity\Metro;
 use App\Entity\Neighborhood;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 trait EntityLocationTrait
 {
@@ -28,9 +29,11 @@ trait EntityLocationTrait
     private ?string $address = null;
 
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
+    #[Assert\Regex(pattern: '/^$|^-?\d{1,2}(\.\d{1,15})?$/', message: 'Invalid latitude.')]
     private ?string $latitude = null;
 
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
+    #[Assert\Regex(pattern: '/^$|^-?\d{1,3}(\.\d{1,15})?$/', message: 'Invalid longitude.')]
     private ?string $longitude = null;
 
     public function getDistrict(): ?District

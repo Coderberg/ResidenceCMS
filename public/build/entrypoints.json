@@ -30,6 +30,12 @@
         "/build/js/map.7d2feb0e.js"
       ]
     },
+    "js/properties-map": {
+      "js": [
+        "/build/runtime.8ab7f0c8.js",
+        "/build/js/properties-map.2c717d15.js"
+      ]
+    },
     "js/menu-sorting": {
       "js": [
         "/build/runtime.8ab7f0c8.js",
