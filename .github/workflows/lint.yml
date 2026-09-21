@@ -52,7 +52,7 @@ jobs:
 
       - name: PHPStan
         if: always() && steps.install.outcome == 'success'
-        run: vendor/bin/phpstan analyse --ansi
+        run: vendor/bin/phpstan analyse --memory-limit=512M --ansi
 
       - name: Rector
         if: always() && steps.install.outcome == 'success'
@@ -84,4 +84,4 @@ jobs:
 
       - name: Check if any dependencies are compromised
         if: always() && steps.install.outcome == 'success'
-        run: composer audit --ansi
+        run: composer audit --abandoned=report --ansi

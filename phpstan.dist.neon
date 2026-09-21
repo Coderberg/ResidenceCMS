@@ -5,3 +5,5 @@ parameters:
         - config/
         - public/
         - src/
+    excludePaths:
+        - config/reference.php

@@ -39,7 +39,7 @@ final class CityController extends AbstractController implements AjaxController
         City $city,
         DistrictRepository|MetroRepository|NeighborhoodRepository $repository,
     ): array {
-        return array_map(fn ($entity) => [
+        return array_map(static fn ($entity) => [
             'id' => $entity->getId(),
             'name' => $entity->getName(),
         ],
