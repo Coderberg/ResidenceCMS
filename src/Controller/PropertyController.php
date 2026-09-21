@@ -125,8 +125,7 @@ final class PropertyController extends BaseController
         path: '/{citySlug}/{slug}/{id}',
         name: 'property_show',
         requirements: ['id' => Requirement::POSITIVE_INT],
-        methods: ['GET'])
-    ]
+        methods: ['GET'])]
     #[IsGranted(
         'PROPERTY_VIEW',
         subject: 'property',

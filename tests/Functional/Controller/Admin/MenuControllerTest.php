@@ -96,7 +96,7 @@ final class MenuControllerTest extends WebTestCase
         $items = $this->getRepository($client, Menu::class)
             ->findItems();
 
-        $itemsArray = array_map(fn ($item) => $item->getId(), $items);
+        $itemsArray = array_map(static fn ($item) => $item->getId(), $items);
 
         $uri = '/en/admin/menu/sort';
         $client->request(Request::METHOD_POST, $uri, [

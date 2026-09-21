@@ -35,8 +35,7 @@ final class PhotoController extends AbstractPhotoController implements AjaxContr
         path: '/user/photo/{id}/sort',
         name: 'user_photo_sort',
         requirements: ['id' => Requirement::POSITIVE_INT],
-        methods: ['POST'])
-    ]
+        methods: ['POST'])]
     #[IsGranted('PROPERTY_EDIT', subject: 'property', message: 'You cannot change this property.')]
     public function sort(Request $request, Property $property): JsonResponse
     {

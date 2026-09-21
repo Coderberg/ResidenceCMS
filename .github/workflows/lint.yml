@@ -52,7 +52,7 @@ jobs:
 
       - name: PHPStan
         if: always() && steps.install.outcome == 'success'
-        run: vendor/bin/phpstan analyse --ansi
+        run: vendor/bin/phpstan analyse --memory-limit=512M --ansi
 
       - name: Rector
         if: always() && steps.install.outcome == 'success'

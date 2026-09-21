@@ -56,7 +56,7 @@ final class PhotoControllerTest extends WebTestCase
         $crawler = $client->request(Request::METHOD_GET, '/en/user/photo/'.$property->getId().'/edit');
         $token = $this->getCsrfToken($crawler);
 
-        $itemsArray = $property->getPhotos()->map(fn ($item) => $item->getId())->getValues();
+        $itemsArray = $property->getPhotos()->map(static fn ($item) => $item->getId())->getValues();
 
         $uri = '/en/user/photo/'.$property->getId().'/sort';
         $client->request(Request::METHOD_POST, $uri, [

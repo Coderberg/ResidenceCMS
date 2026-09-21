@@ -43,7 +43,7 @@ final class ListUsersCommand extends Command
 
         $allUsers = $this->users->findBy([], ['id' => 'DESC'], $limit);
 
-        $usersAsPlainArrays = array_map(fn (User $user) => [
+        $usersAsPlainArrays = array_map(static fn (User $user) => [
             $user->getId(),
             $user->getProfile()->getFullName(),
             $user->getUsername(),
